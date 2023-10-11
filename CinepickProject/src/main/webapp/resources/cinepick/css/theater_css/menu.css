@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    	
+* {
+    font-family: 'IBM Plex Sans KR';
+}
+
+.tit.mt40 {
+/*    margin: 0 auto;*/
+}
+
+
+.titt {
+	margin: 0 auto;
+	width: 90%;	
+	margin-top: 3em;
+}
+
+.titt h2 {
+	margin-top: 3em;
+}
+
+ .theater-place {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.buttonDiv {
+	display: grid;
+/*	padding: 10px;*/
+	grid-template-columns: 1fr 1fr 1fr 2fr 2fr 1.5fr 1fr 1fr;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0px;
+	margin-top: 2em;
+}
+
+.sel-city {
+    font-size: 1.3rem;
+    padding: 0.5em;
+    border-radius: 0px;
+/*    margin: 0;*/
+    display: inline-block;
+/*    margin-left: -3px;*/
+/*    margin-right: -3px;*/
+    border: none;
+	outline:none;
+	height: 50px;
+}
+
+
+li {
+    list-style: none;
+}
+
+.theater-list {
+	margin-top: 10px;
+	width: 90%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-theater {
+/*	display: flex;*/
+	width: 90%;
+	margin: 0 auto;
+	background-color: #F7F8F9;
+	height: 50px;
+	line-height : 50px;
+}
+
+.user-theater i, a, span, ul {
+	display: inline-block;
+	text-align: center;
+}
+
+.user-theater li {
+	background-color: white;
+	padding: 0px 15px;
+	border-radius: 13px;
+	height: 25px;
+	line-height: 25px;
+}
+
+.float-r {
+	float: right;
+}
+
+.small {
+	margin-right: 10px;
+}
+
+.blue {
+	color: #01738B;
+}
+
+.button {
+    display: inline-block;
+    height: 36px;
+    margin: 7px;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #503396;
+    font-weight: 400;
+    border-radius: 4px;
+    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+user-theater a {
+	background-color: white;
+}
+
+.ico-favo-theater {
+	color: #e5ddff;
+}
+
+.purple {
+	color: #B287DC;
+}
+
+
+
+/*Calendar*/
+
+ #day_bookList02 {
+	width: 90%;
+	margin:0 auto;
+	margin-top: 5em;
+}
+    
+/* 	.hidden { visibility: hidden; } */
+
+	.day li {
+		display:inline-block;
+		margin-right: 1.2rem;
+		margin-bottom: 0;
+/*		background-color: pink;*/
+	}
+	
+	.day span {
+		font-size: 12px;
+	}
+
+	.hidden {
+		display:none;
+	}
+
+	.sat {
+		color: #0056B1;
+	}	
+	
+	.sun {
+		color: #D60074;
+	}	
+	
+	.month {
+		float: left;
+	}
+	
+	.month a {
+/*		margin: 20px;*/
+	}
+	
+	.calendar {
+		margin: 0 auto;
+		margin-top: 1em;
+		width: 100%;
+		border-bottom: 1px solid #CCCCCC;
+/*		vertical-align: middle;*/
+/*		background-color: yellow;*/
+/*		padding: 1em;*/
+	}
+	
+	.movies {
+		width: 100%;
+		margin: 0 auto;
+/* 		background-color: yellow;*/
+ 		padding: 0;
+	}
+	
+	.movies li {
+		display: inline-block;
+		margin-top: 0;
+		width: 16%;
+		text-align: center;
+/*		border-bottom: 1px solid black;*/
+/*		padding-bottom: 2px;*/
+		margin-right: 2.5px;
+		margin-left: 2.5px;
+/* 		background-color: tomato; */
+	}
+	
+	li h6 {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 39px;
+    border-bottom: 1px solid #111;
+    margin-bottom: 10px;
+}
+
+.movies li li {
+/*	text-align: left;*/
+	float: left;
+	width: 100%;
+	margin-left: 0px;
+	margin-right: auto;
+}
+
+.movie li ul {
+/*	float: left;*/
+	text-align: left;
+}
+
+.movies ul {
+	padding: 0;
+	
+}
+
+.movie-list {
+	padding: 0em;
+	width: 100%;
+	
+}
+
+.movies a {
+	font-size: 0.8rem;	
+	float: left;
+}
+
+/*이벤트 박스*/
+
+.tit-util {
+	margin-top: 30px;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 5em;
+	height:2,5em;
+	line-height: 2.5em;
+}
+
+.tit, .more {
+	display: inline-block;
+}
+
+.tit {
+	margin-left: 0;
+}
+
+.more {
+	float: right;
+}
+
+.event-box {
+/*	align-items: center;*/
+	width: 90%;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 5em;
+/*	이거 나중에 수정*/
+}
+
+.event-box ul {
+	margin: 0;
+	padding: 0;
+}
+
+.event-box li {
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.event-box img {
+	border-radius: 10px;
+	margin: auto;
+	margin-left: 1em;
+	margin-right: 0.5em;
+	margin-top: 0.5em;
+	display: block;
+	width: 400px;
+}
+
+

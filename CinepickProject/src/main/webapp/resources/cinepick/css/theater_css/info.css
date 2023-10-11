@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    	
+* {
+    font-family: 'IBM Plex Sans KR';
+}
+
+body {
+    overflow: auto;
+    overflow-y: scroll;
+    letter-spacing: 0;
+    line-height: 1.5;
+    font-size: 15px;
+    color: #444;
+    font-weight: 400;
+    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+}
+
+.theater-info-text {
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.theater-facility p .iconset {
+    margin-bottom: 10px;
+}
+
+.iconset {
+    overflow: hidden;
+    display: inline-block;
+    margin: -1px 0 0 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+.ico-facility-theater {
+    width: 111px;
+    height: 111px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-facility-theater.png);
+}
+
+.ico-facility-disabled {
+    width: 111px;
+    height: 111px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-facility-disabled.png);
+}
+
+
+.ico-parking {
+    width: 67px;
+    height: 57px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-parking.png);
+}
+
+.ico-cash {
+    width: 70px;
+    height: 68px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-cash.png);
+}
+
+.ico-parking-confirm {
+    width: 70px;
+    height: 60px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-confirm.png);
+}
+
+.icon-box {
+/*    position: absolute;*/
+/*    top: 30px;*/
+/*    left: 0;*/
+    width: 150px;
+    text-align: center;
+    float: left;
+}
+
+.info {
+    padding-left: 150px;
+}
+
+.parking-section {
+    min-height: 85px;
+    padding: 30px 0 0 0;
+/*    position: relative;*/
+}
+
+h2.tit.small {
+    padding: 0 0 16px 0;
+    font-size: 1.4666em;
+    color: #503396;
+}
+h2.tit {
+    padding: 0 0 26px 0;
+    font-size: 1.8666em;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: #222;
+}
+
+h3.tit.small {
+    padding: 0 0 10px 0;
+    font-size: 1.2em;
+    color: #222;
+}
+h3.tit {
+    margin: 0;
+    padding: 0 0 16px 0;
+    font-size: 1.6em;
+    font-weight: 400;
+    color: #503396;
+    line-height: 1.1;
+}
+
+.mt70 {
+    margin-top: 70px!important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+
+.font-gblue {
+    color: #01738b!important;
+}
+
+a.button.purple:visited {
+    color: #fff;
+}
+a.button:active, a.button:focus, a.button:hover, a.button:visited {
+    color: #503396;
+}
+.btn-group .button {
+    margin: 0 3px;
+}
+.button.purple {
+    color: #fff;
+    line-height: 36px;
+    border: 0;
+    background: #503396;
+}
+a.button {
+    text-decoration: none;
+}
+a:visited {
+    color: #666;
+    text-decoration: none;
+    outline: 1px dotted #000;
+}
+
+.parking-info {
+    padding: 0 0 30px 0;
+    border: 1px solid #d8d9db;
+    border-radius: 10px;
+}
+
+.mt40 {
+    margin-top: 40px!important;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+p.tit {
+    margin: 0;
+    padding: 0 0 10px 0;
+}
+
+ul {
+    display: block;
+    list-style-type: square;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+/*메박 원래*/
+
+.inner-wrap {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 5em;
+}
+
+/*li {*/
+/*    list-style: none;*/
+/*}*/
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.nav.nav-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3개의 열, 각 열은 1fr (동일한 비율로) */
+    gap: 1px; /* 선택적으로 열 사이의 간격 추가 */
+    font-size: 1.2rem;
+/*    margin-bottom: 2em;*/
+}
+
+.big {
+	font-size: 2rem;	
+}
+
+
+.dot-list {
+	list-style-type: disc;
+}
