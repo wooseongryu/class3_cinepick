@@ -66,7 +66,7 @@ a {
 						<!-- 메인 로고 끝 -->
 						
 						<li>
-							<a href="##############################">
+							<a href="event">
 								이벤트 <span class="arrow_carrot-down"></span>
 							</a>
 							 <ul class="dropdown">
@@ -78,7 +78,7 @@ a {
 							</ul>
 						</li>	
                         <li>
-	                        <a href="##############################">
+	                        <a href="store">
 	                        	스토어 <span class="arrow_carrot-down"></span>
 	                        </a>
 							 <ul class="dropdown">
