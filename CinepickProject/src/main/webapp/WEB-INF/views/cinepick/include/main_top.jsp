@@ -90,13 +90,13 @@ a {
 							</ul>
 						</li>	
                         <li>
-	                        <a href="##############################">
+	                        <a href="qna">
 	                        	고객센터 <span class="arrow_carrot-down"></span>
 	                        </a>
 							 <ul class="dropdown">
-	                             <li><a href="##############################">공지</a></li>
-	                             <li><a href="##############################">자주묻는 질문</a></li>
-	                             <li><a href="##############################">1 : 1 문의</a></li>
+	                             <li><a href="notice">공지</a></li>
+	                             <li><a href="qna">자주묻는 질문</a></li>
+	                             <li><a href="oneToOneQna">1 : 1 문의</a></li>
 							</ul>
 						</li>	
 					</ul>
