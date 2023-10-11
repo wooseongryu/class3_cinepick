@@ -51,7 +51,7 @@ a {
 							</ul>
  						</li>
 						<li>
-							<a href="##############################">
+							<a href="theater">
 								극장 <span class="arrow_carrot-down"></span>
 							</a>
 							 <ul class="dropdown">
