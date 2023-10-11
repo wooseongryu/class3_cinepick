@@ -22,7 +22,7 @@ a {
 			<a href="admin">
 				<span class="icon_profile">관리자임시버튼</span>
 			</a>
-			<a href="##############################">
+			<a href="user">
 				<span class="icon_profile">유저임시버튼</span>
 			</a>
 			<!-- 임시 코드 끝 -->
