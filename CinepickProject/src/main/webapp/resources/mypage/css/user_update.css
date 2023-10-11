@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    	
+* {
+    font-family: 'IBM Plex Sans KR';
+}
+
+.button {
+    display: inline-block;
+    height: 36px;
+    margin: 7px;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #503396;
+    font-weight: 400;
+    border-radius: 4px;
+/*    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;*/
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
+.member-out {
+	float: right;
+}
+
+.profile-img {
+	float: left;
+}
+
+.small .btn {
+	margin-left: 1em;
+	height: 36px;
+	
+}
+
+.table th {
+	color: #1c1c1c;
+}
+
+.member-out-div {
+	float: right;
+}
+
+.comment {
+	font-size:0.8em;
+	color:#999; 
+/*	margin-top:10px; */
+	vertical-align: middle;
+	padding:0; 
+	text-align:left;
+	line-height: 66px; 
+	margin-left: 1em;
+/*	position:absolute; */
+/*	top:22px; */
+/*	left:194px;*/
+	    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+table tr td {
+	vertical-align: middle;
+}
+
+th {
+	display: teble-cell;
+	vertical-align: middle;
+	width: 30% !important;
+}
+
+.form-group {
+	margin-bottom: 0px;
+	
+}
+
+.table th, .table td {
+/*    padding: 0.75rem;*/
+    vertical-align: middle;
+/*    border-top: 1px solid #e3e6f0;*/
+}
+
+/*.form-control-user {*/
+/*	size: 20px;*/
+/*}*/
+
+/*.form-control {*/
+/*	width: 300px;*/
+/*}*/
+
+.form-group {
+	display: inline-block;
+/*	grid-template-columns: 1fr 1fr 1fr;*/
+	width: 570px;
+}
+
+/*.jumin {*/
+/*	width: 200px;*/
+/*}*/
+
+/*.col {*/
+/*	width: 200px;*/
+/*}*/
+
+.form-group input {
+	float: left;
+	width: 80%;
+}
+
+.col-sm {
+	width: 200px;
+}
+
+.btn-group {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 15%;
+    padding: 20px 0 30px 0;
+    margin: 0 auto;
+    text-align: center;
+}

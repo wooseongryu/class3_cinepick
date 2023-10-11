@@ -1,0 +1,57 @@
+li {
+	list-style: none;
+}
+
+.user-out {
+	color: #1c1c1c;
+}
+
+.user-out ol>li .txt {
+    padding: 0 0 5px 0;
+    font-size: 1.3333em;
+    font-weight: 400;
+}
+
+.user-out p {
+    margin: 0;
+    padding: 0;
+}
+
+.user-out ol>li {
+    padding: 0 0 30px 0;
+}
+
+.dot-list>li {
+    position: relative;
+    padding: 0 0 0 8px;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.board-form tbody td, .board-form tbody th {
+    position: relative;
+    height: 50px;
+    padding: 7px 15px;
+    text-align: left;
+    border-bottom: 1px solid #d1d5dd;
+}
+table td, table th {
+    padding: 0;
+}
+
+user agent stylesheet
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.board-form tbody th {
+    background: #f7f8f9;
+}
+

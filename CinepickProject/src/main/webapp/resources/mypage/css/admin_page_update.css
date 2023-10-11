@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    	
+* {
+    font-family: 'IBM Plex Sans KR';
+}
+
+label {
+		    cursor: pointer;
+		    font-size: 1em;
+		}
+		
+/* 못생긴 기존 input 숨기기 */
+#inputGroupFile04 {
+  /* display: none; */
+}
+
+.form-control-textarea {
+  font-size: 0.8rem;
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;
+}
