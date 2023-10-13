@@ -19,4 +19,5 @@ public class HomeController {
 		return "cinepick/main/main";
 	}
 	
+	// 깃테스트
 }
