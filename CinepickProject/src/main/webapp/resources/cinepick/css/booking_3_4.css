@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+/*
+ step3
+*/
+    	.col {
+    		padding-left: 5px;
+    		padding-right: 5px;
+    	}
+    	.col-2 {
+    		padding-left: 5px;
+    		padding-right: 5px;
+    	}
+    	.col-4 {
+    		padding-left: 5px;
+    		padding-right: 5px;
+    	}
+    	
+    	.step3_head {
+			overflow: hidden;
+			background: rgb(128, 128, 128);
+			padding: 15px 25px 5px 25px;
+			border-radius: 10px;
+			position: relative;
+			margin-bottom: 10px;
+		}
+		
+		.step3_head h6 {
+			color: #ffffff;
+			font-weight: 700;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		
+		.step3_body {
+			overflow: auto;
+			background: rgb(128, 128, 128);
+			padding: 25px 25px 25px 25px;
+			border-radius: 10px;
+			position: relative;
+			margin-bottom: 10px;
+			height: 500px;
+			
+			display: flex;
+			flex-direction: column;
+/* 			justify-content: space-between; */
+		}
+		
+		.step3_body h6 {
+			color: #ffffff;
+			font-weight: 500;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		
+		.pay_step {
+			margin-bottom: 10px;
+		}
+		
+		.pay_step input[type=text]{
+			height: 25px;
+		    width: 100px;
+		    border: 1px solid #C0C0C0;
+			border-radius: 4px;
+		}
+		
+		.pay_step3 input[type=radio]{
+		    display: none;
+		}
+		.pay_step3 input[type=radio]+label{
+		    display: inline-block;
+		    cursor: pointer;
+		    height: 25px;
+		    width: 100px;
+		    border: 1px solid #C0C0C0;
+		    border-radius: 5px;
+		    text-align: center;
+		    font-size:15px;
+		    margin: 10px 20px 20px 10px;
+		}
+		.pay_step3 input[type=radio]+label{
+		    background-color: #fff;
+		    color: #333;
+		}
+		.pay_step3 input[type=radio]:checked+label{
+		    background-color: darkred;
+		    color: #fff;
+		}
+		
+		
+		
+		.step3_result {
+			overflow: hidden;
+			background: rgb(128, 128, 128);
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			position: relative;
+			margin-bottom: 10px;
+			height: 200px;
+			display: flex;
+			justify-content: center;
+			
+		}
+		
+		.step3_result h6 {
+			color: #ffffff;
+			font-weight: 500;
+			margin-top: 10px;
+/* 			margin-bottom: 10px; */
+			text-align: left;
+		}
+		
+		.res_pay {
+			border-radius: 10px;
+			border: 1px solid #fff;
+			padding: 15px 5px 5px 5px;
+			margin-bottom: 10px;
+			
+		}
+		
+		
+		.res_result {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+			text-align: left;
+			padding: 10px 0 0 0;
+			word-break: break-all;
+	
+		}
+		
+		.pre_btn {
+			width: 120px;
+			height: 120px;
+			background-color:	#C0C0C0;
+			border-radius: 10px;
+			margin: auto;
+			color: #ffffff;
+			font-weight: 500;
+			border: 0;
+		}
+		
+		.res_btn {
+			width: 150px;
+			height: 120px;
+			background: darkred;
+			border-radius: 10px;
+			margin: auto;
+			color: #ffffff;
+			font-weight: 500;
+			border: 0.5px red;
+		}
+		
+		.res_img {
+			width: 120px;
+			height: 100%;
+			margin: auto;
+			border-radius: 1px;
+		}
+		
+		
+		
+/*
+	step4
+*/	
+
+    	.step4_head {
+			overflow: hidden;
+			background: rgb(128, 128, 128);
+			padding: 15px 25px 5px 25px;
+			border-radius: 10px;
+			position: relative;
+			margin-bottom: 10px;
+		}
+		
+		.step4_head h6 {
+			color: #ffffff;
+			font-weight: 700;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		
+		.step4_body {
+			overflow: auto;
+			background: rgb(128, 128, 128);
+			padding: 25px 25px 25px 25px;
+			border-radius: 10px;
+			position: relative;
+			margin-bottom: 10px;
+			height: 500px;
+			display: flex;
+			flex-direction: column;
+ 			justify-content: space-around; 
+		}
+		
+		.step4_body h2 {
+			color: #ffffff;
+			font-weight: 500;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		
+		.step4_body h6 {
+			color: #ffffff;
+			font-weight: 500;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		
+		.res_final {
+			justify-content: space-between; 
+		}
+		
+		.res_img {
+			width: 120px;
+			height: 100%;
+			margin: auto;
+			border-radius: 1px;
+		}
+		
+		
+		.step4_result {
+			overflow: hidden;
+			background: rgb(128, 128, 128);
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			position: relative;
+			margin-bottom: 10px;
+			height: 200px;
+			display: flex;
+			justify-content: center;
+			justify-content: space-around; 
+			
+		}
+		
+		.step4_result h6 {
+			color: #ffffff;
+			font-weight: 500;
+			margin-top: 10px;
+/* 			margin-bottom: 10px; */
+			text-align: left;
+		}
+		
+
+		
+		.fin_btn {
+			width: 140px;
+			height: 50px;
+			background-color: darkred;
+			border-radius: 10px;
+			margin: auto;
+			color: #ffffff;
+			font-weight: 500;
+			border: 0;
+		}	

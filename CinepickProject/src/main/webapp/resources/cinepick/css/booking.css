@@ -25,6 +25,7 @@
 9.  Contact
 10.  Footer Style
 11. customer center qna
+12. booking
 -------------------------------------------------------------------*/
 
 /*----------------------------------------*/
@@ -2500,7 +2501,9 @@ ol {
 
 
 
-/*asdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=======================*/
+/*---------------------
+  12. booking
+-----------------------*/
 
 .step1_head {
 	overflow: hidden;
@@ -2526,6 +2529,13 @@ ol {
 	position: relative;
 	margin-bottom: 10px;
 	height: 500px;
+}
+
+.step1_body h1 {
+	color: yellow;
+	font-weight: 700;
+	margin-bottom: 10px;
+	text-align: center;
 }
 
 .step1_body h6 {
@@ -2560,6 +2570,29 @@ ol {
 .age {
 	float: left;
 	height: 25px;
+}
+
+.step1_time_body {
+	overflow: auto;
+	background: rgb(128, 128, 128);
+	padding: 15px 25px 5px 25px;
+	border-radius: 10px;
+	position: relative;
+	margin-bottom: 10px;
+	height: 500px;
+}
+
+.step1_time_body hr {
+	background:yellow;
+    height:1px;
+    border:0;
+}
+
+.step1_time_body h6 {
+	color: #ffffff;
+	font-weight: 700;
+	margin-bottom: 10px;
+/* 	text-align: center; */
 }
 
 

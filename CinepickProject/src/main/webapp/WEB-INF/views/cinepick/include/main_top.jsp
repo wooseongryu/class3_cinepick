@@ -42,7 +42,7 @@ a {
 							</ul>
 						</li>	
 						<li>
-							<a href="##############################">
+							<a href="bookingStepOne">
 								예매 <span class="arrow_carrot-down"></span>
 							</a>
 							 <ul class="dropdown">
