@@ -25,6 +25,9 @@ a {
 			<a href="user">
 				<span class="icon_profile">유저임시버튼</span>
 			</a>
+			<a href="basket">
+				<span class="icon_profile">장바구니임시버튼</span>
+			</a>
 			<!-- 임시 코드 끝 -->
 		</div>
 		
