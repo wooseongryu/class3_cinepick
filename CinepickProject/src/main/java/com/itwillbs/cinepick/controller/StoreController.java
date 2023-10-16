@@ -18,4 +18,11 @@ public class StoreController {
 		System.out.println("StoreController - storeDetail()");
 		return "cinepick/event_store/store_detail"; 
 	}
+	
+	// 장바구니
+	@GetMapping("basket")
+	public String basket() {
+		System.out.println("StoreController - basket()");
+		return "cinepick/event_store/shopping_basket";
+	}
 }

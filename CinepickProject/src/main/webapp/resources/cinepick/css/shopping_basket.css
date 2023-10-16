@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+    	.col {
+    		padding-left: 5px;
+    		padding-right: 5px;
+    	}
+    	.col-2 {
+    		padding-left: 5px;
+    		padding-right: 5px;
+    	}
+    	.col-4 {
+    		padding-left: 5px;
+    		padding-right: 5px;
+    	}
+    	
+    	.shop_head {
+			overflow: hidden;
+			background: rgb(128, 128, 128);
+			padding: 15px 25px 5px 25px;
+			border-radius: 10px;
+			position: relative;
+			margin-bottom: 10px;
+		}
+		
+		.shop_head h6 {
+			color: #ffffff;
+			font-weight: 700;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		
+		.shop_body {
+			overflow: auto;
+			background: rgb(128, 128, 128);
+			padding: 25px 25px 25px 25px;
+			border-radius: 10px;
+			position: relative;
+			margin-bottom: 10px;
+			height: 500px;
+			
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.shop_body h6 {
+			color: #ffffff;
+			font-weight: 500;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		
+		.pay_shop {
+			margin-bottom: 10px;
+		}
+		
+		.pay_shop input[type=text]{
+			height: 25px;
+		    width: 100px;
+		    border: 1px solid #C0C0C0;
+			border-radius: 4px;
+		}
+		
+		.pay_shop input[type=radio]{
+		    display: none;
+		}
+		.pay_shop input[type=radio]+label{
+		    display: inline-block;
+		    cursor: pointer;
+		    height: 25px;
+		    width: 100px;
+		    border: 1px solid #C0C0C0;
+		    border-radius: 5px;
+		    text-align: center;
+		    font-size:15px;
+		    margin: 10px 20px 20px 10px;
+		}
+		.pay_shop input[type=radio]+label{
+		    background-color: #fff;
+		    color: #333;
+		}
+		.pay_shop input[type=radio]:checked+label{
+		    background-color: darkred;
+		    color: #fff;
+		}
+		
+		
+		
+		.shop_result {
+			overflow: hidden;
+			background: rgb(128, 128, 128);
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			position: relative;
+			margin-bottom: 10px;
+			height: 200px;
+			display: flex;
+			justify-content: center;
+			
+		}
+		
+		.shop_result h6 {
+			color: #ffffff;
+			font-weight: 500;
+			margin-top: 10px;
+			text-align: left;
+		}
+		
+		.total_pay {
+			border-radius: 10px;
+			border: 1px solid #fff;
+			padding: 15px 5px 5px 5px;
+			margin-bottom: 10px;
+			
+		}
+		
+/*추가*/
+		.total_pay_start {
+			border-radius: 10px;
+			background-color: darkred;
+			padding: 15px 5px 5px 5px;
+			margin-bottom: 10px;
+			
+		}
+		
+		
+		.res_result {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+			text-align: left;
+			padding: 10px 0 0 0;
+			word-break: break-all;
+	
+		}
+		
+		.pre_btn {
+			width: 120px;
+			height: 120px;
+			background-color:	#C0C0C0;
+			border-radius: 10px;
+			margin: auto;
+			color: #ffffff;
+			font-weight: 500;
+			border: 0;
+		}
+		
+		.res_btn {
+			width: 150px;
+			height: 120px;
+			background: darkred;
+			border-radius: 10px;
+			margin: auto;
+			color: #ffffff;
+			font-weight: 500;
+			border: 0.5px red;
+		}
+		
+		.res_img {
+			width: 120px;
+			height: 100%;
+			margin: auto;
+			border-radius: 1px;
+		}
+		
+		
