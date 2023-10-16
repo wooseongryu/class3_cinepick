@@ -656,7 +656,9 @@
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat.js"></script>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_test.js"></script> --%>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat1.js"></script>
 	
 
 </body>
