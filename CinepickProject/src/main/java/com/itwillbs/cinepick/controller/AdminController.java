@@ -6,18 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.MemberService;
 import com.itwillbs.cinepick.vo.MemberVO;
+import com.itwillbs.cinepick.vo.NoticeVO;
 
 @Controller
 public class AdminController {
 	
-	
 	// 서비스 오토와이어
 	@Autowired
-	private MemberService service;
+	private AdminService adminService;
 	
+	@Autowired
+	private MemberService memberService;
 	
 	// 관리자 메인 페이지
 	@GetMapping("admin")
@@ -43,7 +47,7 @@ public class AdminController {
 	// 관리자 영화 정보 관리 페이지
 	@GetMapping("adminMemberList")
 	public String adminMemberList(Model model) {
-		List<MemberVO> memberList = service.getMemberList();
+		List<MemberVO> memberList = memberService.getMemberList();
 		System.out.println("AdminController - adminMemberList()");
 		// Model 객체에 List 객체 저장
 		model.addAttribute("memberList", memberList);
@@ -83,6 +87,15 @@ public class AdminController {
 	public String adminNoticeUpdate() {
 		System.out.println("AdminController - adminNoticeUpdate()");
 		return "mypage/admin/update_notion";
+	}
+	
+	// 관리자 공지사항 등록
+	@PostMapping("adminNoticeUpdatePro")
+	public String adminNoticeUpdatePro(NoticeVO notice) {
+		System.out.println("AdminController - adminNoticeUpdatePro()");
+		int insertCount = adminService.updateNotice(notice);
+		
+		return "reditect:/mypage/admin/board_notion";
 	}
 	
 	// 관리자 자주 묻는 질문 조회 페이지

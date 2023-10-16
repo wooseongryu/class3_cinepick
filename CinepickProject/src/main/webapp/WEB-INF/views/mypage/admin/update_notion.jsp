@@ -81,34 +81,25 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">공지사항 등록</h1>
                             </div>
-                            <form class="user" method="post" enctype="multipart/form-data">
+                            <form class="user" action="adminNoticeUpdatePro" method="post">
                                 <div class="form-group row">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-										<label for="">영화관명</label>
-										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>영화관명</option>
-										  <option value="1">서울점</option>
-										  <option value="2">대전점</option>
-										  <option value="3">대구점</option>
-										  <option value="4">부산점</option>
-										</select>
+										<label for="">제목</label>
+										<input type="text" name="noticeTitle" placeholder="제목입력">
 								  	</div>
                                 </div>
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">Comments</label>
-									  <textarea rows="10" class="form-control form-control-textarea" placeholder="공지내용작성" id="floatingTextarea"></textarea>
+									  <label for="floatingTextarea">공지내용</label>
+									  <textarea rows="10" name="noticeContent" class="form-control form-control-textarea" placeholder="공지내용작성" id="floatingTextarea"></textarea>
 									</div>
                                 </div>
 								<br>
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-		                                <input type="submit" class="btn btn-primary btn-user" onclick="close()" value="등록">
-		                                &nbsp;
-		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
-		                                &nbsp;
+		                                <input type="submit" class="btn btn-primary btn-user" onclick="close()" value="등록">&nbsp;
+		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">&nbsp;
 		                                <input type="button" class="btn btn-primary btn-user" onclick="close()" value="돌아가기">
 									</div>
 								</div>
