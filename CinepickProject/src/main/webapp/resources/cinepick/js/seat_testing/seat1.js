@@ -60,26 +60,41 @@ $(function() {
 			}
 		});
 		
-		$(".common").on("click", function() {
-			
-//			$(".common").find(".on").addClass("choice");
-			
+		// 여기까지 잘 되고..
+		
+		
+		
+//		$(".common").on("click", function() {
+//			
+////			$(".common").find(".on").addClass("choice");
+//			
 //			let hasChoice = $(this).hasClass("choice");
-
-//			if(totalSum == 1) {
+//
+////			if(totalSum == 1) {
+////				if(hasChoice) {
+////					$(this).removeClass("choice");
+////				} else {
+////					$(this).addClass("choice");
+////				}
+////			} else if(totalSum > 1) {
+////				debugger;
+////			}
+//			
 //				if(hasChoice) {
 //					$(this).removeClass("choice");
 //				} else {
 //					$(this).addClass("choice");
 //				}
-//			} else if(totalSum > 1) {
-//				debugger;
-//			}
-			
-			
-
-			
-		});
+//			
+//				if(totalSum > 1) {
+//					let next = $(this).next();
+//					
+//					if(hasChoice).
+//				}
+//				
+//
+//			
+//		});
 		
 			
 			

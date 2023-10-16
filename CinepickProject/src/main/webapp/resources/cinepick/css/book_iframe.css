@@ -1162,6 +1162,11 @@ p {
     clear: both;
 }
 
+.seat-select-section .seat-result .wrap .btn-group .button.active {
+    color: #fff!important;
+    background-color: #329eb1;
+}
+
 /*관람인원 선택 tit과 -+창 겹치는 것은 clear로 해결*/
 /*+버튼 내려가는 것은 number에 float:left 주는 것으로 해결*/
 
