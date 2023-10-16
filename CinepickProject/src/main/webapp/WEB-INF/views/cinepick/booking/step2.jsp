@@ -575,7 +575,7 @@
                             <p class="special">컴포트7관_리클라이너</p>
                             <p class="date"><span>2023.10.11</span><em>(수)</em></p>
                             <div class="other-time">
-                                <button type="button" class="now">12:35~14:23<i class="arr"></i></button>
+                                <button type="button" class="nows">12:35~14:23<i class="arr"></i></button>
                                 <ul class="other"><li><button type="button" choicnt="71" playschdlno="2310112202028" class="btn ">10:30~12:18</button></li><li><button type="button" choicnt="76" playschdlno="2310112202029" class="btn on ">12:35~14:23</button></li><li><button type="button" choicnt="76" playschdlno="2310112202030" class="btn ">14:50~16:38</button></li><li><button type="button" choicnt="76" playschdlno="2310112202046" class="btn ">16:05~17:53</button></li><li><button type="button" choicnt="76" playschdlno="2310112202031" class="btn ">17:05~18:53</button></li><li><button type="button" choicnt="76" playschdlno="2310112202032" class="btn ">19:10~20:58</button></li><li><button type="button" choicnt="76" playschdlno="2310112202048" class="btn ">20:25~22:13</button></li><li><button type="button" choicnt="76" playschdlno="2310112202033" class="btn ">21:15~23:03</button></li></ul>
                             </div>
                             <p class="poster">

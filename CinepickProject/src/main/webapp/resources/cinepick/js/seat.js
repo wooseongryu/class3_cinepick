@@ -20,6 +20,49 @@ $(function() {
     });
     
     
+    let sum = 0;
+//	$.each($('.number'), function(index, el){
+//		sum += Number($(el).children()[0].textContent);
+//	});
+
+	sum += Number($(".number .now").textContent);
+	
+	console.log(sum);
+    
+//	$.each($('.number'), function(index, el){
+//		sum += Number($(el).children()[0].textContent);
+//	});
+	
+	sum = 2;
+    
+    // 좌석 hover 이벤트
+    $(".common").hover(function(){
+//		let sum = 0;
+		
+//		
+//		sum = 2;
+		
+//		debugger;
+//		$(this).next()[0];
+//		$(this).nextAll();
+		
+
+		$(this).addClass("on");
+//		console.log($(this).next()[0]);
+		
+		if(sum >= 2) {
+			let next = $(this).next();
+			next.addClass("on");
+		}
+
+//		this.nextElementSibling.onmouseover();
+	});
+	
+	$(".common").on("mouseout", function() {
+		$(this).removeClass("on");
+		let next = $(this).next();
+		next.removeClass("on");
+	});
     
 	// 클릭했을 때 보라색 좌석 선택
 	$(".common").on("click", function() {

@@ -511,12 +511,13 @@ img {
 
 
 /*좌석창 호버 - 엄성윤*/
-.seat-condition.common:hover,
-.seat-condition.common:active,
-.seat-condition.common:visited {
-    background-color: #503396!important;
-    background-position: right 0;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-choice.png)!important;
+.seat-condition.common:hover
+/* .seat-condition.common:active, */
+/* .seat-condition.common:visited  */
+{
+/*     background-color: #503396!important; */
+/*     background-position: right 0; */
+/*     background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-choice.png)!important; */
 }
 
 button.seat-condition {
@@ -964,6 +965,11 @@ p {
     margin-right: 4px;
 }
 .seat-condition.choice {
+    background-color: #503396!important;
+    background-position: right 0;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-choice.png)!important;
+}
+.seat-condition.on {
     background-color: #503396!important;
     background-position: right 0;
     background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-choice.png)!important;
