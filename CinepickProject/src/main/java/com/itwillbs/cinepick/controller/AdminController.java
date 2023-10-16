@@ -1,10 +1,24 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.itwillbs.cinepick.service.MemberService;
+import com.itwillbs.cinepick.vo.MemberVO;
 
 @Controller
 public class AdminController {
+	
+	
+	// 서비스 오토와이어
+	@Autowired
+	private MemberService service;
+	
+	
 	// 관리자 메인 페이지
 	@GetMapping("admin")
 	public String admin() {
@@ -26,18 +40,14 @@ public class AdminController {
 		return "mypage/admin/board_admin_out";
 	}
 	
-	// 관리자 회원 목록 조회 페이지
-	@GetMapping("adminMemberList")
-	public String adminMemberList() {
-		System.out.println("AdminController - adminMemberList()");
-		return "mypage/admin/board_member";
-	}
-	
 	// 관리자 영화 정보 관리 페이지
-	@GetMapping("adminMovieList")
-	public String adminMovieList() {
-		System.out.println("AdminController - adminMovieList()");
-		return "mypage/admin/board_movie";
+	@GetMapping("adminMemberList")
+	public String adminMemberList(Model model) {
+		List<MemberVO> memberList = service.getMemberList();
+		System.out.println("AdminController - adminMemberList()");
+		// Model 객체에 List 객체 저장
+		model.addAttribute("memberList", memberList);
+		return "mypage/admin/board_member";
 	}
 	
 	// 관리자 영화 정보 등록 폼
