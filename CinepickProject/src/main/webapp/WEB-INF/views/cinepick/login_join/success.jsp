@@ -8,10 +8,7 @@
 <script type="text/javascript">
 	// 요청 작업 성공 시 전달받은 메세지(msg 속성값) 출력 후 메인페이지로 가기
 	alert("${msg}");
-	location.href("main");
+	location.href = "./";
 </script>
 </head>
-<body>
-
-</body>
 </html>

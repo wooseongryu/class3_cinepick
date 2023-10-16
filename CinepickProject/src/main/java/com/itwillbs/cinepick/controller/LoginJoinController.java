@@ -53,7 +53,13 @@ public class LoginJoinController {
 		
 		int insertCount = service.joinMember(member);
 		
-		return "redirect:/adminMemberList";
+		if(insertCount == 0) {
+			model.addAttribute("msg", "멤버정보 등록 실패!");
+			return "cinepick/login_join/fail_back";
+		}
+		model.addAttribute("msg", "멤버정보 등록 성공!");
+		
+		return "cinepick/login_join/success";
 	}
 	
 	
