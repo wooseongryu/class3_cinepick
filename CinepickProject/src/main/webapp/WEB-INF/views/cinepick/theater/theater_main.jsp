@@ -6,21 +6,78 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/theater_css/menu.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/theater_css/fav.css"/>
+    
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
     <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
-    <style>
-    	..movie-list {
-			padding: 0em;
-			background-color: tomato;
-			
-		}
-    </style>
 </head>
 <body>
 	
     <header>
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
+
+<!-- 모달은 position: fixed를 사용합니다. 가능한 다른 요소와의 간섭을 피하기 위해, 모달 HTML을 최상단의 위치에 넣어 주세요. by Bootstrap -->
+	<div class="modal here modal-layer" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+	    
+				<div class="modal-header">
+					<h5 class="modal-title">선호 극장 관리</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+	      
+				<div class="modal-body">
+				<!-- 안에 choose, theater-choice-list -->
+	        
+					<div class="choose">
+						<div class="area">
+							<select class="form-select" aria-label="Default select example">
+								<option selected>서울</option>
+								<option value="1">경기</option>
+								<option value="2">부산</option>
+								<option value="3">광주/전라</option>
+							</select>
+						</div>
+						<div class="theater-list-modal">
+							<select class="form-select ml05 mr05" aria-label="Default select example">
+								<option selected>극장 선택</option>
+								<option value="1">서면</option>
+								<option value="2">센텀</option>
+								<option value="3">장산</option>
+							</select>
+						</div>
+						<button type="button" class="btn btn-light ml05">추가</button>
+					</div>
+					<!-- choose 끝 -->
+			
+					<div class="theater-choice-list mt1">
+						<div class="bg">
+							<div class="circle" data-brch-no="5401">
+								<p class="txt">순천</p>
+				 		 		<button type="button" class="btn-close" aria-label="Close"></button>
+							</div>
+						</div>
+						<div class="bg"></div>
+						<div class="bg"></div>
+					</div>
+					<!-- theater-choice-list 끝 -->
+					
+				</div>
+				<!-- modal-body 끝 -->
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-warning">등록</button>
+				</div>
+			
+			</div>
+			<!-- modal-content 끝 -->
+		</div>
+	<!-- modal-dialog 끝 -->
+	</div> 
+	<!-- modal 끝 -->
+
 
 	<div class="titt">
 	<h2 class="tit mt40" style="margin: 0 auto">전체극장</h2>
@@ -238,7 +295,7 @@
     				<a href="#">순천</a>
     			</li>
     		</ul>
-    		<a href="https://www.naver.com/" class="button small float-r" title="선호영화관 관리" style="font-size:1em"> 
+    		<a class="button small float-r fav-modal" title="선호영화관 관리" style="font-size:1em"> 
     		<i class="fa-solid fa-gear"></i> 
     		<i class="iconset ico-edit"></i>
     		선호영화관 관리</a>
@@ -592,6 +649,8 @@
 		</ul>
 	</div>
 	
+	
+	
 	<footer>
 		<jsp:include page="../include/main_footer.jsp"></jsp:include>
 	</footer>
@@ -615,8 +674,16 @@
 	            let target = $(this).data("target");
 	            $("." + target).show();
 	            
-	            
-	        })
+	        });
+	        
+            // 선호 영화관 관리창 > 모달
+	        $(".fav-modal").click(function () {
+	        	$(".modal").show();
+	        });
+            
+	        $(".btn-close").click(function () {
+	        	$(".modal").hide();
+	        });
 	    });
 
     </script>
