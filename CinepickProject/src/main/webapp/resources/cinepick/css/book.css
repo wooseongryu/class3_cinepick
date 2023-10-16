@@ -1,0 +1,92 @@
+button .kind, .condition, .rank {
+	display: none;
+}
+
+button.seat-condition.standard:after {
+    border: 1px solid #02bfd3;
+}
+button.seat-condition:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+}
+button {
+    cursor: pointer;
+    letter-spacing: -.5px;
+    font-weight: 400;
+    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+}
+button, select {
+    text-transform: none;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1.15;
+}
+button {
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    cursor: default;
+    writing-mode: horizontal-tb !important;
+}
+
+div {
+    display: block;
+}
+
+.btn-seat-row {
+    overflow: hidden;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: .7333em;
+    color: #000;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.seat-condition.common {
+    background-color: #747474;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-common.png);
+}
+button.seat-condition {
+    display: block;
+    position: relative;
+}
+.seat-condition {
+    overflow: hidden;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: middle;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-color: #fff;
+}
+
+.seat-condition.disabled {
+    background-color: #328619;
+    background-position: center 0;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-disabled.png);
+}

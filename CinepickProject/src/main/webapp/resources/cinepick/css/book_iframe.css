@@ -1,0 +1,1165 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    	
+body {
+    font-family: 'IBM Plex Sans KR';
+}
+
+* {
+    box-sizing: border-box;
+}
+head {
+    display: none;
+}
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    overflow: auto;
+    overflow-y: scroll;
+    letter-spacing: 0;
+    line-height: 1.5;
+    font-size: 15px;
+    color: #444;
+    font-weight: 400;
+/*    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;*/
+}
+
+h2.tit {
+    padding: 0 0 26px 0;
+    font-size: 1.8666em;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: #222;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.cti-area {
+    margin: 0 0 20px 0;
+    padding: 15px 20px;
+    background-color: #f2f4f5;
+}
+
+.seat-select-section {
+    position: relative;
+}
+
+.seat-select-section:after, .seat-select-section:before {
+    content: '';
+    display: table;
+}
+.seat-select-section:after {
+    clear: both;
+}
+.seat-select-section:after, .seat-select-section:before {
+    content: '';
+    display: table;
+}
+
+.seat-select-section .seat-section {
+    float: left;
+    width: 770px;
+    height: 556px;
+    border-top: 1px solid #000;
+    background-color: #fff;
+}
+
+.seat-select-section .seat-section .tit-util {
+    padding: 8px 0 7px 0;
+}
+
+.button.gray-line.small {
+    line-height: 32px;
+}
+.button.gray-line:hover {
+    color: #444;
+    background-color: #f2f4f8;
+    border-color: #666;
+}
+.button.gray-line {
+    color: #444;
+    line-height: 36px;
+    border: 1px solid #c1c1c1;
+    background-color: #fff;
+}
+.button.small {
+    height: 32px;
+    padding: 0 12px;
+    line-height: 30px;
+    font-size: .9333em;
+}
+.button:hover {
+    color: #351f67;
+    text-decoration: none;
+    background-color: #f2f4f8;
+}
+
+
+
+
+
+
+
+.quick-reserve .tit-util {
+    padding-bottom: 25px;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count {
+    padding: 10px 0 10px 20px;
+    background-color: #f2f4f5;
+    border: 1px solid #d8d9db;
+    border-bottom: 0;
+}
+
+.seat-select-section .seat-section .tit-util .tit {
+    padding: 0;
+    line-height: 32px;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count .cell .txt {
+    float: left;
+    padding: 0 10px 0 0;
+    line-height: 32px;
+}
+.seat-select-section p {
+    margin: 0;
+    padding: 0;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count .cell .count .down {
+    float: left;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 1.2em;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .num-choice {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 31px;
+    z-index: 20;
+    width: 42px;
+    border: 1px solid #ccc;
+    border-top: 0;
+    background-color: #fff;
+}
+
+ol, ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count .cell .count .up {
+    float: left;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+    font-size: 1.2em;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count .cell .count button {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: #fff;
+    font-family: Roboto,Dotum,'돋움',sans-serif;
+    font-weight: 300;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count .cell .count .up {
+    float: left;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+    font-size: 1.2em;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .num-choice .btn {
+    width: 100%;
+    height: 32px;
+    border-top: 1px solid #ccc;
+}
+
+ul {
+    display: block;
+    list-style-type: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+/*[type=button], [type=reset], [type=submit], button {*/
+/*    -webkit-appearance: button;*/
+/*}*/
+
+button, input {
+    overflow: visible;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .now {
+/*	내가 추가, 성공 */
+	float:left;
+	
+    width: 42px;
+    height: 32px;
+    border: 1px solid #ccc;
+    border-width: 1px 0;
+}
+.seat-select-section .seat-section .seat-area .seat-count .cell .count button {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: #fff;
+    font-family: Roboto,Dotum,'돋움',sans-serif;
+    font-weight: 300;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count .cell .count .up {
+    float: left;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+    font-size: 1.2em;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count .cell {
+    float: left;
+    width: 25%;
+}
+
+.quick-reserve .tit-util .tit {
+    padding-top: 5px;
+    padding-bottom: 0;
+}
+h3.tit.small {
+    padding: 0 0 10px 0;
+    font-size: 1.2em;
+    color: #222;
+}
+.tit-util .tit {
+    float: left;
+    padding: 0!important;
+    line-height: 1.1;
+}
+h3.tit {
+    margin: 0;
+    padding: 0 0 16px 0;
+    font-size: 1.6em;
+    font-weight: 400;
+    color: #503396;
+    line-height: 1.1;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+/*    font-weight: 400;*/
+}
+
+h3.tit.small {
+    padding: 0 0 10px 0;
+    font-size: 1.2em;
+    color: #222;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.tit-util .right {
+    float: right;
+}
+
+.button.gray-line.small {
+    line-height: 32px;
+}
+.button.gray-line {
+    color: #444;
+    line-height: 36px;
+    border: 1px solid #c1c1c1;
+    background-color: #fff;
+}
+.button.small {
+    height: 32px;
+    padding: 0 12px;
+    line-height: 30px;
+    font-size: .9333em;
+}
+.button {
+    display: inline-block;
+    height: 36px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #503396;
+    font-weight: 400;
+    border-radius: 4px;
+/*    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;*/
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: pointer;
+}
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+}
+button {
+    cursor: pointer;
+    letter-spacing: -.5px;
+    font-weight: 400;
+    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1.15;
+}
+
+.button>i:first-child {
+    margin-left: 0;
+    margin-right: 4px;
+}
+.button>i {
+    margin-top: -2px;
+    margin-left: 4px;
+}
+.ico-reset-small {
+    width: 14px;
+    height: 14px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-reset-small.png);
+}
+.iconset {
+    overflow: hidden;
+    display: inline-block;
+    margin: -1px 0 0 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+element.style {
+    min-height: 52px;
+}
+.seat-select-section .seat-section .seat-area .seat-count {
+    padding: 10px 0 10px 20px;
+    background-color: #f2f4f5;
+    border: 1px solid #d8d9db;
+    border-bottom: 0;
+}
+div {
+    display: block;
+}
+
+.seat-select-section .seat-section .seat-area .seat-layout {
+    position: relative;
+    height: 454px;
+    border: 1px solid #d8d9db;
+    border-top: 0;
+}
+.seat-select-section .seat-section .seat-area .seat-layout .alert {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 10px 19px 10px 19px;
+    background-color: #fff;
+}
+
+/*.seat-select-section .seat-section .seat-area .seat-layout .seat-count-before.off {*/
+/*    display: none;*/
+/*}*/
+.seat-select-section .seat-section .seat-area .seat-layout .seat-count-before {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 53px 0 0 0;
+    color: #fff;
+    font-size: 1.2em;
+    text-align: center;
+    background: rgba(0,0,0,.6) url(https://img.megabox.co.kr/static/pc/images/reserve/bg-seat-count-before.png) no-repeat center 11px;
+}
+
+.seat-select-section .seat-section .seat-area .seat-layout .scroll {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 452px;
+    padding: 30px 0;
+}
+.mCustomScrollbar.mCS_no_scrollbar, .mCustomScrollbar.mCS_touch_action {
+    -ms-touch-action: auto;
+    touch-action: auto;
+}
+.mCustomScrollbar {
+    -ms-touch-action: pinch-zoom;
+    touch-action: pinch-zoom;
+}
+
+.mCustomScrollBox {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%;
+    outline: 0;
+    direction: ltr;
+}
+
+.seat-select-section .seat-section .seat-area .seat-layout .scroll .mCSB_container {
+    height: 100%;
+}
+.m-scroll .mCSB_inside>.mCSB_container {
+    margin-right: 5px;
+}
+.mCSB_inside>.mCSB_container {
+    margin-right: 30px;
+}
+.mCSB_container {
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+
+img {
+    border: 0;
+}
+img {
+    border-style: none;
+}
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.btn-seat-row {
+    overflow: hidden;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: .7333em;
+    color: #000;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.seat-condition.common {
+    background-color: #747474;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-common.png);
+}
+
+
+/*좌석창 호버 - 엄성윤*/
+.seat-condition.common:hover,
+.seat-condition.common:active,
+.seat-condition.common:visited {
+    background-color: #503396!important;
+    background-position: right 0;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-choice.png)!important;
+}
+
+button.seat-condition {
+    display: block;
+    position: relative;
+}
+.seat-condition {
+    overflow: hidden;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: middle;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-color: #fff;
+}
+
+button.seat-condition .num {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: .7333em;
+    line-height: 18px;
+    text-indent: 0;
+}
+
+.seat-condition.disabled {
+    background-color: #328619;
+    background-position: center 0;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-disabled.png);
+}
+
+.m-scroll .mCSB_scrollTools {
+    width: 5px;
+}
+.m-scroll .mCSB_scrollTools {
+    opacity: 1;
+    filter: "alpha(opacity=100)";
+    -ms-filter: "alpha(opacity=100)";
+}
+.mCSB_scrollTools {
+    opacity: .75;
+    filter: "alpha(opacity=75)";
+    -ms-filter: "alpha(opacity=75)";
+}
+.mCSB_scrollTools, .mCSB_scrollTools .mCSB_buttonDown, .mCSB_scrollTools .mCSB_buttonLeft, .mCSB_scrollTools .mCSB_buttonRight, .mCSB_scrollTools .mCSB_buttonUp, .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    -webkit-transition: opacity .2s ease-in-out,background-color .2s ease-in-out;
+    -moz-transition: opacity .2s ease-in-out,background-color .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out,background-color .2s ease-in-out;
+    transition: opacity .2s ease-in-out,background-color .2s ease-in-out;
+}
+.mCSB_scrollTools {
+    position: absolute;
+    width: 16px;
+    height: auto;
+    left: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.mCSB_scrollTools .mCSB_draggerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: auto;
+}
+
+.mCSB_scrollTools .mCSB_dragger {
+    cursor: pointer;
+    width: 100%;
+    height: 30px;
+    z-index: 1;
+}
+
+.m-scroll .mCSB_scrollTools .mCSB_draggerRail {
+    background-color: #ebebeb;
+    background-color: #ebebeb;
+    filter: "alpha(opacity=100)";
+    -ms-filter: "alpha(opacity=100)";
+}
+.m-scroll .mCSB_scrollTools .mCSB_draggerRail {
+    width: 5px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.mCSB_scrollTools .mCSB_draggerRail {
+    background-color: #000;
+    background-color: rgba(0,0,0,.4);
+    filter: "alpha(opacity=40)";
+    -ms-filter: "alpha(opacity=40)";
+}
+.mCSB_scrollTools .mCSB_draggerRail {
+    width: 2px;
+    height: 100%;
+    margin: 0 auto;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+}
+
+.seat-select-section .seat-section .seat-area .zone-legend {
+    display: none;
+    position: relative;
+    height: 40px;
+    margin: 0;
+    padding: 7px 0 0 0;
+    text-align: center;
+    border: 1px solid #d8d9db;
+    border-width: 0 1px 1px 1px;
+    background-color: #f8f8fa;
+}
+
+.seat-select-section .seat-result {
+    overflow: hidden;
+    position: absolute;
+    left: 770px;
+    top: 0;
+    width: 310px;
+    height: 556px;
+    margin-left: 20px;
+    color: #fff;
+    background-color: #333;
+    border-radius: 10px;
+}
+
+.seat-select-section .seat-result .wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 15px 20px 0 0;
+}
+
+.seat-select-section .seat-result .wrap .tit-area {
+    overflow: hidden;
+    position: relative;
+    margin-left: 20px;
+    padding: 0 0 0 28px;
+    border-bottom: 1px solid #434343;
+}
+
+.seat-select-section .seat-result .wrap .info-area {
+    position: relative;
+    min-height: 121px;
+    margin-left: 20px;
+    padding: 0 104px 0 0;
+    font-size: .8667em;
+    border-bottom: 1px solid #434343;
+}
+
+.seat-select-section .seat-result .wrap .choice-seat-area {
+    overflow: hidden;
+    position: relative;
+    min-height: 230px;
+    margin: 10px 0 0 20px;
+    border-radius: 5px;
+    border: 1px solid #434343;
+}
+
+.seat-select-section .seat-result .wrap .pay-area {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
+}
+
+.seat-select-section .seat-result .wrap .btn-group {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.btn-group {
+    padding: 20px 0 30px 0;
+    margin: 0;
+    text-align: center;
+}
+
+body.body-iframe .normalStyle {
+    overflow: hidden;
+    overflow-y: hidden;
+}
+.normalStyle {
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+body.body-iframe .alertStyle {
+    overflow: hidden;
+    overflow-y: hidden;
+    font-size: 0;
+}
+.alertStyle {
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+/*오른쪽 바*/
+.seat-select-section .seat-result .wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 15px 20px 0 0;
+}
+
+.seat-select-section .seat-result .wrap .tit-area .movie-grade {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.movie-grade.small {
+    width: 20px;
+    height: 20px;
+}
+.movie-grade.age-all {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
+    background-size: 23px 23px;
+}
+.movie-grade.age-12 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/12_46x46.png);
+    background-size: 23px 23px;
+}
+.movie-grade.small.age-all {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_40x40.png);
+    background-size: 20px 20px;
+}
+.movie-grade.small.age-12 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/12_40x40.png);
+    background-size: 20px 20px;
+}
+
+.movie-grade.small.age-15 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/15_40x40.png);
+    background-size: 20px 20px;
+}
+.movie-grade.age-15 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/15_46x46.png);
+    background-size: 23px 23px;
+}
+
+.movie-grade.small.age-19 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_40x40.png);
+    background-size: 20px 20px;
+}
+.movie-grade.age-19 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_46x46.png);
+    background-size: 23px 23px;
+}
+
+.movie-grade {
+    overflow: hidden;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    margin: 0;
+    padding: 0;
+    text-indent: -9999px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.seat-select-section .seat-result .wrap .tit-area {
+    overflow: hidden;
+    position: relative;
+    margin-left: 20px;
+    padding: 0 0 0 28px;
+    border-bottom: 1px solid #434343;
+}
+
+.seat-select-section .seat-result .wrap .tit-area .tit {
+    overflow: hidden;
+    width: 100%;
+    padding: 1px 0 0 0;
+    font-size: 1.0667em;
+    font-weight: 400;
+    line-height: 1.1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.seat-select-section p {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.seat-select-section .seat-result .wrap .tit-area .cate {
+    padding: 5px 0 10px 0;
+    font-size: .8667em;
+    color: #aaa;
+    line-height: 1.1;
+}
+.seat-select-section p {
+    margin: 0;
+    padding: 0;
+}
+
+.seat-select-section .seat-result .wrap .info-area {
+    position: relative;
+    min-height: 121px;
+    margin-left: 20px;
+    padding: 0 104px 0 0;
+    font-size: .8667em;
+    border-bottom: 1px solid #434343;
+}
+
+.seat-select-section .seat-result .wrap .info-area .theater {
+    padding-top: 10px;
+}
+.seat-select-section .seat-result .wrap .info-area p {
+    padding: 0;
+    color: #c4c4c4;
+}
+.seat-select-section p {
+    margin: 0;
+    padding: 0;
+}
+
+.seat-select-section .seat-result .wrap .info-area .other-time .now {
+    border: 1px solid #333;
+    border-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+}
+.seat-select-section .seat-result .wrap .info-area .other-time button {
+    display: block;
+    width: 100%;
+    height: 28px;
+    margin: 0;
+    padding: 0 0 0 14px;
+    border: 0;
+    font-size: .9333em;
+    letter-spacing: 1px;
+    text-align: left;
+    background-color: transparent;
+    font-family: Roboto;
+    font-weight: 300;
+}
+
+.seat-select-section .seat-result .wrap .info-area .other-time .now .arr {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: -1px 0 0 15px;
+    padding: 0;
+    color: #fff;
+    vertical-align: middle;
+    background: url(https://img.megabox.co.kr/static/pc/images/reserve/bg-other-time-arr-down.png);
+}
+
+.seat-select-section .seat-result .wrap .info-area .other-time .now {
+    border: 1px solid #333;
+    border-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+}
+.seat-select-section .seat-result .wrap .info-area .other-time button {
+    display: block;
+    width: 100%;
+    height: 28px;
+    margin: 0;
+    padding: 0 0 0 14px;
+    border: 0;
+    font-size: .9333em;
+    letter-spacing: 1px;
+    text-align: left;
+    background-color: transparent;
+    font-family: Roboto;
+    font-weight: 300;
+}
+
+.seat-select-section .seat-result .wrap .info-area .other-time .other .btn {
+    display: block;
+    color: #c4c4c4;
+    background-color: #333;
+}
+.seat-select-section .seat-result .wrap .info-area .other-time button {
+    display: block;
+    width: 100%;
+    height: 28px;
+    margin: 0;
+    padding: 0 0 0 14px;
+    border: 0;
+    font-size: .9333em;
+    letter-spacing: 1px;
+    text-align: left;
+    background-color: transparent;
+    font-family: Roboto;
+    font-weight: 300;
+}
+
+.seat-select-section .seat-result .wrap .info-area .poster {
+    position: absolute;
+    right: 24px;
+    top: 10px;
+    width: 70px;
+    height: 100px;
+    padding: 0;
+    background: url(https://img.megabox.co.kr/static/pc/images/reserve/bg-seat-result-poster.png) no-repeat 0 0;
+}
+
+.seat-select-section .seat-result .wrap .info-area .poster img {
+    display: block;
+    width: 70px;
+    height: 100px;
+}
+
+.seat-select-section .seat-result .wrap .choice-seat-area {
+    overflow: hidden;
+    position: relative;
+    min-height: 230px;
+    margin: 10px 0 0 20px;
+    border-radius: 5px;
+    border: 1px solid #434343;
+}
+
+.seat-select-section .seat-result .wrap .choice-seat-area .legend .list .seat-condition.choice {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-choice-s.png)!important;
+}
+.seat-select-section .seat-result .wrap .choice-seat-area .legend .list .seat-condition {
+    width: 14px;
+    height: 14px;
+}
+.seat-select-section .seat-result .wrap .choice-seat-area .legend .list .seat-condition {
+    margin-right: 4px;
+}
+.seat-condition.choice {
+    background-color: #503396!important;
+    background-position: right 0;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-choice.png)!important;
+}
+.seat-condition {
+    overflow: hidden;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: middle;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-color: #fff;
+}
+
+.seat-select-section .seat-result .wrap .choice-seat-area .legend {
+    float: left;
+    width: calc(100% - 117px);
+    padding: 16px 0 0 20px;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.seat-select-section .seat-result .wrap .choice-seat-area .seat-num .tit {
+    height: 43px;
+    margin: 0;
+    padding: 0;
+    line-height: 42px;
+    font-size: .8667em;
+    color: #c4c4c4;
+    text-align: center;
+}
+
+.seat-select-section .seat-result .wrap .choice-seat-area .seat-num .my-seat {
+    overflow: hidden;
+    padding: 0 14px;
+}
+
+.seat-select-section .seat-result .wrap .choice-seat-area .seat-num .my-seat .seat.possible {
+    background-color: #53565b;
+}
+.seat-select-section .seat-result .wrap .choice-seat-area .seat-num .my-seat .seat {
+    display: block;
+    float: left;
+    width: 40px;
+    height: 35px;
+    margin: 7px 0 0 0;
+    padding: 0;
+    line-height: 32px;
+    font-size: .9333em;
+    border: 1px solid #5c5c5c;
+    text-align: center;
+    font-family: Roboto,Dotum,'돋움',sans-serif;
+    font-weight: 300;
+}
+
+.seat-select-section .seat-result .wrap .pay-area .pay {
+    overflow: hidden;
+    line-height: 1.1;
+}
+
+.seat-select-section .seat-result .wrap .pay-area .pay .tit {
+    float: left;
+    line-height: 35px;
+    font-size: .9333em;
+}
+
+.seat-select-section .seat-result .wrap .pay-area .pay .money em {
+    display: block;
+    float: left;
+    line-height: 35px;
+    font-size: 1.6em;
+    color: #59bec9;
+    font-family: Roboto,Dotum,'돋움',sans-serif;
+    font-weight: 400;
+}
+em {
+    font-style: normal;
+}
+
+.seat-select-section .seat-result .wrap .pay-area .pay .money span {
+    display: block;
+    float: left;
+    padding: 0 0 0 5px;
+    line-height: 35px;
+}
+
+.seat-select-section .seat-result .wrap .btn-group .button {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    line-height: 40px;
+    color: #fff!important;
+    border: 0;
+    border-radius: 0;
+    background-color: #53565b;
+}
+
+.seat-select-section .seat-result .wrap .btn-group .button.disabled {
+    color: #aaa!important;
+    background-color: #434547;
+    cursor: default;
+}
+.seat-select-section .seat-result .wrap .btn-group .button+.button {
+    border-left: 1px solid #6a6a6c;
+}
+
+a.button.disabled:focus, a.button.disabled:hover {
+    color: #777!important;
+}
+a.button.disabled {
+    color: #777!important;
+    cursor: default!important;
+    background-color: #e0e0e0!important;
+    border-color: #e0e0e0!important;
+}
+
+.seat-select-section .seat-result .wrap .choice-seat-area .legend .list .seat-condition.finish {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-finish-s.png)!important;
+}
+.seat-select-section .seat-result .wrap .choice-seat-area .legend .list .seat-condition {
+    width: 14px;
+    height: 14px;
+}
+.seat-select-section .seat-result .wrap .choice-seat-area .legend .list .seat-condition {
+    margin-right: 4px;
+}
+.seat-condition.finish {
+    background-color: #ccc!important;
+    background-position: center 0;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-finish.png)!important;
+}
+
+.seat-select-section .seat-result .wrap .choice-seat-area .legend .list .seat-condition.impossible {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-impossible-s.png)!important;
+}
+.seat-condition.impossible {
+    background-color: #ccc!important;
+    background-position: center 0;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-impossible.png)!important;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.tit-util:after, .tit-util:before {
+    content: '';
+    display: block;
+}
+
+.inner-wrap {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.inner-wrap:after {
+    clear: both;
+}
+
+.seat-select-section:after {
+    clear: both;
+}
+
+.tit-util:after {
+    clear: both;
+}
+
+.seat-select-section .seat-section .seat-area .seat-count:after {
+    clear: both;
+}
+
+/*관람인원 선택 tit과 -+창 겹치는 것은 clear로 해결*/
+/*+버튼 내려가는 것은 number에 float:left 주는 것으로 해결*/
+
+
+.other {
+	display: none;
+}
