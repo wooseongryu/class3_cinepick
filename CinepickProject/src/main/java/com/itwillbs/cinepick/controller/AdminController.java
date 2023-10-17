@@ -12,6 +12,8 @@ import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.MemberService;
 import com.itwillbs.cinepick.vo.MemberVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
+import com.itwillbs.cinepick.vo.QnaCateVO;
+import com.itwillbs.cinepick.vo.QnaVO;
 
 @Controller
 public class AdminController {
@@ -105,15 +107,35 @@ public class AdminController {
 	@GetMapping("adminQNAList")
 	public String adminQNAList() {
 		System.out.println("AdminController - adminQNAList()");
+//		List<QnaVO> qnaList = adminService.getQnaList();
+		
 		return "mypage/admin/board_question";
+	}
+	
+	// 관리자 자주 묻는 질문 등록 폼
+	@GetMapping("adminQNAUpdate")
+	public String adminQNAUpdate(Model model) {
+		System.out.println("AdminController - adminQNAUpdate()");
+		List<QnaCateVO> categoryList = adminService.getCategory();
+		
+		model.addAttribute("categoryList", categoryList);
+		return "mypage/admin/update_question";
+	}
+	
+	// 관리자 자주묻는 질문 등록
+	@PostMapping("adminQNAUpdatePro")
+	public String adminQNAUpdatePro(QnaVO qna) {
+		System.out.println("AdminController - adminQNAUpdatePro()");
+		int resultCount = adminService.insertQna(qna);
+		
+		return "redirect:/adminQNAList";
 	}
 	
 	// 관리자 질문카테고리 관리 페이지 및 폼
 	@GetMapping("adminCategoryUpdate")
 	public String adminCategoryUpdate(Model model) {
 		System.out.println("AdminController - adminCategoryUpdate()");
-		List<String> categoryList = adminService.getCategory();
-		System.out.println(categoryList);
+		List<QnaCateVO> categoryList = adminService.getCategory();
 		
 		model.addAttribute("categoryList", categoryList);
 		
@@ -127,13 +149,6 @@ public class AdminController {
 		int insertCount = adminService.insertCategory(qnaCateSubject);
 		
 		return "redirect:/adminQNAList";
-	}
-	
-	// 관리자 자주 묻는 질문 등록 폼
-	@GetMapping("adminQNAUpdate")
-	public String adminQNAUpdate() {
-		System.out.println("AdminController - adminQNAUpdate()");
-		return "mypage/admin/update_question";
 	}
 	
 	// 관리자 1:1문의 조회 페이지

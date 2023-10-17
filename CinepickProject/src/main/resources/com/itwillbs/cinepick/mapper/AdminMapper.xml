@@ -26,7 +26,31 @@
 		)
 	</insert>
 
-	<select id="selectCategory" resultType="String">
-          SELECT qnaCateSubject FROM qnaCate;
+	<select id="selectCategory" resultType="com.itwillbs.cinepick.vo.QnaCateVO">
+          SELECT 
+          	qnaCateIdx 
+          	, qnaCateSubject
+          FROM 
+          	qnaCate;
     </select>
+    
+	<insert id="insertQna">
+		INSERT INTO qna
+		VALUES (
+			null
+			, #{qnaTitle}
+			, #{qnaContent}
+			, #{qnaCategory}
+		)
+	</insert>
+
+<!-- 	<select id="selectQna" resultType="com.itwillbs.cinepick.vo.QnaVO"> -->
+<!--           SELECT  -->
+<!--           	null -->
+<!--           	, qnaTitle -->
+<!-- 			, qnaContent -->
+<!-- 			, qnaCategory -->
+<!--           FROM  -->
+<!--           	qnaCate; -->
+<!--     </select> -->
 </mapper>

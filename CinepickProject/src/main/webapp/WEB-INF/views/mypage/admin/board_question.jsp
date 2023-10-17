@@ -11,16 +11,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-<script>
-	// 팝업창 띄우기
-	var popupWidth = 1000;
-	var popupHeight = 800;
-	var popupX = (window.screen.width / 2) - (popupWidth / 2);
-	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-	function updateQuestion() {
-		window.open('adminQNAUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-	}
-</script>
+	<script>
+		// 팝업창 띄우기
+	// 	var popupWidth = 1000;
+	// 	var popupHeight = 800;
+	// 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
+	// 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+	// 	function updateQuestion() {
+	// 		window.open('adminQNAUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+	// 	}
+	</script>
 
 </head>
 
@@ -131,14 +131,13 @@
                                             <th>글번호</th>
                                             <th>카테고리</th>
                                             <th>제목</th>
-                                            <th>날짜</th>
                                             <th>수정 및 삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
 											<td colspan="5">
-												<button type="button" class="btn btn-primary" onclick="updateQuestion()">등록</button>&nbsp;&nbsp;
+												<button type="button" class="btn btn-primary" onclick="location.href='adminQNAUpdate'">등록</button>&nbsp;&nbsp;
 												<button type="button" class="btn btn-primary" onclick="location.href='adminCategoryUpdate'">카테고리 관리</button>
 											</td>
                                         </tr>
@@ -148,7 +147,6 @@
                                             <td>1</td>
                                             <td>로그인</td>
                                             <td>로그인이 되지 않아요.</td>
-                                            <td>2023-10-07</td>
 											<td>
 												<button type="button" class="btn btn-primary" onclick="updateQuestion()">수정</button>
 												<button type="button" class="btn btn-primary">삭제</button>

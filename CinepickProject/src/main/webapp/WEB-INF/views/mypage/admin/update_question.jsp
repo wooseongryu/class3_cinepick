@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,43 +82,40 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">자주묻는 질문 등록</h1>
                             </div>
-                            <form class="user" method="post" enctype="multipart/form-data">
+                            <form class="user" action="adminQNAUpdatePro" method="post">
                                 <div class="form-group row">
 									<div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">카테고리</label>
 										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>카테고리</option>
-										  <option value="1">영화관이용</option>
-										  <option value="2">회원</option>
-										  <option value="3">멤버십</option>
-										  <option value="4">관람권</option>
-										  <option value="4">스토어</option>
+	                                    <select class="form-select" name="qnaCategory" aria-label="Default select example" >
+									  		<c:forEach var="category" items="${categoryList }">
+												<option value="${category.qnaCateIdx }">${category.qnaCateSubject }</option>
+											</c:forEach>
 										</select>
 								  	</div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">제목</label>
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        <input type="text" name="qnaTitle" class="form-control form-control-user" id="exampleFirstName"
                                             placeholder="제목입력">
                                     </div>
                                 </div>
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">Comments</label>
-									  <textarea rows="10" class="form-control form-control-textarea" placeholder="질문내용작성" id="floatingTextarea"></textarea>
+									  <label for="floatingTextarea">내용</label>
+									  <textarea rows="10" name="qnaContent" class="form-control form-control-textarea" placeholder="내용작성" id="floatingTextarea"></textarea>
 									</div>
                                 </div>
 								<br>
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-		                                <input type="submit" class="btn btn-primary btn-user" onclick="close()" value="등록">
+		                                <input type="submit" class="btn btn-primary btn-user" value="등록">
 		                                &nbsp;
 		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
 		                                &nbsp;
-		                                <input type="button" class="btn btn-primary btn-user" onclick="close()" value="돌아가기">
+		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
 									</div>
 								</div>
                             </form>

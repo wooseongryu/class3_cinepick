@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.itwillbs.cinepick.vo.NoticeVO;
+import com.itwillbs.cinepick.vo.QnaCateVO;
+import com.itwillbs.cinepick.vo.QnaVO;
 
 @Mapper
 public interface AdminMapper {
@@ -16,6 +18,10 @@ public interface AdminMapper {
 
 	int insertCategory(String qnaCateSubject);
 
-	List<String> selectCategory();
+	List<QnaCateVO> selectCategory();
+
+	int insertQna(QnaVO qna);
+
+//	List<QnaVO> selectQna();
 
 }

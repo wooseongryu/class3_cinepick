@@ -99,7 +99,7 @@
 		                                    <tbody>
 		                                    	<c:forEach var="category" items="${categoryList }">
 			                                        <tr>
-			                                            <td>${category }</td>
+			                                            <td>${category.qnaCateSubject }</td>
 														<td>
 															<button type="button" class="btn btn-primary">삭제</button>
 														</td>

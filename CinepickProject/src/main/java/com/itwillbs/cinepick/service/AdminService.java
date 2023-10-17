@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.AdminMapper;
 import com.itwillbs.cinepick.vo.NoticeVO;
+import com.itwillbs.cinepick.vo.QnaCateVO;
+import com.itwillbs.cinepick.vo.QnaVO;
 
 @Service
 public class AdminService {
@@ -29,9 +31,19 @@ public class AdminService {
 		return mapper.insertCategory(qnaCateSubject);
 	}
 
-	public List<String> getCategory() {
+	public List<QnaCateVO> getCategory() {
 		System.out.println("AdminService - getCategory()");
 		return mapper.selectCategory();
 	}
+
+	public int insertQna(QnaVO qna) {
+		System.out.println("AdminService - insertQna()");
+		return mapper.insertQna(qna);
+	}
+
+//	public List<QnaVO> getQnaList() {
+//		System.out.println("AdminService - getQnaList()");
+//		return mapper.selectQna();
+//	}
 
 }
