@@ -137,7 +137,10 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="5"><button type="button" class="btn btn-primary" onclick="updateQuestion()">등록</button>&nbsp;&nbsp;<button type="button" class="btn btn-primary">삭제</button></td>
+											<td colspan="5">
+												<button type="button" class="btn btn-primary" onclick="updateQuestion()">등록</button>&nbsp;&nbsp;
+												<button type="button" class="btn btn-primary" onclick="location.href='adminCategoryUpdate'">카테고리 관리</button>
+											</td>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -146,7 +149,10 @@
                                             <td>로그인</td>
                                             <td>로그인이 되지 않아요.</td>
                                             <td>2023-10-07</td>
-											<td><button type="button" class="btn btn-primary" onclick="updateQuestion()">수정</button>
+											<td>
+												<button type="button" class="btn btn-primary" onclick="updateQuestion()">수정</button>
+												<button type="button" class="btn btn-primary">삭제</button>
+											</td>
                                         </tr>
                                     </tbody>
                                 </table>
