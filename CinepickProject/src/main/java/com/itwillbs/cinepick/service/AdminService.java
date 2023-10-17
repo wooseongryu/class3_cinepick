@@ -24,4 +24,14 @@ public class AdminService {
 		return mapper.selectNotice();
 	}
 
+	public int insertCategory(String qnaCateSubject) {
+		System.out.println("AdminService - insertCategory()");
+		return mapper.insertCategory(qnaCateSubject);
+	}
+
+	public List<String> getCategory() {
+		System.out.println("AdminService - getCategory()");
+		return mapper.selectCategory();
+	}
+
 }

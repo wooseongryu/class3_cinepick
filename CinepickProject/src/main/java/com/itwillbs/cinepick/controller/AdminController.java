@@ -108,6 +108,27 @@ public class AdminController {
 		return "mypage/admin/board_question";
 	}
 	
+	// 관리자 질문카테고리 관리 페이지 및 폼
+	@GetMapping("adminCategoryUpdate")
+	public String adminCategoryUpdate(Model model) {
+		System.out.println("AdminController - adminCategoryUpdate()");
+		List<String> categoryList = adminService.getCategory();
+		System.out.println(categoryList);
+		
+		model.addAttribute("categoryList", categoryList);
+		
+		return "mypage/admin/update_category";
+	}
+	
+	// 관리자 질문카테고리 등록
+	@PostMapping("adminCategoryUpdatePro")
+	public String adminCategoryUpdatePro(String qnaCateSubject) {
+		System.out.println("adminCategoryUpdatePro - adminCategoryUpdatePro()");
+		int insertCount = adminService.insertCategory(qnaCateSubject);
+		
+		return "redirect:/adminQNAList";
+	}
+	
 	// 관리자 자주 묻는 질문 등록 폼
 	@GetMapping("adminQNAUpdate")
 	public String adminQNAUpdate() {

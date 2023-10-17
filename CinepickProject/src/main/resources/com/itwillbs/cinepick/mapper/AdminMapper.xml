@@ -17,4 +17,16 @@
 	<select id="selectNotice" resultType="com.itwillbs.cinepick.vo.NoticeVO">
           SELECT * FROM notice;
     </select>
+    
+	<insert id="insertCategory">
+		INSERT INTO qnaCate
+		VALUES (
+			null
+			, #{qnaCateSubject}
+		)
+	</insert>
+
+	<select id="selectCategory" resultType="String">
+          SELECT qnaCateSubject FROM qnaCate;
+    </select>
 </mapper>

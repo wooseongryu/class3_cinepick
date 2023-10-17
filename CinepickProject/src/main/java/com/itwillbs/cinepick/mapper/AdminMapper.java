@@ -14,4 +14,8 @@ public interface AdminMapper {
 
 	List<NoticeVO> selectNotice();
 
+	int insertCategory(String qnaCateSubject);
+
+	List<String> selectCategory();
+
 }
