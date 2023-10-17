@@ -1,5 +1,9 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +20,32 @@ public class LoginJoinController {
 	@Autowired
 	private MemberService service;
 	
-	// 로그인 
+	// 로그인 폼으로 이동
 	@GetMapping("login")
 	public String login() {
 		System.out.println("LoginJoinController - login");
 		return "cinepick/login_join/login";
 	}
+	
+	// 로그인 처리
+	@PostMapping("loginPro")
+	public String loginPro(MemberVO member, HttpSession session) {
+		System.out.println("LoginJoinController - loginPro");
+		
+		MemberVO memberVO = service.checkMember(member);
+		
+		// db 에서 가져온거
+		System.out.println(memberVO);
+		
+		if(memberVO == null) {
+			return "cinepick/login_join/fail_back";
+		}
+		
+		session.setAttribute("mbEmail", member.getMbEmail());
+		session.setAttribute("mbPasswd1", member.getMbPasswd1());
+		return "redirect:/";
+	}
+	
 	
 	// 회원가입
 	@GetMapping("join")

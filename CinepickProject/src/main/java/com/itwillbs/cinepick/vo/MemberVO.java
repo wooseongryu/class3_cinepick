@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Data
+@ToString
 public class MemberVO {
 	private int mbIdx;
 	private String mbId;

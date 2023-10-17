@@ -52,6 +52,11 @@ public class MemberService {
 		return mapper.selectMemberList();
 	}
 	
+	public MemberVO checkMember(MemberVO member) {
+		return mapper.checkMember(member);
+	}
+	
+	
 }
 
 

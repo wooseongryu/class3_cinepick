@@ -71,7 +71,7 @@
 	<!-- resultType 속성에 StudentVO 타입 명시할 때 패키지명까지 함께 포함 -->
 	<!-- 파라미터 사용 시 email 변수 1개가 전달되었으므로 그대로 접근 가능함 -->
 	<select id="selectMember" resultType="com.itwillbs.cinepick.vo.MemberVO">
-		SELECT * FROM member WHERE email = #{mbEmail}
+		SELECT * FROM mbEmail WHERE email = #{mbEmail}
 	</select>
 	<!-- 조회 결과(회원 1명의 레코드)를 MemberVO 객체 생성 및 자동 저장 후 리턴 -->
 					
@@ -86,6 +86,14 @@
 	-->
 	<select id="selectMemberList" resultType="com.itwillbs.cinepick.vo.MemberVO">
 		SELECT * FROM member
+	</select>
+
+
+	<select id="checkMember" resultType="com.itwillbs.cinepick.vo.MemberVO">
+		SELECT * 
+		  FROM member 
+		 WHERE mbEmail = #{mbEmail} 
+		   AND mbPasswd1 = #{mbPasswd1}
 	</select>
 </mapper>
 

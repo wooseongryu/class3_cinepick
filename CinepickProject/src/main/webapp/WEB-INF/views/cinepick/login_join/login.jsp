@@ -49,13 +49,13 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>로그인</h3>
-                        <form action="#">
+                        <form action="loginPro" method="post">
                             <div class="input__item">
-                                <input type="text" placeholder="Email address">
+                                <input name="mbEmail" type="text" placeholder="Email address">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password">
+                                <input name="mbPasswd1" type="text" placeholder="Password">
                                 <span class="icon_lock"></span>
                             </div>
                             <button type="submit" class="site-btn">&nbsp;&nbsp;&nbsp;로그인&nbsp;&nbsp;&nbsp;</button>

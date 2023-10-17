@@ -33,6 +33,8 @@ public interface MemberMapper {
 	// 멤버 목록 조회
 	List<MemberVO> selectMemberList();
 
+	// 멤버로그인 시 멤버 조회
+	MemberVO checkMember(MemberVO member);
 }
 
 
