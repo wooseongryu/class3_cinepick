@@ -77,8 +77,11 @@ public class AdminController {
 	
 	// 관리자 공지사항 조회 페이지
 	@GetMapping("adminNoticeList")
-	public String adminNoticeList() {
+	public String adminNoticeList(Model model) {
 		System.out.println("AdminController - adminNoticeList()");
+		List<NoticeVO> noticeList = adminService.getNoticeList();
+		model.addAttribute("noticeList", noticeList);
+		
 		return "mypage/admin/board_notion";
 	}
 	
@@ -95,7 +98,7 @@ public class AdminController {
 		System.out.println("AdminController - adminNoticeUpdatePro()");
 		int insertCount = adminService.updateNotice(notice);
 		
-		return "reditect:/mypage/admin/board_notion";
+		return "redirect:/adminNoticeList";
 	}
 	
 	// 관리자 자주 묻는 질문 조회 페이지

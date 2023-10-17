@@ -47,25 +47,6 @@
 		}
 		
 	</style>
-	<script>
-		function readURL(input) {
-			if(input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function(e) {
-				document.getElementById('preview').src = e.target.result;
-	    	};
-			reader.readAsDataURL(input.files[0]);
-			} else {
-			document.getElementById('preview').src = "";
-			}
-		}
-		
-		
-		function close() {
-			window.close();
-		}
-	</script>
-	
 	
 </head>
 
@@ -98,9 +79,9 @@
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-		                                <input type="submit" class="btn btn-primary btn-user" onclick="close()" value="등록">&nbsp;
+		                                <input type="submit" class="btn btn-primary btn-user" value="등록">&nbsp;
 		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">&nbsp;
-		                                <input type="button" class="btn btn-primary btn-user" onclick="close()" value="돌아가기">
+		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
 									</div>
 								</div>
                             </form>

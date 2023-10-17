@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,13 +14,13 @@
 
 <script>
 	// 팝업창 띄우기
-	var popupWidth = 1000;
-	var popupHeight = 800;
-	var popupX = (window.screen.width / 2) - (popupWidth / 2);
-	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-	function updateNotion() {
-		window.open('adminNoticeUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-	}
+// 	var popupWidth = 1000;
+// 	var popupHeight = 800;
+// 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
+// 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+// 	function updateNotion() {
+// 		window.open('adminNoticeUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+// 	}
 </script>
 	
 
@@ -139,17 +140,25 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="5"><button type="button" class="btn btn-primary" onclick="updateNotion()">등록</button>&nbsp;&nbsp;<button type="button" class="btn btn-primary">삭제</button></td>
+											<td colspan="5">
+												<button type="button" class="btn btn-primary" onclick="location.href='adminNoticeUpdate'">등록</button>&nbsp;&nbsp;
+												<button type="button" class="btn btn-primary">삭제</button>
+											</td>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>첫번째 공지사항입니다</td>
-                                            <td>2023-10-07</td>
-                                            <td>이승철</td>
-											<td><button type="button" class="btn btn-primary" onclick="updateNotion()">수정</button>
-                                        </tr>
+                                    	<c:forEach var="notice" items="${noticeList }">
+	                                        <tr>
+	                                            <td>${notice.noticeIdx }</td>
+	                                            <td>${notice.noticeTitle }</td>
+	                                            <td>${notice.noticeContent }</td>
+	                                            <td>${notice.noticeWriteDate }</td>
+												<td>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminNoticeUpdate'">수정</button>
+													<button type="button" class="btn btn-primary">삭제</button>
+												</td>
+	                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

@@ -1,5 +1,7 @@
 package com.itwillbs.cinepick.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class AdminService {
 	// 공지등록
 	public int updateNotice(NoticeVO notice) {
 		return mapper.insertNotice(notice);
+	}
+
+	public List<NoticeVO> getNoticeList() {
+		System.out.println("AdminService - getNoticeList()");
+		return mapper.selectNotice();
 	}
 
 }

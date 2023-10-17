@@ -13,4 +13,8 @@
 			, now()
 		)
 	</insert>
+	
+	<select id="selectNotice" resultType="com.itwillbs.cinepick.vo.NoticeVO">
+          SELECT * FROM notice;
+    </select>
 </mapper>
