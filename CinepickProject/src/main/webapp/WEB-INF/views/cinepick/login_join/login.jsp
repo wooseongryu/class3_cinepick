@@ -39,8 +39,6 @@
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
 
-    
-
 
     <!-- Login Section Begin -->
     <section class="login spad">
@@ -51,16 +49,16 @@
                         <h3>로그인</h3>
                         <form action="loginPro" method="post">
                             <div class="input__item">
-                                <input name="mbEmail" type="text" placeholder="Email address">
-                                <span class="icon_mail"></span>
+                                <input name="user_id" type="text" placeholder="아이디를 입력하세요">
+                                <span class="icon_id"></span>
                             </div>
                             <div class="input__item">
-                                <input name="mbPasswd1" type="text" placeholder="Password">
+                                <input name="user_passwd" type="text" placeholder="비밀번호를 입력하세요">
                                 <span class="icon_lock"></span>
                             </div>
                             <button type="submit" class="site-btn">&nbsp;&nbsp;&nbsp;로그인&nbsp;&nbsp;&nbsp;</button>
                         </form>
-                        <a href="#" class="forget_pass">비밀번호 찾기</a>
+<!--                         <a href="#" class="forget_pass">비밀번호 찾기</a> -->
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -74,14 +72,14 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-6">
                         <div class="login__social__links">
-                            <span>or</span>
-                            <ul>
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With
-                                Facebook</a></li>
-                                <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a>
-                                </li>
-                            </ul>
+<!--                             <span>or</span> -->
+<!--                             <ul> -->
+<!--                                 <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With -->
+<!--                                 Facebook</a></li> -->
+<!--                                 <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li> -->
+<!--                                 <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a> -->
+<!--                                 </li> -->
+<!--                             </ul> -->
                         </div>
                     </div>
                 </div>

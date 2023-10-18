@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.UserMapper;
+import com.itwillbs.cinepick.vo.AuthInfoVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 // 스프링에서 서비스 역할을 수행할 클래스 정의 시 @Service 어노테이션 지정(@Component 가능)
@@ -13,36 +14,79 @@ import com.itwillbs.cinepick.vo.UserVO;
 //    컨트롤러 클래스에서 DI 를 통해 자동으로 주입받을 수 있다!
 @Service
 public class UserService {
-	// MyBatis 를 통해 SQL 구문 처리를 담당할 XXXMapper.xml 파일과 연동되는
-	// XXXMapper 객체를 자동 주입받기 위해 @Autowired 어노테이션으로 멤버변수 선언
-	// 단, @Mapper 어노테이션이 적용된 Mapper 인터페이스 정의 필수! (클래스 아님!)
+	// UserMapper 객체 자동 주입
 	@Autowired
 	private UserMapper mapper;
 	
 
-	// 멤버정보 등록 요청 작업을 위한 joinMember() 메서드 정의
+	// 회원가입 요청 작업을 위한 joinUser() 메서드 정의
 	public int joinUser(UserVO user) {
-		/*
-		 * DB 작업을 수행할 Mapper 객체의 메서드를 호출하여 SQL 구문 실행 요청
-		 * => DAO 클래스 없이 마이바티스 활용을 위한 Mapper 객체의 메서드 호출 후
-		 *    리턴되는 결과값을 전달받아 Controller 클래스로 다시 리턴해주는 역할 수행
-		 * => 단, 별도의 추가적인 작업이 없으므로 return 문 뒤에 메서드 호출 코드를 직접 기술하고
-		 *    만약, 메서드 호출 전후 추가적인 작업이 필요할 경우 호출 코드와 리턴문을 분리
-		 * ---------------------------------------------------------------------------------------
-		 * Mapper 역할을 수행하는 XXXMapper 인터페이스는 인스턴스 생성이 불가능하며
-		 * 스프링(마이바티스)에서 자동 주입으로 객체를 전달받아 사용
-		 * => 업캐스팅을 통해 실제 구현체 객체를 알지 못하더라도 메서드 호출 가능하다!
-		 */
-		
 		// UserMapper - insertUser() 메서드를 호출하여 학생정보 등록 요청
 		// => 파라미터 : UserVO 객체   리턴타입 : int
 		// => 메서드 호출 완료 후 별도의 작업이 없으므로 return 문 뒤에 바로 메서드 호출 코드 기술
 		return mapper.insertUser(user); 
 	}
 
+	// 인증 정보 저장 요청
+	public void registAuthInfo(String id, String authCode) {
+		// 기존 인증정보가 존재하는지 여부 확인
+		// MemberMapper - selectAuthInfo() 메서드 호출하여 기존 인증정보 조회
+		// => 파라미터 : 아이디   리턴타입 : AuthInfoVO(authInfo)
+		AuthInfoVO authInfo = mapper.selectAuthInfo(id);
+		
+		// 기존 인증정보 존재 여부 판별
+		if(authInfo == null) { // 기존 인증정보 존재하지 않을 경우(새 인증정보 추가)
+			System.out.println("기존 인증정보 없음!");
+			
+			// MemberMapper - insertAuthInfo() 메서드 호출하여 새 인증정보 추가
+			mapper.insertAuthInfo(id, authCode);
+		} else { // 기존 인증정보 존재(기존 인증정보 갱신)
+			System.out.println("기존 인증정보 있음!");
+			
+			// MemberMapper - updateAuthInfo() 메서드 호출하여 기존 인증정보 갱신
+			mapper.updateAuthInfo(id, authCode);
+		}
+	}
+	
+	
+	// 이메일 인증 요청
+	public boolean emailAuth(AuthInfoVO authInfo) {
+		boolean isAuthSuccess = false;
+		
+		// MemberMapper - selectAuthInfo() 메서드를 호출하여 아이디가 일치하는 인증정보 조회(재사용)
+		AuthInfoVO currentAuthInfo = mapper.selectAuthInfo(authInfo.getAuth_id());
+		System.out.println("전달받은 인증정보 : " + authInfo);
+		System.out.println("조회된 기존 인증정보 : " + currentAuthInfo);
+		
+		// 조회된 인증정보 존재할 경우
+		if(currentAuthInfo != null) {
+			// 하이퍼링크 통해 전달받은 인증코드와 조회된 인증정보의 인증코드 문자열 비교
+			if(authInfo.getAuth_code().equals(currentAuthInfo.getAuth_code())) { // 인증코드 일치
+				// 1. Mapper - updateMailAuthStatus() 메서드를 호출하여
+				//    member 테이블의 인증상태(mail_auth_status)를 "Y" 로 변경
+				// => 파라미터 : 아이디
+				mapper.updateMailAuthStatus(authInfo.getAuth_id());
+				
+				// 2. Mapper - deleteAuthInfo() 메서드를 호출하여
+				//    auth_info 테이블의 인증정보 삭제
+				// => 파라미터 : 아이디
+				mapper.deleteAuthInfo(authInfo.getAuth_id());
+				
+				// 3. isAuthSuccess 를 true 로 변경
+				isAuthSuccess = true;
+			}
+		}
+		
+		return isAuthSuccess;
+	}
+	// 암호화 된 패스워드 조회 요청
+	public String getPasswd(UserVO user) {
+		return mapper.selectPasswd(user);
+	}
+	
 	// 멤버 상세정보 조회 요청
 	public UserVO getUserInfo(String email) {
-		// MemberMapper - selectMember()
+		// UserMapper - selectUser()
 		return mapper.selectUser(email);
 	}
 
@@ -52,9 +96,11 @@ public class UserService {
 		return mapper.selectUserList();
 	}
 	
-	public UserVO checkUser(UserVO user) {
-		return mapper.checkUser(user);
+	// 회원 상세정보 조회 요청
+	public UserVO getUser(UserVO user) {
+		return mapper.selectUser(user);
 	}
+
 	
 	
 }

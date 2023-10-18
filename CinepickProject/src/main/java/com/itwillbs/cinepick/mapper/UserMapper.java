@@ -3,7 +3,9 @@ package com.itwillbs.cinepick.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
+import com.itwillbs.cinepick.vo.AuthInfoVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 // MyBatis 연동 시 DAO 클래스 대신 활용할 Mapper 인터페이스 정의
@@ -13,14 +15,6 @@ import com.itwillbs.cinepick.vo.UserVO;
 @Mapper
 public interface UserMapper {
 
-	/*
-	 * Service 클래스로부터 호출받아 SQL 구문 실행을 위해 XML 파일과 연결될 추상메서드 정의
-	 * 주의! 추상메서드명과 XML 파일의 태그 내의 id 속성값이 일치해야한다!
-	 * => 이 때, root-context.xml 파일 내의 지정된 다음 코드에 의해
-	 *    현재 인터페이스와 XML 파일 내의 namespace 속성에 지정된 객체가 자동으로 연결됨
-	 *    <property name="mapperLocations" value="classpath:/com/itwillbs/cinepick/mapper/*Mapper.xml"></property>
-	 *    <mybatis-spring:scan base-package="com.itwillbs.cinepick"/>    
-	 */
 	// 멤버정보 등록 - 추상메서드 정의
 	int insertUser(UserVO user); // public abstract 생략되어 있음
 	// => 자동으로 MemberMapper.xml 파일의 <insert id="insertMember"> 태그와 연결되어 
@@ -33,8 +27,36 @@ public interface UserMapper {
 	// 멤버 목록 조회
 	List<UserVO> selectUserList();
 
-	// 멤버로그인 시 멤버 조회
-	UserVO checkUser(UserVO user);
+//	// 멤버로그인 시 멤버 조회
+//	UserVO checkUser(UserVO user);
+	
+	
+	// 기존 인증정보 조회
+	AuthInfoVO selectAuthInfo(String id);
+	
+	// 새 인증정보 등록
+	// 주의! 메서드 파라미터 2개 이상을 XML 에서 접근하기 위해서는
+	// 각 파라미터마다 @Param 어노테이션을 통해 각 파라미터명을 별도로 지정해줘야한다!
+	// => @Param("파라미터명") 데이터타입 변수명
+	void insertAuthInfo(@Param("id") String id, @Param("authCode") String authCode);
+	// 또는 단일 VO 객체를 사용하면 해결
+//	void insertAuthInfo(AuthInfoVO authInfo);
+
+	// 기존 인증정보 갱신
+	void updateAuthInfo(@Param("id") String id, @Param("authCode") String authCode);
+
+	// 회원 인증상태 변경
+	void updateMailAuthStatus(String id);
+
+	// 인증정보 삭제
+	void deleteAuthInfo(String id);
+
+	// 암호화 된 패스워드 조회
+	String selectPasswd(UserVO user);
+
+	// 회원 상세정보 조회
+	UserVO selectUser(UserVO user);
+	
 }
 
 

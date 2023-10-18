@@ -4,20 +4,97 @@ package com.itwillbs.cinepick.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itwillbs.cinepick.service.SendMailService;
 import com.itwillbs.cinepick.service.UserService;
+import com.itwillbs.cinepick.vo.AuthInfoVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 @Controller
 public class LoginJoinController {
 	
-	// 서비스 오토와이어 --- 서비스를 사용해야하면 필수!!
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private SendMailService mailService;
+	
+	// 회원가입
+	@GetMapping("join")
+	public String join() {
+		System.out.println("LoginJoinController - join");
+		return "cinepick/login_join/join";
+	}
+	
+	// "/MemberJoinPro" 요청에 대해 비즈니스 로직 처리를 수행할 joinPro() 메서드 정의
+	@PostMapping("joinPro")
+	public String joinPro(UserVO user, Model model) {
+		
+		// 1. BcryptPasswordEncoder 클래스 인스턴스 생성
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+		// 2. BcryptPasswordEncoder 객체의 encode() 메서드를 호출하여 
+		//    원문(평문) 패스워드에 대한 해싱(= 암호화) 수행 후 결과값 저장
+		String securePasswd = passwordEncoder.encode(user.getUser_passwd());
+		
+		// 3. 암호화 된 패스워드를 MemberVO 객체에 저장
+		user.setUser_passwd(securePasswd);
+		
+		// ---------------------------------------------------------------------
+		// UserService - registMember() 메서드 호출하여 회원가입 작업 요청
+		
+		int insertCount = service.joinUser(user);
+		
+		if(insertCount > 0) { // 성공
+			
+			String authCode = mailService.sendAuthMail(user.getUser_id(), user.getUser_email());
+			
+			model.addAttribute("msg", "회원가입 성공!");
+			service.registAuthInfo(user.getUser_id(), authCode);
+			
+			return "cinepick/login_join/success";
+		} else { // 실패
+			model.addAttribute("msg", "회원가입 실패!");
+			return "cinepick/login_join/fail_back";
+		}
+	}	
+	// "/MemberJoinSuccess" 요청에 대해 "member/member_join_success.jsp" 페이지 포워딩
+	@GetMapping("/UserJoinSuccess")
+	public String JoinSuccess() {
+		return "cinepick/login_join/success";
+	}
+	
+	// ----------------------------------------
+	// "/UserEmailAuth" 서블릿 요청에 대해 인증 작업 요청
+	// => 아이디와 이메일 파라미터를 저장할 AuthInfoVO 타입 파라미터 선언 
+	@GetMapping("/UserEmailAuth")
+	public String emailAuth(AuthInfoVO authInfo, Model model) {
+//		System.out.println("이메일에 포함된 인증정보 : " + authInfo);
+		
+		// UserService - emailAuth() 메서드를 호출하여 인증 요청
+		// => 파라미터 : AuthInfoVO 객체   리턴타입 : boolean(isAuthSuccess)
+		boolean isAuthSuccess = service.emailAuth(authInfo);
+		
+		// 인증 수행 결과 판별
+		// 성공 시 인증 성공 메세지, 로그인폼 URL 을 포함하여 "forward.jsp" 페이지로 포워딩
+		// 실패 시 인증 실패 메세지를 포함하여 "fail_back.jsp" 페이지로 포워딩
+		if(isAuthSuccess) { // 성공
+			model.addAttribute("msg", "인증 성공! 로그인 페이지로 이동합니다!"); // 출력할 메세지
+			model.addAttribute("targetURL", "login"); // 이동시킬 페이지
+			return "cinepick/login_join/forward";
+		} else { // 실패
+			model.addAttribute("msg", "인증 실패!");
+			return "cinepick/login_join/fail_back";
+		}
+	}
+	
+	
 	
 	// 로그인 폼으로 이동
 	@GetMapping("login")
@@ -28,62 +105,36 @@ public class LoginJoinController {
 	
 	// 로그인 처리
 	@PostMapping("loginPro")
-	public String loginPro(UserVO user, HttpSession session) {
-		System.out.println("LoginJoinController - loginPro");
+	public String loginPro(
+			UserVO user, 
+//			@RequestParam(required = false) boolean rememberId,
+			HttpSession session, Model model) {
 		
-		UserVO userVO = service.checkUser(user);
+		// BCryptPasswordEncoder 객체를 활용한 패스워드 비교
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		
-		// db 에서 가져온거
-		System.out.println(userVO);
+		UserVO dbUser = service.getUser(user);
 		
-		if(userVO == null) {
+		if(dbUser == null || !passwordEncoder.matches(user.getUser_passwd(), dbUser.getUser_passwd())) { // 로그인 실패
+			model.addAttribute("msg", "인증 실패!");
 			return "cinepick/login_join/fail_back";
+			
+		} else { // 로그인 성공
+			if(dbUser.getMail_auth_status().equals("N")) { // 이메일 미인증 회원
+				model.addAttribute("msg", "이메일 인증 후 로그인이 가능합니다!");
+				return "cinepick/login_join/fail_back";
+			} else { // 이메일 인증 회원
+				// 세션 객체에 로그인 성공한 아이디를 "sId" 속성명으로 저장
+				session.setAttribute("sId", user.getUser_id());
+				System.out.println("성공적으로 로그인하였습니다 메인페이지로 이동합니다");
+			}
 		}
 		
-		session.setAttribute("mbEmail", user.getUEmail());
-		session.setAttribute("mbPasswd1", user.getUPasswd1());
 		return "redirect:/";
 	}
 	
 	
-	// 회원가입
-	@GetMapping("join")
-	public String join() {
-		System.out.println("LoginJoinController - join");
-		return "cinepick/login_join/join";
-	}
-	
-	// 폼 파라미터 데이터를 관리할 MemberVO 클래스 타입 파라미터 변수를 선언하는 방법
-	@PostMapping("joinPro")
-	public String joinPro(UserVO user, Model model) {
-		
-		// UserService - joinPro() 메서드 호출하여 학생정보 등록 요청
-		// -------------------------------------------------------------------
-		// [ 스프링에서 의존 관계에 있는 객체 생성 방법 ]
-		// 1. 직접 인스턴스를 생성하는 방법
-//				MemberService service = new MemberService();
-		// => 단, 스프링에서는 의존성 객체 자동 주입(DI) 기능으로 객체 직접 생성 불필요
-		// ----------------
-		// 2. 생성자를 통해 의존성 객체 자동으로 주입받는 방법 or
-		// 3. Setter 메서드를 통해 의존성 객체를 주입받는 방법 or
-		// 4. 의존성 주입받을 멤버변수 선언 시 @Autowired 어노테이션을 지정
-		// => 위의 세 가지 방법 중 어느 방법을 사용하더라도 직접 인스턴스 생성 없이도
-		//    DI 에 의해 객체가 자동으로 주입되므로 service 멤버변수를 통해 바로 메서드 호출 가능
-//				service.joinPro();
-		// ----------------------------------------------------------------------------
-		// UserService - joinPro() 메서드 호출하여 멤버정보 등록 요청
-		// => 파라미터 : UserVO 객체   리턴타입 : int(insertCount)
-		
-		int insertCount = service.joinUser(user);
-		
-		if(insertCount == 0) {
-			model.addAttribute("msg", "멤버정보 등록 실패!");
-			return "cinepick/login_join/fail_back";
-		}
-		model.addAttribute("msg", "멤버정보 등록 성공!");
-		
-		return "cinepick/login_join/success";
-	}
+
 	
 	
 }
