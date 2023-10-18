@@ -48,35 +48,35 @@
                         <h3>회원가입</h3>
                         <form action="joinPro" method="post">
                         	<div class="input__item">
-                                <input type="text" name="mbId" placeholder="아이디">
+                                <input type="text" name="uId" placeholder="아이디">
                                 <span class="icon_id"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="mbPasswd1" placeholder="비밀번호">
+                                <input type="text" name="uPasswd1" placeholder="비밀번호">
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="mbPasswd2" placeholder="비밀번호 확인">
+                                <input type="text" name="uPasswd2" placeholder="비밀번호 확인">
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="mbName" placeholder="이름">
+                                <input type="text" name="uName" placeholder="이름">
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="mbEmail" placeholder="이메일 주소">
+                                <input type="text" name="uEmail" placeholder="이메일 주소">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="mbPhone" placeholder="휴대폰 번호">
+                                <input type="text" name="uPhone" placeholder="휴대폰 번호">
                                 <span class="icon_phone"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="mbBirth" placeholder="생년월일">
+                                <input type="text" name="uBirth" placeholder="생년월일">
                                 <span class="icon_calendar"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="mbGender" placeholder="성별">
+                                <input type="text" name="uGender" placeholder="성별">
                                 <span class="icon_profile"></span>
                             </div>
                             <button type="submit" class="site-btn">회원가입</button>

@@ -23,7 +23,7 @@ public class AdminController {
 	private AdminService adminService;
 	
 	@Autowired
-	private UserService UserService;
+	private UserService userService;
 	
 	// 관리자 메인 페이지
 	@GetMapping("admin")
@@ -49,10 +49,11 @@ public class AdminController {
 	// 관리자 회원정보 관리 페이지
 	@GetMapping("adminUserList")
 	public String adminUserList(Model model) {
-		List<UserVO> UserList = UserService.getUserList();
+		List<UserVO> userList = userService.getUserList();
 		System.out.println("AdminController - adminUserList()");
 		// Model 객체에 List 객체 저장
 		model.addAttribute("userList", userList);
+		System.out.println(userList);
 		return "mypage/admin/board_user";
 	}
 	

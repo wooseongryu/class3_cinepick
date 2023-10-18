@@ -132,13 +132,14 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                       <c:forEach var="member" items="${memberList }">
+                                       <c:forEach var="user" items="${userList }">
 											<tr>
-												<td>${member.mbIdx }</td>
-												<td>${member.mbId }</td>
-												<td>${member.mbName }</td>
-												<td>${member.mbBirth}</td>
-												<td>${member.mbGender}</td>
+											
+<%-- 												<td>${user.uIdx }</td> --%>
+<%-- 												<td>${user.uId }</td> --%>
+<%-- 												<td>${user.uName }</td> --%>
+<%-- 												<td>${user.uBirth}</td> --%>
+<%-- 												<td>${user.uGender}</td> --%>
 											</tr>
 										</c:forEach>
                                     </tbody>

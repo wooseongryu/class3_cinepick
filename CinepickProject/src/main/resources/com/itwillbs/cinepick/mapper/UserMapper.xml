@@ -11,7 +11,7 @@
    (존재하지 않는 인터페이스(오타 등)라도 오류가 표시되지 않음)
 => 주의! 각 태그 내의 id 속성에 지정될 이름은 Mapper 인터페이스 내의 메서드명과 일치해야한다!
 -->
-<mapper namespace="com.itwillbs.cinepick.mapper.MemberMapper">
+<mapper namespace="com.itwillbs.cinepick.mapper.UserMapper">
 	<!--
 	[ insert 태그 기본 문법 ]
 	<insert id="xxx">
@@ -35,18 +35,18 @@
 	<!-- 멤버 정보 등록 - INSERT -->
 	<!-- INSERT INTO xxx VALUES (null, ?, ?, ?) -->
 	<!-- 자동으로 int 타입 리턴값 전달됨 -->
-	<insert id="insertMember">
-		INSERT INTO member
+	<insert id="insertUser">
+		INSERT INTO user
 		VALUES (
-			null  -- idx 값 auto_increments 사용 null 값 지정
-			, #{mbId}  -- member.mbId 대신 mbId(변수명)만 지정
-			, #{mbPasswd1}  -- member.mbPasswd1 대신 mbPasswd1(변수명)만 지정
-			, #{mbPasswd2}  -- member.mbPasswd2 대신 mbPasswd2(변수명)만 지정
-			, #{mbName}  -- member.mbName 대신 mbName(변수명)만 지정
-			, #{mbEmail}  -- member.mbEmail 대신 mbEmail(변수명)만 지정
-			, #{mbPhone}  -- member.mbPhone 대신 mbPhone(변수명)만 지정
-			, #{mbBirth}  -- member.mbBirth 대신 mbBirth(변수명)만 지정
-			, #{mbGender}  -- member.mbGender 대신 mbGender(변수명)만 지정
+			null  
+			, #{uId} 
+			, #{uPasswd1}
+			, #{uPasswd2} 
+			, #{uName} 
+			, #{uEmail} 
+			, #{uPhone} 
+			, #{uBirth} 
+			, #{uGender}
 		)
 	</insert>
 	
@@ -70,8 +70,8 @@
 	<!-- SELECT * FROM student WHERE email = ? -->
 	<!-- resultType 속성에 StudentVO 타입 명시할 때 패키지명까지 함께 포함 -->
 	<!-- 파라미터 사용 시 email 변수 1개가 전달되었으므로 그대로 접근 가능함 -->
-	<select id="selectMember" resultType="com.itwillbs.cinepick.vo.MemberVO">
-		SELECT * FROM mbEmail WHERE email = #{mbEmail}
+	<select id="selectUser" resultType="com.itwillbs.cinepick.vo.UserVO">
+		SELECT * FROM uEmail WHERE email = #{uEmail}
 	</select>
 	<!-- 조회 결과(회원 1명의 레코드)를 MemberVO 객체 생성 및 자동 저장 후 리턴 -->
 					
@@ -84,16 +84,16 @@
 	즉, 1개 게시물 정보가 MemberVO 객체에 저장되고, 전체가 List 객체에 저장되므로
 	List 타입의 제네릭 타입으로 지정한 MemberVO 타입을 resultType 으로 지정
 	-->
-	<select id="selectMemberList" resultType="com.itwillbs.cinepick.vo.MemberVO">
-		SELECT * FROM member
+	<select id="selectUserList" resultType="com.itwillbs.cinepick.vo.UserVO">
+		SELECT * FROM user
 	</select>
 
 
-	<select id="checkMember" resultType="com.itwillbs.cinepick.vo.MemberVO">
+	<select id="checkUser" resultType="com.itwillbs.cinepick.vo.UserVO">
 		SELECT * 
-		  FROM member 
-		 WHERE mbEmail = #{mbEmail} 
-		   AND mbPasswd1 = #{mbPasswd1}
+		  FROM user 
+		 WHERE uEmail = #{uEmail} 
+		   AND uPasswd1 = #{uPasswd1}
 	</select>
 </mapper>
 

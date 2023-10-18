@@ -1,6 +1,5 @@
 package com.itwillbs.cinepick.controller;
 
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,15 +9,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.itwillbs.cinepick.service.MemberService;
-import com.itwillbs.cinepick.vo.MemberVO;
+import com.itwillbs.cinepick.service.UserService;
+import com.itwillbs.cinepick.vo.UserVO;
 
 @Controller
 public class LoginJoinController {
 	
 	// 서비스 오토와이어 --- 서비스를 사용해야하면 필수!!
 	@Autowired
-	private MemberService service;
+	private UserService service;
 	
 	// 로그인 폼으로 이동
 	@GetMapping("login")
@@ -29,20 +28,20 @@ public class LoginJoinController {
 	
 	// 로그인 처리
 	@PostMapping("loginPro")
-	public String loginPro(MemberVO member, HttpSession session) {
+	public String loginPro(UserVO user, HttpSession session) {
 		System.out.println("LoginJoinController - loginPro");
 		
-		MemberVO memberVO = service.checkMember(member);
+		UserVO userVO = service.checkUser(user);
 		
 		// db 에서 가져온거
-		System.out.println(memberVO);
+		System.out.println(userVO);
 		
-		if(memberVO == null) {
+		if(userVO == null) {
 			return "cinepick/login_join/fail_back";
 		}
 		
-		session.setAttribute("mbEmail", member.getMbEmail());
-		session.setAttribute("mbPasswd1", member.getMbPasswd1());
+		session.setAttribute("mbEmail", user.getUEmail());
+		session.setAttribute("mbPasswd1", user.getUPasswd1());
 		return "redirect:/";
 	}
 	
@@ -56,9 +55,9 @@ public class LoginJoinController {
 	
 	// 폼 파라미터 데이터를 관리할 MemberVO 클래스 타입 파라미터 변수를 선언하는 방법
 	@PostMapping("joinPro")
-	public String joinPro(MemberVO member, Model model) {
+	public String joinPro(UserVO user, Model model) {
 		
-		// MemberService - joinPro() 메서드 호출하여 학생정보 등록 요청
+		// UserService - joinPro() 메서드 호출하여 학생정보 등록 요청
 		// -------------------------------------------------------------------
 		// [ 스프링에서 의존 관계에 있는 객체 생성 방법 ]
 		// 1. 직접 인스턴스를 생성하는 방법
@@ -72,10 +71,10 @@ public class LoginJoinController {
 		//    DI 에 의해 객체가 자동으로 주입되므로 service 멤버변수를 통해 바로 메서드 호출 가능
 //				service.joinPro();
 		// ----------------------------------------------------------------------------
-		// MemberService - joinPro() 메서드 호출하여 학생정보 등록 요청
-		// => 파라미터 : MemberVO 객체   리턴타입 : int(insertCount)
+		// UserService - joinPro() 메서드 호출하여 멤버정보 등록 요청
+		// => 파라미터 : UserVO 객체   리턴타입 : int(insertCount)
 		
-		int insertCount = service.joinMember(member);
+		int insertCount = service.joinUser(user);
 		
 		if(insertCount == 0) {
 			model.addAttribute("msg", "멤버정보 등록 실패!");
