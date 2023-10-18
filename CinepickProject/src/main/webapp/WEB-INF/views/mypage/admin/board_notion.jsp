@@ -133,16 +133,15 @@
                                         <tr>
                                             <th>번호</th>
                                             <th>제목</th>
-                                            <th>날짜</th>
-                                            <th>작성자</th>
+<!--                                             <th>내용</th> -->
+                                            <th>작성일</th>
                                             <th>수정 및 삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
 											<td colspan="5">
-												<button type="button" class="btn btn-primary" onclick="location.href='adminNoticeUpdate'">등록</button>&nbsp;&nbsp;
-												<button type="button" class="btn btn-primary">삭제</button>
+												<button type="button" class="btn btn-primary" onclick="location.href='adminNoticeInsert'">등록</button>&nbsp;&nbsp;
 											</td>
                                         </tr>
                                     </tfoot>
@@ -151,7 +150,7 @@
 	                                        <tr>
 	                                            <td>${notice.noticeIdx }</td>
 	                                            <td>${notice.noticeTitle }</td>
-	                                            <td>${notice.noticeContent }</td>
+<%-- 	                                            <td>${notice.noticeContent }</td> --%>
 	                                            <td>${notice.noticeWriteDate }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="location.href='adminNoticeUpdate'">수정</button>

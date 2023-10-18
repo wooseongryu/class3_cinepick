@@ -62,7 +62,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">공지사항 등록</h1>
                             </div>
-                            <form class="user" action="adminNoticeUpdatePro" method="post">
+                            <form class="user" action="adminNoticeInsertPro" method="post">
                                 <div class="form-group row">
 									<div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">제목</label>

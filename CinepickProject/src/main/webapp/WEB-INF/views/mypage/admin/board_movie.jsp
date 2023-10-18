@@ -18,7 +18,7 @@
 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
 	function updateMovie() {
-		window.open('adminMovieUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+		window.open('adminMovieInsert','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	}
 </script>
 	

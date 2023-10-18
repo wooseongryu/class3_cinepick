@@ -17,7 +17,7 @@ public class AdminService {
 	private AdminMapper mapper;
 
 	// 공지등록
-	public int updateNotice(NoticeVO notice) {
+	public int insertNotice(NoticeVO notice) {
 		return mapper.insertNotice(notice);
 	}
 

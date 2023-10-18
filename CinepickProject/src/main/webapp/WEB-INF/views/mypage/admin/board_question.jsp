@@ -138,7 +138,7 @@
                                     <tfoot>
                                         <tr>
 											<td colspan="5">
-												<button type="button" class="btn btn-primary" onclick="location.href='adminQNAUpdate'">등록</button>&nbsp;&nbsp;
+												<button type="button" class="btn btn-primary" onclick="location.href='adminQNAInsert'">등록</button>&nbsp;&nbsp;
 												<button type="button" class="btn btn-primary" onclick="location.href='adminCategoryUpdate'">카테고리 관리</button>
 											</td>
                                         </tr>

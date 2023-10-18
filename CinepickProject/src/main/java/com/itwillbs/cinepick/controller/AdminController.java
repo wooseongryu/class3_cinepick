@@ -25,12 +25,37 @@ public class AdminController {
 	@Autowired
 	private UserService userService;
 	
+	/*====================================================================
+	 * - 목차 -
+	 * 1. 관리자 메인
+	 * 2. 내 정보 관리
+	 * 3. 회원 정보 관리
+	 * 4. 영화
+	 * 5. 상영 시간표
+	 * 6. 공지사항
+	 * 7. 자주 묻는 질문
+	 * 8. 자주 묻는 질문 카테고리
+	 * 9. 1:1 문의
+	 * 10. 이벤트
+	 * ===================================================================
+	 * */
+	
+	/*====================================================================
+	 * 1. 관리자 메인
+	 * ===================================================================
+	 * */
+	
 	// 관리자 메인 페이지
 	@GetMapping("admin")
 	public String admin() {
 		System.out.println("AdminController - admin()");
 		return "mypage/admin/admin_mypage";
 	}
+	
+	/*====================================================================
+	 * 2. 내 정보 관리
+	 * ===================================================================
+	 * */
 	
 	// 관리자 내 정보 변경 페이지
 	@GetMapping("adminUpdate")
@@ -46,6 +71,11 @@ public class AdminController {
 		return "mypage/admin/board_admin_out";
 	}
 	
+	/*====================================================================
+	 * 3. 회원 정보 관리
+	 * ===================================================================
+	 * */
+	
 	// 관리자 회원정보 관리 페이지
 	@GetMapping("adminUserList")
 	public String adminUserList(Model model) {
@@ -57,6 +87,11 @@ public class AdminController {
 		return "mypage/admin/board_user";
 	}
 	
+	/*====================================================================
+	 * 4. 영화
+	 * ===================================================================
+	 * */
+	
 	// 관리자 영화 정보 목록
 	@GetMapping("adminMovieList")
 	public String adminMovieList() {
@@ -65,11 +100,16 @@ public class AdminController {
 	}
 	
 	// 관리자 영화 정보 등록 폼
-	@GetMapping("adminMovieUpdate")
-	public String adminMovieUpdate() {
-		System.out.println("AdminController - adminMovieUpdate()");
+	@GetMapping("adminMovieInsert")
+	public String adminMovieInsert() {
+		System.out.println("AdminController - adminMovieInsert()");
 		return "mypage/admin/update_movie";
 	}
+	
+	/*====================================================================
+	 * 5. 상영 시간표
+	 * ===================================================================
+	 * */
 	
 	// 관리자 상영 시간표 관리 페이지
 	@GetMapping("adminScheduleList")
@@ -79,11 +119,16 @@ public class AdminController {
 	}
 	
 	// 관리자 상영 시간표 등록 폼
-	@GetMapping("adminScheduleUpdate")
-	public String adminScheduleUpdate() {
-		System.out.println("AdminController - adminScheduleUpdate()");
+	@GetMapping("adminScheduleInsert")
+	public String adminScheduleInsert() {
+		System.out.println("AdminController - adminScheduleInsert()");
 		return "mypage/admin/update_schedule";
 	}
+	
+	/*====================================================================
+	 * 6. 공지사항
+	 * ===================================================================
+	 * */
 	
 	// 관리자 공지사항 조회 페이지
 	@GetMapping("adminNoticeList")
@@ -96,10 +141,19 @@ public class AdminController {
 	}
 	
 	// 관리자 공지사항 등록 폼
-	@GetMapping("adminNoticeUpdate")
-	public String adminNoticeUpdate() {
-		System.out.println("AdminController - adminNoticeUpdate()");
+	@GetMapping("adminNoticeInsert")
+	public String adminNoticeInsert() {
+		System.out.println("AdminController - adminNoticeInsert()");
 		return "mypage/admin/update_notion";
+	}
+	
+	// 관리자 공지사항 등록
+	@PostMapping("adminNoticeInsertPro")
+	public String adminNoticeInsertPro(NoticeVO notice) {
+		System.out.println("AdminController - adminNoticeInsertPro()");
+		int insertCount = adminService.insertNotice(notice);
+		
+		return "redirect:/adminNoticeList";
 	}
 	
 	// 관리자 공지사항 삭제
@@ -111,14 +165,17 @@ public class AdminController {
 		return "redirect:/adminNoticeList";
 	}
 	
-	// 관리자 공지사항 등록
-	@PostMapping("adminNoticeUpdatePro")
-	public String adminNoticeUpdatePro(NoticeVO notice) {
-		System.out.println("AdminController - adminNoticeUpdatePro()");
-		int insertCount = adminService.updateNotice(notice);
-		
-		return "redirect:/adminNoticeList";
-	}
+	// 관리자 공지사항 수정 폼
+//	@GetMapping("adminNoticeUpdate")
+//	public String adminNoticeUpdate() {
+//		System.out.println("AdminController - adminNoticeUpdate()");
+//		return "mypage/admin/update_notion";
+//	}
+
+	/*====================================================================
+	 * 7. 자주 묻는 질문
+	 * ===================================================================
+	 * */
 	
 	// 관리자 자주 묻는 질문 조회 페이지
 	@GetMapping("adminQNAList")
@@ -131,9 +188,9 @@ public class AdminController {
 	}
 	
 	// 관리자 자주 묻는 질문 등록 폼
-	@GetMapping("adminQNAUpdate")
-	public String adminQNAUpdate(Model model) {
-		System.out.println("AdminController - adminQNAUpdate()");
+	@GetMapping("adminQNAInsert")
+	public String adminQNAInsert(Model model) {
+		System.out.println("AdminController - adminQNAInsert()");
 		List<QnaCateVO> categoryList = adminService.getCategory();
 		
 		model.addAttribute("categoryList", categoryList);
@@ -141,13 +198,18 @@ public class AdminController {
 	}
 	
 	// 관리자 자주묻는 질문 등록
-	@PostMapping("adminQNAUpdatePro")
-	public String adminQNAUpdatePro(QnaVO qna) {
-		System.out.println("AdminController - adminQNAUpdatePro()");
+	@PostMapping("adminQNAInsertPro")
+	public String adminQNAInsertPro(QnaVO qna) {
+		System.out.println("AdminController - adminQNAInsertPro()");
 		int resultCount = adminService.insertQna(qna);
 		
 		return "redirect:/adminQNAList";
 	}
+	
+	/*====================================================================
+	 * 8. 자주 묻는 질문 카테고리
+	 * ===================================================================
+	 * */
 	
 	// 관리자 질문카테고리 관리 페이지 및 폼
 	@GetMapping("adminCategoryUpdate")
@@ -169,6 +231,11 @@ public class AdminController {
 		return "redirect:/adminQNAList";
 	}
 	
+	/*====================================================================
+	 * 9. 1:1 문의
+	 * ===================================================================
+	 * */
+	
 	// 관리자 1:1문의 조회 페이지
 	@GetMapping("adminOneToOneList")
 	public String adminOneToOneList() {
@@ -177,11 +244,16 @@ public class AdminController {
 	}
 	
 	// 관리자 1:1문의 답변 등록 폼
-	@GetMapping("adminOneToOneUpdate")
-	public String adminOneToOneUpdate() {
-		System.out.println("AdminController - adminOneToOneUpdate()");
+	@GetMapping("adminOneToOneInsert")
+	public String adminOneToOneInsert() {
+		System.out.println("AdminController - adminOneToOneInsert()");
 		return "mypage/admin/update_personal_inquiry";
 	}
+	
+	/*====================================================================
+	 * 10. 이벤트
+	 * ===================================================================
+	 * */
 	
 	// 관리자 이벤트 조회 페이지
 	@GetMapping("adminEventList")
@@ -191,9 +263,9 @@ public class AdminController {
 	}
 	
 	// 관리자 이벤트 등록 폼
-	@GetMapping("adminEventUpdate")
-	public String adminEventUpdate() {
-		System.out.println("AdminController - adminEventUpdate()");
+	@GetMapping("adminEventInsert")
+	public String adminEventInsert() {
+		System.out.println("AdminController - adminEventInsert()");
 		return "mypage/admin/update_event";
 	}
 }
