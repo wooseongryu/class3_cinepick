@@ -134,12 +134,11 @@
                                     <tbody>
                                        <c:forEach var="user" items="${userList }">
 											<tr>
-											
-<%-- 												<td>${user.uIdx }</td> --%>
-<%-- 												<td>${user.uId }</td> --%>
-<%-- 												<td>${user.uName }</td> --%>
-<%-- 												<td>${user.uBirth}</td> --%>
-<%-- 												<td>${user.uGender}</td> --%>
+												<td>${user.user_idx }</td>
+												<td>${user.user_id }</td>
+												<td>${user.user_name }</td>
+												<td>${user.user_birth}</td>
+												<td>${user.user_gender}</td>
 											</tr>
 										</c:forEach>
                                     </tbody>
