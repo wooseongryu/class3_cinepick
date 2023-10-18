@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.itwillbs.cinepick.service.AdminService;
-import com.itwillbs.cinepick.service.MemberService;
-import com.itwillbs.cinepick.vo.MemberVO;
+import com.itwillbs.cinepick.service.UserService;
+import com.itwillbs.cinepick.vo.UserVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
@@ -23,7 +23,7 @@ public class AdminController {
 	private AdminService adminService;
 	
 	@Autowired
-	private MemberService memberService;
+	private UserService UserService;
 	
 	// 관리자 메인 페이지
 	@GetMapping("admin")
@@ -47,13 +47,13 @@ public class AdminController {
 	}
 	
 	// 관리자 회원정보 관리 페이지
-	@GetMapping("adminMemberList")
-	public String adminMemberList(Model model) {
-		List<MemberVO> memberList = memberService.getMemberList();
-		System.out.println("AdminController - adminMemberList()");
+	@GetMapping("adminUserList")
+	public String adminUserList(Model model) {
+		List<UserVO> UserList = UserService.getUserList();
+		System.out.println("AdminController - adminUserList()");
 		// Model 객체에 List 객체 저장
-		model.addAttribute("memberList", memberList);
-		return "mypage/admin/board_member";
+		model.addAttribute("userList", userList);
+		return "mypage/admin/board_user";
 	}
 	
 	// 관리자 영화 정보 목록
