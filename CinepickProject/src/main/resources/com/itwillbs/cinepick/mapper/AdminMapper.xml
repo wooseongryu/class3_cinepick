@@ -55,4 +55,9 @@
 			qna q JOIN qnaCate c
 			ON q.qnaCategory = c.qnaCateIdx;
     </select>
+    
+    <delete id="deleteNotice">
+    	DELETE FROM notice
+    	WHERE noticeIdx = #{noticeIdx };
+    </delete>
 </mapper>

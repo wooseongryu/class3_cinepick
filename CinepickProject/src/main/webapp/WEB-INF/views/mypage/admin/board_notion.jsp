@@ -155,7 +155,7 @@
 	                                            <td>${notice.noticeWriteDate }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="location.href='adminNoticeUpdate'">수정</button>
-													<button type="button" class="btn btn-primary">삭제</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminNoticeDelete?noticeIdx=${notice.noticeIdx }'">삭제</button>
 												</td>
 	                                        </tr>
                                         </c:forEach>

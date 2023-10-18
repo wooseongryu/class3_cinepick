@@ -102,6 +102,15 @@ public class AdminController {
 		return "mypage/admin/update_notion";
 	}
 	
+	// 관리자 공지사항 삭제
+	@GetMapping("adminNoticeDelete")
+	public String adminNoticeDelete(int noticeIdx) {
+		System.out.println("AdminController - adminNoticeDelete()");
+		int resultCount = adminService.deleteNotice(noticeIdx);
+		
+		return "redirect:/adminNoticeList";
+	}
+	
 	// 관리자 공지사항 등록
 	@PostMapping("adminNoticeUpdatePro")
 	public String adminNoticeUpdatePro(NoticeVO notice) {

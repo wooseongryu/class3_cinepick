@@ -46,4 +46,9 @@ public class AdminService {
 		return mapper.selectQna();
 	}
 
+	public int deleteNotice(int noticeIdx) {
+		System.out.println("AdminService - deleteNotice()");
+		return mapper.deleteNotice(noticeIdx);
+	}
+
 }

@@ -24,4 +24,6 @@ public interface AdminMapper {
 
 	List<QnaVO> selectQna();
 
+	int deleteNotice(int noticeIdx);
+
 }
