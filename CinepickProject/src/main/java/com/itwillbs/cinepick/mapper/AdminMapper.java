@@ -11,19 +11,36 @@ import com.itwillbs.cinepick.vo.QnaVO;
 @Mapper
 public interface AdminMapper {
 
-	// 공지등록
+	/*==============================================================
+	 * 공지 
+	 * =============================================================
+	 * */
 	int insertNotice(NoticeVO notice);
 
-	List<NoticeVO> selectNotice();
+	List<NoticeVO> selectNoticeList();
+	
+	NoticeVO selectNotice(int noticeIdx);
+	
+	int deleteNotice(int noticeIdx);
 
-	int insertCategory(String qnaCateSubject);
-
-	List<QnaCateVO> selectCategory();
+	int updateNotice(NoticeVO notice);
+	
+	/*==============================================================
+	 * 자주 묻는 질문
+	 * =============================================================
+	 * */
 
 	int insertQna(QnaVO qna);
 
 	List<QnaVO> selectQna();
+	
+	/*==============================================================
+	 * 자주 묻는 질문 카테고리
+	 * =============================================================
+	 * */
+	
+	int insertCategory(String qnaCateSubject);
 
-	int deleteNotice(int noticeIdx);
+	List<QnaCateVO> selectCategory();
 
 }

@@ -15,40 +15,73 @@ public class AdminService {
 	
 	@Autowired
 	private AdminMapper mapper;
+	
+	/*==============================================================
+	 * 공지 
+	 * =============================================================
+	 * */
 
-	// 공지등록
+	// 공지 등록
 	public int insertNotice(NoticeVO notice) {
 		return mapper.insertNotice(notice);
 	}
 
+	// 공지 목록 조회
 	public List<NoticeVO> getNoticeList() {
 		System.out.println("AdminService - getNoticeList()");
-		return mapper.selectNotice();
+		return mapper.selectNoticeList();
+	}
+	
+	// 공지 조회
+	public NoticeVO getNotice(int noticeIdx) {
+		System.out.println("AdminService - getNotice()");
+		return mapper.selectNotice(noticeIdx);
 	}
 
-	public int insertCategory(String qnaCateSubject) {
-		System.out.println("AdminService - insertCategory()");
-		return mapper.insertCategory(qnaCateSubject);
+	// 공지 삭제
+	public int deleteNotice(int noticeIdx) {
+		System.out.println("AdminService - deleteNotice()");
+		return mapper.deleteNotice(noticeIdx);
 	}
 
-	public List<QnaCateVO> getCategory() {
-		System.out.println("AdminService - getCategory()");
-		return mapper.selectCategory();
+	// 공지 수정
+	public int updateNotice(NoticeVO notice) {
+		System.out.println("AdminService - updateNotice()");
+		return mapper.updateNotice(notice);
 	}
+	
+	/*==============================================================
+	 * 자주 묻는 질문
+	 * =============================================================
+	 * */
 
+	// 자주묻는 질문 등록
 	public int insertQna(QnaVO qna) {
 		System.out.println("AdminService - insertQna()");
 		return mapper.insertQna(qna);
 	}
 
+	// 자주묻는 질문 목록 조회
 	public List<QnaVO> getQnaList() {
 		System.out.println("AdminService - getQnaList()");
 		return mapper.selectQna();
 	}
+	
+	/*==============================================================
+	 * 자주 묻는 질문 카테고리
+	 * =============================================================
+	 * */
+	
+	// 카테고리 등록
+	public int insertCategory(String qnaCateSubject) {
+		System.out.println("AdminService - insertCategory()");
+		return mapper.insertCategory(qnaCateSubject);
+	}
 
-	public int deleteNotice(int noticeIdx) {
-		System.out.println("AdminService - deleteNotice()");
-		return mapper.deleteNotice(noticeIdx);
+	// 카테고리 조회
+	public List<QnaCateVO> getCategory() {
+		System.out.println("AdminService - getCategory()");
+		return mapper.selectCategory();
 	}
 
 }

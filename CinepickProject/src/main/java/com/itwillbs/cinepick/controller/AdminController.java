@@ -144,7 +144,7 @@ public class AdminController {
 	@GetMapping("adminNoticeInsert")
 	public String adminNoticeInsert() {
 		System.out.println("AdminController - adminNoticeInsert()");
-		return "mypage/admin/update_notion";
+		return "mypage/admin/insert_notion";
 	}
 	
 	// 관리자 공지사항 등록
@@ -166,11 +166,23 @@ public class AdminController {
 	}
 	
 	// 관리자 공지사항 수정 폼
-//	@GetMapping("adminNoticeUpdate")
-//	public String adminNoticeUpdate() {
-//		System.out.println("AdminController - adminNoticeUpdate()");
-//		return "mypage/admin/update_notion";
-//	}
+	@GetMapping("adminNoticeUpdate")
+	public String adminNoticeUpdate(int noticeIdx, Model model) {
+		System.out.println("AdminController - adminNoticeUpdate()");
+		NoticeVO notice = adminService.getNotice(noticeIdx);
+		model.addAttribute("notice", notice);
+		
+		return "mypage/admin/update_notion";
+	}
+	
+	// 관리자 공시사항 수정
+	@PostMapping("adminNoticeUpdatePro")
+	public String adminNoticeUpdatePro(NoticeVO notice) {
+		System.out.println("AdminController - adminNoticeUpdatePro()");
+		int insertCount = adminService.updateNotice(notice);
+		
+		return "redirect:/adminNoticeList";
+	}
 
 	/*====================================================================
 	 * 7. 자주 묻는 질문

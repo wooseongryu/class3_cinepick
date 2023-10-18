@@ -60,21 +60,20 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                            	<h1 class="h4 text-gray-900 mb-4">공지사항 수정</h1>
+                         		<h1 class="h4 text-gray-900 mb-4">공지사항 등록</h1>
                             </div>
-                            <form class="user" action="adminNoticeUpdatePro" method="post">
-                            	<input type="hidden" name="noticeIdx" value="${notice.noticeIdx }">
+                            <form class="user" action="adminNoticeInsertPro" method="post">
                                 <div class="form-group row">
 									<div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">제목</label>
-										<input type="text" name="noticeTitle" placeholder="제목입력" value="${notice.noticeTitle }">
+										<input type="text" name="noticeTitle" placeholder="제목입력">
 								  	</div>
                                 </div>
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="floatingTextarea">공지내용</label>
 									  <textarea rows="10" name="noticeContent" class="form-control form-control-textarea" 
-									  	placeholder="공지내용작성" id="floatingTextarea">${notice.noticeContent }</textarea>
+									  	placeholder="공지내용작성" id="floatingTextarea"></textarea>
 									</div>
                                 </div>
 								<br>

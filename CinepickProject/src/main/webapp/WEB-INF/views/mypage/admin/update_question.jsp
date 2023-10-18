@@ -82,7 +82,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">자주묻는 질문 등록</h1>
                             </div>
-                            <form class="user" action="adminQNAUpdatePro" method="post">
+                            <form class="user" action="adminQNAInsertPro" method="post">
                                 <div class="form-group row">
 									<div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">카테고리</label>
