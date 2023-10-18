@@ -44,13 +44,15 @@
 		)
 	</insert>
 
-<!-- 	<select id="selectQna" resultType="com.itwillbs.cinepick.vo.QnaVO"> -->
-<!--           SELECT  -->
-<!--           	null -->
-<!--           	, qnaTitle -->
-<!-- 			, qnaContent -->
-<!-- 			, qnaCategory -->
-<!--           FROM  -->
-<!--           	qnaCate; -->
-<!--     </select> -->
+	<select id="selectQna" resultType="com.itwillbs.cinepick.vo.QnaVO">
+		SELECT
+			q.qnaIdx
+			, q.qnaTitle
+			, q.qnaContent
+			, q.qnaCategory
+			, c.qnaCateSubject 
+		FROM
+			qna q JOIN qnaCate c
+			ON q.qnaCategory = c.qnaCateIdx;
+    </select>
 </mapper>

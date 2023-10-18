@@ -8,4 +8,6 @@ public class QnaVO {
 	String qnaTitle;
 	String qnaContent;
 	int qnaCategory;
+	
+	String qnaCateSubject;
 }

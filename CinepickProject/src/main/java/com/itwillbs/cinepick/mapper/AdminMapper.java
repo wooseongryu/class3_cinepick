@@ -22,6 +22,6 @@ public interface AdminMapper {
 
 	int insertQna(QnaVO qna);
 
-//	List<QnaVO> selectQna();
+	List<QnaVO> selectQna();
 
 }

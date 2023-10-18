@@ -41,9 +41,9 @@ public class AdminService {
 		return mapper.insertQna(qna);
 	}
 
-//	public List<QnaVO> getQnaList() {
-//		System.out.println("AdminService - getQnaList()");
-//		return mapper.selectQna();
-//	}
+	public List<QnaVO> getQnaList() {
+		System.out.println("AdminService - getQnaList()");
+		return mapper.selectQna();
+	}
 
 }

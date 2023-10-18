@@ -46,7 +46,7 @@ public class AdminController {
 		return "mypage/admin/board_admin_out";
 	}
 	
-	// 관리자 영화 정보 관리 페이지
+	// 관리자 회원정보 관리 페이지
 	@GetMapping("adminMemberList")
 	public String adminMemberList(Model model) {
 		List<MemberVO> memberList = memberService.getMemberList();
@@ -54,6 +54,13 @@ public class AdminController {
 		// Model 객체에 List 객체 저장
 		model.addAttribute("memberList", memberList);
 		return "mypage/admin/board_member";
+	}
+	
+	// 관리자 영화 정보 목록
+	@GetMapping("adminMovieList")
+	public String adminMovieList() {
+		System.out.println("AdminController - adminMovieList()");
+		return "mypage/admin/board_movie";
 	}
 	
 	// 관리자 영화 정보 등록 폼
@@ -105,9 +112,10 @@ public class AdminController {
 	
 	// 관리자 자주 묻는 질문 조회 페이지
 	@GetMapping("adminQNAList")
-	public String adminQNAList() {
+	public String adminQNAList(Model model) {
 		System.out.println("AdminController - adminQNAList()");
-//		List<QnaVO> qnaList = adminService.getQnaList();
+		List<QnaVO> qnaList = adminService.getQnaList();
+		model.addAttribute("qnaList", qnaList);
 		
 		return "mypage/admin/board_question";
 	}

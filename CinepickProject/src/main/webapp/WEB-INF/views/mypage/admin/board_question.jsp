@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -143,15 +144,17 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>로그인</td>
-                                            <td>로그인이 되지 않아요.</td>
-											<td>
-												<button type="button" class="btn btn-primary" onclick="updateQuestion()">수정</button>
-												<button type="button" class="btn btn-primary">삭제</button>
-											</td>
-                                        </tr>
+                                    	<c:forEach var="qna" items="${qnaList }">
+	                                        <tr>
+	                                            <td>${qna.qnaIdx }</td>
+	                                            <td>${qna.qnaCateSubject }</td>
+	                                            <td>${qna.qnaTitle }</td>
+												<td>
+													<button type="button" class="btn btn-primary" onclick="updateQuestion()">수정</button>
+													<button type="button" class="btn btn-primary">삭제</button>
+												</td>
+	                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
