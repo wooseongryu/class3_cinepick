@@ -100,11 +100,11 @@
 						            <button type="button" class="down" title="성인 좌석 선택 감소">-</button>
 						            <div class="number">
 						                <button type="button" class="now" title="성인 현재 좌석 선택 수" ticketgrpcd="TKA">0</button>
-						                <ul class="num-choice">
-						                    <li>
-						                        <button type="button" class="btn" value="0"></button>
-						                    </li>
-						                </ul>
+<!-- 						                <ul class="num-choice"> -->
+<!-- 						                    <li> -->
+<!-- 						                        <button type="button" class="btn" value="0"></button> -->
+<!-- 						                    </li> -->
+<!-- 						                </ul> -->
 						            </div>
 						            <button type="button" class="up" title="성인 좌석 선택 증가">+</button>
 						        </div>
@@ -115,11 +115,11 @@
 						            <button type="button" class="down" title="청소년 좌석 선택 감소">-</button>
 						            <div class="number">
 						                <button type="button" class="now" title="청소년 현재 좌석 선택 수" ticketgrpcd="TKY">0</button>
-						                <ul class="num-choice">
-						                    <li>
-						                        <button type="button" class="btn on">0</button>
-						                    </li>
-						                </ul>
+<!-- 						                <ul class="num-choice"> -->
+<!-- 						                    <li> -->
+<!-- 						                        <button type="button" class="btn on">0</button> -->
+<!-- 						                    </li> -->
+<!-- 						                </ul> -->
 						            </div>
 						            <button type="button" class="up" title="청소년 좌석 선택 증가">+</button>
 						        </div>
@@ -130,11 +130,11 @@
 						            <button type="button" class="down" title="우대 좌석 선택 감소">-</button>
 						            <div class="number">
 						                <button type="button" class="now" title="우대 현재 좌석 선택 수" ticketgrpcd="TKS">0</button>
-						                <ul class="num-choice">
-						                    <li>
-						                        <button type="button" class="btn on">0</button>
-						                    </li>
-						                </ul>
+<!-- 						                <ul class="num-choice"> -->
+<!-- 						                    <li> -->
+<!-- 						                        <button type="button" class="btn on">0</button> -->
+<!-- 						                    </li> -->
+<!-- 						                </ul> -->
 						            </div>
 						            <button type="button" class="up" title="우대 좌석 선택 증가">+</button>
 						        </div>
@@ -658,7 +658,9 @@
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat.js"></script> --%>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_test.js"></script> --%>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat1.js"></script>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat1.js"></script> --%>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat2.js"></script>
+	
 	
 
 </body>
