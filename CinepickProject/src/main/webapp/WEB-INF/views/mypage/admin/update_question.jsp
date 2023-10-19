@@ -82,7 +82,8 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">자주묻는 질문 등록</h1>
                             </div>
-                            <form class="user" action="adminQNAInsertPro" method="post">
+                            <form class="user" action="adminQNAUpdatePro" method="post">
+                            	<input type="hidden" name="qnaIdx" value="${qna.qnaIdx }">
                                 <div class="form-group row">
 									<div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">카테고리</label>
@@ -118,7 +119,7 @@
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-		                                <input type="submit" class="btn btn-primary btn-user" value="등록">
+		                                <input type="submit" class="btn btn-primary btn-user" value="수정">
 		                                &nbsp;
 		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
 		                                &nbsp;

@@ -144,7 +144,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="5">
+											<td colspan="4">
 												<button type="button" class="btn btn-primary" onclick="location.href='adminNoticeInsert'">등록</button>&nbsp;&nbsp;
 											</td>
                                         </tr>

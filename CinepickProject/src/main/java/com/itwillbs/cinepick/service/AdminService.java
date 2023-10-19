@@ -25,15 +25,10 @@ public class AdminService {
 	public int insertNotice(NoticeVO notice) {
 		return mapper.insertNotice(notice);
 	}
-
-	// 공지 목록 조회
-	public List<NoticeVO> getNoticeList() {
-		System.out.println("AdminService - getNoticeList()");
-		return mapper.selectNoticeList();
-	}
 	
 	// 공지 조회
-	public NoticeVO getNotice(int noticeIdx) {
+	// noticeIdx를 널스트링으로 전달 시 전체 공지 조회
+	public List<NoticeVO> getNotice(String noticeIdx) {
 		System.out.println("AdminService - getNotice()");
 		return mapper.selectNotice(noticeIdx);
 	}
@@ -61,16 +56,11 @@ public class AdminService {
 		return mapper.insertQna(qna);
 	}
 
-	// 자주묻는 질문 목록 조회
-	public List<QnaVO> getQnaList() {
-		System.out.println("AdminService - getQnaList()");
-		return mapper.selectQnaList();
-	}
-
 	// 자주묻는 질문 조회
-	public QnaVO getQna(String qnaIdx) {
+	// qnaIdx를 널스트링으로 전달 시 전체 질문 조회
+	public List<QnaVO> getQna(String qnaIdx) {
 		System.out.println("AdminService - getQna()");
-		return mapper.selectQnaList(qnaIdx);
+		return mapper.selectQna(qnaIdx);
 	}
 	
 	/*==============================================================
@@ -88,6 +78,17 @@ public class AdminService {
 	public List<QnaCateVO> getCategory() {
 		System.out.println("AdminService - getCategory()");
 		return mapper.selectCategory();
+	}
+
+	// 카테고리 삭제
+	public int deleteCategory(int qnaCateIdx) {
+		System.out.println("AdminService - deleteCategory()");
+		return mapper.deleteCategory(qnaCateIdx);
+	}
+
+	public int updateQna(QnaVO qna) {
+		System.out.println("AdminService - updateQna()");
+		return mapper.updateQna(qna);
 	}
 
 }

@@ -15,19 +15,16 @@
 		)
 	</insert>
 	
-	<select id="selectNoticeList" resultType="com.itwillbs.cinepick.vo.NoticeVO">
-          SELECT * FROM notice;
-    </select>
-    
-    <select id="selectNotice" resultType="com.itwillbs.cinepick.vo.NoticeVO">
-		SELECT
+	<select id="selectNotice" resultType="com.itwillbs.cinepick.vo.NoticeVO">
+        SELECT
 			noticeIdx
 			, noticeTitle
 			, noticeContent
-		FROM 
-			notice
-		WHERE 
-			noticeIdx = #{noticeIdx };
+			, noticeWriteDate
+		FROM notice
+		<if test="noticeIdx != null and !noticeIdx.equals('')">
+		WHERE noticeIdx = #{noticeIdx }
+		</if>
     </select>
     
     <delete id="deleteNotice">
@@ -36,35 +33,13 @@
     </delete>
     
     <update id="updateNotice">
-    	UPDATE 
-    		notice
+    	UPDATE notice
     	SET 
     		noticeTitle = #{noticeTitle }
     		, noticeContent = #{noticeContent }
-    	WHERE 
-    		noticeIdx = #{noticeIdx };
+    	WHERE noticeIdx = #{noticeIdx };
     </update>
     <!-- 공지 끝 -->
-    
-    
-    <!-- 자주 묻는 질문 카테고리 -->
-    <insert id="insertCategory">
-		INSERT INTO qnaCate
-		VALUES (
-			null
-			, #{qnaCateSubject}
-		)
-	</insert>
-
-	<select id="selectCategory" resultType="com.itwillbs.cinepick.vo.QnaCateVO">
-          SELECT 
-          	qnaCateIdx 
-          	, qnaCateSubject
-          FROM 
-          	qnaCate;
-    </select>
-    <!-- 자주 묻는 질문 카테고리 끝 -->
-    
     
     <!-- 자주 묻는 질문 -->
   	<insert id="insertQna">
@@ -77,7 +52,7 @@
 		)
 	</insert>
 
-	<select id="selectQnaList" resultType="com.itwillbs.cinepick.vo.QnaVO">
+	<select id="selectQna" resultType="com.itwillbs.cinepick.vo.QnaVO">
 		SELECT
 			q.qnaIdx
 			, q.qnaTitle
@@ -91,5 +66,36 @@
 		WHERE q.qnaIdx = #{qnaIdx}
 		</if>
     </select>
+    
+    <update id="updateQna">
+    	UPDATE qna
+    	SET
+    		qnaTitle = #{qnaTitle}
+			, qnaContent = #{qnaContent}
+			, qnaCategory = #{qnaCategory}
+		WHERE qnaIdx = #{qnaIdx}
+    </update>
     <!-- 자주 묻는 질문 끝 -->
+
+    <!-- 자주 묻는 질문 카테고리 -->
+    <insert id="insertCategory">
+		INSERT INTO qnaCate
+		VALUES (
+			null
+			, #{qnaCateSubject}
+		)
+	</insert>
+
+	<select id="selectCategory" resultType="com.itwillbs.cinepick.vo.QnaCateVO">
+          SELECT 
+          	qnaCateIdx 
+          	, qnaCateSubject
+          FROM qnaCate;
+    </select>
+    
+    <delete id="deleteCategory">
+    	DELETE FROM qnaCate
+    	WHERE qnaCateIdx = #{qnaCateIdx}
+    </delete>
+    <!-- 자주 묻는 질문 카테고리 끝 -->
 </mapper>

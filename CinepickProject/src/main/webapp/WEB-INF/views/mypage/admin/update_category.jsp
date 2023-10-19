@@ -101,7 +101,7 @@
 			                                        <tr>
 			                                            <td>${category.qnaCateSubject }</td>
 														<td>
-															<button type="button" class="btn btn-primary">삭제</button>
+															<button type="button" class="btn btn-primary" onclick="location.href='adminCategoryDelete?qnaCateIdx=${category.qnaCateIdx }'">삭제</button>
 														</td>
 			                                        </tr>
 		                                        </c:forEach>
@@ -129,7 +129,7 @@
 		                                &nbsp;
 		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
 		                                &nbsp;
-		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
+		                                <input type="button" class="btn btn-primary btn-user" onclick="location.href='adminQNAList'" value="돌아가기">
 									</div>
 								</div>
                             </form>

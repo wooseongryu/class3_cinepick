@@ -16,10 +16,8 @@ public interface AdminMapper {
 	 * =============================================================
 	 * */
 	int insertNotice(NoticeVO notice);
-
-	List<NoticeVO> selectNoticeList();
 	
-	NoticeVO selectNotice(int noticeIdx);
+	List<NoticeVO> selectNotice(String noticeIdx);
 	
 	int deleteNotice(int noticeIdx);
 
@@ -31,10 +29,8 @@ public interface AdminMapper {
 	 * */
 
 	int insertQna(QnaVO qna);
-
-	List<QnaVO> selectQnaList();
 	
-	QnaVO selectQnaList(String qnaIdx);
+	List<QnaVO> selectQna(String qnaIdx);
 	
 	/*==============================================================
 	 * 자주 묻는 질문 카테고리
@@ -44,5 +40,9 @@ public interface AdminMapper {
 	int insertCategory(String qnaCateSubject);
 
 	List<QnaCateVO> selectCategory();
+
+	int deleteCategory(int qnaCateIdx);
+
+	int updateQna(QnaVO qna);
 
 }
