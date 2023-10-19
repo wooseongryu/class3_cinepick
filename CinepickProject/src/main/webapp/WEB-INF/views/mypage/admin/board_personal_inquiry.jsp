@@ -13,13 +13,13 @@
 
 <script>
 	// 팝업창 띄우기
-	var popupWidth = 1000;
-	var popupHeight = 800;
-	var popupX = (window.screen.width / 2) - (popupWidth / 2);
-	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-	function updatePersonal() {
-		window.open('adminOneToOneInsert','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-	}
+// 	var popupWidth = 1000;
+// 	var popupHeight = 800;
+// 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
+// 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+// 	function updatePersonal() {
+// 		window.open('adminOneToOneInsert','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+// 	}
 </script>
 	
 
@@ -131,28 +131,23 @@
                                     <thead class="table-dark">
                                         <tr>
                                             <th>번호</th>
-                                            <th>분류</th>
                                             <th>제목</th>
                                             <th>작성자</th>
                                             <th>상태구분</th>
                                             <th>등록일</th>
-                                            <th>수정 및 삭제</th>
+                                            <th>답변작성</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-											<td colspan="7"><button type="button" class="btn btn-primary" onclick="updatePersonal()">등록</button>&nbsp;&nbsp;<button type="button" class="btn btn-primary">삭제</button></td>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>상영관</td>
                                             <td>관리자님 상영관에 영화 소리가 너무 작네요</td>
                                             <td>회원1</td>
                                             <td>답변대기</td>
                                             <td>2023-10-07</td>
-											<td><button type="button" class="btn btn-primary" onclick="updatePersonal()">수정</button>
+											<td>
+												<button type="button" class="btn btn-primary" onclick="location.href='adminOneToOneInsert'">답변작성</button>
+											</td>
                                         </tr>
                                     </tbody>
                                 </table>

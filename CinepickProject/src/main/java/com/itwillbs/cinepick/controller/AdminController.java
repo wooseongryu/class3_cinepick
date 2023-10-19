@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
-import com.itwillbs.cinepick.vo.UserVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.UserVO;
 
 @Controller
 public class AdminController {
@@ -172,7 +172,7 @@ public class AdminController {
 	@GetMapping("adminNoticeList")
 	public String adminNoticeList(Model model) {
 		System.out.println("AdminController - adminNoticeList()");
-		List<NoticeVO> noticeList = adminService.getNoticeList();
+		List<NoticeVO> noticeList = adminService.getNotice("");
 		model.addAttribute("noticeList", noticeList);
 		
 		return "mypage/admin/board_notion";
@@ -205,15 +205,15 @@ public class AdminController {
 	
 	// 관리자 공지사항 수정 폼
 	@GetMapping("adminNoticeUpdate")
-	public String adminNoticeUpdate(int noticeIdx, Model model) {
+	public String adminNoticeUpdate(String noticeIdx, Model model) {
 		System.out.println("AdminController - adminNoticeUpdate()");
-		NoticeVO notice = adminService.getNotice(noticeIdx);
+		NoticeVO notice = adminService.getNotice(noticeIdx).get(0);
 		model.addAttribute("notice", notice);
 		
 		return "mypage/admin/update_notion";
 	}
 	
-	// 관리자 공시사항 수정
+	// 관리자 공지사항 수정
 	@PostMapping("adminNoticeUpdatePro")
 	public String adminNoticeUpdatePro(NoticeVO notice) {
 		System.out.println("AdminController - adminNoticeUpdatePro()");
@@ -231,7 +231,7 @@ public class AdminController {
 	@GetMapping("adminQNAList")
 	public String adminQNAList(Model model) {
 		System.out.println("AdminController - adminQNAList()");
-		List<QnaVO> qnaList = adminService.getQnaList();
+		List<QnaVO> qnaList = adminService.getQna("");
 		model.addAttribute("qnaList", qnaList);
 		
 		return "mypage/admin/board_question";
@@ -256,17 +256,26 @@ public class AdminController {
 		return "redirect:/adminQNAList";
 	}
 	
-	// 관리자 자주묻는 질문 수정
+	// 관리자 자주묻는 질문 수정 폼
 	@GetMapping("adminQNAUpdate")
 	public String adminQNAUpdate(Model model, String qnaIdx) {
 		System.out.println("AdminController - adminQNAUpdate()");
 		List<QnaCateVO> categoryList = adminService.getCategory();
-		QnaVO qna = adminService.getQna(qnaIdx);
+		QnaVO qna = adminService.getQna(qnaIdx).get(0);
 		
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("qna", qna);
 		
 		return "mypage/admin/update_question";
+	}
+	
+	// 관리자 자주묻는 질문 수정
+	@PostMapping("adminQNAUpdatePro")
+	public String adminQNAUpdatePro(QnaVO qna) {
+		System.out.println("AdminController - adminQNAUpdatePro()");
+		int insertCount = adminService.updateQna(qna);
+		
+		return "redirect:/adminQNAList";
 	}
 	
 	/*====================================================================
@@ -288,10 +297,20 @@ public class AdminController {
 	// 관리자 질문카테고리 등록
 	@PostMapping("adminCategoryUpdatePro")
 	public String adminCategoryUpdatePro(String qnaCateSubject) {
-		System.out.println("adminCategoryUpdatePro - adminCategoryUpdatePro()");
+		System.out.println("AdminController - adminCategoryUpdatePro()");
 		int insertCount = adminService.insertCategory(qnaCateSubject);
 		
-		return "redirect:/adminQNAList";
+		return "redirect:/adminCategoryUpdate";
+	}
+	
+	// 관리자 질문카테고리 삭제
+	@GetMapping("adminCategoryDelete")
+	public String adminCategoryDelete(int qnaCateIdx) {
+		System.out.println("AdminController - adminCategoryDelete()");
+		
+		int insertCount = adminService.deleteCategory(qnaCateIdx);
+		
+		return "redirect:/adminCategoryUpdate";
 	}
 	
 	/*====================================================================

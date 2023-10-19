@@ -83,40 +83,20 @@
                             </div>
                             <form class="user" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
-									<div class="col-sm-6 mb-3 mb-sm-0">
-										<label for="">영화관명</label>
-										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>영화관명</option>
-										  <option value="1">서울점</option>
-										  <option value="2">대전점</option>
-										  <option value="3">대구점</option>
-										  <option value="4">부산점</option>
-										</select>
-								  	</div>
-									<div class="col-sm-6 mb-3 mb-sm-0">
-										<label for="">카테고리</label>
-										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>카테고리</option>
-										  <option value="1">영화관이용</option>
-										  <option value="2">회원</option>
-										  <option value="3">멤버십</option>
-										  <option value="4">관람권</option>
-										  <option value="4">스토어</option>
-										</select>
-								  	</div>
-                                </div>
-                                <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-										<label for="">제목</label>
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="제목입력">
+										<label for="">질문 제목</label>
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" readonly="readonly">
                                     </div>
                                 </div>
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">Comments</label>
+									  <label for="floatingTextarea">질문 내용</label>
+									  <textarea rows="10" class="form-control form-control-textarea" id="floatingTextarea" readonly="readonly"></textarea>
+									</div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-6 mb-sm-0">
+									  <label for="floatingTextarea">답변 작성</label>
 									  <textarea rows="10" class="form-control form-control-textarea" placeholder="답변내용작성" id="floatingTextarea"></textarea>
 									</div>
                                 </div>
@@ -128,7 +108,7 @@
 		                                &nbsp;
 		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
 		                                &nbsp;
-		                                <input type="button" class="btn btn-primary btn-user" onclick="close()" value="돌아가기">>
+		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
 									</div>
 								</div>
                             </form>
