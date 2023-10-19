@@ -121,7 +121,7 @@
 <!--                         </div> -->
                         <div class="card-body">
                             <div class="table-responsive">
-								<form class="user" action="UpdatePro" method="post">
+								<form class="user" action="userUpdatePro" method="post">
 	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 	                                    <tr>
 											<th>이름</th>
@@ -197,8 +197,8 @@
 										</tr>
 	                                </table>
 									<div class="btn-group" role="group" aria-label="Basic example">
+									  <button type="submit" class="btn btn-dark">등록</button>
 									  <button type="button" class="btn btn-light">취소</button>
-									  <button type="button" class="btn btn-dark">등록</button>
 									</div>
 	                            </form>
                             </div>

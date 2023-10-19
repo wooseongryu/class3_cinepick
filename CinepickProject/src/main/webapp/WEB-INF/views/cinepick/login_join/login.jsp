@@ -53,7 +53,7 @@
                                 <span class="icon_id"></span>
                             </div>
                             <div class="input__item">
-                                <input name="user_passwd" type="text" placeholder="비밀번호를 입력하세요">
+                                <input name="user_passwd" type="password" placeholder="비밀번호를 입력하세요">
                                 <span class="icon_lock"></span>
                             </div>
                             <button type="submit" class="site-btn">&nbsp;&nbsp;&nbsp;로그인&nbsp;&nbsp;&nbsp;</button>

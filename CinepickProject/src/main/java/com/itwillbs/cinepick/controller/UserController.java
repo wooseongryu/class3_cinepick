@@ -3,9 +3,11 @@ package com.itwillbs.cinepick.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.UserVO;
@@ -62,6 +64,38 @@ public class UserController {
 		
 		return "mypage/user/user_update";
 	}
+	
+	// 유저 정보 변경 처리
+	@PostMapping("userUpdatePro")
+	public String UpdatePro(UserVO user, Model model) {
+	
+		// 1. BcryptPasswordEncoder 클래스 인스턴스 생성
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+		// 2. BcryptPasswordEncoder 객체의 encode() 메서드를 호출하여 
+		//    원문(평문) 패스워드에 대한 해싱(= 암호화) 수행 후 결과값 저장
+		String securePasswd = passwordEncoder.encode(user.getUser_passwd());
+		
+		// 3. 암호화 된 패스워드를 MemberVO 객체에 저장
+		user.setUser_passwd(securePasswd);
+		
+		// ---------------------------------------------------------------------
+		// UserService - updateUser() 메서드 호출하여 회원가입 작업 요청
+		
+		int updateCount = service.updateUser(user);
+		
+		if(updateCount > 0) { // 성공
+			model.addAttribute("msg", "회원정보변경 성공!");
+			return "cinepick/login_join/success";
+		} else { // 실패
+			model.addAttribute("msg", "회원정보변경 실패!");
+			return "cinepick/login_join/fail_back";
+		}
+		
+		
+	}
+	
+	
 	
 	// 회원탈퇴
 	@GetMapping("userOut")

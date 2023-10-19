@@ -100,6 +100,11 @@ public class UserService {
 	public UserVO getUser(UserVO user) {
 		return mapper.selectUser(user);
 	}
+	
+	// 회원 정보 변경 요청
+	public int updateUser(UserVO user) {
+		return mapper.updateUser(user);
+	}
 
 	
 	
