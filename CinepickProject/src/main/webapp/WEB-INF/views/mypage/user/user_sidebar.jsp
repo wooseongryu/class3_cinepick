@@ -156,7 +156,7 @@
 <!--                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div> -->
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-                    <a class="btn btn-primary" href="login.html">로그아웃</a>
+                    <a class="btn btn-primary" href="userLogout">로그아웃</a>
                 </div>
             </div>
         </div>

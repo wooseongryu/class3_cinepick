@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%-- JSTL 에서 제공하는 각종 함수 라이브러리 : functions --%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -113,146 +116,91 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"></h6>
-                        </div>
+<!--                         <div class="card-header py-3"> -->
+<!--                             <h6 class="m-0 font-weight-bold text-primary"></h6> -->
+<!--                         </div> -->
                         <div class="card-body">
                             <div class="table-responsive">
-								
-								
-								<form class="user">
-								
-                                <table class="table table-bordered" id="profileTable" width="100%" cellspacing="0">
-									<tr>
-						                <th scope="row">프로필 사진</th>
-						                <td>
-						                    <div class="profile-photo">
-						                        <form name="fileForm">
-						                            <input type="file" id="profileTarget" name="file" style="display: none;">
-						                        </form>
-					                            <div class="profile-img">
-					                                <img src="https://www.megabox.co.kr/static/pc/images/mypage/bg-profile.png" alt="프로필 사진 샘플" />
-						                            <button type="button" class="small btn btn-light" id="addProfileImgBtn">이미지 등록</button>
-					                            </div>
-												
-												<div class="member-out-div">
-							                        <a href="${pageContext.request.contextPath }/resources/mypage/admin/member_out.jsp" class="button small member-out btn-dark" title="회원탈퇴">회원탈퇴</a>
-												</div>
-												
-							                    <p class="comment">
-							                        ※ 개인정보가 포함된 이미지 등록은 자제하여 주시기 바랍니다.
-							                    </p>
-						                    </div>
-						                </td>
-						            </tr>
-						            <tr>
-						                <th scope="row">아이디</th>
-						                <td>hong123</td>
-						            </tr>
-								
-								</table>
-								
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <tr>
-										<th>이름</th>
-										<td>
-											<div class="form-group">
-					                            <input type="text" class="form-control form-control-user" id="exampleInputName"
-					                                placeholder="이름" value="테스트">
-					                        </div>
-										</td>
-									</tr>
-                                    <tr>
-										<th>주민번호</th>
-										<td>
-											<div class="row g-3">
-											  <div class="col-sm">
-											    <input type="text" class="form-control form-control-user" readonly>
-											  </div>
-											  -
-											  <div class="col-sm">
-											    <input type="text" class="form-control form-control-user" readonly>
-											  </div>
-											</div>
-										</td>
-									</tr>
-                                    <tr>
-										<th>기존 비밀번호</th>
-										<td>
-											<div class="form-group">
-					                            <input type="password" name="oldPasswd" class="form-control form-control-user">
-					                        </div>
-										</td>
-									</tr>
-                                    <tr>
-										<th>새 비밀번호</th>
-										<td>
-											<div class="form-group">
-					                            <input type="password" class="form-control form-control-user"
-					                            name="passwd" placeholder="8 ~ 16글자 사이(변경시)">
-					                        </div>
-										</td>
-									</tr>
-                                    <tr>
-										<th>새 비밀번호 확인</th>
-										<td>
-											<div class="form-group">
-					                            <input type="password"  class="form-control form-control-user" name="passwd2">
-					                        </div>
-										</td>
-									</tr>
-                                    <tr>
-										<th>주소</th>
-										<td>
-											<div class="form-group">
-					                            <input type="text" class="form-control form-control-user" placeholder="기본주소">
-<!--					                            <input type="button" id="btnSearchAddress" value="주소검색" class="small btn btn-light">-->
-					                            <button type="button" class="small btn btn-light" style="float: right; margin-left: 0;">주소 검색</button>
-					                        </div>
-											<div class="form-group">
-					                            <input type="text" class="form-control form-control-user" 
-					                                placeholder="상세주소" style="margin-top: 10px; margin-bottom: 0;">
-					                        </div>
-										</td>
-									</tr>
-									<tr>
-										<th>휴대폰</th>
-										<td>
-											<div class="form-group">
-					                            <input type="phone" class="form-control form-control-user" placeholder="'-' 없이 숫자만 입력해주세요.">
-					                        </div>
-										</td>
-									</tr>
-									<tr>
-										<th>이메일</th>
-										<td>
-											<div class="row g-3">
-											  <div class="col-sm">
-					                            <input type="text" name="email1" required="required" size="10" class="form-control form-control-user">
-											  </div>
-											  @
-											  <div class="col-sm">
-												<input type="text" name="email2" required="required" size="10" class="form-control form-control-user">
-											  </div>
-											  <select id="emailDomain">
-												<option value="">직접입력</option>
-												<option value="naver.com">naver.com</option>
-												<option value="nate.com">nate.com</option>
-												<option value="gmail.com">gmail.com</option>
-											  </select>
-											</div>
-											<div class="form-group">
-					                        </div>
-										</td>
-									</tr>
-                                </table>
-                            </form>
-							
-							<div class="btn-group" role="group" aria-label="Basic example">
-							  <button type="button" class="btn btn-light">취소</button>
-							  <button type="button" class="btn btn-dark">등록</button>
-							</div>
-								
+								<form class="user" action="UpdatePro" method="post">
+	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+	                                    <tr>
+											<th>이름</th>
+											<td>
+												<div class="form-group">
+						                            <input type="text" class="form-control form-control-user" name="user_name" id="user_name"
+						                                value="${user.user_name }" readonly />
+						                        </div>
+											</td>
+										</tr>
+	                                    <tr>
+											<th>아이디</th>
+											<td>
+												<div class="form-group">
+						                            <input type="text" class="form-control form-control-user" name="user_id" id="user_id"
+						                               value="${user.user_id }" readOnly>
+						                        </div>
+											</td>
+										</tr>
+	                                    <tr>
+											<th>비밀번호</th>
+											<td>
+												<div class="form-group">
+						                            <input type="password" class="form-control form-control-user" name="user_passwd" id="user_passwd"
+						                                placeholder="비밀번호 4 ~ 16글자 사이 입력">
+						                        </div>
+											</td>
+										</tr>
+	                                    <tr>
+											<th>비밀번호 확인</th>
+											<td>
+												<div class="form-group">
+						                            <input type="password" class="form-control form-control-user" name="user_passwd2" id="user_passwd2"
+						                                placeholder="비밀번호 확인">
+						                        </div>
+											</td>
+										</tr>
+	                                    <tr>
+											<th>이메일 주소</th>
+											<td>
+												<div class="form-group">
+						                            <input type="text" class="form-control form-control-user" name="user_email" id ="user_email"
+						                                value="${user.user_email }" readOnly>
+						                        </div>
+											</td>
+										</tr>
+	                                    <tr>
+											<th>휴대폰 번호</th>
+											<td>
+												<div class="form-group">
+						                            <input type="text" class="form-control form-control-user" name="user_phone"
+						                                value="${user.user_phone }" readonly>
+						                        </div>
+											</td>
+										</tr>
+	                                    <tr>
+											<th>생년월일</th>
+											<td>
+												<div class="form-group">
+						                            <input type="text" class="form-control form-control-user" name="user_birth" id="user_birth"
+						                                value="${user.user_birth }" readonly>
+						                        </div>
+											</td>
+										</tr>
+	                                    <tr>
+											<th>성별</th>
+											<td>
+												<div class="form-group">
+						                            <input type="text" class="form-control form-control-user" name="user_gender"
+						                                value="${user.user_gender }" readonly>
+						                        </div>
+											</td>
+										</tr>
+	                                </table>
+									<div class="btn-group" role="group" aria-label="Basic example">
+									  <button type="submit" class="btn btn-dark">등록</button>
+									  <button type="button" class="btn btn-light">취소</button>
+									</div>
+	                            </form>
                             </div>
                         </div>
                     </div>
