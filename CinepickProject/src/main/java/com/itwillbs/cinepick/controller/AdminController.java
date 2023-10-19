@@ -213,7 +213,7 @@ public class AdminController {
 		return "mypage/admin/update_notion";
 	}
 	
-	// 관리자 공시사항 수정
+	// 관리자 공지사항 수정
 	@PostMapping("adminNoticeUpdatePro")
 	public String adminNoticeUpdatePro(NoticeVO notice) {
 		System.out.println("AdminController - adminNoticeUpdatePro()");
