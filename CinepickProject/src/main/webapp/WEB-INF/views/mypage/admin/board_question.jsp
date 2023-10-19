@@ -137,7 +137,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="5">
+											<td colspan="4">
 												<button type="button" class="btn btn-primary" onclick="location.href='adminQNAInsert'">등록</button>&nbsp;&nbsp;
 												<button type="button" class="btn btn-primary" onclick="location.href='adminCategoryUpdate'">카테고리 관리</button>
 											</td>
@@ -150,7 +150,7 @@
 	                                            <td>${qna.qnaCateSubject }</td>
 	                                            <td>${qna.qnaTitle }</td>
 												<td>
-													<button type="button" class="btn btn-primary" onclick="updateQuestion()">수정</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminQNAUpdate?qnaIdx=${qna.qnaIdx}'">수정</button>
 													<button type="button" class="btn btn-primary">삭제</button>
 												</td>
 	                                        </tr>

@@ -206,7 +206,7 @@ public class AdminController {
 		List<QnaCateVO> categoryList = adminService.getCategory();
 		
 		model.addAttribute("categoryList", categoryList);
-		return "mypage/admin/update_question";
+		return "mypage/admin/insert_question";
 	}
 	
 	// 관리자 자주묻는 질문 등록
@@ -216,6 +216,19 @@ public class AdminController {
 		int resultCount = adminService.insertQna(qna);
 		
 		return "redirect:/adminQNAList";
+	}
+	
+	// 관리자 자주묻는 질문 수정
+	@GetMapping("adminQNAUpdate")
+	public String adminQNAUpdate(Model model, String qnaIdx) {
+		System.out.println("AdminController - adminQNAUpdate()");
+		List<QnaCateVO> categoryList = adminService.getCategory();
+		QnaVO qna = adminService.getQna(qnaIdx);
+		
+		model.addAttribute("categoryList", categoryList);
+		model.addAttribute("qna", qna);
+		
+		return "mypage/admin/update_question";
 	}
 	
 	/*====================================================================

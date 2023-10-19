@@ -64,7 +64,13 @@ public class AdminService {
 	// 자주묻는 질문 목록 조회
 	public List<QnaVO> getQnaList() {
 		System.out.println("AdminService - getQnaList()");
-		return mapper.selectQna();
+		return mapper.selectQnaList();
+	}
+
+	// 자주묻는 질문 조회
+	public QnaVO getQna(String qnaIdx) {
+		System.out.println("AdminService - getQna()");
+		return mapper.selectQnaList(qnaIdx);
 	}
 	
 	/*==============================================================

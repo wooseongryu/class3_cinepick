@@ -89,14 +89,7 @@
 										<br>
 	                                    <select class="form-select" name="qnaCategory" aria-label="Default select example" >
 									  		<c:forEach var="category" items="${categoryList }">
-												<c:choose>
-													<c:when test="${category.qnaCateIdx eq qna.qnaCategory }">
-														<option value="${category.qnaCateIdx }" selected="selected">${category.qnaCateSubject }</option>
-													</c:when>
-													<c:otherwise>
-														<option value="${category.qnaCateIdx }">${category.qnaCateSubject }</option>
-													</c:otherwise>
-												</c:choose>
+												<option value="${category.qnaCateIdx }">${category.qnaCateSubject }</option>
 											</c:forEach>
 										</select>
 								  	</div>
@@ -105,13 +98,13 @@
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">제목</label>
                                         <input type="text" name="qnaTitle" class="form-control form-control-user" id="exampleFirstName"
-                                            value="${qna.qnaTitle }">
+                                            placeholder="제목입력">
                                     </div>
                                 </div>
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="floatingTextarea">내용</label>
-									  <textarea rows="10" name="qnaContent" class="form-control form-control-textarea" id="floatingTextarea">${qna.qnaContent }</textarea>
+									  <textarea rows="10" name="qnaContent" class="form-control form-control-textarea" placeholder="내용작성" id="floatingTextarea"></textarea>
 									</div>
                                 </div>
 								<br>

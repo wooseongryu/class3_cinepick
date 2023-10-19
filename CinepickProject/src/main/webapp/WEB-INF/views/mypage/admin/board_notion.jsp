@@ -21,6 +21,11 @@
 // 	function updateNotion() {
 // 		window.open('adminNoticeUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 // 	}
+
+// $(document).ready(function(){
+// 	new DataTable('#dataTable_wrapper');
+// })
+
 </script>
 	
 
@@ -116,7 +121,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">공지사항 조회 페이지</h1>
                     <p class="mb-4">

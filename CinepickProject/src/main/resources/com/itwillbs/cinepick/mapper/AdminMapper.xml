@@ -77,7 +77,7 @@
 		)
 	</insert>
 
-	<select id="selectQna" resultType="com.itwillbs.cinepick.vo.QnaVO">
+	<select id="selectQnaList" resultType="com.itwillbs.cinepick.vo.QnaVO">
 		SELECT
 			q.qnaIdx
 			, q.qnaTitle
@@ -86,7 +86,10 @@
 			, c.qnaCateSubject 
 		FROM
 			qna q JOIN qnaCate c
-			ON q.qnaCategory = c.qnaCateIdx;
+			ON q.qnaCategory = c.qnaCateIdx
+		<if test="qnaIdx != null and !qnaIdx.equals('')">
+		WHERE q.qnaIdx = #{qnaIdx}
+		</if>
     </select>
     <!-- 자주 묻는 질문 끝 -->
 </mapper>

@@ -32,7 +32,9 @@ public interface AdminMapper {
 
 	int insertQna(QnaVO qna);
 
-	List<QnaVO> selectQna();
+	List<QnaVO> selectQnaList();
+	
+	QnaVO selectQnaList(String qnaIdx);
 	
 	/*==============================================================
 	 * 자주 묻는 질문 카테고리
