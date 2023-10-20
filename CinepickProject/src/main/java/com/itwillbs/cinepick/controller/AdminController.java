@@ -101,15 +101,8 @@ public class AdminController {
 	}
 	
 	
-	// 관리자 회원 탈퇴 페이지
-	@GetMapping("adminOut")
-	public String adminOut() {
-		System.out.println("AdminController - adminOut()");
-		return "mypage/admin/board_admin_out";
-	}
 	
-	
-	// 유저 정보 변경 처리
+	// 관리자 정보 변경 처리
 	@PostMapping("adminUpdatePro")
 	public String UpdatePro(UserVO user, Model model) {
 	
@@ -138,10 +131,70 @@ public class AdminController {
 		
 	}
 	
+	// 관리자 회원 탈퇴 페이지
+	@GetMapping("adminOut")
+	public String adminOut(UserVO user, HttpSession session, Model model) {
+		
+		String sId = (String)session.getAttribute("sId");
+		
+		// 세션 아이디가 없을 경우 "fail_back" 페이지를 통해 "잘못된 접근입니다!" 출력
+		if(sId == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "cinepick/login_join/fail_back";
+		}
+		
+		// 만약, 현재 세션이 관리자가 아니거나 또는 관리자이면서 id 파라미터가 없을 경우
+		// id 변수값을 세션 아이디로 교체
+		if(!sId.equals("admin") || (sId.equals("admin") && user.getUser_id() == null || user.getUser_id().equals(""))) {
+			user.setUser_id(sId);
+		}
+		
+		// UserService - getdeleteUser() 메서드를 호출하여 관리자 탈퇴 정보 요청
+		// => 파라미터 : UserVO 객체   리턴타입 : UserVO(deleteDbUser)
+		UserVO deleteDbUser = userService.getdeleteUser(user);
+		
+		// 관리자 상세정보를 Model 객체에 저장
+		model.addAttribute("user", deleteDbUser);
+		
+		System.out.println(user);
+		
+		return "mypage/admin/board_admin_out";
+	}
+		
+	// 회원탈퇴 처리
+	@PostMapping("adminOutPro")
+	public String adminOutPro(UserVO user, Model model) {
+		System.out.println("UserController - userOutPro");
+		
+		// 1. BcryptPasswordEncoder 클래스 인스턴스 생성
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+		// 2. BcryptPasswordEncoder 객체의 encode() 메서드를 호출하여 
+		//    원문(평문) 패스워드에 대한 해싱(= 암호화) 수행 후 결과값 저장
+		String securePasswd = passwordEncoder.encode(user.getUser_passwd());
+		
+		// 3. 암호화 된 패스워드를 UserVO 객체에 저장
+		user.setUser_passwd(securePasswd);
+		
+		//-------------------------------------
+		
+		int deleteCount = userService.deleteUser(user);
+		
+		System.out.println("UserController - userOutPro");
+		
+		if(deleteCount > 0) { // 회원탈퇴 성공
+			model.addAttribute("msg", "회원탈퇴가 되었습니다. 메인페이지로 이동합니다");
+			return "cinepick/login_join/success";
+		} else { // 회원탈퇴 성공
+			model.addAttribute("msg","회원탈퇴 실패!");
+			return "cinepick/login_join/fail_back";
+		}
+	}
+	
 	
 	
 	/*====================================================================
-	 * 3. 회원 정보 관리
+	 * 3. 관리자 회원 정보 관리 페이지
 	 * ===================================================================
 	 * */
 	
