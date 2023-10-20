@@ -4,10 +4,12 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<!-- 마이바티스에서 접근할 사용자 정의 클래스 타입에 대한 Alias(별칭) 설정 -->
-<!-- 	<typeAliases> -->
-<!-- 		<typeAlias type="com.itwillbs.mvc_board.vo.BoardVO" alias="Board"/> -->
-<!-- 		<typeAlias type="com.itwillbs.mvc_board.vo.MemberVO" alias="Member"/> -->
-<!-- 		<typeAlias type="com.itwillbs.mvc_board.vo.AuthInfoVO" alias="AuthInfo"/> -->
-<!-- 	</typeAliases> -->
+	<typeAliases>
+		<typeAlias type="com.itwillbs.cinepick.vo.UserVO" alias="User"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.AuthInfoVO" alias="AuthInfo"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.NoticeVO" alias="Notice"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.QnaVO" alias="Qna"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.QnaCateVO" alias="QnaCate"/>
+	</typeAliases>
 </configuration>
   

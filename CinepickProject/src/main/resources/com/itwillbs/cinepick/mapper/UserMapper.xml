@@ -40,23 +40,23 @@
 	</insert>
 	
 	<!-- select -->
-	<select id="selectUser" resultType="com.itwillbs.cinepick.vo.UserVO">
+	<select id="selectUser" resultType="User">
 		SELECT * FROM user WHERE user_id = #{user_id}
 	</select>
 
-	<select id="selectUserList" resultType="com.itwillbs.cinepick.vo.UserVO">
+	<select id="selectUserList" resultType="User">
 		SELECT * FROM user
 	</select>
 
 	<!-- 전달받은 아이디(id)에 해당하는 auth_info 테이블의 레코드 조회 -->
-	<select id="selectAuthInfo" resultType="com.itwillbs.cinepick.vo.AuthInfoVO">
+	<select id="selectAuthInfo" resultType="AuthInfo">
 		SELECT *
 		FROM auth_info
 		WHERE auth_id = #{id}
 	</select>
 
 
-	<select id="checkUser" resultType="com.itwillbs.cinepick.vo.UserVO">
+	<select id="checkUser" resultType="User">
 		SELECT * 
 		  FROM user 
 		 WHERE user_email = #{user_email} 

@@ -15,7 +15,7 @@
 		)
 	</insert>
 	
-	<select id="selectNotice" resultType="com.itwillbs.cinepick.vo.NoticeVO">
+	<select id="selectNotice" resultType="Notice">
         SELECT
 			noticeIdx
 			, noticeTitle
@@ -52,7 +52,7 @@
 		)
 	</insert>
 
-	<select id="selectQna" resultType="com.itwillbs.cinepick.vo.QnaVO">
+	<select id="selectQna" resultType="Qna">
 		SELECT
 			q.qnaIdx
 			, q.qnaTitle
@@ -86,7 +86,7 @@
 		)
 	</insert>
 
-	<select id="selectCategory" resultType="com.itwillbs.cinepick.vo.QnaCateVO">
+	<select id="selectCategory" resultType="QnaCate">
           SELECT 
           	qnaCateIdx 
           	, qnaCateSubject
