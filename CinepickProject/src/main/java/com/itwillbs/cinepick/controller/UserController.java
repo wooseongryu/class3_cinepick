@@ -19,7 +19,6 @@ public class UserController {
 	private UserService service;
 	
 	
-	
 	// 유저 마이페이지 메인
 	@GetMapping("user")
 	public String user() {
