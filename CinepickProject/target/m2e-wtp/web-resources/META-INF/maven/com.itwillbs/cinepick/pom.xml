@@ -124,7 +124,30 @@
 		    <version>3.13.0</version>
 		</dependency>
 				
+		<!-- 9. 파일 처리(업로드 등) 라이브러리(commons-io, commons-fileupload) -->
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.14.0</version>
+		</dependency>
+				
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.5</version>
+		</dependency>
 		
+		<!-- 10. SQL 로그 확인을 위한 Log4jdbc(log4j2) 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1 -->
+		<dependency>
+		    <groupId>org.bgee.log4jdbc-log4j2</groupId>
+		    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+		    <version>1.16</version>
+		</dependency>
+				
+				
 				
 		<!-- AspectJ -->
 		<dependency>
