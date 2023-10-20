@@ -105,8 +105,20 @@ public class UserService {
 	public int updateUser(UserVO user) {
 		return mapper.updateUser(user);
 	}
-
 	
+	
+	// 탈퇴 회원 조회 요청
+	public UserVO getdeleteUser(UserVO user) {
+		return mapper.selectUser(user);
+	}
+
+	// 회원 탈퇴 요청
+	public int deleteUser(UserVO user) {
+		return mapper.deleteUser(user);
+		
+	}
+
+
 	
 }
 

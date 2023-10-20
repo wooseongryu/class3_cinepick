@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%-- JSTL 에서 제공하는 각종 함수 라이브러리 : functions --%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,24 +14,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- 개인 수정 (성윤) -->
-    <link href="${pageContext.request.contextPath }/resources/mypage/css/user_out.css" rel="stylesheet">
+	 <!-- 회원 탈퇴 css -->
+    <link href="${pageContext.request.contextPath }/resources/mypage/css/member_out.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
 
-	<header>
+    <header>
 		<jsp:include page="../../cinepick/include/main_top.jsp"></jsp:include>
 	</header>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <jsp:include page="user_sidebar.jsp"></jsp:include>
+		<!-- Sidebar -->
+		<jsp:include page="user_sidebar.jsp"></jsp:include>
         <!-- End of Sidebar -->
-        
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -108,77 +111,49 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">회원 탈퇴</h1>
+                    <h1 class="h3 mb-2 text-gray-800">회원탈퇴</h1>
+                    <p class="mb-4">회원탈퇴를 원하신다면 비밀번호를 입력해주세요</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                    	<div id="contents">
-
-							<div class="user-out mt10">
-								<ol>
-									<li>
-										<p class="txt">회원님의 비밀번호를 입력하시고 [탈퇴] 버튼을 클릭해주세요.</p>
-						
-										<div class="table-wrap">
-											<table class="board-form">
-												<colgroup>
-													<col style="width:180px;">
-													<col>
-												</colgroup>
-												<tbody>
-													<tr>
-														<th scope="row">
-															<label for="pwd_chk">비밀번호</label>
-														</th>
-														<td>
-															<input type="password" class="input-text w160px" id="pwd" />
-														</td>
-													</tr>
-													<input id="ibxSchPwdLoginId" type="hidden" value="#테스트"><!--아이디-->
-													<input id="ibxSchPwdMbNm" type="hidden" value="#테스트"><!--이름-->
-		<!-- 											<tr> -->
-		<!-- 												<th scope="row"><label for="ibxSchPwdMblpTelno">휴대폰 번호휴대폰 번호</label></th> -->
-		<!-- 												<td> -->
-		<!-- 													<input type="text" id="ibxSchPwdMblpTelno" maxlength="11" placeholder="'-' 없이 입력" class="input-text w230px">'-' 없이 입력 -->
-		<!-- 													<button id="btnSchPwdMbCertNoSend" type="button" class="button gray w100px ml08" disabled="disabled">인증요청인증요청</button> -->
-		<!-- 												</td> -->
-		<!-- 											</tr> -->
-		<!-- 											<tr id="schPwdMblpCertRow"> -->
-		<!-- 												<th scope="row"><label for="ibxSchPwdMblpCharCertNo">인증번호인증번호</label></th> -->
-		<!-- 												<td> -->
-		<!-- 													<div class="chk-num"> -->
-		<!-- 														<div class="line"> -->
-		<!-- 															<input maxlength="4" type="text" id="ibxSchPwdMblpCharCertNo" class="input-text w180px" title="인증번호 입력" />인증번호 입력 -->
-		<!-- 														</div> -->
-		<!-- 													</div> -->
-						
-		<!-- 													<button id="btnSchPwdMblpCharCert" type="button" class="button gray-line w100px ml08">인증확인인증확인</button> -->
-		<!-- 													<div id="schPwdMblpNo-error-text" class="alert"></div> -->
-		<!-- 												</td> -->
-		<!-- 											</tr> -->
-												</tbody>
-											</table>
-										</div>
-										<div class="btn-group" role="group" aria-label="Basic example">
-											<button type="button" class="btn btn-light">취소</button>
-											<button type="button" class="btn btn-dark">등록</button>
-										</div>
-									</li>
-								</ol>
-							</div>
-	
-	                    
-	                    </div>
-
-					</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+								<form class="user" action="userOutPro" method="post">
+	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+	                                	<tr>
+											<th>아이디</th>
+											<td>
+												<div class="form-group">
+						                            <input type="text" class="form-control form-control-user" name="user_id" id="user_id"
+						                               value="${user.user_id }" readOnly>
+						                        </div>
+											</td>
+										</tr>
+	                                     <tr>
+											<th>비밀번호</th>
+											<td>
+												<div class="form-group">
+						                            <input type="password" class="form-control form-control-user" name="user_passwd" id="user_passwd"
+						                                placeholder="비밀번호 4 ~ 16글자 사이 입력">
+						                        </div>
+											</td>
+										</tr>
+	                                </table>
+									<div class="btn-group" role="group" aria-label="Basic example">
+									  <button type="submit" class="btn btn-dark">회원탈퇴</button>
+									  <button type="button" class="btn btn-light" onclick="history.back()">돌아가기</button>
+									</div>
+	                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- /.container-fluid -->
 
-				</div>
+            </div>
             <!-- End of Main Content -->
-            
-			</div>
-		</div>
-    
+        </div>
+        <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
     
@@ -191,6 +166,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+ 
 </body>
 
 </html>

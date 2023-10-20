@@ -64,7 +64,7 @@ public class LoginJoinController {
 			return "cinepick/login_join/fail_back";
 		}
 	}	
-	// "/MemberJoinSuccess" 요청에 대해 "member/member_join_success.jsp" 페이지 포워딩
+	// "/UserJoinSuccess" 요청에 대해 "member/member_join_success.jsp" 페이지 포워딩
 	@GetMapping("/UserJoinSuccess")
 	public String JoinSuccess() {
 		return "cinepick/login_join/success";

@@ -109,6 +109,27 @@
 			$("#checkPasswdResult2").css("color", color);
 		});
 		
+		// 4. 휴대폰번호 11자리 입력 
+		$("#user_phone").keyup(function() {
+			if($("#user_phone").val().length == 11) {
+				$("#user_birth").focus();
+			}
+		});
+
+		// 5. 생년월일 6자리 입력 
+		$("#user_birth").keyup(function() {
+			if($("#user_birth").val().length == 6) {
+				$("#user_gender").focus();
+			}
+		});
+
+		// 6. 성별 1자리 입력후 블러처리
+		$("#user_gender").keyup(function() {
+			if($("#user_gender").val().length == 1) {
+				$("#user_gender").blur();
+			}
+		});
+		
 		
 	}); // document.ready 이벤트 끝
 </script>
@@ -172,15 +193,15 @@
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="user_phone" placeholder="휴대폰 번호">
+                                <input type="text" name="user_phone" id="user_phone" placeholder="휴대폰 번호('-'을 제외)">
                                 <span class="icon_phone"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="user_birth" id="user_birth" placeholder="생년월일">
+                                <input type="text" name="user_birth" id="user_birth" placeholder="생년월일(6자리입력)">
                                 <span class="icon_calendar"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="user_gender" placeholder="성별">
+                                <input type="text" name="user_gender" id="user_gender" placeholder="성별(남자 : M 또는 여자 : F 입력)">
                                 <span class="icon_profile"></span>
                             </div>
                             <button type="submit" class="site-btn">회원가입</button>

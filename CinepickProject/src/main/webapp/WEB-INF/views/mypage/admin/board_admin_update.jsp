@@ -121,7 +121,7 @@
 <!--                         </div> -->
                         <div class="card-body">
                             <div class="table-responsive">
-								<form class="user" action="UpdatePro" method="post">
+								<form class="user" action="adminUpdatePro" method="post">
 	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 	                                    <tr>
 											<th>이름</th>

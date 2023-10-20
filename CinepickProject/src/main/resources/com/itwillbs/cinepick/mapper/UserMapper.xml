@@ -106,6 +106,13 @@
 		DELETE FROM auth_info
 		WHERE auth_id = #{id}
 	</delete>
+
+
+	<!-- 회원 탈퇴-->
+	<delete id="deleteUser">
+		DELETE FROM user
+		WHERE user_id = #{user_id}
+	</delete>
 </mapper>
 
 

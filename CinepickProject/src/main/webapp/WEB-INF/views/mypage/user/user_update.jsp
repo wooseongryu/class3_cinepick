@@ -197,8 +197,8 @@
 										</tr>
 	                                </table>
 									<div class="btn-group" role="group" aria-label="Basic example">
-									  <button type="submit" class="btn btn-dark">등록</button>
-									  <button type="button" class="btn btn-light">취소</button>
+									  <button type="submit" class="btn btn-dark">정보변경</button>
+									  <button type="button" class="btn btn-light" onclick="history.back()">돌아가기</button>
 									</div>
 	                            </form>
                             </div>

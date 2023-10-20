@@ -59,6 +59,10 @@ public interface UserMapper {
 	
 	// 회원 정보 변경
 	int updateUser(UserVO user);
+
+	
+	// 회원 탈퇴 요청
+	int deleteUser(UserVO user);
 	
 }
 
