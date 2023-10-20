@@ -1,9 +1,12 @@
 package com.itwillbs.cinepick.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -215,6 +218,7 @@ public class AdminController {
 	 * */
 	
 	// 관리자 영화 정보 목록
+
 	@GetMapping("adminMovieList")
 	public String adminMovieList() {
 		System.out.println("AdminController - adminMovieList()");
@@ -225,8 +229,25 @@ public class AdminController {
 	@GetMapping("adminMovieInsert")
 	public String adminMovieInsert() {
 		System.out.println("AdminController - adminMovieInsert()");
-		return "mypage/admin/update_movie";
+		return "mypage/admin/practice";
 	}
+	// 관리자 영화 정보 등록 폼
+	@PostMapping("adminMovieInsert2")
+	public String adminMovieInsert2(String movieList) {
+		System.out.println(movieList);
+		JSONArray ja = new JSONArray(movieList);
+		
+		System.out.println(ja.toString());
+		for(int i = 0; i < ja.length(); i++) {
+			JSONObject jo = new JSONObject(ja.get(i).toString());
+			System.out.println(jo.toString());
+			Map<String, Object> map = jo.toMap(); 
+			
+			//db로 넣기 작업
+		}
+			System.out.println("AdminController - adminMovieInsert2()");
+			return "mypage/admin/update_movie";
+		}
 	
 	/*====================================================================
 	 * 5. 상영 시간표
