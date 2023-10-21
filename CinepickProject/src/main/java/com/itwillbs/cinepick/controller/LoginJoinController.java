@@ -61,7 +61,7 @@ public class LoginJoinController {
 			return "cinepick/login_join/success";
 		} else { // 실패
 			model.addAttribute("msg", "회원가입 실패!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
 	}	
 	// "/UserJoinSuccess" 요청에 대해 "member/member_join_success.jsp" 페이지 포워딩
