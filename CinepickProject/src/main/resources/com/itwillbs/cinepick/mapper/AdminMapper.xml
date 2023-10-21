@@ -98,4 +98,30 @@
     	WHERE qnaCateIdx = #{qnaCateIdx}
     </delete>
     <!-- 자주 묻는 질문 카테고리 끝 -->
+    
+    <!-- 이벤트 -->
+    <insert id="insertEvent">
+    	INSERT INTO event
+    	VALUES (
+    		null
+			, #{event_title}
+			, #{event_startDt}
+			, #{event_endDt}
+			, #{event_poster}
+    	)
+    </insert>
+    
+    <select id="selectEvent" resultType="Event">
+    	SELECT
+    		event_idx
+			, event_title
+			, event_startDt
+			, event_endDt
+			, event_poster
+    	FROM event
+    	<if test="event_idx != null and !event_idx.equals('')">
+		WHERE event_idx = #{event_idx}
+		</if>
+    </select>
+    <!-- 이벤트 끝 -->
 </mapper>

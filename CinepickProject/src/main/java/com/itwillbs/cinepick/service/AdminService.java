@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.AdminMapper;
+import com.itwillbs.cinepick.vo.EventVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
@@ -63,6 +64,12 @@ public class AdminService {
 		return mapper.selectQna(qnaIdx);
 	}
 	
+	// 자주묻는 질문 수정 
+	public int updateQna(QnaVO qna) {
+		System.out.println("AdminService - updateQna()");
+		return mapper.updateQna(qna);
+	}
+	
 	/*==============================================================
 	 * 자주 묻는 질문 카테고리
 	 * =============================================================
@@ -85,10 +92,23 @@ public class AdminService {
 		System.out.println("AdminService - deleteCategory()");
 		return mapper.deleteCategory(qnaCateIdx);
 	}
+	
+	/*==============================================================
+	 * 이벤트
+	 * =============================================================
+	 * */
 
-	public int updateQna(QnaVO qna) {
-		System.out.println("AdminService - updateQna()");
-		return mapper.updateQna(qna);
+	// 이벤트 등록
+	public int insertEvent(EventVO event) {
+		System.out.println("AdminService - insertEvent()");
+		return mapper.insertEvent(event);
+	}
+
+	// 이벤트 조회
+	// event_idx를 널스트링으로 전달 시 전체 질문 조회
+	public List<EventVO> selectEvent(String event_idx) {
+		System.out.println("AdminService - selectEvent()");
+		return mapper.selectEvent(event_idx);
 	}
 
 }

@@ -1,7 +1,18 @@
 package com.itwillbs.cinepick.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,9 +24,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
+import com.itwillbs.cinepick.vo.EventVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
@@ -442,10 +455,35 @@ public class AdminController {
 	 * ===================================================================
 	 * */
 	
-	// 관리자 이벤트 조회 페이지
+	// 관리자 이벤트 목록 조회 페이지
 	@GetMapping("adminEventList")
-	public String adminEventList() {
+	public String adminEventList(EventVO event, Model model) {
 		System.out.println("AdminController - adminEventList()");
+		List<EventVO> eventList = adminService.selectEvent("");
+		
+		LocalDate now = LocalDate.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formatedNow = now.format(dtf);
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+			Date nowDate = formatter.parse(formatedNow);
+
+			for (EventVO e : eventList) {
+				Date eventEndDate = formatter.parse(e.getEvent_endDt());
+				if (eventEndDate.compareTo(nowDate) < 0) {
+					e.setEvent_status("종료");
+				} else {
+					e.setEvent_status("진행중");
+				}
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("eventList", eventList);
+		
 		return "mypage/admin/board_event";
 	}
 	
@@ -453,6 +491,61 @@ public class AdminController {
 	@GetMapping("adminEventInsert")
 	public String adminEventInsert() {
 		System.out.println("AdminController - adminEventInsert()");
-		return "mypage/admin/update_event";
+		return "mypage/admin/insert_event";
+	}
+	
+	// 관리자 이벤트 등록
+	@PostMapping("adminEventInsertPro")
+	public String adminEventInsertPro(EventVO event, HttpSession session, Model model) {
+		System.out.println("AdminController - adminEventInsertPro()");
+		
+		String uploadDir = "/resources/upload"; // 가상의 경로
+		String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로
+		String subDir = ""; // 서브디렉토리명을 저장할 변수 선언(날짜로 구분)
+		
+		try {
+			LocalDate now = LocalDate.now();
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+			subDir = now.format(dtf);
+			saveDir += "/" + subDir;
+			Path path = Paths.get(saveDir);
+			Files.createDirectories(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		MultipartFile mFile = event.getEvent_poster_multi();
+		String uuid = UUID.randomUUID().toString();
+		event.setEvent_poster("");
+		String fileName = uuid.substring(0, 8) + "_" + mFile.getOriginalFilename();
+		
+		if(!mFile.getOriginalFilename().equals("")) {
+			event.setEvent_poster(subDir + "/" + fileName);
+		}
+		
+		int insertCount = adminService.insertEvent(event);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
+		
+		try {
+			if(!mFile.getOriginalFilename().equals("")) {
+				mFile.transferTo(new File(saveDir, fileName));
+			}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/adminEventList";
+	}
+	
+	// 관리자 이벤트 수정
+	@GetMapping("adminEventUpdate")
+	public String adminEventUpdate() {
+		return "";
 	}
 }

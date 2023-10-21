@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,14 +14,7 @@
     <meta name="author" content="">
 
 <script>
-	// 팝업창 띄우기
-	var popupWidth = 1000;
-	var popupHeight = 800;
-	var popupX = (window.screen.width / 2) - (popupWidth / 2);
-	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-	function updateEvent() {
-		window.open('adminEventInsert','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-	}
+
 </script>
 	
 
@@ -133,24 +128,29 @@
                                             <th>제목</th>
                                             <th>이벤트 기간</th>
                                             <th>상태구분</th>
-                                            <th>작성자</th>
                                             <th>수정 및 삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="6"><button type="button" class="btn btn-primary" onclick="updateEvent()">등록</button>&nbsp;&nbsp;<button type="button" class="btn btn-primary">삭제</button></td>
+											<td colspan="5">
+												<button type="button" class="btn btn-primary" onclick="location.href='adminEventInsert'">등록</button>&nbsp;&nbsp;
+											</td>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1번째 이벤트입니다</td>
-                                            <td>2023-06-20 ~ 2023-10-06</td>
-                                            <td>종료</td>
-                                            <td>이승철</td>
-											<td><button type="button" class="btn btn-primary" onclick="updateEvent()">수정</button>
-                                        </tr>
+                                    	<c:forEach var="event" items="${eventList }">
+	                                        <tr>
+	                                            <td>${event.event_idx }</td>
+	                                            <td>${event.event_title }</td>
+	                                            <td>${event.event_startDt } ~ ${event.event_endDt }</td>
+	                                            <td>${event.event_status }</td>
+												<td>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminEventUpdate'">수정</button>
+													<button type="button" class="btn btn-primary">삭제</button>
+												</td>
+	                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
