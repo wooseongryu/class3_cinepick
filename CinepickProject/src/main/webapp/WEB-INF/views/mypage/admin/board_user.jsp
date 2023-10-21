@@ -122,23 +122,35 @@
                                             <th>회원번호</th>
                                             <th>회원닉네임</th>
                                             <th>이름</th>
-                                            <th>나이</th>
-                                            <th>성별</th>
+                                            <th>가입일</th>
+                                            <th>관리자유무</th>
+                                            <th>관리자권한관리</th>
+                                            <th>삭제</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                         <tr>
-											<td colspan="5"><button type="button" class="btn btn-primary">삭제</button></td>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                        <c:forEach var="user" items="${userList }">
 											<tr>
 												<td>${user.user_idx }</td>
 												<td>${user.user_id }</td>
 												<td>${user.user_name }</td>
-												<td>${user.user_birth}</td>
-												<td>${user.user_gender}</td>
+												<td>${user.hire_date}</td>
+												<td>${user.user_is_admin}</td>
+												<td>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminUserAuthorize?user_idx=${user.user_idx }'">
+														<c:choose>
+															<c:when test="${user.user_is_admin eq 'N' }">
+																관리자 권한 부여
+															</c:when>
+															<c:otherwise>
+																관리자 권한 해제
+															</c:otherwise>
+														</c:choose>
+													</button>
+												</td>
+												<td>
+													<button type="button" class="btn btn-primary">삭제</button>
+												</td>
 											</tr>
 										</c:forEach>
                                     </tbody>

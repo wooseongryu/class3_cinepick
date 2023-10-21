@@ -11,12 +11,24 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.UserVO;
 
 @Service
 public class AdminService {
 	
 	@Autowired
 	private AdminMapper mapper;
+	
+	/*====================================================================
+	 * 관리자 회원 정보 관리 페이지
+	 * ===================================================================
+	 * */
+	
+	// 관리자 권한 부여/해제
+	public int updateUserAuthorize(UserVO user) {
+		System.out.println("AdminService - updateUserAuthorize()");
+		return mapper.updateUserAuthorize(user);
+	}
 	
 	/*==============================================================
 	 * 공지 
@@ -141,5 +153,6 @@ public class AdminService {
 		System.out.println("AdminService - deleteEvent(event_idx)");
 		return mapper.deleteEvent(event_idx);
 	}
+
 
 }

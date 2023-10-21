@@ -222,8 +222,17 @@ public class AdminController {
 		System.out.println("AdminController - adminUserList()");
 		// Model 객체에 List 객체 저장
 		model.addAttribute("userList", userList);
-		System.out.println(userList);
+		
 		return "mypage/admin/board_user";
+	}
+	
+	// 관리자 권한 부여/해제
+	@GetMapping("adminUserAuthorize")
+	public String adminUserAuthorize(UserVO user) {
+		System.out.println("AdminController - adminUserAuthorize()");
+		int updateCount = adminService.updateUserAuthorize(user);
+		
+		return "redirect:/adminUserList";
 	}
 	
 	/*====================================================================

@@ -9,9 +9,17 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.UserVO;
 
 @Mapper
 public interface AdminMapper {
+	
+	/*====================================================================
+	 * 관리자 회원 정보 관리 페이지
+	 * ===================================================================
+	 * */
+	
+	int updateUserAuthorize(UserVO user);
 
 	/*==============================================================
 	 * 공지 
