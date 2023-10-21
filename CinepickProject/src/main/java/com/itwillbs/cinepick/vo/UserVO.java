@@ -30,6 +30,7 @@ public class UserVO {
 	private String user_birth;
 	private String user_gender;
 	private Date hire_date;
+	private String user_is_admin;
 	private String mail_auth_status; // 이메일 인증 여부("Y" : 인증, "N" : 미인증)
 }
 
