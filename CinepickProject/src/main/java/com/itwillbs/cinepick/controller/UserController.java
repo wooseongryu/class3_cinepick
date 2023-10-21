@@ -293,63 +293,6 @@ public class UserController {
 		}
 	}	
 	
-	// 1:1 문의 답변 폼
-	@GetMapping("userMyQuestioAnswer")
-	public String userMyQuestioAnswer(UserVO user, HttpSession session, Model model) {
-		String sId = (String)session.getAttribute("sId");
-		
-		// 만약, 현재 세션이 관리자가 아니거나 또는 관리자이면서 id 파라미터가 없을 경우
-		// id 변수값을 세션 아이디로 교체
-		if(!sId.equals("admin") || (sId.equals("admin") && user.getUser_id() == null || user.getUser_id().equals(""))) {
-			user.setUser_id(sId);
-		}
-
-		// 세션 아이디가 admin이 일 경우 답변폼으로
-		if(sId.equals("admin")) {
-			return "mypage/user/answer_myQuestion";
-		}
-		
-		model.addAttribute("msg", "관리자만 답변 가능합니다!");
-		return "fail_back";
-		
-	}
-	
-	
-	
-	// 1:1 문의 답변 처리
-	@PostMapping("userMyQuestioAnswerPro")
-	public String userMyQuestioAnswerPro(MyQuestionVO myQuestion, Model model) {
-		
-		int updateCount = service.updateMyQuestion(myQuestion);
-		
-		if(updateCount > 0) { // 성공
-			return "redirect:/userMyQuestionList";
-		} else { // 실패
-			model.addAttribute("msg", "1:1문의 답변 실패!");
-			return "fail_back";
-		}
-		
-	}
-	
-	
-	
-	// 1:1 문의 삭제
-	@GetMapping("userMyQuestioDelete")
-	public String MyQuestioDelete(MyQuestionVO myQuestion ,Model model) {
-		
-		int deleteCount = service.deleteMyQuestion(myQuestion);
-		
-		System.out.println("UserController - MyQuestioDelete");
-		
-		if(deleteCount > 0) { // 1:1문의 삭제 성공
-			return "redirect:/userMyQuestionList";
-		} else { // 1:1문의 삭제 실패
-			model.addAttribute("msg","1:1문의 삭제 실패!");
-			return "fail_back";
-		}
-		
-	}
-	
 	
 	
 	/*====================================================================

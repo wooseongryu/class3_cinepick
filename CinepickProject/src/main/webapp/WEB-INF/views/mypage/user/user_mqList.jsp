@@ -142,12 +142,11 @@
                                             <th>답변내용</th>
                                             <th>답변여부</th>
                                             <th>작성일</th>
-                                            <th>수정 및 삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="8">
+											<td colspan="7">
 												<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioInsert'">등록</button>&nbsp;&nbsp;
 											</td>
                                         </tr>
@@ -162,10 +161,6 @@
 	                                            <td>${myQuestion.myQuestion_status }</td>
 	                                            <td>${myQuestion.myQuestion_answer }</td>
 	                                            <td>${myQuestion.myQuestion_date }</td>
-												<td>
-													<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioDelete?myQuestion_num=${myQuestion.myQuestion_num }'">삭제</button>
-													<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioAnswer?myQuestion_num=${myQuestion.myQuestion_num }'">답변 임시버튼</button>
-												</td>
 	                                        </tr>
                                         </c:forEach>
                                     </tbody>

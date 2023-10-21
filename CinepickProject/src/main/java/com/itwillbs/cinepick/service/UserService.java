@@ -134,16 +134,6 @@ public class UserService {
 		return mapper.insertMyQuestion(myQuestion);
 	}
 
-	// 회원 1:1 문의 삭제
-	public int deleteMyQuestion(MyQuestionVO myQuestion) {
-		return mapper.deletMyQuestion(myQuestion);
-	}
-
-	
-	// 회원 1:1문의 답변
-	public int updateMyQuestion(MyQuestionVO myQuestion) {
-		return mapper.updateMyQuestion(myQuestion);
-	}
 
 
 	
