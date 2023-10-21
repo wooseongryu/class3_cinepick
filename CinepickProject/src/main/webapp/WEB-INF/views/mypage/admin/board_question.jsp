@@ -151,7 +151,7 @@
 	                                            <td>${qna.qnaTitle }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="location.href='adminQNAUpdate?qnaIdx=${qna.qnaIdx}'">수정</button>
-													<button type="button" class="btn btn-primary">삭제</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminQNADelete?qnaIdx=${qna.qnaIdx}'">삭제</button>
 												</td>
 	                                        </tr>
                                         </c:forEach>

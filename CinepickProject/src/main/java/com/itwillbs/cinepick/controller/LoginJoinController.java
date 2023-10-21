@@ -126,7 +126,7 @@ public class LoginJoinController {
 			} else { // 이메일 인증 회원
 				// 세션 객체에 로그인 성공한 아이디를 "sId" 속성명으로 저장
 				session.setAttribute("sId", user.getUser_id());
-				session.setAttribute("isAdmin", user.getUser_is_admin());
+				session.setAttribute("isAdmin", dbUser.getUser_is_admin());
 				
 				System.out.println("성공적으로 로그인하였습니다 메인페이지로 이동합니다");
 			}

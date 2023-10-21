@@ -92,6 +92,11 @@
 			, qnaCategory = #{qnaCategory}
 		WHERE qnaIdx = #{qnaIdx}
     </update>
+    
+    <delete id="deleteQna">
+    	DELETE FROM qna
+    	WHERE qnaIdx = #{qnaIdx}
+    </delete>
     <!-- 자주 묻는 질문 끝 -->
 
     <!-- 자주 묻는 질문 카테고리 -->

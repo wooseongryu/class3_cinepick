@@ -67,8 +67,17 @@ public class AdminController {
 	
 	// 관리자 마이 페이지
 	@GetMapping("admin")
-	public String admin() {
+	public String admin(HttpSession session, Model model) {
 		System.out.println("AdminController - admin()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		return "mypage/admin/admin_mypage";
 	}
 	
@@ -81,9 +90,15 @@ public class AdminController {
 	// 관리자 로그아웃
 	// "/userLogout" 요청에 대한 로그아웃 비즈니스 로직
 	@GetMapping("adminLogout")
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session, Model model) {
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 		session.invalidate();
-		System.out.println("관리자 로그아웃 성공 - 메인페이지로 이동합니다");
 		
 		// 메인페이지로 리다이렉트
 		return "redirect:/";
@@ -93,18 +108,14 @@ public class AdminController {
 	@GetMapping("adminUpdate")
 	public String userUpdate(UserVO user, HttpSession session, Model model) {
 		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
 		
-		// 세션 아이디가 없을 경우 "fail_back" 페이지를 통해 "잘못된 접근입니다!" 출력
-		if(sId == null) {
+		if(sId == null || isAdmin.equals("N")) {
 			model.addAttribute("msg", "잘못된 접근입니다!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
 		
-		// 만약, 현재 세션이 관리자가 아니거나 또는 관리자이면서 id 파라미터가 없을 경우
-		// id 변수값을 세션 아이디로 교체
-		if(!sId.equals("admin") || (sId.equals("admin") && user.getUser_id() == null || user.getUser_id().equals(""))) {
-			user.setUser_id(sId);
-		}
+		user.setUser_id(sId);
 		
 		// UserService - getUser() 메서드를 호출하여 회원 상세정보 조회 요청
 		// => 파라미터 : UserVO 객체   리턴타입 : UserVO(dbUser)
@@ -140,10 +151,11 @@ public class AdminController {
 		
 		if(updateCount > 0) { // 성공
 			model.addAttribute("msg", "관리자정보변경 성공!");
-			return "cinepick/login_join/success";
+			model.addAttribute("targetURL", "admin");
+			return "forward";
 		} else { // 실패
 			model.addAttribute("msg", "관리자정보변경 실패!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
 		
 	}
@@ -151,20 +163,15 @@ public class AdminController {
 	// 관리자 회원 탈퇴 페이지
 	@GetMapping("adminOut")
 	public String adminOut(UserVO user, HttpSession session, Model model) {
-		
 		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
 		
-		// 세션 아이디가 없을 경우 "fail_back" 페이지를 통해 "잘못된 접근입니다!" 출력
-		if(sId == null) {
+		if(sId == null || isAdmin.equals("N")) {
 			model.addAttribute("msg", "잘못된 접근입니다!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
-		
-		// 만약, 현재 세션이 관리자가 아니거나 또는 관리자이면서 id 파라미터가 없을 경우
-		// id 변수값을 세션 아이디로 교체
-		if(!sId.equals("admin") || (sId.equals("admin") && user.getUser_id() == null || user.getUser_id().equals(""))) {
-			user.setUser_id(sId);
-		}
+
+		user.setUser_id(sId);
 		
 		// UserService - getdeleteUser() 메서드를 호출하여 관리자 탈퇴 정보 요청
 		// => 파라미터 : UserVO 객체   리턴타입 : UserVO(deleteDbUser)
@@ -201,10 +208,11 @@ public class AdminController {
 		
 		if(deleteCount > 0) { // 회원탈퇴 성공
 			model.addAttribute("msg", "회원탈퇴가 되었습니다. 메인페이지로 이동합니다");
-			return "cinepick/login_join/success";
-		} else { // 회원탈퇴 성공
+			model.addAttribute("targetURL", "./");
+			return "forward";
+		} else {
 			model.addAttribute("msg","회원탈퇴 실패!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
 	}
 	
@@ -217,9 +225,18 @@ public class AdminController {
 	
 	// 관리자 회원정보 관리 페이지
 	@GetMapping("adminUserList")
-	public String adminUserList(Model model) {
-		List<UserVO> userList = userService.getUserList();
+	public String adminUserList(Model model, HttpSession session) {
 		System.out.println("AdminController - adminUserList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		List<UserVO> userList = userService.getUserList();
 		// Model 객체에 List 객체 저장
 		model.addAttribute("userList", userList);
 		
@@ -228,9 +245,23 @@ public class AdminController {
 	
 	// 관리자 권한 부여/해제
 	@GetMapping("adminUserAuthorize")
-	public String adminUserAuthorize(UserVO user) {
+	public String adminUserAuthorize(UserVO user, HttpSession session, Model model) {
 		System.out.println("AdminController - adminUserAuthorize()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		int updateCount = adminService.updateUserAuthorize(user);
+		
+		if (updateCount == 0) {
+			model.addAttribute("msg", "권한 부여 실패!");
+			return "fail_back";
+		}
 		
 		return "redirect:/adminUserList";
 	}
@@ -298,8 +329,17 @@ public class AdminController {
 	
 	// 관리자 공지사항 조회 페이지
 	@GetMapping("adminNoticeList")
-	public String adminNoticeList(Model model) {
+	public String adminNoticeList(Model model, HttpSession session) {
 		System.out.println("AdminController - adminNoticeList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		List<NoticeVO> noticeList = adminService.getNotice("");
 		model.addAttribute("noticeList", noticeList);
 		
@@ -308,33 +348,70 @@ public class AdminController {
 	
 	// 관리자 공지사항 등록 폼
 	@GetMapping("adminNoticeInsert")
-	public String adminNoticeInsert() {
+	public String adminNoticeInsert(HttpSession session, Model model) {
 		System.out.println("AdminController - adminNoticeInsert()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		return "mypage/admin/insert_notion";
 	}
 	
 	// 관리자 공지사항 등록
 	@PostMapping("adminNoticeInsertPro")
-	public String adminNoticeInsertPro(NoticeVO notice) {
+	public String adminNoticeInsertPro(NoticeVO notice, Model model) {
 		System.out.println("AdminController - adminNoticeInsertPro()");
 		int insertCount = adminService.insertNotice(notice);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
 		
 		return "redirect:/adminNoticeList";
 	}
 	
 	// 관리자 공지사항 삭제
 	@GetMapping("adminNoticeDelete")
-	public String adminNoticeDelete(int noticeIdx) {
+	public String adminNoticeDelete(int noticeIdx, Model model, HttpSession session) {
 		System.out.println("AdminController - adminNoticeDelete()");
-		int resultCount = adminService.deleteNotice(noticeIdx);
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		int deleteCount = adminService.deleteNotice(noticeIdx);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
 		
 		return "redirect:/adminNoticeList";
 	}
 	
 	// 관리자 공지사항 수정 폼
 	@GetMapping("adminNoticeUpdate")
-	public String adminNoticeUpdate(String noticeIdx, Model model) {
+	public String adminNoticeUpdate(String noticeIdx, Model model, HttpSession session) {
 		System.out.println("AdminController - adminNoticeUpdate()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		NoticeVO notice = adminService.getNotice(noticeIdx).get(0);
 		model.addAttribute("notice", notice);
 		
@@ -343,9 +420,14 @@ public class AdminController {
 	
 	// 관리자 공지사항 수정
 	@PostMapping("adminNoticeUpdatePro")
-	public String adminNoticeUpdatePro(NoticeVO notice) {
+	public String adminNoticeUpdatePro(NoticeVO notice, Model model) {
 		System.out.println("AdminController - adminNoticeUpdatePro()");
-		int insertCount = adminService.updateNotice(notice);
+		int updateCount = adminService.updateNotice(notice);
+		
+		if (updateCount == 0) {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
 		
 		return "redirect:/adminNoticeList";
 	}
@@ -357,8 +439,17 @@ public class AdminController {
 	
 	// 관리자 자주 묻는 질문 조회 페이지
 	@GetMapping("adminQNAList")
-	public String adminQNAList(Model model) {
+	public String adminQNAList(Model model, HttpSession session) {
 		System.out.println("AdminController - adminQNAList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		List<QnaVO> qnaList = adminService.getQna("");
 		model.addAttribute("qnaList", qnaList);
 		
@@ -367,8 +458,17 @@ public class AdminController {
 	
 	// 관리자 자주 묻는 질문 등록 폼
 	@GetMapping("adminQNAInsert")
-	public String adminQNAInsert(Model model) {
+	public String adminQNAInsert(Model model, HttpSession session) {
 		System.out.println("AdminController - adminQNAInsert()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		List<QnaCateVO> categoryList = adminService.getCategory();
 		
 		model.addAttribute("categoryList", categoryList);
@@ -377,17 +477,31 @@ public class AdminController {
 	
 	// 관리자 자주묻는 질문 등록
 	@PostMapping("adminQNAInsertPro")
-	public String adminQNAInsertPro(QnaVO qna) {
+	public String adminQNAInsertPro(QnaVO qna, Model model) {
 		System.out.println("AdminController - adminQNAInsertPro()");
-		int resultCount = adminService.insertQna(qna);
+		int insertCount = adminService.insertQna(qna);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
 		
 		return "redirect:/adminQNAList";
 	}
 	
 	// 관리자 자주묻는 질문 수정 폼
 	@GetMapping("adminQNAUpdate")
-	public String adminQNAUpdate(Model model, String qnaIdx) {
+	public String adminQNAUpdate(Model model, String qnaIdx, HttpSession session) {
 		System.out.println("AdminController - adminQNAUpdate()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		List<QnaCateVO> categoryList = adminService.getCategory();
 		QnaVO qna = adminService.getQna(qnaIdx).get(0);
 		
@@ -399,9 +513,37 @@ public class AdminController {
 	
 	// 관리자 자주묻는 질문 수정
 	@PostMapping("adminQNAUpdatePro")
-	public String adminQNAUpdatePro(QnaVO qna) {
+	public String adminQNAUpdatePro(QnaVO qna, Model model) {
 		System.out.println("AdminController - adminQNAUpdatePro()");
-		int insertCount = adminService.updateQna(qna);
+		int updateCount = adminService.updateQna(qna);
+		
+		if (updateCount == 0) {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminQNAList";
+	}
+	
+	// 관리자 자주묻는 질문 삭제
+	@GetMapping("adminQNADelete")
+	public String adminQNADelete(Model model, String qnaIdx, HttpSession session) {
+		System.out.println("AdminController - adminQNADelete()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		int deleteCount = adminService.deleteQna(qnaIdx);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
 		
 		return "redirect:/adminQNAList";
 	}
@@ -413,8 +555,17 @@ public class AdminController {
 	
 	// 관리자 질문카테고리 관리 페이지 및 폼
 	@GetMapping("adminCategoryUpdate")
-	public String adminCategoryUpdate(Model model) {
+	public String adminCategoryUpdate(Model model, HttpSession session) {
 		System.out.println("AdminController - adminCategoryUpdate()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		List<QnaCateVO> categoryList = adminService.getCategory();
 		
 		model.addAttribute("categoryList", categoryList);
@@ -424,19 +575,37 @@ public class AdminController {
 	
 	// 관리자 질문카테고리 등록
 	@PostMapping("adminCategoryUpdatePro")
-	public String adminCategoryUpdatePro(String qnaCateSubject) {
+	public String adminCategoryUpdatePro(String qnaCateSubject, Model model) {
 		System.out.println("AdminController - adminCategoryUpdatePro()");
 		int insertCount = adminService.insertCategory(qnaCateSubject);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
 		
 		return "redirect:/adminCategoryUpdate";
 	}
 	
 	// 관리자 질문카테고리 삭제
 	@GetMapping("adminCategoryDelete")
-	public String adminCategoryDelete(int qnaCateIdx) {
+	public String adminCategoryDelete(int qnaCateIdx, HttpSession session, Model model) {
 		System.out.println("AdminController - adminCategoryDelete()");
 		
-		int insertCount = adminService.deleteCategory(qnaCateIdx);
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		int deleteCount = adminService.deleteCategory(qnaCateIdx);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
 		
 		return "redirect:/adminCategoryUpdate";
 	}
@@ -448,8 +617,17 @@ public class AdminController {
 	
 	// 관리자 1:1문의 조회 페이지
 	@GetMapping("adminOneToOneList")
-	public String adminOneToOneList(Model model) {
+	public String adminOneToOneList(Model model, HttpSession session) {
 		System.out.println("AdminController - adminOneToOneList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		List<MyQuestionVO> questionList = adminService.selectOTO("");
 		
 		model.addAttribute("questionList", questionList);
@@ -459,8 +637,17 @@ public class AdminController {
 	
 	// 관리자 1:1문의 답변 등록 폼
 	@GetMapping("adminOneToOneUpdate")
-	public String adminOneToOneUpdate(String myQuestion_num, Model model) {
+	public String adminOneToOneUpdate(String myQuestion_num, Model model, HttpSession session) {
 		System.out.println("AdminController - adminOneToOneUpdate()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		MyQuestionVO question = adminService.selectOTO(myQuestion_num).get(0);
 		
 		model.addAttribute("question", question);
@@ -470,16 +657,30 @@ public class AdminController {
 	
 	// 관리자 1:1문의 답변 등록
 	@PostMapping("adminOneToOneUpdatePro")
-	public String adminOneToOneUpdatePro(MyQuestionVO myQuestion) {
+	public String adminOneToOneUpdatePro(MyQuestionVO myQuestion, Model model) {
 		System.out.println("AdminController - adminOneToOneUpdatePro()");
 		int insertCount = adminService.updateOTO(myQuestion);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
 		
 		return "redirect:/adminOneToOneList";
 	}
 	
 	@GetMapping("adminOneToOneSelect")
-	public String adminOneToOneSelect(String myQuestion_num, Model model) {
+	public String adminOneToOneSelect(String myQuestion_num, Model model, HttpSession session) {
 		System.out.println("AdminController - adminOneToOneSelect()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		MyQuestionVO question = adminService.selectOTO(myQuestion_num).get(0);
 		
 		model.addAttribute("question", question);
@@ -494,8 +695,17 @@ public class AdminController {
 	
 	// 관리자 이벤트 목록 조회 페이지
 	@GetMapping("adminEventList")
-	public String adminEventList(EventVO event, Model model) {
+	public String adminEventList(EventVO event, Model model, HttpSession session) {
 		System.out.println("AdminController - adminEventList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		List<EventVO> eventList = adminService.selectEvent("");
 		
 		LocalDate now = LocalDate.now();
@@ -526,8 +736,17 @@ public class AdminController {
 	
 	// 관리자 이벤트 등록 폼
 	@GetMapping("adminEventInsert")
-	public String adminEventInsert() {
+	public String adminEventInsert(HttpSession session, Model model) {
 		System.out.println("AdminController - adminEventInsert()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		return "mypage/admin/insert_event";
 	}
 	
@@ -583,8 +802,17 @@ public class AdminController {
 	
 	// 관리자 이벤트 수정 폼
 	@GetMapping("adminEventUpdate")
-	public String adminEventUpdate(String event_idx, Model model) {
+	public String adminEventUpdate(String event_idx, Model model, HttpSession session) {
 		System.out.println("AdminController - adminEventUpdate()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
 		EventVO event = adminService.selectEvent(event_idx).get(0);
 		
 		model.addAttribute("event", event);
@@ -661,6 +889,14 @@ public class AdminController {
 	@GetMapping("adminEventDelete")
 	public String adminEventDelete(String event_idx, HttpSession session, Model model) {
 		System.out.println("AdminController - adminEventDelete()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 		
 		// 삭제하기전에 파일경로를 먼저 받아와야됨.
 		EventVO event = adminService.selectEvent(event_idx).get(0);

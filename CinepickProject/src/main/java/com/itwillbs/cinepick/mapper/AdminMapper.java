@@ -44,6 +44,8 @@ public interface AdminMapper {
 	
 	int updateQna(QnaVO qna);
 	
+	int deleteQna(String qnaIdx);
+	
 	/*==============================================================
 	 * 자주 묻는 질문 카테고리
 	 * =============================================================

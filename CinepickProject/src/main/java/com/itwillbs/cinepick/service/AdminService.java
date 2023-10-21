@@ -83,6 +83,13 @@ public class AdminService {
 		return mapper.updateQna(qna);
 	}
 	
+	// 자주묻는 질문 삭제
+	public int deleteQna(String qnaIdx) {
+		System.out.println("AdminService - deleteQna()");
+		return mapper.deleteQna(qnaIdx);
+	}
+
+	
 	/*==============================================================
 	 * 자주 묻는 질문 카테고리
 	 * =============================================================
@@ -153,6 +160,5 @@ public class AdminService {
 		System.out.println("AdminService - deleteEvent(event_idx)");
 		return mapper.deleteEvent(event_idx);
 	}
-
 
 }
