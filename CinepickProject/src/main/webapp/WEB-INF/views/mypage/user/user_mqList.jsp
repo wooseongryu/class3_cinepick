@@ -136,15 +136,18 @@
                                     <thead class="table-dark">
                                         <tr>
                                             <th>번호</th>
+                                            <th>작성자</th>
                                             <th>제목</th>
                                             <th>내용</th>
+                                            <th>답변내용</th>
+                                            <th>답변여부</th>
                                             <th>작성일</th>
                                             <th>수정 및 삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="5">
+											<td colspan="8">
 												<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioInsert'">등록</button>&nbsp;&nbsp;
 											</td>
                                         </tr>
@@ -153,12 +156,15 @@
                                     	<c:forEach var="myQuestion" items="${myQuestionList }">
 	                                        <tr>
 	                                            <td>${myQuestion.myQuestion_num }</td>
+	                                            <td>${myQuestion.myQuestion_id }</td>
 	                                            <td>${myQuestion.myQuestion_subject }</td>
 	                                            <td>${myQuestion.myQuestion_content }</td>
+	                                            <td>${myQuestion.myQuestion_status }</td>
+	                                            <td>${myQuestion.myQuestion_answer }</td>
 	                                            <td>${myQuestion.myQuestion_date }</td>
 												<td>
-													<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioUpdate?myQuestion_num=${myQuestion.myQuestion_num }'">수정</button>
 													<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioDelete?myQuestion_num=${myQuestion.myQuestion_num }'">삭제</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioAnswer?myQuestion_num=${myQuestion.myQuestion_num }'">답변 임시버튼</button>
 												</td>
 	                                        </tr>
                                         </c:forEach>

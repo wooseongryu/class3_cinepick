@@ -18,7 +18,6 @@
 		VALUES (
 			null  
 			, #{user_name} 
-			, #{user_id} 
 			, #{user_passwd}
 			, #{user_birth} 
 			, #{user_email} 
@@ -48,14 +47,16 @@
 		INTO myQuestion
 		VALUES (
 			#{myQuestion_num} + 1
+			, #{myQuestion_id}
 			, #{myQuestion_subject}
 			, #{myQuestion_content}
+			, #{myQuestion_answer}
 			, now()
 		)
 	</insert>
 	
 	
-	
+
 	
 	
 	
@@ -97,8 +98,10 @@
 	<select id="selectMyQuestion" resultType="MyQuestion">
         SELECT
 			myQuestion_num
+			, myQuestion_id
 			, myQuestion_subject
 			, myQuestion_content
+			, myQuestion_answer
 			, myQuestion_date
 		FROM myQuestion
 		<if test="myQuestion_num != null and !myQuestion_num.equals('')">
@@ -132,6 +135,14 @@
 		WHERE user_id = #{user_id}
 	</update>
 	
+	<!-- 1:1 문의 답변 -->
+	<update id="updateMyQuestion">
+		UPDATE myQuestion
+		SET myQuestion_answer = #{myQuestion_answer}
+		WHERE myQuestion_num = #{myQuestion_num}
+	</update>
+	
+	
 	
 	<!-- delete -->
 	<!-- 인증정보 삭제 - DELETE -->
@@ -146,6 +157,12 @@
 	<delete id="deleteUser">
 		DELETE FROM user
 		WHERE user_id = #{user_id}
+	</delete>
+
+	<!-- 회원 1:1 문의글 탈퇴-->
+	<delete id="deletMyQuestion">
+		DELETE FROM myQuestion
+		WHERE myQuestion_num = #{myQuestion_num}
 	</delete>
 </mapper>
 

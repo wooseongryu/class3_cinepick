@@ -75,7 +75,7 @@ public class UserController {
 		// 세션 아이디가 없을 경우 "fail_back" 페이지를 통해 "잘못된 접근입니다!" 출력
 		if(sId == null) {
 			model.addAttribute("msg", "잘못된 접근입니다!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
 		
 		// 만약, 현재 세션이 관리자가 아니거나 또는 관리자이면서 id 파라미터가 없을 경우
@@ -119,7 +119,7 @@ public class UserController {
 			return "cinepick/login_join/success";
 		} else { // 실패
 			model.addAttribute("msg", "회원정보변경 실패!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
 		
 	}
@@ -133,7 +133,7 @@ public class UserController {
 		// 세션 아이디가 없을 경우 "fail_back" 페이지를 통해 "잘못된 접근입니다!" 출력
 		if(sId == null) {
 			model.addAttribute("msg", "잘못된 접근입니다!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
 		
 		// 만약, 현재 세션이 관리자가 아니거나 또는 관리자이면서 id 파라미터가 없을 경우
@@ -180,7 +180,7 @@ public class UserController {
 			return "cinepick/login_join/success";
 		} else { // 회원탈퇴 성공
 			model.addAttribute("msg","회원탈퇴 실패!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
 	}
 	
@@ -230,8 +230,28 @@ public class UserController {
 	
 	// 1:1문의 목록 조회
 	@GetMapping("userMyQuestionList")
-	public String userMyQuestionList(Model model) {
+	public String userMyQuestionList(MyQuestionVO myQuestion, Model model, HttpSession session) {
 		System.out.println("UserController - userMyQuestionList");
+		String sId = (String)session.getAttribute("sId");
+
+		// 세션 아이디가 없을 경우 "fail_back" 페이지를 통해 "잘못된 접근입니다!" 출력
+		if(sId == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		// 답변 상태 확인
+		try {
+			if(myQuestion.getMyQuestion_answer().equals("")) {
+				myQuestion.setMyQuestion_status("답변대기중");
+			} else {
+				myQuestion.setMyQuestion_status("답변완료");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 		List<MyQuestionVO> myQuestionList = service.getMyQuestion("");
 		model.addAttribute("myQuestionList", myQuestionList);
 		
@@ -243,7 +263,7 @@ public class UserController {
 	public String userMyQuestioInsert(HttpSession session, Model model) {
 		if(session.getAttribute("sId") == null) {
 			model.addAttribute("msg", "로그인이 필요합니다!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
 
 		return "mypage/user/insert_myQuestion";
@@ -258,7 +278,7 @@ public class UserController {
 		// 세션 아이디가 없을 경우 "잘못된 접근입니다!" fail_back 페이지로 포워딩 처리
 		if(session.getAttribute("sId") == null) {
 			model.addAttribute("msg", "잘못된 접근입니다!");
-			return "cinepick/login_join/fail_back";
+			return "fail_back";
 		}
 		
 //		System.out.println(myQuestion);
@@ -273,7 +293,62 @@ public class UserController {
 		}
 	}	
 	
+	// 1:1 문의 답변 폼
+	@GetMapping("userMyQuestioAnswer")
+	public String userMyQuestioAnswer(UserVO user, HttpSession session, Model model) {
+		String sId = (String)session.getAttribute("sId");
+		
+		// 만약, 현재 세션이 관리자가 아니거나 또는 관리자이면서 id 파라미터가 없을 경우
+		// id 변수값을 세션 아이디로 교체
+		if(!sId.equals("admin") || (sId.equals("admin") && user.getUser_id() == null || user.getUser_id().equals(""))) {
+			user.setUser_id(sId);
+		}
+
+		// 세션 아이디가 admin이 일 경우 답변폼으로
+		if(sId.equals("admin")) {
+			return "mypage/user/answer_myQuestion";
+		}
+		
+		model.addAttribute("msg", "관리자만 답변 가능합니다!");
+		return "fail_back";
+		
+	}
 	
+	
+	
+	// 1:1 문의 답변 처리
+	@PostMapping("userMyQuestioAnswerPro")
+	public String userMyQuestioAnswerPro(MyQuestionVO myQuestion, Model model) {
+		
+		int updateCount = service.updateMyQuestion(myQuestion);
+		
+		if(updateCount > 0) { // 성공
+			return "redirect:/userMyQuestionList";
+		} else { // 실패
+			model.addAttribute("msg", "1:1문의 답변 실패!");
+			return "fail_back";
+		}
+		
+	}
+	
+	
+	
+	// 1:1 문의 삭제
+	@GetMapping("userMyQuestioDelete")
+	public String MyQuestioDelete(MyQuestionVO myQuestion ,Model model) {
+		
+		int deleteCount = service.deleteMyQuestion(myQuestion);
+		
+		System.out.println("UserController - MyQuestioDelete");
+		
+		if(deleteCount > 0) { // 1:1문의 삭제 성공
+			return "redirect:/userMyQuestionList";
+		} else { // 1:1문의 삭제 실패
+			model.addAttribute("msg","1:1문의 삭제 실패!");
+			return "fail_back";
+		}
+		
+	}
 	
 	
 	

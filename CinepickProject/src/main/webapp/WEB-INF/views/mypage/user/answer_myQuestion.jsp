@@ -60,26 +60,14 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                         		<h1 class="h4 text-gray-900 mb-4">1:1 문의 등록</h1>
+                         		<h1 class="h4 text-gray-900 mb-4">1:1 문의 답변</h1>
                             </div>
-                            <form class="user" action="userMyQuestioInsertPro" method="post">
-                                <div class="form-group row">
-									<div class="col-sm-12 mb-6 mb-sm-0">
-										<label for="">작성자</label>
-										<input type="text"  class="form-control form-control-user" name="myQuestion_id" placeholder="작성자입력">
-								  	</div>
-                                </div>
-                                <div class="form-group row">
-									<div class="col-sm-12 mb-6 mb-sm-0">
-										<label for="">제목</label>
-										<input type="text"  class="form-control form-control-user" name="myQuestion_subject" placeholder="제목입력">
-								  	</div>
-                                </div>
+                            <form class="user" action="userMyQuestioAnswerPro" method="post">
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">문의내용</label>
-									  <textarea rows="10" name="myQuestion_content" class="form-control form-control-textarea" 
-									  	placeholder="공지내용작성" id="floatingTextarea"></textarea>
+									  <label for="floatingTextarea">답변내용</label>
+									  <textarea rows="10" name="myQuestion_answer" class="form-control form-control-textarea" 
+									  	placeholder="답변내용작성" id="floatingTextarea"></textarea>
 									</div>
                                 </div>
 								<br>

@@ -69,8 +69,16 @@ public interface UserMapper {
 	// 1:1 문의 조회
 	List<MyQuestionVO> selectMyQuestion(String myQuestion_num);
 
-	// 유저 1:1 문의 글 작성
+	// 회원 1:1 문의 글 작성
 	int insertMyQuestion(MyQuestionVO myQuestion);
+
+	
+	// 회원 1:1 문의 글 삭제
+	int deletMyQuestion(MyQuestionVO myQuestion);
+
+
+	// 회원 1:1 문의 답변
+	int updateMyQuestion(MyQuestionVO myQuestion);
 	
 }
 
