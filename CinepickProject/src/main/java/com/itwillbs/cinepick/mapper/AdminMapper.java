@@ -55,4 +55,8 @@ public interface AdminMapper {
 
 	List<EventVO> selectEvent(String event_idx);
 
+	int updateEvent(EventVO event);
+
+	int deleteEvent(String event_idx);
+
 }

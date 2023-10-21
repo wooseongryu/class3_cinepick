@@ -123,5 +123,20 @@
 		WHERE event_idx = #{event_idx}
 		</if>
     </select>
+    
+    <update id="updateEvent">
+    	UPDATE event
+    	SET
+			event_title = #{event_title}
+			, event_startDt = #{event_startDt}
+			, event_endDt = #{event_endDt}
+			, event_poster = #{event_poster}
+		WHERE event_idx = #{event_idx}
+    </update>
+    
+    <delete id="deleteEvent">
+    	DELETE FROM event
+    	WHERE event_idx = #{event_idx};
+    </delete>
     <!-- 이벤트 끝 -->
 </mapper>

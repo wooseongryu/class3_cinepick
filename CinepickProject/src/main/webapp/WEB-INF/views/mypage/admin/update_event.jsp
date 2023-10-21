@@ -79,25 +79,26 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">이벤트 등록</h1>
+                                <h1 class="h4 text-gray-900 mb-4">이벤트 수정</h1>
                             </div>
-                            <form class="user" action="adminEventInsertPro" method="post" enctype="multipart/form-data">
+                            <form class="user" action="adminEventUpdatePro" method="post" enctype="multipart/form-data">
+                            	<input type="hidden" name="event_idx" value="${event.event_idx }" >
                             	<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">이벤트 제목</label>
                                         <input type="text" name="event_title" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="이벤트제목입력">
+                                            value="${event.event_title }">
                                     </div>
                                 </div>
 								<br>
 								<div class="form-group row">
 								  	<div class="col-sm-5 mb-2 mb-sm-0">
 										<label for="">이벤트 시작일</label>
-										<input type="text" name="event_startDt" class="form-control form-control-user" id="fromDatepicker">
+										<input type="text" name="event_startDt" value="${event.event_startDt }" class="form-control form-control-user" id="fromDatepicker">
 	                                </div>
 								  	<div class="col-sm-5 mb-2 mb-sm-0">
 										<label for="">이벤트 종료일</label>
-										<input type="text" name="event_endDt" class="form-control form-control-user" id="toDatepicker" >
+										<input type="text" name="event_endDt" value="${event.event_endDt }" class="form-control form-control-user" id="toDatepicker" >
 	                                </div>
 								</div>
 								<br>
@@ -111,7 +112,7 @@
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-		                                <input type="submit" class="btn btn-primary btn-user" value="등록">
+		                                <input type="submit" class="btn btn-primary btn-user" value="수정">
 		                                &nbsp;
 		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
 		                                &nbsp;

@@ -530,6 +530,7 @@ public class AdminController {
 			return "fail_back";
 		}
 		
+		// 실제폴더에 저장.
 		try {
 			if(!mFile.getOriginalFilename().equals("")) {
 				mFile.transferTo(new File(saveDir, fileName));
@@ -543,9 +544,107 @@ public class AdminController {
 		return "redirect:/adminEventList";
 	}
 	
-	// 관리자 이벤트 수정
+	// 관리자 이벤트 수정 폼
 	@GetMapping("adminEventUpdate")
-	public String adminEventUpdate() {
-		return "";
+	public String adminEventUpdate(String event_idx, Model model) {
+		System.out.println("AdminController - adminEventUpdate()");
+		EventVO event = adminService.selectEvent(event_idx).get(0);
+		
+		model.addAttribute("event", event);
+		
+		return "mypage/admin/update_event";
+	}
+	
+	// 관리자 이벤트 수정
+	@PostMapping("adminEventUpdatePro")
+	public String adminEventUpdatePro(EventVO event, HttpSession session, Model model) {
+		System.out.println("AdminController - adminEventUpdatePro()");
+		
+		String uploadDir = "/resources/upload"; // 가상의 경로
+		String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로
+		String subDir = ""; // 서브디렉토리명을 저장할 변수 선언(날짜로 구분)
+		
+		try {
+			LocalDate now = LocalDate.now();
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+			subDir = now.format(dtf);
+			saveDir += "/" + subDir;
+			Path path = Paths.get(saveDir);
+			Files.createDirectories(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		MultipartFile mFile = event.getEvent_poster_multi();
+		String uuid = UUID.randomUUID().toString();
+		event.setEvent_poster("");
+		String fileName = uuid.substring(0, 8) + "_" + mFile.getOriginalFilename();
+		
+		if(!mFile.getOriginalFilename().equals("")) {
+			event.setEvent_poster(subDir + "/" + fileName);
+		}
+		
+		// 수정전 기존의 파일경로 가지고 있어야됨.
+		EventVO tmpEvent = adminService.selectEvent(String.valueOf(event.getEvent_idx())).get(0);
+		String tmp = tmpEvent.getEvent_poster();
+		
+		int updateCount = adminService.updateEvent(event);
+		
+		if (updateCount == 0) {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
+		
+		// 실제폴더에 저장.
+		try {
+			if(!mFile.getOriginalFilename().equals("")) {
+				mFile.transferTo(new File(saveDir, fileName));
+			}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// 수정시 기존의 파일 삭제.
+		String uploadPath = "resources/upload";
+		try {
+			String realPath = session.getServletContext().getRealPath(uploadPath);
+			Path path = Paths.get(realPath + "/" + tmp);
+			System.out.println(path);
+			Files.deleteIfExists(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/adminEventList";
+	}
+	
+	// 관리자 이벤트 삭제
+	@GetMapping("adminEventDelete")
+	public String adminEventDelete(String event_idx, HttpSession session, Model model) {
+		System.out.println("AdminController - adminEventDelete()");
+		
+		// 삭제하기전에 파일경로를 먼저 받아와야됨.
+		EventVO event = adminService.selectEvent(event_idx).get(0);
+		
+		int deleteCount = adminService.deleteEvent(event_idx);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+		
+		// 삭제시 파일 도 함께 삭제.
+		String uploadPath = "resources/upload";
+		try {
+			String realPath = session.getServletContext().getRealPath(uploadPath);
+			Path path = Paths.get(realPath + "/" + event.getEvent_poster());
+			Files.deleteIfExists(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/adminEventList";
 	}
 }

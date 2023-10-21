@@ -111,4 +111,16 @@ public class AdminService {
 		return mapper.selectEvent(event_idx);
 	}
 
+	// 이벤트 수정
+	public int updateEvent(EventVO event) {
+		System.out.println("AdminService - updateEvent()");
+		return mapper.updateEvent(event);
+	}
+
+	// 이벤트 삭제
+	public int deleteEvent(String event_idx) {
+		System.out.println("AdminService - deleteEvent(event_idx)");
+		return mapper.deleteEvent(event_idx);
+	}
+
 }

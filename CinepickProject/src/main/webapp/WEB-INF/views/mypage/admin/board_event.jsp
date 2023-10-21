@@ -146,8 +146,8 @@
 	                                            <td>${event.event_startDt } ~ ${event.event_endDt }</td>
 	                                            <td>${event.event_status }</td>
 												<td>
-													<button type="button" class="btn btn-primary" onclick="location.href='adminEventUpdate'">수정</button>
-													<button type="button" class="btn btn-primary">삭제</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminEventUpdate?event_idx=${event.event_idx}'">수정</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminEventDelete?event_idx=${event.event_idx}'">삭제</button>
 												</td>
 	                                        </tr>
                                         </c:forEach>
