@@ -245,6 +245,7 @@ public class UserController {
 			model.addAttribute("msg", "로그인이 필요합니다!");
 			return "cinepick/login_join/fail_back";
 		}
+
 		return "mypage/user/insert_myQuestion";
 	}
 	
@@ -259,6 +260,8 @@ public class UserController {
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "cinepick/login_join/fail_back";
 		}
+		
+//		System.out.println(myQuestion);
 		
 		int insertCount = service.insertMyQuestion(myQuestion);
 		

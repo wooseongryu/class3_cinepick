@@ -72,7 +72,7 @@
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="floatingTextarea">문의내용</label>
-									  <textarea rows="10" name="myQuestion_Content" class="form-control form-control-textarea" 
+									  <textarea rows="10" name="myQuestion_content" class="form-control form-control-textarea" 
 									  	placeholder="공지내용작성" id="floatingTextarea"></textarea>
 									</div>
                                 </div>

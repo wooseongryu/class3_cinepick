@@ -129,6 +129,8 @@ public class UserService {
 
 	// 회원 1:1 문의 작성
 	public int insertMyQuestion(MyQuestionVO myQuestion) {
+		System.out.println("UserService - insertMyQuestion()");
+//		System.out.println("service: ---" + myQuestion);
 		return mapper.insertMyQuestion(myQuestion);
 	}
 
