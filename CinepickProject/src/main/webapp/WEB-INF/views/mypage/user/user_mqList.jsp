@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,33 +12,38 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-
 <script>
 	// 팝업창 띄우기
-	var popupWidth = 1000;
-	var popupHeight = 800;
-	var popupX = (window.screen.width / 2) - (popupWidth / 2);
-	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-	function userQuestion() {
-		window.open('#','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-	}
+// 	var popupWidth = 1000;
+// 	var popupHeight = 800;
+// 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
+// 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+// 	function updateNotion() {
+// 		window.open('adminNoticeUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+// 	}
+
+// $(document).ready(function(){
+// 	new DataTable('#dataTable_wrapper');
+// })
+
 </script>
+	
 
 </head>
 
 <body id="page-top">
 
-	<header>
+    <header>
 		<jsp:include page="../../cinepick/include/main_top.jsp"></jsp:include>
 	</header>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <jsp:include page="user_sidebar.jsp"></jsp:include>
+		<!-- Sidebar -->
+		<jsp:include page="user_sidebar.jsp"></jsp:include>
         <!-- End of Sidebar -->
-        
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -85,7 +91,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.sId }</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.sId }님</span>
                                 <img class="img-profile rounded-circle"
                                     src="${pageContext.request.contextPath }/resources/mypage/img/undraw_profile.svg">
                             </a>
@@ -113,9 +119,8 @@
                 </nav>
                 <!-- End of Topbar -->
 
-				<!-- Begin Page Content -->
+                <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">1:1 문의 페이지</h1>
                     <p class="mb-4">
@@ -131,32 +136,32 @@
                                     <thead class="table-dark">
                                         <tr>
                                             <th>번호</th>
-                                            <th>분류</th>
                                             <th>제목</th>
-                                            <th>상태구분</th>
-                                            <th>등록일</th>
+                                            <th>내용</th>
+                                            <th>작성일</th>
+                                            <th>수정 및 삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="5"><button type="button" class="btn btn-primary" onclick="userQuestion()">등록///보류///</button>&nbsp;&nbsp;
+											<td colspan="5">
+												<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioInsert'">등록</button>&nbsp;&nbsp;
+											</td>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>상영관</td>
-                                            <td><a href="#">관리자님 상영관에 영화 소리가 너무 작네요</a></td>
-                                            <td>답변대기</td>
-                                            <td>2023-10-07</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>결제</td>
-                                            <td><a href="#">결제가 안됩니다</a></td>
-                                            <td>답변완료</td>
-                                            <td>2023-10-07</td>
-                                        </tr>
+                                    	<c:forEach var="myQuestion" items="${myQuestionList }">
+	                                        <tr>
+	                                            <td>${myQuestion.myQuestion_num }</td>
+	                                            <td>${myQuestion.myQuestion_subject }</td>
+	                                            <td>${myQuestion.myQuestion_content }</td>
+	                                            <td>${myQuestion.myQuestion_date }</td>
+												<td>
+													<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioUpdate?myQuestion_num=${myQuestion.myQuestion_num }'">수정</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioDelete?myQuestion_num=${myQuestion.myQuestion_num }'">삭제</button>
+												</td>
+	                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -181,6 +186,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+ 
 </body>
 
 </html>

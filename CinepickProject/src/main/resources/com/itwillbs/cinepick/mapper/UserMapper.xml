@@ -39,6 +39,26 @@
 		)
 	</insert>
 	
+	<insert id="insertMyQuestion">
+		<selectKey keyProperty="myQuestion_num" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(myQuestion_num), 0) 
+			FROM myQuestion
+		</selectKey>
+		INSERT
+		INTO myQuestion
+		VALUES (
+			#{myQuestion_num} + 1
+			, #{myQuestion_subject}
+			, #{myQuestion_content}
+			, now()
+		)
+	</insert>
+	
+	
+	
+	
+	
+	
 	<!-- select -->
 	<select id="selectUser" resultType="User">
 		SELECT * FROM user WHERE user_id = #{user_id}
@@ -71,6 +91,20 @@
 		FROM user
 		WHERE user_id = #{user_id}
 	</select>
+	
+	
+	<!-- 1:1 문의 목록 조회 -->
+	<select id="selectMyQuestion" resultType="MyQuestion">
+        SELECT
+			myQuestion_num
+			, myQuestion_subject
+			, myQuestion_content
+			, myQuestion_date
+		FROM myQuestion
+		<if test="myQuestion_num != null and !myQuestion_num.equals('')">
+		WHERE myQuestion_num = #{myQuestion_num }
+		</if>
+    </select>
 	
 	
 	<!-- update -->

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.UserMapper;
 import com.itwillbs.cinepick.vo.AuthInfoVO;
+import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 // 스프링에서 서비스 역할을 수행할 클래스 정의 시 @Service 어노테이션 지정(@Component 가능)
@@ -116,6 +117,19 @@ public class UserService {
 	public int deleteUser(UserVO user) {
 		return mapper.deleteUser(user);
 		
+	}
+
+	
+	// 회원 1:1 문의 목록
+	// noticeIdx를 널스트링으로 전달 시 전체 공지 조회
+	public List<MyQuestionVO> getMyQuestion(String myQuestion_num) {
+		System.out.println("service - getMyQuestion()");
+		return mapper.selectMyQuestion(myQuestion_num);
+	}
+
+	// 회원 1:1 문의 작성
+	public int insertMyQuestion(MyQuestionVO myQuestion) {
+		return mapper.insertMyQuestion(myQuestion);
 	}
 
 

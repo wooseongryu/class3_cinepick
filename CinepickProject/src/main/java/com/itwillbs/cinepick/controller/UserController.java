@@ -1,5 +1,7 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.itwillbs.cinepick.service.UserService;
+import com.itwillbs.cinepick.vo.MyQuestionVO;
+import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 @Controller
@@ -17,6 +21,7 @@ public class UserController {
 	
 	@Autowired
 	private UserService service;
+	
 	
 	/*====================================================================
 	 * - 목차 -
@@ -223,12 +228,51 @@ public class UserController {
 	 * ===================================================================
 	 * */
 	
-	// 1:1문의 목록
+	// 1:1문의 목록 조회
 	@GetMapping("userMyQuestionList")
-	public String userMyQuestionList() {
+	public String userMyQuestionList(Model model) {
 		System.out.println("UserController - userMyQuestionList");
+		List<MyQuestionVO> myQuestionList = service.getMyQuestion("");
+		model.addAttribute("myQuestionList", myQuestionList);
+		
 		return "mypage/user/user_mqList";
 	}
+	
+	// 1:1 문의 등록 폼
+	@GetMapping("userMyQuestioInsert")
+	public String userMyQuestioInsert(HttpSession session, Model model) {
+		if(session.getAttribute("sId") == null) {
+			model.addAttribute("msg", "로그인이 필요합니다!");
+			return "cinepick/login_join/fail_back";
+		}
+		return "mypage/user/insert_myQuestion";
+	}
+	
+	
+	// 1:1 문의 등록
+	@PostMapping("userMyQuestioInsertPro")
+	public String userMyQuestioInsertPro(MyQuestionVO myQuestion, HttpSession session, Model model) {
+		System.out.println("UserController - userMyQuestioInsertPro()");
+		
+		// 세션 아이디가 없을 경우 "잘못된 접근입니다!" fail_back 페이지로 포워딩 처리
+		if(session.getAttribute("sId") == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "cinepick/login_join/fail_back";
+		}
+		
+		int insertCount = service.insertMyQuestion(myQuestion);
+		
+		if(insertCount > 0) { // 성공
+			return "redirect:/userMyQuestionList";
+		} else { // 실패
+			model.addAttribute("msg", "1:1 문의 등록 실패");
+			return "fail_back";
+		}
+	}	
+	
+	
+	
+	
 	
 	/*====================================================================
 	 * 7. 예매 취소 내역 목록

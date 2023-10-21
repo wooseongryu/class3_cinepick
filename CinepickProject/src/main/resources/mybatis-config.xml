@@ -10,6 +10,7 @@
 		<typeAlias type="com.itwillbs.cinepick.vo.NoticeVO" alias="Notice"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.QnaVO" alias="Qna"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.QnaCateVO" alias="QnaCate"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.MyQuestionVO" alias="MyQuestion"/>
 	</typeAliases>
 </configuration>
   
