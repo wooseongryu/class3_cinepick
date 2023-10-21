@@ -577,6 +577,15 @@ public class AdminController {
 	@PostMapping("adminCategoryUpdatePro")
 	public String adminCategoryUpdatePro(String qnaCateSubject, Model model) {
 		System.out.println("AdminController - adminCategoryUpdatePro()");
+		
+		List<QnaCateVO> categoryList = adminService.getCategory();
+		for (QnaCateVO cate : categoryList) {
+			if (qnaCateSubject.equals(cate.getQnaCateSubject())) {
+				model.addAttribute("msg", "중복된 카테고리입니다!");
+				return "fail_back";
+			}
+		}
+		
 		int insertCount = adminService.insertCategory(qnaCateSubject);
 		
 		if (insertCount == 0) {
