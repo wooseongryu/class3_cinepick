@@ -252,7 +252,7 @@ public class AdminController {
 	@GetMapping("adminMovieInsert")
 	public String adminMovieInsert() {
 		System.out.println("AdminController - adminMovieInsert()");
-		return "mypage/admin/practice";
+		return "mypage/admin/insert_movie";
 	}
 	// 관리자 영화 정보 등록 폼
 	@PostMapping("adminMovieInsert2")
