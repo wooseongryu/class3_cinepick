@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,22 +134,31 @@
                                             <th>번호</th>
                                             <th>제목</th>
                                             <th>작성자</th>
-                                            <th>상태구분</th>
+                                            <th>답변상태</th>
                                             <th>등록일</th>
                                             <th>답변작성</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>관리자님 상영관에 영화 소리가 너무 작네요</td>
-                                            <td>회원1</td>
-                                            <td>답변대기</td>
-                                            <td>2023-10-07</td>
-											<td>
-												<button type="button" class="btn btn-primary" onclick="location.href='adminOneToOneInsert'">답변작성</button>
-											</td>
-                                        </tr>
+                                    	<c:forEach var="question" items="${questionList }">
+	                                        <tr>
+	                                            <td>${question.myQuestion_num }</td>
+	                                            <td>${question.myQuestion_subject }</td>
+	                                            <td>${question.myQuestion_id }</td>
+	                                            <td>${question.myQuestion_status }</td>
+	                                            <td>${question.myQuestion_date }</td>
+												<td>
+													<c:choose>
+														<c:when test="${question.myQuestion_status eq 'N'}">
+															<button type="button" class="btn btn-primary" onclick="location.href='adminOneToOneUpdate?myQuestion_num=${question.myQuestion_num}'">답변작성</button>
+														</c:when>
+														<c:otherwise>
+															<button type="button" class="btn btn-primary" onclick="location.href='adminOneToOneSelect?myQuestion_num=${question.myQuestion_num}'">답변보기</button>
+														</c:otherwise>
+													</c:choose>
+												</td>
+	                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

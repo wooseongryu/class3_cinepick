@@ -79,7 +79,7 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">1대1문의 답변 등록</h1>
+                                <h1 class="h4 text-gray-900 mb-4">1대1문의 답변 보기</h1>
                             </div>
                             <form class="user" action="adminOneToOneUpdatePro" method="post" enctype="multipart/form-data">
                             	<input type="hidden" name="myQuestion_num" value="${question.myQuestion_num }">
@@ -97,18 +97,14 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">답변 작성</label>
-									  <textarea rows="10" name="myQuestion_answer" class="form-control form-control-textarea" placeholder="답변내용작성" id="floatingTextarea"></textarea>
+									  <label for="floatingTextarea">답변 내용</label>
+									  <textarea rows="10" name="myQuestion_answer" class="form-control form-control-textarea" id="floatingTextarea" readonly="readonly">${question.myQuestion_answer }</textarea>
 									</div>
                                 </div>
 								<br>
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-		                                <input type="submit" class="btn btn-primary btn-user" value="등록">
-		                                &nbsp;
-		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
-		                                &nbsp;
 		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
 									</div>
 								</div>

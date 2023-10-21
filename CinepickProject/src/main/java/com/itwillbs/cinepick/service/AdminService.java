@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.AdminMapper;
 import com.itwillbs.cinepick.vo.EventVO;
+import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
@@ -91,6 +92,24 @@ public class AdminService {
 	public int deleteCategory(int qnaCateIdx) {
 		System.out.println("AdminService - deleteCategory()");
 		return mapper.deleteCategory(qnaCateIdx);
+	}
+	
+	/*====================================================================
+	 * 1:1 문의
+	 * ===================================================================
+	 * */
+
+	// 1:1문의 조회
+	// myQuestion_num을 널스트링으로 전달 시 전체 질문 조회
+	public List<MyQuestionVO> selectOTO(String myQuestion_num) {
+		System.out.println("AdminService - selectOTO()");
+		return mapper.selectOTO(myQuestion_num);
+	}
+	
+	// 관리자 1:1문의 답변 등록
+	public int updateOTO(MyQuestionVO myQuestion) {
+		System.out.println("AdminService - updateOTO()");
+		return mapper.updateOTO(myQuestion);
 	}
 	
 	/*==============================================================

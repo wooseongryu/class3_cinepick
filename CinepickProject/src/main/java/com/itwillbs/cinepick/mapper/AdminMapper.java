@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.itwillbs.cinepick.vo.EventVO;
+import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
@@ -45,6 +46,15 @@ public interface AdminMapper {
 	List<QnaCateVO> selectCategory();
 
 	int deleteCategory(int qnaCateIdx);
+	
+	/*====================================================================
+	 * 1:1 문의
+	 * ===================================================================
+	 * */
+	
+	List<MyQuestionVO> selectOTO(String myQuestion_num);
+	
+	int updateOTO(MyQuestionVO myQuestion);
 	
 	/*==============================================================
 	 * 이벤트

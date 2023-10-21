@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.EventVO;
+import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
@@ -438,16 +439,43 @@ public class AdminController {
 	
 	// 관리자 1:1문의 조회 페이지
 	@GetMapping("adminOneToOneList")
-	public String adminOneToOneList() {
+	public String adminOneToOneList(Model model) {
 		System.out.println("AdminController - adminOneToOneList()");
+		List<MyQuestionVO> questionList = adminService.selectOTO("");
+		
+		model.addAttribute("questionList", questionList);
+		
 		return "mypage/admin/board_personal_inquiry";
 	}
 	
 	// 관리자 1:1문의 답변 등록 폼
-	@GetMapping("adminOneToOneInsert")
-	public String adminOneToOneInsert() {
-		System.out.println("AdminController - adminOneToOneInsert()");
+	@GetMapping("adminOneToOneUpdate")
+	public String adminOneToOneUpdate(String myQuestion_num, Model model) {
+		System.out.println("AdminController - adminOneToOneUpdate()");
+		MyQuestionVO question = adminService.selectOTO(myQuestion_num).get(0);
+		
+		model.addAttribute("question", question);
+		
 		return "mypage/admin/update_personal_inquiry";
+	}
+	
+	// 관리자 1:1문의 답변 등록
+	@PostMapping("adminOneToOneUpdatePro")
+	public String adminOneToOneUpdatePro(MyQuestionVO myQuestion) {
+		System.out.println("AdminController - adminOneToOneUpdatePro()");
+		int insertCount = adminService.updateOTO(myQuestion);
+		
+		return "redirect:/adminOneToOneList";
+	}
+	
+	@GetMapping("adminOneToOneSelect")
+	public String adminOneToOneSelect(String myQuestion_num, Model model) {
+		System.out.println("AdminController - adminOneToOneSelect()");
+		MyQuestionVO question = adminService.selectOTO(myQuestion_num).get(0);
+		
+		model.addAttribute("question", question);
+		
+		return "mypage/admin/select_personal_inquiry";
 	}
 	
 	/*====================================================================

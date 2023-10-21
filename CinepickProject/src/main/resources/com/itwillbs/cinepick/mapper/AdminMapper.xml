@@ -99,6 +99,31 @@
     </delete>
     <!-- 자주 묻는 질문 카테고리 끝 -->
     
+    <!-- 1:1문의 -->
+    <select id="selectOTO" resultType="MyQuestion">
+    	SELECT
+    		myQuestion_num
+			, myQuestion_id
+			, myQuestion_subject
+			, myQuestion_content
+			, myQuestion_answer
+			, myQuestion_status
+			, myQuestion_date
+		FROM myQuestion
+		<if test="myQuestion_num != null and !myQuestion_num.equals('')">
+		WHERE myQuestion_num = #{myQuestion_num}
+		</if>
+    </select>
+    
+    <update id="updateOTO">
+    	UPDATE myQuestion
+    	SET
+    		myQuestion_answer = #{myQuestion_answer}
+    		, myQuestion_status = "Y"
+    	WHERE myQuestion_num = #{myQuestion_num}
+    </update>
+    <!-- 1:1문의 끝 -->
+    
     <!-- 이벤트 -->
     <insert id="insertEvent">
     	INSERT INTO event
