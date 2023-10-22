@@ -728,6 +728,13 @@ public class AdminController {
 
 			for (EventVO e : eventList) {
 				Date eventEndDate = formatter.parse(e.getEvent_endDt());
+				Date eventStartDate = formatter.parse(e.getEvent_startDt());
+				
+				if (eventStartDate.compareTo(nowDate) > 0) {
+					e.setEvent_status("대기");
+					continue;
+				}
+				
 				if (eventEndDate.compareTo(nowDate) < 0) {
 					e.setEvent_status("종료");
 				} else {

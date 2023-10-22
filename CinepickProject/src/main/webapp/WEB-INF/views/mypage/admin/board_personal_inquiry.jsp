@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -146,7 +147,7 @@
 	                                            <td>${question.myQuestion_subject }</td>
 	                                            <td>${question.myQuestion_id }</td>
 	                                            <td>${question.myQuestion_status }</td>
-	                                            <td>${question.myQuestion_date }</td>
+	                                            <td><fmt:formatDate value="${question.myQuestion_date }" pattern="yyyy-MM-dd"/></td>
 												<td>
 													<c:choose>
 														<c:when test="${question.myQuestion_status eq 'N'}">

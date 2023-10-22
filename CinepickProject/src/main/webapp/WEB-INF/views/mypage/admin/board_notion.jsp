@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -137,7 +138,6 @@
                                         <tr>
                                             <th>번호</th>
                                             <th>제목</th>
-<!--                                             <th>내용</th> -->
                                             <th>작성일</th>
                                             <th>수정 및 삭제</th>
                                         </tr>
@@ -154,8 +154,7 @@
 	                                        <tr>
 	                                            <td>${notice.noticeIdx }</td>
 	                                            <td>${notice.noticeTitle }</td>
-<%-- 	                                            <td>${notice.noticeContent }</td> --%>
-	                                            <td>${notice.noticeWriteDate }</td>
+	                                            <td><fmt:formatDate value="${notice.noticeWriteDate }" pattern="yyyy-MM-dd"/></td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="location.href='adminNoticeUpdate?noticeIdx=${notice.noticeIdx }'">수정</button>
 													<button type="button" class="btn btn-primary" onclick="location.href='adminNoticeDelete?noticeIdx=${notice.noticeIdx }'">삭제</button>
