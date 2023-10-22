@@ -4,6 +4,16 @@
     font-family: 'IBM Plex Sans KR';
 }
 
+a {
+	color: black;
+}
+
+.inner-wrap {
+/*     width: 1100px; */
+    width: 800px;
+    margin: 0 auto;
+}
+
 body {
     overflow: auto;
     overflow-y: scroll;
@@ -210,11 +220,648 @@ a {
 /*    margin-bottom: 2em;*/
 }
 
-.big {
-	font-size: 2rem;	
+/* .big { */
+/* 	font-size: 2rem;	 */
+/* } */
+
+
+/* .dot-list { */
+/* 	list-style-type: disc; */
+/* } */
+
+.nav-tabs .nav-link {
+    margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+    border: var(--bs-nav-tabs-border-width) solid transparent;
+    border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    border-top-right-radius: var(--bs-nav-tabs-border-radius);
+}
+.nav-link {
+	color: black;
+}
+
+.inner-wrap {
+/*     width: 1100px; */
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.dot-list>li:before {
+    content: '';
+    display: block;
+/*     position: absolute; */
+/*     top: 9px; */
+/*     left: 0; */
+    background-color: #503396;
+    width: 3px;
+    height: 3px;
+}
+
+.theater-info-text .big {
+    padding: 0 0 20px 0;
+    font-size: 1.8666em;
+}
+
+a.button.purple:active, a.button.purple:focus, a.button.purple:hover, a.button.purple:visited {
+    color: #fff;
+}
+a.button:active, a.button:focus, a.button:hover, a.button:visited {
+    color: #503396;
+}
+.btn-group .button {
+    margin: 0 3px;
+}
+.button.purple {
+    color: #fff;
+    line-height: 36px;
+    border: 0;
+    background: #503396;
+}
+a.button {
+    text-decoration: none;
+}
+a:visited {
+    color: #666;
+    text-decoration: none;
+    outline: 1px dotted #000;
+}
+.button {
+    display: inline-block;
+    height: 36px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #503396;
+    font-weight: 400;
+    border-radius: 4px;
+/*     font-family: NanumBarunGothic,Dotum,'돋움',sans-serif; */
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* .location-map-btn a:before { */
+/*     content: ''; */
+/*     display: inline-block; */
+/*     width: 10px; */
+/*     height: 17px; */
+/*     background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-location-map.png) 0 0 no-repeat; */
+/*     padding-right: 3px; */
+/*     vertical-align: middle; */
+/* } */
+
+
+.dot-list>li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 9px;
+    left: 0;
+    background-color: #503396;
+    width: 3px;
+    height: 3px;
+}
+
+li {
+	list-style-type: square;
+}
+
+.dot-list>li {
+    position: relative;
+    padding: 0 0 0 8px;
+}
+
+.dot-list {
+	padding: 0 0 0 0px;
+}
+
+/* 관람료 탭 */
+
+.fee-option {
+    overflow: hidden;
+    display: table;
+    width: 100%;
+    height: 110px;
+    border-top: 1px solid #d8d9db;
+    border-bottom: 1px solid #d8d9db
+}
+
+.fee-option .cell {
+    display: table-cell;
+    padding: 50px 0 0 0;
+    text-align: center;
+    background-position: center 20px;
+    background-repeat: no-repeat
+}
+
+.fee-option .cell.bg01 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-option-sun-w24.png)
+}
+
+.fee-option .cell.bg02 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-option-brunch-w24.png)
+}
+
+.fee-option .cell.bg03 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-option-normal-w24.png)
+}
+
+.fee-option .cell.bg04 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-option-moon-w24.png)
+}
+
+.fee-table-box {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px
+}
+
+.fee-table-box .fee-table-tit {
+    position: relative;
+    margin: 0;
+    padding: 0 0 10px 8px;
+    line-height: 1.1
+}
+
+.fee-table-box .fee-table-tit:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    background-color: #503396;
+    width: 3px;
+    height: 3px
+}
+
+.fee-table-box .fee-table {
+    width: 530px;
+    float: left
+}
+
+.fee-table-box .fee-table td,.fee-table-box .fee-table th {
+    padding: 10px 0
+}
+
+.fee-table-box .fee-table th {
+    text-align: center!important
+}
+
+.fee-table-box .fee-table:nth-child(odd) {
+    margin-right: 40px
+}
+
+table {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+    empty-cells: show
+}
+
+table caption {
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    opacity: 0
+}
+
+table td,table th {
+    padding: 0
+}
+
+table.left td,table.left th {
+    text-align: left
+}
+
+table.center td,table.center th {
+    text-align: center
+}
+
+table select {
+    border-radius: 0
+}
+
+.data-table .mem-point-info {
+    text-align: left;
+    box-sizing: border-box
+}
+
+.data-table td,.data-table th,.data-table tr {
+    padding: 10px 20px
+}
+
+.data-table th.bg {
+    padding: 10px 20px;
+    background-color: #f7f8f9
+}
+
+.data-table thead th {
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    background-color: #f7f8f9
+}
+
+.data-table thead th:last-child {
+    border-right: 0
+}
+
+.data-table tbody th {
+    padding: 0;
+    text-align: left;
+    vertical-align: middle;
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea
+}
+
+.data-table tbody td {
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea
+}
+
+.data-table tbody td:last-child {
+    border-right: 0
+}
+
+.data-table.bg tbody th {
+    padding: 0 15px;
+    background-color: #f7f8f9
+}
+
+.a-c {
+    text-align: center!important;
+}
+
+/* 디테일 페이지 */
+
+.theater-detail-page {
+    position: relative;
+    z-index: 1;
+    height: 190px;
+    margin: 0;
+    color: #ccc;
+    background-color: #111
+}
+
+.theater-detail-page p {
+    margin: 0;
+    padding: 0
+}
+
+.theater-detail-page .bg-img {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: 1;
+    width: 1100px;
+    margin: 0 0 0 -550px;
+    height: 100%;
+    background-position: center 0;
+    background-repeat: no-repeat
+}
+
+.theater-detail-page .bg-pattern {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: url(https://img.megabox.co.kr/static/pc/images/movie/bg-movie-detail-pattern.png) repeat-x 0 0
+}
+
+.theater-detail-page .bg-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background: url(https://img.megabox.co.kr/static/pc/images/movie/bg-movie-detail-mask.png) no-repeat center 0
+}
+
+.theater-detail-page .theater-all {
+    position: relative;
+    z-index: 4;
+    width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0
+}
+
+.theater-detail-page .theater-all .theater-area-list {
+    display: block;
+    position: relative;
+    width: 100%
+}
+
+.theater-detail-page .theater-all .theater-area-list a {
+    text-decoration: none
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1 {
+    border-bottom: 1px solid rgba(255,255,255,.15)
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1:after {
+    clear: both;
+    content: '';
+    display: block
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li {
+    float: left;
+    margin-left: 72px
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li>.depth1 {
+    position: relative;
+    display: block;
+    color: #fff;
+    line-height: 60px;
+    padding: 0 5px;
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li>.depth1:before {
+    display: none;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 16px;
+    height: 8px;
+    margin-left: -8px;
+    background: url(https://img.megabox.co.kr/static/pc/images/common/bul/bul-theater-depth2.png) no-repeat 0
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li.all {
+    margin-left: 0;
+    padding-top: 12px
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li.all>.depth1 {
+    display: block;
+    padding: 0 17px;
+    line-height: 34px;
+    border-radius: 5px;
+    border: 1px solid #706f72
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li.all>.depth1:before {
+    display: none
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li.new>.depth1:after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: -4px;
+    width: 5px;
+    height: 5px;
+    border-radius: 2px;
+    background-color: #329eb1
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 25px 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    z-index: 10;
+    box-shadow: 10px 10px 10px rgba(0,0,0,.2)
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul:after {
+    clear: both;
+    content: '';
+    display: block
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li {
+    float: left;
+    margin: 5px 0
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li a {
+    position: relative;
+    display: block;
+    vertical-align: middle;
+    color: #444;
+    padding: 0 11px
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li a:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 1px;
+    height: 12px;
+    margin-top: -6px;
+    background-color: #d8d9db
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li:last-child a:after {
+    display: none
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li a:focus,.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li a:hover {
+    color: #01738b
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li a .ico-new-round {
+    margin-left: 3px
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li.on a {
+    color: #01738b!important
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li.on>a:before {
+    display: block
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li.on .area-depth2 {
+    display: block
 }
 
 
-.dot-list {
-	list-style-type: disc;
+.theater-detail-page .theater-all .btn-util .btn {
+    display: inline-block;
+    min-width: 100px;
+    height: 36px;
+    line-height: 34px;
+    margin: 0 6px 0 0;
+    padding: 0 10px;
+    font-size: .9333em;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #706f72;
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.4)
+}
+
+.theater-detail-page .theater-all .btn-util .btn:hover {
+    color: #222;
+    background-color: #fff
+}
+
+.theater-detail-page .theater-all .btn-util .btn.btn-like .ico-like-line {
+    margin-right: 4px
+}
+
+.theater-detail-page .theater-all .btn-util .btn.btn-like.on .ico-like-line,.theater-detail-page .theater-all .btn-util .btn.btn-like:hover .ico-like-line {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-like-on.png)
+}
+
+.theater-detail-page .theater-all .btn-util .btn.btn-like {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 107px;
+    width: auto;
+    padding: 0 20px
+}
+
+.theater-detail-page .theater-all .btn-util .btn.btn-like span {
+    display: inline
+}
+
+.theater-info-text {
+    padding: 0;
+    border-bottom: 1px solid #ebebeb
+}
+
+.theater-info-text p {
+    margin: 0;
+    padding: 0
+}
+
+.theater-info-text .big {
+    padding: 0 0 20px 0;
+    font-size: 1.8666em
+}
+
+.theater-facility {
+    overflow: hidden;
+    padding: 2px 0 0 0
+}
+
+.theater-facility p {
+    float: left;
+    width: 111px;
+    margin: 0 30px 0 0;
+    padding: 0;
+    text-align: center
+}
+
+.theater-facility p:nth-child(8n) {
+    margin-right: 0
+}
+
+.theater-facility p:nth-child(8n)~p {
+    margin-top: 20px
+}
+
+.theater-facility p .iconset {
+    margin-bottom: 10px
+}
+
+.theater-detail-page p {
+    margin: 0;
+    padding: 0;
+}
+
+
+.theater-detail-page .theater-all .name {
+    overflow: hidden;
+    padding: 40px 0 0 0;
+    text-align: center;
+    color: #fff;
+    font-size: 3.0666em;
+    font-weight: 400;
+    line-height: 1.1;
+    text-shadow: 2px 2px 10px rgba(0,0,0,.7);
+}
+
+.theater-detail-page p {
+    margin: 0;
+    padding: 0;
+/*     height: 100%; */
+}
+
+.theater-detail-page .theater-all {
+    position: relative;
+    z-index: 4;
+    width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1 {
+    border-bottom: 1px solid rgba(255,255,255,.15);
+}
+ol, ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+h3.tit {
+    margin: 0;
+    padding: 0 0 16px 0;
+    font-size: 1.6em;
+    font-weight: 400;
+    color: #503396;
+    line-height: 1.1
+}
+
+h3.tit.small {
+    padding: 0 0 10px 0;
+    font-size: 1.2em;
+    color: #222
+}
+
+.mt30 {
+    margin-top: 30px!important;
+}
+
+.ir {
+	display: none;
+}
+
+.ico-facility-comfort {
+    width: 111px;
+    height: 111px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-facility-comfort.png);
+}
+
+.ico-facility-mx {
+    width: 111px;
+    height: 111px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-facility-mx.png);
+}
+
+.theater-detail-page .theater-all .theater-area-list {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+}
+
+.area-depth1 li {
+	margin: 0 auto;
+	text-align: center;
 }

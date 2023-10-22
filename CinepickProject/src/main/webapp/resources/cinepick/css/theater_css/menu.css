@@ -27,7 +27,8 @@
 .buttonDiv {
 	display: grid;
 /*	padding: 10px;*/
-	grid-template-columns: 1fr 1fr 1fr 2fr 2fr 1.5fr 1fr 1fr;
+/* 	grid-template-columns: 1fr 1fr 1fr 2fr 2fr 1.5fr 1fr 1fr; */
+	grid-template-columns: 1fr 1fr 1.5fr 1.5fr 1fr;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0px;
@@ -189,7 +190,10 @@ user-theater a {
 	.movies li {
 		display: inline-block;
 		margin-top: 0;
-		width: 16%;
+/* 		width: 16%; 6개일때*/
+		width: 23%; 
+		/* 231022 수정함 */
+		
 		text-align: center;
 /*		border-bottom: 1px solid black;*/
 /*		padding-bottom: 2px;*/
@@ -288,4 +292,28 @@ user-theater a {
 	width: 400px;
 }
 
+.inner-wrap {
+	width: 70%;
+	margin: 0 auto;
+}
 
+.tit-util .tit {
+    float: left;
+    padding: 0!important;
+    line-height: 1.1;
+}
+h3.tit {
+    margin: 0;
+    padding: 0 0 16px 0;
+    font-size: 1.6em;
+    font-weight: 400;
+    color: #503396;
+    line-height: 1.1;
+}
+
+.mb15 {
+    margin-bottom: 15px!important;
+}
+.mt70 {
+    margin-top: 70px!important;
+}
