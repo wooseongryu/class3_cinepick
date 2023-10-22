@@ -20,9 +20,8 @@ public class TheaterController {
 	@GetMapping("theater")
 	public String theater() {
 		System.out.println("TheaterController - theater");
+		
 		return "cinepick/theater/theater_main";
-		
-		
 	}
 	
 	// 극장 상세보기
