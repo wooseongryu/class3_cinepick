@@ -371,8 +371,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	<script>
 	$(function() {
+		
 		$("p").each(function () {
-	        // "장애인석"을 포함하는 p 태그를 찾음
+	        // 시설을 포함하는 p 태그를 찾음
 	        if ($(this).text().trim() === "MX") {
 	            // 앞에 아이콘을 추가
 	            $(this).prepend('<i class="iconset ico-facility-mx"></i> ');
@@ -390,6 +391,32 @@
 	            $(this).prepend('<i class="iconset ico-facility-disabled"></i> ');
 	        }
 	    });
+		
+// 		$(".depth1").click(function() {
+// 			$(this).parent().addClass("on");
+// 		});
+		
+		$(".depth1").mouseover(function() {
+			$(".area-depth1 li").removeClass("on");
+			
+			$(this).parent().addClass("on");
+		});
+		
+		$(".area-depth1").mouseout(function() {
+			$(".name").mouseout(function() {
+				$(".area-depth1 li").removeClass("on");
+			});
+		});
+		
+		
+// 		$(".mouseover").click(function() {
+// 			debugger;
+// 			let next = $(this).next();
+// 			next.show();
+// 		});
+		
+		
+		
 	});
 	
 	

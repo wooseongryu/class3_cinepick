@@ -690,10 +690,14 @@ table select {
     display: block
 }
 
+
 .theater-detail-page .theater-all .theater-area-list .area-depth1>li.on .area-depth2 {
     display: block
 }
 
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li .area-depth2 .on {
+    display: block
+}
 
 .theater-detail-page .theater-all .btn-util .btn {
     display: inline-block;
@@ -864,4 +868,28 @@ h3.tit.small {
 .area-depth1 li {
 	margin: 0 auto;
 	text-align: center;
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li:last-child a:after {
+    display: none
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li a:focus,.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li a:hover {
+    color: #01738b
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li a .ico-new-round {
+    margin-left: 3px
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth2 ul li.on a {
+    color: #01738b!important
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li.on>a:before {
+    display: block
+}
+
+.theater-detail-page .theater-all .theater-area-list .area-depth1>li.on .area-depth2 {
+    display: block
 }
