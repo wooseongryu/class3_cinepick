@@ -82,7 +82,7 @@
 					</li>
 					
 					<li class="">
-						<a href="" class="depth1" title="서울 선택">광주/전라</a>
+						<a href="" class="depth1" title="광주/전라 선택">광주/전라</a>
 						<div class="area-depth2">
 							<ul>
 				        		<li data-brch-no="4001">
@@ -99,7 +99,7 @@
 					</li>
 					
 					<li class="">
-						<a href="" class="depth1" title="서울 선택">강원</a>
+						<a href="" class="depth1" title="강원 선택">강원</a>
 						<div class="area-depth2">
 							<ul>
 								<li data-brch-no="5001">
