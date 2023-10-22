@@ -181,6 +181,7 @@
 				<div class="btn-group left">
 					<a href="https://m.map.naver.com/map.naver?lng=127.0264086&lat=37.498214&level=2"
 					class="button purple" target="_blank" title="새창열림">실시간 길찾기</a>
+					<br>#추후 수정#
 				</div>
 				<!-- btn-group 끝 -->
 				<h2 class="tit small mt70">시설안내</h2>
@@ -257,7 +258,7 @@
 								
 									<li>입차시 최대 3시간 30분까지 할인 가능(차량 1대에 주차 할인 적용 2회 이상 불가)</li>
 								
-									<li>주차 공간이 협소하므로 가급적이면 대중교통을 이용 바랍니다. (지하철 2호선 강남역 출구 9번 출구)</li>
+									<li>주차 공간이 협소하므로 가급적이면 대중교통을 이용 바랍니다.</li>
 								
 							</ul>
 						</div>
@@ -274,7 +275,7 @@
 				<h2 class="tit small" style="display: none;">무대인사</h2>
 				<div class="movie-greeting"></div>
 				<h2 class="tit small mt40">상영시간표</h2>
-				추후 수정
+				#추후 수정#
 				<br>
 				<br>
 				<br>
