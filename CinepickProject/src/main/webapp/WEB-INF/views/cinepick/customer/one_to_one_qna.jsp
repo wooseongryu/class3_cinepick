@@ -58,7 +58,8 @@
                     </div>
 
                     
-                    <form action="#">
+                    <form action="oneToOneQnaPro" method="post">
+                    	<input type="hidden" name="myQuestion_id" value="${sessionScope.sId}">
 						<div class="row">
 							<div class="col-3">
 								<div class="qna_form">
@@ -68,7 +69,7 @@
 		                        </div>
 						    </div>
 						    <div class="col-9">
-	                        	<input type="text" class="form-control form-control-lg" id="subject" placeholder="제목을 입력해주세요.">
+	                        	<input type="text" name="myQuestion_subject" class="form-control form-control-lg" id="subject" placeholder="제목을 입력해주세요.">
 							</div>
 						</div>
 	
@@ -84,12 +85,9 @@
 		                        </div>
 						    </div>
 						    <div class="col-9">
-	                            <textarea class="form-control" id="content" rows="20" placeholder="문의내용에 개인정보(이름,연락처,카드번호 등)가 포함되지 않도록 유의하세요."></textarea>
+	                            <textarea class="form-control" name="myQuestion_content" id="content" rows="20" placeholder="문의내용에 개인정보(이름,연락처,카드번호 등)가 포함되지 않도록 유의하세요."></textarea>
 							</div>
 						</div>
-						
-						
-
 					</form>
 					
 				</div>
