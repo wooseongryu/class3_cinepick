@@ -38,10 +38,10 @@
 									<a href="theaterDetail?brchNo=1001" title="강남 상세보기">강남</a>
 								</li>
 								<li data-brch-no="1002">
-									<a href="theaterDetail?brchNo=1002" title="강남 상세보기">동대문</a>
+									<a href="theaterDetail?brchNo=1002" title="동대문 상세보기">동대문</a>
 								</li>
 								<li data-brch-no="1003">
-									<a href="theaterDetail?brchNo=1003" title="강남 상세보기">코엑스</a>
+									<a href="theaterDetail?brchNo=1003" title="코엑스 상세보기">코엑스</a>
 								</li>
 							</ul>
 						</div>
