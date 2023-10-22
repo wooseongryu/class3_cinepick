@@ -101,6 +101,7 @@
                 <div id="collapseMovies" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="adminMovieList">영화정보관리</a>
+                        <a class="collapse-item" href="adminBoxOfficeList">박스오피스조회</a>
                         <div class="collapse-divider"></div>
                         <a class="collapse-item" href="adminScheduleList">상영시간표관리</a>
                     </div>
@@ -162,6 +163,7 @@
 
 
     <!-- Bootstrap core JavaScript-->
+    <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
     <script src="${pageContext.request.contextPath }/resources/mypage/vendor/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

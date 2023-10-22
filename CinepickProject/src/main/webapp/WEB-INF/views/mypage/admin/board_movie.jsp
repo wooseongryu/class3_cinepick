@@ -130,10 +130,11 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead class="table-dark">
                                         <tr>
-                                            <th>영화번호</th>
+                                            <th>영화코드</th>
                                             <th>영화제목</th>
                                             <th>심의등급</th>
                                             <th>개봉일</th>
+                                            <th>개봉상태</th>
                                             <th>러닝타임</th>
                                             <th>감독</th>
                                             <th>수정 및 삭제</th>
@@ -141,18 +142,22 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="7"><button type="button" class="btn btn-primary" onclick="updateMovie()">등록</button>&nbsp;&nbsp;<button type="button" class="btn btn-primary">삭제</button></td>
+											<td colspan="8"><button type="button" class="btn btn-primary" onclick="updateMovie()">등록</button></td>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
+                                            <td>20227410</td>
                                             <td>천박사 퇴마 연구소: 설경의 비밀</td>
                                             <td>12세 이상 관람가</td>
                                             <td>2023년 9월 27일</td>
+                                            <td>개봉</td>
 											<td>98분 (1시간 38분 8초)</td>
 											<td>김성식</td>
-											<td><button type="button" class="btn btn-primary" onclick="updateMovie()">수정</button></td>
+											<td>
+												<button type="button" class="btn btn-primary" onclick="updateMovie()">수정</button>
+												&nbsp;&nbsp;<button type="button" class="btn btn-primary">삭제</button>
+											</td>
                                         </tr>
                                     </tbody>
                                 </table>
