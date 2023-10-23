@@ -156,6 +156,7 @@
 			, #{event_startDt}
 			, #{event_endDt}
 			, #{event_poster}
+			, #{event_thumbnail}
     	)
     </insert>
     
@@ -166,6 +167,7 @@
 			, event_startDt
 			, event_endDt
 			, event_poster
+			, event_thumbnail
     	FROM event
     	<if test="event_idx != null and !event_idx.equals('')">
 		WHERE event_idx = #{event_idx}
@@ -179,6 +181,7 @@
 			, event_startDt = #{event_startDt}
 			, event_endDt = #{event_endDt}
 			, event_poster = #{event_poster}
+			, event_thumbnail = #{event_thumbnail}
 		WHERE event_idx = #{event_idx}
     </update>
     
