@@ -18,12 +18,7 @@ public class MovieService {
 	public int insertMovie(MovieVO movie) {
 		return movieMapper.insertMovie(movie);
 	}
-	
-	//박스오피스 등록
-	public void insertBoxoffice(Map<String, Object> map) {
-		movieMapper.insertBoxoffice(map);
-		
-	}
+
 
 	//영화목록출력
 	public List<MovieVO> selectMvList() {
@@ -43,5 +38,11 @@ public class MovieService {
 		return movieMapper.deleteMovie(movie_code);
 	}
 	
+	
+	
+	//박스오피스 등록
+	public int insertBoxoffice(Map<String, Object> map) {
+		return movieMapper.insertBoxoffice(map);
+	}
 	
 }

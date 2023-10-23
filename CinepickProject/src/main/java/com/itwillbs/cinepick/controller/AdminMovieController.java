@@ -148,7 +148,7 @@ public class AdminMovieController {
 	// 박스오피스 조회	
 	
 	//==========================================================================
-	// 관리자 일일박스오피스 조회Form
+	// 관리자 일일박스오피스 조회
 	@GetMapping("adminBoxOfficeList")
 	public String adminBoxOfficeList() {
 		return "mypage/admin/board_movie_boxoffice";
@@ -162,22 +162,29 @@ public class AdminMovieController {
 	
 	//박스오피스 등록(업데이트)Pro
 	@PostMapping("adminUpdateBoxOffice")
-	public String adminUpdateBoxOffice(String jsonData) {
+	public String adminUpdateBoxOffice(String jsonData, Model model) {
 		System.out.println(jsonData);
 		JSONArray ja = new JSONArray(jsonData);
 		
 		System.out.println(ja.toString());
+		int insertBOCount = 0;
 		for(int i = 0; i < ja.length(); i++) {
 			JSONObject jo = new JSONObject(ja.get(i).toString());
 //			System.out.println(jo.toString());
 			Map<String, Object> map = jo.toMap(); 
 			System.out.println(map);
 			
-			//db로 넣기 작업
-//			movieService.insertBoxoffice(map);
+			insertBOCount = movieService.insertBoxoffice(map);
 		}
-		
-		return"";
+//		System.out.println(insertBOCount);
+		if(insertBOCount > 0) {
+			model.addAttribute("msg", "박스오피스 순위등록을 성공하였습니다.");
+			model.addAttribute("script", "window.close()");
+			return "forward";
+		} else {
+			model.addAttribute("msg", "박스오피스 순위등록을 실패하였습니다.");
+			return "fail_back";
+		}
 	}
 	
 	

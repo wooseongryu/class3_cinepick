@@ -63,7 +63,6 @@
 	    font-size: 1rem;
 	     font-size: 0.8rem;
 	    border-radius: 10rem;
-/* 	    padding: 1.5rem 1rem; */
 	    font-weight: 400;
 	    line-height: 1.5;
 	    color: #6e707e;

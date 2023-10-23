@@ -32,21 +32,65 @@
 
     <!-- Custom styles for this template-->
     <link href="${pageContext.request.contextPath }/resources/mypage/css/sb-admin-2.css" rel="stylesheet">
-    
+    <style>
+		.select_detail {
+		    font-size: 0.8rem;
+		    border-radius: 10rem;
+		    padding: 1.5rem 1rem;
+		}
+		.select_detail {
+		    display: block;
+		    width: 100%;
+		    height: calc(1.5em + 0.75rem + 2px);
+		    padding: 0.375rem 0.75rem;
+		    font-size: 1rem;
+		     font-size: 0.8rem;
+		    border-radius: 10rem;
+		    font-weight: 400;
+		    line-height: 1.5;
+		    color: #6e707e;
+		    background-color: #fff;
+		    background-clip: padding-box;
+		    border: 1px solid #d1d3e2;
+		    border-radius: 0.35rem;
+		    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+		}
+    </style>
     
 	<script>
-	function updateBOClose() {
-		window.close();
-	}
+		function updateBOClose() {
+			window.close();
+		}
+		
+		let now = new Date();
+		now.setDate(now.getDate() - 1);
+		let yesterday = String(now.toISOString().slice(0,10));
+		console.log(yesterday);
 		
 		$(function() {
 	// 		("#SelectBoDate") 날짜선택버튼
+			$("#selectBODate").val(yesterday);
+			$("#selectBODate").attr("max", yesterday);
+	
+	
 			
 			$("#searchBOBtn").click(function() {
 
 				let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
 				let key = "f5eef3421c602c6cb7ea224104795888";
-				let targetDt = "20231018"; //임시로 날짜지정 나중에 날짜선택값 받아와야함
+				
+				//날짜값 가져오기
+				let selectedDate = $("#selectBODate").val();
+				console.log("선택된 날짜: " + selectedDate);
+			
+				//날짜 미선택시 "날짜 선택 필수!" 출력 후 캘린더에 포커스 요청
+				if(selectedDate == "") {
+					alert("날짜 선택 필수!");
+					$("#date").focus();
+					return;
+				}
+			
+				let targetDt = selectedDate.replaceAll("-","");
 				
 				$.ajax({
 					type: "GET",
@@ -107,17 +151,18 @@
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">박스오피스 조회</h1>
+                                <h6>★박스오피스 조회는 전날까지만 조회가 가능합니다.★</h6>
                             </div>
                             <form class="user" method="post" action="adminUpdateBoxOffice">
                             	<input type="hidden" name="jsonData" id="jsonDataInput">
                                 <div class="form-group row">
                                 	<div class="col-sm-3 mb-2 mb-sm-0">
 										<label for="">날짜선택</label>
-                                        <input type="text" class="form-control form-control-user" id="insertBODate"
-                                            placeholder="날짜선택창으로 변경해야함">
+                                        <input type="date" class="select_detail" id="selectBODate" max="yesterday">
+                                            
 	                                </div>
 	                                <div class="col-sm-3 mb-2 mb-sm-0">
-										<label>박스오피스 조회하기</label>
+<!-- 										<label>★박스오피스 조회는 전날 까지만 조회가 가능합니다.★</label> -->
 										<br>
 								    	<input type="button" class="btn btn-primary btn-user" value="검색" id="searchBOBtn">
 									</div>

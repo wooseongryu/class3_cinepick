@@ -4,6 +4,7 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.itwillbs.cinepick.mapper.MovieMapper">
+<!-- ==========관리자 영화정보관리========== -->
 
 	<!-- 영화등록 -->
 	<insert id="insertMovie">
@@ -12,7 +13,6 @@
 			#{movie_code}
 			,#{movie_nameK}
 			,#{movie_nameE}
-<!-- 		이거 데이터타입변환 어케함 ㅜ 저절로 되노... -->
 			,#{movie_openDt} 
 			,#{movie_status}
 			,#{movie_runtime}
@@ -26,20 +26,21 @@
 		)
 	</insert>
 	
-	<!-- 영화목록출력 -->	
+	<!-- 영화목록출력 -->
+	<!-- select 전에 날짜 비교해서 해당날짜부터는 개봉으로 update 해야함 -->
 	<select id="selectMovieList" resultType="movie">
 		SELECT *
 		FROM movie
 	</select>
 	
-<!-- 영화상세보기 -->
+	<!-- 영화상세보기 -->
 	<select id="selectMvDetail" resultType="movie">
 		SELECT *
 		FROM movie
 		WHERE movie_code = #{movie_code}
 	</select>
 	
-<!-- 영화수정 -->	
+	<!-- 영화수정 -->	
 	<update id="modifyMovie">
 		UPDATE movie
 		SET movie_nameK = #{movie_nameK}
@@ -58,7 +59,7 @@
 			 
 	</update>	
 	
-<!-- 영화삭제 -->	
+	<!-- 영화삭제 -->	
 	<delete id="deleteMovie">
 		DELETE FROM movie
 		WHERE movie_code = #{movie_code}
@@ -66,17 +67,15 @@
 	
 	
 	
-	
-	<insert id="insertBoxoffice" parameterType="map">
+<!-- =================관리자 박스오피스===============  -->	
+
+	<insert id="insertBoxoffice" parameterType="java.util.Map" >
 		INSERT INTO movie_boxoffice
 		VALUES(
-		<foreach item="movie" index="index" collection="list">
-		        #{movie.movie_code}
-		        , #{movie.movie_name}
-		        , #{movie.movie_rank}
-		        , #{movie.movie_audi}
-		        
-		  </foreach>
+		        #{movieCd}
+		        , #{movieNm}
+		        , #{rank}
+		        , #{audiAcc}
 		)
 	
 	</insert>

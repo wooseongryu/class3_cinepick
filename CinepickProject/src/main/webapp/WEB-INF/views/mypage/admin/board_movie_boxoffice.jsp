@@ -21,7 +21,13 @@
 	function boxofficeList() {
 		window.open('boxofficeUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	}
-	
+	function deletBoxoffice() {
+		let result = confirm("삭제 하시겠습니까? \n모든순위가 삭제됩니다.");
+		if(result) {
+			location.href="";
+			
+		}
+	}
 	
 
 	</script>
@@ -135,10 +141,9 @@
                                    	</tbody>
                                     <tfoot>
                                         <tr>
-											<td colspan="7">
+											<td colspan="7" style="text-align: center">
 			                                	&nbsp;&nbsp;<input type="button" value="조회하기" id="btnBoxoffice" class="btn btn-primary" onclick="boxofficeList()">
-												&nbsp;&nbsp;<button type="submit" class="btn btn-primary" onclick="updateMovie()">등록</button>
-												&nbsp;&nbsp;<button type="button" class="btn btn-primary">삭제</button>
+												&nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="deletBoxoffice()">삭제</button>
 											</td>
                                         </tr>
                                     </tfoot>

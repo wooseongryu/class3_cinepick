@@ -11,15 +11,18 @@ import com.itwillbs.cinepick.vo.MovieVO;
 public interface MovieMapper {
 
 	int insertMovie(MovieVO movie);
-
-	void insertBoxoffice(Map<String, Object> map);
-
+	
 	List<MovieVO> selectMovieList();
-
+	
 	MovieVO selectMvDetail(int movie_code);
 
 	int modifyMovie(MovieVO movie);
 
 	int deleteMovie(int movie_code);
+	
+	
+	//박스오피스
+	int insertBoxoffice(Map<String, Object> map);
 
+	
 }
