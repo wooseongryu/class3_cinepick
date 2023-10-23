@@ -53,6 +53,7 @@
 			, #{myQuestion_subject}
 			, #{myQuestion_content}
 			, #{myQuestion_answer}
+			, 'N'
 			, now()
 		)
 	</insert>
@@ -104,10 +105,16 @@
 			, myQuestion_subject
 			, myQuestion_content
 			, myQuestion_answer
+			, CASE WHEN myQuestion_answer IS NULL THEN '답변대기중'
+				   								  ELSE '답변완료' END AS myQuestion_status 
 			, myQuestion_date
 		FROM myQuestion
+		WHERE 1=1
 		<if test="myQuestion_num != null and !myQuestion_num.equals('')">
-		WHERE myQuestion_num = #{myQuestion_num }
+		AND myQuestion_num = #{myQuestion_num }
+		</if>
+		<if test="myQuestion_id != null and !myQuestion_id.equals('')">
+		AND myQuestion_id = #{myQuestion_id }
 		</if>
     </select>
 	

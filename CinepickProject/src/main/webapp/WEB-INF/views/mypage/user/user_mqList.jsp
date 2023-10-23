@@ -49,7 +49,7 @@
 
             <!-- Main Content -->
             <div id="content">
-
+				
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -139,15 +139,15 @@
                                             <th>작성자</th>
                                             <th>제목</th>
                                             <th>내용</th>
-                                            <th>답변내용</th>
                                             <th>답변여부</th>
+                                            <th>답변내용</th>
                                             <th>작성일</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
 											<td colspan="7">
-												<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioInsert'">등록</button>&nbsp;&nbsp;
+<!-- 												<button type="button" class="btn btn-primary" onclick="location.href='userMyQuestioInsert'">등록</button>&nbsp;&nbsp; -->
 											</td>
                                         </tr>
                                     </tfoot>

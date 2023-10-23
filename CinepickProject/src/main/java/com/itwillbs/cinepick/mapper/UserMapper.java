@@ -1,6 +1,7 @@
 package com.itwillbs.cinepick.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -67,7 +68,7 @@ public interface UserMapper {
 
 	
 	// 1:1 문의 조회
-	List<MyQuestionVO> selectMyQuestion(String myQuestion_num);
+	List<MyQuestionVO> selectMyQuestion(Map<String, String> param);
 
 	// 회원 1:1 문의 글 작성
 	int insertMyQuestion(MyQuestionVO myQuestion);

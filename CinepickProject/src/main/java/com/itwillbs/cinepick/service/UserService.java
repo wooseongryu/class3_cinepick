@@ -1,6 +1,7 @@
 package com.itwillbs.cinepick.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -122,9 +123,9 @@ public class UserService {
 	
 	// 회원 1:1 문의 목록
 	// noticeIdx를 널스트링으로 전달 시 전체 공지 조회
-	public List<MyQuestionVO> getMyQuestion(String myQuestion_num) {
+	public List<MyQuestionVO> getMyQuestion(Map<String, String> param) {
 		System.out.println("service - getMyQuestion()");
-		return mapper.selectMyQuestion(myQuestion_num);
+		return mapper.selectMyQuestion(param);
 	}
 
 	// 회원 1:1 문의 작성

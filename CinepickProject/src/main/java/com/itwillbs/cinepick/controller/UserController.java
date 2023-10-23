@@ -1,6 +1,8 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -230,69 +232,65 @@ public class UserController {
 	
 	// 1:1문의 목록 조회
 	@GetMapping("userMyQuestionList")
-	public String userMyQuestionList(MyQuestionVO myQuestion, Model model, HttpSession session) {
+	public String userMyQuestionList(Model model, HttpSession session) {
 		System.out.println("UserController - userMyQuestionList");
 		String sId = (String)session.getAttribute("sId");
-
+		
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("myQuestion_id", sId);
+		
 		// 세션 아이디가 없을 경우 "fail_back" 페이지를 통해 "잘못된 접근입니다!" 출력
 		if(sId == null) {
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "fail_back";
 		}
+		 
+		List<MyQuestionVO> myQuestionList = service.getMyQuestion(param);
 		
-		// 답변 상태 확인
-		try {
-			if(myQuestion.getMyQuestion_answer().equals("")) {
-				myQuestion.setMyQuestion_status("답변대기중");
-			} else {
-				myQuestion.setMyQuestion_status("답변완료");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		List<MyQuestionVO> myQuestionList = service.getMyQuestion("");
 		model.addAttribute("myQuestionList", myQuestionList);
 		
 		return "mypage/user/user_mqList";
 	}
 	
-	// 1:1 문의 등록 폼
-	@GetMapping("userMyQuestioInsert")
-	public String userMyQuestioInsert(HttpSession session, Model model) {
-		if(session.getAttribute("sId") == null) {
-			model.addAttribute("msg", "로그인이 필요합니다!");
-			return "fail_back";
-		}
-
-		return "mypage/user/insert_myQuestion";
-	}
+//	// 1:1 문의 등록 폼
+//	@GetMapping("userMyQuestioInsert")
+//	public String userMyQuestioInsert(HttpSession session, Model model) {
+//		String sId = (String)session.getAttribute("sId");
+//		
+//		if(sId == null || sId.equals("")) {
+//			model.addAttribute("msg", "로그인 후 이용 가능합니다!");
+//			model.addAttribute("targetURL", "login");
+//			
+//			return "forward";
+//		}
+//
+//		return "mypage/user/insert_myQuestion";
+//	}
 	
 	
-	// 1:1 문의 등록
-	@PostMapping("userMyQuestioInsertPro")
-	public String userMyQuestioInsertPro(MyQuestionVO myQuestion, HttpSession session, Model model) {
-		System.out.println("UserController - userMyQuestioInsertPro()");
-		
-		// 세션 아이디가 없을 경우 "잘못된 접근입니다!" fail_back 페이지로 포워딩 처리
-		if(session.getAttribute("sId") == null) {
-			model.addAttribute("msg", "잘못된 접근입니다!");
-			return "fail_back";
-		}
-		
-//		System.out.println(myQuestion);
-		
-		int insertCount = service.insertMyQuestion(myQuestion);
-		
-		if(insertCount > 0) { // 성공
-			return "redirect:/userMyQuestionList";
-		} else { // 실패
-			model.addAttribute("msg", "1:1 문의 등록 실패");
-			return "fail_back";
-		}
-	}	
-	
+//	// 1:1 문의 등록
+//	@PostMapping("userMyQuestioInsertPro")
+//	public String userMyQuestioInsertPro(MyQuestionVO myQuestion, HttpSession session, Model model) {
+//		System.out.println("UserController - userMyQuestioInsertPro()");
+//		
+//		// 세션 아이디가 없을 경우 "잘못된 접근입니다!" fail_back 페이지로 포워딩 처리
+//		if(session.getAttribute("sId") == null) {
+//			model.addAttribute("msg", "잘못된 접근입니다!");
+//			return "fail_back";
+//		}
+//		
+////		System.out.println(myQuestion);
+//		
+//		int insertCount = service.insertMyQuestion(myQuestion);
+//		
+//		if(insertCount > 0) { // 성공
+//			return "redirect:/userMyQuestionList";
+//		} else { // 실패
+//			model.addAttribute("msg", "1:1 문의 등록 실패");
+//			return "fail_back";
+//		}
+//	}	
+//	
 	
 	
 	/*====================================================================
