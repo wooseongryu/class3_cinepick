@@ -5,6 +5,7 @@
     
 <mapper namespace="com.itwillbs.cinepick.mapper.MovieMapper">
 
+	<!-- 영화등록 -->
 	<insert id="insertMovie">
 		INSERT INTO movie
 		VALUES(
@@ -25,13 +26,56 @@
 		)
 	</insert>
 	
-	<insert id="insertBoxoffice">
+	<!-- 영화목록출력 -->	
+	<select id="selectMovieList" resultType="movie">
+		SELECT *
+		FROM movie
+	</select>
+	
+<!-- 영화상세보기 -->
+	<select id="selectMvDetail" resultType="movie">
+		SELECT *
+		FROM movie
+		WHERE movie_code = #{movie_code}
+	</select>
+	
+<!-- 영화수정 -->	
+	<update id="modifyMovie">
+		UPDATE movie
+		SET movie_nameK = #{movie_nameK}
+			,movie_nameE = #{movie_nameE}
+			,movie_openDt = #{movie_openDt}
+			,movie_status = #{movie_status}
+			,movie_runtime = #{movie_runtime}
+			,movie_genre = #{movie_genre}
+			,movie_rated = #{movie_rated}
+			,movie_director = #{movie_director}
+			,movie_actor = #{movie_actor}
+			,movie_plot = #{movie_plot}
+			,movie_poster = #{movie_poster}
+			,movie_still = #{movie_still}
+		WHERE movie_code = #{movie_code}	
+			 
+	</update>	
+	
+	
+	
+	
+	<insert id="insertBoxoffice" parameterType="map">
 		INSERT INTO movie_boxoffice
 		VALUES(
-			
+		<foreach item="movie" index="index" collection="list">
+		        #{movie.movie_code}
+		        , #{movie.movie_name}
+		        , #{movie.movie_rank}
+		        , #{movie.movie_audi}
+		        
+		  </foreach>
 		)
 	
 	</insert>
+	
+	
 	
 
 </mapper>

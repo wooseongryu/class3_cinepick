@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +18,12 @@
 	var popupHeight = 800;
 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-	function updateMovie() {
+	function insertMovie() {
 		window.open('adminMovieInsert','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+	}
+	function detailMovie(movie_code) {
+		debugger;
+		window.open('adminMovieDetail?movie_code=' + movie_code,'', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	}
 </script>
 	
@@ -136,30 +141,29 @@
                                             <th>개봉일</th>
                                             <th>개봉상태</th>
                                             <th>러닝타임</th>
-                                            <th>감독</th>
-                                            <th>수정 및 삭제</th>
+                                            <th>상세보기</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                    	<c:forEach var="movie" items="${movieList }">
+	                                        <tr>
+	                                            <td>${movie.movie_code }</td>
+	                                            <td>${movie.movie_nameK }</td>
+	                                            <td>${movie.movie_rated }</td>
+	                                            <td>${movie.movie_openDt}</td>
+	                                            <td>${movie.movie_status }</td>
+	                                            <td>${movie.movie_runtime }</td>
+												<td>
+													<button type="button" class="btn btn-primary" onclick="detailMovie(${movie.movie_code})">상세보기</button>
+												</td>
+	                                        </tr>
+                                    	</c:forEach>
+                                    </tbody>
                                     <tfoot>
                                         <tr>
-											<td colspan="8"><button type="button" class="btn btn-primary" onclick="updateMovie()">등록</button></td>
+											<td colspan="8"><button type="button" class="btn btn-primary" onclick="insertMovie()">등록</button></td>
                                         </tr>
                                     </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>20227410</td>
-                                            <td>천박사 퇴마 연구소: 설경의 비밀</td>
-                                            <td>12세 이상 관람가</td>
-                                            <td>2023년 9월 27일</td>
-                                            <td>개봉</td>
-											<td>98분 (1시간 38분 8초)</td>
-											<td>김성식</td>
-											<td>
-												<button type="button" class="btn btn-primary" onclick="updateMovie()">수정</button>
-												&nbsp;&nbsp;<button type="button" class="btn btn-primary">삭제</button>
-											</td>
-                                        </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>

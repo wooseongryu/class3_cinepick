@@ -1,44 +1,79 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.server.header.XFrameOptionsServerHttpHeadersWriter.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.cinepick.service.MovieService;
 import com.itwillbs.cinepick.vo.MovieVO;
+
+/*====================================================================
+ *  영화 (따로 빼둠)
+ * ===================================================================
+ * */
 
 @Controller
 public class AdminMovieController {
 	@Autowired
 	private MovieService movieService;
 	
-	/*====================================================================
-	 *  영화 (따로 빼둠)
-	 * ===================================================================
-	 * */
-	
-	// 관리자 영화정보관리 목록
-
+	//========= 관리자 영화정보관리 목록 ==========
 	@GetMapping("adminMovieList")
-	public String adminMovieList() {
+	public String adminMovieList(Model model, HttpSession session) {
 		System.out.println("AdminController - adminMovieList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		List<MovieVO> movieList = movieService.selectMvList();
+//		System.out.println(movieList);
+		
+		model.addAttribute("movieList", movieList);
+		
+		
 		return "mypage/admin/board_movie";
 	}
 	
-	// 관리자 영화정보등록 Form
+	//========== 영화상세정보 =============
+	@GetMapping("adminMovieDetail")
+	public String adminMovieDetail(@RequestParam int movie_code, Model model) {
+//		System.out.println(movie_code);
+		
+		MovieVO movie = movieService.movieDetail(movie_code);
+//		System.out.println(movie);
+		model.addAttribute("movie", movie);
+		
+		return "mypage/admin/movie_detail";
+	}
+
+	
+	
+	// ======== 관리자 영화정보등록Form =========
 	@GetMapping("adminMovieInsert")
 	public String adminMovieInsert() {
 		System.out.println("AdminController - adminMovieInsert()");
+		
 		return "mypage/admin/insert_movie";
 	}
 	
-	// 관리자 영화정보등록 Pro
+	// ========== 관리자 영화정보등록Pro ===========
 	@PostMapping("adminMovieInsert2")
 	public String adminMovieInsert2(MovieVO movie, Model model) {
 		System.out.println("AdminController - adminMovieInsert2()");
@@ -56,6 +91,51 @@ public class AdminMovieController {
 			
 	}
 	
+	
+	//======= 영화정보 수정Form =======
+	@GetMapping("movieDetailModify")
+	public String movieDetailModify(MovieVO movie, HttpSession session, Model model) {
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		
+		movie = movieService.movieDetail(movie.getMovie_code());
+		model.addAttribute("movie", movie);
+		
+		return "mypage/admin/movie_detail_modify";
+	}
+	
+	//======= 영화정보 수정Pro =======	
+	@PostMapping("movieDetailModifyPro")
+	public String movieDetailModifyPro(MovieVO movie, Model model) {
+		int updateMovieCount = movieService.modifyMovie(movie);
+		
+		if(updateMovieCount > 0) {
+			model.addAttribute("msg", "영화를 수정하였습니다.");
+			model.addAttribute("targetURL", "adminMovieDetail");
+			return "forward";
+		} else {
+			model.addAttribute("msg", "영화등록을 실패하였습니다.");
+			return "fail_back";
+		}
+		
+	}
+	
+	
+	
+	
+	
+	//==========================================================================
+	
+	// 박스오피스 조회	
+	
+	//==========================================================================
 	// 관리자 일일박스오피스 조회Form
 	@GetMapping("adminBoxOfficeList")
 	public String adminBoxOfficeList() {
