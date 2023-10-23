@@ -195,7 +195,7 @@
 									 	<input type="text" class="form-control form-control-user" id="printCd" name="movie_code">
 								    </div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<label>영화정보 불러오기</label>
+										<a href="https://www.kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do#none" target="_blank"><label>영화코드 확인하기</label></a>
 										<br>
 								    	<input type="button" class="btn btn-primary btn-user" value="검색" id="searchMvBtn">
 								    </div>
