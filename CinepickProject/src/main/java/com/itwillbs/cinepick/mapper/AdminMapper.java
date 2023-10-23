@@ -33,6 +33,7 @@ public interface AdminMapper {
 
 	int updateNotice(NoticeVO notice);
 	
+	NoticeVO selectNotice(int noticeIdx);
 	/*==============================================================
 	 * 자주 묻는 질문
 	 * =============================================================
@@ -78,5 +79,7 @@ public interface AdminMapper {
 	int updateEvent(EventVO event);
 
 	int deleteEvent(String event_idx);
+
+
 
 }

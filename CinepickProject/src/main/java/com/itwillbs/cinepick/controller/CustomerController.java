@@ -1,5 +1,7 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,16 +9,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
+import com.itwillbs.cinepick.vo.NoticeVO;
 
 
 
 
 @Controller
 public class CustomerController {
+	
+	@Autowired
+	private AdminService adminService;
 	
 	@Autowired
 	private UserService service;
@@ -53,17 +60,29 @@ public class CustomerController {
 	
 	// 공지사항 목록
 	@GetMapping("notice")
-	public String notice() {
+	public String notice(Model model) {
 		System.out.println("CustomerController - notice");
+		
+		List<NoticeVO> noticeList = adminService.getNotice("");
+		
+		model.addAttribute("noticeList", noticeList);
+		
 		return "cinepick/customer/notice";
 	}
 	
-	// 공지사항 상세글 보기
+	// 공지사항 상세보기
 	@GetMapping("noticeDetail")
-	public String noticeDetail() {
-		System.out.println("CustomerController - noticeDetail");
+	public String noticeDetail(String noticeIdx , Model model) {
+		System.out.println("CustomerController - notice");
+//		System.out.println(noticeIdx);
+		
+		NoticeVO notice = adminService.getNotice(noticeIdx).get(0);
+		
+		model.addAttribute("notice", notice);
+		
 		return "cinepick/customer/notice_detail";
 	}
+	
 	
 	
 	/*====================================================================

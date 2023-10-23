@@ -59,6 +59,8 @@ public class AdminService {
 		return mapper.updateNotice(notice);
 	}
 	
+	
+	
 	/*==============================================================
 	 * 자주 묻는 질문
 	 * =============================================================
@@ -160,5 +162,7 @@ public class AdminService {
 		System.out.println("AdminService - deleteEvent(event_idx)");
 		return mapper.deleteEvent(event_idx);
 	}
+	
+	
 
 }

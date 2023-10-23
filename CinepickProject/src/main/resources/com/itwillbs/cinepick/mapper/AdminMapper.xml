@@ -42,8 +42,9 @@
 		<if test="noticeIdx != null and !noticeIdx.equals('')">
 		WHERE noticeIdx = #{noticeIdx }
 		</if>
+		ORDER BY noticeWriteDate DESC
     </select>
-    
+
     <delete id="deleteNotice">
     	DELETE FROM notice
     	WHERE noticeIdx = #{noticeIdx };

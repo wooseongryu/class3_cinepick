@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="zxx">
 
 <head>
@@ -56,8 +58,6 @@
                             <a href="oneToOneQna">1:1문의</a>
                         </h5>
                     </div>
-
-                    
 					<div class="row">
 						<div class="col-3">
 							<div class="qna_table_head">
@@ -74,136 +74,26 @@
 							</div>
 						</div>
 					</div>
-				
-				
-					
-					<div class="row">
-						<div class="col-3">
-							<div class="qna_table_body">
-								<h6>
-	                                2023-7-23
-	                            </h6>
-	                        </div>
-					    </div>
-					    <div class="col-9">
-					    	<a href="noticeDetail">
+					<c:forEach var="notice" items="${noticeList }">
+						<div class="row">
+							<div class="col-3">
 								<div class="qna_table_body">
-		                            <h6>
-		                                씨네픽 회원약관 개정 안내
+									<h6>
+										<fmt:formatDate value="${notice.noticeWriteDate }" pattern="yyyy-MM-dd"/>
 		                            </h6>
-								</div>
-							</a>
+		                        </div>
+						    </div>
+						    <div class="col-9">
+						    	<a href="noticeDetail?noticeIdx=${notice.noticeIdx} ">
+									<div class="qna_table_body">
+			                            <h6>
+											${notice.noticeTitle }
+			                            </h6>
+									</div>
+								</a>
+							</div>
 						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-3">
-							<div class="qna_table_body">
-								<h6>
-	                                2023-9-23
-	                            </h6>
-	                        </div>
-					    </div>
-					    <div class="col-9">
-					    	<a href="#">
-								<div class="qna_table_body">
-		                            <h6>
-		                                LGU+ 시스템 점검 공지
-		                            </h6>
-								</div>
-							</a>
-						</div>
-					</div>
-					
-											
-					<div class="row">
-						<div class="col-3">
-							<div class="qna_table_body">
-								<h6>
-	                                2023-07-12
-	                            </h6>
-	                        </div>
-					    </div>
-					    <div class="col-9">
-					    	<a href="#">
-								<div class="qna_table_body">
-	                            	<h6>
-	                                	L.PAY 코나카드 매입사 변경에 따른 카드 재등록 안내
-	                            	</h6>
-								</div>
-							</a>
-						</div>
-					</div>
-											
-					<div class="row">
-						<div class="col-3">
-							<div class="qna_table_body">
-								<h6>
-	                                2023-7-11
-	                            </h6>
-	                        </div>
-					    </div>
-					    <div class="col-9">
-						    <a href="#">
-								<div class="qna_table_body">
-		                            <h6>
-		                                8/27(일) AM 1:30~6:30 롯데카드 온라인 결제 불가
-		                            </h6>
-								</div>
-							</a>
-						</div>
-					</div>
-					
-											
-					<div class="row">
-						<div class="col-3">
-							<div class="qna_table_body">
-								<h6>
-	                                2023-9-19
-	                            </h6>
-	                        </div>
-					    </div>
-					    <div class="col-9">
-					    	<a href="#">
-								<div class="qna_table_body">
-		                            <h6>
-		                                영화관람료 소득공제 시행 안내
-		                            </h6>
-								</div>
-							</a>
-						</div>
-					</div>
-					
-											
-					<div class="row">
-						<div class="col-3">
-							<div class="qna_table_body">
-								<h6>
-	                                2023-5-23
-	                            </h6>
-	                        </div>
-					    </div>
-					    <div class="col-9">
-						    <a href="#">
-								<div class="qna_table_body">
-		                            <h6>
-		                                Apple Pay 결제 안내
-		                            </h6>
-								</div>
-							</a>
-						</div>
-					</div>
-                     
-                     
-                     <div class="product__pagination">
-                         <a href="#"><i class="fa fa-angle-double-left"></i></a>
-                         <a href="#" class="current-page">1</a>
-                         <a href="#">2</a>
-                         <a href="#">3</a>
-                         <a href="#">4</a>
-                         <a href="#">5</a>
-                         <a href="#"><i class="fa fa-angle-double-right"></i></a>
-                     </div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
