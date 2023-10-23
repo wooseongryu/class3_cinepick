@@ -121,7 +121,7 @@ public class AdminMovieController {
 			model.addAttribute("targetURL", "adminMovieDetail");
 			return "forward";
 		} else {
-			model.addAttribute("msg", "영화등록을 실패하였습니다.");
+			model.addAttribute("msg", "영화수정을 실패하였습니다.");
 			return "fail_back";
 		}
 		
@@ -137,7 +137,7 @@ public class AdminMovieController {
 			model.addAttribute("script", "window.close()");
 			return "forward";
 		} else {
-			model.addAttribute("msg", "영화등록을 실패하였습니다.");
+			model.addAttribute("msg", "영화삭제를 실패하였습니다.");
 			return "fail_back";
 		}
 	}
