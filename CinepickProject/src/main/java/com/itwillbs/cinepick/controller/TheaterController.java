@@ -1,5 +1,7 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +20,16 @@ public class TheaterController {
 	
 	// 극장 목록 보기
 	@GetMapping("theater")
-	public String theater() {
+	public String theater(TheaterVO theater, Model model, CityVO city) {
 		System.out.println("TheaterController - theater");
+		
+		List<TheaterVO> theaterList = service.getBranch(theater);
+//		System.out.println(theaterList);
+		
+		List<CityVO> cityList = service.getCity(city); 
+		
+		model.addAttribute("theaterList", theaterList);
+		model.addAttribute("cityList", cityList);
 		
 		return "cinepick/theater/theater_main";
 	}

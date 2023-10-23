@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,15 +19,6 @@
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
 	
-	<!-- 연습용	 -->
-<!-- 	<a href="theaterDetail?brchNo=1001" title="강남 상세보기">강남</a> -->
-<!-- 	<a href="theaterDetail?brchNo=1003" title="강남 상세보기">코엑스</a> -->
-<!-- 	<a href="theaterDetail?theater_name=강남" title="강남 상세보기">강남</a> -->
-<!-- 	<a href="theaterDetail?city_idx=1" title="강남 상세보기">강남</a> -->
-	
-	
-	<!-- 연습용	 -->
-
 <!-- 모달은 position: fixed를 사용합니다. 가능한 다른 요소와의 간섭을 피하기 위해, 모달 HTML을 최상단의 위치에 넣어 주세요. by Bootstrap -->
 	<div class="modal here modal-layer" tabindex="-1">
 		<div class="modal-dialog">
@@ -95,149 +88,40 @@
 		</div>
 	    <div class="theater-place">
 	    	<div class="buttonDiv">
-			    <button type="button" class="btn btn-light sel-city theater-on" data-target="seoul">서울</button>
-				<button type="button" class="btn btn-light sel-city" data-target="gyeonggi">경기</button>
-	<!-- 			<button type="button" class="btn btn-light sel-city" data-target="incheon">인천</button> -->
-	<!-- 			<button type="button" class="btn btn-light sel-city" data-target="daejeon">대전/충청/세종</button> -->
-				<button type="button" class="btn btn-light sel-city" data-target="busan">부산/경상</button>
-				<button type="button" class="btn btn-light sel-city" data-target="gwangju">광주/전라</button>
-				<button type="button" class="btn btn-light sel-city" data-target="gangwon">강원</button>
-	<!-- 			<button type="button" class="btn btn-light sel-city" data-target="jeju">제주</button> -->
+	    		
+	    		<c:forEach var="city" items="${cityList}">
+				    <button type="button" class="btn btn-light sel-city" data-target="${city.city_name_e }">${city.city_name }</button>
+	    		</c:forEach>
+	    		
 	    	</div>
-	       	<div class="theater-list seoul on" data-target="seoul">
-				<ul>
-					<li data-brch-no="1001">
-						<a href="theaterDetail?brchNo=1001" title="강남 상세보기">강남</a>
-					</li>
-					<li data-brch-no="1002">
-						<a href="theaterDetail?brchNo=1002" title="동대문 상세보기">동대문</a>
-					</li>
-					<li data-brch-no="1003">
-						<a href="theaterDetail?brchNo=1003" title="코엑스 상세보기">코엑스</a>
-					</li>
-					<li data-brch-no="1372">
-						<a href="theaterDetail" title="강남 상세보기">강남//테스트작동링크</a>
-					</li>
-				</ul>
-			</div> <!-- 서울 theater-list 끝 -->
-	       	<div class="theater-list gyeonggi" data-target="gyeonggi">
-	        	<ul>
-	        		<li data-brch-no="2001">
-						<a href="theaterDetail?brchNo=2001" title="남양주 상세보기">남양주</a>
-					</li>
-	        		<li data-brch-no="2002">
-						<a href="theaterDetail?brchNo=2002" title="의정부 상세보기">의정부</a>
-					</li>
-	        		<li data-brch-no="2003">
-						<a href="theaterDetail?brchNo=2003" title="파주 상세보기">파주</a>
-					</li>
-				</ul>
-			</div> <!-- 경기 theater-list 끝 -->
-	<!--        	<div class="theater-list incheon"> -->
-	<!--         	<ul> -->
-	<!-- 				<li data-brch-no="4121"> -->
-	<!-- 					<a href="/theater?brchNo=4121" title="고양스타필드 상세보기">인천</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0029"> -->
-	<!-- 					<a href="/theater?brchNo=0029" title="광명AK플라자 상세보기">광명AK플라자</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0053"> -->
-	<!-- 					<a href="/theater?brchNo=0053" title="광명소하 상세보기">광명소하</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0035"> -->
-	<!-- 					<a href="/theater?brchNo=0035" title="금정AK플라자 상세보기">금정AK플라자</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="4152"> -->
-	<!-- 					<a href="/theater?brchNo=4152" title="김포한강신도시 상세보기">김포한강신도시</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0039"> -->
-	<!-- 					<a href="/theater?brchNo=0039" title="남양주 상세보기">남양주</a> -->
-	<!-- 				</li> -->
-	<!-- 			</ul> -->
-	<!-- 		</div> 인천 theater-list 끝 -->
-	<!--         <div class="theater-list daejeon">  -->
-	<!--         	<ul> -->
-	<!-- 				<li data-brch-no="4121"> -->
-	<!-- 					<a href="/theater?brchNo=4121" title="고양스타필드 상세보기">대전/충청/세종</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0029"> -->
-	<!-- 					<a href="/theater?brchNo=0029" title="광명AK플라자 상세보기">광명AK플라자</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0053"> -->
-	<!-- 					<a href="/theater?brchNo=0053" title="광명소하 상세보기">광명소하</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0035"> -->
-	<!-- 					<a href="/theater?brchNo=0035" title="금정AK플라자 상세보기">금정AK플라자</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="4152"> -->
-	<!-- 					<a href="/theater?brchNo=4152" title="김포한강신도시 상세보기">김포한강신도시</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0039"> -->
-	<!-- 					<a href="/theater?brchNo=0039" title="남양주 상세보기">남양주</a> -->
-	<!-- 				</li> -->
-	<!-- 			</ul> -->
-	<!-- 		</div> 대전 theater-list 끝 -->
-	        <div class="theater-list busan"> 
-	        	<ul>
-	        		<li data-brch-no="3001">
-						<a href="theaterDetail?brchNo=3001" title="부산대 상세보기">부산대</a>
-					</li>
-	        		<li data-brch-no="3002">
-						<a href="theaterDetail?brchNo=3002" title="서면 상세보기">서면</a>
-					</li>
-	        		<li data-brch-no="3003">
-						<a href="theaterDetail?brchNo=3003" title="해운대 상세보기">해운대</a>
-					</li>
-				</ul>
-			</div> <!-- 부산 theater-list 끝 -->
-	        <div class="theater-list gwangju"> 
-	        	<ul>
-	        		<li data-brch-no="4001">
-						<a href="theaterDetail?brchNo=4001" title="광주상무 상세보기">광주상무</a>
-					</li>
-	        		<li data-brch-no="4002">
-						<a href="theaterDetail?brchNo=4002" title="순천 상세보기">순천</a>
-					</li>
-	        		<li data-brch-no="4003">
-						<a href="theaterDetail?brchNo=4003" title="여수 상세보기">여수</a>
-					</li>
-				</ul>
-			</div> <!-- 광주 theater-list 끝 -->
-	        <div class="theater-list gangwon"> 
-	        	<ul>
-	        		<li data-brch-no="5001">
-						<a href="theaterDetail?brchNo=5001" title="속초 상세보기">속초</a>
-					</li>
-	        		<li data-brch-no="5002">
-						<a href="theaterDetail?brchNo=5002" title="원주 상세보기">원주</a>
-					</li>
-	        		<li data-brch-no="5003">
-						<a href="theaterDetail?brchNo=5003" title="</ 상세보기">춘천</a>
-					</li>
-				</ul>
-			</div> <!-- 강원 theater-list 끝 -->
-	<!--         <div class="theater-list jeju">  -->
-	<!--         	<ul> -->
-	<!-- 				<li data-brch-no="4121"> -->
-	<!-- 					<a href="/theater?brchNo=4121" title="고양스타필드 상세보기">제주</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0029"> -->
-	<!-- 					<a href="/theater?brchNo=0029" title="광명AK플라자 상세보기">광명AK플라자</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0053"> -->
-	<!-- 					<a href="/theater?brchNo=0053" title="광명소하 상세보기">광명소하</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0035"> -->
-	<!-- 					<a href="/theater?brchNo=0035" title="금정AK플라자 상세보기">금정AK플라자</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="4152"> -->
-	<!-- 					<a href="/theater?brchNo=4152" title="김포한강신도시 상세보기">김포한강신도시</a> -->
-	<!-- 				</li> -->
-	<!-- 				<li data-brch-no="0039"> -->
-	<!-- 					<a href="/theater?brchNo=0039" title="남양주 상세보기">남양주</a> -->
-	<!-- 				</li> -->
-	<!-- 			</ul> -->
-	<!-- 		</div> 제주 theater-list 끝 -->
+			<!-- 성공 -->
+	    		
+<!-- 			    <button type="button" class="btn btn-light sel-city theater-on" data-target="seoul">서울</button> -->
+<!-- 				<button type="button" class="btn btn-light sel-city" data-target="gyeonggi">경기</button> -->
+<!-- 				<button type="button" class="btn btn-light sel-city" data-target="busan">부산/경상</button> -->
+<!-- 				<button type="button" class="btn btn-light sel-city" data-target="gwangju">광주/전라</button> -->
+<!-- 				<button type="button" class="btn btn-light sel-city" data-target="gangwon">강원</button> -->
+	    	
+				<!--지금 하는 부분 -->
+		    	<c:forEach var="city" items="${cityList }">
+		    		<div class="theater-list ${city.city_name_e } " data-target="${city.city_name_e }">
+						<ul>
+							<c:forEach var="theater" items="${theaterList}">
+								<c:set var="c_idx" value="${city.city_idx }"/>
+								<c:set var="t_c_idx" value="${theater.city_idx }"/>
+								<c:if test="${c_idx eq t_c_idx }">
+									<li data-brch-no="${theater.brchNo }">
+										<a href="theaterDetail?brchNo=${theater.brchNo }" title="${theater.theater_name } 상세보기">${theater.theater_name }</a>
+									</li>	
+								</c:if>
+							</c:forEach>
+						</ul>
+					</div>
+		    	</c:forEach>
+				<!--지금 하는 부분 끝 -->
+	    	
+
+			
 	    </div>
 	<!--     theater-place 끝 -->
 	    
@@ -628,9 +512,18 @@
     <script>
     	
 	    $(function () {
+	    	// 버튼
 	    	$(".theater-on").css("background-color", "#c6c7c8");
-	        $(".theater-list").hide();
+// 	    	$(".buttonDiv > button::first-child").css("background-color", "#c6c7c8");
+	    	$(".theater-list").hide();
+			
+	        // 하드코딩 제거하고 theater-list seoul에 on 사라진 것
+	        $(".seoul").addClass("on");
+	    	// theater-list
 	        $(".on").show();
+	    	
+	        $("div.buttonDiv button:first-child" ).css("background-color", "#c6c7c8");
+	        
 	        $(".sel-city").click(function () {
 	            // 숨겨진 모든 theater-list를 숨김
 	            $(".theater-list").hide();

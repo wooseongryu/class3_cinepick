@@ -23,4 +23,5 @@ CREATE TABLE city (
 public class CityVO {
 	private int city_idx;
 	private String city_name;
+	private String city_name_e;
 }

@@ -9,9 +9,18 @@
 		SELECT *
 		FROM theater
 		WHERE brchNo = #{brchNo}
-		
 	
 	</select>
 	
+	<select id="selectTheaterList" resultType="Theater">
+		SELECT brchNo, theater_name, city_idx
+		FROM theater
+	
+	</select>
+	
+	<select id="selectCityList" resultType="City">
+		SELECT city_name, city_name_e, city_idx
+		FROM city
+	</select>
 
 </mapper>

@@ -1,9 +1,12 @@
 package com.itwillbs.cinepick.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.TheaterMapper;
+import com.itwillbs.cinepick.vo.CityVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 
 @Service
@@ -14,6 +17,13 @@ public class TheaterService {
 
 	public TheaterVO getTheater(TheaterVO theater) {
 		return mapper.selectTheater(theater);
+	}
+	public List<TheaterVO> getBranch(TheaterVO theater) {
+		return mapper.selectTheaterList(theater);
+	}
+	public List<CityVO> getCity(CityVO city) {
+		// TODO Auto-generated method stub
+		return mapper.selectCityList(city);
 	}
 
 }
