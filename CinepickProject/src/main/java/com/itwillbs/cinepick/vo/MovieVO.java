@@ -46,7 +46,7 @@ public class MovieVO {
 	private int movie_code;
 	private String movie_nameK;
 	private String movie_nameE;
-	private Date movie_openDt;
+	private String movie_openDt;
 	private String movie_status;
 	private String movie_runtime;
 	private String movie_genre;
