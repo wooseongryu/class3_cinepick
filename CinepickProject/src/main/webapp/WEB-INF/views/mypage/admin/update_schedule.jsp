@@ -151,11 +151,11 @@
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-		                                <input type="submit" class="btn btn-primary btn-user" onclick="close()" value="등록">
+		                                <input type="submit" class="btn btn-primary btn-user" value="등록">
 		                                &nbsp;
 		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
 		                                &nbsp;
-		                                <input type="button" class="btn btn-primary btn-user" onclick="close()" value="돌아가기">
+		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
 									</div>
 								</div>
                             </form>

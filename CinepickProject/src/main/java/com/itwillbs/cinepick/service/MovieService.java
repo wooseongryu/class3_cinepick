@@ -15,6 +15,9 @@ public class MovieService {
 	private MovieMapper movieMapper;
 
 	//영화등록
+	
+	
+	
 	public int insertMovie(MovieVO movie) {
 		return movieMapper.insertMovie(movie);
 	}
@@ -44,5 +47,13 @@ public class MovieService {
 	public int insertBoxoffice(Map<String, Object> map) {
 		return movieMapper.insertBoxoffice(map);
 	}
+
+
+	public int checkedMovie(MovieVO movie) {
+		return movieMapper.checkedMovie(movie);
+	}
+
+
+
 	
 }

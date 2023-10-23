@@ -33,6 +33,8 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.ScreenVO;
+import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 @Controller
@@ -319,6 +321,16 @@ public class AdminController {
 	@GetMapping("adminScheduleInsert")
 	public String adminScheduleInsert() {
 		System.out.println("AdminController - adminScheduleInsert()");
+		
+		List<TheaterVO> theaterList = adminService.selectTheater();
+//		System.out.println(theaterList);
+		
+		
+		List<ScreenVO> screenList = adminService.selectScreen();
+		System.out.println(screenList);
+
+		
+		
 		return "mypage/admin/update_schedule";
 	}
 	
@@ -786,13 +798,20 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		
-		MultipartFile mFile = event.getEvent_poster_multi();
+		MultipartFile mFile_poster = event.getEvent_poster_multi();
+		MultipartFile mFile_thumb = event.getEvent_thumbnail_multi();
+		
 		String uuid = UUID.randomUUID().toString();
 		event.setEvent_poster("");
-		String fileName = uuid.substring(0, 8) + "_" + mFile.getOriginalFilename();
+		String fileName_poster = uuid.substring(0, 8) + "_" + mFile_poster.getOriginalFilename();
+		String fileName_thumb = uuid.substring(0, 8) + "_" + mFile_thumb.getOriginalFilename();
 		
-		if(!mFile.getOriginalFilename().equals("")) {
-			event.setEvent_poster(subDir + "/" + fileName);
+		if(!mFile_poster.getOriginalFilename().equals("")) {
+			event.setEvent_poster(subDir + "/" + fileName_poster);
+		}
+		
+		if(!mFile_thumb.getOriginalFilename().equals("")) {
+			event.setEvent_thumbnail(subDir + "/" + fileName_thumb);
 		}
 		
 		int insertCount = adminService.insertEvent(event);
@@ -804,8 +823,11 @@ public class AdminController {
 		
 		// 실제폴더에 저장.
 		try {
-			if(!mFile.getOriginalFilename().equals("")) {
-				mFile.transferTo(new File(saveDir, fileName));
+			if(!mFile_poster.getOriginalFilename().equals("")) {
+				mFile_poster.transferTo(new File(saveDir, fileName_poster));
+			}
+			if(!mFile_thumb.getOriginalFilename().equals("")) {
+				mFile_thumb.transferTo(new File(saveDir, fileName_thumb));
 			}
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
@@ -856,18 +878,24 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		
-		MultipartFile mFile = event.getEvent_poster_multi();
+		MultipartFile mFile_poster = event.getEvent_poster_multi();
+		MultipartFile mFile_thumb = event.getEvent_thumbnail_multi();
+		
 		String uuid = UUID.randomUUID().toString();
 		event.setEvent_poster("");
-		String fileName = uuid.substring(0, 8) + "_" + mFile.getOriginalFilename();
+		String fileName_poster = uuid.substring(0, 8) + "_" + mFile_poster.getOriginalFilename();
+		String fileName_thumb = uuid.substring(0, 8) + "_" + mFile_thumb.getOriginalFilename();
 		
-		if(!mFile.getOriginalFilename().equals("")) {
-			event.setEvent_poster(subDir + "/" + fileName);
+		if(!mFile_poster.getOriginalFilename().equals("")) {
+			event.setEvent_poster(subDir + "/" + fileName_poster);
+		}
+		
+		if(!mFile_thumb.getOriginalFilename().equals("")) {
+			event.setEvent_poster(subDir + "/" + fileName_thumb);
 		}
 		
 		// 수정전 기존의 파일경로 가지고 있어야됨.
 		EventVO tmpEvent = adminService.selectEvent(String.valueOf(event.getEvent_idx())).get(0);
-		String tmp = tmpEvent.getEvent_poster();
 		
 		int updateCount = adminService.updateEvent(event);
 		
@@ -878,8 +906,12 @@ public class AdminController {
 		
 		// 실제폴더에 저장.
 		try {
-			if(!mFile.getOriginalFilename().equals("")) {
-				mFile.transferTo(new File(saveDir, fileName));
+			if(!mFile_poster.getOriginalFilename().equals("")) {
+				mFile_poster.transferTo(new File(saveDir, fileName_poster));
+			}
+			
+			if(!mFile_thumb.getOriginalFilename().equals("")) {
+				mFile_thumb.transferTo(new File(saveDir, fileName_thumb));
 			}
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
@@ -891,8 +923,10 @@ public class AdminController {
 		String uploadPath = "resources/upload";
 		try {
 			String realPath = session.getServletContext().getRealPath(uploadPath);
-			Path path = Paths.get(realPath + "/" + tmp);
-			System.out.println(path);
+			Path path = Paths.get(realPath + "/" + tmpEvent.getEvent_poster());
+			Files.deleteIfExists(path);
+			
+			path = Paths.get(realPath + "/" + tmpEvent.getEvent_thumbnail());
 			Files.deleteIfExists(path);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -915,7 +949,7 @@ public class AdminController {
 		}
 		
 		// 삭제하기전에 파일경로를 먼저 받아와야됨.
-		EventVO event = adminService.selectEvent(event_idx).get(0);
+		EventVO tmpEvent = adminService.selectEvent(event_idx).get(0);
 		
 		int deleteCount = adminService.deleteEvent(event_idx);
 		
@@ -928,7 +962,9 @@ public class AdminController {
 		String uploadPath = "resources/upload";
 		try {
 			String realPath = session.getServletContext().getRealPath(uploadPath);
-			Path path = Paths.get(realPath + "/" + event.getEvent_poster());
+			Path path = Paths.get(realPath + "/" + tmpEvent.getEvent_poster());
+			Files.deleteIfExists(path);
+			path = Paths.get(realPath + "/" + tmpEvent.getEvent_thumbnail());
 			Files.deleteIfExists(path);
 		} catch (IOException e) {
 			e.printStackTrace();

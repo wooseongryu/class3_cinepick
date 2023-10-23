@@ -20,6 +20,23 @@
 		WHERE user_idx = #{user_idx}
 	</update>
 	<!-- 회원 정보 관리 끝 -->
+	
+	<!-- 상영 시간표 -->
+	<select id="selectTheater" resultType="Theater">
+		SELECT
+			theater_idx
+			, theater_name
+		FROM theater;
+	</select>
+	
+	<select id="selectScreen" resultType="Screen">
+		SELECT
+			screen_idx
+			, screen_name
+		FROM screen;
+	</select>
+	<!-- 상영 시간표 끝 -->
+	
 
 	<!-- 공지 -->
 	<insert id="insertNotice">
@@ -156,6 +173,7 @@
 			, #{event_startDt}
 			, #{event_endDt}
 			, #{event_poster}
+			, #{event_thumbnail}
     	)
     </insert>
     
@@ -166,6 +184,7 @@
 			, event_startDt
 			, event_endDt
 			, event_poster
+			, event_thumbnail
     	FROM event
     	<if test="event_idx != null and !event_idx.equals('')">
 		WHERE event_idx = #{event_idx}
@@ -179,6 +198,7 @@
 			, event_startDt = #{event_startDt}
 			, event_endDt = #{event_endDt}
 			, event_poster = #{event_poster}
+			, event_thumbnail = #{event_thumbnail}
 		WHERE event_idx = #{event_idx}
     </update>
     

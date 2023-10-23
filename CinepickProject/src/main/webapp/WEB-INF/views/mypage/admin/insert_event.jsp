@@ -102,7 +102,11 @@
 								</div>
 								<br>
 								<div class="form-group row">
-									<div class="col-sm-2 mb-1 mb-sm-0">
+									<div class="col-sm-5 mb-1 mb-sm-0">
+									    <label for="">썸네일 사진</label>
+										<input type="file" name="event_thumbnail_multi" required="required"/>
+								    </div>
+									<div class="col-sm-5 mb-1 mb-sm-0">
 								    	<label for="">이벤트 사진</label>
 										<input type="file" name="event_poster_multi" required="required"/>
 								    </div>

@@ -26,6 +26,14 @@
 		)
 	</insert>
 	
+	<select id="checkedMovie" resultType="int">
+		SELECT COUNT(*)
+		FROM movie
+		WHERE movie_code = #{movie_code}
+	</select>
+	
+	
+	
 	<!-- 영화목록출력 -->
 	<!-- select 전에 날짜 비교해서 해당날짜부터는 개봉으로 update 해야함 -->
 	<select id="selectMovieList" resultType="movie">
