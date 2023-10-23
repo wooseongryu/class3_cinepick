@@ -13,13 +13,13 @@
 
 <script>
 	// 팝업창 띄우기
-	var popupWidth = 1000;
-	var popupHeight = 800;
-	var popupX = (window.screen.width / 2) - (popupWidth / 2);
-	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-	function updateSchedule() {
-		window.open('adminScheduleInsert','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-	}
+// 	var popupWidth = 1000;
+// 	var popupHeight = 800;
+// 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
+// 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+// 	function updateSchedule() {
+// 		window.open('adminScheduleInsert','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+// 	}
 </script>
 	
 </head>
@@ -133,13 +133,17 @@
                                             <th>영화관명</th>
                                             <th>상영관</th>
                                             <th>영화명</th>
-                                            <th>영화시작시간</th>
+                                            <th>시작시간</th>
+                                            <th>종료시간</th>
                                             <th>수정 및 삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="6"><button type="button" class="btn btn-primary" onclick="updateSchedule()">등록</button>&nbsp;&nbsp;<button type="button" class="btn btn-primary">삭제</button></td>
+											<td colspan="7">
+												<button type="button" class="btn btn-primary" onclick="location.href='adminScheduleInsert'">등록</button>&nbsp;&nbsp;
+												<button type="button" class="btn btn-primary">삭제</button>
+											</td>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -149,6 +153,7 @@
                                             <td>1관</td>
                                             <td>콘크리트 유토피아</td>
                                             <td>09:00</td>
+                                            <td>10:00</td>
 											<td><button type="button" class="btn btn-primary" onclick="updateSchedule()">수정</button>
                                         </tr>
                                         <tr>
@@ -157,6 +162,7 @@
                                             <td>2관</td>
                                             <td>콘크리트 유토피아</td>
                                             <td>09:00</td>
+                                            <td>10:00</td>
 											<td><button type="button" class="btn btn-primary" onclick="updateSchedule()">수정</button>
                                         </tr>
                                     </tbody>

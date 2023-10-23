@@ -11,6 +11,8 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.ScreenVO;
+import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 @Service
@@ -28,6 +30,23 @@ public class AdminService {
 	public int updateUserAuthorize(UserVO user) {
 		System.out.println("AdminService - updateUserAuthorize()");
 		return mapper.updateUserAuthorize(user);
+	}
+	
+	/*====================================================================
+	 * 5. 상영 시간표
+	 * ===================================================================
+	 * */
+	
+	// 극장 조회
+	public List<TheaterVO> selectTheater() {
+		System.out.println("AdminService - selectTheater()");
+		return mapper.selectTheater();
+	}
+	
+	// 상영관 조회
+	public List<ScreenVO> selectScreen() {
+		System.out.println("AdminService - selectScreen()");
+		return mapper.selectScreen();
 	}
 	
 	/*==============================================================
@@ -162,7 +181,5 @@ public class AdminService {
 		System.out.println("AdminService - deleteEvent(event_idx)");
 		return mapper.deleteEvent(event_idx);
 	}
-	
-	
 
 }

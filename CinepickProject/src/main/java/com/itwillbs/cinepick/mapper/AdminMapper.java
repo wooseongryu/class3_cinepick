@@ -9,6 +9,8 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.ScreenVO;
+import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 @Mapper
@@ -20,6 +22,15 @@ public interface AdminMapper {
 	 * */
 	
 	int updateUserAuthorize(UserVO user);
+	
+	/*====================================================================
+	 * 5. 상영 시간표
+	 * ===================================================================
+	 * */
+
+	List<TheaterVO> selectTheater();
+
+	List<ScreenVO> selectScreen();
 
 	/*==============================================================
 	 * 공지 
@@ -79,7 +90,5 @@ public interface AdminMapper {
 	int updateEvent(EventVO event);
 
 	int deleteEvent(String event_idx);
-
-
 
 }

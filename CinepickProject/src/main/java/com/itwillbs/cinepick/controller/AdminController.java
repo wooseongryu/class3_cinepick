@@ -33,6 +33,8 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.ScreenVO;
+import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 @Controller
@@ -319,6 +321,16 @@ public class AdminController {
 	@GetMapping("adminScheduleInsert")
 	public String adminScheduleInsert() {
 		System.out.println("AdminController - adminScheduleInsert()");
+		
+		List<TheaterVO> theaterList = adminService.selectTheater();
+//		System.out.println(theaterList);
+		
+		
+		List<ScreenVO> screenList = adminService.selectScreen();
+		System.out.println(screenList);
+
+		
+		
 		return "mypage/admin/update_schedule";
 	}
 	

@@ -20,6 +20,23 @@
 		WHERE user_idx = #{user_idx}
 	</update>
 	<!-- 회원 정보 관리 끝 -->
+	
+	<!-- 상영 시간표 -->
+	<select id="selectTheater" resultType="Theater">
+		SELECT
+			theater_idx
+			, theater_name
+		FROM theater;
+	</select>
+	
+	<select id="selectScreen" resultType="Screen">
+		SELECT
+			screen_idx
+			, screen_name
+		FROM screen;
+	</select>
+	<!-- 상영 시간표 끝 -->
+	
 
 	<!-- 공지 -->
 	<insert id="insertNotice">
