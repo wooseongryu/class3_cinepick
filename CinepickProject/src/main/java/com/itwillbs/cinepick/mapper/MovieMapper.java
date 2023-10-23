@@ -20,4 +20,6 @@ public interface MovieMapper {
 
 	int modifyMovie(MovieVO movie);
 
+	int deleteMovie(int movie_code);
+
 }

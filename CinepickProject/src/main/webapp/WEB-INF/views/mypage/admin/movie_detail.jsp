@@ -124,19 +124,19 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_poster">포스터url</label>
-									  <textarea rows="3" class="form-control form-control-textarea" value="${movie.movie_poster }" readonly name="movie_poster"></textarea>
+									  <textarea rows="3" class="form-control form-control-textarea" readonly name="movie_poster">${movie.movie_poster }</textarea>
 									</div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_stil">스틸컷url</label>
-									  <textarea rows="6" class="form-control form-control-textarea" value="${movie.movie_still }" readonly name="movie_still"></textarea>
+									  <textarea rows="6" class="form-control form-control-textarea"  readonly name="movie_still">${movie.movie_still }</textarea>
 									</div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_plot">Comments</label>
-									  <textarea rows="10" class="form-control form-control-textarea" value="${movie.movie_plot }" readonly name="movie_plot"></textarea>
+									  <textarea rows="10" class="form-control form-control-textarea" readonly name="movie_plot">${movie.movie_plot }</textarea>
 									</div>
                                 </div>
 

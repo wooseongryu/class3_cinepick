@@ -38,6 +38,10 @@ public class MovieService {
 	public int modifyMovie(MovieVO movie) {
 		return movieMapper.modifyMovie(movie);
 	}
+
+	public int deleteMovie(int movie_code) {
+		return movieMapper.deleteMovie(movie_code);
+	}
 	
 	
 }

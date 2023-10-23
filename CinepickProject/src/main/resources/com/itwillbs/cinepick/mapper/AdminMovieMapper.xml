@@ -58,6 +58,12 @@
 			 
 	</update>	
 	
+<!-- 영화삭제 -->	
+	<delete id="deleteMovie">
+		DELETE FROM movie
+		WHERE movie_code = #{movie_code}
+	</delete>
+	
 	
 	
 	

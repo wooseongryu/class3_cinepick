@@ -126,9 +126,21 @@ public class AdminMovieController {
 		}
 		
 	}
-	
-	
-	
+
+	//======= 영화정보 삭제 =======	
+	@GetMapping("MovieDelete")
+	public String movieDelete(int movie_code, Model model) {
+		int deleteMovieCount = movieService.deleteMovie(movie_code);
+		
+		if(deleteMovieCount > 0) {
+			model.addAttribute("msg", "영화를 삭제하였습니다.");
+			model.addAttribute("script", "window.close()");
+			return "forward";
+		} else {
+			model.addAttribute("msg", "영화등록을 실패하였습니다.");
+			return "fail_back";
+		}
+	}
 	
 	
 	//==========================================================================

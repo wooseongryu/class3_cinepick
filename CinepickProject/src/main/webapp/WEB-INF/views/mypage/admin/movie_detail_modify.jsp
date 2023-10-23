@@ -36,8 +36,8 @@
     
     
 	<script>
-		function detailClose() {
-			window.close();
+		function detailBack() {
+			history.back();
 		}
 		
 		function movieDelete() {
@@ -161,19 +161,19 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_poster">포스터url</label>
-									  <textarea rows="3" class="form-control form-control-textarea" value="${movie.movie_poster }"  name="movie_poster"></textarea>
+									  <textarea rows="3" class="form-control form-control-textarea" name="movie_poster">${movie.movie_poster }</textarea>
 									</div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_stil">스틸컷url</label>
-									  <textarea rows="6" class="form-control form-control-textarea" value="${movie.movie_still }"  name="movie_still"></textarea>
+									  <textarea rows="6" class="form-control form-control-textarea" name="movie_still">${movie.movie_still }</textarea>
 									</div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_plot">Comments</label>
-									  <textarea rows="10" class="form-control form-control-textarea" value="${movie.movie_plot }"  name="movie_plot"></textarea>
+									  <textarea rows="10" class="form-control form-control-textarea" name="movie_plot">${movie.movie_plot }</textarea>
 									</div>
                                 </div>
 
@@ -183,9 +183,9 @@
 									<div class="col-sm-12 mb-6 mb-sm-0">
 		                                <input type="submit" class="btn btn-primary btn-user"  value="수정">
 		                                &nbsp;
-		                                <input type="button" class="btn btn-primary btn-user" onclick="movieDelete()" value="삭제" >
+<!-- 		                                <input type="button" class="btn btn-primary btn-user" onclick="movieDelete()" value="삭제" > -->
 		                                &nbsp;
-		                                <input type="button" class="btn btn-primary btn-user" onclick="detailClose()" value="돌아가기">
+		                                <input type="button" class="btn btn-primary btn-user" onclick="detailBack()" value="돌아가기">
 									</div>
 								</div>
                             </form>
