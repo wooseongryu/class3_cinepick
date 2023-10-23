@@ -146,6 +146,7 @@
 								movieInfo.movie_still = addData.movie_still;
 
 		                    	$("#printNm").val(movieInfo.movie_nameK);
+		                    	$("#printNmE").val(movieInfo.movie_nameE);
 								$("#printRated").val(GradeNm);
 								$("#printOpenDt").val(openDt);
 								$("#printStatus").val(prdtStatNm);
@@ -221,7 +222,7 @@
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="movie_nameE">영화제목(영문)</label>
-                                        <input type="text" class="form-control form-control-user" id="printNm" name="movie_nameE">
+                                        <input type="text" class="form-control form-control-user" id="printNmE" name="movie_nameE">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -253,7 +254,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_stil">스틸컷url</label>
-									  <textarea rows="6" class="form-control form-control-textarea" id="printStill" name="movie_stil"></textarea>
+									  <textarea rows="6" class="form-control form-control-textarea" id="printStill" name="movie_still"></textarea>
 									</div>
                                 </div>
                                 <div class="form-group row">

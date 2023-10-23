@@ -6,10 +6,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.itwillbs.cinepick.service.MovieService;
+import com.itwillbs.cinepick.vo.MovieVO;
 
 @Controller
 public class AdminMovieController {
@@ -38,21 +40,21 @@ public class AdminMovieController {
 	
 	// 관리자 영화정보등록 Pro
 	@PostMapping("adminMovieInsert2")
-	public String adminMovieInsert2(String movieList) {
-		System.out.println(movieList);
-		JSONArray ja = new JSONArray(movieList);
-		
-		System.out.println(ja.toString());
-		for(int i = 0; i < ja.length(); i++) {
-			JSONObject jo = new JSONObject(ja.get(i).toString());
-			System.out.println(jo.toString());
-			Map<String, Object> map = jo.toMap(); 
+	public String adminMovieInsert2(MovieVO movie, Model model) {
+		System.out.println("AdminController - adminMovieInsert2()");
+		System.out.println(movie);
+			int insertMovieCount = movieService.insertMovie(movie);
 			
-			//db로 넣기 작업
-		}
-			System.out.println("AdminController - adminMovieInsert2()");
-			return "mypage/admin/update_movie";
-		}
+			if(insertMovieCount > 0) {
+				model.addAttribute("msg", "영화를 등록하였습니다.");
+				model.addAttribute("targetURL", "adminMovieInsert");
+				return "forward";
+			} else {
+				model.addAttribute("msg", "영화등록을 실패하였습니다.");
+				return "fail_back";
+			}
+			
+	}
 	
 	// 관리자 일일박스오피스 조회Form
 	@GetMapping("adminBoxOfficeList")
@@ -75,10 +77,12 @@ public class AdminMovieController {
 		System.out.println(ja.toString());
 		for(int i = 0; i < ja.length(); i++) {
 			JSONObject jo = new JSONObject(ja.get(i).toString());
-			System.out.println(jo.toString());
+//			System.out.println(jo.toString());
 			Map<String, Object> map = jo.toMap(); 
+			System.out.println(map);
 			
 			//db로 넣기 작업
+//			movieService.insertBoxoffice(map);
 		}
 		
 		return"";
