@@ -67,8 +67,15 @@ public class AdminMovieController {
 	
 	// ======== 관리자 영화정보등록Form =========
 	@GetMapping("adminMovieInsert")
-	public String adminMovieInsert() {
+	public String adminMovieInsert(HttpSession session, Model model) {
 		System.out.println("AdminController - adminMovieInsert()");
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 		
 		return "mypage/admin/insert_movie";
 	}
@@ -77,18 +84,27 @@ public class AdminMovieController {
 	@PostMapping("adminMovieInsert2")
 	public String adminMovieInsert2(MovieVO movie, Model model) {
 		System.out.println("AdminController - adminMovieInsert2()");
-		System.out.println(movie);
-			int insertMovieCount = movieService.insertMovie(movie);
+//		System.out.println(movie);
 			
-			if(insertMovieCount > 0) {
-				model.addAttribute("msg", "영화를 등록하였습니다.");
-				model.addAttribute("targetURL", "adminMovieInsert");
-				return "forward";
-			} else {
-				model.addAttribute("msg", "영화등록을 실패하였습니다.");
-				return "fail_back";
-			}
+		//등록된 영화인지 판별
+		int count = movieService.checkedMovie(movie);
 			
+		if(count > 0) {
+			model.addAttribute("msg", "이미 등록된 영화입니다.");
+			return "fail_back";
+		}
+	
+		int insertMovieCount = movieService.insertMovie(movie);
+		
+		if(insertMovieCount > 0) {
+			model.addAttribute("msg", "영화를 등록하였습니다.");
+			model.addAttribute("targetURL", "adminMovieInsert");
+			return "forward";
+		} else {
+			model.addAttribute("msg", "영화등록을 실패하였습니다.");
+			return "fail_back";
+		}
+		
 	}
 	
 	
