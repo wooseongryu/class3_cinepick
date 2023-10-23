@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.itwillbs.cinepick.mapper.MovieMapper">
+
+	<insert id="insertMovie">
+		INSERT INTO movie
+		VALUES(
+			#{movie_code}
+			,#{movie_nameK}
+			,#{movie_nameE}
+<!-- 		이거 데이터타입변환 어케함 ㅜ 저절로 되노... -->
+			,#{movie_openDt} 
+			,#{movie_status}
+			,#{movie_runtime}
+			,#{movie_genre}
+			,#{movie_rated}
+			,#{movie_director}
+			,#{movie_actor}
+			,#{movie_plot}
+			,#{movie_poster}
+			,#{movie_still}
+		)
+	</insert>
+	
+	<insert id="insertBoxoffice">
+		INSERT INTO movie_boxoffice
+		VALUES(
+			
+		)
+	
+	</insert>
+	
+
+</mapper>
