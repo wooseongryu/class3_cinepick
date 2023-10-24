@@ -37,6 +37,11 @@
         <div class="loader"></div>
     </div>
 
+	<c:set var="pageNum" value="1" />
+	<c:if test="${not empty param.pageNum }">
+		<c:set var="pageNum" value="${param.pageNum }" />
+	</c:if>
+
 	<header>
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
@@ -51,9 +56,9 @@
                     </div>
                     <div class="test" id="order_comment">
                         <h5>
-                            <a href="qna">자주묻는질문</a>
+                            <a style="color: red;">자주묻는질문</a>
                              &nbsp;&nbsp;
-                            <a style="color: red;">공지사항</a>
+                            <a href="notice">공지사항</a>
                              &nbsp;&nbsp;
                             <a href="oneToOneQna">1:1문의</a>
                         </h5>
@@ -65,22 +70,22 @@
 							</div>
 						</div>
 						<div class="col">
-							<div class="customer_category" style="background: red">
+							<div class="customer_category">
 								<h6>회원</h6>
 							</div>
 						</div>
 						<div class="col">
-							<div class="customer_category" style="background: red">
+							<div class="customer_category">
 								<h6>멤버십</h6>
 							</div>
 						</div>
 						<div class="col">
-							<div class="customer_category" style="background: red">
+							<div class="customer_category">
 								<h6>관람권</h6>
 							</div>
 						</div>
 						<div class="col">
-							<div class="customer_category" style="background: red">
+							<div class="customer_category">
 								<h6>스토어</h6>
 							</div>
 						</div>
@@ -89,7 +94,7 @@
 						<div class="col-3">
 							<div class="qna_table_head">
 								<h6>
-	                                작성일자
+	                                카테고리
 	                            </h6>
 	                        </div>
 					    </div>
@@ -105,9 +110,7 @@
 						<div class="row">
 							<div class="col-3">
 								<div class="qna_table_body">
-									<h6>
-										${qna.qnaCateSubject }
-		                            </h6>
+									<h6>${qna.qnaCateSubject }</h6>
 		                        </div>
 						    </div>
 						    <div class="col-9">
@@ -121,15 +124,25 @@
 							</div>
 						</div>
 					</c:forEach>
-					<div class="product__pagination">
-						<a href="#"><i class="fa fa-angle-double-left"></i></a>
-						<a href="#" class="current-page">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#"><i class="fa fa-angle-double-right"></i></a>
-                     </div>
+					<div class="product__pagination" id="pageList">
+						<c:if test="${pageNum > 1 }">
+							<a href="qna?pageNum=${pageNum - 1 }"><i class="fa fa-angle-double-left"></i></a>					
+						</c:if>
+						<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+							<c:choose>
+								<c:when test="${pageNum eq i }">
+									<a class="current-page" href="qna?pageNum=${i }">${i }</a>
+								</c:when>
+								<c:otherwise>
+	<!-- 									<a class="#"> -->
+									<a href="qna?pageNum=${i }">${i }</a> 
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${pageNum < pageInfo.maxPage }">
+							<a href="qna?pageNum=${pageNum + 1 }"><i class="fa fa-angle-double-right"></i></a>					
+						</c:if>
+					</div>
 				</div>
 			</div>
 		</div>

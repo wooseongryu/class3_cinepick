@@ -93,12 +93,5 @@ public interface AdminMapper {
 	int deleteEvent(String event_idx);
 
 	
-	
-	// 공지사항 목록 조회
-	List<NoticeVO> selectNoticeList(@Param("startRow") int startRow, @Param("listLimit") int listLimit);
-
-	int selectNoticeListCount();
-
-	
 
 }

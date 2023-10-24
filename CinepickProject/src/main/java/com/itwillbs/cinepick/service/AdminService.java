@@ -182,16 +182,6 @@ public class AdminService {
 		return mapper.deleteEvent(event_idx);
 	}
 	
-	// 공지사항 목록 조회 요청
-	public List<NoticeVO> getNoticeList(int startRow, int listLimit) {
-		return mapper.selectNoticeList(startRow, listLimit);
-	}
-
-	public int getNoticeListCount() {
-		return mapper.selectNoticeListCount();
-	}
-	
-
 	
 
 }
