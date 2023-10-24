@@ -96,9 +96,6 @@
 		$(function() {
 			$("#searchMvBtn").on("click", function() {
 				
-				if()
-				
-				
 				let url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
 				let key = "f5eef3421c602c6cb7ea224104795888";
 				let movieCd = $("#printCd").val();
@@ -174,19 +171,20 @@
 			
 		});//End
 		
-		//movie_code의 maxLength 체크되도록 설정
-		function maxLengthCheck(object){
-		    if (object.value.length > object.maxLength){
-		        object.value = object.value.slice(0, object.maxLength);
-		    }
-		}
-		
-		//movie_code 입력할 때 숫자만 작성되고 이외에는 입력되지 않도록 설정
-		function onlynumberic(event) {
-			    event.target.value = event.target.value.replace(/[^0-9]/g, "");
-			}
-
+	</script>
 	
+	<script>
+	//movie_code 입력 가능한 수 maxlength(8자리) 설정
+	function maxLengthCheck(object){
+	    if (object.value.length > object.maxLength){
+	        object.value = object.value.slice(0, object.maxLength);
+	    }
+	}
+	
+	//movie_code 입력칸에 오로지 숫자만 입력 되도록 설정
+	function onlynumberic(event) {
+	    event.target.value = event.target.value.replace(/[^0-9]/g, "");
+	}
 	</script>
 	
 	
