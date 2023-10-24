@@ -10,7 +10,7 @@
 	// 전달받은 오류메세지(msg)를 출력하고, 지정된 페이지(targetURL)로 이동 처리
 	alert("${msg}");
 	${script};
-	location.href = "${targetURL}";
+	location.href = "${targetURL}?movie_code=${movie_code}";
 </script>
 </head>
 <body>

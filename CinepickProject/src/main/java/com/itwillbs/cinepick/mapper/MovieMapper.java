@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.itwillbs.cinepick.vo.BoxOfficeVO;
 import com.itwillbs.cinepick.vo.MovieVO;
@@ -36,7 +37,7 @@ public interface MovieMapper {
 	
 //=========== 영화차트페이지================
 	//영화목록
-	List<MovieVO> showMvList(boolean isOpen);
+	List<MovieVO> showMvList(@Param("isOpen") boolean isOpen, @Param("mvListType") String mvListType);
 
 
 	

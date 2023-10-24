@@ -54,7 +54,7 @@ public class AdminMovieController {
 	
 	//========== 영화상세정보 =============
 	@GetMapping("adminMovieDetail")
-	public String adminMovieDetail(@RequestParam int movie_code, Model model) {
+	public String adminMovieDetail(@RequestParam("movie_code") int movie_code, Model model) {
 //		System.out.println(movie_code);
 		
 		MovieVO movie = movieService.movieDetail(movie_code);
@@ -136,6 +136,7 @@ public class AdminMovieController {
 		if(updateMovieCount > 0) {
 			model.addAttribute("msg", "영화를 수정하였습니다.");
 			model.addAttribute("targetURL", "adminMovieDetail");
+			model.addAttribute("movie_code", movie.getMovie_code());
 			return "forward";
 		} else {
 			model.addAttribute("msg", "영화수정을 실패하였습니다.");

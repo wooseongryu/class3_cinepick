@@ -161,7 +161,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-											<td colspan="8"><button type="button" class="btn btn-primary" onclick="insertMovie()">등록</button></td>
+											<td colspan="8" style="text-align: center"><button type="button" class="btn btn-primary" onclick="insertMovie()">등록</button></td>
                                         </tr>
                                     </tfoot>
                                 </table>

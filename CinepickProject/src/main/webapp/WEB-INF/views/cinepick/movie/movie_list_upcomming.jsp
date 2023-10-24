@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -27,6 +29,44 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/style.css" type="text/css">
     
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
+<style>
+	.rate-all {
+		background: url("${pageContext.request.contextPath }/resources/cinepick/img/age/all.png") center center no-repeat;
+	}
+	
+	.rate-12 {
+		background: url("${pageContext.request.contextPath }/resources/cinepick/img/age/12.png") center center no-repeat;
+	}
+	
+	.rate-15 {
+		background: url("${pageContext.request.contextPath }/resources/cinepick/img/age/15.png") center center no-repeat;
+	}
+	
+	.rate-18 {
+		background: url("${pageContext.request.contextPath }/resources/cinepick/img/age/18.png") center center no-repeat;
+	}
+	
+	.rate-all, .rate-12, .rate-15, .rate-18 {
+    background-size: 30px 30px !important;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 7px;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    text-indent: -10000em;
+    position: relative;
+    top: 4px;
+}
+
+
+</style>
+
 </head>
 
 <body>
@@ -48,7 +88,7 @@
                 <div class="col-lg-11" style="float: none; margin: 0 auto;">
                     <div class="product__page__content">
                         <div class="product__page__title">
-                            <div class="row">
+							<div class="row">
                                 <div class="col-lg-8 col-md-8 col-sm-6">
                                     <div class="section-title">
                                         <h4>
@@ -71,327 +111,51 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+						</div>
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                	<a href="movieDetail">
-	                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/popular-1.jpg">
-	                                        <div class="ep">1</div>
-	                                        <div class="comment">
-	                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-	                                        </div>
+                        	<c:forEach var="movie" items="${movieList }">
+	                            <div class="col-lg-3 col-md-6 col-sm-6">
+	                                <div class="product__item">
+	                                	<a href="movieDetail">
+		                                    <div class="product__item__pic set-bg" data-setbg="${movie.movie_poster }">
+		                                        <div class="comment">
+			                                        <c:choose>
+			                                        	<c:when test="${movie.movie_rated eq '전체관람가'}">
+			                                        		<span class = "rate-all"></span>
+			                                        	</c:when>
+			                                        	<c:when test="${movie.movie_rated eq '12세이상관람가'}">
+			                                        		<span class = "rate-12"></span>
+			                                        	</c:when>
+			                                        	<c:when test="${movie.movie_rated eq '15세이상관람가'}">
+			                                        		<span class = "rate-15"></span>
+			                                        	</c:when>
+			                                        	<c:when test="${movie.movie_rated eq '18세이상관람가'}">
+			                                        		<span class = "rate-18"></span>
+			                                        	</c:when>
+			                                        </c:choose>
+		                                        </div>
+		                                    </div>
+	                                    </a>
+	                                    <div class="product__item__text">
+	                                        <ul>
+	                                            <li>개봉일 ${movie.movie_openDt }</li>
+	                                        </ul>
+	                                        <h5><a href="movieDetail">${movie.movie_nameK }</a></h5>
 	                                    </div>
-                                    </a>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="${pageContext.request.contextPath }/resources/cinepick/movie/movie_detail.jsp">오펜하이머</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/popular-2.jpg">
-                                        <div class="ep">2</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/15.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Kizumonogatari III: Reiket su-hen</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/popular-3.jpg">
-                                        <div class="ep">3</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/18.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Shirogane Tamashii hen Kouhan sen</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/popular-4.jpg">
-                                        <div class="ep">4</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/all.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Rurouni Kenshin: Meiji Kenkaku Romantan</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/popular-5.jpg">
-                                        <div class="ep">5</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Mushishi Zoku Shou 2nd Season</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/popular-6.jpg">
-                                        <div class="ep">6</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Monogatari Series: Second Season</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">7</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Great Teacher Onizuka</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">8</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Fate/stay night Movie: Heaven's Feel - II. Lost</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">9</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Mushishi Zoku Shou: Suzu no Shizuku</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">10</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Fate/Zero 2nd Season</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">11</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Kizumonogatari II: Nekket su-hen</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">12</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">13</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">14</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">15</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Shingeki no Kyojin Season 3 Part 2</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">16</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Fullmetal Alchemist: Brotherhood</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">17</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Shiratorizawa Gakuen Koukou</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg">
-                                        <div class="ep">18</div>
-                                        <div class="comment">
-                                        	<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" height="30" class="rating-radius">
-                                        </div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>예매율: 72.3%</li>
-                                            <li>개봉일: 2023-08-15</li>
-                                        </ul>
-                                        <h5><a href="#">Code Geass: Hangyaku no Lelouch R2</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product__pagination">
-                        <a href="#" class="current-page">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#"><i class="fa fa-angle-double-right"></i></a>
-                    </div>
-                </div>
+	                                </div>
+	                            </div>
+                        	</c:forEach>
+						</div>
+					</div>
+				</div>
+				<div class="product__pagination">
+<!-- 					<a href="#" class="current-page">1</a> -->
+<!-- 					<a href="#">2</a> -->
+<!-- 					<a href="#">3</a> -->
+<!-- 					<a href="#">4</a> -->
+<!-- 					<a href="#">5</a> -->
+<!-- 					<a href="#"><i class="fa fa-angle-double-right"></i></a> -->
+				</div>
 			</div>
 		</div>
     </section>
