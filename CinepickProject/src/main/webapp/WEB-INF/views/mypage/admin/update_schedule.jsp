@@ -88,6 +88,21 @@
 				}
 			});
 		});
+		
+		$("#time-select").on("click", function() {
+			if ($("#datepicker").val() == "") {
+				alert("상영일을 선택해주세요.");
+			}
+			if ($("#theater-select").val() == "") {
+				alert("극장을 선택해주세요.");
+			}
+			if ($("#screen-select").val() == "") {
+				alert("상영관을 선택해주세요.");
+			}
+			if ($("#time-select").val() == "") {
+				alert("시간을 선택해주세요.");
+			}
+		});
 	});
 	</script>
 	
@@ -138,20 +153,20 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영시간</label>
 										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>상영시간</option>
-										  <option value="1">09:00</option>
-										  <option value="2">10:00</option>
-										  <option value="3">11:00</option>
-										  <option value="4">12:00</option>
-										  <option value="5">13:00</option>
-										  <option value="6">14:00</option>
-										  <option value="7">15:00</option>
-										  <option value="8">16:00</option>
-										  <option value="9">17:00</option>
-										  <option value="10">18:00</option>
-										  <option value="11">19:00</option>
-										  <option value="12">20:00</option>
+	                                    <select id="time-select" class="form-select" aria-label="Default select example" >
+<!-- 										  <option selected>상영시간</option> -->
+<!-- 										  <option value="1">09:00</option> -->
+<!-- 										  <option value="2">10:00</option> -->
+<!-- 										  <option value="3">11:00</option> -->
+<!-- 										  <option value="4">12:00</option> -->
+<!-- 										  <option value="5">13:00</option> -->
+<!-- 										  <option value="6">14:00</option> -->
+<!-- 										  <option value="7">15:00</option> -->
+<!-- 										  <option value="8">16:00</option> -->
+<!-- 										  <option value="9">17:00</option> -->
+<!-- 										  <option value="10">18:00</option> -->
+<!-- 										  <option value="11">19:00</option> -->
+<!-- 										  <option value="12">20:00</option> -->
 										</select>
 								  	</div>
                                 </div>
@@ -161,8 +176,6 @@
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
 		                                <input type="submit" class="btn btn-primary btn-user" value="등록">
-		                                &nbsp;
-		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
 		                                &nbsp;
 		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
 									</div>
