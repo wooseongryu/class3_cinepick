@@ -75,11 +75,9 @@ a {
 								이벤트 <span class="arrow_carrot-down"></span>
 							</a>
 							 <ul class="dropdown">
-	                             <li><a href="">진행 중인 이벤트</a></li>
-	                             <li><a href="">종료된 이벤트</a></li>
-	                             <li><a href="">당첨자 조회</a></li>
-	                             <li><a href="">제휴할인</a></li>
-	                             <li><a href="">시사회목록</a></li>
+	                             <li><a href="">영화</a></li>
+	                             <li><a href="">시사회/무대인사</a></li>
+	                             <li><a href="">극장별</a></li>
 							</ul>
 						</li>	
                         <li>
@@ -87,11 +85,9 @@ a {
 	                        	스토어 <span class="arrow_carrot-down"></span>
 	                        </a>
 							 <ul class="dropdown">
-	                             <li><a href="">상품구매</a></li>
-	                             <li><a href="">관람권</a></li>
+	                             <li><a href="">패키지</a></li>
 	                             <li><a href="">스낵</a></li>
-	                             <li><a href="">금액권</a></li>
-	                             <li><a href="">포인트몰</a></li>
+	                             <li><a href="">관람권/포토카드</a></li>
 							</ul>
 						</li>	
                         <li>
