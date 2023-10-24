@@ -172,10 +172,25 @@
 			});
 			
 			
-			
-			
 		});//End
+		
+		//movie_code의 maxLength 체크되도록 설정
+		function maxLengthCheck(object){
+		    if (object.value.length > object.maxLength){
+		        object.value = object.value.slice(0, object.maxLength);
+		    }
+		}
+		
+		//movie_code 입력할 때 숫자만 작성되고 이외에는 입력되지 않도록 설정
+		function onlynumberic(event) {
+			    event.target.value = event.target.value.replace(/[^0-9]/g, "");
+			}
+
+	
 	</script>
+	
+	
+	
 	
 	
 </head>
@@ -197,7 +212,7 @@
 								    <div class="col-sm-2 mb-1 mb-sm-0">
 								        <label for="movie_code">영화코드</label>
 									 	<br>
-									 	<input type="number" class="form-control form-control-user" id="printCd" name="movie_code">
+									 	<input type="text" class="form-control form-control-user" id="printCd" name="movie_code" maxlength="8" oninput="maxLengthCheck(this)" onkeyup="onlynumberic(event)">
 								    </div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<a href="https://www.kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do#none" target="_blank"><label>영화코드 확인하기</label></a>
