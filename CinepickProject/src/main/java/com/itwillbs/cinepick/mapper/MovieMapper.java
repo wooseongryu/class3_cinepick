@@ -32,6 +32,12 @@ public interface MovieMapper {
 
 	List<BoxOfficeVO> selectBoxoffice();
 
+	
+	
+//=========== 영화차트페이지================
+	//영화목록
+	List<MovieVO> showMvList(boolean isOpen);
+
 
 	
 

@@ -60,6 +60,15 @@ public class MovieService {
 	public List<BoxOfficeVO> selectMvBOList() {
 		return movieMapper.selectBoxoffice();
 	}
+	
+	
+	
+	
+	//-----------영화차트페이지---------------
+
+	public List<MovieVO> showMvList(boolean isOpen) {
+		return movieMapper.showMvList(isOpen);
+	}
 
 
 

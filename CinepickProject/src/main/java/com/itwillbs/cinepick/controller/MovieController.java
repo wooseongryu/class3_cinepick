@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.itwillbs.cinepick.service.MovieService;
+import com.itwillbs.cinepick.vo.BoxOfficeVO;
+import com.itwillbs.cinepick.vo.MovieVO;
 
 @Controller
 public class MovieController {
@@ -18,10 +20,12 @@ public class MovieController {
 	
 	// 현재 상영작 목록 보기
 	@GetMapping("movieList")
-	public String movieList(Model model) {
+	public String movieList(Model model, boolean isOpen) {
 		System.out.println("MovieController - movieList");
-//		movieService.
+		isOpen = true;
+		List<MovieVO> movieList = movieService.showMvList(isOpen);
 		
+		model.addAttribute("movieList", movieList);
 		
 		
 		return "cinepick/movie/movie_list";
@@ -29,8 +33,11 @@ public class MovieController {
 	
 	// 개봉 예정작 목록 보기
 	@GetMapping("movieListUpComming")
-	public String movieListUpComming() {
+	public String movieListUpComming(Model model, boolean isOpen) {
 		System.out.println("MovieController - movieListUpComming");
+		isOpen = false;
+		List<MovieVO> movieList = movieService.showMvList(isOpen);
+		model.addAttribute("movieList", movieList);
 		return "cinepick/movie/movie_list_upcomming";
 	}
 	

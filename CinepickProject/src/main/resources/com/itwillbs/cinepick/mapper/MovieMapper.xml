@@ -102,6 +102,29 @@
 	</select>
 	
 	
+<!-- =================영화차트 페이지===============  -->		
+	<!-- 영화목록 select -->
+	<select id="showMvList" resultType="Movie">
+		SELECT m.movie_code 
+				, m.movie_nameK 
+				, m.movie_openDt 
+				, m.movie_rated 
+				, m.movie_poster 
+				, IFNULL(movie_rank,"") movie_rank
+				, IFNULL(movie_audi,"") movie_audi
+		FROM movie m LEFT JOIN movie_boxoffice mb 
+		ON m.movie_code = mb.movie_code 
+		<choose>
+			<when test="isOpen">
+				WHERE movie_status = '개봉'
+			</when>
+			<otherwise>
+				WHERE NOT movie_status = '개봉'
+			</otherwise>
+		</choose>
+	</select>
+	
+	
 	
 
 </mapper>
