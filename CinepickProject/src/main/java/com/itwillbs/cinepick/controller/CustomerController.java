@@ -15,6 +15,7 @@ import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
+import com.itwillbs.cinepick.vo.PageInfoVO;
 import com.itwillbs.cinepick.vo.QnaVO;
 
 
@@ -71,12 +72,37 @@ public class CustomerController {
 	
 	// 공지사항 목록
 	@GetMapping("notice")
-	public String notice(Model model) {
+	public String notice(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 		System.out.println("CustomerController - notice");
 		
-		List<NoticeVO> noticeList = adminService.getNotice("");
+		
+		int listLimit = 5; // 한 페이지에서 표시할 글 목록 갯수
+		
+		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행(레코드) 번호
+		
+		List<NoticeVO> noticeList = adminService.getNoticeList(startRow, listLimit);
+		
+		
+		int listCount = adminService.getNoticeListCount();
+		
+		System.out.println(listCount);
+		
+		int pageListLimit = 3;
+		
+		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+		
+		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+		
+		int endPage = startPage + pageListLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfoVO pageInfo = new PageInfoVO(listCount, pageListLimit, maxPage, startPage, endPage);
 		
 		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("pageInfo", pageInfo);
 		
 		return "cinepick/customer/notice";
 	}

@@ -1,6 +1,6 @@
 package com.itwillbs.cinepick.vo;
 
-
+import lombok.Data;
 
 /*
  CREATE TABLE  movie_boxoffice(
@@ -10,9 +10,10 @@ package com.itwillbs.cinepick.vo;
 	movie_audi INT NOT NULL,
 );
  */
+@Data
 public class BoxOfficeVO {
+	private int movie_rank;
 	private int movie_code;
 	private String movie_name;
-	private int movie_rank;
 	private int movie_audi;
 }
