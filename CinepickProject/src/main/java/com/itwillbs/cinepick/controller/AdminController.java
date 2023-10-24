@@ -323,27 +323,27 @@ public class AdminController {
 	@GetMapping("adminScheduleInsert")
 	public String adminScheduleInsert() {
 		System.out.println("AdminController - adminScheduleInsert()");
-		
-		List<TheaterVO> theaterList = adminService.selectTheater();
-//		System.out.println(theaterList);
-		
-		
-		List<ScreenVO> screenList = adminService.selectScreen();
-		System.out.println(screenList);
 
-		
-		
 		return "mypage/admin/update_schedule";
 	}
 	
 	@ResponseBody
-	@PostMapping("test")
-	public String test(TheaterVO vo, Gson gson) {
-		System.out.println("=============test==============");
+	@PostMapping("adminScheduleTheater")
+	public String adminScheduleTheater(Gson gson) {
+		System.out.println("AdminController - adminScheduleTheater()");
 		String theaterList = gson.toJson(adminService.selectTheater());
 
 //		System.out.println(theaterList);
 		return theaterList;
+	}
+	
+	@ResponseBody
+	@PostMapping("adminScheduleScreen")
+	public String adminScheduleScreen(int screen_theater_idx, Gson gson) {
+		System.out.println("AdminController - adminScheduleScreen()");
+		String ScreenList = gson.toJson(adminService.selectScreen(screen_theater_idx));
+		
+		return ScreenList;
 	}
 	
 	/*====================================================================

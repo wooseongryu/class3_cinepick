@@ -30,7 +30,7 @@ public interface AdminMapper {
 
 	List<TheaterVO> selectTheater();
 
-	List<ScreenVO> selectScreen();
+	List<ScreenVO> selectScreen(int screen_theater_idx);
 
 	/*==============================================================
 	 * 공지 

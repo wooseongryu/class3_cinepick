@@ -44,9 +44,9 @@ public class AdminService {
 	}
 	
 	// 상영관 조회
-	public List<ScreenVO> selectScreen() {
+	public List<ScreenVO> selectScreen(int screen_theater_idx) {
 		System.out.println("AdminService - selectScreen()");
-		return mapper.selectScreen();
+		return mapper.selectScreen(screen_theater_idx);
 	}
 	
 	/*==============================================================

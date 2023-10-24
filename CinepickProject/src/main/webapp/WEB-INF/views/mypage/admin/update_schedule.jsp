@@ -48,20 +48,39 @@
 		
 	</style>
 	<script>
-	$.ajax({
-		type:'post',
-		url:'test',
-		dataType: 'json',
-		success:function(resp){
-			for (let i = 0; i < resp.length; i++) {
-				$("#form-select").append("<option value='" + i + "'>" + resp[i].theater_name + "</option>");
+	$(function() {
+		$.ajax({
+			type:'post',
+			url:'adminScheduleTheater',
+			dataType: 'json',
+			success: function(resp){
+				for (let i = 0; i < resp.length; i++) {
+					$("#theater-select").append("<option value='" + resp[i].theater_idx + "'>" + resp[i].theater_name + "</option>");
+				}
+			},
+			error: function(){
+				alert("에러!");
 			}
-		},
-		error : function(){
-			alert("에러!");
-		}
+		});
+		
+		$("#theater-select").on("change", function() {
+			$.ajax({
+				type: 'post',
+				url: 'adminScheduleScreen',
+				data: {screen_theater_idx : $("#theater-select").val()},
+				dataType: 'json',
+				success: function(resp) {
+					$("#screen-select").children().remove();
+					for (let i = 0; i < resp.length; i++) {
+						$("#screen-select").append("<option value='" + resp[i].screen_idx + "'>" + resp[i].screen_name + "</option>");
+					}
+				},
+				error: function() {
+					alert("에러!");
+				}
+			});
+		});
 	});
-
 	</script>
 	
 	
@@ -91,23 +110,13 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">영화관명</label>
 										<br>
-	                                    <select id="form-select" class="form-select" aria-label="Default select example" >
-<!-- 										  <option selected>영화관명</option> -->
-<!-- 										  <option value="1">서울점</option> -->
-<!-- 										  <option value="2">대전점</option> -->
-<!-- 										  <option value="3">대구점</option> -->
-<!-- 										  <option value="4">부산점</option> -->
+	                                    <select id="theater-select" class="form-select" aria-label="Default select example" >
 										</select>
 								  	</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영관</label>
 										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>상영관</option>
-										  <option value="1">1관</option>
-										  <option value="2">2관</option>
-										  <option value="3">3관</option>
-										  <option value="4">4관</option>
+	                                    <select id="screen-select" class="form-select" aria-label="Default select example" >
 										</select>
 								  	</div>
                                 </div>
