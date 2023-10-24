@@ -27,7 +27,7 @@ public class MovieService {
 	}
 
 
-	//영화목록출력
+	//관리자영화목록출력
 	public List<MovieVO> selectMvList() {
 		System.out.println("selectMvList");
 		return movieMapper.selectMovieList();
@@ -47,7 +47,7 @@ public class MovieService {
 	
 	
 	
-	//박스오피스 등록
+	//관리자박스오피스 등록
 	public int insertBoxoffice(Map<String, Object> map) {
 		return movieMapper.insertBoxoffice(map);
 	}

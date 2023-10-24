@@ -65,8 +65,7 @@
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="product__page__filter">
                                         <select>
-                                            <option value="">예매율순</option>
-                                            <option value="">평점순</option>
+                                            <option value="">박스오피스순</option>
                                             <option value="">관람객순</option>
                                         </select>
                                     </div>
