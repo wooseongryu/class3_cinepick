@@ -328,15 +328,6 @@ public class AdminController {
 		return "mypage/admin/update_schedule";
 	}
 	
-	// 관리자 상영 시간표 극장 조회
-	@ResponseBody
-	@PostMapping("adminScheduleTheater")
-	public String adminScheduleTheater(Gson gson) {
-		System.out.println("AdminController - adminScheduleTheater()");
-
-		return gson.toJson(adminService.selectTheater());
-	}
-	
 	// 관리자 상영 시간표 상영관 조회
 	@ResponseBody
 	@PostMapping("adminScheduleScreen")
@@ -345,14 +336,25 @@ public class AdminController {
 		
 		return gson.toJson(adminService.selectScreen(screen_theater_idx));
 	}
-	
-	// 관리자 상영 시간표 영화 조회
+
+	// 관리자 상영 시간표 초기 출력값 조회
 	@ResponseBody
-	@PostMapping("adminScheduleMovie")
-	public String adminScheduleMovie(Gson gson) {
-		System.out.println("AdminController - adminScheduleMovie()");
+	@PostMapping("adinScheduleInitInfo")
+	public String test(Gson gson, Map<String, Object> map) {
+		System.out.println("AdminController - test()");
 		
-		return gson.toJson(adminService.selectMovie());
+		List<TheaterVO> theater = adminService.selectTheater();
+		TheaterVO vo = theater.get(0);
+
+		// 등록된 극장이 있을 때만 상영관 가져오기.
+		if (vo != null) {
+			map.put("screen", adminService.selectScreen(vo.getTheater_idx()));
+		}
+		
+		map.put("theater", theater);
+		map.put("movie", adminService.selectMovie());
+		
+		return gson.toJson(map);
 	}
 	
 	/*====================================================================

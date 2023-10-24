@@ -50,26 +50,20 @@
 	<script>
 	$(function() {
 		$.ajax({
-			type:'post',
-			url:'adminScheduleTheater',
-			dataType: 'json',
-			success: function(resp){
-				for (let i = 0; i < resp.length; i++) {
-					$("#theater-select").append("<option value='" + resp[i].theater_idx + "'>" + resp[i].theater_name + "</option>");
-				}
-			},
-			error: function(){
-				alert("에러!");
-			}
-		});
-		
-		$.ajax({
 			type: 'post',
-			url: 'adminScheduleMovie',
+			url: 'adinScheduleInitInfo',
 			dataType: 'json',
 			success: function(resp) {
-				for (let i = 0; i < resp.length; i++) {
-					$("#movie-select").append("<option value='" + resp[i].movie_code + "'>" + resp[i].movie_nameK + "</option>");
+				for (let i = 0; i < resp.theater.length; i++) {
+					$("#theater-select").append("<option value='" + resp.theater[i].theater_idx + "'>" + resp.theater[i].theater_name + "</option>");
+				}
+				
+				for (let i = 0; i < resp.movie.length; i++) {
+					$("#movie-select").append("<option value='" + resp.movie[i].movie_code + "'>" + resp.movie[i].movie_nameK + "</option>");
+				}
+				
+				for (let i = 0; i < resp.theater.length; i++) {
+					$("#screen-select").append("<option value='" + resp.screen[i].screen_idx + "'>" + resp.screen[i].screen_name + "</option>");
 				}
 			},
 			error: function() {
