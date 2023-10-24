@@ -36,13 +36,13 @@
 	
 	<!-- 영화목록출력 -->
 	<!-- select 전에 날짜 비교해서 해당날짜부터는 개봉으로 update 해야함 -->
-	<select id="selectMovieList" resultType="movie">
+	<select id="selectMovieList" resultType="Movie">
 		SELECT *
 		FROM movie
 	</select>
 	
 	<!-- 영화상세보기 -->
-	<select id="selectMvDetail" resultType="movie">
+	<select id="selectMvDetail" resultType="Movie">
 		SELECT *
 		FROM movie
 		WHERE movie_code = #{movie_code}
@@ -80,13 +80,26 @@
 	<insert id="insertBoxoffice" parameterType="java.util.Map" >
 		INSERT INTO movie_boxoffice
 		VALUES(
-		        #{movieCd}
+		         #{rank}
+		        , #{movieCd}
 		        , #{movieNm}
-		        , #{rank}
 		        , #{audiAcc}
 		)
 	
 	</insert>
+	
+	<!-- 박스오피스삭제(목록전체삭제됨) -->
+	<delete id="deleteBoxoffice">
+		DELETE FROM movie_boxoffice
+	</delete>
+	
+	<!-- 박스오피스목록조회 -->	
+	<select id="selectBoxoffice" resultType="BoxOffice">
+		SELECT *
+		FROM movie_boxoffice
+		ORDER BY movie_rank
+	
+	</select>
 	
 	
 	

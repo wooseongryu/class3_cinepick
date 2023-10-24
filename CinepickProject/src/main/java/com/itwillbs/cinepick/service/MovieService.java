@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.MovieMapper;
+import com.itwillbs.cinepick.vo.BoxOfficeVO;
 import com.itwillbs.cinepick.vo.MovieVO;
 
 @Service
@@ -16,7 +17,10 @@ public class MovieService {
 
 	//영화등록
 	
-	
+	//중복값 확인
+	public int checkedMovie(MovieVO movie) {
+		return movieMapper.checkedMovie(movie);
+	}
 	
 	public int insertMovie(MovieVO movie) {
 		return movieMapper.insertMovie(movie);
@@ -49,8 +53,12 @@ public class MovieService {
 	}
 
 
-	public int checkedMovie(MovieVO movie) {
-		return movieMapper.checkedMovie(movie);
+	public int deleteBoxoffice() {
+		return movieMapper.deleteBoxoffice();
+	}
+
+	public List<BoxOfficeVO> selectMvBOList() {
+		return movieMapper.selectBoxoffice();
 	}
 
 

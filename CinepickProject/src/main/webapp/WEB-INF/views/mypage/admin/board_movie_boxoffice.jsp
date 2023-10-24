@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,12 +20,12 @@
 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
 	function boxofficeList() {
-		window.open('boxofficeUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+		window.open('adminSearchBoxoffice','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	}
 	function deletBoxoffice() {
 		let result = confirm("삭제 하시겠습니까? \n모든순위가 삭제됩니다.");
 		if(result) {
-			location.href="";
+			location.href="adminDeleteBoxoffice";
 			
 		}
 	}
@@ -138,6 +139,14 @@
                                         </tr>
                                     </thead>
                                     <tbody class="resultArea">
+                                    	<c:forEach var="boxoffice" items="${movieBOList }">
+	                                        <tr>
+	                                            <td>${boxoffice.movie_rank }</td>
+	                                            <td>${boxoffice.movie_code }</td>
+	                                            <td>${boxoffice.movie_name }</td>
+	                                            <td>${boxoffice.movie_audi} 명</td>
+	                                        </tr>
+                                    	</c:forEach>
                                    	</tbody>
                                     <tfoot>
                                         <tr>
