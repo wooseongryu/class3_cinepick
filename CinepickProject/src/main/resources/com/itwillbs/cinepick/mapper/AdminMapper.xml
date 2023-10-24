@@ -36,6 +36,13 @@
 		FROM screen
 		WHERE screen_theater_idx = #{screen_theater_idx}
 	</select>
+	
+	<select id="selectMovie" resultType="movie">
+		SELECT
+			movie_code
+			, movie_nameK
+		FROM movie;
+	</select>
 	<!-- 상영 시간표 끝 -->
 	
 

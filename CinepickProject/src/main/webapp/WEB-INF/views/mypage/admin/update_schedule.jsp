@@ -63,6 +63,20 @@
 			}
 		});
 		
+		$.ajax({
+			type: 'post',
+			url: 'adminScheduleMovie',
+			dataType: 'json',
+			success: function(resp) {
+				for (let i = 0; i < resp.length; i++) {
+					$("#movie-select").append("<option value='" + resp[i].movie_code + "'>" + resp[i].movie_nameK + "</option>");
+				}
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+		
 		$("#theater-select").on("change", function() {
 			$.ajax({
 				type: 'post',
@@ -124,13 +138,7 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">영화선택</label>
 										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>영화선택</option>
-										  <option value="1">30일</option>
-										  <option value="2">화사한 그녀</option>
-										  <option value="3">천박사 퇴마 연구소</option>
-										  <option value="4">크리에이터</option>
-										  <option value="5">화란</option>
+	                                    <select id="movie-select" class="form-select" aria-label="Default select example" >
 										</select>
 								  	</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">

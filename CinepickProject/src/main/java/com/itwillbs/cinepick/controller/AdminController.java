@@ -31,6 +31,7 @@ import com.google.gson.Gson;
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.EventVO;
+import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
@@ -327,23 +328,31 @@ public class AdminController {
 		return "mypage/admin/update_schedule";
 	}
 	
+	// 관리자 상영 시간표 극장 조회
 	@ResponseBody
 	@PostMapping("adminScheduleTheater")
 	public String adminScheduleTheater(Gson gson) {
 		System.out.println("AdminController - adminScheduleTheater()");
-		String theaterList = gson.toJson(adminService.selectTheater());
 
-//		System.out.println(theaterList);
-		return theaterList;
+		return gson.toJson(adminService.selectTheater());
 	}
 	
+	// 관리자 상영 시간표 상영관 조회
 	@ResponseBody
 	@PostMapping("adminScheduleScreen")
 	public String adminScheduleScreen(int screen_theater_idx, Gson gson) {
 		System.out.println("AdminController - adminScheduleScreen()");
-		String ScreenList = gson.toJson(adminService.selectScreen(screen_theater_idx));
 		
-		return ScreenList;
+		return gson.toJson(adminService.selectScreen(screen_theater_idx));
+	}
+	
+	// 관리자 상영 시간표 영화 조회
+	@ResponseBody
+	@PostMapping("adminScheduleMovie")
+	public String adminScheduleMovie(Gson gson) {
+		System.out.println("AdminController - adminScheduleMovie()");
+		
+		return gson.toJson(adminService.selectMovie());
 	}
 	
 	/*====================================================================
