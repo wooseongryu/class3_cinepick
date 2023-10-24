@@ -15,6 +15,7 @@ import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
+import com.itwillbs.cinepick.vo.QnaVO;
 
 
 
@@ -41,15 +42,25 @@ public class CustomerController {
 	 * */
 	// 자주 묻는 질문 목록
 	@GetMapping("qna")
-	public String qna() {
+	public String qna(Model model) {
 		System.out.println("CustomerController - qna");
+		
+		List<QnaVO> qnaList = adminService.getQna("");
+		model.addAttribute("qnaList", qnaList);
+		
 		return "cinepick/customer/qna";
 	}
 	
 	// 자주 묻는 질문 상세글 보기
 	@GetMapping("qnaDetail")
-	public String qnaDetail() {
+	public String qnaDetail(String qnaIdx , Model model) {
 		System.out.println("CustomerController - qnaDetail");
+		
+		QnaVO qna = adminService.getQna(qnaIdx).get(0);
+		
+		model.addAttribute("qna", qna);	
+		
+		
 		return "cinepick/customer/qna_detail";
 	}
 	
