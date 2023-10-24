@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.MovieMapper;
+import com.itwillbs.cinepick.vo.BoxOfficeVO;
 import com.itwillbs.cinepick.vo.MovieVO;
 
 @Service
@@ -54,6 +55,10 @@ public class MovieService {
 
 	public int deleteBoxoffice() {
 		return movieMapper.deleteBoxoffice();
+	}
+
+	public List<BoxOfficeVO> selectMvBOList() {
+		return movieMapper.selectBoxoffice();
 	}
 
 

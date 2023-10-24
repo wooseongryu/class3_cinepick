@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.itwillbs.cinepick.vo.BoxOfficeVO;
 import com.itwillbs.cinepick.vo.MovieVO;
 
 @Mapper
@@ -28,6 +29,8 @@ public interface MovieMapper {
 	int insertBoxoffice(Map<String, Object> map);
 
 	int deleteBoxoffice();
+
+	List<BoxOfficeVO> selectBoxoffice();
 
 
 	
