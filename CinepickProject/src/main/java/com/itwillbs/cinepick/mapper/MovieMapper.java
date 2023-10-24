@@ -10,6 +10,7 @@ import com.itwillbs.cinepick.vo.MovieVO;
 @Mapper
 public interface MovieMapper {
 	
+	//영화
 	int checkedMovie(MovieVO movie);
 
 	int insertMovie(MovieVO movie);
@@ -25,6 +26,8 @@ public interface MovieMapper {
 	
 	//박스오피스
 	int insertBoxoffice(Map<String, Object> map);
+
+	int deleteBoxoffice();
 
 
 	

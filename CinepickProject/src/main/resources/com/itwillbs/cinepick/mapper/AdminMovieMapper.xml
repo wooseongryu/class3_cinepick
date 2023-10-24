@@ -88,6 +88,11 @@
 	
 	</insert>
 	
+	<!-- 박스오피스삭제(목록전체삭제됨) -->
+	<delete id="deleteBoxoffice">
+		DELETE FROM movie_boxoffice
+	</delete>
+	
 	
 	
 

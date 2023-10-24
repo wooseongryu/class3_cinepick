@@ -19,12 +19,12 @@
 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
 	function boxofficeList() {
-		window.open('boxofficeUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+		window.open('adminSearchBoxoffice','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	}
 	function deletBoxoffice() {
 		let result = confirm("삭제 하시겠습니까? \n모든순위가 삭제됩니다.");
 		if(result) {
-			location.href="";
+			location.href="adminDeleteBoxoffice";
 			
 		}
 	}
