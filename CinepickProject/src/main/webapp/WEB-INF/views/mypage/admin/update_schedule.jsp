@@ -48,22 +48,62 @@
 		
 	</style>
 	<script>
-		function readURL(input) {
-			if(input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function(e) {
-				document.getElementById('preview').src = e.target.result;
-	    	};
-			reader.readAsDataURL(input.files[0]);
-			} else {
-			document.getElementById('preview').src = "";
+	$(function() {
+		$.ajax({
+			type: 'post',
+			url: 'adinScheduleInitInfo',
+			dataType: 'json',
+			success: function(resp) {
+				for (let i = 0; i < resp.theater.length; i++) {
+					$("#theater-select").append("<option value='" + resp.theater[i].theater_idx + "'>" + resp.theater[i].theater_name + "</option>");
+				}
+				
+				for (let i = 0; i < resp.movie.length; i++) {
+					$("#movie-select").append("<option value='" + resp.movie[i].movie_code + "'>" + resp.movie[i].movie_nameK + "</option>");
+				}
+				
+				for (let i = 0; i < resp.theater.length; i++) {
+					$("#screen-select").append("<option value='" + resp.screen[i].screen_idx + "'>" + resp.screen[i].screen_name + "</option>");
+				}
+			},
+			error: function() {
+				alert("에러");
 			}
-		}
+		});
 		
+		$("#theater-select").on("change", function() {
+			$.ajax({
+				type: 'post',
+				url: 'adminScheduleScreen',
+				data: {screen_theater_idx : $("#theater-select").val()},
+				dataType: 'json',
+				success: function(resp) {
+					$("#screen-select").children().remove();
+					for (let i = 0; i < resp.length; i++) {
+						$("#screen-select").append("<option value='" + resp[i].screen_idx + "'>" + resp[i].screen_name + "</option>");
+					}
+				},
+				error: function() {
+					alert("에러!");
+				}
+			});
+		});
 		
-		function close() {
-			window.close();
-		}
+		$("#time-select").on("click", function() {
+			if ($("#datepicker").val() == "") {
+				alert("상영일을 선택해주세요.");
+			}
+			if ($("#theater-select").val() == "") {
+				alert("극장을 선택해주세요.");
+			}
+			if ($("#screen-select").val() == "") {
+				alert("상영관을 선택해주세요.");
+			}
+			if ($("#time-select").val() == "") {
+				alert("시간을 선택해주세요.");
+			}
+		});
+	});
 	</script>
 	
 	
@@ -93,23 +133,13 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">영화관명</label>
 										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>영화관명</option>
-										  <option value="1">서울점</option>
-										  <option value="2">대전점</option>
-										  <option value="3">대구점</option>
-										  <option value="4">부산점</option>
+	                                    <select id="theater-select" class="form-select" aria-label="Default select example" >
 										</select>
 								  	</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영관</label>
 										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>상영관</option>
-										  <option value="1">1관</option>
-										  <option value="2">2관</option>
-										  <option value="3">3관</option>
-										  <option value="4">4관</option>
+	                                    <select id="screen-select" class="form-select" aria-label="Default select example" >
 										</select>
 								  	</div>
                                 </div>
@@ -117,32 +147,26 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">영화선택</label>
 										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>영화선택</option>
-										  <option value="1">30일</option>
-										  <option value="2">화사한 그녀</option>
-										  <option value="3">천박사 퇴마 연구소</option>
-										  <option value="4">크리에이터</option>
-										  <option value="5">화란</option>
+	                                    <select id="movie-select" class="form-select" aria-label="Default select example" >
 										</select>
 								  	</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영시간</label>
 										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>상영시간</option>
-										  <option value="1">09:00</option>
-										  <option value="2">10:00</option>
-										  <option value="3">11:00</option>
-										  <option value="4">12:00</option>
-										  <option value="5">13:00</option>
-										  <option value="6">14:00</option>
-										  <option value="7">15:00</option>
-										  <option value="8">16:00</option>
-										  <option value="9">17:00</option>
-										  <option value="10">18:00</option>
-										  <option value="11">19:00</option>
-										  <option value="12">20:00</option>
+	                                    <select id="time-select" class="form-select" aria-label="Default select example" >
+<!-- 										  <option selected>상영시간</option> -->
+<!-- 										  <option value="1">09:00</option> -->
+<!-- 										  <option value="2">10:00</option> -->
+<!-- 										  <option value="3">11:00</option> -->
+<!-- 										  <option value="4">12:00</option> -->
+<!-- 										  <option value="5">13:00</option> -->
+<!-- 										  <option value="6">14:00</option> -->
+<!-- 										  <option value="7">15:00</option> -->
+<!-- 										  <option value="8">16:00</option> -->
+<!-- 										  <option value="9">17:00</option> -->
+<!-- 										  <option value="10">18:00</option> -->
+<!-- 										  <option value="11">19:00</option> -->
+<!-- 										  <option value="12">20:00</option> -->
 										</select>
 								  	</div>
                                 </div>
@@ -152,8 +176,6 @@
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
 		                                <input type="submit" class="btn btn-primary btn-user" value="등록">
-		                                &nbsp;
-		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
 		                                &nbsp;
 		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
 									</div>

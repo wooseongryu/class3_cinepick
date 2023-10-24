@@ -24,11 +24,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.EventVO;
+import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
@@ -321,17 +324,37 @@ public class AdminController {
 	@GetMapping("adminScheduleInsert")
 	public String adminScheduleInsert() {
 		System.out.println("AdminController - adminScheduleInsert()");
-		
-		List<TheaterVO> theaterList = adminService.selectTheater();
-//		System.out.println(theaterList);
-		
-		
-		List<ScreenVO> screenList = adminService.selectScreen();
-		System.out.println(screenList);
 
-		
-		
 		return "mypage/admin/update_schedule";
+	}
+	
+	// 관리자 상영 시간표 상영관 조회
+	@ResponseBody
+	@PostMapping("adminScheduleScreen")
+	public String adminScheduleScreen(int screen_theater_idx, Gson gson) {
+		System.out.println("AdminController - adminScheduleScreen()");
+		
+		return gson.toJson(adminService.selectScreen(screen_theater_idx));
+	}
+
+	// 관리자 상영 시간표 초기 출력값 조회
+	@ResponseBody
+	@PostMapping("adinScheduleInitInfo")
+	public String test(Gson gson, Map<String, Object> map) {
+		System.out.println("AdminController - test()");
+		
+		List<TheaterVO> theater = adminService.selectTheater();
+		TheaterVO vo = theater.get(0);
+
+		// 등록된 극장이 있을 때만 상영관 가져오기.
+		if (vo != null) {
+			map.put("screen", adminService.selectScreen(vo.getTheater_idx()));
+		}
+		
+		map.put("theater", theater);
+		map.put("movie", adminService.selectMovie());
+		
+		return gson.toJson(map);
 	}
 	
 	/*====================================================================

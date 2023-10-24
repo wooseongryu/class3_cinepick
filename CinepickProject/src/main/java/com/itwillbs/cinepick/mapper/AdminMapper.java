@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.itwillbs.cinepick.vo.EventVO;
+import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
@@ -31,7 +32,9 @@ public interface AdminMapper {
 
 	List<TheaterVO> selectTheater();
 
-	List<ScreenVO> selectScreen();
+	List<ScreenVO> selectScreen(int screen_theater_idx);
+
+	List<MovieVO> selectMovie();
 
 	/*==============================================================
 	 * 공지 
@@ -91,13 +94,6 @@ public interface AdminMapper {
 	int updateEvent(EventVO event);
 
 	int deleteEvent(String event_idx);
-
-	
-	
-	// 공지사항 목록 조회
-	List<NoticeVO> selectNoticeList(@Param("startRow") int startRow, @Param("listLimit") int listLimit);
-
-	int selectNoticeListCount();
 
 	
 

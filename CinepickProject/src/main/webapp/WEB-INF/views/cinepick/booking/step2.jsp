@@ -42,6 +42,7 @@
 
 	<input type="hidden" id="playSchdlNo" name="playSchdlNo" value="2310112202029">
 	<input type="hidden" id="brchNo" name="brchNo" value="2202">
+	<!-- TODO 추후 brchNO 수정 -->
 	
 	<section id="layer_age_alert" class="modal-layer" style="z-index: 900"><a href="" class="focus">레이어로 포커스 이동 됨</a>
         <div class="wrap" style="width: 750px; height: 350px; margin-left: -375px; margin-top: 0px; top: 140px;">
@@ -576,7 +577,17 @@
                             <p class="date"><span>2023.10.11</span><em>(수)</em></p>
                             <div class="other-time">
                                 <button type="button" class="nows">12:35~14:23<i class="arr"></i></button>
-                                <ul class="other"><li><button type="button" choicnt="71" playschdlno="2310112202028" class="btn ">10:30~12:18</button></li><li><button type="button" choicnt="76" playschdlno="2310112202029" class="btn on ">12:35~14:23</button></li><li><button type="button" choicnt="76" playschdlno="2310112202030" class="btn ">14:50~16:38</button></li><li><button type="button" choicnt="76" playschdlno="2310112202046" class="btn ">16:05~17:53</button></li><li><button type="button" choicnt="76" playschdlno="2310112202031" class="btn ">17:05~18:53</button></li><li><button type="button" choicnt="76" playschdlno="2310112202032" class="btn ">19:10~20:58</button></li><li><button type="button" choicnt="76" playschdlno="2310112202048" class="btn ">20:25~22:13</button></li><li><button type="button" choicnt="76" playschdlno="2310112202033" class="btn ">21:15~23:03</button></li></ul>
+                                <ul class="other">
+                                	<li><button type="button" choicnt="71" playschdlno="2310112202028" class="btn ">10:30~12:18</button></li>
+                                	<li><button type="button" choicnt="76" playschdlno="2310112202029" class="btn ons ">12:35~14:23</button></li>
+                                	<li><button type="button" choicnt="76" playschdlno="2310112202030" class="btn ">14:50~16:38</button></li>
+                                	<li><button type="button" choicnt="76" playschdlno="2310112202046" class="btn ">16:05~17:53</button></li>
+                                	<li><button type="button" choicnt="76" playschdlno="2310112202031" class="btn ">17:05~18:53</button></li>
+                                	<li><button type="button" choicnt="76" playschdlno="2310112202032" class="btn ">19:10~20:58</button></li>
+                                	<li><button type="button" choicnt="76" playschdlno="2310112202048" class="btn ">20:25~22:13</button></li>
+                                	<li><button type="button" choicnt="76" playschdlno="2310112202033" class="btn ">21:15~23:03</button></li>
+                                </ul>
+                           		<!-- 일단 없애봄 .on -> ons -->
                             </div>
                             <p class="poster">
                                 <img src="https://www.megabox.co.kr/SharedImg/2023/09/27/7ML6Wyigjy8Nz7bM8yr0zWW2AEfpAM8Y_150.jpg" onerror="noImg(this);" alt="천박사 퇴마 연구소: 설경의 비밀">
@@ -659,7 +670,9 @@
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat.js"></script> --%>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_test.js"></script> --%>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat1.js"></script> --%>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat2.js"></script>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat2.js"></script> --%>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat3.js"></script>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat4.js"></script> --%>
 	
 	
 

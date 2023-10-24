@@ -33,7 +33,15 @@
 		SELECT
 			screen_idx
 			, screen_name
-		FROM screen;
+		FROM screen
+		WHERE screen_theater_idx = #{screen_theater_idx}
+	</select>
+	
+	<select id="selectMovie" resultType="movie">
+		SELECT
+			movie_code
+			, movie_nameK
+		FROM movie;
 	</select>
 	<!-- 상영 시간표 끝 -->
 	
@@ -61,23 +69,6 @@
 		</if>
 		ORDER BY noticeWriteDate DESC
     </select>
-
-
-	<!-- 공지 사항 게시물 조회 -->
-	<select id= "selectNoticeList" resultType="Notice">
-		SELECT *
-		FROM notice
-		ORDER BY noticeIdx DESC
-		LIMIT
-			#{startRow}
-			, #{listLimit}
-	</select>
-	
-	
-	<select id= "selectNoticeListCount">
-		SELECT COUNT(*)
-		FROM notice
-	</select>
 
 
     <delete id="deleteNotice">

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.AdminMapper;
 import com.itwillbs.cinepick.vo.EventVO;
+import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
@@ -44,9 +45,15 @@ public class AdminService {
 	}
 	
 	// 상영관 조회
-	public List<ScreenVO> selectScreen() {
+	public List<ScreenVO> selectScreen(int screen_theater_idx) {
 		System.out.println("AdminService - selectScreen()");
-		return mapper.selectScreen();
+		return mapper.selectScreen(screen_theater_idx);
+	}
+	
+	// 영화 조회
+	public List<MovieVO> selectMovie() {
+		System.out.println("AdminService - selectMovie()");
+		return mapper.selectMovie();
 	}
 	
 	/*==============================================================
@@ -182,16 +189,6 @@ public class AdminService {
 		return mapper.deleteEvent(event_idx);
 	}
 	
-	// 공지사항 목록 조회 요청
-	public List<NoticeVO> getNoticeList(int startRow, int listLimit) {
-		return mapper.selectNoticeList(startRow, listLimit);
-	}
-
-	public int getNoticeListCount() {
-		return mapper.selectNoticeListCount();
-	}
-	
-
 	
 
 }
