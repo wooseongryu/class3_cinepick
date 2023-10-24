@@ -48,22 +48,20 @@
 		
 	</style>
 	<script>
-		function readURL(input) {
-			if(input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function(e) {
-				document.getElementById('preview').src = e.target.result;
-	    	};
-			reader.readAsDataURL(input.files[0]);
-			} else {
-			document.getElementById('preview').src = "";
+	$.ajax({
+		type:'post',
+		url:'test',
+		dataType: 'json',
+		success:function(resp){
+			for (let i = 0; i < resp.length; i++) {
+				$("#form-select").append("<option value='" + i + "'>" + resp[i].theater_name + "</option>");
 			}
+		},
+		error : function(){
+			alert("에러!");
 		}
-		
-		
-		function close() {
-			window.close();
-		}
+	});
+
 	</script>
 	
 	
@@ -93,12 +91,12 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">영화관명</label>
 										<br>
-	                                    <select class="form-select" aria-label="Default select example" >
-										  <option selected>영화관명</option>
-										  <option value="1">서울점</option>
-										  <option value="2">대전점</option>
-										  <option value="3">대구점</option>
-										  <option value="4">부산점</option>
+	                                    <select id="form-select" class="form-select" aria-label="Default select example" >
+<!-- 										  <option selected>영화관명</option> -->
+<!-- 										  <option value="1">서울점</option> -->
+<!-- 										  <option value="2">대전점</option> -->
+<!-- 										  <option value="3">대구점</option> -->
+<!-- 										  <option value="4">부산점</option> -->
 										</select>
 								  	</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">

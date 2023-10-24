@@ -24,8 +24,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.EventVO;
@@ -332,6 +334,16 @@ public class AdminController {
 		
 		
 		return "mypage/admin/update_schedule";
+	}
+	
+	@ResponseBody
+	@PostMapping("test")
+	public String test(TheaterVO vo, Gson gson) {
+		System.out.println("=============test==============");
+		String theaterList = gson.toJson(adminService.selectTheater());
+
+//		System.out.println(theaterList);
+		return theaterList;
 	}
 	
 	/*====================================================================
