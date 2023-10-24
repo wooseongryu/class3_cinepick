@@ -5,11 +5,13 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.itwillbs.cinepick.vo.BoxOfficeVO;
 import com.itwillbs.cinepick.vo.MovieVO;
 
 @Mapper
 public interface MovieMapper {
 	
+	//관리자영화
 	int checkedMovie(MovieVO movie);
 
 	int insertMovie(MovieVO movie);
@@ -23,8 +25,18 @@ public interface MovieMapper {
 	int deleteMovie(int movie_code);
 	
 	
-	//박스오피스
+	//관리자박스오피스
 	int insertBoxoffice(Map<String, Object> map);
+
+	int deleteBoxoffice();
+
+	List<BoxOfficeVO> selectBoxoffice();
+
+	
+	
+//=========== 영화차트페이지================
+	//영화목록
+	List<MovieVO> showMvList(boolean isOpen);
 
 
 	

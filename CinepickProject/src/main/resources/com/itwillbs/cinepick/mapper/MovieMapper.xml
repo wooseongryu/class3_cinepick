@@ -36,13 +36,13 @@
 	
 	<!-- 영화목록출력 -->
 	<!-- select 전에 날짜 비교해서 해당날짜부터는 개봉으로 update 해야함 -->
-	<select id="selectMovieList" resultType="movie">
+	<select id="selectMovieList" resultType="Movie">
 		SELECT *
 		FROM movie
 	</select>
 	
 	<!-- 영화상세보기 -->
-	<select id="selectMvDetail" resultType="movie">
+	<select id="selectMvDetail" resultType="Movie">
 		SELECT *
 		FROM movie
 		WHERE movie_code = #{movie_code}
@@ -80,13 +80,49 @@
 	<insert id="insertBoxoffice" parameterType="java.util.Map" >
 		INSERT INTO movie_boxoffice
 		VALUES(
-		        #{movieCd}
+		         #{rank}
+		        , #{movieCd}
 		        , #{movieNm}
-		        , #{rank}
 		        , #{audiAcc}
 		)
 	
 	</insert>
+	
+	<!-- 박스오피스삭제(목록전체삭제됨) -->
+	<delete id="deleteBoxoffice">
+		DELETE FROM movie_boxoffice
+	</delete>
+	
+	<!-- 박스오피스목록조회 -->	
+	<select id="selectBoxoffice" resultType="BoxOffice">
+		SELECT *
+		FROM movie_boxoffice
+		ORDER BY movie_rank
+	
+	</select>
+	
+	
+<!-- =================영화차트 페이지===============  -->		
+	<!-- 영화목록 select -->
+	<select id="showMvList" resultType="Movie">
+		SELECT m.movie_code 
+				, m.movie_nameK 
+				, m.movie_openDt 
+				, m.movie_rated 
+				, m.movie_poster 
+				, IFNULL(movie_rank,"") movie_rank
+				, IFNULL(movie_audi,"") movie_audi
+		FROM movie m LEFT JOIN movie_boxoffice mb 
+		ON m.movie_code = mb.movie_code 
+		<choose>
+			<when test="isOpen">
+				WHERE movie_status = '개봉'
+			</when>
+			<otherwise>
+				WHERE NOT movie_status = '개봉'
+			</otherwise>
+		</choose>
+	</select>
 	
 	
 	

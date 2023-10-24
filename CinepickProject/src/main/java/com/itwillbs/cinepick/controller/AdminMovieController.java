@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.cinepick.service.MovieService;
+import com.itwillbs.cinepick.vo.BoxOfficeVO;
 import com.itwillbs.cinepick.vo.MovieVO;
 
 /*====================================================================
@@ -137,7 +138,7 @@ public class AdminMovieController {
 			model.addAttribute("targetURL", "adminMovieDetail");
 			return "forward";
 		} else {
-			model.addAttribute("msg", "영화등록을 실패하였습니다.");
+			model.addAttribute("msg", "영화수정을 실패하였습니다.");
 			return "fail_back";
 		}
 		
@@ -153,7 +154,7 @@ public class AdminMovieController {
 			model.addAttribute("script", "window.close()");
 			return "forward";
 		} else {
-			model.addAttribute("msg", "영화등록을 실패하였습니다.");
+			model.addAttribute("msg", "영화삭제를 실패하였습니다.");
 			return "fail_back";
 		}
 	}
@@ -166,12 +167,28 @@ public class AdminMovieController {
 	//==========================================================================
 	// 관리자 일일박스오피스 조회
 	@GetMapping("adminBoxOfficeList")
-	public String adminBoxOfficeList() {
+	public String adminBoxOfficeList(HttpSession session, Model model) {
+		System.out.println("AdminController - adminMovieList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		List<BoxOfficeVO> movieBOList = movieService.selectMvBOList();
+		System.out.println(movieBOList);
+		
+		model.addAttribute("movieBOList", movieBOList);
+		
+		
 		return "mypage/admin/board_movie_boxoffice";
 	}
 	
 	//박스오피스조회 팝업
-	@GetMapping("boxofficeUpdate")
+	@GetMapping("adminSearchBoxoffice")
 	public String adminShowBoxOffice() {
 		return "mypage/admin/update_movie_boxoffice";
 	}
@@ -183,6 +200,14 @@ public class AdminMovieController {
 		JSONArray ja = new JSONArray(jsonData);
 		
 		System.out.println(ja.toString());
+		
+		//테이블에 데이터 있으면 기존목록 삭제
+		List<BoxOfficeVO> movieBOList = movieService.selectMvBOList();
+		System.out.println(movieBOList);
+		if(movieBOList != null) {
+			int deleteBOCount = movieService.deleteBoxoffice();
+		}
+		
 		int insertBOCount = 0;
 		for(int i = 0; i < ja.length(); i++) {
 			JSONObject jo = new JSONObject(ja.get(i).toString());
@@ -194,11 +219,37 @@ public class AdminMovieController {
 		}
 //		System.out.println(insertBOCount);
 		if(insertBOCount > 0) {
-			model.addAttribute("msg", "박스오피스 순위등록을 성공하였습니다.");
+			model.addAttribute("msg", "박스오피스 순위목록을 등록하였습니다.");
 			model.addAttribute("script", "window.close()");
 			return "forward";
 		} else {
 			model.addAttribute("msg", "박스오피스 순위등록을 실패하였습니다.");
+			return "fail_back";
+		}
+	}
+	
+	
+	//박스오피스목록 삭제
+	@GetMapping("adminDeleteBoxoffice")
+	public String adminDeleteBoxoffice(HttpSession session, Model model) {
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		
+		int deleteBOCount = movieService.deleteBoxoffice();
+		
+		if(deleteBOCount > 0) {
+			model.addAttribute("msg", "박스오피스 순위목록을 삭제하였습니다.");
+			model.addAttribute("script", "window.close()");
+			return "forward";
+		} else {
+			model.addAttribute("msg", "박스오피스 순위목록 삭제를 실패하였습니다.");
 			return "fail_back";
 		}
 	}

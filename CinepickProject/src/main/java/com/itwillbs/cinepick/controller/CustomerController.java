@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.cinepick.service.AdminService;
+import com.itwillbs.cinepick.service.CustomerService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
+import com.itwillbs.cinepick.vo.PageInfoVO;
 import com.itwillbs.cinepick.vo.QnaVO;
 
 
@@ -22,6 +24,9 @@ import com.itwillbs.cinepick.vo.QnaVO;
 
 @Controller
 public class CustomerController {
+	
+	@Autowired
+	private CustomerService customerService;
 	
 	@Autowired
 	private AdminService adminService;
@@ -42,11 +47,35 @@ public class CustomerController {
 	 * */
 	// 자주 묻는 질문 목록
 	@GetMapping("qna")
-	public String qna(Model model) {
+	public String qna(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 		System.out.println("CustomerController - qna");
 		
-		List<QnaVO> qnaList = adminService.getQna("");
+		int listLimit = 5; // 한 페이지에서 표시할 글 목록 갯수
+		
+		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행(레코드) 번호
+		
+		List<QnaVO> qnaList = customerService.getQnaList(startRow, listLimit);
+		
+		int listCount = customerService.getQnaListCount();
+		
+//		System.out.println(listCount);
+		
+		int pageListLimit = 3;
+		
+		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+		
+		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+		
+		int endPage = startPage + pageListLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfoVO pageInfo = new PageInfoVO(listCount, pageListLimit, maxPage, startPage, endPage);
 		model.addAttribute("qnaList", qnaList);
+		System.out.println(qnaList);
+		model.addAttribute("pageInfo", pageInfo);
 		
 		return "cinepick/customer/qna";
 	}
@@ -71,12 +100,37 @@ public class CustomerController {
 	
 	// 공지사항 목록
 	@GetMapping("notice")
-	public String notice(Model model) {
+	public String notice(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 		System.out.println("CustomerController - notice");
 		
-		List<NoticeVO> noticeList = adminService.getNotice("");
+		
+		int listLimit = 5; // 한 페이지에서 표시할 글 목록 갯수
+		
+		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행(레코드) 번호
+		
+		List<NoticeVO> noticeList = customerService.getNoticeList(startRow, listLimit);
+		
+		
+		int listCount = customerService.getNoticeListCount();
+		
+//		System.out.println(listCount);
+		
+		int pageListLimit = 3;
+		
+		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+		
+		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+		
+		int endPage = startPage + pageListLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfoVO pageInfo = new PageInfoVO(listCount, pageListLimit, maxPage, startPage, endPage);
 		
 		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("pageInfo", pageInfo);
 		
 		return "cinepick/customer/notice";
 	}

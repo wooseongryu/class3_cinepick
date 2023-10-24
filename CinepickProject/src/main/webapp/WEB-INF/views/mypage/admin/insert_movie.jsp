@@ -42,6 +42,7 @@
 			window.close();
 		}
 		
+		
 		function moviePoster(codeNo) {
 			let url = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&detail=Y&ServiceKey=";
 			let key = "72ZZ6HKD368CM3L3O660";
@@ -94,6 +95,7 @@
 		
 		$(function() {
 			$("#searchMvBtn").on("click", function() {
+				
 				let url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
 				let key = "f5eef3421c602c6cb7ea224104795888";
 				let movieCd = $("#printCd").val();
@@ -167,10 +169,26 @@
 			});
 			
 			
-			
-			
 		});//End
+		
 	</script>
+	
+	<script>
+	//movie_code 입력 가능한 수 maxlength(8자리) 설정
+	function maxLengthCheck(object){
+	    if (object.value.length > object.maxLength){
+	        object.value = object.value.slice(0, object.maxLength);
+	    }
+	}
+	
+	//movie_code 입력칸에 오로지 숫자만 입력 되도록 설정
+	function onlynumberic(event) {
+	    event.target.value = event.target.value.replace(/[^0-9]/g, "");
+	}
+	</script>
+	
+	
+	
 	
 	
 </head>
@@ -192,7 +210,7 @@
 								    <div class="col-sm-2 mb-1 mb-sm-0">
 								        <label for="movie_code">영화코드</label>
 									 	<br>
-									 	<input type="text" class="form-control form-control-user" id="printCd" name="movie_code">
+									 	<input type="text" class="form-control form-control-user" id="printCd" name="movie_code" maxlength="8" oninput="maxLengthCheck(this)" onkeyup="onlynumberic(event)">
 								    </div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<a href="https://www.kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do#none" target="_blank"><label>영화코드 확인하기</label></a>

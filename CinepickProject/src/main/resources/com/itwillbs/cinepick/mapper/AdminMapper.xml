@@ -70,6 +70,7 @@
 		ORDER BY noticeWriteDate DESC
     </select>
 
+
     <delete id="deleteNotice">
     	DELETE FROM notice
     	WHERE noticeIdx = #{noticeIdx };

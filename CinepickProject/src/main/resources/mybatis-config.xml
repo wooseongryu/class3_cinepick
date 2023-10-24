@@ -14,8 +14,8 @@
 		<typeAlias type="com.itwillbs.cinepick.vo.EventVO" alias="Event"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.TheaterVO" alias="Theater"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.CityVO" alias="City"/>
-		<typeAlias type="com.itwillbs.cinepick.vo.MovieVO" alias="movie"/>
-		<typeAlias type="com.itwillbs.cinepick.vo.BoxOfficeVO" alias="boxOffice"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.MovieVO" alias="Movie"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.BoxOfficeVO" alias="BoxOffice"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.ScreenVO" alias="Screen"/>
 	</typeAliases>
 </configuration>

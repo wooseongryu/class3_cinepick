@@ -56,6 +56,11 @@ public class MovieVO {
 	private String movie_plot;
 	private String movie_poster;
 	private String movie_still;
+	
+	
+	//-------join용-------
+	private int movie_rank;
+	private int movie_audi;
 }
 
 
