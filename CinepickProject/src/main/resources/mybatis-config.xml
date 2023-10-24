@@ -17,6 +17,7 @@
 		<typeAlias type="com.itwillbs.cinepick.vo.MovieVO" alias="Movie"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.BoxOfficeVO" alias="BoxOffice"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.ScreenVO" alias="Screen"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.ScheduleVO" alias="ScheduleVO"/>
 	</typeAliases>
 </configuration>
   

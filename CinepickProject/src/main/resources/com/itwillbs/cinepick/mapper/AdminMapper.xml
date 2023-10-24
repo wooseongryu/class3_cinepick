@@ -41,7 +41,25 @@
 		SELECT
 			movie_code
 			, movie_nameK
-		FROM movie;
+		FROM movie
+	</select>
+	
+	<select id="selectMovieRunTime" resultType="int">
+		SELECT SUBSTR(movie_runtime, 1, length(movie_runtime) - 3) as movie_runtime
+		FROM movie 
+		WHERE movie_code = #{sche_movie_code}
+	</select>
+	
+	<select id="scheduleCheck" resultType="ScheduleVO">
+		SELECT 
+			sche_idx
+			, sche_start_time
+			, sche_end_time
+		FROM schedule
+		WHERE
+			sche_screen_idx = #{sche_screen_idx}
+			AND sche_theater_idx = #{sche_theater_idx}
+			AND sche_date = #{sche_date}
 	</select>
 	<!-- 상영 시간표 끝 -->
 	

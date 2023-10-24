@@ -90,19 +90,33 @@
 		});
 		
 		$("#time-select").on("click", function() {
-			if ($("#datepicker").val() == "") {
+			if ($("#date-select").val() == "") {
 				alert("상영일을 선택해주세요.");
+				return;
 			}
-			if ($("#theater-select").val() == "") {
-				alert("극장을 선택해주세요.");
-			}
-			if ($("#screen-select").val() == "") {
-				alert("상영관을 선택해주세요.");
-			}
-			if ($("#time-select").val() == "") {
-				alert("시간을 선택해주세요.");
-			}
+			
+			$.ajax({
+				type: 'post',
+				url: 'adminScheduleCheck',
+				data: {
+					sche_date : $("#date-select").val(),
+// 					sche_start_time : "05:00:00",
+					sche_movie_code : $("#movie-select").val(),
+					sche_screen_idx : $("#screen-select").val(),
+					sche_theater_idx : $("#theater-select").val()
+				},
+				dataType: 'json',
+				success: function(resp) {
+					$("#time-select").children().remove();
+				},
+				error: function() {
+					alert("에러");
+				}
+			});
+
 		});
+		
+		
 	});
 	</script>
 	
@@ -121,11 +135,12 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">상영스케쥴 등록</h1>
                             </div>
-                            <form class="user" method="post" enctype="multipart/form-data">
+                            <form id="test" class="user" method="post" enctype="multipart/form-data">
 								<div class="form-group row">
 								  	<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영일</label>
-										<input type="text" class="form-control form-control-user" id="datepicker" value="">
+<!-- 										<input type="text" class="form-control form-control-user" id="datepicker" value=""> -->
+										<input type="date" id="date-select">
 	                                </div>
 								</div>
 								<br>
@@ -154,19 +169,19 @@
 										<label for="">상영시간</label>
 										<br>
 	                                    <select id="time-select" class="form-select" aria-label="Default select example" >
-<!-- 										  <option selected>상영시간</option> -->
-<!-- 										  <option value="1">09:00</option> -->
-<!-- 										  <option value="2">10:00</option> -->
-<!-- 										  <option value="3">11:00</option> -->
-<!-- 										  <option value="4">12:00</option> -->
-<!-- 										  <option value="5">13:00</option> -->
-<!-- 										  <option value="6">14:00</option> -->
-<!-- 										  <option value="7">15:00</option> -->
-<!-- 										  <option value="8">16:00</option> -->
-<!-- 										  <option value="9">17:00</option> -->
-<!-- 										  <option value="10">18:00</option> -->
-<!-- 										  <option value="11">19:00</option> -->
-<!-- 										  <option value="12">20:00</option> -->
+										  <option selected>상영시간</option>
+										  <option value="09:00:00">09:00</option>
+										  <option value="10:00:00">10:00</option>
+										  <option value="11:00:00">11:00</option>
+										  <option value="12:00:00">12:00</option>
+										  <option value="13:00:00">13:00</option>
+										  <option value="14:00:00">14:00</option>
+										  <option value="15:00:00">15:00</option>
+										  <option value="16:00:00">16:00</option>
+										  <option value="17:00:00">17:00</option>
+										  <option value="18:00:00">18:00</option>
+										  <option value="19:00:00">19:00</option>
+										  <option value="20:00:00">20:00</option>
 										</select>
 								  	</div>
                                 </div>

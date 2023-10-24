@@ -1,6 +1,7 @@
 package com.itwillbs.cinepick.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.ScheduleVO;
 import com.itwillbs.cinepick.vo.ScreenVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
@@ -54,6 +56,18 @@ public class AdminService {
 	public List<MovieVO> selectMovie() {
 		System.out.println("AdminService - selectMovie()");
 		return mapper.selectMovie();
+	}
+	
+	// 영화 재생 시간 조회
+	public int selectMovieRunTime(int sche_movie_code) {
+		System.out.println("AdminService - selectMovieRunTime()");
+		return mapper.selectMovieRunTime(sche_movie_code);
+	}
+	
+	//test
+	public Map scheduleCheck(ScheduleVO schedule) {
+		System.out.println("AdminService - scheduleCheck()");
+		return mapper.scheduleCheck(schedule);
 	}
 	
 	/*==============================================================
@@ -188,7 +202,5 @@ public class AdminService {
 		System.out.println("AdminService - deleteEvent(event_idx)");
 		return mapper.deleteEvent(event_idx);
 	}
-	
-	
 
 }

@@ -1,6 +1,7 @@
 package com.itwillbs.cinepick.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -11,6 +12,7 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.ScheduleVO;
 import com.itwillbs.cinepick.vo.ScreenVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
@@ -35,6 +37,10 @@ public interface AdminMapper {
 	List<ScreenVO> selectScreen(int screen_theater_idx);
 
 	List<MovieVO> selectMovie();
+
+	int selectMovieRunTime(int sche_movie_code);
+
+	Map scheduleCheck(ScheduleVO schedule);
 
 	/*==============================================================
 	 * 공지 
@@ -94,7 +100,5 @@ public interface AdminMapper {
 	int updateEvent(EventVO event);
 
 	int deleteEvent(String event_idx);
-
 	
-
 }

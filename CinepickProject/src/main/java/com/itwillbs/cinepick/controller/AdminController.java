@@ -5,10 +5,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +27,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,6 +40,7 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.ScheduleVO;
 import com.itwillbs.cinepick.vo.ScreenVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
@@ -340,8 +345,8 @@ public class AdminController {
 	// 관리자 상영 시간표 초기 출력값 조회
 	@ResponseBody
 	@PostMapping("adinScheduleInitInfo")
-	public String test(Gson gson, Map<String, Object> map) {
-		System.out.println("AdminController - test()");
+	public String adinScheduleInitInfo(Gson gson, Map<String, Object> map) {
+		System.out.println("AdminController - adinScheduleInitInfo()");
 		
 		List<TheaterVO> theater = adminService.selectTheater();
 		TheaterVO vo = theater.get(0);
@@ -355,6 +360,27 @@ public class AdminController {
 		map.put("movie", adminService.selectMovie());
 		
 		return gson.toJson(map);
+	}
+	
+	@ResponseBody
+	@PostMapping("adminScheduleCheck")
+	public String adminScheduleCheck(ScheduleVO schedule) {
+		System.out.println("AdminController - adminScheduleCheck()");
+		
+		// 조회...
+//		Map map = adminService.scheduleCheck(schedule);
+		
+		
+		// 등록...???
+//		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
+//		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
+		
+		
+		
+		
+//		System.out.println(schedule);
+		
+		return "";
 	}
 	
 	/*====================================================================
