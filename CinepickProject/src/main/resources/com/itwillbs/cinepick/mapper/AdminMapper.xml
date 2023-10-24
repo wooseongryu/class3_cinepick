@@ -62,6 +62,24 @@
 		ORDER BY noticeWriteDate DESC
     </select>
 
+
+	<!-- 공지 사항 게시물 조회 -->
+	<select id= "selectNoticeList" resultType="Notice">
+		SELECT *
+		FROM notice
+		ORDER BY noticeIdx DESC
+		LIMIT
+			#{startRow}
+			, #{listLimit}
+	</select>
+	
+	
+	<select id= "selectNoticeListCount">
+		SELECT COUNT(*)
+		FROM notice
+	</select>
+
+
     <delete id="deleteNotice">
     	DELETE FROM notice
     	WHERE noticeIdx = #{noticeIdx };

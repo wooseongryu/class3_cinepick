@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
@@ -36,6 +36,12 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
+
+	<c:set var="pageNum" value="1" />
+	<c:if test="${not empty param.pageNum }">
+		<c:set var="pageNum" value="${param.pageNum }" />
+	</c:if>
+
 
 	<header>
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
@@ -93,16 +99,93 @@
 								</a>
 							</div>
 						</div>
-					</c:forEach>
-					<div class="product__pagination">
-						<a href="#"><i class="fa fa-angle-double-left"></i></a>
-						<a href="#" class="current-page">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#"><i class="fa fa-angle-double-right"></i></a>
-                     </div>
+						</c:forEach>
+<!-- 						<section id="pageList"> -->
+<%-- 								[이전] 버튼 표시하여 클릭 시 현재페이지-1 페이지 목록으로 이동 --%>
+<%-- 								단, 현재 페이지번호(pageNum)가 1보다 클 경우에만 [이전] 버튼 동작 --%>
+<%-- 								<c:choose> --%>
+<%-- 									<c:when test="${pageNum > 1 }"> 현재 페이지가 1보다 클 경우(버튼 동작) --%>
+<%-- 										<input type="button" value="이전" onclick="location.href='notice?pageNum=${pageNum - 1 }'"> --%>
+<%-- 									</c:when> --%>
+<%-- 									<c:otherwise> 현재 페이지 1 페이지보다 크지 않을 경우(버튼 비활성화) --%>
+<!-- 										<input type="button" value="이전" disabled> -->
+<%-- 									</c:otherwise> --%>
+<%-- 								</c:choose> --%>
+<%-- 								============================================================================ --%>
+<%-- 								페이지 번호 목록은 시작페이지부터 끝페이지까지 1씩 증가(차례대로) 표시 --%>
+<%-- 								번호 클릭 시 pageNum 파라미터(현재 페이지번호)를 전달하여 BoardList.bo 서블릿 요청 --%>
+<%-- 								단, 현재 페이지 번호는 하이퍼링크 제거 및 굵게 표시 --%>
+<%-- 								<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }"> --%>
+<%-- 									<c:choose> --%>
+<%-- 										<c:when test="${pageNum eq i }"> <!-- 현재 페이지일 경우(하이퍼링크 미표시 및 굵게) --> --%>
+<%-- 											<b>${i }</b> --%>
+<%-- 										</c:when> --%>
+<%-- 										<c:otherwise> <!-- 현재 페이지가 아닐 경우(하이퍼링크 표시) --> --%>
+<%-- 											<a href="notice?pageNum=${i }">${i }</a>  --%>
+<%-- 										</c:otherwise> --%>
+<%-- 									</c:choose> --%>
+<%-- 								</c:forEach> --%>
+<%-- 								============================================================================ --%>
+<%-- 								[다음] 버튼 표시하여 클릭 시 현재페이지+1 페이지 목록으로 이동 --%>
+<%-- 								단, 현재 페이지번호(pageNum)가 전체 페이지번호보다 작을 경우에만 [다음] 버튼 동작 --%>
+<%-- 								<c:choose> --%>
+<%-- 									<c:when test="${pageNum < pageInfo.maxPage }"> 현재 페이지가 1보다 클 경우(버튼 동작) --%>
+<%-- 										<input type="button" value="다음" onclick="location.href='notice?pageNum=${pageNum + 1 }'"> --%>
+<%-- 									</c:when> --%>
+<%-- 									<c:otherwise> 현재 페이지 1 페이지보다 크지 않을 경우(버튼 비활성화) --%>
+<!-- 										<input type="button" value="다음" disabled> -->
+<%-- 									</c:otherwise> --%>
+<%-- 								</c:choose> --%>
+<!-- 							</section> -->
+					
+<!-- 					페이징 처리 -->
+					<div class="product__pagination" id="pageList">
+						<!-- 
+						<c:choose>
+							<c:when test="${pageNum > 1 }"> 
+									<a href="notice?pageNum=${pageNum - 1 }"><i class="fa fa-angle-double-left"></i></a>
+							</c:when>
+							<c:otherwise>
+									<a href="#"><i class="fa fa-angle-double-left"></i></a>
+							</c:otherwise>
+						</c:choose>
+						 -->
+						 
+						<c:if test="${pageNum > 1 }">
+							<a href="notice?pageNum=${pageNum - 1 }"><i class="fa fa-angle-double-left"></i></a>					
+						</c:if>
+						
+						<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+							
+						<c:choose>
+							<c:when test="${pageNum eq i }">
+								<a class="current-page" href="notice?pageNum=${i }">${i }</a>
+							</c:when>
+							<c:otherwise>
+<!-- 									<a class="#"> -->
+								<a href="notice?pageNum=${i }">${i }</a> 
+							</c:otherwise>
+						</c:choose>
+							
+							
+							
+							
+						</c:forEach>
+						
+						<c:if test="${pageNum < pageInfo.maxPage }">
+							<a href="notice?pageNum=${pageNum + 1 }"><i class="fa fa-angle-double-right"></i></a>					
+						</c:if>
+						<!--  
+						<c:choose>
+							<c:when test="${pageNum < pageInfo.maxPage }">
+									<a href="notice?pageNum=${pageNum + 1 }"><i class="fa fa-angle-double-right"></i></a>
+							</c:when>
+							<c:otherwise>
+									<a href="#"><i class="fa fa-angle-double-right"></i></a>
+							</c:otherwise>
+						</c:choose>
+						-->
+					</div>
 				</div>
 			</div>
 		</div>

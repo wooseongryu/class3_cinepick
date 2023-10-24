@@ -1,9 +1,13 @@
 package com.itwillbs.cinepick.vo;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-public class pageInfoVO {
+@Getter
+@Setter
+@AllArgsConstructor
+public class PageInfoVO {
 	private int listCount; // 전체 게시물 목록 갯수
 	private int pageListLimit; // 페이지 당 표시할 페이지 번호 갯수
 	private int maxPage; // 전체 페이지 수
