@@ -76,6 +76,12 @@ public class AdminService {
 		return mapper.insertSchedule(schedule);
 	}
 	
+	// 상영시간표 조회
+	public List<ScheduleVO> selectSchedule() {
+		System.out.println("AdminService - selectSchedule()");
+		return mapper.selectSchedule();
+	}
+	
 	/*==============================================================
 	 * 공지 
 	 * =============================================================

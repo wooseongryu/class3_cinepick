@@ -320,8 +320,12 @@ public class AdminController {
 	
 	// 관리자 상영 시간표 관리 페이지
 	@GetMapping("adminScheduleList")
-	public String adminScheduleList() {
+	public String adminScheduleList(Model model) {
 		System.out.println("AdminController - adminScheduleList()");
+		
+		List<ScheduleVO> scheduleList = adminService.selectSchedule();
+		model.addAttribute("scheduleList", scheduleList);
+		
 		return "mypage/admin/board_schedule";
 	}
 	

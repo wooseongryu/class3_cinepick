@@ -44,6 +44,8 @@ public interface AdminMapper {
 
 	int insertSchedule(ScheduleVO schedule);
 
+	List<ScheduleVO> selectSchedule();
+
 	/*==============================================================
 	 * 공지 
 	 * =============================================================

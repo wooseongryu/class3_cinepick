@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -142,29 +143,24 @@
                                         <tr>
 											<td colspan="7">
 												<button type="button" class="btn btn-primary" onclick="location.href='adminScheduleInsert'">등록</button>&nbsp;&nbsp;
-												<button type="button" class="btn btn-primary">삭제</button>
 											</td>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>20231006</td>
-                                            <td>씨네픽영화관</td>
-                                            <td>1관</td>
-                                            <td>콘크리트 유토피아</td>
-                                            <td>09:00</td>
-                                            <td>10:00</td>
-											<td><button type="button" class="btn btn-primary" onclick="updateSchedule()">수정</button>
-                                        </tr>
-                                        <tr>
-                                            <td>20231008</td>
-                                            <td>씨네픽영화관</td>
-                                            <td>2관</td>
-                                            <td>콘크리트 유토피아</td>
-                                            <td>09:00</td>
-                                            <td>10:00</td>
-											<td><button type="button" class="btn btn-primary" onclick="updateSchedule()">수정</button>
-                                        </tr>
+                                    	<c:forEach var="schedule" items="${scheduleList }">
+	                                    		<tr>
+	                                            <td>${schedule.sche_date }</td>
+	                                            <td>${schedule.theater_name }</td>
+	                                            <td>${schedule.screen_name }</td>
+	                                            <td>${schedule.movie_nameK }</td>
+	                                            <td>${schedule.sche_start_time }</td>
+	                                            <td>${schedule.sche_end_time }</td>
+												<td>
+													<button type="button" class="btn btn-primary" onclick="updateSchedule()">수정</button>
+													<button type="button" class="btn btn-primary">삭제</button>
+												</td>
+                                        	</tr>
+                                    	</c:forEach>
                                     </tbody>
                                 </table>
                             </div>
