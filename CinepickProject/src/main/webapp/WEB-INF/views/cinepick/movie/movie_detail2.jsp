@@ -49,13 +49,13 @@
             <div class="anime__details__content">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="anime__details__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg"></div>
+                        <div class="anime__details__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test2.jpg"></div>
                     </div>
                     <div class="col-lg-9">
                         <div class="anime__details__text">
                             <div class="anime__details__title">
-                                <h3>오펜하이머</h3>
-                                <span>Oppenheimer</span>
+                                <h3>1947 보스톤</h3>
+                                <span>Road to Boston</span>
                             </div>
                             <div class="anime__details__rating">
                                 <div class="rating">
