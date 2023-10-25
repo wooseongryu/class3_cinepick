@@ -35,10 +35,10 @@
 	
 	
 	<!-- 영화목록출력 -->
-	<!-- select 전에 날짜 비교해서 해당날짜부터는 개봉으로 update 해야함 -->
 	<select id="selectMovieList" resultType="Movie">
 		SELECT *
 		FROM movie
+		ORDER BY movie_openDt DESC
 	</select>
 	
 	<!-- 영화상세보기 -->
@@ -129,6 +129,9 @@
 				<choose>
 					<when test="mvListType.equals('audi')">
 						ORDER BY movie_audi DESC
+					</when>
+					<when test="mvListType.equals('open')">
+						ORDER BY m.movie_openDt DESC
 					</when>
 					<otherwise>
 						ORDER BY movie_rank

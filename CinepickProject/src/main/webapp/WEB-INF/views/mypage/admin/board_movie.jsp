@@ -22,7 +22,6 @@
 		window.open('adminMovieInsert','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	}
 	function detailMovie(movie_code) {
-		debugger;
 		window.open('adminMovieDetail?movie_code=' + movie_code,'', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	}
 	function updateMovieStatus() {

@@ -64,10 +64,6 @@
 	    top: 4px;
 	}
 	
-	#selectListType {
-		margin: 10px;
-	}
-
 
 
 </style>
@@ -116,6 +112,8 @@
 	                                    	<label for="box">박스오피스순</label>
 	                                    	 &emsp;<input type="radio"  name="MvListType" onclick="location.href= 'movieList?MvListType=audi'" value="audi" id="audi" <c:if test="${param.MvListType eq 'audi' }">checked</c:if>>
 	                                    	<label for="audi">관람객순</label>
+	                                    	 &emsp;<input type="radio"  name="MvListType" onclick="location.href= 'movieList?MvListType=open'" value="open" id="open" <c:if test="${param.MvListType eq 'open' }">checked</c:if>>
+	                                    	<label for="open">개봉일순</label>
 <!-- 	                                            <option value="boxoffice">박스오피스순</option> -->
 <%-- 	                                            <option value="audi" <c:if test="${param.MvListType eq 'audi' }">selected</c:if>>관람객순</option> --%>
 <!-- 	                                        </select> -->
@@ -129,7 +127,7 @@
                         	<c:forEach var="movie" items="${movieList }">
 	                            <div class="col-lg-3 col-md-6 col-sm-6">
 	                                <div class="product__item">
-	                                	<a href="movieDetail">
+	                                	<a href="'movieDetail?movie_code=' + ${movie.movie_code }" >
 		                                    <div class="product__item__pic set-bg" data-setbg="${movie.movie_poster }">
 		                                        <div class="comment">
 			                                        <c:choose>
