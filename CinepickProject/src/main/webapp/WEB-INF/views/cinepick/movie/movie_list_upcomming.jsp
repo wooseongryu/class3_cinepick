@@ -11,7 +11,7 @@
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anime | Template</title>
+    <title>CINEPICK</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -104,10 +104,17 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="product__page__filter">
-                                        <select>
-                                            <option value="">개봉일순</option>
-                                            <option value="">예매순</option>
-                                        </select>
+                                    	<form action="">
+                                    		<input type="radio"  name="MvListType"  value="openDt" style="display: none;" id="open"> 
+	                                    	<label for="open" style="color: white">개봉일순</label>
+<!--                                     	<label></label> -->
+<!--                                     	<input type="radio"> -->
+                                   
+<!--                                         <select> -->
+<!--                                             <option value="">개봉일순</option> -->
+<!--                                             <option value="">예매순</option> -->
+<!--                                         </select> -->
+                                    	</form>
                                     </div>
                                 </div>
                             </div>
