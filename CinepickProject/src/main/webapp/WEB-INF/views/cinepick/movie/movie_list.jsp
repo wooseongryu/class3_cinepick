@@ -47,25 +47,36 @@
 	}
 	
 	.rate-all, .rate-12, .rate-15, .rate-18 {
-    background-size: 30px 30px !important;
-    border-radius: 5px;
-    font-weight: bold;
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    text-align: center;
-    margin-right: 7px;
-    position: relative;
-    padding: 0;
-    overflow: hidden;
-    text-indent: -10000em;
-    position: relative;
-    top: 4px;
-}
+	    background-size: 30px 30px !important;
+	    border-radius: 5px;
+	    font-weight: bold;
+	    color: #fff;
+	    width: 40px;
+	    height: 40px;
+	    display: inline-block;
+	    text-align: center;
+	    margin-right: 7px;
+	    position: relative;
+	    padding: 0;
+	    overflow: hidden;
+	    text-indent: -10000em;
+	    position: relative;
+	    top: 4px;
+	}
+	
+	#selectListType {
+		margin: 10px;
+	}
+
 
 
 </style>
+<script>
+	function changeMvList()	{
+		
+	}
+	
+</script>
 
 </head>
 
@@ -99,11 +110,17 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6">
-                                    <div class="col-sm-2 mb-1 mb-sm-0">
-                                        <select name="MvListType">
-                                            <option value="boxoffice">박스오피스순</option>
-                                            <option value="audi">관람객순</option>
-                                        </select>
+                                    <div class="product__page__filter">
+	                                    <form action="movieList" id="selectListType" style="color: white">
+	                                    	<input type="radio"  name="MvListType" onclick="location.href= 'movieList?MvListType=?boxoffice'" value="boxoffice" checked id="box"> 
+	                                    	<label for="box">박스오피스순</label>
+	                                    	 &emsp;<input type="radio"  name="MvListType" onclick="location.href= 'movieList?MvListType=audi'" value="audi" id="audi" <c:if test="${param.MvListType eq 'audi' }">checked</c:if>>
+	                                    	<label for="audi">관람객순</label>
+<!-- 	                                            <option value="boxoffice">박스오피스순</option> -->
+<%-- 	                                            <option value="audi" <c:if test="${param.MvListType eq 'audi' }">selected</c:if>>관람객순</option> --%>
+<!-- 	                                        </select> -->
+<!-- 	                                        <span><input type="submit" value="검색" class="btn btn-primary btn-user" ></span> -->
+	                                    </form>
                                     </div>
                                 </div>
                             </div>

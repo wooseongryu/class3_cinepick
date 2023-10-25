@@ -21,7 +21,7 @@ public class MovieController {
 	
 	// 현재 상영작 목록 보기
 	@GetMapping("movieList")
-	public String movieList(Model model, @RequestParam(defaultValue = "true") boolean isOpen, @RequestParam(defaultValue = "boxoffice")String MvListType) {
+	public String movieList(Model model, @RequestParam(defaultValue = "true") boolean isOpen, @RequestParam(defaultValue = "")String MvListType) {
 		System.out.println("MovieController - movieList");
 //		isOpen = true;
 		List<MovieVO> movieList = movieService.showMvList(isOpen, MvListType);
