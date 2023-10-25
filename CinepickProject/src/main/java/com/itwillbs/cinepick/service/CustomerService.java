@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.CustomerMapper;
 import com.itwillbs.cinepick.vo.NoticeVO;
+import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
 
 @Service
@@ -35,6 +36,12 @@ public class CustomerService {
 	// 자주 묻는 질문 목록 수 조회
 	public int getQnaListCount() {
 		return mapper.selectQnaListCount();
+	}
+
+
+	// 자주 묻는 질문 카테고리 조회
+	public List<QnaCateVO> getQnaCateList() {
+		return mapper.selectQnaCateList();
 	}
 	
 

@@ -21,4 +21,8 @@ public class ScheduleVO {
 	private int sche_movie_code;
 	private int sche_screen_idx;
 	private int sche_theater_idx;
+	
+	private String movie_nameK;
+	private String theater_name;
+	private String screen_name;
 }

@@ -320,8 +320,12 @@ public class AdminController {
 	
 	// 관리자 상영 시간표 관리 페이지
 	@GetMapping("adminScheduleList")
-	public String adminScheduleList() {
+	public String adminScheduleList(Model model) {
 		System.out.println("AdminController - adminScheduleList()");
+		
+		List<ScheduleVO> scheduleList = adminService.selectSchedule();
+		model.addAttribute("scheduleList", scheduleList);
+		
 		return "mypage/admin/board_schedule";
 	}
 	
@@ -368,19 +372,54 @@ public class AdminController {
 		System.out.println("AdminController - adminScheduleCheck()");
 		
 		// 조회...
-//		Map map = adminService.scheduleCheck(schedule);
-		
+//		List<ScheduleVO> scheduleList = adminService.scheduleCheck(schedule);
+//		System.out.println("===========================");
+//		System.out.println(scheduleList);
+//		System.out.println("===========================");
 		
 		// 등록...???
 //		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
 //		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
 		
-		
-		
-		
-//		System.out.println(schedule);
-		
 		return "";
+	}
+	
+	@PostMapping("adminScheduleInsert")
+	public String adminScheduleInsert(ScheduleVO schedule, Model model) {
+		System.out.println("AdminController - adminScheduleInsert()");
+		
+		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
+		
+		// api에 러닝타임 없을 시 기본값 설정.
+		if (time == 0) {
+			time = 90;
+		}
+		
+		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
+		
+		System.out.println(schedule);
+		int insertCount = adminService.insertSchedule(schedule);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminScheduleList";
+	}
+	
+	@GetMapping("adminDeleteSchedule")
+	public String adminDeleteSchedule(int sche_idx, Model model) {
+		System.out.println("AdminController - adminDeleteSchedule()");
+		
+		int deleteCount = adminService.deleteSchedule(sche_idx);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminScheduleList";
 	}
 	
 	/*====================================================================

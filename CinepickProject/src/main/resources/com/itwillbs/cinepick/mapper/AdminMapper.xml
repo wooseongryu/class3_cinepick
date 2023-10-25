@@ -50,17 +50,62 @@
 		WHERE movie_code = #{sche_movie_code}
 	</select>
 	
+<!-- 	<select id="scheduleCheck" resultType="ScheduleVO"> -->
+<!-- 		SELECT  -->
+<!-- 			sche_idx -->
+<!-- 			, sche_start_time -->
+<!-- 			, sche_end_time -->
+<!-- 		FROM schedule -->
+<!-- 		WHERE -->
+<!-- 			sche_screen_idx = #{sche_screen_idx} -->
+<!-- 			AND sche_theater_idx = #{sche_theater_idx} -->
+<!-- 			AND sche_date = #{sche_date} -->
+<!-- 	</select> -->
+	
 	<select id="scheduleCheck" resultType="ScheduleVO">
+		SELECT *
+		FROM schedule
+		WHERE sche_date = #{sche_date}
+	</select>
+	
+	<insert id="insertSchedule">
+		INSERT INTO schedule
+		VALUES(
+			null
+			, #{sche_date}
+			, #{sche_start_time}
+			, #{sche_end_time}
+			, #{sche_movie_code}
+			, #{sche_screen_idx}
+			, #{sche_theater_idx}
+		)
+	</insert>
+	
+	<select id="selectSchedule" resultType="ScheduleVO">
 		SELECT 
 			sche_idx
+			, sche_date
 			, sche_start_time
 			, sche_end_time
-		FROM schedule
-		WHERE
-			sche_screen_idx = #{sche_screen_idx}
-			AND sche_theater_idx = #{sche_theater_idx}
-			AND sche_date = #{sche_date}
+			, sche_movie_code
+			, sche_screen_idx
+			, sche_theater_idx
+			, movie_nameK
+			, theater_name
+			, screen_name
+		FROM schedule s 
+			JOIN movie m
+			ON s.sche_movie_code = m.movie_code
+			JOIN theater t
+			ON s.sche_theater_idx = t.theater_idx
+			JOIN screen sc
+			ON s.sche_screen_idx = sc.screen_idx
 	</select>
+	
+	<delete id="deleteSchedule">
+		DELETE FROM schedule
+		WHERE sche_idx = #{sche_idx}
+	</delete>
 	<!-- 상영 시간표 끝 -->
 	
 

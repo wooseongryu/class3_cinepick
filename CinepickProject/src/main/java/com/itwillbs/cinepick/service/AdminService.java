@@ -65,10 +65,29 @@ public class AdminService {
 	}
 	
 	//test
-	public Map scheduleCheck(ScheduleVO schedule) {
+	public List<ScheduleVO> scheduleCheck(ScheduleVO schedule) {
 		System.out.println("AdminService - scheduleCheck()");
 		return mapper.scheduleCheck(schedule);
 	}
+	
+	// 상영시간 삽입
+	public int insertSchedule(ScheduleVO schedule) {
+		System.out.println("AdminService - insertSchedule()");
+		return mapper.insertSchedule(schedule);
+	}
+	
+	// 상영시간표 조회
+	public List<ScheduleVO> selectSchedule() {
+		System.out.println("AdminService - selectSchedule()");
+		return mapper.selectSchedule();
+	}
+	
+	// 상영시간표 삭제
+	public int deleteSchedule(int sche_idx) {
+		System.out.println("AdminService - deleteSchedule()"); 
+		return mapper.deleteSchedule(sche_idx);
+	}
+
 	
 	/*==============================================================
 	 * 공지 
@@ -202,5 +221,5 @@ public class AdminService {
 		System.out.println("AdminService - deleteEvent(event_idx)");
 		return mapper.deleteEvent(event_idx);
 	}
-
+	
 }
