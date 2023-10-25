@@ -25,6 +25,14 @@
 		debugger;
 		window.open('adminMovieDetail?movie_code=' + movie_code,'', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	}
+	function updateMovieStatus() {
+		let result = confirm("개봉상태를 업데이트 하시겠습니까?");
+		
+		if(result) {
+			location.href="MovieStatusUpdate"
+		}
+	}
+	
 </script>
 	
 
@@ -129,6 +137,10 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">영화 조회 내역</h6>
+                            	<div style="text-align: center">
+												<button type="button" class="btn btn-primary" onclick="insertMovie()">등록</button>
+												&emsp;<button type="button" class="btn btn-primary" onclick="updateMovieStatus()">개봉상태 변경하기</button>
+                            	</div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -159,11 +171,14 @@
 	                                        </tr>
                                     	</c:forEach>
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-											<td colspan="8" style="text-align: center"><button type="button" class="btn btn-primary" onclick="insertMovie()">등록</button></td>
-                                        </tr>
-                                    </tfoot>
+<!--                                     <tfoot> -->
+<!--                                         <tr> -->
+<!-- 											<td colspan="8" style="text-align: center"> -->
+<!-- 												<button type="button" class="btn btn-primary" onclick="insertMovie()">등록</button> -->
+<!-- 												&emsp;<button type="button" class="btn btn-primary" onclick="updateMovieStatus()">개봉상태 변경하기</button> -->
+<!-- 											</td> -->
+<!--                                         </tr> -->
+<!--                                     </tfoot> -->
                                 </table>
                             </div>
                         </div>
