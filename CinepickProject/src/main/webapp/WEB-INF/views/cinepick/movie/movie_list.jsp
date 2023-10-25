@@ -127,7 +127,7 @@
                         	<c:forEach var="movie" items="${movieList }">
 	                            <div class="col-lg-3 col-md-6 col-sm-6">
 	                                <div class="product__item">
-	                                	<a href="'movieDetail?movie_code=' + ${movie.movie_code }" >
+	                                	<a href="movieDetail?movie_code= ${movie.movie_code }" >
 		                                    <div class="product__item__pic set-bg" data-setbg="${movie.movie_poster }">
 		                                        <div class="comment">
 			                                        <c:choose>
