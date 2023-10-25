@@ -389,6 +389,12 @@ public class AdminController {
 		System.out.println("AdminController - adminScheduleInsert()");
 		
 		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
+		
+		// api에 러닝타임 없을 시 기본값 설정.
+		if (time == 0) {
+			time = 90;
+		}
+		
 		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
 		
 		System.out.println(schedule);
