@@ -82,6 +82,13 @@ public class AdminService {
 		return mapper.selectSchedule();
 	}
 	
+	// 상영시간표 삭제
+	public int deleteSchedule(int sche_idx) {
+		System.out.println("AdminService - deleteSchedule()"); 
+		return mapper.deleteSchedule(sche_idx);
+	}
+
+	
 	/*==============================================================
 	 * 공지 
 	 * =============================================================
@@ -214,5 +221,5 @@ public class AdminService {
 		System.out.println("AdminService - deleteEvent(event_idx)");
 		return mapper.deleteEvent(event_idx);
 	}
-
+	
 }

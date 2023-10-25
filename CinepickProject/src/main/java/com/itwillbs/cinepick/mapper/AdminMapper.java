@@ -46,6 +46,8 @@ public interface AdminMapper {
 
 	List<ScheduleVO> selectSchedule();
 
+	int deleteSchedule(int sche_idx);
+	
 	/*==============================================================
 	 * 공지 
 	 * =============================================================
@@ -104,5 +106,5 @@ public interface AdminMapper {
 	int updateEvent(EventVO event);
 
 	int deleteEvent(String event_idx);
-	
+
 }

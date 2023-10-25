@@ -101,6 +101,11 @@
 			JOIN screen sc
 			ON s.sche_screen_idx = sc.screen_idx
 	</select>
+	
+	<delete id="deleteSchedule">
+		DELETE FROM schedule
+		WHERE sche_idx = #{sche_idx}
+	</delete>
 	<!-- 상영 시간표 끝 -->
 	
 

@@ -408,6 +408,20 @@ public class AdminController {
 		return "redirect:/adminScheduleList";
 	}
 	
+	@GetMapping("adminDeleteSchedule")
+	public String adminDeleteSchedule(int sche_idx, Model model) {
+		System.out.println("AdminController - adminDeleteSchedule()");
+		
+		int deleteCount = adminService.deleteSchedule(sche_idx);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminScheduleList";
+	}
+	
 	/*====================================================================
 	 * 6. 공지사항
 	 * ===================================================================

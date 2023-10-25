@@ -157,7 +157,7 @@
 	                                            <td>${schedule.sche_end_time }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="updateSchedule()">수정</button>
-													<button type="button" class="btn btn-primary">삭제</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminDeleteSchedule?sche_idx=${schedule.sche_idx}'">삭제</button>
 												</td>
                                         	</tr>
                                     	</c:forEach>
