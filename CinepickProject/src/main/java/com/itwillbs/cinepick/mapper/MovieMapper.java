@@ -22,7 +22,9 @@ public interface MovieMapper {
 	MovieVO selectMvDetail(int movie_code);
 
 	int modifyMovie(MovieVO movie);
-
+	
+	int updateMovieStatus();
+	
 	int deleteMovie(int movie_code);
 	
 	
@@ -38,6 +40,8 @@ public interface MovieMapper {
 //=========== 영화차트페이지================
 	//영화목록
 	List<MovieVO> showMvList(@Param("isOpen") boolean isOpen, @Param("mvListType") String mvListType);
+
+	
 
 
 	

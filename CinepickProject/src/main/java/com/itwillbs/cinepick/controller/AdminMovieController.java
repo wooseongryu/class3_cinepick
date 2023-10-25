@@ -20,6 +20,8 @@ import com.itwillbs.cinepick.service.MovieService;
 import com.itwillbs.cinepick.vo.BoxOfficeVO;
 import com.itwillbs.cinepick.vo.MovieVO;
 
+import lombok.Getter;
+
 /*====================================================================
  *  영화 (따로 빼둠)
  * ===================================================================
@@ -144,6 +146,31 @@ public class AdminMovieController {
 		}
 		
 	}
+
+	//======= 영화개봉상태 업데이트 =======		
+	@GetMapping("MovieStatusUpdate")
+	public String MovieStatusUpdate(Model model, HttpSession session) {
+		int StatusUpdateCount = movieService.updateMovieStatus();
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		if(StatusUpdateCount > 0) {
+			model.addAttribute("msg", "개봉상태가 업데이트되었습니다.");
+			model.addAttribute("targetURL", "adminMovieList");
+			return "forward";
+		} else {
+			model.addAttribute("msg", "개봉상태 업데이트를 실패하였습니다.");
+			return "fail_back";
+		}
+		
+	}
+	
 
 	//======= 영화정보 삭제 =======	
 	@GetMapping("MovieDelete")

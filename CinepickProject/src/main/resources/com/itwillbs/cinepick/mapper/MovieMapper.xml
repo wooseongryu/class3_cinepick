@@ -67,6 +67,15 @@
 			 
 	</update>	
 	
+	<!-- 영화개봉상태 변경 -->		
+	<update id="updateMovieStatus">
+		UPDATE movie 
+		SET movie_status = '개봉'
+		WHERE movie_openDt = CURRENT_DATE(); 
+	</update>
+	
+	
+	
 	<!-- 영화삭제 -->	
 	<delete id="deleteMovie">
 		DELETE FROM movie

@@ -71,6 +71,10 @@ public class MovieService {
 		return movieMapper.showMvList(isOpen, mvListType);
 	}
 
+	public int updateMovieStatus() {
+		return movieMapper.updateMovieStatus();
+	}
+
 
 
 	
