@@ -89,32 +89,32 @@
 			});
 		});
 		
-		$("#time-select").on("click", function() {
-			if ($("#date-select").val() == "") {
-				alert("상영일을 선택해주세요.");
-				return;
-			}
+// 		$("#time-select").on("click", function() {
+// 			if ($("#date-select").val() == "") {
+// 				alert("상영일을 선택해주세요.");
+// 				return;
+// 			}
 			
-			$.ajax({
-				type: 'post',
-				url: 'adminScheduleCheck',
-				data: {
-					sche_date : $("#date-select").val(),
-// 					sche_start_time : "05:00:00",
-					sche_movie_code : $("#movie-select").val(),
-					sche_screen_idx : $("#screen-select").val(),
-					sche_theater_idx : $("#theater-select").val()
-				},
-				dataType: 'json',
-				success: function(resp) {
-					$("#time-select").children().remove();
-				},
-				error: function() {
-					alert("에러");
-				}
-			});
+// 			$.ajax({
+// 				type: 'post',
+// 				url: 'adminScheduleCheck',
+// 				data: {
+// 					sche_date : $("#date-select").val(),
+// // 					sche_start_time : "05:00:00",
+// 					sche_movie_code : $("#movie-select").val(),
+// 					sche_screen_idx : $("#screen-select").val(),
+// 					sche_theater_idx : $("#theater-select").val()
+// 				},
+// 				dataType: 'json',
+// 				success: function(resp) {
+// 					$("#time-select").children().remove();
+// 				},
+// 				error: function() {
+// 					alert("에러");
+// 				}
+// 			});
 
-		});
+// 		});
 		
 		
 	});
@@ -135,12 +135,12 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">상영스케쥴 등록</h1>
                             </div>
-                            <form id="test" class="user" method="post" enctype="multipart/form-data">
+                            <form id="test" action="adminScheduleInsert" class="user" method="post" enctype="multipart/form-data">
 								<div class="form-group row">
 								  	<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영일</label>
 <!-- 										<input type="text" class="form-control form-control-user" id="datepicker" value=""> -->
-										<input type="date" id="date-select">
+										<input type="date" name="sche_date" id="date-select">
 	                                </div>
 								</div>
 								<br>
@@ -148,13 +148,13 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">영화관명</label>
 										<br>
-	                                    <select id="theater-select" class="form-select" aria-label="Default select example" >
+	                                    <select id="theater-select" name="sche_theater_idx" class="form-select" aria-label="Default select example" >
 										</select>
 								  	</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영관</label>
 										<br>
-	                                    <select id="screen-select" class="form-select" aria-label="Default select example" >
+	                                    <select id="screen-select" name="sche_screen_idx" class="form-select" aria-label="Default select example" >
 										</select>
 								  	</div>
                                 </div>
@@ -162,13 +162,13 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">영화선택</label>
 										<br>
-	                                    <select id="movie-select" class="form-select" aria-label="Default select example" >
+	                                    <select id="movie-select" name="sche_movie_code" class="form-select" aria-label="Default select example" >
 										</select>
 								  	</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영시간</label>
 										<br>
-	                                    <select id="time-select" class="form-select" aria-label="Default select example" >
+	                                    <select id="time-select" name="sche_start_time" class="form-select" aria-label="Default select example" >
 										  <option selected>상영시간</option>
 										  <option value="09:00:00">09:00</option>
 										  <option value="10:00:00">10:00</option>

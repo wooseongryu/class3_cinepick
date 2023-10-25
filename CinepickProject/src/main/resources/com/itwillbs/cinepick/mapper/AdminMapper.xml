@@ -50,17 +50,36 @@
 		WHERE movie_code = #{sche_movie_code}
 	</select>
 	
+<!-- 	<select id="scheduleCheck" resultType="ScheduleVO"> -->
+<!-- 		SELECT  -->
+<!-- 			sche_idx -->
+<!-- 			, sche_start_time -->
+<!-- 			, sche_end_time -->
+<!-- 		FROM schedule -->
+<!-- 		WHERE -->
+<!-- 			sche_screen_idx = #{sche_screen_idx} -->
+<!-- 			AND sche_theater_idx = #{sche_theater_idx} -->
+<!-- 			AND sche_date = #{sche_date} -->
+<!-- 	</select> -->
+	
 	<select id="scheduleCheck" resultType="ScheduleVO">
-		SELECT 
-			sche_idx
-			, sche_start_time
-			, sche_end_time
+		SELECT *
 		FROM schedule
-		WHERE
-			sche_screen_idx = #{sche_screen_idx}
-			AND sche_theater_idx = #{sche_theater_idx}
-			AND sche_date = #{sche_date}
+		WHERE sche_date = #{sche_date}
 	</select>
+	
+	<insert id="insertSchedule">
+		INSERT INTO schedule
+		VALUES(
+			null
+			, #{sche_date}
+			, #{sche_start_time}
+			, #{sche_end_time}
+			, #{sche_movie_code}
+			, #{sche_screen_idx}
+			, #{sche_theater_idx}
+		)
+	</insert>
 	<!-- 상영 시간표 끝 -->
 	
 

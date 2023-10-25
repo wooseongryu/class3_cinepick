@@ -65,9 +65,15 @@ public class AdminService {
 	}
 	
 	//test
-	public Map scheduleCheck(ScheduleVO schedule) {
+	public List<ScheduleVO> scheduleCheck(ScheduleVO schedule) {
 		System.out.println("AdminService - scheduleCheck()");
 		return mapper.scheduleCheck(schedule);
+	}
+	
+	// 상영시간 삽입
+	public int insertSchedule(ScheduleVO schedule) {
+		System.out.println("AdminService - insertSchedule()");
+		return mapper.insertSchedule(schedule);
 	}
 	
 	/*==============================================================

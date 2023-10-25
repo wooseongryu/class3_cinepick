@@ -368,19 +368,34 @@ public class AdminController {
 		System.out.println("AdminController - adminScheduleCheck()");
 		
 		// 조회...
-//		Map map = adminService.scheduleCheck(schedule);
-		
+//		List<ScheduleVO> scheduleList = adminService.scheduleCheck(schedule);
+//		System.out.println("===========================");
+//		System.out.println(scheduleList);
+//		System.out.println("===========================");
 		
 		// 등록...???
 //		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
 //		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
 		
-		
-		
-		
-//		System.out.println(schedule);
-		
 		return "";
+	}
+	
+	@PostMapping("adminScheduleInsert")
+	public String adminScheduleInsert(ScheduleVO schedule, Model model) {
+		System.out.println("AdminController - adminScheduleInsert()");
+		
+		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
+		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
+		
+		System.out.println(schedule);
+		int insertCount = adminService.insertSchedule(schedule);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminScheduleList";
 	}
 	
 	/*====================================================================

@@ -40,7 +40,9 @@ public interface AdminMapper {
 
 	int selectMovieRunTime(int sche_movie_code);
 
-	Map scheduleCheck(ScheduleVO schedule);
+	List<ScheduleVO> scheduleCheck(ScheduleVO schedule);
+
+	int insertSchedule(ScheduleVO schedule);
 
 	/*==============================================================
 	 * 공지 
