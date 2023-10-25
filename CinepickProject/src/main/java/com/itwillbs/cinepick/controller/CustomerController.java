@@ -17,6 +17,7 @@ import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.PageInfoVO;
+import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
 
 
@@ -55,10 +56,10 @@ public class CustomerController {
 		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행(레코드) 번호
 		
 		List<QnaVO> qnaList = customerService.getQnaList(startRow, listLimit);
+
+		List<QnaCateVO> qnaCateList = customerService.getQnaCateList();
 		
 		int listCount = customerService.getQnaListCount();
-		
-//		System.out.println(listCount);
 		
 		int pageListLimit = 3;
 		
@@ -74,7 +75,7 @@ public class CustomerController {
 		
 		PageInfoVO pageInfo = new PageInfoVO(listCount, pageListLimit, maxPage, startPage, endPage);
 		model.addAttribute("qnaList", qnaList);
-		System.out.println(qnaList);
+		model.addAttribute("qnaCateList", qnaCateList);
 		model.addAttribute("pageInfo", pageInfo);
 		
 		return "cinepick/customer/qna";

@@ -27,9 +27,29 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/customer-center.css" type="text/css">
-    
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
 </head>
+
+<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
+<script type="text/javascript">
+function qnaCateSelect(qnaCateSubject) {
+	alert(qnaCateSubject);
+// 	$.ajax({
+// 		url: "qna,
+// 		data: { qnaCateSubject: "qnaCateSubject" },                          // HTTP 요청과 함께 서버로 보낼 데이터
+// 		method: "POST",                                     // HTTP 요청 방식(GET, POST)
+// 		dataType: 'String',                                 // 서버에서 보내줄 데이터의 타입
+// 		success: function(resp) {
+// 			alert(qnaCateSubject);
+// 		},
+// 		error: function() {
+// 			alert("에러");
+// 		}
+// 	}),
+};
+
+</script>
+
 
 <body>
     <!-- Page Preloder -->
@@ -64,31 +84,13 @@
                         </h5>
                     </div>
 					<div class="row">
+					<c:forEach var="qnaCate" items="${qnaCateList }">
 						<div class="col">
-							<div class="customer_category" style="background: red">
-								<h6>영화관 이용</h6>
+							<div class="customer_category" name="${qnaCate.qnaCateSubject}" style="background: red" onclick="qnaCateSelect('${qnaCate.qnaCateSubject}')" >
+								<h6>${qnaCate.qnaCateSubject }</h6>
 							</div>
 						</div>
-						<div class="col">
-							<div class="customer_category">
-								<h6>회원</h6>
-							</div>
-						</div>
-						<div class="col">
-							<div class="customer_category">
-								<h6>멤버십</h6>
-							</div>
-						</div>
-						<div class="col">
-							<div class="customer_category">
-								<h6>관람권</h6>
-							</div>
-						</div>
-						<div class="col">
-							<div class="customer_category">
-								<h6>스토어</h6>
-							</div>
-						</div>
+					</c:forEach>
 					</div>
 					<div class="row">
 						<div class="col-3">
@@ -153,7 +155,7 @@
 	</footer>
 
 	<!-- Js Plugins -->
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script> --%>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/player.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.nice-select.min.js"></script>

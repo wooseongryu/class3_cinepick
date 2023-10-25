@@ -33,6 +33,10 @@ public interface CustomerMapper {
 	int selectQnaListCount();
 
 
+	// 자주묻는 질문 카테고리 조회
+	List<QnaCateVO> selectQnaCateList();
+
+
 
 	
 
