@@ -32,21 +32,6 @@
 
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
 <script type="text/javascript">
-function qnaCateSelect(qnaCateSubject) {
-	alert(qnaCateSubject);
-// 	$.ajax({
-// 		url: "qna,
-// 		data: { qnaCateSubject: "qnaCateSubject" },                          // HTTP 요청과 함께 서버로 보낼 데이터
-// 		method: "POST",                                     // HTTP 요청 방식(GET, POST)
-// 		dataType: 'String',                                 // 서버에서 보내줄 데이터의 타입
-// 		success: function(resp) {
-// 			alert(qnaCateSubject);
-// 		},
-// 		error: function() {
-// 			alert("에러");
-// 		}
-// 	}),
-};
 
 </script>
 
@@ -86,7 +71,7 @@ function qnaCateSelect(qnaCateSubject) {
 					<div class="row">
 					<c:forEach var="qnaCate" items="${qnaCateList }">
 						<div class="col">
-							<div class="customer_category" name="${qnaCate.qnaCateSubject}" style="background: red" onclick="qnaCateSelect('${qnaCate.qnaCateSubject}')" >
+							<div class="customer_category" name="${qnaCate.qnaCateSubject}" style="background: red" onclick="location.href='qna?qnaCateIdx=${qnaCate.qnaCateIdx}'" >
 								<h6>${qnaCate.qnaCateSubject }</h6>
 							</div>
 						</div>

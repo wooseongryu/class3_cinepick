@@ -29,8 +29,8 @@ public class CustomerService {
 	}
 
 	// 자주 묻는 질문 목록 조회
-	public List<QnaVO> getQnaList(int startRow, int listLimit) {
-		return mapper.selectQnaList(startRow, listLimit);
+	public List<QnaVO> getQnaList(int startRow, int listLimit, int qnaCateIdx) {
+		return mapper.selectQnaList(startRow, listLimit, qnaCateIdx);
 	}
 
 	// 자주 묻는 질문 목록 수 조회
