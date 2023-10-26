@@ -65,7 +65,7 @@ public class AdminService {
 		return mapper.selectMovieRunTime(sche_movie_code);
 	}
 	
-	//test
+	// 상영시간표 중복 확인
 	public List<ScheduleVO> scheduleCheck(ScheduleVO schedule) {
 		System.out.println("AdminService - scheduleCheck()");
 		return mapper.scheduleCheck(schedule);

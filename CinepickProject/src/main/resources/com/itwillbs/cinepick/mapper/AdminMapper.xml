@@ -63,52 +63,6 @@
 		ORDER BY sche_start_time;
 	</select>
 	
-<!-- 	<select id="scheduleCheck" resultType="ScheduleVO"> -->
-<!-- 		SELECT * -->
-<!-- 		FROM schedule -->
-<!-- 		WHERE sche_date = #{sche_date} -->
-<!-- 	</select> -->
-
-
-
-
-
-
-<!-- 	WITH RECURSIVE my_cte AS -->
-<!-- ( -->
-<!--   SELECT 6 AS n -->
-<!--   UNION ALL -->
-<!--   SELECT 1+n FROM my_cte WHERE n<22  -->
-<!-- ) -->
-<!-- SELECT m.n -->
-<!--   FROM my_cte m -->
-<!--   LEFT JOIN (SELECT * -->
-<!-- 			  FROM (SELECT  -->
-<!-- 						sche_idx -->
-<!-- 						, CONVERT(DATE_FORMAT(sche_start_time, '%H'), UNSIGNED) AS temp   -->
-<!-- 					FROM schedule -->
-<!-- 					WHERE -->
-<!-- 						sche_screen_idx = 1 -->
-<!-- 						AND sche_theater_idx = 1 -->
-<!-- 						AND sche_date = '2023-10-30' -->
-<!-- 					UNION ALL  -->
-<!-- 					SELECT  -->
-<!-- 						sche_idx -->
-<!-- 						, CONVERT(DATE_FORMAT(sche_end_time, '%H'), unsigned ) AS temp  -->
-<!-- 					FROM schedule -->
-<!-- 					WHERE -->
-<!-- 						sche_screen_idx = 1 -->
-<!-- 						AND sche_theater_idx = 1 -->
-<!-- 						AND sche_date = '2023-10-30') a -->
-<!-- 			ORDER BY a.temp, a.sche_idx) t  -->
-<!-- 	ON m.n = t.temp -->
-<!--  WHERE t.temp IS NULL; -->
-	
-	
-	
-	
-	
-	
 	<insert id="insertSchedule">
 		INSERT INTO schedule
 		VALUES(

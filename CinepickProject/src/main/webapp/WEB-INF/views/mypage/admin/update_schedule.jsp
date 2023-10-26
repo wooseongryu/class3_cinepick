@@ -49,6 +49,7 @@
 	</style>
 	<script>
 	$(function() {
+		// 초기 화면 출력 값
 		$.ajax({
 			type: 'post',
 			url: 'adinScheduleInitInfo',
@@ -71,11 +72,16 @@
 			}
 		});
 		
+		// 영화관이 변경될 시 상영관도 그에 맞게 변경.
 		$("#theater-select").on("change", function() {
+			// 영화관 변경 시 검색 초기화
+			$("#time-select").children().remove();
 			$.ajax({
 				type: 'post',
 				url: 'adminScheduleScreen',
-				data: {screen_theater_idx : $("#theater-select").val()},
+				data: {
+					screen_theater_idx : $("#theater-select").val()
+				},
 				dataType: 'json',
 				success: function(resp) {
 					$("#screen-select").children().remove();
@@ -89,7 +95,23 @@
 			});
 		});
 		
-		$("#time-select").on("click", function() {
+		// 날짜 변경 시 검색 초기화
+		$("#date-select").on("change", function() {
+			$("#time-select").children().remove();
+		});
+		
+		// 상영관 변경 시 검색 초기화
+		$("#screen-select").on("change", function() {
+			$("#time-select").children().remove();
+		});
+		
+		// 영화 변경 시 검색 초기화
+		$("#movie-select").on("change", function() {
+			$("#time-select").children().remove();
+		});
+		
+		// 검색 버튼 클릭 시 시간 조회.
+		$("#search-time").on("click", function() {
 			if ($("#date-select").val() == "") {
 				alert("상영일을 선택해주세요.");
 				return;
@@ -107,14 +129,19 @@
 				dataType: 'json',
 				success: function(resp) {
 					$("#time-select").children().remove();
+					for (let i = 0; i < resp.length; i++) {
+						let hour = resp[i].hour + ":00";
+						if (hour < 10) {
+							hour = "0" + hour;
+						}
+						$("#time-select").append("<option value='" + hour + ":00'>" + hour + "</option>");
+					}
 				},
 				error: function() {
 					alert("에러");
 				}
 			});
-
 		});
-		
 		
 	});
 	</script>
@@ -165,22 +192,10 @@
 										</select>
 								  	</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<label for="">상영시간</label>
+										<label for="">상영시작시간</label>
+										<input type="button" id="search-time" value="검색">
 										<br>
 	                                    <select id="time-select" name="sche_start_time" class="form-select" aria-label="Default select example" >
-<!-- 										  <option selected>상영시간</option> -->
-<!-- 										  <option value="09:00:00">09:00</option> -->
-<!-- 										  <option value="10:00:00">10:00</option> -->
-<!-- 										  <option value="11:00:00">11:00</option> -->
-<!-- 										  <option value="12:00:00">12:00</option> -->
-<!-- 										  <option value="13:00:00">13:00</option> -->
-<!-- 										  <option value="14:00:00">14:00</option> -->
-<!-- 										  <option value="15:00:00">15:00</option> -->
-<!-- 										  <option value="16:00:00">16:00</option> -->
-<!-- 										  <option value="17:00:00">17:00</option> -->
-<!-- 										  <option value="18:00:00">18:00</option> -->
-<!-- 										  <option value="19:00:00">19:00</option> -->
-<!-- 										  <option value="20:00:00">20:00</option> -->
 										</select>
 								  	</div>
                                 </div>
