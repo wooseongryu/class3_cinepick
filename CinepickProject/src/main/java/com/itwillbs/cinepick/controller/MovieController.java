@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.cinepick.service.MovieService;
 import com.itwillbs.cinepick.vo.BoxOfficeVO;
@@ -36,6 +37,7 @@ public class MovieController {
 	
 	//현재 상영작 ajax
 	@GetMapping("movieListJson")
+	@ResponseBody
 	public String movieLlistJson(@RequestParam String MvListType, @RequestParam(defaultValue = "true") boolean isOpen, Model model) {
 		List<MovieVO> movieList = movieService.showMvList(isOpen, MvListType);
 //		System.out.println(movieList);

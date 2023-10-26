@@ -118,13 +118,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="movieListDiv">
                         	<c:forEach var="movie" items="${movieList }">
 	                            <div class="col-lg-3 col-md-6 col-sm-6">
 	                                <div class="product__item">
 	                                	<a href="movieDetail?movie_code= ${movie.movie_code }" >
 		                                    <div class="product__item__pic set-bg" data-setbg="${movie.movie_poster }">
 		                                        <div class="comment">
+		                                        	<!-- 
 			                                        <c:choose>
 			                                        	<c:when test="${movie.movie_rated eq '전체관람가'}">
 			                                        		<span class = "rate-all"></span>
@@ -139,6 +140,9 @@
 			                                        		<span class = "rate-18"></span>
 			                                        	</c:when>
 			                                        </c:choose>
+			                                         -->
+			                                        <span class = "${movie.movie_rated}"></span>
+			                                        
 		                                        </div>
 		                                    </div>
 	                                    </a>
@@ -190,8 +194,7 @@
 		$("input[name = 'MvListType']").click(function() {
 			let MvListType = $(this).val();
 			console.log(MvListType);
-			debugger;
-			
+
 			$.ajax({
 				type: "GET",
 				url: "movieListJson",
@@ -199,10 +202,32 @@
 				dataType: "json",
 				success: function(data) {
 					
-					for(let movie of list.movieList) {
-						console.log(movie);
+					$('#movieListDiv').empty();
+					
+					var str = "";
+					for(let movie of data) {
 						
+						str +='<div class="col-lg-3 col-md-6 col-sm-6">'
+						str +=	'<div class="product__item">'
+						str +=		'<a href="movieDetail?movie_code= ' + movie.movie_code + '">'
+						str +=			'<div class="product__item__pic set-bg" data-setbg="' + movie.movie_poster + '" style="background-image: url(&quot;' + movie.movie_poster + '&quot;);">'
+						str +=				'<div class="comment">'
+						str +=					'<span class="' + movie.movie_rated + '"></span>'
+						str +=				'</div>'
+						str +=			'</div>'
+						str +=		'</a>'
+						str +=		'<div class="product__item__text">'
+						str +=			'<ul>'
+						str +=				'<li>누적 관람객 ' + movie.movie_audi + '명</li>'
+						str +=				'<li>개봉일 ' + movie.movie_openDt + '</li>'
+						str +=			'</ul>'
+						str +=			'<h5><a href="movieDetail">' + movie.movie_nameK + '</a></h5>'
+						str +=		'</div>'
+						str +=	'</div>'
+						str +='</div>'
 					}
+					
+					$('#movieListDiv').append(str);
 				},
 				error: function() {
 					console.log("실패");

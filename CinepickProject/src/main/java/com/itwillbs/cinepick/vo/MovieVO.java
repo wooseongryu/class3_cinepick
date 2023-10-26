@@ -56,11 +56,13 @@ public class MovieVO {
 	private String movie_plot;
 	private String movie_poster;
 	private String movie_still;
+	//----- 누적관람객, 티저 추가-----
+	private String movie_vod;
+	private int movie_audi;
 	
 	
 	//-------join용-------
 	private int movie_rank;
-	private int movie_audi;
 }
 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +38,11 @@
 			slideWidth:200,
 			slideMargin: 20,
 			pager:false,
-			controls: false
+			controls: false,
+			auto: true,
+			autohover: true,
+			moveSlides:1
+// 			speed:200
 // 			nextText:'<i class="fas fa-chevron-right"></i>',
 //         	prevText:'<i class="fas fa-chevron-left"></i>'
 			
@@ -75,68 +80,36 @@
 <!-- 			</ul> -->
 			<div class="boardWrap">
 				<ul class="slider-bo">
-					<li>
-						<img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_list/mb1.jpg">
-						<div class="slider-over">
-						<span class="over-over">
-							<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span>
-							<span class="over-rsv"><a href="#">예매하기</a></span>
-							<span class="over-info"><a href="#">상세보기</a></span>
-						</span>
-						</div>
-						<div class="mv-desc">
-							<span class="rate-12">12세관람가</span>
-							30일
-						</div>
-					</li>
-					<li>
-<!-- 						<span class="over-over"> -->
-<!-- 							<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span> -->
-<!-- 							<span class="over-rsv"><a href="#">예매하기</a></span> -->
-<!-- 							<span class="over-info"><a href="#">상세보기</a></span> -->
-<!-- 						</span> -->
-						<img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_list/mb2.jpg">
-						<div class="mv-desc">
-							<span class="rate-12">12세관람가</span>
-							천박사 퇴마연구소
-						</div>
-					</li>
-					<li>
-<!-- 						<span class="over-over"> -->
-<!-- 							<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span> -->
-<!-- 							<span class="over-rsv"><a href="#">예매하기</a></span> -->
-<!-- 							<span class="over-info"><a href="#">상세보기</a></span> -->
-<!-- 						</span> -->
-						<img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_list/mb3.jpg">
-						<div class="mv-desc">
-							<span class="rate-15">15세 관람가</span>
-							거미집
-						</div>
-					</li>
-					<li>
-<!-- 						<span class="over-over"> -->
-<!-- 							<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span> -->
-<!-- 							<span class="over-rsv"><a href="#">예매하기</a></span> -->
-<!-- 							<span class="over-info"><a href="#">상세보기</a></span> -->
-<!-- 						</span> -->
-						<img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_list/mb4.jpg">
-						<div class="mv-desc">
-							<span class="rate-12">12세관람가</span>
-							크리에이터
-						</div>
-					</li>
-					<li>
-<!-- 						<span class="over-over"> -->
-<!-- 							<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span> -->
-<!-- 							<span class="over-rsv"><a href="#">예매하기</a></span> -->
-<!-- 							<span class="over-info"><a href="#">상세보기</a></span> -->
-<!-- 						</span> -->
-						<img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_list/mb5.jpg">
-						<div class="mv-desc">
-							<span class="rate-15">15세 관람가</span>
-							발레리나
-						</div>
-					</li>
+					<c:forEach var="movie" items="${movieList }">
+						<li>
+							<div class="slider-over">
+								<img alt="" src="${movie.movie_poster }">
+								<span class="over-over">
+									<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span>
+									<span class="over-rsv"><a href="bookingStepOne">예매하기</a></span>
+									<span class="over-info"><a href="movieDetail?movie_code= ${movie.movie_code }">상세보기</a></span>
+								</span>
+							</div>
+							<div class="mv-desc">
+								<c:choose>
+ 									<c:when test="${movie.movie_rated eq '전체관람가'}">
+                               			<span class = "rate-all"></span>
+                               		</c:when>
+                               		<c:when test="${movie.movie_rated eq '12세이상관람가'}">
+                               			<span class = "rate-12"></span>
+                               		</c:when>
+                               		<c:when test="${movie.movie_rated eq '15세이상관람가'}">
+                               			<span class = "rate-15"></span>
+                               		</c:when>
+                               		<c:when test="${movie.movie_rated eq '18세이상관람가'}">
+                               			<span class = "rate-18"></span>
+                               		</c:when>
+                               </c:choose>
+<!-- 								<span class="rate-12">12세관람가</span> -->
+								${movie.movie_nameK }
+							</div>
+						</li>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>

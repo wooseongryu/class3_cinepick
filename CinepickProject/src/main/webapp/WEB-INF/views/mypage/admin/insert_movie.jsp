@@ -67,7 +67,12 @@
 						let plot = movieData.plots.plot[0].plotText;
 						let posters = movieData.posters;
 						let stills = movieData.stlls;
-						console.log(plot);
+						let vod = movieData.vods.vod[0].vodUrl;
+						let audi = movieData.audiAcc;
+						if(audi == "") {
+							audi = 0;
+						}
+						console.log("audi: " + audi);
 						
 			
 						//객체저장 하나씩
@@ -78,7 +83,9 @@
 						let addData = {
 		                    movie_plot: plot,
 		                    movie_poster: posters,
-		                    movie_still: stills
+		                    movie_still: stills,
+		                    movie_vod: vod,
+		                    movie_audi: audi
 		                };
 						
 						
@@ -146,6 +153,8 @@
 							    movieInfo.movie_plot = addData.movie_plot;
 								movieInfo.movie_poster = addData.movie_poster;
 								movieInfo.movie_still = addData.movie_still;
+								movieInfo.movie_vod = addData.movie_vod;
+								movieInfo.movie_audi = addData.movie_audi;
 
 		                    	$("#printNm").val(movieInfo.movie_nameK);
 		                    	$("#printNmE").val(movieInfo.movie_nameE);
@@ -159,6 +168,8 @@
 							    $("#printPoster").val(movieInfo.movie_poster);
 							    $("#printStill").val(movieInfo.movie_still);
 							    $("#printPlot").val(movieInfo.movie_plot);
+							    $("#printVod").val(movieInfo.movie_vod);
+							    $("#printAudi").val(movieInfo.movie_audi);
 							    console.log(movieInfo);
 							})
 							.catch(function (error) {
@@ -232,6 +243,10 @@
 										<label for="movie_status">제작상태</label>
                                         <input type="text" class="form-control form-control-user" id="printStatus" name="movie_status">
                                     </div>
+                                    <div class="col-sm-3 mb-2 mb-sm-0">
+										<label for="movie_status">누적관람객</label>
+                                        <input type="text" class="form-control form-control-user" id="printAudi" name="movie_audi">
+                                    </div>
 	                            </div>    
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -273,6 +288,12 @@
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_stil">스틸컷url</label>
 									  <textarea rows="6" class="form-control form-control-textarea" id="printStill" name="movie_still"></textarea>
+									</div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-6 mb-sm-0">
+									  <label for="movie_stil">티저url</label>
+									  <textarea rows="3" class="form-control form-control-textarea" id="printVod" name="movie_vod"></textarea>
 									</div>
                                 </div>
                                 <div class="form-group row">

@@ -114,15 +114,19 @@
 <!-- =================영화차트 페이지===============  -->		
 	<!-- 영화목록 select -->
 	<select id="showMvList" resultType="Movie">
+	
+		
+	
 		SELECT m.movie_code 
 				, m.movie_nameK 
 				, m.movie_openDt 
-				, m.movie_rated 
+				, CASE WHEN substr(m.movie_rated, 1, 2) = '전체' THEN 'rate-all'
+															     ELSE concat('rate-', substr(m.movie_rated, 1, 2)) END AS movie_rated 
 				, SUBSTRING_INDEX(movie_poster,'|',1) movie_poster
 				, IFNULL(movie_rank,11) movie_rank
 				, IFNULL(movie_audi,0) movie_audi
 		FROM movie m LEFT JOIN movie_boxoffice mb 
-		ON m.movie_code = mb.movie_code 
+		ON m.movie_code = mb.movie_code
 		<choose>
 			<when test="isOpen">
 				WHERE movie_status = '개봉'
