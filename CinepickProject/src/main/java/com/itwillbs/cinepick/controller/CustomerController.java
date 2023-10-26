@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,10 +63,10 @@ public class CustomerController {
 
 		List<QnaCateVO> qnaCateList = customerService.getQnaCateList();
 		
-		System.out.println("==================))))))))))" + qnaCateList);
-		System.out.println(qnaCateIdx);
+//		System.out.println("==================))))))))))" + qnaCateList);
+		System.out.println("qnaCateIdx: " + qnaCateIdx);
 		
-		int listCount = customerService.getQnaListCount();
+		int listCount = customerService.getQnaListCount(qnaCateIdx);
 		
 		int pageListLimit = 3;
 		
@@ -78,6 +79,8 @@ public class CustomerController {
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
+		
+//		System.out.println(qnaList.get(qnaCateIdx));
 		
 		PageInfoVO pageInfo = new PageInfoVO(listCount, pageListLimit, maxPage, startPage, endPage);
 		model.addAttribute("qnaList", qnaList);
