@@ -279,4 +279,29 @@
     	WHERE event_idx = #{event_idx};
     </delete>
     <!-- 이벤트 끝 -->
+    
+    <!-- 자주 묻는 질문 카테고리 -->
+    <insert id="insertEventCategory">
+		INSERT INTO eventCate
+		VALUES (
+			null
+			, #{eventCate_Subject}
+		)
+	</insert>
+
+	<select id="selectEventCategory" resultType="EventCate">
+          SELECT 
+          	eventCate_Idx 
+          	, eventCate_Subject
+          FROM eventCate
+    </select>
+    
+    <delete id="deleteEventCategory">
+    	DELETE FROM eventCate
+    	WHERE eventCate_Idx = #{eventCate_Idx}
+    </delete>
+    <!-- 자주 묻는 질문 카테고리 끝 -->
+    
+    
+    
 </mapper>

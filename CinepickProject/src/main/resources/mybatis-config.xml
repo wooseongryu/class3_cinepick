@@ -11,6 +11,7 @@
 		<typeAlias type="com.itwillbs.cinepick.vo.QnaVO" alias="Qna"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.QnaCateVO" alias="QnaCate"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.MyQuestionVO" alias="MyQuestion"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.EventCateVO" alias="EventCate"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.EventVO" alias="Event"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.TheaterVO" alias="Theater"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.CityVO" alias="City"/>
