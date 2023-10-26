@@ -50,23 +50,64 @@
 		WHERE movie_code = #{sche_movie_code}
 	</select>
 	
-<!-- 	<select id="scheduleCheck" resultType="ScheduleVO"> -->
-<!-- 		SELECT  -->
-<!-- 			sche_idx -->
-<!-- 			, sche_start_time -->
-<!-- 			, sche_end_time -->
-<!-- 		FROM schedule -->
-<!-- 		WHERE -->
-<!-- 			sche_screen_idx = #{sche_screen_idx} -->
-<!-- 			AND sche_theater_idx = #{sche_theater_idx} -->
-<!-- 			AND sche_date = #{sche_date} -->
-<!-- 	</select> -->
-	
 	<select id="scheduleCheck" resultType="ScheduleVO">
-		SELECT *
+		SELECT 
+			sche_idx
+			, sche_start_time
+			, sche_end_time
 		FROM schedule
-		WHERE sche_date = #{sche_date}
+		WHERE
+			sche_screen_idx = #{sche_screen_idx}
+			AND sche_theater_idx = #{sche_theater_idx}
+			AND sche_date = #{sche_date}
+		ORDER BY sche_start_time;
 	</select>
+	
+<!-- 	<select id="scheduleCheck" resultType="ScheduleVO"> -->
+<!-- 		SELECT * -->
+<!-- 		FROM schedule -->
+<!-- 		WHERE sche_date = #{sche_date} -->
+<!-- 	</select> -->
+
+
+
+
+
+
+<!-- 	WITH RECURSIVE my_cte AS -->
+<!-- ( -->
+<!--   SELECT 6 AS n -->
+<!--   UNION ALL -->
+<!--   SELECT 1+n FROM my_cte WHERE n<22  -->
+<!-- ) -->
+<!-- SELECT m.n -->
+<!--   FROM my_cte m -->
+<!--   LEFT JOIN (SELECT * -->
+<!-- 			  FROM (SELECT  -->
+<!-- 						sche_idx -->
+<!-- 						, CONVERT(DATE_FORMAT(sche_start_time, '%H'), UNSIGNED) AS temp   -->
+<!-- 					FROM schedule -->
+<!-- 					WHERE -->
+<!-- 						sche_screen_idx = 1 -->
+<!-- 						AND sche_theater_idx = 1 -->
+<!-- 						AND sche_date = '2023-10-30' -->
+<!-- 					UNION ALL  -->
+<!-- 					SELECT  -->
+<!-- 						sche_idx -->
+<!-- 						, CONVERT(DATE_FORMAT(sche_end_time, '%H'), unsigned ) AS temp  -->
+<!-- 					FROM schedule -->
+<!-- 					WHERE -->
+<!-- 						sche_screen_idx = 1 -->
+<!-- 						AND sche_theater_idx = 1 -->
+<!-- 						AND sche_date = '2023-10-30') a -->
+<!-- 			ORDER BY a.temp, a.sche_idx) t  -->
+<!-- 	ON m.n = t.temp -->
+<!--  WHERE t.temp IS NULL; -->
+	
+	
+	
+	
+	
 	
 	<insert id="insertSchedule">
 		INSERT INTO schedule

@@ -11,10 +11,15 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -371,16 +376,71 @@ public class AdminController {
 	public String adminScheduleCheck(ScheduleVO schedule) {
 		System.out.println("AdminController - adminScheduleCheck()");
 		
-		// 조회...
-//		List<ScheduleVO> scheduleList = adminService.scheduleCheck(schedule);
-//		System.out.println("===========================");
-//		System.out.println(scheduleList);
-//		System.out.println("===========================");
+		List<ScheduleVO> tmpList = adminService.scheduleCheck(schedule);
 		
-		// 등록...???
-//		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
-//		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
+		Queue<ScheduleVO> scheduleList = new LinkedList<ScheduleVO>();
+		for (ScheduleVO vo : tmpList) {
+			scheduleList.offer(vo);
+		}
 		
+//		while (scheduleList.size() > 0) {
+//			System.out.println(scheduleList.poll());
+//		}
+		
+		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
+		
+		List<LocalTime> timeTable = new ArrayList<LocalTime>();
+		int startScheduleTime = 6;
+		int endScheduleTime = 22;
+		for (int i = startScheduleTime; i <= endScheduleTime; i++) {
+			timeTable.add(LocalTime.of(i, 0));
+		}
+		
+		LocalTime endTime = null;
+		LocalTime startTime = null;
+		ScheduleVO sche = null;
+		
+		Iterator<LocalTime> table = timeTable.iterator();
+		
+		System.out.println(scheduleList);
+		System.out.println("-------------------------");
+		
+		sche = scheduleList.poll();
+        while (table.hasNext()) {
+        	
+        	System.out.println(scheduleList);
+        	
+            LocalTime item = table.next();
+            
+            if (sche == null) {
+				break;
+			}
+			
+			LocalTime tmp = sche.getSche_end_time();
+			if (tmp.getMinute() != 0) {
+				endTime = LocalTime.of(tmp.plusHours(1).getHour(), 0);
+			} else {
+				endTime = tmp;
+			}
+			
+			if (item.compareTo(endTime) == 0) {
+				sche = scheduleList.poll();
+			}
+			
+			startTime = sche.getSche_start_time();
+			
+			
+			if (item.plusMinutes(20).isAfter(startTime)) {
+				table.remove();
+			}
+
+        }
+        
+
+        for (LocalTime a : timeTable) {
+        	System.out.println(a + "///");
+        }
+        
 		return "";
 	}
 	
