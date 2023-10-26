@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.AdminMapper;
+import com.itwillbs.cinepick.vo.EventCateVO;
 import com.itwillbs.cinepick.vo.EventVO;
 import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
@@ -205,7 +206,7 @@ public class AdminService {
 
 	// 이벤트 조회
 	// event_idx를 널스트링으로 전달 시 전체 질문 조회
-	public List<EventVO> selectEvent(String event_idx) {
+	public List<EventVO> getEvent(String event_idx) {
 		System.out.println("AdminService - selectEvent()");
 		return mapper.selectEvent(event_idx);
 	}
@@ -222,4 +223,24 @@ public class AdminService {
 		return mapper.deleteEvent(event_idx);
 	}
 	
+	
+	//---------------------------------------------------------
+	
+	// 이벤트 카테고리 등록
+	public int insertEventCategory(String eventCate_Subject) {
+		System.out.println("AdminService - insertEventCategory()");
+		return mapper.insertEventCategory(eventCate_Subject);
+	}
+
+	// 이벤트 카테고리 조회
+	public List<EventCateVO> getEventCategory() {
+		System.out.println("AdminService - getEventCategory()");
+		return mapper.selectEventCategory();
+	}
+
+	// 이벤트 카테고리 삭제
+	public int deleteEventCategory(int eventCate_Idx) {
+		System.out.println("AdminService - deleteEventCategory()");
+		return mapper.deleteEventCategory(eventCate_Idx);
+	}
 }

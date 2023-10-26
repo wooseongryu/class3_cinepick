@@ -39,6 +39,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.gson.Gson;
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
+import com.itwillbs.cinepick.vo.EventCateVO;
 import com.itwillbs.cinepick.vo.EventVO;
 import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
@@ -875,7 +876,7 @@ public class AdminController {
 			return "fail_back";
 		}
 		
-		List<EventVO> eventList = adminService.selectEvent("");
+		List<EventVO> eventList = adminService.getEvent("");
 		
 		LocalDate now = LocalDate.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -904,7 +905,6 @@ public class AdminController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
 		model.addAttribute("eventList", eventList);
 		
 		return "mypage/admin/board_event";
@@ -922,6 +922,10 @@ public class AdminController {
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "fail_back";
 		}
+		
+		List<EventCateVO> eventCategoryList = adminService.getEventCategory();
+		
+		model.addAttribute("eventCategoryList", eventCategoryList);
 		
 		return "mypage/admin/insert_event";
 	}
@@ -999,7 +1003,15 @@ public class AdminController {
 			return "fail_back";
 		}
 		
-		EventVO event = adminService.selectEvent(event_idx).get(0);
+		List<EventCateVO> eventCategoryList = adminService.getEventCategory();
+		
+		
+		EventVO event = adminService.getEvent(event_idx).get(0);
+		
+		System.out.println("eventCategoryList : " + eventCategoryList);
+		System.out.println("event : " + event);
+		
+		model.addAttribute("eventCategoryList", eventCategoryList);
 		
 		model.addAttribute("event", event);
 		
@@ -1043,7 +1055,7 @@ public class AdminController {
 		}
 		
 		// 수정전 기존의 파일경로 가지고 있어야됨.
-		EventVO tmpEvent = adminService.selectEvent(String.valueOf(event.getEvent_idx())).get(0);
+		EventVO tmpEvent = adminService.getEvent(String.valueOf(event.getEvent_idx())).get(0);
 		
 		int updateCount = adminService.updateEvent(event);
 		
@@ -1097,7 +1109,7 @@ public class AdminController {
 		}
 		
 		// 삭제하기전에 파일경로를 먼저 받아와야됨.
-		EventVO tmpEvent = adminService.selectEvent(event_idx).get(0);
+		EventVO tmpEvent = adminService.getEvent(event_idx).get(0);
 		
 		int deleteCount = adminService.deleteEvent(event_idx);
 		
@@ -1120,4 +1132,77 @@ public class AdminController {
 		
 		return "redirect:/adminEventList";
 	}
+	
+	
+	/*====================================================================
+	 * 8. 이벤트 카테고리
+	 * ===================================================================
+	 * */
+	
+	// 관리자 이벤트 카테고리 관리 페이지 및 폼
+	@GetMapping("adminEventCategoryUpdate")
+	public String adminEventCategoryUpdate(Model model, HttpSession session) {
+		System.out.println("AdminController - adminCategoryUpdate()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		List<EventCateVO> eventCategoryList = adminService.getEventCategory();
+		
+		model.addAttribute("eventCategoryList", eventCategoryList);
+		
+		return "mypage/admin/update_eventCategory";
+	}
+	
+	// 관리자 이벤트 카테고리 등록
+	@PostMapping("adminEventCategoryUpdatePro")
+	public String adminEventCategoryUpdatePro(String eventCate_Subject, Model model) {
+		System.out.println("AdminController - adminCategoryUpdatePro()");
+		
+		List<EventCateVO> eventCategoryList = adminService.getEventCategory();
+		for (EventCateVO eventCate : eventCategoryList) {
+			if (eventCategoryList.equals(eventCate.getEventCate_Subject())) {
+				model.addAttribute("msg", "중복된 카테고리입니다!");
+				return "fail_back";
+			}
+		}
+		
+		int insertCount = adminService.insertEventCategory(eventCate_Subject);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminEventCategoryUpdate";
+	}
+	
+	// 관리자 이벤트 카테고리 삭제
+	@GetMapping("adminEventCategoryDelete")
+	public String adminEventCategoryDelete(int eventCate_Idx, HttpSession session, Model model) {
+		System.out.println("AdminController - adminCategoryDelete()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		int deleteCount = adminService.deleteEventCategory(eventCate_Idx);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminEventCategoryUpdate";
+	}
+	
 }

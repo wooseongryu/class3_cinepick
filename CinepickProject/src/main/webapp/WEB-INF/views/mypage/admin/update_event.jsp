@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,6 +84,24 @@
                             </div>
                             <form class="user" action="adminEventUpdatePro" method="post" enctype="multipart/form-data">
                             	<input type="hidden" name="event_idx" value="${event.event_idx }" >
+                            	<div class="form-group row">
+									<div class="col-sm-12 mb-6 mb-sm-0">
+										<label for="">이벤트 카테고리</label>
+										<br>
+	                                    <select class="form-select" name="event_category" aria-label="Default select example" >
+									  		<c:forEach var="eventCategory" items="${eventCategoryList }">
+												<c:choose>
+													<c:when test="${eventCategory.eventCate_Idx eq event.event_category }">
+														<option value="${eventCategory.eventCate_Idx }" selected="selected">${eventCategory.eventCate_Subject }</option>
+													</c:when>
+													<c:otherwise>
+														<option value="${eventCategory.eventCate_Idx }">${eventCategory.eventCate_Subject }</option>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</select>
+								  	</div>
+                                </div>
                             	<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">이벤트 제목</label>

@@ -32,7 +32,7 @@ public interface CustomerMapper {
 
 
 	// 자주묻는 질문 목록 수 조회
-	int selectQnaListCount();
+	int selectQnaListCount(@Param("qnaCateIdx") int qnaCateIdx);
 
 
 	// 자주묻는 질문 카테고리 조회

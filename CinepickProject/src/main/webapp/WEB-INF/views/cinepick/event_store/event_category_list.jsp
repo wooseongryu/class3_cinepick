@@ -38,32 +38,32 @@
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 
 	<header>
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
 
     <!-- Product Section Begin -->
-    <section class="product-page spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="product__page__content">
-                        <div class="product__page__title">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="section-title">
-                                        <h4>이벤트</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+	<section class="product-page spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="product__page__content">
+						<div class="product__page__title">
+							<div class="row">
+								<div class="col-lg-8">
+									<div class="section-title">
+										<h4>이벤트</h4>
+									</div>
+								</div>
+							</div>
+						</div>
                         
 						<!-- 영화 1 -->
-						<div class="lst_wrap">
+					<div class="lst_wrap">
 							<p>
 								<font face="맑은 고딕" color="#ffffff">
 									<h3>영화</h3>

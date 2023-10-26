@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.itwillbs.cinepick.vo.EventCateVO;
 import com.itwillbs.cinepick.vo.EventVO;
 import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
@@ -106,5 +107,17 @@ public interface AdminMapper {
 	int updateEvent(EventVO event);
 
 	int deleteEvent(String event_idx);
+	
+	
+	/*==============================================================
+	 * 이벤트 카테고리
+	 * =============================================================
+	 * */
+	
+	int insertEventCategory(String eventCate_Subject);
+
+	List<EventCateVO> selectEventCategory();
+
+	int deleteEventCategory(int eventCate_Idx);
 
 }

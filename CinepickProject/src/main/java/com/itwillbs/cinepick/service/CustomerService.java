@@ -34,8 +34,8 @@ public class CustomerService {
 	}
 
 	// 자주 묻는 질문 목록 수 조회
-	public int getQnaListCount() {
-		return mapper.selectQnaListCount();
+	public int getQnaListCount(int qnaCateIdx) {
+		return mapper.selectQnaListCount(qnaCateIdx);
 	}
 
 

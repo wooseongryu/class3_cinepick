@@ -287,18 +287,22 @@
 			, #{event_endDt}
 			, #{event_poster}
 			, #{event_thumbnail}
+			, #{event_category}
     	)
     </insert>
     
     <select id="selectEvent" resultType="Event">
     	SELECT
-    		event_idx
-			, event_title
-			, event_startDt
-			, event_endDt
-			, event_poster
-			, event_thumbnail
-    	FROM event
+    		e.event_idx
+			, e.event_title
+			, e.event_startDt
+			, e.event_endDt
+			, e.event_poster
+			, e.event_thumbnail
+			, c.eventCate_Subject
+    	FROM
+    		event e JOIN eventCate c
+			ON e.event_category = c.eventCate_Idx
     	<if test="event_idx != null and !event_idx.equals('')">
 		WHERE event_idx = #{event_idx}
 		</if>
@@ -312,6 +316,7 @@
 			, event_endDt = #{event_endDt}
 			, event_poster = #{event_poster}
 			, event_thumbnail = #{event_thumbnail}
+			, event_category = #{event_category}
 		WHERE event_idx = #{event_idx}
     </update>
     
@@ -320,4 +325,29 @@
     	WHERE event_idx = #{event_idx};
     </delete>
     <!-- 이벤트 끝 -->
+    
+    <!-- 자주 묻는 질문 카테고리 -->
+    <insert id="insertEventCategory">
+		INSERT INTO eventCate
+		VALUES (
+			null
+			, #{eventCate_Subject}
+		)
+	</insert>
+
+	<select id="selectEventCategory" resultType="EventCate">
+          SELECT 
+          	eventCate_Idx 
+          	, eventCate_Subject
+          FROM eventCate
+    </select>
+    
+    <delete id="deleteEventCategory">
+    	DELETE FROM eventCate
+    	WHERE eventCate_Idx = #{eventCate_Idx}
+    </delete>
+    <!-- 자주 묻는 질문 카테고리 끝 -->
+    
+    
+    
 </mapper>

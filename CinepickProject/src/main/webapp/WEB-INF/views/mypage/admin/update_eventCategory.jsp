@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,50 +80,48 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">이벤트 등록</h1>
+                                <h1 class="h4 text-gray-900 mb-4">카테고리 관리</h1>
                             </div>
-                            <form class="user" action="adminEventInsertPro" method="post" enctype="multipart/form-data">
-                            	<div class="form-group row">
-									<div class="col-sm-12 mb-6 mb-sm-0">
-										<label for="">카테고리</label>
-										<br>
-	                                    <select class="form-select" name="event_category" aria-label="Default select example" >
-									  		<c:forEach var="eventCategoryList" items="${eventCategoryList }">
-												<option value="${eventCategoryList.eventCate_Idx }">${eventCategoryList.eventCate_Subject }</option>
-											</c:forEach>
-										</select>
-								  	</div>
-                                </div>
-                            	<div class="form-group row">
+                            
+                            <div class="card shadow mb-4">
+		                        <div class="card-header py-3">
+		                            <h6 class="m-0 font-weight-bold text-primary">카테고리 조회</h6>
+		                        </div>
+		                        <div class="card-body">
+		                            <div class="table-responsive">
+		                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+		                                    <thead class="table-dark">
+		                                        <tr>
+		                                            <th>카테고리 명</th>
+		                                            <th>삭제</th>
+		                                        </tr>
+		                                    </thead>
+		                                    <tbody>
+		                                    	<c:forEach var="eventCategory" items="${eventCategoryList }">
+			                                        <tr>
+			                                            <td>${eventCategory.eventCate_Subject }</td>
+														<td>
+															<button type="button" class="btn btn-primary" onclick="location.href='adminEventCategoryDelete?eventCate_Idx=${eventCategory.eventCate_Idx }'">삭제</button>
+														</td>
+			                                        </tr>
+		                                        </c:forEach>
+		                                    </tbody>
+		                                </table>
+		                            </div>
+		                        </div>
+		                    </div>
+
+                            
+                            
+                            <form class="user" action="adminEventCategoryUpdatePro" method="post">
+                                <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-										<label for="">이벤트 제목</label>
-                                        <input type="text" name="event_title" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="이벤트제목입력">
+										<label for="">이벤트 카테고리 추가</label>
+                                        <input type="text" name="eventCate_Subject" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="이벤트 카테코리 입력">
                                     </div>
                                 </div>
 								<br>
-								<div class="form-group row">
-								  	<div class="col-sm-5 mb-2 mb-sm-0">
-										<label for="">이벤트 시작일</label>
-										<input type="text" name="event_startDt" class="form-control form-control-user" id="fromDatepicker">
-	                                </div>
-								  	<div class="col-sm-5 mb-2 mb-sm-0">
-										<label for="">이벤트 종료일</label>
-										<input type="text" name="event_endDt" class="form-control form-control-user" id="toDatepicker" >
-	                                </div>
-								</div>
-								<br>
-								<div class="form-group row">
-									<div class="col-sm-5 mb-1 mb-sm-0">
-									    <label for="">썸네일 사진</label>
-										<input type="file" name="event_thumbnail_multi" required="required"/>
-								    </div>
-									<div class="col-sm-5 mb-1 mb-sm-0">
-								    	<label for="">이벤트 사진</label>
-										<input type="file" name="event_poster_multi" required="required"/>
-								    </div>
-								</div>
-
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
@@ -131,7 +129,7 @@
 		                                &nbsp;
 		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
 		                                &nbsp;
-		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
+		                                <input type="button" class="btn btn-primary btn-user" onclick="location.href='adminEventList'" value="돌아가기">
 									</div>
 								</div>
                             </form>
@@ -160,28 +158,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="${pageContext.request.contextPath }/resources/mypage/js/sb-admin-2.min.js"></script>
-
-	<script>
-	$("#fromDatepicker").datepicker({
-			format: 'yyyy-mm-dd',
-			autoclose: true,
-		}).on('changeDate', function (selected) {
-			var startDate = new Date(selected.date.valueOf());
-			$('#toDatepicker').datepicker('setStartDate', startDate);
-		}).on('clearDate', function (selected) {
-			$('#toDatepicker').datepicker('setStartDate', null);
-		});
-		
-	$("#toDatepicker").datepicker({
-		format: 'yyyy-mm-dd',
-		autoclose: true,
-	}).on('changeDate', function (selected) {
-		var endDate = new Date(selected.date.valueOf());
-		$('#fromDatepicker').datepicker('setEndDate', endDate);
-	}).on('clearDate', function (selected) {
-		$('#fromDatepicker').datepicker('setEndDate', null);
-	});
-	</script>
 
 </body>
 
