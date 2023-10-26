@@ -144,8 +144,7 @@
                                     	<c:forEach var="event" items="${eventList }">
 	                                        <tr>
 	                                            <td>${event.event_idx }</td>
-<%-- 	                                            <td>${event.event_CateSubject }</td> --%>
-	                                            <td></td>
+	                                            <td>${event.eventCate_Subject }</td>
 	                                            <td>${event.event_title }</td>
 	                                            <td>${event.event_startDt } ~ ${event.event_endDt }</td>
 	                                            <td>${event.event_status }</td>

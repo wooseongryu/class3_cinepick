@@ -246,18 +246,22 @@
 			, #{event_endDt}
 			, #{event_poster}
 			, #{event_thumbnail}
+			, #{event_category}
     	)
     </insert>
     
     <select id="selectEvent" resultType="Event">
     	SELECT
-    		event_idx
-			, event_title
-			, event_startDt
-			, event_endDt
-			, event_poster
-			, event_thumbnail
-    	FROM event
+    		e.event_idx
+			, e.event_title
+			, e.event_startDt
+			, e.event_endDt
+			, e.event_poster
+			, e.event_thumbnail
+			, c.eventCate_Subject
+    	FROM
+    		event e JOIN eventCate c
+			ON e.event_category = c.eventCate_Idx
     	<if test="event_idx != null and !event_idx.equals('')">
 		WHERE event_idx = #{event_idx}
 		</if>
@@ -271,6 +275,7 @@
 			, event_endDt = #{event_endDt}
 			, event_poster = #{event_poster}
 			, event_thumbnail = #{event_thumbnail}
+			, event_category = #{event_category}
 		WHERE event_idx = #{event_idx}
     </update>
     

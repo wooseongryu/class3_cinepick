@@ -206,7 +206,7 @@ public class AdminService {
 
 	// 이벤트 조회
 	// event_idx를 널스트링으로 전달 시 전체 질문 조회
-	public List<EventVO> selectEvent(String event_idx) {
+	public List<EventVO> getEvent(String event_idx) {
 		System.out.println("AdminService - selectEvent()");
 		return mapper.selectEvent(event_idx);
 	}

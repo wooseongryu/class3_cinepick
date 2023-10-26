@@ -816,7 +816,7 @@ public class AdminController {
 			return "fail_back";
 		}
 		
-		List<EventVO> eventList = adminService.selectEvent("");
+		List<EventVO> eventList = adminService.getEvent("");
 		
 		LocalDate now = LocalDate.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -845,7 +845,6 @@ public class AdminController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
 		model.addAttribute("eventList", eventList);
 		
 		return "mypage/admin/board_event";
@@ -944,7 +943,15 @@ public class AdminController {
 			return "fail_back";
 		}
 		
-		EventVO event = adminService.selectEvent(event_idx).get(0);
+		List<EventCateVO> eventCategoryList = adminService.getEventCategory();
+		
+		
+		EventVO event = adminService.getEvent(event_idx).get(0);
+		
+		System.out.println("eventCategoryList : " + eventCategoryList);
+		System.out.println("event : " + event);
+		
+		model.addAttribute("eventCategoryList", eventCategoryList);
 		
 		model.addAttribute("event", event);
 		
@@ -988,7 +995,7 @@ public class AdminController {
 		}
 		
 		// 수정전 기존의 파일경로 가지고 있어야됨.
-		EventVO tmpEvent = adminService.selectEvent(String.valueOf(event.getEvent_idx())).get(0);
+		EventVO tmpEvent = adminService.getEvent(String.valueOf(event.getEvent_idx())).get(0);
 		
 		int updateCount = adminService.updateEvent(event);
 		
@@ -1042,7 +1049,7 @@ public class AdminController {
 		}
 		
 		// 삭제하기전에 파일경로를 먼저 받아와야됨.
-		EventVO tmpEvent = adminService.selectEvent(event_idx).get(0);
+		EventVO tmpEvent = adminService.getEvent(event_idx).get(0);
 		
 		int deleteCount = adminService.deleteEvent(event_idx);
 		
