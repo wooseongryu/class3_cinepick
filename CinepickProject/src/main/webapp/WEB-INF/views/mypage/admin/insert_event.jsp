@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,6 +83,17 @@
                                 <h1 class="h4 text-gray-900 mb-4">이벤트 등록</h1>
                             </div>
                             <form class="user" action="adminEventInsertPro" method="post" enctype="multipart/form-data">
+                            	<div class="form-group row">
+									<div class="col-sm-12 mb-6 mb-sm-0">
+										<label for="">카테고리</label>
+										<br>
+	                                    <select class="form-select" name="event_category" aria-label="Default select example" >
+									  		<c:forEach var="eventCategoryList" items="${eventCategoryList }">
+												<option value="${eventCategoryList.eventCate_Idx }">${eventCategoryList.eventCate_Subject }</option>
+											</c:forEach>
+										</select>
+								  	</div>
+                                </div>
                             	<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">이벤트 제목</label>

@@ -864,6 +864,10 @@ public class AdminController {
 			return "fail_back";
 		}
 		
+		List<EventCateVO> eventCategoryList = adminService.getEventCategory();
+		
+		model.addAttribute("eventCategoryList", eventCategoryList);
+		
 		return "mypage/admin/insert_event";
 	}
 	
