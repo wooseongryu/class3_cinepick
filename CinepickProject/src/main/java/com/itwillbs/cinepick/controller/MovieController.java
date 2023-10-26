@@ -2,6 +2,7 @@ package com.itwillbs.cinepick.controller;
 
 import java.util.List;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,20 @@ public class MovieController {
 		
 		return "cinepick/movie/movie_list";
 	}
+	
+	//현재 상영작 ajax
+	@GetMapping("movieListJson")
+	public String movieLlistJson(@RequestParam String MvListType, @RequestParam(defaultValue = "true") boolean isOpen, Model model) {
+		List<MovieVO> movieList = movieService.showMvList(isOpen, MvListType);
+//		System.out.println(movieList);
+		
+		JSONArray ja = new JSONArray(movieList);
+//		System.out.println(ja.toString());
+		
+		return ja.toString();
+	}
+	
+	
 	
 	// 개봉 예정작 목록 보기
 	@GetMapping("movieListUpComming")

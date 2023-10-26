@@ -76,12 +76,14 @@
 			<div class="boardWrap">
 				<ul class="slider-bo">
 					<li>
-<!-- 						<span class="over-over"> -->
-<!-- 							<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span> -->
-<!-- 							<span class="over-rsv"><a href="#">예매하기</a></span> -->
-<!-- 							<span class="over-info"><a href="#">상세보기</a></span> -->
-<!-- 						</span> -->
 						<img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_list/mb1.jpg">
+						<div class="slider-over">
+						<span class="over-over">
+							<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span>
+							<span class="over-rsv"><a href="#">예매하기</a></span>
+							<span class="over-info"><a href="#">상세보기</a></span>
+						</span>
+						</div>
 						<div class="mv-desc">
 							<span class="rate-12">12세관람가</span>
 							30일

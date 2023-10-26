@@ -67,12 +67,7 @@
 
 
 </style>
-<script>
-	function changeMvList()	{
-		
-	}
-	
-</script>
+
 
 </head>
 
@@ -108,11 +103,11 @@
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="product__page__filter">
 	                                    <form action="movieList" id="selectListType" style="color: white">
-	                                    	<input type="radio"  name="MvListType" onclick="location.href= 'movieList?MvListType=?boxoffice'" value="boxoffice" checked id="box"> 
+	                                    	<input type="radio"  name="MvListType"  value="boxoffice" id="box" checked > 
 	                                    	<label for="box">박스오피스순</label>
-	                                    	 &emsp;<input type="radio"  name="MvListType" onclick="location.href= 'movieList?MvListType=audi'" value="audi" id="audi" <c:if test="${param.MvListType eq 'audi' }">checked</c:if>>
+	                                    	 &emsp;<input type="radio"  name="MvListType" value="audi" id="audi" <c:if test="${param.MvListType eq 'audi' }">checked</c:if>>
 	                                    	<label for="audi">관람객순</label>
-	                                    	 &emsp;<input type="radio"  name="MvListType" onclick="location.href= 'movieList?MvListType=open'" value="open" id="open" <c:if test="${param.MvListType eq 'open' }">checked</c:if>>
+	                                    	 &emsp;<input type="radio"  name="MvListType" value="open" id="open" <c:if test="${param.MvListType eq 'open' }">checked</c:if>>
 	                                    	<label for="open">개봉일순</label>
 <!-- 	                                            <option value="boxoffice">박스오피스순</option> -->
 <%-- 	                                            <option value="audi" <c:if test="${param.MvListType eq 'audi' }">selected</c:if>>관람객순</option> --%>
@@ -187,6 +182,45 @@
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
+<script src= "${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
+
+<script>
+	$(function() {
+		
+		$("input[name = 'MvListType']").click(function() {
+			let MvListType = $(this).val();
+			console.log(MvListType);
+			debugger;
+			
+			$.ajax({
+				type: "GET",
+				url: "movieListJson",
+				data: {"MvListType": MvListType},
+				dataType: "json",
+				success: function(data) {
+					
+					for(let movie of list.movieList) {
+						console.log(movie);
+						
+					}
+				},
+				error: function() {
+					console.log("실패");
+				}
+			
+			});
+
+			
+		});
+		
+		
+		
+		
+	});
+	
+	
+</script>
+
 
 </body>
 
