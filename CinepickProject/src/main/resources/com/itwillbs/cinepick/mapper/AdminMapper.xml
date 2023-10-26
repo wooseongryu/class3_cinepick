@@ -50,22 +50,17 @@
 		WHERE movie_code = #{sche_movie_code}
 	</select>
 	
-<!-- 	<select id="scheduleCheck" resultType="ScheduleVO"> -->
-<!-- 		SELECT  -->
-<!-- 			sche_idx -->
-<!-- 			, sche_start_time -->
-<!-- 			, sche_end_time -->
-<!-- 		FROM schedule -->
-<!-- 		WHERE -->
-<!-- 			sche_screen_idx = #{sche_screen_idx} -->
-<!-- 			AND sche_theater_idx = #{sche_theater_idx} -->
-<!-- 			AND sche_date = #{sche_date} -->
-<!-- 	</select> -->
-	
 	<select id="scheduleCheck" resultType="ScheduleVO">
-		SELECT *
+		SELECT 
+			sche_idx
+			, sche_start_time
+			, sche_end_time
 		FROM schedule
-		WHERE sche_date = #{sche_date}
+		WHERE
+			sche_screen_idx = #{sche_screen_idx}
+			AND sche_theater_idx = #{sche_theater_idx}
+			AND sche_date = #{sche_date}
+		ORDER BY sche_start_time;
 	</select>
 	
 	<insert id="insertSchedule">
@@ -246,18 +241,22 @@
 			, #{event_endDt}
 			, #{event_poster}
 			, #{event_thumbnail}
+			, #{event_category}
     	)
     </insert>
     
     <select id="selectEvent" resultType="Event">
     	SELECT
-    		event_idx
-			, event_title
-			, event_startDt
-			, event_endDt
-			, event_poster
-			, event_thumbnail
-    	FROM event
+    		e.event_idx
+			, e.event_title
+			, e.event_startDt
+			, e.event_endDt
+			, e.event_poster
+			, e.event_thumbnail
+			, c.eventCate_Subject
+    	FROM
+    		event e JOIN eventCate c
+			ON e.event_category = c.eventCate_Idx
     	<if test="event_idx != null and !event_idx.equals('')">
 		WHERE event_idx = #{event_idx}
 		</if>
@@ -271,6 +270,7 @@
 			, event_endDt = #{event_endDt}
 			, event_poster = #{event_poster}
 			, event_thumbnail = #{event_thumbnail}
+			, event_category = #{event_category}
 		WHERE event_idx = #{event_idx}
     </update>
     

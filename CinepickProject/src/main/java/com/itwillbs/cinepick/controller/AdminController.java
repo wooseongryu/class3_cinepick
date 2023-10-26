@@ -5,29 +5,28 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,13 +35,11 @@ import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.EventCateVO;
 import com.itwillbs.cinepick.vo.EventVO;
-import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
 import com.itwillbs.cinepick.vo.ScheduleVO;
-import com.itwillbs.cinepick.vo.ScreenVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
@@ -358,6 +355,7 @@ public class AdminController {
 
 		// 등록된 극장이 있을 때만 상영관 가져오기.
 		if (vo != null) {
+			// 처음에 보여주는 영화관에 해당하는 상영관 조회.
 			map.put("screen", adminService.selectScreen(vo.getTheater_idx()));
 		}
 		
@@ -367,22 +365,70 @@ public class AdminController {
 		return gson.toJson(map);
 	}
 	
+	// 관리자 상영 시간표 중복 확인
 	@ResponseBody
 	@PostMapping("adminScheduleCheck")
-	public String adminScheduleCheck(ScheduleVO schedule) {
+	public String adminScheduleCheck(ScheduleVO schedule, Model model, Gson gson) {
 		System.out.println("AdminController - adminScheduleCheck()");
 		
-		// 조회...
-//		List<ScheduleVO> scheduleList = adminService.scheduleCheck(schedule);
-//		System.out.println("===========================");
-//		System.out.println(scheduleList);
-//		System.out.println("===========================");
+		// 1시간단위 시간표 생성
+		List<LocalTime> timeTable = new ArrayList<LocalTime>();
+		int startScheduleTime = 6;
+		int endScheduleTime = 22;
+		for (int i = startScheduleTime; i <= endScheduleTime; i++) {
+			timeTable.add(LocalTime.of(i, 0));
+		}
 		
-		// 등록...???
-//		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
-//		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
+		// 큐로 복사전 임시 일정 리스트.
+		List<ScheduleVO> tmpList = adminService.scheduleCheck(schedule);
 		
-		return "";
+		// 등록된 일정이 없을 시 시간표 그대로 반환.
+		if (tmpList.size() == 0) {
+			return gson.toJson(timeTable);
+		}
+		
+		// 큐로 일정 복사.
+		Queue<ScheduleVO> scheduleList = new LinkedList<ScheduleVO>();
+		for (ScheduleVO vo : tmpList) {
+			scheduleList.offer(vo);
+		}
+		
+		// 영화 러닝타임.
+		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
+		
+		LocalTime endTime = null;
+		LocalTime startTime = null;
+		ScheduleVO sche = null;
+		
+		Iterator<LocalTime> table = timeTable.iterator();
+		
+		sche = scheduleList.poll();
+        while (table.hasNext()) {
+            LocalTime item = table.next();
+			
+			endTime = sche.getSche_end_time();
+			// 일정 종료시간이 시간단위로 맞아 떨어지지 않을 시 올림.
+			if (endTime.getMinute() != 0) {
+				endTime = LocalTime.of(endTime.plusHours(1).getHour(), 0);
+			}
+			
+			// 시간표의 시작시간이 비교하는 일정의 종료시간을 넘어갈 때 다음 시간표로 교체. 
+			if (item.compareTo(endTime) == 0) {
+				sche = scheduleList.poll();
+			}
+			
+			// 일정 소진 시 종료.
+			if (sche == null) {
+				break;
+			}
+			
+			// 시간표의 영화 종료시간이 비교하는 일정의 시작시간을 넘어가면 시간표의 해당 시간대 제거.
+			if (item.plusMinutes(time).isAfter(sche.getSche_start_time())) {
+				table.remove();
+			}
+        }
+        
+		return gson.toJson(timeTable);
 	}
 	
 	@PostMapping("adminScheduleInsert")
@@ -390,11 +436,6 @@ public class AdminController {
 		System.out.println("AdminController - adminScheduleInsert()");
 		
 		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
-		
-		// api에 러닝타임 없을 시 기본값 설정.
-		if (time == 0) {
-			time = 90;
-		}
 		
 		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
 		
@@ -816,7 +857,7 @@ public class AdminController {
 			return "fail_back";
 		}
 		
-		List<EventVO> eventList = adminService.selectEvent("");
+		List<EventVO> eventList = adminService.getEvent("");
 		
 		LocalDate now = LocalDate.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -845,7 +886,6 @@ public class AdminController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
 		model.addAttribute("eventList", eventList);
 		
 		return "mypage/admin/board_event";
@@ -944,7 +984,15 @@ public class AdminController {
 			return "fail_back";
 		}
 		
-		EventVO event = adminService.selectEvent(event_idx).get(0);
+		List<EventCateVO> eventCategoryList = adminService.getEventCategory();
+		
+		
+		EventVO event = adminService.getEvent(event_idx).get(0);
+		
+		System.out.println("eventCategoryList : " + eventCategoryList);
+		System.out.println("event : " + event);
+		
+		model.addAttribute("eventCategoryList", eventCategoryList);
 		
 		model.addAttribute("event", event);
 		
@@ -988,7 +1036,7 @@ public class AdminController {
 		}
 		
 		// 수정전 기존의 파일경로 가지고 있어야됨.
-		EventVO tmpEvent = adminService.selectEvent(String.valueOf(event.getEvent_idx())).get(0);
+		EventVO tmpEvent = adminService.getEvent(String.valueOf(event.getEvent_idx())).get(0);
 		
 		int updateCount = adminService.updateEvent(event);
 		
@@ -1042,7 +1090,7 @@ public class AdminController {
 		}
 		
 		// 삭제하기전에 파일경로를 먼저 받아와야됨.
-		EventVO tmpEvent = adminService.selectEvent(event_idx).get(0);
+		EventVO tmpEvent = adminService.getEvent(event_idx).get(0);
 		
 		int deleteCount = adminService.deleteEvent(event_idx);
 		
