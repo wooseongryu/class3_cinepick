@@ -32,21 +32,6 @@
 
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
 <script type="text/javascript">
-function qnaCateSelect(qnaCateSubject) {
-	alert(qnaCateSubject);
-// 	$.ajax({
-// 		url: "qna,
-// 		data: { qnaCateSubject: "qnaCateSubject" },                          // HTTP 요청과 함께 서버로 보낼 데이터
-// 		method: "POST",                                     // HTTP 요청 방식(GET, POST)
-// 		dataType: 'String',                                 // 서버에서 보내줄 데이터의 타입
-// 		success: function(resp) {
-// 			alert(qnaCateSubject);
-// 		},
-// 		error: function() {
-// 			alert("에러");
-// 		}
-// 	}),
-};
 
 </script>
 
@@ -65,91 +50,91 @@ function qnaCateSelect(qnaCateSubject) {
 	<header>
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
-
     
-	<div class="container">
-		<div class="row">
-            <div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
-                <div class="anime__details__review">
-                    <div class="section-title">
-                        <h5>고객센터</h5>
-                    </div>
-                    <div class="test" id="order_comment">
-                        <h5>
-                            <a style="color: red;">자주묻는질문</a>
-                             &nbsp;&nbsp;
-                            <a href="notice">공지사항</a>
-                             &nbsp;&nbsp;
-                            <a href="oneToOneQna">1:1문의</a>
-                        </h5>
-                    </div>
-					<div class="row">
-					<c:forEach var="qnaCate" items="${qnaCateList }">
-						<div class="col">
-							<div class="customer_category" name="${qnaCate.qnaCateSubject}" style="background: red" onclick="qnaCateSelect('${qnaCate.qnaCateSubject}')" >
-								<h6>${qnaCate.qnaCateSubject }</h6>
+    <section class="product-page spad">
+		<div class="container">
+			<div class="row">
+	            <div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
+	                <div class="anime__details__review">
+	                    <div class="section-title">
+	                        <h5>고객센터</h5>
+	                    </div>
+	                    <div class="test" id="order_comment">
+	                        <h5>
+	                            <a href="qna" style="color: red;">자주묻는질문</a>
+	                             &nbsp;&nbsp;
+	                            <a href="notice">공지사항</a>
+	                             &nbsp;&nbsp;
+	                            <a href="oneToOneQna">1:1문의</a>
+	                        </h5>
+	                    </div>
+						<div class="row">
+						<c:forEach var="qnaCate" items="${qnaCateList }">
+							<div class="col">
+								<div class="customer_category" name="${qnaCate.qnaCateSubject}" <c:if test="${qnaCate.qnaCateIdx eq param.qnaCateIdx}">style="background: red" </c:if> onclick="location.href='qna?qnaCateIdx=${qnaCate.qnaCateIdx}'" >
+									<h6>${qnaCate.qnaCateSubject }</h6>
+								</div>
 							</div>
+						</c:forEach>
 						</div>
-					</c:forEach>
-					</div>
-					<div class="row">
-						<div class="col-3">
-							<div class="qna_table_head">
-								<h6>
-	                                카테고리
-	                            </h6>
-	                        </div>
-					    </div>
-					    <div class="col-9">
-							<div class="qna_table_head">
-	                            <h6>
-	                                제목
-	                            </h6>
-							</div>
-						</div>
-					</div>
-					<c:forEach var="qna" items="${qnaList }">
 						<div class="row">
 							<div class="col-3">
-								<div class="qna_table_body">
-									<h6>${qna.qnaCateSubject }</h6>
+								<div class="qna_table_head">
+									<h6>
+		                                카테고리
+		                            </h6>
 		                        </div>
 						    </div>
 						    <div class="col-9">
-						    	<a href="qnaDetail?qnaIdx=${qna.qnaIdx} ">
-									<div class="qna_table_body">
-			                            <h6>
-											${qna.qnaTitle }
-			                            </h6>
-									</div>
-								</a>
+								<div class="qna_table_head">
+		                            <h6>
+		                                제목
+		                            </h6>
+								</div>
 							</div>
 						</div>
-					</c:forEach>
-					<div class="product__pagination" id="pageList">
-						<c:if test="${pageNum > 1 }">
-							<a href="qna?pageNum=${pageNum - 1 }"><i class="fa fa-angle-double-left"></i></a>					
-						</c:if>
-						<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-							<c:choose>
-								<c:when test="${pageNum eq i }">
-									<a class="current-page" href="qna?pageNum=${i }">${i }</a>
-								</c:when>
-								<c:otherwise>
-	<!-- 									<a class="#"> -->
-									<a href="qna?pageNum=${i }">${i }</a> 
-								</c:otherwise>
-							</c:choose>
+						<c:forEach var="qna" items="${qnaList }">
+							<div class="row">
+								<div class="col-3">
+									<div class="qna_table_body">
+										<h6>${qna.qnaCateSubject }</h6>
+			                        </div>
+							    </div>
+							    <div class="col-9">
+							    	<a href="qnaDetail?qnaIdx=${qna.qnaIdx} ">
+										<div class="qna_table_body">
+				                            <h6>
+												${qna.qnaTitle }
+				                            </h6>
+										</div>
+									</a>
+								</div>
+							</div>
 						</c:forEach>
-						<c:if test="${pageNum < pageInfo.maxPage }">
-							<a href="qna?pageNum=${pageNum + 1 }"><i class="fa fa-angle-double-right"></i></a>					
-						</c:if>
+						<div class="product__pagination" id="pageList">
+							<c:if test="${pageNum > 1 }">
+								<a href="qna?pageNum=${pageNum - 1 }"><i class="fa fa-angle-double-left"></i></a>					
+							</c:if>
+							<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+								<c:choose>
+									<c:when test="${pageNum eq i }">
+										<a class="current-page" href="qna?pageNum=${i }">${i }</a>
+									</c:when>
+									<c:otherwise>
+		<!-- 									<a class="#"> -->
+										<a href="qna?pageNum=${i }">${i }</a> 
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${pageNum < pageInfo.maxPage }">
+								<a href="qna?pageNum=${pageNum + 1 }"><i class="fa fa-angle-double-right"></i></a>					
+							</c:if>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
+	</section>
    	<footer>
 		<jsp:include page="../include/main_footer.jsp"></jsp:include>
 	</footer>

@@ -40,37 +40,31 @@
 	</header>
 
     <!-- Blog Details Section Begin -->
-    <section class="blog-details spad">
-        <div class="container">
-        
-        
-	        <div class="row">
-	            <div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
-	                <div class="anime__details__review">
-	                    <div class="section-title">
-	                        
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-                    
-                    
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8">
-                    <div class="blog__details__title">
-                        <h2>이달의 기획전 <돌비 시네마 스페셜 재개봉></h2>
-                        <h6>2023.10.11 ~ 2023.10.15</h6>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="blog__details__content">
-                        <img src="${pageContext.request.contextPath }/resources/cinepick/img/event/test1.jpg">
-                        
+	<section class="blog-details spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
+					<div class="anime__details__review">
+						<div class="section-title">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-8">
+					<div class="blog__details__title">
+						<h2>이달의 기획전 <돌비 시네마 스페셜 재개봉></h2>
+						<h6>2023.10.11 ~ 2023.10.15</h6>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<div class="blog__details__content">
+						<img src="${pageContext.request.contextPath }/resources/cinepick/img/event/test1.jpg">
                    	</div>
-                </div>
-            </div>
-        </div>
-    </section>
+				</div>
+			</div>
+		</div>
+	</section>
     <!-- Blog Details Section End -->
 
     <footer>

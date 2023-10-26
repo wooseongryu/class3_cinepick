@@ -74,7 +74,16 @@ public class MovieService {
 	public int updateMovieStatus() {
 		return movieMapper.updateMovieStatus();
 	}
+	
+	
+	//-----------영화 상세 페이지---------------
 
+	public MovieVO selectMovieDetail(int movie_code) {
+		return movieMapper.selectMovieDetail(movie_code);
+	}
+
+
+	
 
 
 	

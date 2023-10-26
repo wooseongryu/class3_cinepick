@@ -40,6 +40,11 @@ public interface MovieMapper {
 //=========== 영화차트페이지================
 	//영화목록
 	List<MovieVO> showMvList(@Param("isOpen") boolean isOpen, @Param("mvListType") String mvListType);
+	
+
+//=========== 영화 상세 페이지================
+	
+	MovieVO selectMovieDetail(@Param("movie_code") int movie_code);
 
 	
 

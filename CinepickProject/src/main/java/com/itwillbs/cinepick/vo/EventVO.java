@@ -12,8 +12,11 @@ public class EventVO {
 	private String event_endDt;
 	private String event_poster;
 	private String event_thumbnail;
+	private int event_category;
 	
 	private MultipartFile event_poster_multi;
 	private MultipartFile event_thumbnail_multi;
 	private String event_status;
+
+	private String eventCate_Subject;
 }

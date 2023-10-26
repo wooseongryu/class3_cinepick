@@ -34,6 +34,9 @@
 		FROM
 			qna q JOIN qnaCate c
 			ON q.qnaCategory = c.qnaCateIdx
+		<if test="qnaCateIdx != -1">
+		WHERE qnaCateIdx = #{qnaCateIdx}
+		</if>
 		ORDER BY qnaIdx
 		LIMIT
 			#{startRow}
@@ -44,11 +47,16 @@
 	<select id= "selectQnaListCount">
 		SELECT COUNT(*)
 		FROM qna
+		<if test="qnaCateIdx != -1">
+		WHERE qnaCategory = #{qnaCateIdx}
+		</if>
 	</select>
 	
 	
 	<select id="selectQnaCateList" resultType="QnaCate">
-		SELECT qnaCateSubject
+		SELECT 
+			qnaCateIdx
+			, qnaCateSubject
 		FROM qnaCate
 	</select>
 	<!-- 자주 묻는 질문 끝 -->
