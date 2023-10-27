@@ -1012,7 +1012,8 @@ ol {
 }
 
 .anime__details__pic {
-	height: 440px;
+	width: 250px;
+	height: 370px;
 	border-radius: 5px;
 	position: relative;
 }
@@ -1262,7 +1263,7 @@ ol {
 .anime__video__player .plyr audio,
 .anime__video__player .plyr iframe,
 .anime__video__player .plyr video {
-	width: 102%;
+	width: 100%;
 }
 
 .anime__video__player .plyr--full-ui.plyr--video .plyr__control--overlaid {

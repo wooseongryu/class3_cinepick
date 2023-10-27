@@ -1,5 +1,7 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -65,9 +67,17 @@ public class MovieController {
 	public String movieDetail(@RequestParam ("movie_code") int movie_code, Model model) { 
  		System.out.println("MovieController - movieDetail");
 //		System.out.println(movie_code);
+ 		MovieVO movie = movieService.movieDetail(movie_code);
+ 		String[] stills = movie.getMovie_still().split("\\|");
+// 		for(int i = 0; i < stills.length; i++) {
+// 			System.out.println(stills[i]);
+// 		}
+ 		List<String> movie_stills = Arrays.asList(stills);
+ 		movie.setMovie_stills(movie_stills);
  		
-		MovieVO dbMovie = movieService.selectMovieDetail(movie_code);
-		model.addAttribute("Movie", dbMovie);
+		model.addAttribute("movie", movie);
+		
+//		return "";
 		return "cinepick/movie/movie_detail";
 	}
 	
@@ -75,6 +85,7 @@ public class MovieController {
 	@GetMapping("movieDetail2")
 	public String movieDetail2() {
 		System.out.println("MovieController - movieDetail2");
-		return "cinepick/movie/movie_detail2";
+//		return "cinepick/movie/movie_detail2";
+		return"";
 	}
 }

@@ -44,7 +44,7 @@ public interface MovieMapper {
 
 //=========== 영화 상세 페이지================
 	
-	MovieVO selectMovieDetail(@Param("movie_code") int movie_code);
+//	MovieVO selectMovieDetail(@Param("movie_code") int movie_code);
 
 	
 

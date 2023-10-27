@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -27,6 +28,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/style.css" type="text/css">
     
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
+	<style>
+		
+	</style>
+
 </head>
 
 <body>
@@ -47,13 +52,13 @@
             <div class="anime__details__content">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="anime__details__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/post/test1.jpg"></div>
+                        <div class="anime__details__pic set-bg" data-setbg="${movie.movie_poster }"></div>
                     </div>
                     <div class="col-lg-9">
                         <div class="anime__details__text">
                             <div class="anime__details__title">
-                                <h3>오펜하이머</h3>
-                                <span>Oppenheimer</span>
+                                <h3>${movie.movie_nameK }</h3>
+                                <span>${movie.movie_nameE }</span>
                             </div>
                             <div class="anime__details__rating">
                                 <div class="rating">
@@ -65,32 +70,33 @@
                                 </div>
                                 <span>1.029 Votes</span>
                             </div>
-                            <p>“나는 이제 죽음이요, 세상의 파괴자가 되었다.”<br>
-							세상을 구하기 위해 세상을 파괴할 지도 모르는 선택을 해야 하는 천재 과학자의 핵개발 프로젝트.</p>
+                            <p>${movie.movie_plot }</p>
                             <div class="anime__details__widget">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                                            <li><span>감독:</span> 크리스토퍼 놀란</li>
-                                            <li><span>장르:</span> 스릴러, 드라마</li>
-                                            <li><span>개봉일:</span> 2023.08.15</li>
-                                            <li><span>관람가:</span> 15세이상</li>
+                                            <li><span>감독:</span>${movie.movie_director }</li>
+                                            <li><span>장르:</span>${movie.movie_genre }</li>
+                                            <li><span>관람가:</span>${movie.movie_rated }</li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                                            <li><span>출연:</span> 킬리언 머피, 에밀리 블런트, 맷 데이먼...</li>
-                                            <li><span>국가:</span> 미국</li>
-                                            <li><span>러닝타임:</span> 180분</li>
-                                            <li><span>관객수:</span> 318.9만명</li>
+                                            <li><span>개봉일:</span>${movie.movie_openDt }</li>
+                                            <li><span>러닝타임:</span>${movie.movie_runtime }</li>
+<%--                                             <li><span>관객수:</span> ${movie.movie_audi }</li> --%>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-12 col-md-6">
+                                        <ul>
+                                            <li id="actors-list"><span>출연:</span>${movie.movie_actor }</li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> 찜하기</a>
-                                <a href="#" class="watch-btn"><span>예매하기</span> <i
-                                    class="fa fa-angle-right"></i></a>
+	                            <div class="anime__details__btn">
+	<!--                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> 찜하기</a> -->
+	                                <a href="#" class="follow-btn"><span>예매하기</span></a>
+	                            </div>
                             </div>
                         </div>
                     </div>
@@ -106,7 +112,7 @@
                 <div class="col-lg-10">
                     <div class="anime__video__player">
                         <video id="player" playsinline controls data-poster="${pageContext.request.contextPath }/resources/cinepick/videos/test1.jpg">
-                            <source src="${pageContext.request.contextPath }/resources/cinepick/videos/test1.mp4" type="video/mp4" />
+                            <source src="${movie.movie_vod }" type="video/mp4" />
                             <!-- Captions are optional -->
                             <track kind="captions" label="English captions" src="#" srclang="en" default />
                         </video>
@@ -114,49 +120,49 @@
                 </div>
                 <div class="col-lg-1"></div>
             </div>
-                
-
             <div class="section-title">
                 <h5>스틸컷</h5>
             </div>
             <div class="row">
-	            <div class="col-lg-4 col-md-6 col-sm-6">
-	                <div class="product__item">
-	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test1.jpg">
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-4 col-md-6 col-sm-6">
-	                <div class="product__item">
-	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test2.jpg">
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-4 col-md-6 col-sm-6">
-	                <div class="product__item">
-	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test3.jpg">
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-4 col-md-6 col-sm-6">
-	                <div class="product__item">
-	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test4.jpg">
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-4 col-md-6 col-sm-6">
-	                <div class="product__item">
-	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test5.jpg">
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-4 col-md-6 col-sm-6">
-	                <div class="product__item">
-	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test5.jpg">
-	                    </div>
-	                </div>
-	            </div>
-			</div>
+            	<c:forEach var="movie_still" items="${movie.movie_stills }">
+		            <div class="col-lg-4 col-md-6 col-sm-6">
+		                <div class="product__item">
+		                    <div class="product__sidebar__view__item set-bg" data-setbg="${movie_still }">
+		                    </div>
+		                </div>
+		            </div>
+            	</c:forEach>
+<!-- 	            <div class="col-lg-4 col-md-6 col-sm-6"> -->
+<!-- 	                <div class="product__item"> -->
+<%-- 	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test2.jpg"> --%>
+<!-- 	                    </div> -->
+<!-- 	                </div> -->
+<!-- 	            </div> -->
+<!-- 	            <div class="col-lg-4 col-md-6 col-sm-6"> -->
+<!-- 	                <div class="product__item"> -->
+<%-- 	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test3.jpg"> --%>
+<!-- 	                    </div> -->
+<!-- 	                </div> -->
+<!-- 	            </div> -->
+<!-- 	            <div class="col-lg-4 col-md-6 col-sm-6"> -->
+<!-- 	                <div class="product__item"> -->
+<%-- 	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test4.jpg"> --%>
+<!-- 	                    </div> -->
+<!-- 	                </div> -->
+<!-- 	            </div> -->
+<!-- 	            <div class="col-lg-4 col-md-6 col-sm-6"> -->
+<!-- 	                <div class="product__item"> -->
+<%-- 	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test5.jpg"> --%>
+<!-- 	                    </div> -->
+<!-- 	                </div> -->
+<!-- 	            </div> -->
+<!-- 	            <div class="col-lg-4 col-md-6 col-sm-6"> -->
+<!-- 	                <div class="product__item"> -->
+<%-- 	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test5.jpg"> --%>
+<!-- 	                    </div> -->
+<!-- 	                </div> -->
+<!-- 	            </div> -->
+<!-- 			</div> -->
                 
             <div class="row">
                 <div class="col-lg-12 col-md-8">

@@ -68,11 +68,6 @@
 						let posters = movieData.posters;
 						let stills = movieData.stlls;
 						let vod = movieData.vods.vod[0].vodUrl;
-						let audi = movieData.audiAcc;
-						if(audi == "") {
-							audi = 0;
-						}
-						console.log("audi: " + audi);
 						
 			
 						//객체저장 하나씩
@@ -84,8 +79,7 @@
 		                    movie_plot: plot,
 		                    movie_poster: posters,
 		                    movie_still: stills,
-		                    movie_vod: vod,
-		                    movie_audi: audi
+		                    movie_vod: vod
 		                };
 						
 						
@@ -113,7 +107,7 @@
 					url: url + "?key=" + key + "&movieCd=" + movieCd,
 					dataType: "json",
 					success: function(detail) {
-// 						debugger;
+						debugger;
 						let movieInfoResult = detail.movieInfoResult;
 						let movieInfo = movieInfoResult.movieInfo;
 						
@@ -127,8 +121,11 @@
 						let GradeNm = movieInfo.audits[0].watchGradeNm; //심의등급
 						let actors = movieInfo.actors; //배우
 						let actor = "";
-						for(let a of actors) {
-							actor += a.peopleNm + " ";
+						for(let a = 0; a < 6; a++) {
+							console.log(actors[0].peopleNm);
+							actor += actors[a].peopleNm + " ";
+							console.log(actor);
+							
 						}
 						
 						movieInfo = {
@@ -154,7 +151,6 @@
 								movieInfo.movie_poster = addData.movie_poster;
 								movieInfo.movie_still = addData.movie_still;
 								movieInfo.movie_vod = addData.movie_vod;
-								movieInfo.movie_audi = addData.movie_audi;
 
 		                    	$("#printNm").val(movieInfo.movie_nameK);
 		                    	$("#printNmE").val(movieInfo.movie_nameE);
@@ -169,7 +165,6 @@
 							    $("#printStill").val(movieInfo.movie_still);
 							    $("#printPlot").val(movieInfo.movie_plot);
 							    $("#printVod").val(movieInfo.movie_vod);
-							    $("#printAudi").val(movieInfo.movie_audi);
 							    console.log(movieInfo);
 							})
 							.catch(function (error) {
@@ -242,10 +237,6 @@
                                     <div class="col-sm-3 mb-2 mb-sm-0">
 										<label for="movie_status">제작상태</label>
                                         <input type="text" class="form-control form-control-user" id="printStatus" name="movie_status">
-                                    </div>
-                                    <div class="col-sm-3 mb-2 mb-sm-0">
-										<label for="movie_status">누적관람객</label>
-                                        <input type="text" class="form-control form-control-user" id="printAudi" name="movie_audi">
                                     </div>
 	                            </div>    
                                 <div class="form-group row">
