@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -375,55 +376,49 @@ public class AdminController {
 		List<LocalTime> timeTable = new ArrayList<LocalTime>();
 		int startScheduleTime = 6;
 		int endScheduleTime = 22;
-		for (int i = startScheduleTime; i <= endScheduleTime; i++) {
-			timeTable.add(LocalTime.of(i, 0));
+		for (int time = startScheduleTime; time <= endScheduleTime; time++) {
+			timeTable.add(LocalTime.of(time, 0));
 		}
 		
-		// 큐로 복사전 임시 일정 리스트.
-		List<ScheduleVO> tmpList = adminService.scheduleCheck(schedule);
+		// 일정 리스트.
+		List<ScheduleVO> scheduleList = adminService.scheduleCheck(schedule);
 		
 		// 등록된 일정이 없을 시 시간표 그대로 반환.
-		if (tmpList.size() == 0) {
+		if (scheduleList.size() == 0) {
 			return gson.toJson(timeTable);
-		}
-		
-		// 큐로 일정 복사.
-		Queue<ScheduleVO> scheduleList = new LinkedList<ScheduleVO>();
-		for (ScheduleVO vo : tmpList) {
-			scheduleList.offer(vo);
 		}
 		
 		// 영화 러닝타임.
 		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
 		
-		LocalTime endTime = null;
-		LocalTime startTime = null;
-		ScheduleVO sche = null;
+		// 시간표를 하나씩 교체해가며 진행.
+		schedule = scheduleList.remove(0);
+		LocalTime scheEndTime = schedule.getSche_end_time();
+		LocalTime scheStartTime = schedule.getSche_start_time();
 		
 		Iterator<LocalTime> table = timeTable.iterator();
-		
-		sche = scheduleList.poll();
         while (table.hasNext()) {
-            LocalTime item = table.next();
+            LocalTime tableStartTime = table.next();
 			
-			endTime = sche.getSche_end_time();
 			// 일정 종료시간이 시간단위로 맞아 떨어지지 않을 시 올림.
-			if (endTime.getMinute() != 0) {
-				endTime = LocalTime.of(endTime.plusHours(1).getHour(), 0);
+			if (scheEndTime.getMinute() != 0) {
+				scheEndTime = LocalTime.of(scheEndTime.plusHours(1).getHour(), 0);
 			}
 			
 			// 시간표의 시작시간이 비교하는 일정의 종료시간을 넘어갈 때 다음 시간표로 교체. 
-			if (item.compareTo(endTime) == 0) {
-				sche = scheduleList.poll();
-			}
-			
-			// 일정 소진 시 종료.
-			if (sche == null) {
-				break;
+			if (tableStartTime.compareTo(scheEndTime) == 0) {
+				// 일정 소진 시 종료.
+				if (scheduleList.size() == 0) {
+					break;
+				}
+				schedule = scheduleList.remove(0);
+				scheEndTime = schedule.getSche_end_time();
+				scheStartTime = schedule.getSche_start_time();
 			}
 			
 			// 시간표의 영화 종료시간이 비교하는 일정의 시작시간을 넘어가면 시간표의 해당 시간대 제거.
-			if (item.plusMinutes(time).isAfter(sche.getSche_start_time())) {
+			LocalTime tableEndTime = tableStartTime.plusMinutes(time);
+			if (tableEndTime.isAfter(scheStartTime)) {
 				table.remove();
 			}
         }
