@@ -920,6 +920,9 @@ public class AdminController {
 		String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로
 		String subDir = ""; // 서브디렉토리명을 저장할 변수 선언(날짜로 구분)
 		
+		System.out.println(saveDir);
+		
+		
 		try {
 			LocalDate now = LocalDate.now();
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");

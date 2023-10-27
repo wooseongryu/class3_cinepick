@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
@@ -27,10 +27,15 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/style.css" type="text/css">
-    
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/customer-center.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
 </head>
+
+<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
+<script type="text/javascript">
+
+</script>
+
 
 <body>
     <!-- Page Preloder -->
@@ -38,20 +43,20 @@
         <div class="loader"></div>
     </div>
 
-    <header>
+
+	<header>
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
-
-    <!-- Blog Details Section Begin -->
-    <section class="blog-details spad">
+    
+    <section class="product-page spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
-					<div class="anime__details__review">
-						<div class="section-title">
-							<h5>고객센터</h5>
-						</div>
-						<div class="test" id="order_comment">
+	            <div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
+	                <div class="anime__details__review">
+	                    <div class="section-title">
+	                        <h5>이벤트 메인페이지</h5>
+	                    </div>
+	                    <div class="test" id="order_comment">
 	                        <h5>
 	                            <a href="movieEventList">영화</a>
 	                             &nbsp;&nbsp;
@@ -60,44 +65,45 @@
 	                            <a href="theaterEventList">극장별</a>
 	                        </h5>
 	                    </div>
+						<div class="row">
+						    <div class="col-lg-12">
+							<c:forEach var="eventCate" items="${eventCateList }">
+			                    <div class="section-title">
+			                        <h5>${eventCate.eventCate_Subject }</h5>
+			                    </div>
+								<div class="row">
+									<c:forEach var="event" items="${eventList }">
+										<section>
+											<c:if test="${event.event_category eq eventCate.eventCate_Idx }">
+										    	&nbsp;&nbsp;<a href="eventDetail?event_idx=${event.event_idx} ">
+												<img src ="${pageContext.request.contextPath }/resources/upload/${event.event_thumbnail }" width="200" height="100"></a>&nbsp;&nbsp;
+												<h6>${event.event_startDt } ~ ${event.event_endDt }</h6>
+											</c:if>
+										</section>
+									</c:forEach>
+								</div>
+							</c:forEach>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col-lg-8">
-					<div class="blog__details__title">
-						<h2>${event.event_title }</h2>
-						<h6>${event.event_startDt } ~ ${event.event_endDt }</h6>
-					</div>
-				</div>
-				
-				<div class="col-lg-8">
-					<div class="blog__details__content">
-						<div class="blog__details__text">
-							<img src ="${pageContext.request.contextPath }/resources/upload/${event.event_poster }">
-                       	</div>
-                   	</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Blog Details Section End -->
-
-    <footer>
+		</div>
+	</section>
+   	<footer>
 		<jsp:include page="../include/main_footer.jsp"></jsp:include>
 	</footer>
 
-
-    <!-- Js Plugins -->
-    <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/cinepick/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/cinepick/js/player.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.nice-select.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/cinepick/js/mixitup.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
+	<!-- Js Plugins -->
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script> --%>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/player.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.nice-select.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/mixitup.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
 
 </body>
 
-</html>	
+</html>

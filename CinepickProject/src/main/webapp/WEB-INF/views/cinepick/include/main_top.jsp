@@ -71,7 +71,7 @@ a {
 						<!-- 메인 로고 끝 -->
 						
 						<li>
-							<a href="eventCategory">
+							<a href="eventMain">
 								이벤트 <span class="arrow_carrot-down"></span>
 							</a>
 							 <ul class="dropdown">
