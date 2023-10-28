@@ -69,17 +69,16 @@
 						    <div class="col-lg-12"> 
 							<c:forEach var="eventCate" items="${eventCateList }">
 			                    <div class="section-title">
-			                        <h5>${eventCate.eventCate_Subject }</h5>
+			                        <h5 style="margin: 30px 30px 30px 30px;">${eventCate.eventCate_Subject }</h5>
+			                        <h6 align="right" style="color: white;" onclick="location.href='eventList?eventCate_Idx=${eventCate.eventCate_Idx}'" >더보기</h6>
 			                    </div>
-								<div class="row">
+								<div class="row" style="justify-content: center">
 									<c:forEach var="event" items="${eventList }">
-										<section style="margin: 30px 30px 30px 30px" style="margin: auto">
+										<section>
 											<c:if test="${event.event_category eq eventCate.eventCate_Idx }">
-										    	<a href="eventDetail?event_idx=${event.event_idx} ">
-												<img src ="${pageContext.request.contextPath }/resources/upload/${event.event_thumbnail }" width="240" height="140"></a>&nbsp;&nbsp;
-												<br>
-												<br>
-												<h6>${event.event_startDt } ~ ${event.event_endDt }</h6>
+										    	<a href="eventDetail?event_idx=${event.event_idx}">
+												<img src ="${pageContext.request.contextPath }/resources/upload/${event.event_thumbnail }" width="240" height="140" style="margin: 30px 30px 30px 30px;"></a>&nbsp;&nbsp;
+												<h6 align="center" style="color: white; margin: 10px 10px 10px 10px;">${event.event_startDt } ~ ${event.event_endDt }</h6>
 											</c:if>
 										</section>
 									</c:forEach>

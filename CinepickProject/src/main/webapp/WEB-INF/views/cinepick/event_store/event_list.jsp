@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
 </head>
 
+
+
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -66,16 +68,14 @@
 						</c:forEach>
 						</div>
 						<div class="row">
-						    <div class="col-lg-10" style="margin: auto">
-								<div class="row">
+						    <div class="col-lg-12">
+								<div class="row" style="justify-content: center">
 									<c:forEach var="eventDetail" items="${eventDetailList }">
-										<section style="margin: 30px 30px 30px 30px">
+										<section>
 									    	<a href="eventDetail?event_idx=${eventDetail.event_idx} ">
-											<img src ="${pageContext.request.contextPath }/resources/upload/${eventDetail.event_thumbnail }" 
-											width="320" height="180"></a>
-											<br>
-											<br>
-											<h6>${eventDetail.event_startDt } ~ ${eventDetail.event_endDt }</h6>
+												<img src ="${pageContext.request.contextPath }/resources/upload/${eventDetail.event_thumbnail }"width="240" height="140" style="margin: 30px 30px 30px 30px;"> 
+											</a>
+											<h6 align="center" style="color: white; margin: 10px 10px 10px 10px">${eventDetail.event_startDt } ~ ${eventDetail.event_endDt }</h6>
 										</section>
 									</c:forEach>
 								</div>
@@ -105,7 +105,7 @@
 				</div>
 			</div>
 		</div>
-	<section>
+	</section>
    	<footer>
 		<jsp:include page="../include/main_footer.jsp"></jsp:include>
 	</footer>
