@@ -26,7 +26,10 @@
 		SELECT
 			theater_idx
 			, theater_name
-		FROM theater;
+		FROM theater
+		<if test="sche_theater_idx != null and sche_theater_idx != -1">
+		WHERE theater_idx = #{sche_theater_idx}
+		</if>
 	</select>
 	
 	<select id="selectScreen" resultType="Screen">
@@ -95,12 +98,27 @@
 			ON s.sche_theater_idx = t.theater_idx
 			JOIN screen sc
 			ON s.sche_screen_idx = sc.screen_idx
+		<if test="sche_idx != null and sche_idx != -1">
+		WHERE sche_idx = #{sche_idx}
+		</if>
 	</select>
 	
 	<delete id="deleteSchedule">
 		DELETE FROM schedule
 		WHERE sche_idx = #{sche_idx}
 	</delete>
+	
+	<update id="updateSchedule">
+		UPDATE schedule
+		SET 
+			sche_date = #{sche_date}
+			, sche_start_time = #{sche_start_time}
+			, sche_end_time = #{sche_end_time}
+			, sche_movie_code = #{sche_movie_code}
+			, sche_screen_idx = #{sche_screen_idx}
+			, sche_theater_idx = #{sche_theater_idx}
+		WHERE sche_idx = #{sche_idx}
+	</update>
 	<!-- 상영 시간표 끝 -->
 	
 

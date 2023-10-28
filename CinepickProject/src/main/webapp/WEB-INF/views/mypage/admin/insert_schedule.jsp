@@ -48,71 +48,24 @@
 		
 	</style>
 	<script>
-	function scheduleCheck() {
-		$.ajax({
-			type: 'post',
-			url: 'adminScheduleCheck',
-			data: {
-				sche_date : $("#date-select").val(),
-				sche_movie_code : $("#movie-select").val(),
-				sche_screen_idx : $("#screen-select").val(),
-				sche_theater_idx : $("#theater-select").val()
-			},
-			dataType: 'json',
-			success: function(resp) {
-				$("#time-select").children().remove();
-				for (let i = 0; i < resp.length; i++) {
-					let hour = resp[i].hour + ":00";
-					if (hour < 10) {
-						hour = "0" + hour;
-					}
-					$("#time-select").append("<option value='" + hour + ":00'>" + hour + "</option>");
-				}
-			},
-			error: function() {
-				alert("에러");
-			}
-		});
-	}
-	
 	$(function() {
 		// 초기 화면 출력 값
 		$.ajax({
 			type: 'post',
 			url: 'adminScheduleInitInfo',
 			dataType: 'json',
-			data: {
-				sche_theater_idx : $("#sche_theater_idx").val()
-			},
 			success: function(resp) {
 				for (let i = 0; i < resp.theater.length; i++) {
 					$("#theater-select").append("<option value='" + resp.theater[i].theater_idx + "'>" + resp.theater[i].theater_name + "</option>");
-				}
-				
-				let theater_idx = $("#sche_theater_idx").val();
-				if (theater_idx != null) {
-					$("#theater-select").val(theater_idx + "").prop("selected", true);
 				}
 				
 				for (let i = 0; i < resp.movie.length; i++) {
 					$("#movie-select").append("<option value='" + resp.movie[i].movie_code + "'>" + resp.movie[i].movie_nameK + "</option>");
 				}
 				
-				let movie_code = $("#sche_movie_code").val();
-				if (movie_code != null) {
-					$("#movie-select").val(movie_code + "").prop("selected", true);
-				}
-				
-				for (let i = 0; i < resp.screen.length; i++) {
+				for (let i = 0; i < resp.theater.length; i++) {
 					$("#screen-select").append("<option value='" + resp.screen[i].screen_idx + "'>" + resp.screen[i].screen_name + "</option>");
 				}
-				
-				let screen_idx = $("#sche_screen_idx").val();
-				if (screen_idx != null) {
-					$("#screen-select").val(screen_idx + "").prop("selected", true);
-				}
-				
-				scheduleCheck();
 			},
 			error: function() {
 				alert("에러");
@@ -123,7 +76,6 @@
 		$("#theater-select").on("change", function() {
 			// 영화관 변경 시 검색 초기화
 			$("#time-select").children().remove();
-			
 			$.ajax({
 				type: 'post',
 				url: 'adminScheduleScreen',
@@ -165,7 +117,30 @@
 				return;
 			}
 			
-			scheduleCheck();
+			$.ajax({
+				type: 'post',
+				url: 'adminScheduleCheck',
+				data: {
+					sche_date : $("#date-select").val(),
+					sche_movie_code : $("#movie-select").val(),
+					sche_screen_idx : $("#screen-select").val(),
+					sche_theater_idx : $("#theater-select").val()
+				},
+				dataType: 'json',
+				success: function(resp) {
+					$("#time-select").children().remove();
+					for (let i = 0; i < resp.length; i++) {
+						let hour = resp[i].hour + ":00";
+						if (hour < 10) {
+							hour = "0" + hour;
+						}
+						$("#time-select").append("<option value='" + hour + ":00'>" + hour + "</option>");
+					}
+				},
+				error: function() {
+					alert("에러");
+				}
+			});
 		});
 		
 	});
@@ -175,9 +150,7 @@
 </head>
 
 <body class="bg-gradient-primary">
-	<input type="hidden" id="sche_theater_idx" value="${schedule.sche_theater_idx }">
-	<input type="hidden" id="sche_screen_idx" value="${schedule.sche_screen_idx }">
-	<input type="hidden" id="sche_movie_code" value="${schedule.sche_movie_code }">
+
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
@@ -186,15 +159,14 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">상영스케쥴 수정</h1>
+                                <h1 class="h4 text-gray-900 mb-4">상영스케쥴 등록</h1>
                             </div>
-                            <form id="test" action="adminScheduleUpdatePro" class="user" method="post" enctype="multipart/form-data">
-                            	<input type="hidden" name="sche_idx" id="sche_idx" value="${schedule.sche_idx }">
+                            <form id="test" action="adminScheduleInsertPro" class="user" method="post" enctype="multipart/form-data">
 								<div class="form-group row">
 								  	<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영일</label>
 <!-- 										<input type="text" class="form-control form-control-user" id="datepicker" value=""> -->
-										<input type="date" name="sche_date" id="date-select" value="${schedule.sche_date }">
+										<input type="date" name="sche_date" id="date-select">
 	                                </div>
 								</div>
 								<br>
@@ -232,7 +204,7 @@
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-		                                <input type="submit" class="btn btn-primary btn-user" value="수정">
+		                                <input type="submit" class="btn btn-primary btn-user" value="등록">
 		                                &nbsp;
 		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
 									</div>

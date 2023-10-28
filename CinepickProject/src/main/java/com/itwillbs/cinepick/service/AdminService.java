@@ -42,9 +42,9 @@ public class AdminService {
 	 * */
 	
 	// 극장 조회
-	public List<TheaterVO> selectTheater() {
+	public List<TheaterVO> selectTheater(int sche_theater_idx) {
 		System.out.println("AdminService - selectTheater()");
-		return mapper.selectTheater();
+		return mapper.selectTheater(sche_theater_idx);
 	}
 	
 	// 상영관 조회
@@ -71,22 +71,27 @@ public class AdminService {
 		return mapper.scheduleCheck(schedule);
 	}
 	
-	// 상영시간 삽입
+	// 상영시간 생성
 	public int insertSchedule(ScheduleVO schedule) {
 		System.out.println("AdminService - insertSchedule()");
 		return mapper.insertSchedule(schedule);
 	}
 	
 	// 상영시간표 조회
-	public List<ScheduleVO> selectSchedule() {
+	public List<ScheduleVO> selectSchedule(int sche_idx) {
 		System.out.println("AdminService - selectSchedule()");
-		return mapper.selectSchedule();
+		return mapper.selectSchedule(sche_idx);
 	}
 	
 	// 상영시간표 삭제
 	public int deleteSchedule(int sche_idx) {
 		System.out.println("AdminService - deleteSchedule()"); 
 		return mapper.deleteSchedule(sche_idx);
+	}
+	
+	// 상영시간표 수정
+	public int updateSchedule(ScheduleVO schedule) {
+		return mapper.updateSchedule(schedule);
 	}
 
 	
@@ -243,4 +248,5 @@ public class AdminService {
 		System.out.println("AdminService - deleteEventCategory()");
 		return mapper.deleteEventCategory(eventCate_Idx);
 	}
+
 }
