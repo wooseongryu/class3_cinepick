@@ -33,7 +33,7 @@ public interface AdminMapper {
 	 * ===================================================================
 	 * */
 
-	List<TheaterVO> selectTheater();
+	List<TheaterVO> selectTheater(int sche_theater_idx);
 
 	List<ScreenVO> selectScreen(int screen_theater_idx);
 
@@ -45,9 +45,11 @@ public interface AdminMapper {
 
 	int insertSchedule(ScheduleVO schedule);
 
-	List<ScheduleVO> selectSchedule();
+	List<ScheduleVO> selectSchedule(int sche_idx);
 
 	int deleteSchedule(int sche_idx);
+
+	int updateSchedule(ScheduleVO schedule);
 	
 	/*==============================================================
 	 * 공지 
@@ -119,5 +121,4 @@ public interface AdminMapper {
 	List<EventCateVO> selectEventCategory();
 
 	int deleteEventCategory(int eventCate_Idx);
-
 }

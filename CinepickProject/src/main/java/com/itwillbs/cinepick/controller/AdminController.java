@@ -28,6 +28,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -322,7 +323,7 @@ public class AdminController {
 	public String adminScheduleList(Model model) {
 		System.out.println("AdminController - adminScheduleList()");
 		
-		List<ScheduleVO> scheduleList = adminService.selectSchedule();
+		List<ScheduleVO> scheduleList = adminService.selectSchedule(-1);
 		model.addAttribute("scheduleList", scheduleList);
 		
 		return "mypage/admin/board_schedule";
@@ -333,7 +334,56 @@ public class AdminController {
 	public String adminScheduleInsert() {
 		System.out.println("AdminController - adminScheduleInsert()");
 
+		return "mypage/admin/insert_schedule";
+	}
+	
+	// 관리자 상영 시간표 등록
+	@PostMapping("adminScheduleInsertPro")
+	public String adminScheduleInsertPro(ScheduleVO schedule, Model model) {
+		System.out.println("AdminController - adminScheduleInsertPro()");
+		
+		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
+		
+		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
+		
+		int insertCount = adminService.insertSchedule(schedule);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminScheduleList";
+	}
+	
+	// 관리자 상영시간표 수정 폼
+	@GetMapping("adminScheduleUpdate")
+	public String adminScheduleUpdate(int sche_idx, Model model) {
+		System.out.println("AdminController - adminScheduleUpdate()");
+		
+		ScheduleVO schedule = adminService.selectSchedule(sche_idx).get(0);
+		model.addAttribute("schedule", schedule);
+		
 		return "mypage/admin/update_schedule";
+	}
+	
+	// 관리자 상영시간표 수정
+	@PostMapping("adminScheduleUpdatePro")
+	public String adminScheduleUpdatePro(ScheduleVO schedule, Model model) {
+		System.out.println("AdminController - adminScheduleUpdatePro");
+		
+		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
+		
+		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
+		
+		int updateCount = adminService.updateSchedule(schedule);
+		
+		if (updateCount == 0) {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminScheduleList";
 	}
 	
 	// 관리자 상영 시간표 상영관 조회
@@ -347,12 +397,20 @@ public class AdminController {
 
 	// 관리자 상영 시간표 초기 출력값 조회
 	@ResponseBody
-	@PostMapping("adinScheduleInitInfo")
-	public String adinScheduleInitInfo(Gson gson, Map<String, Object> map) {
-		System.out.println("AdminController - adinScheduleInitInfo()");
+	@PostMapping("adminScheduleInitInfo")
+	public String adminScheduleInitInfo(Gson gson, 
+										Map<String, Object> map,
+										@RequestParam(defaultValue = "-1") int sche_theater_idx) {
+		System.out.println("AdminController - adminScheduleInitInfo()");
 		
-		List<TheaterVO> theater = adminService.selectTheater();
-		TheaterVO vo = theater.get(0);
+		List<TheaterVO> theater = adminService.selectTheater(-1);
+		
+		TheaterVO vo = null;
+		if (sche_theater_idx != -1) {
+			vo = adminService.selectTheater(sche_theater_idx).get(0);
+		} else {
+			vo = theater.get(0);;
+		}
 
 		// 등록된 극장이 있을 때만 상영관 가져오기.
 		if (vo != null) {
@@ -424,25 +482,6 @@ public class AdminController {
         }
         
 		return gson.toJson(timeTable);
-	}
-	
-	@PostMapping("adminScheduleInsert")
-	public String adminScheduleInsert(ScheduleVO schedule, Model model) {
-		System.out.println("AdminController - adminScheduleInsert()");
-		
-		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
-		
-		schedule.setSche_end_time(schedule.getSche_start_time().plusMinutes(time));
-		
-		System.out.println(schedule);
-		int insertCount = adminService.insertSchedule(schedule);
-		
-		if (insertCount == 0) {
-			model.addAttribute("msg", "등록 실패!");
-			return "fail_back";
-		}
-		
-		return "redirect:/adminScheduleList";
 	}
 	
 	@GetMapping("adminDeleteSchedule")
