@@ -113,21 +113,21 @@
 						</c:forEach>
 						<div class="product__pagination" id="pageList">
 							<c:if test="${pageNum > 1 }">
-								<a href="qna?pageNum=${pageNum - 1 }"><i class="fa fa-angle-double-left"></i></a>					
+								<a href="qna?qnaCateIdx=${param.qnaCateIdx }&pageNum=${pageNum - 1 }"><i class="fa fa-angle-double-left"></i></a>					
 							</c:if>
 							<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
 								<c:choose>
 									<c:when test="${pageNum eq i }">
-										<a class="current-page" href="qna?pageNum=${i }">${i }</a>
+										<a class="current-page" href="qna?qnaCateIdx=${param.qnaCateIdx }&pageNum=${i }">${i }</a>
 									</c:when>
 									<c:otherwise>
 		<!-- 									<a class="#"> -->
-										<a href="qna?pageNum=${i }">${i }</a> 
+										<a href="qna?qnaCateIdx=${param.qnaCateIdx }&pageNum=${i }">${i }</a> 
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
 							<c:if test="${pageNum < pageInfo.maxPage }">
-								<a href="qna?pageNum=${pageNum + 1 }"><i class="fa fa-angle-double-right"></i></a>					
+								<a href="qna?qnaCateIdx=${param.qnaCateIdx }&pageNum=${pageNum + 1 }"><i class="fa fa-angle-double-right"></i></a>					
 							</c:if>
 						</div>
 					</div>

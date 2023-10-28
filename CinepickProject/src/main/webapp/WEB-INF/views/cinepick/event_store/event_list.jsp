@@ -83,20 +83,20 @@
 	<!-- 					페이징 처리 -->
 						<div class="product__pagination" id="pageList">
 							<c:if test="${pageNum > 1 }">
-								<a href="movieEventList?pageNum=${pageNum - 1 }"><i class="fa fa-angle-double-left"></i></a>					
+								<a href="eventList?eventCate_Idx=${param.eventCate_Idx }&pageNum=${pageNum - 1 }"><i class="fa fa-angle-double-left"></i></a>					
 							</c:if>
 							<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
 								<c:choose>
 									<c:when test="${pageNum eq i }">
-										<a class="current-page" href="eventDetail?pageNum=${i }">${i }</a>
+										<a class="current-page" href="eventList?eventCate_Idx=${param.eventCate_Idx }&pageNum=${i }">${i }</a>
 									</c:when>
 									<c:otherwise>
-										<a href="movieEventList?pageNum=${i }">${i }</a> 
+										<a href="eventList?eventCate_Idx=${param.eventCate_Idx }&pageNum=${i }">${i }</a> 
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
 							<c:if test="${pageNum < pageInfo.maxPage }">
-								<a href="movieEventList?pageNum=${pageNum + 1 }"><i class="fa fa-angle-double-right"></i></a>					
+								<a href="eventList?eventCate_Idx=${param.eventCate_Idx }&pageNum=${pageNum + 1 }"><i class="fa fa-angle-double-right"></i></a>					
 							</c:if>
 						</div>
 					</div>

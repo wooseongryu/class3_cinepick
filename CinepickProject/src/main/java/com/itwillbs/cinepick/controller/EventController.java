@@ -53,11 +53,11 @@ public class EventController {
 	
 	// 영화 이벤트 상세 목록
 	@GetMapping("eventList")
-	public String movieEventList(
+	public String eventList(
 						@RequestParam(defaultValue = "1") int pageNum, 
 						Model model,
 						@RequestParam(defaultValue = "-1") int eventCate_Idx) {
-		System.out.println("EventController - movieEventList()");
+		System.out.println("EventController - eventList()");
 		
 		int listLimit = 5; // 한 페이지에서 표시할 글 목록 갯수
 		
