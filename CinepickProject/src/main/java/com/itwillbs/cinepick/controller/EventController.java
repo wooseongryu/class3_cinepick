@@ -40,7 +40,8 @@ public class EventController {
 	
 	// 이벤트 상세보기
 	@GetMapping("eventDetail")
-	public String eventDetail(@RequestParam(defaultValue = "-1") String event_idx, Model model) {
+	public String eventDetail(@RequestParam(defaultValue = "-1") String event_idx, 
+			Model model) {
 		System.out.println("EventController - eventDetail()");
 		
 		EventVO event = eventService.getEvent(event_idx).get(0);
@@ -51,21 +52,26 @@ public class EventController {
 	}
 	
 	// 영화 이벤트 상세 목록
-	@GetMapping("movieEventList")
-	public String movieEventList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+	@GetMapping("eventList")
+	public String movieEventList(
+						@RequestParam(defaultValue = "1") int pageNum, 
+						Model model,
+						@RequestParam(defaultValue = "-1") int eventCate_Idx) {
 		System.out.println("EventController - movieEventList()");
 		
 		int listLimit = 5; // 한 페이지에서 표시할 글 목록 갯수
 		
 		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행(레코드) 번호
 		
-		System.out.println("pageNum" + pageNum);
-		System.out.println("startRow" + startRow);
+		List<EventVO> eventDetailList = eventService.getEventDetailList(startRow, listLimit, eventCate_Idx);
+
+		List<EventCateVO> eventCateList = eventService.selectEventCateList();
+		
+//		System.out.println("movieEventList : " + movieEventList);
 		
 		
-		List<EventVO> movieEventList = eventService.getMovieEventList(startRow, listLimit);
 		
-		int listCount = eventService.getMovieEventListCount();
+		int listCount = eventService.getMovieEventListCount(eventCate_Idx);
 		
 		int pageListLimit = 3;
 		
@@ -81,7 +87,8 @@ public class EventController {
 		
 		PageInfoVO pageInfo = new PageInfoVO(listCount, pageListLimit, maxPage, startPage, endPage);
 		
-		model.addAttribute("movieEventList", movieEventList);
+		model.addAttribute("eventDetailList", eventDetailList);
+		model.addAttribute("eventCateList", eventCateList);
 		model.addAttribute("pageInfo", pageInfo);
 		
 		
@@ -89,19 +96,19 @@ public class EventController {
 		return "cinepick/event_store/event_list";
 	}
 	
-	// 시사회 이벤트 상세 목록
-	@GetMapping("previewEventList")
-	public String previewEventList(Model model) {
-		System.out.println("EventController - previewEventList()");
-		model.addAttribute("category", "preview");
-		return "cinepick/event_store/event_list";
-	}
-	
-	// 극장별 이벤트 상세 목록
-	@GetMapping("theaterEventList")
-	public String theaterEventList(Model model) {
-		System.out.println("EventController - theaterEventList()");
-		model.addAttribute("category", "theater");
-		return "cinepick/event_store/event_list";
-	}
+//	// 시사회 이벤트 상세 목록
+//	@GetMapping("previewEventList")
+//	public String previewEventList(Model model) {
+//		System.out.println("EventController - previewEventList()");
+//		model.addAttribute("category", "preview");
+//		return "cinepick/event_store/event_list";
+//	}
+//	
+//	// 극장별 이벤트 상세 목록
+//	@GetMapping("theaterEventList")
+//	public String theaterEventList(Model model) {
+//		System.out.println("EventController - theaterEventList()");
+//		model.addAttribute("category", "theater");
+//		return "cinepick/event_store/event_list";
+//	}
 }

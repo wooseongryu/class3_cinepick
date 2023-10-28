@@ -33,13 +33,13 @@ public class EventService {
 	}
 
 	// 영화 이벤트 상세 목록 
-	public List<EventVO> getMovieEventList(int startRow, int listLimit) {
-		return mapper.selectMovieEventList(startRow, listLimit);
+	public List<EventVO> getEventDetailList(int startRow, int listLimit, int eventCate_Idx) {
+		return mapper.selectEventDetailList(startRow, listLimit, eventCate_Idx);
 	}
 
 	// 영화 이벤트 목록 수 조회
-	public int getMovieEventListCount() {
-		return mapper.selectMovieEventListCount();
+	public int getMovieEventListCount(int eventCate_Idx) {
+		return mapper.selectMovieEventListCount(eventCate_Idx);
 	}
 	
 	

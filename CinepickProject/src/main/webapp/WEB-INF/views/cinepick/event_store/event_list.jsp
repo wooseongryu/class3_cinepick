@@ -55,23 +55,25 @@
 	                    <div class="section-title">
 	                        <h5>고객센터</h5>
 	                    </div>
-	                    <div class="test" id="order_comment">
-	                        <h5>
-	                            <a href="movieEventList">영화</a>
-	                             &nbsp;&nbsp;
-	                            <a href="previewEventList">시사회/무대인사</a>
-	                             &nbsp;&nbsp;
-	                            <a href="theaterEventList">극장</a>
-	                        </h5>
-	                    </div>
+						<div class="row">
+						<c:forEach var="eventCate" items="${eventCateList }">
+							<div class="col-lg-2">
+								<div class="customer_category" name="${eventCate.eventCate_Subject}" <c:if test="${eventCate.eventCate_Idx eq param.eventCate_Idx}">style="background: red" </c:if>
+								 onclick="location.href='eventList?eventCate_Idx=${eventCate.eventCate_Idx}'" >
+									<h6>${eventCate.eventCate_Subject }</h6>
+								</div>
+							</div>
+						</c:forEach>
+						</div>
 						<div class="row">
 						    <div class="col-lg-12">
 								<div class="row">
-									<c:forEach var="movieEvent" items="${movieEventList }">
+									<c:forEach var="eventDetail" items="${eventDetailList }">
 										<section>
-									    	&nbsp;&nbsp;<a href="eventDetail?event_idx=${movieEvent.event_idx} ">
-											<img src ="${pageContext.request.contextPath }/resources/upload/${movieEvent.event_thumbnail }" width="200" height="100"></a>&nbsp;&nbsp;
-											<h6>${movieEvent.event_startDt } ~ ${movieEvent.event_endDt }</h6>
+									    	&nbsp;&nbsp;<a href="eventDetail?event_idx=${eventDetail.event_idx} ">
+											<img src ="${pageContext.request.contextPath }/resources/upload/${eventDetail.event_thumbnail }" 
+											width="200" height="100"></a>&nbsp;&nbsp;
+											<h6>${eventDetail.event_startDt } ~ ${eventDetail.event_endDt }</h6>
 										</section>
 									</c:forEach>
 								</div>

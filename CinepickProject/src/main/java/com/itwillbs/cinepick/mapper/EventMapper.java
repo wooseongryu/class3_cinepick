@@ -23,10 +23,10 @@ public interface EventMapper {
 	List<EventVO> selectEvent(String event_idx);
 	
 	// 영화 이벤트 상세 조회
-	List<EventVO> selectMovieEventList(@Param("startRow") int startRow, @Param("listLimit") int listLimit);
+	List<EventVO> selectEventDetailList(@Param("startRow") int startRow, @Param("listLimit") int listLimit, @Param("eventCate_Idx") int eventCate_Idx);
 
 	// 영화 이벤트 목록 수
-	int selectMovieEventListCount();
+	int selectMovieEventListCount(@Param("eventCate_Idx") int eventCate_Idx);
 	
 
 
