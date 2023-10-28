@@ -35,6 +35,7 @@ public class EventController {
 		model.addAttribute("eventList", eventList);
 		
 		model.addAttribute("eventCateList", eventCateList);
+		
 		return "cinepick/event_store/event_main";
 	}
 	
@@ -59,7 +60,7 @@ public class EventController {
 						@RequestParam(defaultValue = "-1") int eventCate_Idx) {
 		System.out.println("EventController - eventList()");
 		
-		int listLimit = 5; // 한 페이지에서 표시할 글 목록 갯수
+		int listLimit = 6; // 한 페이지에서 표시할 글 목록 갯수
 		
 		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행(레코드) 번호
 		

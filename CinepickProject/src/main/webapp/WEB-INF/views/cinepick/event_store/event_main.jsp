@@ -58,7 +58,7 @@
 	                    </div>
 						<div class="row">
 						<c:forEach var="eventCate" items="${eventCateList }">
-							<div class="col-lg-2">
+							<div class="col">
 								<div class="customer_category" name="${eventCate.eventCate_Subject}" <c:if test="${eventCate.eventCate_Idx eq param.eventCate_Idx}">style="background: red" </c:if> onclick="location.href='eventList?eventCate_Idx=${eventCate.eventCate_Idx}'" >
 									<h6>${eventCate.eventCate_Subject }</h6>
 								</div>
@@ -66,17 +66,19 @@
 						</c:forEach>
 						</div>
 						<div class="row">
-						    <div class="col-lg-12">
+						    <div class="col-lg-12"> 
 							<c:forEach var="eventCate" items="${eventCateList }">
 			                    <div class="section-title">
 			                        <h5>${eventCate.eventCate_Subject }</h5>
 			                    </div>
 								<div class="row">
 									<c:forEach var="event" items="${eventList }">
-										<section>
+										<section style="margin: 30px 30px 30px 30px" style="margin: auto">
 											<c:if test="${event.event_category eq eventCate.eventCate_Idx }">
-										    	&nbsp;&nbsp;<a href="eventDetail?event_idx=${event.event_idx} ">
-												<img src ="${pageContext.request.contextPath }/resources/upload/${event.event_thumbnail }" width="200" height="100"></a>&nbsp;&nbsp;
+										    	<a href="eventDetail?event_idx=${event.event_idx} ">
+												<img src ="${pageContext.request.contextPath }/resources/upload/${event.event_thumbnail }" width="240" height="140"></a>&nbsp;&nbsp;
+												<br>
+												<br>
 												<h6>${event.event_startDt } ~ ${event.event_endDt }</h6>
 											</c:if>
 										</section>

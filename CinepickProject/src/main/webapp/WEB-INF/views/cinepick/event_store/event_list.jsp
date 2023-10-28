@@ -53,12 +53,12 @@
 	            <div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
 	                <div class="anime__details__review">
 	                    <div class="section-title">
-	                        <h5>고객센터</h5>
+	                        <h5>이벤트 상세 목록</h5>
 	                    </div>
 						<div class="row">
 						<c:forEach var="eventCate" items="${eventCateList }">
-							<div class="col-lg-2">
-								<div class="customer_category" name="${eventCate.eventCate_Subject}" <c:if test="${eventCate.eventCate_Idx eq param.eventCate_Idx}">style="background: red" </c:if>
+							<div class="col" style="margin: auto">
+								<div class="customer_category"  name="${eventCate.eventCate_Subject}" <c:if test="${eventCate.eventCate_Idx eq param.eventCate_Idx}">style="background: red" </c:if>
 								 onclick="location.href='eventList?eventCate_Idx=${eventCate.eventCate_Idx}'" >
 									<h6>${eventCate.eventCate_Subject }</h6>
 								</div>
@@ -66,13 +66,15 @@
 						</c:forEach>
 						</div>
 						<div class="row">
-						    <div class="col-lg-12">
+						    <div class="col-lg-10" style="margin: auto">
 								<div class="row">
 									<c:forEach var="eventDetail" items="${eventDetailList }">
-										<section>
-									    	&nbsp;&nbsp;<a href="eventDetail?event_idx=${eventDetail.event_idx} ">
+										<section style="margin: 30px 30px 30px 30px">
+									    	<a href="eventDetail?event_idx=${eventDetail.event_idx} ">
 											<img src ="${pageContext.request.contextPath }/resources/upload/${eventDetail.event_thumbnail }" 
-											width="200" height="100"></a>&nbsp;&nbsp;
+											width="320" height="180"></a>
+											<br>
+											<br>
 											<h6>${eventDetail.event_startDt } ~ ${eventDetail.event_endDt }</h6>
 										</section>
 									</c:forEach>

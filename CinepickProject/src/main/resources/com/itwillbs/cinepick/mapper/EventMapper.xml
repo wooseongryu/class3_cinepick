@@ -22,7 +22,7 @@
 		<if test="eventCate_Idx != -1">
 		WHERE eventCate_Idx = #{eventCate_Idx}
 		</if>
-		ORDER BY ec.eventCate_Idx	
+		ORDER BY ec.eventCate_Idx
 	</select>
 
 <!--    	이벤트 카테고리 전체 조회 -->
