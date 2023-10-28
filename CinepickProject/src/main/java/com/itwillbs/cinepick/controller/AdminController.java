@@ -320,8 +320,16 @@ public class AdminController {
 	
 	// 관리자 상영 시간표 관리 페이지
 	@GetMapping("adminScheduleList")
-	public String adminScheduleList(Model model) {
+	public String adminScheduleList(Model model, HttpSession session) {
 		System.out.println("AdminController - adminScheduleList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 		
 		List<ScheduleVO> scheduleList = adminService.selectSchedule(-1);
 		model.addAttribute("scheduleList", scheduleList);
@@ -331,16 +339,32 @@ public class AdminController {
 	
 	// 관리자 상영 시간표 등록 폼
 	@GetMapping("adminScheduleInsert")
-	public String adminScheduleInsert() {
+	public String adminScheduleInsert(HttpSession session, Model model) {
 		System.out.println("AdminController - adminScheduleInsert()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 
 		return "mypage/admin/insert_schedule";
 	}
 	
 	// 관리자 상영 시간표 등록
 	@PostMapping("adminScheduleInsertPro")
-	public String adminScheduleInsertPro(ScheduleVO schedule, Model model) {
+	public String adminScheduleInsertPro(ScheduleVO schedule, Model model, HttpSession session) {
 		System.out.println("AdminController - adminScheduleInsertPro()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 		
 		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
 		
@@ -358,8 +382,16 @@ public class AdminController {
 	
 	// 관리자 상영시간표 수정 폼
 	@GetMapping("adminScheduleUpdate")
-	public String adminScheduleUpdate(int sche_idx, Model model) {
+	public String adminScheduleUpdate(int sche_idx, Model model, HttpSession session) {
 		System.out.println("AdminController - adminScheduleUpdate()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 		
 		ScheduleVO schedule = adminService.selectSchedule(sche_idx).get(0);
 		model.addAttribute("schedule", schedule);
@@ -369,8 +401,16 @@ public class AdminController {
 	
 	// 관리자 상영시간표 수정
 	@PostMapping("adminScheduleUpdatePro")
-	public String adminScheduleUpdatePro(ScheduleVO schedule, Model model) {
+	public String adminScheduleUpdatePro(ScheduleVO schedule, Model model, HttpSession session) {
 		System.out.println("AdminController - adminScheduleUpdatePro");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 		
 		int time = adminService.selectMovieRunTime(schedule.getSche_movie_code());
 		
@@ -485,8 +525,16 @@ public class AdminController {
 	}
 	
 	@GetMapping("adminDeleteSchedule")
-	public String adminDeleteSchedule(int sche_idx, Model model) {
+	public String adminDeleteSchedule(int sche_idx, Model model, HttpSession session) {
 		System.out.println("AdminController - adminDeleteSchedule()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
 		
 		int deleteCount = adminService.deleteSchedule(sche_idx);
 		
