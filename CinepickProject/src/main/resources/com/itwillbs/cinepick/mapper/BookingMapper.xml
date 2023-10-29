@@ -61,4 +61,12 @@
 			s.sche_screen_idx
 			, s.sche_start_time
 	</select>
+	
+	<select id="selectMovie" resultType="Movie">
+		SELECT 
+			movie_nameK
+			, movie_poster
+		FROM movie
+		WHERE movie_code = ${movie_code}
+	</select>
 </mapper>

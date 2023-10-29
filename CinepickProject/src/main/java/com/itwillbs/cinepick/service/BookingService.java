@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.cinepick.mapper.BookingMapper;
+import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.ScheduleVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 
@@ -34,6 +35,11 @@ public class BookingService {
 	public List<ScheduleVO> selectValidTime(Map<String, Object> map) {
 		System.out.println("BookingService - selectValidTime()");
 		return mapper.selectValidTime(map);
+	}
+
+	public MovieVO selectMovie(int movie_code) {
+		System.out.println("BookingService - selectMovie()");
+		return mapper.selectMovie(movie_code);
 	}
 	
 }

@@ -112,10 +112,13 @@
     			},
     			success: function(resp) {
     				$("#step1_date").children().remove();
+    				$("#step1_screen").children().remove();
     				let arrDayStr = ['일','월','화','수','목','금','토'];
    					let month = "";
    					let year = "";
     				$.each(resp, function(index, el) {
+    					$("#result_theaterName").children().remove();
+    					$("#result_theaterName").append("<h6>극장&emsp;&emsp;" + data.getAttribute("data-movieName") + "</h6>");
     					
     					if (el.sche_date.year != year) {
     						year = el.sche_date.year;
@@ -162,11 +165,15 @@
     			},
     			success: function(resp) {
     				$("#step1_theater").children().remove();
+    				$("#step1_date").children().remove();
+    				$("#step1_screen").children().remove();
 					$.each(resp, function(index, el) {
 						let theater = "<h6 data-movieCode='" 
 										+ city.getAttribute("data-movieCode") 
 										+ "' data-theaterIdx='" 
 										+ el.theater_idx 
+										+ "' data-movieName='"
+										+ el.theater_name
 										+ "' onclick='chooseDate(this)'>" 
 										+ el.theater_name 
 										+ "</h6>";
@@ -191,6 +198,7 @@
     				$("#step1_city").children().remove();
     				$("#step1_theater").children().remove();
     				$("#step1_date").children().remove();
+    				$("#step1_screen").children().remove();
     				let movieCode = resp.movie_code;
     				$.each(resp.cityList, function(index, el) {
 						let city = "<h6 data-movieCode='" + movieCode
@@ -200,6 +208,12 @@
 									+ "</h6>"
     					$("#step1_city").append(city);
     				});
+    				
+    				$("#result_poster").children().remove();
+    				$("#result_poster").append("<img src='" + resp.movieInfo.movie_poster + "' class='res_img'>");
+    				
+    				$("#result_movieName").children().remove();
+    				$("#result_movieName").append("<h6>" + resp.movieInfo.movie_nameK + "</h6>");
     			},
     			error: function() {
     				alert("에러");
@@ -225,7 +239,6 @@
 								+ "<div class='age'>"
 								+ "<img src='${pageContext.request.contextPath }/resources/cinepick/img/age/" + age + ".png' style='height: 20px'>"
 								+ "</div>"
-// 								+ "<h6 data-movie='" + movie + "' onclick=\"chooseMovie('" + el.movie_code + "')\">" + movie + "</h6>"
 								+ "<h6 data-movieCode='" + el.movie_code + "' onclick='chooseCity(this)'>" + movie + "</h6>"
 								+ "</div>";
 					
@@ -300,28 +313,6 @@
 									<h6>시간</h6>
 		                        </div>
 		                        <div class="step1_time_body" id="step1_screen">
-<!-- 		                        	<h6 style="color: yellow">1관</h6> -->
-<!-- 									<div class="row" id="step1_time"> -->
-<!-- 										<div class="col-4"> -->
-<!-- 											<h6>17:30 | 72석</h6> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-4"> -->
-<!-- 											<h6>17:30 | 72석</h6> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-4"> -->
-<!-- 											<h6>17:30 | 72석</h6> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-4"> -->
-<!-- 											<h6>17:30 | 7석</h6> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-4"> -->
-<!-- 											<h6>17:30 | 72석</h6> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-4"> -->
-<!-- 											<h6>17:30 | 2석</h6> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 									<hr> -->
 	                        	</div>
 						    </div>
 						</div>
@@ -333,17 +324,24 @@
 									<div class="res_result">
 										<!-- 공간 차지 div -->
 									</div>
-									<div class="res_result">
-										<img src="${pageContext.request.contextPath }/resources/cinepick/img/main_list/mb5.jpg" class="res_img">
+									<div class="res_result" id="result_poster">
+									</div>
+									<div class="res_result" id="result_movieName">
+										<h6>영화를 선택하세요.</h6>
 									</div>
 									<div class="res_result">
-										<h6>아이유콘서트: 더 골든아워</h6>
-									</div>
-									<div class="res_result">
-										<h6>극장&emsp;&emsp;센텀시티</h6>
-										<h6>일시&emsp;&emsp;2023.10.13</h6>
-										<h6>상영관&emsp;1관</h6>
-										<h6>인원&emsp;&emsp;</h6>
+										<div id="result_theaterName">
+											<h6>극장&emsp;&emsp;극장선택</h6>
+										</div>
+										<div>
+											<h6>일시&emsp;&emsp;2023.10.13</h6>
+										</div>
+										<div>
+											<h6>상영관&emsp;1관</h6>
+										</div>
+										<div>
+											<h6>인원&emsp;&emsp;</h6>
+										</div>
 									</div>
 									<div class="res_result">
 										<h6>좌석번호&emsp;</h6>

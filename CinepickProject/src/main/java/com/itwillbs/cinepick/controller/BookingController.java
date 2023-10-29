@@ -65,10 +65,12 @@ public class BookingController {
 		System.out.println("BookingController - getCityList()");
 		
 		List<TheaterVO> cityList = bookingService.selectValidCity(movie_code);
+		MovieVO movieInfo = bookingService.selectMovie(movie_code);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("cityList", cityList);
 		map.put("movie_code", movie_code);
+		map.put("movieInfo", movieInfo);
 		
 		return gson.toJson(map);
 	}
