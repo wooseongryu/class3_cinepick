@@ -62,10 +62,11 @@
 			success: function(resp) {
 				$("#time-select").children().remove();
 				for (let i = 0; i < resp.length; i++) {
-					let hour = resp[i].hour + ":00";
-					if (hour < 10) {
+					let hour = resp[i].hour;
+					if (Number(hour) < 10) {
 						hour = "0" + hour;
 					}
+					hour += ":00";
 					$("#time-select").append("<option value='" + hour + ":00'>" + hour + "</option>");
 				}
 			},

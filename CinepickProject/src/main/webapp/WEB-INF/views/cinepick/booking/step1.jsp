@@ -79,13 +79,16 @@
 						
 						$("#step1_screen").append("<div class='row' id='step1_time''>");
 						$.each(resp.timeList, function(index, time) {
-							let hour = time.sche_start_time.hour + ":00";
+							let hour = time.sche_start_time.hour;
 	 						if (hour < 10) {
 	 							hour = "0" + hour;
 	 						}
+							hour += ":00";
 	 						if (screen == time.screen_name) {
 	 							console.log(screen + ": " + time.screen_name);
-		 						$("#step1_screen").children(".row").last().append("<div class='col-4'><h6>" + hour + "</h6></div>");
+		 						$("#step1_screen").children(".row").last().append(
+		 									"<div class='col-4'><h6>" + hour + " | " + "27석" + "</h6></div>"
+		 								);
 	 						}
 						});
 						$("#step1_screen").append("</div>");
