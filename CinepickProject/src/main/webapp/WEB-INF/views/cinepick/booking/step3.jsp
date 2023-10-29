@@ -41,6 +41,19 @@
 	<header>
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
+	
+<!-- 	<input type="hidden" id="allTickets" name="allTickets"> -->
+<!-- 	<input type="hidden" id="seats" name="seats"> -->
+	
+	<div id="test">
+		하하
+<%-- 		a: ${allTickets } // --%>
+<%-- 		a: ${seats } //  --%>
+		p: ${param.allTickets } //
+		p: ${param.seats } //
+<%-- 		r: ${response.allTickets }  // --%>
+<%-- 		r: ${response.seats } // --%>
+	</div>
 
     
 	<div class="container">
@@ -154,6 +167,9 @@
 								<h6>남은 결제금액</h6>
 								<h6>15,000원</h6>
 							</div>
+							
+
+							
                        	</div>
 				    </div>
 				    
@@ -180,9 +196,19 @@
 							</div>
 							<div class="res_result">
 								<h6>좌석번호&emsp;F10</h6>
+										${param.allTickets }
+										${param.seats }
 							</div>
+							
+							<div id="testDiv">
+								테스트 디브!
+							</div>
+							
 							<div class="res_result">
 								<input type="button" value="결제하기" class="res_btn" onclick="location.href='bookingStepFour'">
+								<!-- 엄성윤 test 추가 -->
+								<input type="button" value="Test2" class="test" id="testBtn" onclick="#">
+								<input type="button" value="결제Test_엄성윤" class="btn_booking_pay" onclick="location.href='reserve'">
 							</div>
                         </div>
 					</div>
@@ -212,6 +238,9 @@
 	<script type="text/javascript">
 		$(function() {
 			
+			let allTickets = "${param.allTickets}";
+			let seats = "${param.seats}";
+			
 // 			$("input[type=radio][name=pay_radio]").on("click", function(){})
 // 			$("input[type=radio][name=pay_radio]").on("click", () => {})
 			
@@ -227,6 +256,57 @@
 					
 				});
 				
+			});
+			
+			// sy
+			
+			$(".res_result").text($("#seats").val());
+			
+			$(".btn_booking_pay").click(function() {
+				
+// 				allTickets = ${param.allTickets};
+// 				seats = ${param.seats};
+				console.log(allTickets + seats);
+				
+			});
+			
+			$(".test").click(function() {
+				
+// 				allTickets = "${param.allTickets}";
+// 				seats = "${param.seats}";
+				
+				console.log(allTickets + seats);
+				
+				
+				$("#testDiv").text(allTickets + seats);
+				
+			});
+			
+			
+			$("#testBtn").click(function() {
+				
+				
+				console.log(allTickets + seats);
+				
+				$("#testDiv").text(allTickets + seats);
+				
+			});
+			
+			$.ajax({
+			    type: "GET",
+			    url: "reserve",
+// 			    data: { dataToSend : "데이터" },
+			    data: { allTickets : allTickets,
+				    	seats : seats },
+			    dataType: "text",
+			    success: function(response) {
+			        // 서버에서 반환된 응답을 처리
+// 			        console.log(response);
+// 			        $("#output").html(seats);
+			    },
+			    error: function() {
+					alert("실패!");
+				}
 			});
 			
 		});

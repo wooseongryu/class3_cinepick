@@ -39,7 +39,7 @@
 	<header>
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
-
+	
 	<input type="hidden" id="playSchdlNo" name="playSchdlNo" value="2310112202029">
 	<input type="hidden" id="brchNo" name="brchNo" value="2202">
 	<!-- TODO 추후 brchNO 수정 -->
@@ -631,6 +631,11 @@
                             <a href="javaScript:void(0)" class="button disabled" id="pageNext" title="다음" onclick="location.href='bookingStepThree'">다음</a>
                         </div>
                         <!-- btn-group 끝 -->
+<!--                         <button id="reserve" onclick="location.href='payment-successcomplete'">예매내역test</button> -->
+<!--                         <button id="reserve">예매내역test</button> -->
+                        <a id="reserve">예매 test</a>
+<!--                         <button id="reserve" onclick="location.href='payment-successcomplete'">예매내역test</button> -->
+                        
                         
                     </div>
                     <!-- wrap 끝 -->
@@ -646,6 +651,20 @@
 		
 	</div>
 	<!-- inner-wrap 끝 -->
+	
+	<!-- Test 추가 -->
+	<div id="output"></div>
+	<div id="output2">하하하</div>
+	<input type="button" value="예매완료페이지로" class="test" id="complete" onclick="location.href='paySuccess'">
+	<form action="bookingStepThree" method="post">
+		<input type="text" placeholder="${allTickets }">
+		<input type="hidden" id="allTickets" name="allTickets">
+		<input type="hidden" id="seats" name="seats">
+		<input type="submit" id="send" value="이걸 누르면">
+	</form>
+<!-- 	<from action="" method="post"> -->
+<%-- 		<input type="hidden" name="seats" value=<%=seats %>> --%>
+<!-- 	</from> -->
 	
 	<div class="normalStyle" style="display:none;position:fixed;top:0;left:0;background:#000;opacity:0.7;text-indent:-9999px;width:100%;height:100%;z-index:100;">닫기</div>
 	<div class="alertStyle" style="display:none;position:fixed;top:0px;left:0px;background:#000;opacity:0.7;width:100%;height:100%;z-index:5005;"></div>
@@ -671,8 +690,88 @@
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_test.js"></script> --%>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat1.js"></script> --%>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat2.js"></script> --%>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat3.js"></script>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat3.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat7_new.js"></script> --%>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat8.js"></script>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat4.js"></script> --%>
+
+	<script>
+	
+	let ticketCount;
+	let ticket = "";
+	let allTickets = "";
+	
+	$(function() {
+		
+		$("#reserve").click(function() {
+			
+			seats = "";
+			allTickets = "";
+				
+	        $(".seat-condition[selected='selected']").each(function() {
+	            let seatAlpha = $(this).attr("rownm");
+	            let seatNumber = $(this).attr("seatno");
+	            seats += seatAlpha + seatNumber + "/";
+	        });
+	            console.log(seats);
+		       	$("#seats").val(seats);
+		       	console.log("히든:" + $("#seats").val());
+	            
+	        $(".now").each(function() {
+	        	
+	    		ticketCount = parseInt($(this).text());
+	    		
+	    		if(ticketCount > 0) {
+	    			ticket = $(this).closest(".cell").find(".txt").text();
+		    		allTickets += ticket + ticketCount + "/";
+	    		}
+	        	
+	        });
+	            console.log(allTickets);
+	            
+	           
+	       	$("#allTickets").val(allTickets);
+	           	
+	         
+	        // 이거 됨  
+// 			var dataToSend = "데이터"; // 이 데이터는 JavaScript에서 생성한 데이터로 대체
+			$.ajax({
+			    type: "POST",
+			    url: "reserve",
+// 			    data: { dataToSend : "데이터" },
+			    data: { allTickets : allTickets,
+				    	seats : seats },
+			    dataType: "text",
+			    success: function(response) {
+			        // 서버에서 반환된 응답을 처리
+// 			        console.log(response);
+			        $("#output").html(seats);
+			    },
+			    error: function() {
+					alert("실패!");
+				}
+			});
+			
+			$.ajax({
+			    type: "GET",
+			    url: "bookingStepThree",
+			    data: { allTickets : allTickets,
+				    	seats : seats },
+			    dataType: "text",
+			    success: function(response) {
+			        $("#output2").html(seats);
+// 			        location.href="bookingStepThree";
+			    },
+			    error: function() {
+					alert("실패!2");
+				}
+			});
+			
+		});
+	});
+	
+	
+	</script>
 	
 	
 

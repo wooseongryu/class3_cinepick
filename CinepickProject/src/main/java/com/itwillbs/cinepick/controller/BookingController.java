@@ -106,6 +106,14 @@ public class BookingController {
 		return "cinepick/booking/step3";
 	}
 	
+	//	엄성윤 테스트
+	// 결제 페이지(Post)
+	@PostMapping("bookingStepThree")
+	public String bookingStepThreePost() {
+		System.out.println("BookingController - bookingStepThree(), post");
+		return "cinepick/booking/step3";
+	}
+	
 	/*====================================================================
 	 * 4. 예매 완료
 	 * ===================================================================

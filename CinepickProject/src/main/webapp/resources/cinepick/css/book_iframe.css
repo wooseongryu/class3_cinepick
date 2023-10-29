@@ -1174,3 +1174,17 @@ p {
 .other {
 	display: none;
 }
+
+.seat-select-section .seat-result .wrap .pay-area .pay .money em {
+    display: block;
+    float: left;
+    line-height: 35px;
+    font-size: 1.6em;
+    color: #59bec9;
+    font-family: Roboto,Dotum,'돋움',sans-serif;
+    font-weight: 400;
+}
+
+.money {
+	float: right;
+}
