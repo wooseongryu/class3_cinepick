@@ -1,6 +1,8 @@
 package com.itwillbs.cinepick.controller;
 
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,9 +108,8 @@ public class LoginJoinController {
 	// 로그인 처리
 	@PostMapping("loginPro")
 	public String loginPro(
-			UserVO user, 
-//			@RequestParam(required = false) boolean rememberId,
-			HttpSession session, Model model) {
+			UserVO user, @RequestParam(required = false) boolean rememberId,
+			HttpSession session, Model model, HttpServletResponse response) {
 		
 		// BCryptPasswordEncoder 객체를 활용한 패스워드 비교
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -127,6 +128,16 @@ public class LoginJoinController {
 				// 세션 객체에 로그인 성공한 아이디를 "sId" 속성명으로 저장
 				session.setAttribute("sId", user.getUser_id());
 				session.setAttribute("isAdmin", dbUser.getUser_is_admin());
+				
+				Cookie cookie = new Cookie("cookieId", user.getUser_id());
+				
+				if(rememberId) {
+					cookie.setMaxAge(60 * 60 * 24 * 30);
+				} else {
+					cookie.setMaxAge(0);
+				}
+				
+				response.addCookie(cookie);
 				
 				System.out.println("성공적으로 로그인하였습니다 메인페이지로 이동합니다");
 			}
