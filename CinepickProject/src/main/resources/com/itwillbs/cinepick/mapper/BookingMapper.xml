@@ -7,6 +7,7 @@
 	<select id="selectValidCity" resultType="Theater">
 		SELECT
 			CONCAT(c.city_name, "(", count(s.sche_idx) , ")") AS city_name
+			, c.city_idx
 		FROM
 			schedule s JOIN theater t 
 			ON s.sche_theater_idx = t.theater_idx
@@ -15,10 +16,24 @@
 		WHERE
 			s.sche_movie_code = #{movie_code}
 		GROUP BY 
-			c.city_name;
+			c.city_name
+			, c.city_idx
 	</select>
 	
 	<select id="selectValidTheater" resultType="Theater">
-		
+		SELECT
+			t.theater_name
+			, t.theater_idx
+		FROM
+			schedule s JOIN theater t 
+			ON s.sche_theater_idx = t.theater_idx
+			JOIN city c 
+			ON t.city_idx = c.city_idx 
+		WHERE
+			s.sche_movie_code = #{movie_code}
+			AND c.city_idx = #{city_idx}
+		GROUP BY
+			t.theater_name
+			, t.theater_idx
 	</select>
 </mapper>

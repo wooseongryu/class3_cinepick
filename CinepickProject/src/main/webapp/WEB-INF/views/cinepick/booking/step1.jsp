@@ -56,11 +56,32 @@
     	}
     </style>
     <script type="text/javascript">
-    	function chooseMovie(movie) {
-//     		alert("test");
-//     		alert(movie.getAttribute("data-movieName"));
-//     		alert(movie.getAttribute("data-movieCode"));
+    	function chooseTheater(city) {
+//     		alert(city.getAttribute("data-cityIdx"));
+//     		alert(city.getAttribute("data-movieCode"));
     		
+    		$.ajax({
+    			type: 'post',
+    			url: 'getTheaterList',
+    			dataType: 'json',
+    			data: {
+    				movie_code : city.getAttribute("data-movieCode")
+    				, city_idx : city.getAttribute("data-cityIdx")
+    			},
+    			success: function(resp) {
+    				$("#step1_theater").children().remove();
+					$.each(resp, function(index, el) {
+						let theater = "<h6>" + el.theater_name + "</h6>";
+						$("#step1_theater").append(theater);
+					});
+    			},
+    			error: function() {
+    				alert("에러");
+    			}
+    		});
+    	}
+    
+    	function chooseCity(movie) {
     		$.ajax({
     			type: 'post',
     			url: 'getCityList',
@@ -70,8 +91,14 @@
     			},
     			success: function(resp) {
     				$("#step1_city").children().remove();
-    				$.each(resp, function(index, el) {
-						let city = "<h6>" + el.city_name + "</h6>"
+    				$("#step1_theater").children().remove();
+    				let movieCode = resp.movie_code;
+    				$.each(resp.cityList, function(index, el) {
+						let city = "<h6 data-movieCode='" + movieCode
+									+ "' data-cityIdx='" + el.city_idx 
+									+ "' onclick='chooseTheater(this)'>" 
+									+ el.city_name 
+									+ "</h6>"
     					$("#step1_city").append(city);
     				});
     			},
@@ -100,7 +127,7 @@
 								+ "<img src='${pageContext.request.contextPath }/resources/cinepick/img/age/" + age + ".png' style='height: 20px'>"
 								+ "</div>"
 // 								+ "<h6 data-movie='" + movie + "' onclick=\"chooseMovie('" + el.movie_code + "')\">" + movie + "</h6>"
-								+ "<h6 data-movieCode='" + el.movie_code + "' data-movieName='" + movie + "' onclick='chooseMovie(this)'>" + movie + "</h6>"
+								+ "<h6 data-movieCode='" + el.movie_code + "' onclick='chooseCity(this)'>" + movie + "</h6>"
 								+ "</div>";
 					
 						$("#step1_movie").append(movieInfo);
@@ -155,10 +182,10 @@
 									<div class="row">
 										<div class="col-7" id="step1_city">
 										</div>
-										<div class="col-5">
-											<h6>강남</h6>
-											<h6>서초</h6>
-											<h6>용산</h6>
+										<div class="col-5" id="step1_theater">
+<!-- 											<h6>강남</h6> -->
+<!-- 											<h6>서초</h6> -->
+<!-- 											<h6>용산</h6> -->
 										</div>
 									</div>
 	                        	</div>

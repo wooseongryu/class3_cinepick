@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -61,15 +62,24 @@ public class BookingController {
 	@PostMapping("getCityList")
 	public String getCityList(Gson gson, int movie_code) {
 		System.out.println("BookingController - getCityList()");
-		System.out.println(movie_code);
 		
 		List<TheaterVO> cityList = bookingService.selectValidCity(movie_code);
-//		List<TheaterVO> theaterList = bookingService.selectValidTheater(movie_code);
 		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("cityList", cityList);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cityList", cityList);
+		map.put("movie_code", movie_code);
 		
-		return gson.toJson(cityList);
+		return gson.toJson(map);
+	}
+	
+	@ResponseBody
+	@PostMapping("getTheaterList")
+	public String getTheaterList(Gson gson, @RequestParam Map<String, Integer> map) {
+		System.out.println("BookingController - getTheaterList()");
+		
+		List<TheaterVO> theaterList = bookingService.selectValidTheater(map);
+		
+		return gson.toJson(theaterList);
 	}
 	
 	/*====================================================================
