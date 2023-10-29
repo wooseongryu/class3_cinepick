@@ -30,5 +30,10 @@ public class BookingService {
 		System.out.println("BookingService - selectValidDate()");
 		return mapper.selectValidDate(map);
 	}
+
+	public List<ScheduleVO> selectValidTime(Map<String, Object> map) {
+		System.out.println("BookingService - selectValidTime()");
+		return mapper.selectValidTime(map);
+	}
 	
 }

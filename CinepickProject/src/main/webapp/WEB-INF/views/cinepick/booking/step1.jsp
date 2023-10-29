@@ -56,10 +56,49 @@
     	}
     </style>
     <script type="text/javascript">
-    	function chooseDate(data) {
+    	function chooseTime(data) {
 //     		alert(data.getAttribute("data-movieCode"));
-//     		alert(data.getAttribute("data-theaterIdx"));			
+//     		alert(data.getAttribute("data-theaterIdx"));
+//     		alert(data.getAttribute("data-date"));
 
+    		$.ajax({
+    			type: 'post',
+    			url: 'getTimeList',
+    			dataType: 'json',
+    			data: {
+    				movie_code : data.getAttribute("data-movieCode")
+    				, theater_idx : data.getAttribute("data-theaterIdx")
+    				, date : data.getAttribute("data-date")
+    			},
+    			success: function(resp) {
+    				$("#step1_screen").children().remove();
+
+					console.log(resp);
+					$.each(resp.screenList, function(index, screen) {
+						$("#step1_screen").append("<h6 style='color: yellow'>" + screen + "</h6>");
+						
+						$("#step1_screen").append("<div class='row' id='step1_time''>");
+						$.each(resp.timeList, function(index, time) {
+							let hour = time.sche_start_time.hour + ":00";
+	 						if (hour < 10) {
+	 							hour = "0" + hour;
+	 						}
+	 						if (screen == time.screen_name) {
+	 							console.log(screen + ": " + time.screen_name);
+		 						$("#step1_screen").children(".row").last().append("<div class='col-4'><h6>" + hour + "</h6></div>");
+	 						}
+						});
+						$("#step1_screen").append("</div>");
+						$("#step1_screen").append("<hr>");
+					});
+    			},
+    			error: function() {
+    				alert("에러");
+    			}
+    		});
+    	}
+    
+    	function chooseDate(data) {
     		$.ajax({
     			type: 'post',
     			url: 'getDateList',
@@ -90,8 +129,17 @@
     					let day = el.sche_date.day;
     					let date = new Date(year + "-" + month + "-" + day);
     					
-    					$("#step1_date").append("<h6>" + arrDayStr[date.getDay()] + " " + day + "</h6>");
+    					let sche_date = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
     					
+    					$("#step1_date").append("<h6 data-theaterIdx='" 
+    											+ data.getAttribute("data-theaterIdx") 
+    											+ "' data-movieCode='" 
+    											+ data.getAttribute("data-movieCode") 
+    											+ "' data-date='" 
+    											+ sche_date 
+    											+ "' onclick='chooseTime(this)'>" 
+    											+ arrDayStr[date.getDay()] + " " + day 
+    											+ "</h6>");
     				});
     			},
     			error: function() {
@@ -248,29 +296,29 @@
 								<div class="step1_head">
 									<h6>시간</h6>
 		                        </div>
-		                        <div class="step1_time_body">
-		                        	<h6>1관</h6>
-									<div class="row">
-										<div class="col-4">
-											<span style="padding: 1px" class="border border-warning ">17:30</span> 172석
-										</div>
-										<div class="col-4">
-											<span style="padding: 1px" class="border border-warning">17:30</span> 172석
-										</div>
-										<div class="col-4">
-											<span style="padding: 1px" class="border border-warning">17:30</span> 172석
-										</div>
-										<div class="col-4">
-											<span style="padding: 1px" class="border border-warning">17:30</span> 172석
-										</div>
-										<div class="col-4">
-											<span style="padding: 1px" class="border border-warning">17:30</span> 172석
-										</div>
-										<div class="col-4">
-											<span style="padding: 1px" class="border border-warning">17:30</span> 172석
-										</div>
-									</div>
-									<hr>
+		                        <div class="step1_time_body" id="step1_screen">
+<!-- 		                        	<h6 style="color: yellow">1관</h6> -->
+<!-- 									<div class="row" id="step1_time"> -->
+<!-- 										<div class="col-4"> -->
+<!-- 											<h6>17:30 | 72석</h6> -->
+<!-- 										</div> -->
+<!-- 										<div class="col-4"> -->
+<!-- 											<h6>17:30 | 72석</h6> -->
+<!-- 										</div> -->
+<!-- 										<div class="col-4"> -->
+<!-- 											<h6>17:30 | 72석</h6> -->
+<!-- 										</div> -->
+<!-- 										<div class="col-4"> -->
+<!-- 											<h6>17:30 | 7석</h6> -->
+<!-- 										</div> -->
+<!-- 										<div class="col-4"> -->
+<!-- 											<h6>17:30 | 72석</h6> -->
+<!-- 										</div> -->
+<!-- 										<div class="col-4"> -->
+<!-- 											<h6>17:30 | 2석</h6> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<hr> -->
 	                        	</div>
 						    </div>
 						</div>

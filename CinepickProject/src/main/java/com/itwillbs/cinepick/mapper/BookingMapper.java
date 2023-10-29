@@ -18,4 +18,6 @@ public interface BookingMapper {
 
 	List<ScheduleVO> selectValidDate(Map<String, Integer> map);
 
+	List<ScheduleVO> selectValidTime(Map<String, Object> map);
+
 }

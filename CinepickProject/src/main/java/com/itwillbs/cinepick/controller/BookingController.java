@@ -1,5 +1,6 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,6 @@ import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.BookingService;
 import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.ScheduleVO;
-import com.itwillbs.cinepick.vo.ScreenVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 
 @Controller
@@ -88,10 +88,36 @@ public class BookingController {
 	public String getDateList(Gson gson, @RequestParam Map<String, Integer> map) {
 		System.out.println("BookingController - getDateList()");
 		
-		List<ScheduleVO> DateList = bookingService.selectValidDate(map);
-		System.out.println(DateList);
+		List<ScheduleVO> dateList = bookingService.selectValidDate(map);
+		System.out.println(dateList);
 		
-		return gson.toJson(DateList);
+		return gson.toJson(dateList);
+	}
+	
+	@ResponseBody
+	@PostMapping("getTimeList")
+	public String getTimeList(Gson gson, @RequestParam Map<String, Object> map) {
+		System.out.println("BookingController - getTimeList()");
+		System.out.println(map);
+		
+		List<ScheduleVO> timeList = bookingService.selectValidTime(map);
+		
+		String tmp = "-1";
+		List<String> arr = new ArrayList<String>();
+		for (ScheduleVO vo : timeList) {
+			if (!vo.getScreen_name().equals(tmp)) {
+				tmp = vo.getScreen_name();
+				arr.add(tmp);
+			}
+		}
+		
+		map.clear();
+		map.put("timeList", timeList);
+		map.put("screenList", arr);
+		
+		
+		return gson.toJson(map);
+//		return gson.toJson(timeList);
 	}
 	
 	/*====================================================================

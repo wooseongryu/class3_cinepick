@@ -46,4 +46,19 @@
 		ORDER BY sche_date
 		LIMIT 15
 	</select>
+	
+	<select id="selectValidTime" resultType="ScheduleVO">
+		SELECT 
+			s.sche_idx 
+			, s.sche_start_time
+			, sc.screen_name 
+		FROM schedule s JOIN screen sc
+			ON s.sche_screen_idx = sc.screen_idx
+		WHERE s.sche_movie_code = #{movie_code}
+				AND s.sche_theater_idx = #{theater_idx}
+				AND s.sche_date = #{date}
+		ORDER BY 
+			s.sche_screen_idx
+			, s.sche_start_time
+	</select>
 </mapper>

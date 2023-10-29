@@ -25,4 +25,6 @@ public class ScheduleVO {
 	private String movie_nameK;
 	private String theater_name;
 	private String screen_name;
+	
+	private int screenCount;
 }
