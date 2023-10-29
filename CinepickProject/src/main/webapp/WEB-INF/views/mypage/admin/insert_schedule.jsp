@@ -63,7 +63,7 @@
 					$("#movie-select").append("<option value='" + resp.movie[i].movie_code + "'>" + resp.movie[i].movie_nameK + "</option>");
 				}
 				
-				for (let i = 0; i < resp.theater.length; i++) {
+				for (let i = 0; i < resp.screen.length; i++) {
 					$("#screen-select").append("<option value='" + resp.screen[i].screen_idx + "'>" + resp.screen[i].screen_name + "</option>");
 				}
 			},
