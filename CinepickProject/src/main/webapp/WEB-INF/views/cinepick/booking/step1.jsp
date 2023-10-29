@@ -56,10 +56,51 @@
     	}
     </style>
     <script type="text/javascript">
+    	function chooseDate(data) {
+//     		alert(data.getAttribute("data-movieCode"));
+//     		alert(data.getAttribute("data-theaterIdx"));			
+
+    		$.ajax({
+    			type: 'post',
+    			url: 'getDateList',
+    			dataType: 'json',
+    			data: {
+    				movie_code : data.getAttribute("data-movieCode")
+    				, theater_idx : data.getAttribute("data-theaterIdx")
+    			},
+    			success: function(resp) {
+    				$("#step1_date").children().remove();
+    				let arrDayStr = ['일','월','화','수','목','금','토'];
+   					let month = "";
+   					let year = "";
+    				$.each(resp, function(index, el) {
+    					
+    					if (el.sche_date.year != year) {
+    						year = el.sche_date.year;
+    					}
+    					
+    					if (el.sche_date.month != month) {
+    						month = el.sche_date.month;
+	    					$("#step1_date").append("<h6 style='margin-bottom: 0px; color: yellow'>" 
+							    					+ year
+							    					+ "</h6>");
+	    					$("#step1_date").append("<h2>" + month + "</h2>");
+    					}
+    					
+    					let day = el.sche_date.day;
+    					let date = new Date(year + "-" + month + "-" + day);
+    					
+    					$("#step1_date").append("<h6>" + arrDayStr[date.getDay()] + " " + day + "</h6>");
+    					
+    				});
+    			},
+    			error: function() {
+    				alert("에러");
+    			}
+    		});
+    	}
+    
     	function chooseTheater(city) {
-//     		alert(city.getAttribute("data-cityIdx"));
-//     		alert(city.getAttribute("data-movieCode"));
-    		
     		$.ajax({
     			type: 'post',
     			url: 'getTheaterList',
@@ -71,7 +112,13 @@
     			success: function(resp) {
     				$("#step1_theater").children().remove();
 					$.each(resp, function(index, el) {
-						let theater = "<h6>" + el.theater_name + "</h6>";
+						let theater = "<h6 data-movieCode='" 
+										+ city.getAttribute("data-movieCode") 
+										+ "' data-theaterIdx='" 
+										+ el.theater_idx 
+										+ "' onclick='chooseDate(this)'>" 
+										+ el.theater_name 
+										+ "</h6>";
 						$("#step1_theater").append(theater);
 					});
     			},
@@ -92,6 +139,7 @@
     			success: function(resp) {
     				$("#step1_city").children().remove();
     				$("#step1_theater").children().remove();
+    				$("#step1_date").children().remove();
     				let movieCode = resp.movie_code;
     				$.each(resp.cityList, function(index, el) {
 						let city = "<h6 data-movieCode='" + movieCode
@@ -183,9 +231,6 @@
 										<div class="col-7" id="step1_city">
 										</div>
 										<div class="col-5" id="step1_theater">
-<!-- 											<h6>강남</h6> -->
-<!-- 											<h6>서초</h6> -->
-<!-- 											<h6>용산</h6> -->
 										</div>
 									</div>
 	                        	</div>
@@ -195,15 +240,7 @@
 								<div class="step1_head">
 									<h6>날짜</h6>
 		                        </div>
-		                        <div class="step1_body">
-		                        	<h1>10</h1>
-									<h6>월 12</h6>
-									<h6>화 13</h6>
-									<h6>수 14</h6>
-									<h6>목 15</h6>
-									<h6>금 16</h6>
-									<h6>토 17</h6>
-									<h6>일 18</h6>
+		                        <div class="step1_body" id="step1_date">
 	                        	</div>
 						    </div>
 						    

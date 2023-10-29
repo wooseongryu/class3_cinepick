@@ -36,4 +36,14 @@
 			t.theater_name
 			, t.theater_idx
 	</select>
+	
+	<select id="selectValidDate" resultType="ScheduleVO">
+		SELECT DISTINCT sche_date 
+		FROM schedule
+		WHERE 
+			sche_movie_code = #{movie_code}
+			AND sche_theater_idx = #{theater_idx}
+		ORDER BY sche_date
+		LIMIT 15
+	</select>
 </mapper>

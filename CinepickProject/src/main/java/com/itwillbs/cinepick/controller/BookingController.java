@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.BookingService;
 import com.itwillbs.cinepick.vo.MovieVO;
+import com.itwillbs.cinepick.vo.ScheduleVO;
 import com.itwillbs.cinepick.vo.ScreenVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 
@@ -80,6 +81,17 @@ public class BookingController {
 		List<TheaterVO> theaterList = bookingService.selectValidTheater(map);
 		
 		return gson.toJson(theaterList);
+	}
+	
+	@ResponseBody
+	@PostMapping("getDateList")
+	public String getDateList(Gson gson, @RequestParam Map<String, Integer> map) {
+		System.out.println("BookingController - getDateList()");
+		
+		List<ScheduleVO> DateList = bookingService.selectValidDate(map);
+		System.out.println(DateList);
+		
+		return gson.toJson(DateList);
 	}
 	
 	/*====================================================================

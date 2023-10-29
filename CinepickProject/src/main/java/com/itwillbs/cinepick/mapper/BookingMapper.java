@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itwillbs.cinepick.vo.ScheduleVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 
 @Mapper
@@ -14,5 +15,7 @@ public interface BookingMapper {
 	List<TheaterVO> selectValidCity(int movie_code);
 
 	List<TheaterVO> selectValidTheater(@RequestParam Map<String, Integer> map);
+
+	List<ScheduleVO> selectValidDate(Map<String, Integer> map);
 
 }
