@@ -15,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
+    
+   	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
+    
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/bootstrap.min.css" type="text/css">
@@ -42,7 +45,52 @@
     		padding-left: 5px;
     		padding-right: 5px;
     	}
+    	.movie_title > h6 {
+    		width: 150px;
+    		text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			text-align: left;
+			margin-left: 30px;
+			cursor: pointer;
+    	}
     </style>
+    <script type="text/javascript">
+    	function chooseMovie() {
+    		alert("test");
+    	}
+    
+    	$(function() {
+    		$.ajax({
+    			type: 'post',
+    			url: 'getMovieList',
+    			dataType: 'json',
+    			success: function(resp) {
+					$.each(resp, function(index, el) {
+						let age = el.movie_rated.substring(0, 2);
+						if (age == '전체') {
+							age = 'all';
+						}
+						
+						let movie = el.movie_nameK;
+						let test = "test";
+						let movieInfo = "<div class='movie_title'>"
+								+ "<div class='age'>"
+								+ "<img src='${pageContext.request.contextPath }/resources/cinepick/img/age/" + age + ".png' style='height: 20px'>"
+								+ "</div>"
+								+ "<h6 onclick='chooseMovie()'>" + movie + "</h6>"
+								+ "</div>";
+					
+						$("#step1_body").append(movieInfo);
+					});
+    			},
+    			error: function() {
+    				alert("에러");
+    			}
+    		});
+    		
+    	});
+    </script>
 </head>
 
 <body>
@@ -73,19 +121,7 @@
 		                                영화
 		                            </h6>
 		                        </div>
-		                        <div class="step1_body">
-									<div class="movie_title">
-										<div class="age">
-											<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" style="height: 20px">
-										</div>
-										<h6>오펜하이머</h6>
-									</div>
-									<div class="movie_title">
-										<div class="age">
-											<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/12.png" style="height: 20px">
-										</div>
-										<h6>오펜하이머</h6>
-									</div>
+		                        <div class="step1_body" id="step1_body">
 		                        </div>
 						    </div>
 						    

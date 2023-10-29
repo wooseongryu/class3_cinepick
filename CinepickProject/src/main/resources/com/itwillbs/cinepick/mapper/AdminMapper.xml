@@ -44,6 +44,7 @@
 		SELECT
 			movie_code
 			, movie_nameK
+			, movie_rated
 		FROM movie
 	</select>
 	

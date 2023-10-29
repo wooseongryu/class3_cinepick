@@ -11,13 +11,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -67,6 +64,7 @@ public class AdminController {
 	 * 8. 자주 묻는 질문 카테고리
 	 * 9. 1:1 문의
 	 * 10. 이벤트
+	 * 11. 이벤트 카테고리
 	 * ===================================================================
 	 * */
 	
@@ -449,7 +447,7 @@ public class AdminController {
 		if (sche_theater_idx != -1) {
 			vo = adminService.selectTheater(sche_theater_idx).get(0);
 		} else {
-			vo = theater.get(0);;
+			vo = theater.get(0);
 		}
 
 		// 등록된 극장이 있을 때만 상영관 가져오기.
@@ -1201,7 +1199,7 @@ public class AdminController {
 	
 	
 	/*====================================================================
-	 * 8. 이벤트 카테고리
+	 * 11. 이벤트 카테고리
 	 * ===================================================================
 	 * */
 	
