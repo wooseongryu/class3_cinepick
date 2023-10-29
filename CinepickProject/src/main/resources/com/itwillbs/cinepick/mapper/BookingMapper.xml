@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.itwillbs.cinepick.mapper.BookingMapper">
+	<select id="selectValidCity" resultType="Theater">
+		SELECT
+			CONCAT(c.city_name, "(", count(s.sche_idx) , ")") AS city_name
+		FROM
+			schedule s JOIN theater t 
+			ON s.sche_theater_idx = t.theater_idx
+			JOIN city c 
+			ON t.city_idx = c.city_idx 
+		WHERE
+			s.sche_movie_code = #{movie_code}
+		GROUP BY 
+			c.city_name;
+	</select>
+	
+	<select id="selectValidTheater" resultType="Theater">
+		
+	</select>
+</mapper>

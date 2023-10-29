@@ -1,6 +1,8 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.itwillbs.cinepick.service.AdminService;
+import com.itwillbs.cinepick.service.BookingService;
 import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.ScreenVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
@@ -19,6 +22,9 @@ public class BookingController {
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private BookingService bookingService;
 	
 	/*====================================================================
 	 * - 목차 -
@@ -39,10 +45,6 @@ public class BookingController {
 	public String bookingStepOne() {
 		System.out.println("BookingController - bookingStepOne()");
 		
-//		List<MovieVO> movieList = adminService.selectMovie();
-//		List<TheaterVO> theater = adminService.selectTheater(-1);
-//		List<ScreenVO> screen = adminService.selectScreen(1);
-		
 		return "cinepick/booking/step1";
 	}
 	
@@ -50,11 +52,24 @@ public class BookingController {
 	@PostMapping("getMovieList")
 	public String getMovieList(Gson gson) {
 		System.out.println("BookingController - getMovieList()");
-		
 		List<MovieVO> movieList = adminService.selectMovie();
 		
-		
 		return gson.toJson(movieList);
+	}
+	
+	@ResponseBody
+	@PostMapping("getCityList")
+	public String getCityList(Gson gson, int movie_code) {
+		System.out.println("BookingController - getCityList()");
+		System.out.println(movie_code);
+		
+		List<TheaterVO> cityList = bookingService.selectValidCity(movie_code);
+//		List<TheaterVO> theaterList = bookingService.selectValidTheater(movie_code);
+		
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("cityList", cityList);
+		
+		return gson.toJson(cityList);
 	}
 	
 	/*====================================================================

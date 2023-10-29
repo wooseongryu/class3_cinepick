@@ -44,4 +44,6 @@ public class TheaterVO {
 	private String theater_facility2;
 	private String theater_facility3;
 	private String theater_facility4;
+	
+	private String city_name;
 }

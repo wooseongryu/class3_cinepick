@@ -56,8 +56,29 @@
     	}
     </style>
     <script type="text/javascript">
-    	function chooseMovie() {
-    		alert("test");
+    	function chooseMovie(movie) {
+//     		alert("test");
+//     		alert(movie.getAttribute("data-movieName"));
+//     		alert(movie.getAttribute("data-movieCode"));
+    		
+    		$.ajax({
+    			type: 'post',
+    			url: 'getCityList',
+    			dataType: 'json',
+    			data: {
+    				movie_code : movie.getAttribute("data-movieCode")
+    			},
+    			success: function(resp) {
+    				$("#step1_city").children().remove();
+    				$.each(resp, function(index, el) {
+						let city = "<h6>" + el.city_name + "</h6>"
+    					$("#step1_city").append(city);
+    				});
+    			},
+    			error: function() {
+    				alert("에러");
+    			}
+    		});
     	}
     
     	$(function() {
@@ -78,10 +99,11 @@
 								+ "<div class='age'>"
 								+ "<img src='${pageContext.request.contextPath }/resources/cinepick/img/age/" + age + ".png' style='height: 20px'>"
 								+ "</div>"
-								+ "<h6 onclick='chooseMovie()'>" + movie + "</h6>"
+// 								+ "<h6 data-movie='" + movie + "' onclick=\"chooseMovie('" + el.movie_code + "')\">" + movie + "</h6>"
+								+ "<h6 data-movieCode='" + el.movie_code + "' data-movieName='" + movie + "' onclick='chooseMovie(this)'>" + movie + "</h6>"
 								+ "</div>";
 					
-						$("#step1_body").append(movieInfo);
+						$("#step1_movie").append(movieInfo);
 					});
     			},
     			error: function() {
@@ -121,7 +143,7 @@
 		                                영화
 		                            </h6>
 		                        </div>
-		                        <div class="step1_body" id="step1_body">
+		                        <div class="step1_body" id="step1_movie">
 		                        </div>
 						    </div>
 						    
@@ -131,10 +153,9 @@
 		                        </div>
 		                        <div class="step1_body">
 									<div class="row">
-										<div class="col">
-											<h6>서울</h6>
+										<div class="col-7" id="step1_city">
 										</div>
-										<div class="col">
+										<div class="col-5">
 											<h6>강남</h6>
 											<h6>서초</h6>
 											<h6>용산</h6>
