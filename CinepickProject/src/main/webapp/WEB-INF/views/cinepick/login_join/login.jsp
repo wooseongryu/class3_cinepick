@@ -59,7 +59,7 @@
                             </div>
                            <input type="checkbox" name="rememberId"
 							<c:if test="${not empty cookie.cookieId.value }">checked</c:if>
-						><span style="color: white;">&nbsp; 아이디 저장</span><br>
+						><span>&nbsp; 아이디 저장</span><br>
                             <button type="submit" class="site-btn">&nbsp;&nbsp;&nbsp;로그인&nbsp;&nbsp;&nbsp;</button>
                         </form>
 <!--                         <a href="#" class="forget_pass">비밀번호 찾기</a> -->

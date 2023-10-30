@@ -73,7 +73,7 @@
 									<c:forEach var="eventDetail" items="${eventDetailList }">
 										<section>
 									    	<a href="eventDetail?event_idx=${eventDetail.event_idx} ">
-												<img src ="${pageContext.request.contextPath }/resources/upload/${eventDetail.event_thumbnail }"width="240" height="140" style="margin: 30px 30px 30px 30px;"> 
+												<img src ="${pageContext.request.contextPath }/resources/upload/${eventDetail.event_thumbnail }"width="240" height="240" style="margin: 10px 10px 10px 10px;"> 
 											</a>
 											<h6 align="center" style="color: white; margin: 10px 10px 10px 10px">${eventDetail.event_startDt } ~ ${eventDetail.event_endDt }</h6>
 										</section>

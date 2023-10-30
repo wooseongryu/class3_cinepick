@@ -95,7 +95,7 @@
                                 </div>
 	                            <div class="anime__details__btn">
 	<!--                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> 찜하기</a> -->
-	                                <a href="#" class="follow-btn"><span>예매하기</span></a>
+	                                <a href="getCityList?movie_code=${movie.movie_code }" class="follow-btn"><span>예매하기</span></a>
 	                            </div>
                             </div>
                         </div>
@@ -104,27 +104,29 @@
             </div>
                 
                 
-            <div class="section-title">
-                <h5>트레일러</h5>
-            </div>
-            <div class="row">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10">
-                    <div class="anime__video__player">
-                        <video id="player" playsinline controls data-poster="${pageContext.request.contextPath }/resources/cinepick/videos/test1.jpg">
-                            <source src="${movie.movie_vod }" type="video/mp4" />
-                            <!-- Captions are optional -->
-                            <track kind="captions" label="English captions" src="#" srclang="en" default />
-                        </video>
-                    </div>
-                </div>
-                <div class="col-lg-1"></div>
-            </div>
+            <c:if test="${!empty movie.movie_vod }">
+	            <div class="section-title">
+	                <h5>트레일러</h5>
+	            </div>
+	            <div class="row">
+	                <div class="col-lg-1"></div>
+	                <div class="col-lg-10">
+	                    <div class="anime__video__player" style="text-align: center">
+	<%--                     	<iframe width="560" height="315" src="${movie.movie_vod }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> --%>
+	                        <video id="player" playsinline controls>
+	                            <source src="${movie.movie_vod }" type="video/mp4" />
+	<!--                             <track kind="captions" label="English captions" src="#" srclang="en" default /> -->
+	                        </video>
+	                    </div>
+	                </div>
+	                <div class="col-lg-1"></div>
+	            </div>
+            </c:if>
             <div class="section-title">
                 <h5>스틸컷</h5>
             </div>
             <div class="row">
-            	<c:forEach var="movie_still" items="${movie.movie_stills }">
+            	<c:forEach var="movie_still" items="${movie.movie_stills }" begin="0" end="5">
 		            <div class="col-lg-4 col-md-6 col-sm-6">
 		                <div class="product__item">
 		                    <div class="product__sidebar__view__item set-bg" data-setbg="${movie_still }">
@@ -132,41 +134,10 @@
 		                </div>
 		            </div>
             	</c:forEach>
-<!-- 	            <div class="col-lg-4 col-md-6 col-sm-6"> -->
-<!-- 	                <div class="product__item"> -->
-<%-- 	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test2.jpg"> --%>
-<!-- 	                    </div> -->
-<!-- 	                </div> -->
-<!-- 	            </div> -->
-<!-- 	            <div class="col-lg-4 col-md-6 col-sm-6"> -->
-<!-- 	                <div class="product__item"> -->
-<%-- 	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test3.jpg"> --%>
-<!-- 	                    </div> -->
-<!-- 	                </div> -->
-<!-- 	            </div> -->
-<!-- 	            <div class="col-lg-4 col-md-6 col-sm-6"> -->
-<!-- 	                <div class="product__item"> -->
-<%-- 	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test4.jpg"> --%>
-<!-- 	                    </div> -->
-<!-- 	                </div> -->
-<!-- 	            </div> -->
-<!-- 	            <div class="col-lg-4 col-md-6 col-sm-6"> -->
-<!-- 	                <div class="product__item"> -->
-<%-- 	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test5.jpg"> --%>
-<!-- 	                    </div> -->
-<!-- 	                </div> -->
-<!-- 	            </div> -->
-<!-- 	            <div class="col-lg-4 col-md-6 col-sm-6"> -->
-<!-- 	                <div class="product__item"> -->
-<%-- 	                    <div class="product__sidebar__view__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/cut/test5.jpg"> --%>
-<!-- 	                    </div> -->
-<!-- 	                </div> -->
-<!-- 	            </div> -->
-<!-- 			</div> -->
-                
+            </div>    
             <div class="row">
                 <div class="col-lg-12 col-md-8">
-                    <div class="anime__details__review">
+                    <div class="anime__details__review" style="align-items: center;">
                         <div class="section-title">
                             <h5>관람평</h5>
                         </div>
@@ -178,24 +149,21 @@
                             </h5>
                         </div>
                         <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="${pageContext.request.contextPath }/resources/cinepick/img/profile_pic/review-1.jpg" alt="">
-                            </div>
+<!--                             <div class="anime__review__item__pic"> -->
+<%--                                 <img src="${pageContext.request.contextPath }/resources/cinepick/img/profile_pic/review-1.jpg" alt=""> --%>
+<!--                             </div> -->
                             <div class="anime__review__item__text">
                                 <div class="report">
                                     <a href="#">
                                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                     </a>
                                 </div>
+                                <h6>유저이름</h6>
                                 <h6>
-                                    Chris Curry
-                                </h6>
-                                <h6>
-                                    <span>2023.09.29 01:46</span> &nbsp;&nbsp;&nbsp;
+                                    <span>작성시간</span> &nbsp;&nbsp;&nbsp;
                                     <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i></a> 12
                                 </h6>
-                                <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                "demons" LOL</p>
+                                <p>리뷰내용</p>
                             </div>
                         </div>
                         <div class="anime__review__item">
@@ -320,7 +288,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </section>
     <!-- Anime Section End -->

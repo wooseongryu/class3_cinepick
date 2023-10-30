@@ -271,6 +271,12 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
+									  <label for=""movie_vod"">트레일러</label>
+									  <textarea rows="3" class="form-control form-control-textarea" id="printVod" name="movie_vod"></textarea>
+									</div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_poster">포스터url</label>
 									  <textarea rows="3" class="form-control form-control-textarea" id="printPoster" name="movie_poster"></textarea>
 									</div>

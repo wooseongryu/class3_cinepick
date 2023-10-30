@@ -165,7 +165,7 @@ public class AdminMovieController {
 			model.addAttribute("targetURL", "adminMovieList");
 			return "forward";
 		} else {
-			model.addAttribute("msg", "개봉상태 업데이트를 실패하였습니다.");
+			model.addAttribute("msg", "개봉상태 업데이트를 실패하였습니다.\n 변경할 내역이 없습니다.");
 			return "fail_back";
 		}
 		

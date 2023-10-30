@@ -37,7 +37,7 @@ body {
 	height: 100%;
 	font-family: "Mulish", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	background: #0b0c2a;
+	background: white;
 }
 
 h1,
@@ -153,12 +153,12 @@ ol {
 }
 
 .test h5 a {
-	color: inherit;
+	color: #1c1c1c;
 }
 
 .section-title h4,
 .section-title h5 {
-	color: #ffffff;
+	color: #1C1C1C;
 	font-weight: 600;
 	line-height: 21px;
 	text-transform: uppercase;
@@ -964,7 +964,7 @@ ol {
 .product__pagination a {
 	display: inline-block;
 	font-size: 15px;
-	color: #b7b7b7;
+	color: #1c1c1c;
 	font-weight: 600;
 	height: 50px;
 	width: 50px;
@@ -978,15 +978,15 @@ ol {
 }
 
 .product__pagination a:hover {
-	color: #ffffff;
+	color: #1c1c1c;
 }
 
 .product__pagination a.current-page {
-	border: 1px solid #ffffff;
+	border: 1px solid #1c1c1c;
 }
 
 .product__pagination a i {
-	color: #b7b7b7;
+	color: #1c1c1c;
 	font-size: 15px;
 }
 
@@ -2415,7 +2415,7 @@ ol {
 
 .customer_category {
 	overflow: hidden;
-	background: rgb(128, 128, 128);
+	background: #1c1c1c;
 	padding: 15px 25px 5px 25px;
 	border-radius: 10px;
 	position: relative;
@@ -2447,7 +2447,7 @@ ol {
 
 .qna_table_body {
 	overflow: hidden;
-	background: rgb(70, 50, 50);
+	background: #343a40;
 	padding: 15px 25px 5px 25px;
 	border-radius: 10px;
 	position: relative;
