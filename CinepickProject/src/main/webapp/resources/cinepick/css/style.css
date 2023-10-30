@@ -157,7 +157,7 @@ ol {
 
 .section-title h4,
 .section-title h5 {
-	color: #ffffff;
+	color: #1c1c1c;
 	font-weight: 600;
 	line-height: 21px;
 	text-transform: uppercase;
@@ -1496,7 +1496,7 @@ ol {
 
 .blog__details__title h6 {
 	font-size: 15px;
-	color: #ffffff;
+	color: #1c1c1c;
 	font-weight: 700;
 	text-transform: uppercase;
 	margin-bottom: 30px;
@@ -1509,7 +1509,7 @@ ol {
 }
 
 .blog__details__title h2 {
-	color: #ffffff;
+	color: #1c1c1c;
 	font-size: 48px;
 	font-weight: 700;
 	line-height: 60px;
