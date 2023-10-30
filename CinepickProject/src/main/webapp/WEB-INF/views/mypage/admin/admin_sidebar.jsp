@@ -12,7 +12,7 @@
     <meta name="author" content="">
     
 
-    <title>씨네픽 - webpage</title>
+    <title>씨네픽 - webpage</title> 
 
     <!-- Custom fonts for this template -->
     <link href="${pageContext.request.contextPath }/resources/mypage/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -108,6 +108,22 @@
                 </div>
             </li>
 
+			<!-- Nav Item - 극장관리메뉴 -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTheaters"
+                    aria-expanded="true" aria-controls="collapseTheaters">
+<!--                     <i class="fas fa-fw fa-theater-alt"></i> -->
+                    <span>극장관리</span>
+                </a>
+                <div id="collapseTheaters" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="adminTheaterList">영화관관리</a>
+                        <a class="collapse-item" href="adminScreenList">상영관관리</a>
+                        <div class="collapse-divider"></div>
+                    </div>
+                </div>
+            </li>	
+			
             <!-- Nav Item - 게시판관리메뉴 -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"

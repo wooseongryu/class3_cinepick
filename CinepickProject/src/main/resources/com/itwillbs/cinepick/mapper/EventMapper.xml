@@ -6,23 +6,44 @@
 <mapper namespace="com.itwillbs.cinepick.mapper.EventMapper">
     
    	<!-- 이벤트 카테고리별 조회  -->
+<!-- 	<select id= "selectEventList" resultType="Event"> -->
+<!-- 		SELECT -->
+<!-- 			e.event_idx  -->
+<!-- 			, e.event_title -->
+<!-- 			, e.event_startDt -->
+<!-- 			, e.event_endDt -->
+<!-- 			, e.event_poster -->
+<!-- 			, e.event_thumbnail -->
+<!-- 			, e.event_category -->
+<!-- 			, ec.eventCate_Subject -->
+<!-- 		FROM  -->
+<!-- 			event e JOIN eventCate ec  -->
+<!-- 			ON e.event_category = ec.eventCate_Idx -->
+<!-- 		<if test="eventCate_Idx != -1"> -->
+<!-- 		WHERE eventCate_Idx = #{eventCate_Idx} -->
+<!-- 		</if> -->
+<!-- 		ORDER BY ec.eventCate_Idx -->
+<!-- 	</select> -->
+
 	<select id= "selectEventList" resultType="Event">
-		SELECT
-			e.event_idx 
-			, e.event_title
-			, e.event_startDt
-			, e.event_endDt
-			, e.event_poster
-			, e.event_thumbnail
-			, e.event_category
-			, ec.eventCate_Subject
-		FROM 
-			event e JOIN eventCate ec 
-			ON e.event_category = ec.eventCate_Idx
-		<if test="eventCate_Idx != -1">
-		WHERE eventCate_Idx = #{eventCate_Idx}
-		</if>
-		ORDER BY ec.eventCate_Idx
+		<![CDATA[
+		SELECT *
+			FROM (SELECT e.event_idx 
+						, e.event_title
+						, e.event_startDt
+						, e.event_endDt
+						, e.event_poster
+						, e.event_thumbnail
+						, e.event_category
+						, ec.eventCate_Subject
+						, RANK() OVER(PARTITION BY event_category ORDER BY event_startDt, event_idx DESC) as rk
+					FROM event e 
+					JOIN eventCate ec 
+					  ON e.event_category = ec.eventCate_Idx
+				   ORDER BY ec.eventCate_Idx) A
+			WHERE rk <= 3
+		
+		]]>
 	</select>
 
 <!--    	이벤트 카테고리 전체 조회 -->
