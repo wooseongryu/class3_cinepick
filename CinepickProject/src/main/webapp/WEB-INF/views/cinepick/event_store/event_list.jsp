@@ -75,7 +75,7 @@
 									    	<a href="eventDetail?event_idx=${eventDetail.event_idx} ">
 												<img src ="${pageContext.request.contextPath }/resources/upload/${eventDetail.event_thumbnail }"width="240" height="240" style="margin: 10px 10px 10px 10px;"> 
 											</a>
-											<h6 align="center" style="color: white; margin: 10px 10px 10px 10px">${eventDetail.event_startDt } ~ ${eventDetail.event_endDt }</h6>
+											<h6 align="center" style="color: #1c1c1c; margin: 10px 10px 10px 10px">${eventDetail.event_startDt } ~ ${eventDetail.event_endDt }</h6>
 										</section>
 									</c:forEach>
 								</div>

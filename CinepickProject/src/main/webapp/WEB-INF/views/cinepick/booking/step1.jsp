@@ -56,11 +56,24 @@
     	}
     </style>
     <script type="text/javascript">
-    	function chooseTime(data) {
+    	function final(data) {
 //     		alert(data.getAttribute("data-movieCode"));
 //     		alert(data.getAttribute("data-theaterIdx"));
 //     		alert(data.getAttribute("data-date"));
+//     		alert(data.getAttribute("data-screenName"));
+//     		alert(data.getAttribute("data-hour"));
+    		
+    		$("#result_screen").children().remove();
+    		$("#result_screen").append("<h6>상영관&emsp;" + data.getAttribute("data-screenName") + "</h6>");
 
+    		$(function() {
+	    		$("#step1_screen > .row").find("h6").css("color", "white");
+				$("#step1_screen > .row").find("h6[data-hour='06:00']").css("color", "yellow");
+    		});
+    		
+    	}
+    
+    	function chooseTime(data) {
     		$.ajax({
     			type: 'post',
     			url: 'getTimeList',
@@ -75,8 +88,10 @@
 
 					console.log(resp);
 					$.each(resp.screenList, function(index, screen) {
-						$("#step1_screen").append("<h6 style='color: yellow'>" + screen + "</h6>");
+						$("#result_date").children().remove();
+						$("#result_date").append("<h6>날짜&emsp;&emsp;" + data.getAttribute("data-date") + "</h6>");
 						
+						$("#step1_screen").append("<h6 style='color: yellow'>" + screen + "</h6>");
 						$("#step1_screen").append("<div class='row' id='step1_time''>");
 						$.each(resp.timeList, function(index, time) {
 							let hour = time.sche_start_time.hour;
@@ -85,15 +100,28 @@
 	 						}
 							hour += ":00";
 	 						if (screen == time.screen_name) {
-	 							console.log(screen + ": " + time.screen_name);
+// 	 							console.log(screen + ": " + time.screen_name);
 		 						$("#step1_screen").children(".row").last().append(
-		 									"<div class='col-4'><h6>" + hour + " | " + "27석" + "</h6></div>"
+		 									"<div class='col-4'><h6 data-hour='" 
+		 										+ hour 
+		 										+ "' data-movieCode='" 
+		 										+ data.getAttribute("data-movieCode") 
+		 										+ "' data-theaterIdx='" 
+		 										+ data.getAttribute("data-theaterIdx") 
+		 										+ "' data-date='" 
+		 										+ data.getAttribute("data-date") 
+		 										+ "' data-screenName='" 
+		 										+ time.screen_name 
+		 										+ "' onclick='final(this)'>" + hour + " | " + "27석" + "</h6></div>"
 		 								);
 	 						}
 						});
 						$("#step1_screen").append("</div>");
 						$("#step1_screen").append("<hr>");
 					});
+					
+					$("#step1_date").children("h6").css("color", "white");
+    				$("#step1_date").children("h6[data-date=" + data.getAttribute("data-date") +"]").css("color", "yellow");
     			},
     			error: function() {
     				alert("에러");
@@ -113,12 +141,13 @@
     			success: function(resp) {
     				$("#step1_date").children().remove();
     				$("#step1_screen").children().remove();
+    				
     				let arrDayStr = ['일','월','화','수','목','금','토'];
    					let month = "";
    					let year = "";
     				$.each(resp, function(index, el) {
     					$("#result_theaterName").children().remove();
-    					$("#result_theaterName").append("<h6>극장&emsp;&emsp;" + data.getAttribute("data-movieName") + "</h6>");
+    					$("#result_theaterName").append("<h6>극장&emsp;&emsp;" + data.getAttribute('data-movieName') + "</h6>");
     					
     					if (el.sche_date.year != year) {
     						year = el.sche_date.year;
@@ -126,9 +155,9 @@
     					
     					if (el.sche_date.month != month) {
     						month = el.sche_date.month;
-	    					$("#step1_date").append("<h6 style='margin-bottom: 0px; color: yellow'>" 
+	    					$("#step1_date").append("<div><h6 style='margin-bottom: 0px; color: yellow'>" 
 							    					+ year
-							    					+ "</h6>");
+							    					+ "</h6></div>");
 	    					$("#step1_date").append("<h2>" + month + "</h2>");
     					}
     					
@@ -147,6 +176,12 @@
     											+ arrDayStr[date.getDay()] + " " + day 
     											+ "</h6>");
     				});
+    				
+    				$("#step1_theater").children("h6").css("color", "white");
+    				$("#step1_theater").children("h6[data-theaterIdx=" + data.getAttribute("data-theaterIdx") +"]").css("color", "yellow");
+    				
+    				$("#result_date").children().remove();
+    				$("#result_date").append("<h6>날짜&emsp;&emsp;날짜선택</h6>");
     			},
     			error: function() {
     				alert("에러");
@@ -179,6 +214,15 @@
 										+ "</h6>";
 						$("#step1_theater").append(theater);
 					});
+					
+					$("#result_theaterName").children().remove();
+    				$("#result_theaterName").append("<h6>극장&emsp;&emsp;극장선택</h6>");
+					
+					$("#step1_city").find("h6").css("color", "white");
+    				$("#step1_city").find("h6[data-cityIdx=" + city.getAttribute('data-cityIdx') +"]").css("color", "yellow");
+    				
+    				$("#result_date").children().remove();
+    				$("#result_date").append("<h6>날짜&emsp;&emsp;날짜선택</h6>");
     			},
     			error: function() {
     				alert("에러");
@@ -209,11 +253,20 @@
     					$("#step1_city").append(city);
     				});
     				
+    				$("#result_theaterName").children().remove();
+    				$("#result_theaterName").append("<h6>극장&emsp;&emsp;극장선택</h6>");
+    				
     				$("#result_poster").children().remove();
     				$("#result_poster").append("<img src='" + resp.movieInfo.movie_poster + "' class='res_img'>");
     				
     				$("#result_movieName").children().remove();
     				$("#result_movieName").append("<h6>" + resp.movieInfo.movie_nameK + "</h6>");
+
+    				$("#step1_movie").find("h6").css("color", "white");
+    				$("#step1_movie").find("h6[data-movieCode=" + movie.getAttribute('data-movieCode') +"]").css("color", "yellow");
+    				
+    				$("#result_date").children().remove();
+    				$("#result_date").append("<h6>날짜&emsp;&emsp;날짜선택</h6>");
     			},
     			error: function() {
     				alert("에러");
@@ -333,11 +386,11 @@
 										<div id="result_theaterName">
 											<h6>극장&emsp;&emsp;극장선택</h6>
 										</div>
-										<div>
-											<h6>일시&emsp;&emsp;2023.10.13</h6>
+										<div id="result_date">
+											<h6>날짜&emsp;&emsp;날짜선택</h6>
 										</div>
-										<div>
-											<h6>상영관&emsp;1관</h6>
+										<div id="result_screen">
+											<h6>상영관&emsp;상영관선택</h6>
 										</div>
 										<div>
 											<h6>인원&emsp;&emsp;</h6>
@@ -346,8 +399,9 @@
 									<div class="res_result">
 										<h6>좌석번호&emsp;</h6>
 									</div>
-									<div class="res_result">
+									<div class="res_result" id="result">
 										<input type="button" value="좌석선택" class="res_btn" onclick="location.href='bookingStepTwo'">
+<!-- 										<input type="button" value="좌석선택" class="res_btn" disabled="disabled" style="background: silver;"> -->
 									</div>
 		                        </div>
 							</div>

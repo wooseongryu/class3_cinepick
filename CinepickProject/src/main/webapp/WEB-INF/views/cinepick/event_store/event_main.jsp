@@ -59,7 +59,9 @@
 						<div class="row">
 						<c:forEach var="eventCate" items="${eventCateList }">
 							<div class="col">
-								<div class="customer_category" name="${eventCate.eventCate_Subject}" <c:if test="${eventCate.eventCate_Idx eq param.eventCate_Idx}">style="background: #1C1C1C" </c:if> onclick="location.href='eventList?eventCate_Idx=${eventCate.eventCate_Idx}'" >
+								<div class="customer_category" name="${eventCate.eventCate_Subject}" 
+									<c:if test="${eventCate.eventCate_Idx eq param.eventCate_Idx}">style="background: #1C1C1C" </c:if> 
+									onclick="location.href='eventList?eventCate_Idx=${eventCate.eventCate_Idx}'" >
 									<h6>${eventCate.eventCate_Subject }</h6>
 								</div>
 							</div>
@@ -73,7 +75,7 @@
 			                        <h6 align="right" style="color: #1C1C1C;" onclick="location.href='eventList?eventCate_Idx=${eventCate.eventCate_Idx}'" >더보기</h6>
 			                    </div>
 								<div class="row" style="justify-content: center">
-									<c:forEach var="event" items="${eventList }">
+									<c:forEach var="event" items="${eventList }" >
 										<section>
 											<c:if test="${event.event_category eq eventCate.eventCate_Idx }">
 										    	<a href="eventDetail?event_idx=${event.event_idx}">

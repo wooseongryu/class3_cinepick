@@ -99,7 +99,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
+	color: #3d3d3d;
 }
 
 ul,
@@ -126,7 +126,7 @@ ol {
 
 .test h5 {
 	text-align: right;
-	color: #ffffff;
+	color: #3d3d3d;
 	font-weight: 600;
 	line-height: 21px;
 	text-transform: uppercase;
@@ -157,7 +157,7 @@ ol {
 
 .section-title h4,
 .section-title h5 {
-	color: #ffffff;
+	color: #1c1c1c;
 	font-weight: 600;
 	line-height: 21px;
 	text-transform: uppercase;
@@ -1088,7 +1088,7 @@ ol {
 .anime__details__widget ul li {
 	list-style: none;
 	font-size: 15px;
-	color: #ffffff;
+	color: #3d3d3d;
 	line-height: 30px;
 	position: relative;
 	padding-left: 18px;
@@ -1181,7 +1181,8 @@ ol {
 
 .anime__review__item__text {
 	overflow: hidden;
-	background: rgb(70, 50, 50);
+/* 	background: rgb(70, 50, 50); */
+	border: 1px solid #b7b7b7; 
 	padding: 18px 30px 16px 20px;
 	border-radius: 10px;
 	position: relative;
@@ -1206,7 +1207,7 @@ ol {
 }
 
 .anime__review__item__text h6 {
-	color: #ffffff;
+	color: #b7b7b7;
 	font-weight: 700;
 	margin-bottom: 10px;
 }
@@ -1496,7 +1497,7 @@ ol {
 
 .blog__details__title h6 {
 	font-size: 15px;
-	color: #ffffff;
+	color: #1c1c1c;
 	font-weight: 700;
 	text-transform: uppercase;
 	margin-bottom: 30px;
@@ -1509,7 +1510,7 @@ ol {
 }
 
 .blog__details__title h2 {
-	color: #ffffff;
+	color: #1c1c1c;
 	font-size: 48px;
 	font-weight: 700;
 	line-height: 60px;

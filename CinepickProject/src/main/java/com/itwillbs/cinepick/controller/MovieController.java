@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.cinepick.service.MovieService;
+import com.itwillbs.cinepick.service.ReviewService;
 import com.itwillbs.cinepick.vo.BoxOfficeVO;
 import com.itwillbs.cinepick.vo.MovieVO;
+import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 
 @Controller
@@ -22,6 +24,9 @@ public class MovieController {
 	
 	@Autowired
 	private MovieService movieService;
+	
+	@Autowired
+	private ReviewService reviewService;
 	
 	
 	// 현재 상영작 목록 보기
@@ -75,6 +80,9 @@ public class MovieController {
  		List<String> movie_stills = Arrays.asList(stills);
  		movie.setMovie_stills(movie_stills);
  		
+ 		List<ReviewVO> review = reviewService.selectReviewList(movie_code); 
+ 		
+ 		model.addAttribute("review", review);
 		model.addAttribute("movie", movie);
 		
 //		return "";
