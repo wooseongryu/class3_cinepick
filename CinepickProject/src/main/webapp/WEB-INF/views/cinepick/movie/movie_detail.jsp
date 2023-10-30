@@ -29,7 +29,31 @@
     
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
 	<style>
-		
+		#reviewForm fieldset{
+		    display: inline-block;
+		    direction: rtl;
+		    border:0;
+		}
+		#reviewForm fieldset legend{
+		    text-align: right;
+		}
+		#reviewForm input[type=radio]{
+		    display: none;
+		}
+		#reviewForm label{
+		    font-size: 3em;
+		    color: transparent;
+		    text-shadow: 0 0 0 #f0f0f0;
+		}
+		#reviewForm label:hover{
+		    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+		}
+		#reviewForm label:hover ~ label{
+		    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+		}
+		#reviewForm input[type=radio]:checked ~ label{
+		    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+		}
 	</style>
 
 </head>
@@ -148,125 +172,18 @@
 <!--                                 <a href="movieDetail2">공감순</a> -->
                             </h5>
                         </div>
-                        <div class="anime__review__item">
-<!--                             <div class="anime__review__item__pic"> -->
-<%--                                 <img src="${pageContext.request.contextPath }/resources/cinepick/img/profile_pic/review-1.jpg" alt=""> --%>
-<!--                             </div> -->
-                            <div class="anime__review__item__text">
-                                <div class="report">
-                                    <a href="#">
-                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                                <h6>유저이름</h6>
-                                <h6>
-                                    <span>작성시간</span> &nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i></a> 12
-                                </h6>
-                                <p>리뷰내용</p>
-                            </div>
-                        </div>
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="${pageContext.request.contextPath }/resources/cinepick/img/profile_pic/review-2.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
-                                <div class="report">
-                                    <a href="#">
-                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                                <h6>
-                                    Lewis Mann
-                                </h6>
-                                <h6>
-                                    <span>2023.09.29 01:46</span> &nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="follow-btn"><i class="fa fa-heart"></i></a> 12
-                                </h6>
-                                <p>Finally it came out ages ago</p>
-                            </div>
-                        </div>
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="${pageContext.request.contextPath }/resources/cinepick/img/profile_pic/review-3.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
-                                <div class="report">
-                                    <a href="#">
-                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                                <h6>
-                                    Louis Tyler
-                                </h6>
-                                <h6>
-                                    <span>2023.09.29 01:46</span> &nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i></a> 12
-                                </h6>
-                                <p>Where is the episode 15 ? Slow update! Tch</p>
-                            </div>
-                        </div>
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="${pageContext.request.contextPath }/resources/cinepick/img/profile_pic/review-4.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
-                                <div class="report">
-                                    <a href="#">
-                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                                <h6>
-                                    Chris Curry
-                                </h6>
-                                <h6>
-                                    <span>2023.09.29 01:46</span> &nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i></a> 12
-                                </h6>
-                                <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                "demons" LOL</p>
-                            </div>
-                        </div>
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="${pageContext.request.contextPath }/resources/cinepick/img/profile_pic/review-5.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
-                                <div class="report">
-                                    <a href="#">
-                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                                <h6>
-                                    Lewis Mann
-                                </h6>
-                                <h6>
-                                    <span>2023.09.29 01:46</span> &nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i></a> 12
-                                </h6>
-                                <p>Finally it came out ages ago</p>
-                            </div>
-                        </div>
-                        <div class="anime__review__item">
-                            <div class="anime__review__item__pic">
-                                <img src="${pageContext.request.contextPath }/resources/cinepick/img/profile_pic/review-6.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
-                                <div class="report">
-                                    <a href="#">
-                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                                <h6>
-                                    Louis Tyler
-                                </h6>
-                                <h6>
-                                    <span>2023.09.29 01:46</span> &nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="follow-btn"><i class="fa fa-heart"></i></a> 12
-                                </h6>
-                                <p>Where is the episode 15 ? Slow update! Tch</p>
-                            </div>
-                        </div>
+						<c:forEach var="review" items="${review }">
+	                        <div class="anime__review__item">
+	                            <div class="anime__review__item__text" style="margin: auto;">
+	                                <h6>${review.user_id }</h6>
+	                                <h6>
+	                                    <span>${review.review_date }</span> &nbsp;&nbsp;&nbsp;
+	                                    <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i></a> 12
+	                                </h6>
+	                                <p>${review.review_content }</p>
+	                            </div>
+	                        </div>
+						</c:forEach>
                         <div class="product__pagination">
                             <a href="#"><i class="fa fa-angle-double-left"></i></a>
                             <a href="#" class="current-page">1</a>
@@ -281,8 +198,21 @@
                         <div class="section-title">
                             <h5>관람평 작성</h5>
                         </div>
-                        <form action="reviewWritePro">
-                        	<input type="hidden" value="${movie.movie_code }">
+                        <form action="reviewWritePro" id="reviewForm">
+                       		<fieldset>
+<!-- 								<span class="text-bold">별점을 선택해주세요</span> -->
+								<input type="radio" name="review_rating" value="5" id="rate1">
+								<label for="rate1">★</label>
+								<input type="radio" name="review_rating" value="4" id="rate2">
+								<label for="rate2">★</label>
+								<input type="radio" name="review_rating" value="3" id="rate3">
+								<label for="rate3">★</label>
+								<input type="radio" name="review_rating" value="2" id="rate4">
+								<label for="rate4">★</label>
+								<input type="radio" name="review_rating" value="1" id="rate5">
+								<label for="rate5">★</label>
+							</fieldset>
+                        	<input type="hidden" value="${movie.movie_code }" name="movie_code">
                             <textarea placeholder="리뷰를 작성해 주세요." name="review_content"></textarea>
                             <button type="submit"><i class="fa fa-location-arrow"></i> 등록</button>
                         </form>

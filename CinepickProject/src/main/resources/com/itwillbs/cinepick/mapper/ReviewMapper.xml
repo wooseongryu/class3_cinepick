@@ -7,7 +7,23 @@
 <!-- ========== 리뷰정보관리========== -->
 
 	<!-- 영화등록 -->
+	<insert id="reviewInsert">
+		INSERT INTO review
+		VALUES (
+			NULL
+			, #{review_rating}
+			, #{review_content}
+			, now()
+			, #{movie_code}
+			, #{user_id}
+		)
+	</insert>
 	
+	<select id="selectReviewList" resultType="Review">
+		SELECT *
+		FROM review
+		WHERE movie_code = #{movie_code}
+	</select>
 	
 
 </mapper>
