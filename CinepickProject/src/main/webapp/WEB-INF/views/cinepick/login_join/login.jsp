@@ -50,7 +50,7 @@
                         <h3>로그인</h3>
                         <form action="loginPro" method="post">
                             <div class="input__item">
-                                <input name="user_id" type="text" placeholder="아이디를 입력하세요">
+                                <input name="user_id" type="text" value="${cookie.cookieId.value }" placeholder="아이디를 입력하세요">
                                 <span class="icon_id"></span>
                             </div>
                             <div class="input__item">
