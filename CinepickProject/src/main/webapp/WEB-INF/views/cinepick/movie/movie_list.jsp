@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="product__page__filter">
-	                                    <form action="movieList" id="selectListType" style="color: white">
+	                                    <form action="movieList" id="selectListType" style="color: #1c1c1c">
 	                                    	<input type="radio"  name="MvListType"  value="boxoffice" id="box" checked > 
 	                                    	<label for="box">박스오피스순</label>
 	                                    	 &emsp;<input type="radio"  name="MvListType" value="audi" id="audi" <c:if test="${param.MvListType eq 'audi' }">checked</c:if>>
