@@ -126,26 +126,28 @@
 	                                	<a href="movieDetail?movie_code= ${movie.movie_code} ">
 		                                    <div class="product__item__pic set-bg" data-setbg="${movie.movie_poster }">
 		                                        <div class="comment">
-			                                        <c:choose>
-			                                        	<c:when test="${movie.movie_rated eq '전체관람가'}">
-			                                        		<span class = "rate-all"></span>
-			                                        	</c:when>
-			                                        	<c:when test="${movie.movie_rated eq '12세이상관람가'}">
-			                                        		<span class = "rate-12"></span>
-			                                        	</c:when>
-			                                        	<c:when test="${movie.movie_rated eq '15세이상관람가'}">
-			                                        		<span class = "rate-15"></span>
-			                                        	</c:when>
-			                                        	<c:when test="${movie.movie_rated eq '18세이상관람가'}">
-			                                        		<span class = "rate-18"></span>
-			                                        	</c:when>
-			                                        </c:choose>
+<%-- 			                                        <c:choose> --%>
+<%-- 			                                        	<c:when test="${movie.movie_rated eq '전체관람가'}"> --%>
+<!-- 			                                        		<span class = "rate-all"></span> -->
+<%-- 			                                        	</c:when> --%>
+<%-- 			                                        	<c:when test="${movie.movie_rated eq '12세이상관람가'}"> --%>
+<!-- 			                                        		<span class = "rate-12"></span> -->
+<%-- 			                                        	</c:when> --%>
+<%-- 			                                        	<c:when test="${movie.movie_rated eq '15세이상관람가'}"> --%>
+<!-- 			                                        		<span class = "rate-15"></span> -->
+<%-- 			                                        	</c:when> --%>
+<%-- 			                                        	<c:when test="${movie.movie_rated eq '18세이상관람가'}"> --%>
+<!-- 			                                        		<span class = "rate-18"></span> -->
+<%-- 			                                        	</c:when> --%>
+<%-- 			                                        </c:choose> --%>
+													<span class = "${movie.movie_rated}"></span>
 		                                        </div>
 		                                    </div>
 	                                    </a>
 	                                    <div class="product__item__text">
 	                                        <ul>
 	                                            <li>개봉일 ${movie.movie_openDt }</li>
+	                                            <li class="dday" data-movie-opendt="${movie.movie_openDt}"></li>
 	                                        </ul>
 	                                        <h5><a href="movieDetail">${movie.movie_nameK }</a></h5>
 	                                    </div>
@@ -182,6 +184,28 @@
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
+<script src= "${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
+<script>
+	$(function() {
+		dday();
+	});
+	
+	function dday() {
+		$(".dday").each(function() {
+			let dday = new Date($(this).data("movie-opendt"));
+			let now = new Date();
+			console.log(now);
+			let distance = dday - now;
+			let d = Math.floor(distance / (1000 * 60 * 60 * 24));
+			$(this).html('D-' + d);
+			
+		});
+		
+		
+	}
+	
+
+</script>
 
 </body>
 
