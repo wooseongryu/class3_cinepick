@@ -99,7 +99,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
+	color: #3d3d3d;
 }
 
 ul,
@@ -126,7 +126,7 @@ ol {
 
 .test h5 {
 	text-align: right;
-	color: #ffffff;
+	color: #3d3d3d;
 	font-weight: 600;
 	line-height: 21px;
 	text-transform: uppercase;
@@ -1088,7 +1088,7 @@ ol {
 .anime__details__widget ul li {
 	list-style: none;
 	font-size: 15px;
-	color: #ffffff;
+	color: #3d3d3d;
 	line-height: 30px;
 	position: relative;
 	padding-left: 18px;

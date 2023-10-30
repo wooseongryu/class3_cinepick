@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.itwillbs.cinepick.mapper.ReviewMapper">
+<!-- ========== 리뷰정보관리========== -->
+
+	<!-- 영화등록 -->
+	<insert id="reviewInsert">
+		INSERT INTO review
+		VALUES (
+			NULL
+			, #{review_rating}
+			, #{review_content}
+			, now()
+			, #{movie_code}
+			, #{user_id}
+		)
+	</insert>
+	
+	<select id="selectReviewList" resultType="Review">
+		SELECT *
+		FROM review
+		WHERE movie_code = #{movie_code}
+	</select>
+	
+
+</mapper>
