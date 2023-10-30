@@ -64,6 +64,7 @@
 			,movie_plot = #{movie_plot}
 			,movie_poster = #{movie_poster}
 			,movie_still = #{movie_still}
+			,movie_vod = #{movie_vod}
 		WHERE movie_code = #{movie_code}	
 			 
 	</update>	
