@@ -56,11 +56,18 @@
     	}
     </style>
     <script type="text/javascript">
-    	function chooseTime(data) {
+    	function final(data) {
 //     		alert(data.getAttribute("data-movieCode"));
 //     		alert(data.getAttribute("data-theaterIdx"));
 //     		alert(data.getAttribute("data-date"));
-
+//     		alert(data.getAttribute("data-screenName"));
+//     		alert(data.getAttribute("data-hour"));
+    		
+    		$("#result_screen").children().remove();
+    		$("#result_screen").append("<h6>상영관&emsp;" + data.getAttribute("data-screenName") + "</h6>");
+    	}
+    
+    	function chooseTime(data) {
     		$.ajax({
     			type: 'post',
     			url: 'getTimeList',
@@ -75,8 +82,10 @@
 
 					console.log(resp);
 					$.each(resp.screenList, function(index, screen) {
-						$("#step1_screen").append("<h6 style='color: yellow'>" + screen + "</h6>");
+						$("#result_date").children().remove();
+						$("#result_date").append("<h6>날짜&emsp;&emsp;" + data.getAttribute("data-date") + "</h6>");
 						
+						$("#step1_screen").append("<h6 style='color: yellow'>" + screen + "</h6>");
 						$("#step1_screen").append("<div class='row' id='step1_time''>");
 						$.each(resp.timeList, function(index, time) {
 							let hour = time.sche_start_time.hour;
@@ -85,9 +94,19 @@
 	 						}
 							hour += ":00";
 	 						if (screen == time.screen_name) {
-	 							console.log(screen + ": " + time.screen_name);
+// 	 							console.log(screen + ": " + time.screen_name);
 		 						$("#step1_screen").children(".row").last().append(
-		 									"<div class='col-4'><h6>" + hour + " | " + "27석" + "</h6></div>"
+		 									"<div class='col-4'><h6 data-hour='" 
+		 										+ hour 
+		 										+ "' data-movieCode='" 
+		 										+ data.getAttribute("data-movieCode") 
+		 										+ "' data-theaterIdx='" 
+		 										+ data.getAttribute("data-theaterIdx") 
+		 										+ "' data-date='" 
+		 										+ data.getAttribute("data-date") 
+		 										+ "' data-screenName='" 
+		 										+ time.screen_name 
+		 										+ "' onclick='final(this)'>" + hour + " | " + "27석" + "</h6></div>"
 		 								);
 	 						}
 						});
@@ -333,11 +352,11 @@
 										<div id="result_theaterName">
 											<h6>극장&emsp;&emsp;극장선택</h6>
 										</div>
-										<div>
-											<h6>일시&emsp;&emsp;2023.10.13</h6>
+										<div id="result_date">
+											<h6>날짜&emsp;&emsp;날짜선택</h6>
 										</div>
-										<div>
-											<h6>상영관&emsp;1관</h6>
+										<div id="result_screen">
+											<h6>상영관&emsp;상영관선택</h6>
 										</div>
 										<div>
 											<h6>인원&emsp;&emsp;</h6>
