@@ -87,7 +87,12 @@ public class MovieController {
  			rvRate += rv.getReview_rating();
  		}
  		
- 		int rvCount = reviewService.countReviewList(movie_code);
+ 		Integer rvCount = reviewService.countReviewList(movie_code);
+ 		if(rvCount == null) { 
+ 			rvCount = 0;
+ 		}
+ 		
+ 		
  		double rvAvg = rvRate / rvCount;
 // 		System.out.println(rvAvg);
  		movie.setMovie_avg(Math.round(rvAvg * 10)  / 10.0);
