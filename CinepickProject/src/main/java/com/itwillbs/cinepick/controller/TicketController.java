@@ -89,5 +89,15 @@ public class TicketController {
 		return "cinepick/booking/step5";
 	}
 	
+	@GetMapping("stepPay")
+	public String stepPay() {
+		return "cinepick/booking/stepPay_test2";
+	}
+	
+	@GetMapping("headTest")
+	public String headTest() {
+		return "cinepick/booking/test";
+	}
+	
 	
 }

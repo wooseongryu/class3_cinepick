@@ -8,21 +8,21 @@ function calcLeft() {
 	let sum = 0;
 	$.each($('.now'), function(index, el){
 	    sum += Number(el.textContent);
-	});
+	})
 	total = sum;
 	
-	choice = $(".common,.choice").length - 1;
-//	choice = $(".choice").length - 1;
+	choice = $(".choice").length - 1;
 	left = total - choice;
 	if(left < 0) {
-		left == 0;
+		left = 0;
 		return;
 	}
 	
 	console.log("total: " + total);
-    console.log("choice!!!: " + choice);
+    console.log("choice: " + choice);
     console.log("left: " + left);
-};
+}
+
 
 // 해제 작업
 function onChoice() {
@@ -53,7 +53,7 @@ function onChoice() {
 
 $(function() {
 	
-	
+	// 매수 선택
 	$(".seat-count button").click(function() {
 		
 		let numElem = $(this).closest(".count").find(".now");
@@ -74,7 +74,6 @@ $(function() {
 				confirm("선택하신 좌석을 모두 취소하고 다시 선택하시겠습니까?");		
 				return;
 			}
-			
 		}
 		
 		// +- 버튼에 따라 매수
@@ -99,15 +98,38 @@ $(function() {
 		
 	});
 	
+	function mouseOn() {
+		
+		if(left == 0) return;
+		
+		$(this).addClass("on");
+		
+		if(left == 1) return;
+		
+	    let seatNo = parseInt($(this).attr("seatno"));
+	    let next = $(this).next();
+	    let prev = $(this).prev();
+		
+	    if (left > 1) {
+	        // 홀수
+	        if (seatNo % 2 == 1) {
+	            next.addClass("on");
+	        // 짝수 
+	        } else {
+	            prev.addClass("on");
+	        }
+	    }
+		
+		
+		let uniqNo = $(this).attr("seatuniqno");
+				
+		
+	}	
 	
-
+	
 	function onEvent() { 
 		$(".on").addClass("choice");
 		
-		// 이벤트 삭제
-		
-		// 쌤	
-		$(".choice").off("click");
 		$(".choice").click(onChoice);
 		calcLeft();
 	};

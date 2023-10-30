@@ -44,16 +44,16 @@
 	<input type="hidden" id="brchNo" name="brchNo" value="2202">
 	<!-- TODO 추후 brchNO 수정 -->
 	
-	<section id="layer_age_alert" class="modal-layer" style="z-index: 900"><a href="" class="focus">레이어로 포커스 이동 됨</a>
-        <div class="wrap" style="width: 750px; height: 350px; margin-left: -375px; margin-top: 0px; top: 140px;">
-            <header class="layer-header"> <h3 class="tit">알림</h3> </header>
-            <div class="layer-con"> <div class="alert-age-layer age12"> <div class="age-box age-12"> <div class="left"> <p class="circle"></p> </div> <div class="right"> <p class="tit">12세이상관람가</p> <p class="txt"><p>만 12 세 미만의 고객님은(영,유아 포함)<br>반드시 성인 보호자의 동반하에 관람이 가능합니다.<br>(확인불가 시 입장제한)<br></p></p> </div> </div> </div></div>
-            <div class="btn-group-fixed">
-                <button type="button" class="button purple close-layer">확인</button>
-            </div>
-            <button type="button" class="btn-modal-close">레이어 닫기</button>
-        </div>
-    </section>
+<!-- 	<section id="layer_age_alert" class="modal-layer" style="z-index: 900"><a href="" class="focus">레이어로 포커스 이동 됨</a> -->
+<!--         <div class="wrap" style="width: 750px; height: 350px; margin-left: -375px; margin-top: 0px; top: 140px;"> -->
+<!--             <header class="layer-header"> <h3 class="tit">알림</h3> </header> -->
+<!--             <div class="layer-con"> <div class="alert-age-layer age12"> <div class="age-box age-12"> <div class="left"> <p class="circle"></p> </div> <div class="right"> <p class="tit">12세이상관람가</p> <p class="txt"><p>만 12 세 미만의 고객님은(영,유아 포함)<br>반드시 성인 보호자의 동반하에 관람이 가능합니다.<br>(확인불가 시 입장제한)<br></p></p> </div> </div> </div></div> -->
+<!--             <div class="btn-group-fixed"> -->
+<!--                 <button type="button" class="button purple close-layer">확인</button> -->
+<!--             </div> -->
+<!--             <button type="button" class="btn-modal-close">레이어 닫기</button> -->
+<!--         </div> -->
+<!--     </section> -->
     
     <div class="inner-wrap" style="padding-top:40px; padding-bottom:100px;">
 	    <div class="quick-reserve">
@@ -655,6 +655,8 @@
 	<!-- Test 추가 -->
 	<div id="output"></div>
 	<div id="output2">하하하</div>
+	<input type="button" value="headerfooterㅅㄷㄴㅅ" class="test" id="payTest" onclick="location.href='headTest'">
+	<input type="button" value="결제페이지로" class="test" id="payTest" onclick="location.href='stepPay'">
 	<input type="button" value="예매완료페이지로" class="test" id="complete" onclick="location.href='paySuccess'">
 	<form action="bookingStepThree" method="post">
 		<input type="text" placeholder="${allTickets }">
@@ -695,8 +697,9 @@
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat8.js"></script>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat_testing/seat4.js"></script> --%>
 
+
 	<script>
-	
+
 	let ticketCount;
 	let ticket = "";
 	let allTickets = "";

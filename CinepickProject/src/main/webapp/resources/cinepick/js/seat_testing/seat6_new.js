@@ -8,21 +8,102 @@ function calcLeft() {
 	let sum = 0;
 	$.each($('.now'), function(index, el){
 	    sum += Number(el.textContent);
-	});
+	})
 	total = sum;
 	
-	choice = $(".common,.choice").length - 1;
-//	choice = $(".choice").length - 1;
+	choice = $(".choice").length - 1;
 	left = total - choice;
 	if(left < 0) {
-		left == 0;
+		left = 0;
 		return;
 	}
 	
 	console.log("total: " + total);
-    console.log("choice!!!: " + choice);
+    console.log("choice: " + choice);
     console.log("left: " + left);
-};
+}
+
+// class에 on 추가
+function addOn() {
+	$(this).addClass("on");
+	
+	if(left > 1) {
+		seatNo();
+		nextPrev();
+		
+	}
+}
+
+// class에 on 제거
+function removeOn() {
+	$(this).removeClass("on");
+}
+
+// class에 choice 추가 + on
+function addChoice() {
+	$(this).addClass("on choice");
+}
+
+// class에 choice 제거 - on
+function removeChoice() {
+	$(this).removeClass("on choice");
+}
+
+// seatno 판별
+function seatNo() {
+	let seatNo = parseInt($(this).attr("seatno"));
+}
+
+// next, prev 가져오기
+function nextPrev() {
+    let next = $(this).next();
+    let prev = $(this).prev();
+}
+
+// nextOrd - 두 매 이상일 때 (left)
+function nextOrd() {
+	seatNo();
+	
+	// 홀수
+	if(seatNo % 2 == 1) {
+		$(this).attr("nextord", "N");
+	} else {
+		$(this).attr("nextord", "P");
+	}
+}
+
+// seatuniqno 판별
+function uniq() {
+	let uniq = parseInt($(this).attr("seatuniqno"));
+	
+}
+
+// seatnextuniqno 추가
+function nextUniq() {
+	uniq();
+	$(this).attr("seatnextuniqno", uniq);
+}
+
+// selected, 선택됨
+function selected() {
+	$(this).attr("selected", selected);
+	$(this).find("condition").text("선택됨");
+}
+
+
+$(function() {
+	
+	calcLeft();
+	
+	// 잔여 좌석이 2매 이상일 때
+	if(left > 1) {
+		nextOrd();
+	}
+	
+});
+
+
+
 
 // 해제 작업
 function onChoice() {
@@ -50,10 +131,10 @@ function onChoice() {
 };
 
 
-
+// 화면 로딩 후 시작
 $(function() {
 	
-	
+	// 매수 선택
 	$(".seat-count button").click(function() {
 		
 		let numElem = $(this).closest(".count").find(".now");
@@ -74,7 +155,6 @@ $(function() {
 				confirm("선택하신 좌석을 모두 취소하고 다시 선택하시겠습니까?");		
 				return;
 			}
-			
 		}
 		
 		// +- 버튼에 따라 매수
@@ -99,15 +179,38 @@ $(function() {
 		
 	});
 	
+	function mouseOn() {
+		
+		if(left == 0) return;
+		
+		$(this).addClass("on");
+		
+		if(left == 1) return;
+		
+	    let seatNo = parseInt($(this).attr("seatno"));
+	    let next = $(this).next();
+	    let prev = $(this).prev();
+		
+	    if (left > 1) {
+	        // 홀수
+	        if (seatNo % 2 == 1) {
+	            next.addClass("on");
+	        // 짝수 
+	        } else {
+	            prev.addClass("on");
+	        }
+	    }
+		
+		
+		let uniqNo = $(this).attr("seatuniqno");
+				
+		
+	}	
 	
-
+	
 	function onEvent() { 
 		$(".on").addClass("choice");
 		
-		// 이벤트 삭제
-		
-		// 쌤	
-		$(".choice").off("click");
 		$(".choice").click(onChoice);
 		calcLeft();
 	};
