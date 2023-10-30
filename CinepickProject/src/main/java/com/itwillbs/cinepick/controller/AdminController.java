@@ -1269,4 +1269,114 @@ public class AdminController {
 		return "redirect:/adminEventCategoryUpdate";
 	}
 	
+	/*====================================================================
+	 * 11. 극장관리
+	 * ===================================================================
+	 * */
+	
+	// 극장 조회 페이지
+	@GetMapping("adminTheaterList")
+	public String adminTheaterList(Model model, HttpSession session) {
+		System.out.println("AdminController - adminTheaterList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		List<TheaterVO> theaterList = adminService.getTheater("");
+		model.addAttribute("theaterList", theaterList);
+		
+		return "mypage/admin/board_theater";
+		
+	}
+	
+	// 극장 등록 폼
+	@GetMapping("adminTheaterInsert")
+	public String adminTheaterInsert(HttpSession session, Model model) {
+		System.out.println("AdminController - adminTheaterInsert()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		return "mypage/admin/insert_theater";
+	}
+	
+	// 극장 등록
+	@PostMapping("adminTheaterInsertPro")
+	public String adminTheaterInsertPro(TheaterVO theater, Model model) {
+		System.out.println("AdminController - adminTheaterInsertPro()");
+		int insertCount = adminService.insertTheater(theater);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminTheaterList";
+	}
+	
+	// 극장 삭제
+	@GetMapping("adminTheaterDelete")
+	public String adminTheaterDelete(int theaterIdx, Model model, HttpSession session) {
+		System.out.println("AdminController - adminTheaterDelete()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		int deleteCount = adminService.deleteTheater(theaterIdx);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminTheaterList";
+	}
+	
+	// 극장 수정 폼
+	@GetMapping("adminTheaterUpdate")
+	public String adminTheaterUpdate(String theaterIdx, Model model, HttpSession session) {
+		System.out.println("AdminController - adminTheaterUpdate()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}		
+		TheaterVO theater = adminService.getTheater(theaterIdx).get(0);
+		model.addAttribute("theater", theater);
+		
+		return "mypage/admin/update_theater";
+	}
+	
+	// 극장 수정
+	@PostMapping("adminTheaterUpdatePro")
+	public String adminTheaterUpdatePro(TheaterVO theater, Model model) {
+		System.out.println("AdminController - adminTheaterUpdatePro()");
+		int updateCount = adminService.updateTheater(theater);
+		
+		if (updateCount == 0) {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminTheaterList";
+	}
+	
 }

@@ -297,7 +297,7 @@
     	DELETE FROM event
     	WHERE event_idx = #{event_idx};
     </delete>
-    <!-- 이벤트 끝 -->
+    
     
     <!-- 자주 묻는 질문 카테고리 -->
     <insert id="insertEventCategory">
@@ -321,6 +321,55 @@
     </delete>
     <!-- 자주 묻는 질문 카테고리 끝 -->
     
+    <!-- 극장  -->
+	<insert id="insertTheater">
+		INSERT INTO theater
+		VALUES (
+			null
+			, #{brchNo}
+			, #{city_idx}
+			, #{theater_name}
+			, #{theater_title}
+			, #{theater_address}
+			, #{theater_facility1}
+			, #{theater_facility2}
+			, #{theater_facility3}
+			, #{theater_facility4}
+		)
+	</insert>
+	
+	
+	<select id="selectAdminTheater" resultType="Theater">
+        SELECT
+			theater_idx
+			, brchNo
+			, theater_name
+			, theater_title
+			, theater_address
+		FROM theater
+		<if test="theaterIdx != null and !theaterIdx.equals('')">
+		WHERE theater_idx = #{theaterIdx }
+ 		</if>
+ 		ORDER BY theater_idx DESC  
+    </select>
+
+
+    <delete id="deleteTheater">
+    	DELETE FROM theater
+    	WHERE theater_idx = #{theaterIdx };
+    </delete>
+    
+    <update id="updateTheater">
+    	UPDATE theater
+    	SET 
+    		theater_idx = #{theater_idx } 
+    		, theater_name = #{theater_name }
+    		, theater_title = #{theater_title }
+    		, theater_address = #{theater_address}
+    	WHERE theater_idx = #{theater_idx };
+    </update>
+    <!-- 극장 끝 -->
+
     
     
 </mapper>

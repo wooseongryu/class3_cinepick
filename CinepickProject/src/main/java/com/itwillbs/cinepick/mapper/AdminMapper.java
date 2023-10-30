@@ -121,4 +121,19 @@ public interface AdminMapper {
 	List<EventCateVO> selectEventCategory();
 
 	int deleteEventCategory(int eventCate_Idx);
+	
+	
+	/*==============================================================
+	 * 극장 카테고리
+	 * =============================================================
+	 * */
+	
+	int insertTheater(TheaterVO theater);
+
+	List<TheaterVO> selectAdminTheater(String string);
+
+	int deleteTheater(int theaterIdx);
+
+	int updateTheater(TheaterVO theater);
+
 }
