@@ -145,7 +145,7 @@
                             <h5>
                                 <a style="color: red;">최신순</a>
                                  &nbsp;&nbsp;
-                                <a href="movieDetail2">공감순</a>
+<!--                                 <a href="movieDetail2">공감순</a> -->
                             </h5>
                         </div>
                         <div class="anime__review__item">
@@ -281,8 +281,9 @@
                         <div class="section-title">
                             <h5>관람평 작성</h5>
                         </div>
-                        <form action="#">
-                            <textarea placeholder="Your Comment"></textarea>
+                        <form action="reviewWritePro">
+                        	<input type="hidden" value="${movie.movie_code }">
+                            <textarea placeholder="리뷰를 작성해 주세요." name="review_content"></textarea>
                             <button type="submit"><i class="fa fa-location-arrow"></i> 등록</button>
                         </form>
                     </div>

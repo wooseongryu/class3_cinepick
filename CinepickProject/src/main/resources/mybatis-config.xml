@@ -20,6 +20,7 @@
 		<typeAlias type="com.itwillbs.cinepick.vo.ScreenVO" alias="Screen"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.ScheduleVO" alias="ScheduleVO"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.TicketVO" alias="Ticket"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.ReviewVO" alias="Review"/>
 	</typeAliases>
 </configuration>
   
