@@ -72,6 +72,32 @@
 		    background-repeat: no-repeat;
 		    background-image: url("${pageContext.request.contextPath }/resources/cinepick/img/review_star/bg_star_min_on.png");
 		}
+		
+		.reviewStarMax {
+		   position: relative;
+		    display: inline-block;
+		   width: 175px;
+		    height: 30px;
+		    background-position: 0;
+		    background-repeat: no-repeat;
+		   background-image: url("${pageContext.request.contextPath }/resources/cinepick/img/review_star/bg_star_max.png");
+		}
+		
+		.bg_star{
+		   position: absolute;
+		    top: 0;
+		    left: 0;
+		    overflow: hidden;
+		}
+		
+		.reviewStarMax .bg_star{
+		   width: 175px;
+		    height: 30px;
+		    background-position: 0;
+		    background-repeat: no-repeat;
+		   background-image: url("${pageContext.request.contextPath }/resources/cinepick/img/review_star/bg_star_max_on.png");
+		}
+		
 	</style>
 
 </head>
@@ -103,14 +129,10 @@
                                 <span>${movie.movie_nameE }</span>
                             </div>
                             <div class="anime__details__rating">
-                                <div class="rating">
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star-half-o"></i></a>
-                                </div>
-                                <span>1.029 Votes</span>
+                                <div class="reviewStarMax">
+								   <div class="bg_star" style="width: ${movie.movie_avg * 20 }%;"></div>
+								</div>
+                                <span>${movie.movie_avg } / 5.0</span>
                             </div>
                             <p>${movie.movie_plot }</p>
                             <div class="anime__details__widget">

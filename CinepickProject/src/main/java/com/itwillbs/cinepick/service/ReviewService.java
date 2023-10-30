@@ -21,4 +21,8 @@ public class ReviewService {
 		return mapper.selectReviewList(movie_code);
 	}
 
+	public int countReviewList(int movie_code) {
+		return mapper.countReviewList(movie_code);
+	}
+
 }

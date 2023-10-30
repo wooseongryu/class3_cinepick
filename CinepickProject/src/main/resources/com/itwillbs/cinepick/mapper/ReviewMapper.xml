@@ -25,5 +25,12 @@
 		WHERE movie_code = #{movie_code}
 	</select>
 	
+	<select id="countReviewList" resultType="int">
+		SELECT COUNT(review_num) 
+		FROM review
+		GROUP BY movie_code
+		HAVING  movie_code = #{movie_code}
+	</select>
+	
 
 </mapper>
