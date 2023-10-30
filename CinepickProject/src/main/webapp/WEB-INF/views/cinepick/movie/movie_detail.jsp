@@ -54,6 +54,24 @@
 		#reviewForm input[type=radio]:checked ~ label{
 		    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 		}
+		
+		.reviewStarMin {
+		   position: relative;
+		    display: inline-block;
+		   width: 90px;
+		    height: 15px;
+		    background-position: 0;
+		    background-repeat: no-repeat;
+		    background-image: url("${pageContext.request.contextPath }/resources/cinepick/img/review_star/bg_star_min.png");
+		}
+		
+		.reviewStarMin .bg_star {
+		   width: 90px;
+		    height: 15px;
+		    background-position: 0;
+		    background-repeat: no-repeat;
+		    background-image: url("${pageContext.request.contextPath }/resources/cinepick/img/review_star/bg_star_min_on.png");
+		}
 	</style>
 
 </head>
@@ -176,6 +194,9 @@
 	                        <div class="anime__review__item">
 	                            <div class="anime__review__item__text" style="margin: auto;">
 	                                <h6>${review.user_id }</h6>
+	                            	<div class="reviewStarMin">
+									   <div class="bg_star" style="width: ${review.review_rating * 20 }%;"></div>
+									</div>
 	                                <h6>
 	                                    <span>${review.review_date }</span> &nbsp;&nbsp;&nbsp;
 	                                    <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i></a> 12
@@ -184,15 +205,15 @@
 	                            </div>
 	                        </div>
 						</c:forEach>
-                        <div class="product__pagination">
-                            <a href="#"><i class="fa fa-angle-double-left"></i></a>
-                            <a href="#" class="current-page">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#"><i class="fa fa-angle-double-right"></i></a>
-                        </div>
+<!--                         <div class="product__pagination"> -->
+<!--                             <a href="#"><i class="fa fa-angle-double-left"></i></a> -->
+<!--                             <a href="#" class="current-page">1</a> -->
+<!--                             <a href="#">2</a> -->
+<!--                             <a href="#">3</a> -->
+<!--                             <a href="#">4</a> -->
+<!--                             <a href="#">5</a> -->
+<!--                             <a href="#"><i class="fa fa-angle-double-right"></i></a> -->
+<!--                         </div> -->
                     </div>
                     <div class="anime__details__form">
                         <div class="section-title">
