@@ -12,7 +12,7 @@
     <meta name="author" content="">
     
 
-    <title>씨네픽 - webpage</title>
+    <title>씨네픽 - webpage</title> 
 
     <!-- Custom fonts for this template -->
     <link href="${pageContext.request.contextPath }/resources/mypage/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
