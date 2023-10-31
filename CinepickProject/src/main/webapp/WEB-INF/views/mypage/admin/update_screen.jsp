@@ -60,94 +60,38 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                         		<h1 class="h4 text-gray-900 mb-4">극장 등록</h1>
+                            	<h1 class="h4 text-gray-900 mb-4">상영관 수정</h1>
                             </div>
-                            <form class="user" action="adminTheaterInsertPro" method="post">
-                               
-								<div class="form-group row">
-                                    <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">극장번호</label>
-									  <textarea rows="1" name="brchNo" class="form-control form-control-textarea" 
-									  	placeholder="극장번호작성" id="floatingTextarea"></textarea>
-									</div>
-                                </div>
-                                <br>
-								
-								<div class="form-group row">
-                                    <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">지역번호</label>
-									  <textarea rows="1" name="city_idx" class="form-control form-control-textarea" 
-									  	placeholder="지역번호작성" id="floatingTextarea"></textarea>
-									</div>
-                                </div>
-								<br>
-								
-								<div class="form-group row">
+                            <form class="user" action="adminScreenUpdatePro" method="post">
+                            	<input type="hidden" name="screen_idx" value="${screen.screen_idx }">
+                            	
+                                <div class="form-group row">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="">극장명</label>
-									  <input type="text" name="theater_name" placeholder="극장명입력">
+										<label for="">상영관명</label>
+										<input type="text" name="screen_name" placeholder="상영관명입력" value="${screen.screen_name }">
 								  	</div>
                                 </div>
-								<br>
-								
+                                <br>
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">극장설명</label>
-									  <textarea rows="5" name="theater_title" class="form-control form-control-textarea" 
-									  	placeholder="극장설명작성" id="floatingTextarea"></textarea>
+									  <label for="floatingTextarea">좌석수</label>
+									  <textarea rows="10" name="screen_total_seat" class="form-control form-control-textarea" 
+									  	placeholder="좌석수작성" id="floatingTextarea">${screen.screen_total_seat }</textarea>
 									</div>
                                 </div>
 								<br>
-								
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">극장주소</label>
-									  <textarea rows="5" name="theater_address" class="form-control form-control-textarea" 
-									  	placeholder="극장주소작성" id="floatingTextarea"></textarea>
+									  <label for="floatingTextarea">(극장)지역번호</label>
+									  <textarea rows="10" name="screen_theater_idx" class="form-control form-control-textarea" 
+									  	placeholder="(극장)지역번호작성" id="floatingTextarea">${screen.screen_theater_idx }</textarea>
 									</div>
                                 </div>
 								<br>
-								
-								<div class="form-group row">
-                                    <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">Facility1</label>
-									  <textarea rows="1" name="theater_facility1" class="form-control form-control-textarea" 
-									  	placeholder="MX여부작성" id="floatingTextarea"></textarea>
-									</div>
-                                </div>
-								<br>
-								
-								<div class="form-group row">
-                                    <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">Facility2</label>
-									  <textarea rows="1" name="theater_facility2" class="form-control form-control-textarea" 
-									  	placeholder="컴포트여부작성" id="floatingTextarea"></textarea>
-									</div>
-                                </div>
-								<br>
-								
-								<div class="form-group row">
-                                    <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">Facility3</label>
-									  <textarea rows="1" name="theater_facility3" class="form-control form-control-textarea" 
-									  	placeholder="일반상영관여부작성" id="floatingTextarea"></textarea>
-									</div>
-                                </div>
-								<br>
-								
-								<div class="form-group row">
-                                    <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="floatingTextarea">Facility4</label>
-									  <textarea rows="1" name="theater_facility4" class="form-control form-control-textarea" 
-									  	placeholder="장애인석여부작성" id="floatingTextarea"></textarea>
-									</div>
-                                </div>
-								<br>
-								
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-		                                <input type="submit" class="btn btn-primary btn-user" value="등록">&nbsp;
+		                                <input type="submit" class="btn btn-primary btn-user" onclick="close()" value="수정">&nbsp;
 		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">&nbsp;
 		                                <input type="button" class="btn btn-primary btn-user" onclick="history.back()" value="돌아가기">
 									</div>

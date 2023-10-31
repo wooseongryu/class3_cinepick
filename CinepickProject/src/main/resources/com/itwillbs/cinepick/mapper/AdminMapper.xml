@@ -321,7 +321,8 @@
     </delete>
     <!-- 자주 묻는 질문 카테고리 끝 -->
     
-    <!-- 극장  -->
+    
+    <!-- 극장(영화관)  -->
 	<insert id="insertTheater">
 		INSERT INTO theater
 		VALUES (
@@ -368,8 +369,49 @@
     		, theater_address = #{theater_address}
     	WHERE theater_idx = #{theater_idx };
     </update>
-    <!-- 극장 끝 -->
+    <!-- 극장(영화관) 끝 -->
+    
+	
+	<!-- 상영관  -->
+	<insert id="insertScreen">
+		INSERT INTO screen
+		VALUES (
+			null
+			, #{screen_name}
+			, #{screen_total_seat}
+			, #{screen_theater_idx}
+		)
+	</insert>
+	
+	
+	<select id="selectAdminScreen" resultType="Screen">
+        SELECT
+			screen_idx
+			, screen_name
+			, screen_total_seat
+			, screen_theater_idx
+		FROM screen
+		<if test="screenIdx != null and !screenIdx.equals('')">
+		WHERE screen_idx = #{screenIdx }
+ 		</if>
+ 		ORDER BY screen_idx DESC  
+    </select>
 
+
+    <delete id="deleteScreen">
+    	DELETE FROM screen
+    	WHERE screen_idx = #{screenIdx };
+    </delete>
+    
+    <update id="updateScreen">
+    	UPDATE screen
+    	SET 
+    		screen_name = #{screen_name }
+    		,screen_total_seat = #{screen_total_seat }
+    		, screen_theater_idx = #{screen_theater_idx}
+    	WHERE screen_idx = #{screen_idx };
+    </update>
+   <!-- 상영관 끝 -->
     
     
 </mapper>

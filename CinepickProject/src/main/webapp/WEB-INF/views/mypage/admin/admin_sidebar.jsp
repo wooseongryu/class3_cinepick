@@ -112,7 +112,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTheaters"
                     aria-expanded="true" aria-controls="collapseTheaters">
-<!--                     <i class="fas fa-fw fa-theater-alt"></i> -->
+                    <i class="fas fa-fw fa-wrench"></i>
                     <span>극장관리</span>
                 </a>
                 <div id="collapseTheaters" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">

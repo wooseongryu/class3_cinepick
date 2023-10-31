@@ -1,5 +1,6 @@
 package com.itwillbs.cinepick.service;
 
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -251,7 +252,7 @@ public class AdminService {
 	
 	//---------------------------------------------------------
 	
-	 //극장 조회
+	//극장 조회
 	public List<TheaterVO> getTheater(String string) {
 		System.out.println("AdminService - getTheater()");
 		return mapper.selectAdminTheater(string);
@@ -276,5 +277,30 @@ public class AdminService {
 	}
 	
 	//---------------------------------------------------------
-
+	
+	//상영관 조회
+	public List<ScreenVO> getScreen(String string) {
+		System.out.println("AdminService - getScreen()");
+		return mapper.selectAdminScreen(string);
+	}
+	
+	//상영관 등록
+	public int insertScreen(ScreenVO screen) {
+		System.out.println("AdminService - insertScreen()");
+		return mapper.insertScreen(screen);
+	}
+	
+	//상영관 삭제
+	public int deleteScreen(int screenIdx) {
+		System.out.println("AdminService - deleteScreen()");
+		return mapper.deleteScreen(screenIdx);
+	}
+	
+	//상영관 수정
+	public int updateScreen(ScreenVO screen) {
+		System.out.println("AdminService - updateScreen()");
+		return mapper.updateScreen(screen);
+	}
+	
+	
 }
