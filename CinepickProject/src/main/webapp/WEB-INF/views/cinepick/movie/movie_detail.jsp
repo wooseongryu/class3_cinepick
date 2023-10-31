@@ -215,7 +215,13 @@
 						<c:forEach var="review" items="${review }">
 	                        <div class="anime__review__item">
 	                            <div class="anime__review__item__text" style="margin: auto;">
-	                                <h6>${review.user_id }</h6>
+	                                <h6>
+	                                	<span>${review.user_id }</span>
+<%-- 	                                	<c:if test=""> --%>
+		                                	<span><input type="button" value="수정" id="rvModify" onclick="rvModify('${review.user_id }', ${review.movie_code })"></span>
+		                                	<span><input type="button" value="삭제" id="rvDelete" onclick="rvDelete('${review.user_id }', ${review.movie_code },${review.review_num })"></span>
+<%-- 	                                	</c:if> --%>
+	                                </h6>
 	                            	<div class="reviewStarMin">
 									   <div class="bg_star" style="width: ${review.review_rating * 20 }%;"></div>
 									</div>
@@ -281,6 +287,24 @@
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
+	<script src= "${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
+	
+	<script>
+		function rvModify(user_id, movie_code) {
+			
+		}	
+		function rvDelete(user_id, movie_code, review_num) {
+			console.log(user_id);
+			
+			 let result = confirm("리뷰를 삭제하시겠습니까?");
+			 if(result) {
+				 location.href="ReviewDelete?movie_code=" + movie_code + "&user_id=" + user_id + "&review_num=" + review_num;
+			 }
+			 
+			 
+		}	
+	
+	</script>
 
 </body>
 

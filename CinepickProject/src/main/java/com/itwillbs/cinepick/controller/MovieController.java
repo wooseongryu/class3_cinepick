@@ -88,9 +88,9 @@ public class MovieController {
  		}
  		
  		Integer rvCount = reviewService.countReviewList(movie_code);
- 		if(rvCount == null) { 
- 			rvCount = 0;
- 		}
+// 		if(rvCount == null) { 
+// 			rvCount = 0;
+// 		}
  		
  		
  		double rvAvg = rvRate / rvCount;

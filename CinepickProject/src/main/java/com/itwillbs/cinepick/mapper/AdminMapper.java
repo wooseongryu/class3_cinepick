@@ -124,16 +124,40 @@ public interface AdminMapper {
 	
 	
 	/*==============================================================
-	 * 극장 카테고리
+	 * 극장(영화관) 카테고리
 	 * =============================================================
 	 * */
-	
-	int insertTheater(TheaterVO theater);
 
 	List<TheaterVO> selectAdminTheater(String string);
+	
+	int insertTheater(TheaterVO theater);
 
 	int deleteTheater(int theaterIdx);
 
 	int updateTheater(TheaterVO theater);
+	
+	/*==============================================================
+	 * 상영관 카테고리
+	 * =============================================================
+	 * */
+
+	List<ScreenVO> selectAdminScreen(String string);
+
+	int insertScreen(ScreenVO screen);
+
+	int deleteScreen(int screenIdx);
+
+	int updateScreen(ScreenVO screen);
+
+	
+	
+	
+	/*==============================================================
+	 * 리뷰 
+	 * =============================================================
+	 * */
+	
+	// 전체 리뷰 조회
+	List<QnaVO> selectReviewList(String string);
 
 }

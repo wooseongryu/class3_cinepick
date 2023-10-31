@@ -87,6 +87,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="adminUserList">회원목록조회</a>
+                        <a class="collapse-item" href="adminMyReviewList">회원리뷰조회</a>
                     </div>
                 </div>
             </li>
@@ -112,7 +113,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTheaters"
                     aria-expanded="true" aria-controls="collapseTheaters">
-<!--                     <i class="fas fa-fw fa-theater-alt"></i> -->
+                    <i class="fas fa-fw fa-wrench"></i>
                     <span>극장관리</span>
                 </a>
                 <div id="collapseTheaters" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">

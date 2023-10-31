@@ -38,7 +38,9 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.ScheduleVO;
+import com.itwillbs.cinepick.vo.ScreenVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
@@ -65,6 +67,9 @@ public class AdminController {
 	 * 9. 1:1 문의
 	 * 10. 이벤트
 	 * 11. 이벤트 카테고리
+	 * 12. 극장(영화관) 관리
+	 * 13. 상영관 관리
+	 * 14. 리뷰 관리
 	 * ===================================================================
 	 * */
 	
@@ -1270,7 +1275,7 @@ public class AdminController {
 	}
 	
 	/*====================================================================
-	 * 11. 극장관리
+	 * 12. 극장(영화관) 관리
 	 * ===================================================================
 	 * */
 	
@@ -1378,5 +1383,142 @@ public class AdminController {
 		
 		return "redirect:/adminTheaterList";
 	}
+	
+	/*====================================================================
+	 * 13. 상영관 관리
+	 * ===================================================================
+	 * */
+	
+	// 상영관 조회 페이지
+	@GetMapping("adminScreenList")
+	public String adminScreenList(Model model, HttpSession session) {
+		System.out.println("AdminController - adminScreenList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		List<ScreenVO> screenList = adminService.getScreen("");
+		model.addAttribute("screenList", screenList);
+		
+		return "mypage/admin/board_screen";
+		
+	}
+	
+	// 상영관 등록 폼
+	@GetMapping("adminScreenInsert")
+	public String adminScreenInsert(HttpSession session, Model model) {
+		System.out.println("AdminController - adminScreenInsert()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		return "mypage/admin/insert_screen";
+	}
+	
+	// 상영관 등록
+	@PostMapping("adminScreenInsertPro")
+	public String adminScreenInsertPro(ScreenVO screen, Model model) {
+		System.out.println("AdminController - adminScreenInsertPro()");
+		int insertCount = adminService.insertScreen(screen);
+		
+		if (insertCount == 0) {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminScreenList";
+	}
+	
+	// 상영관 삭제
+	@GetMapping("adminScreenDelete")
+	public String adminScreenDelete(int screenIdx, Model model, HttpSession session) {
+		System.out.println("AdminController - adminScreenDelete()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		int deleteCount = adminService.deleteScreen(screenIdx);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminScreenList";
+	}
+	
+	// 상영관 수정 폼
+	@GetMapping("adminScreenUpdate")
+	public String adminScreenUpdate(String screenIdx, Model model, HttpSession session) {
+		System.out.println("AdminController - adminScreenUpdate()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}		
+		ScreenVO screen = adminService.getScreen(screenIdx).get(0);
+		model.addAttribute("screen", screen);
+		
+		return "mypage/admin/update_screen";
+	}
+	
+	// 상영관 수정
+	@PostMapping("adminScreenUpdatePro")
+	public String adminScreenUpdatePro(ScreenVO screen, Model model) {
+		System.out.println("AdminController - adminScreenUpdatePro()");
+		int updateCount = adminService.updateScreen(screen);
+		
+		if (updateCount == 0) {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminScreenList";
+	}
+	
+	
+	/*====================================================================
+	 * 14. 리뷰 관리
+	 * ===================================================================
+	 * */
+	
+	// 내가 쓴 리뷰 목록
+	@GetMapping("adminMyReviewList")
+	public String adminMyReviewList(ReviewVO review, Model model, HttpSession session) {
+		System.out.println("UserController - adminMyReviewList");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		List<QnaVO> reviewList = adminService.getReviewList("");
+		model.addAttribute("reviewList", reviewList);
+		
+		
+		return "mypage/admin/board_review";
+	}
+	
 	
 }
