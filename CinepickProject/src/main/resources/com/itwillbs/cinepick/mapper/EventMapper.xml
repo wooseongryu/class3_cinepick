@@ -5,27 +5,8 @@
     
 <mapper namespace="com.itwillbs.cinepick.mapper.EventMapper">
     
-   	<!-- 이벤트 카테고리별 조회  -->
-<!-- 	<select id= "selectEventList" resultType="Event"> -->
-<!-- 		SELECT -->
-<!-- 			e.event_idx  -->
-<!-- 			, e.event_title -->
-<!-- 			, e.event_startDt -->
-<!-- 			, e.event_endDt -->
-<!-- 			, e.event_poster -->
-<!-- 			, e.event_thumbnail -->
-<!-- 			, e.event_category -->
-<!-- 			, ec.eventCate_Subject -->
-<!-- 		FROM  -->
-<!-- 			event e JOIN eventCate ec  -->
-<!-- 			ON e.event_category = ec.eventCate_Idx -->
-<!-- 		<if test="eventCate_Idx != -1"> -->
-<!-- 		WHERE eventCate_Idx = #{eventCate_Idx} -->
-<!-- 		</if> -->
-<!-- 		ORDER BY ec.eventCate_Idx -->
-<!-- 	</select> -->
-
 	<select id= "selectEventList" resultType="Event">
+		-- selectEventList
 		<![CDATA[
 		SELECT *
 			FROM (SELECT e.event_idx 
@@ -48,6 +29,7 @@
 
 <!--    	이벤트 카테고리 전체 조회 -->
 	<select id="selectEventCateList" resultType="EventCate">
+		-- selectEventCateList
 		SELECT 
 			eventCate_Idx
 			, eventCate_Subject
@@ -56,6 +38,7 @@
 	</select>
 	
 	<select id="selectEvent" resultType="Event">
+		-- selectEvent
 		SELECT 
 			*
 		FROM event
@@ -65,6 +48,7 @@
     
    	<!-- 영화 이벤트 목록 조회 -->
 	<select id= "selectEventDetailList" resultType="Event">
+		-- selectEventDetailList
 		SELECT
 			e.event_idx 
 			, e.event_title
@@ -87,6 +71,7 @@
 	
 	<!-- 영화 이벤트 목록 수 조회 -->
 	<select id= "selectMovieEventListCount">
+		-- selectMovieEventListCount
 		SELECT COUNT(*)
 		FROM 
 			event e JOIN eventCate ec 

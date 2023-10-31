@@ -87,6 +87,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="adminUserList">회원목록조회</a>
+                        <a class="collapse-item" href="adminMyReviewList">회원리뷰조회</a>
                     </div>
                 </div>
             </li>

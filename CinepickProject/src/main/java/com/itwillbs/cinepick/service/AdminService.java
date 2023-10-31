@@ -275,6 +275,12 @@ public class AdminService {
 		System.out.println("AdminService - updateTheater()");
 		return mapper.updateTheater(theater);
 	}
+
+	
+	// 리뷰 목록 조회
+	public List<QnaVO> getReviewList(String string) {
+		return mapper.selectReviewList(string);
+	}
 	
 	//---------------------------------------------------------
 	

@@ -149,4 +149,15 @@ public interface AdminMapper {
 
 	int updateScreen(ScreenVO screen);
 
+	
+	
+	
+	/*==============================================================
+	 * 리뷰 
+	 * =============================================================
+	 * */
+	
+	// 전체 리뷰 조회
+	List<QnaVO> selectReviewList(String string);
+
 }
