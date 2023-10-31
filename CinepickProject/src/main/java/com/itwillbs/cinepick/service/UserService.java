@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.itwillbs.cinepick.mapper.UserMapper;
 import com.itwillbs.cinepick.vo.AuthInfoVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
+import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 // 스프링에서 서비스 역할을 수행할 클래스 정의 시 @Service 어노테이션 지정(@Component 가능)
@@ -133,6 +134,12 @@ public class UserService {
 		System.out.println("UserService - insertMyQuestion()");
 //		System.out.println("service: ---" + myQuestion);
 		return mapper.insertMyQuestion(myQuestion);
+	}
+
+	
+	// 내가 쓴 리뷰
+	public List<ReviewVO> getReviewList(Map<String, String> param) {
+		return mapper.selectReviewList(param);
 	}
 
 

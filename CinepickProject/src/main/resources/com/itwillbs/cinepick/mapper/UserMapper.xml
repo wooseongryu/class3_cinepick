@@ -58,7 +58,7 @@
 		)
 	</insert>
 	
-	
+
 
 	
 	
@@ -117,7 +117,28 @@
 		AND myQuestion_id = #{myQuestion_id }
 		</if>
     </select>
-	
+    
+	<!-- 내가 쓴 리뷰 조회 -->
+	<select id="selectReviewList" resultType="Review">
+       SELECT
+		review_num
+		, review_rating
+		, review_content
+		, review_date
+		, movie_code
+		, user_id
+	FROM review
+	<if test="review_num != null and !review_num.equals('')">
+	WHERE review_num = #{review_num }
+	</if>
+	<if test="user_id != null and !user_id.equals('')">
+	WHERE user_id = #{user_id }
+	</if>
+	ORDER BY review_date DESC
+    </select>
+
+
+
 	
 	<!-- update -->
 	<!-- 기존 인증정보 갱신 - UPDATE -->
