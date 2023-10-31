@@ -35,7 +35,7 @@
     <div id="wrapper">
 
 		<!-- Sidebar -->
-		<jsp:include page="user_sidebar.jsp"></jsp:include>
+		<jsp:include page="admin_sidebar.jsp"></jsp:include>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->

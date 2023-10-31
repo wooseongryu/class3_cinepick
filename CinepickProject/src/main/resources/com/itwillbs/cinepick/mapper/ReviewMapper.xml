@@ -6,7 +6,7 @@
 <mapper namespace="com.itwillbs.cinepick.mapper.ReviewMapper">
 <!-- ========== 리뷰정보관리========== -->
 
-	<!-- 영화등록 -->
+	<!-- 리뷰등록 -->
 	<insert id="reviewInsert">
 		INSERT INTO review
 		VALUES (
@@ -19,12 +19,14 @@
 		)
 	</insert>
 	
+	<!-- 리뷰 select -->
 	<select id="selectReviewList" resultType="Review">
 		SELECT *
 		FROM review
 		WHERE movie_code = #{movie_code}
 	</select>
 	
+	<!-- 리뷰 count -->
 	<select id="countReviewList" resultType="int">
 		SELECT COUNT(review_rating)
 		FROM movie m LEFT OUTER JOIN review r
@@ -32,6 +34,14 @@
 		WHERE m.movie_code = #{movie_code}
 		GROUP BY m.movie_code
 	</select>
+	
+	<!-- 리뷰 delete -->
+	<delete id="reviewDelete">
+		DELETE FROM review 
+		WHERE user_id = #{user_id} 
+			AND movie_code = #{movie_code}
+			AND review_num = #{review_num}
+	</delete>
 	
 
 </mapper>

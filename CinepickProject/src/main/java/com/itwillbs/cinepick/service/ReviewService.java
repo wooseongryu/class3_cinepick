@@ -25,4 +25,8 @@ public class ReviewService {
 		return mapper.countReviewList(movie_code);
 	}
 
+	public int reviewDelete(String user_id, int movie_code, int review_num) {
+		return mapper.reviewDelete(user_id, movie_code, review_num);
+	}
+
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,16 +13,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<script>
-		// 팝업창 띄우기
-	// 	var popupWidth = 1000;
-	// 	var popupHeight = 800;
-	// 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
-	// 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-	// 	function updateQuestion() {
-	// 		window.open('adminQNAUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-	// 	}
-	</script>
+<script>
+	// 팝업창 띄우기
+// 	var popupWidth = 1000;
+// 	var popupHeight = 800;
+// 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
+// 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+// 	function updateNotion() {
+// 		window.open('adminNoticeUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+// 	}
+
+// $(document).ready(function(){
+// 	new DataTable('#dataTable_wrapper');
+// })
+
+</script>
+	
 
 </head>
 
@@ -35,7 +42,7 @@
     <div id="wrapper">
 
 		<!-- Sidebar -->
-		<jsp:include page="user_sidebar.jsp"></jsp:include>
+		<jsp:include page="admin_sidebar.jsp"></jsp:include>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -51,6 +58,7 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -114,44 +122,44 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">전체 리뷰 조회 페이지</h1>
+                    <h1 class="h3 mb-2 text-gray-800">상영관 조회 페이지</h1>
                     <p class="mb-4">
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">전체 리뷰 조회 내역</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">상영관 조회 내역</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead class="table-dark">
                                         <tr>
-                                            <th>글번호</th>
-                                            <th>별점</th>
-                                            <th>리뷰 내용</th>
-                                            <th>작성일</th>
-                                            <th>영화코드</th>
-                                            <th>작성자</th>
+                                            <th>번호</th>
+                                            <th>상영관 이름</th>
+                                            <th>좌석수</th>
+                                            <th>(극장)지역번호</th>
                                             <th>수정 및 삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
+                                        <tr>
+											<td colspan="6">
+												<button type="button" class="btn btn-primary" onclick="location.href='adminScreenInsert'">등록</button>&nbsp;&nbsp;
+											</td>
+                                        </tr>
                                     </tfoot>
                                     <tbody>
-                                    	<c:forEach var="review" items="${reviewList }">
+                                    	<c:forEach var="screen" items="${screenList }">
 	                                        <tr>
-	                                            <td>${review.review_num }</td>
-	                                            <td>${review.review_rating }</td>
-	                                            <td>${review.review_content }</td>
-	                                            <td>${review.review_date }</td>
-	                                            <td>${review.movie_code }</td>
-	                                            <td>${review.user_id }</td>
+	                                            <td>${screen.screen_idx }</td>
+	                                            <td>${screen.screen_name }</td>
+	                                            <td>${screen.screen_total_seat }</td>
+	                                            <td>${screen.screen_theater_idx }</td>
 												<td>
-													<button type="button" class="btn btn-primary" onclick="location.href='adminQNAUpdate?qnaIdx=${qna.qnaIdx}'">수정</button>
-													<button type="button" class="btn btn-primary" onclick="location.href='adminQNADelete?qnaIdx=${qna.qnaIdx}'">삭제</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminScreenUpdate?screenIdx=${screen.screen_idx }'">수정</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminScreenDelete?screenIdx=${screen.screen_idx }'">삭제</button>
 												</td>
 	                                        </tr>
                                         </c:forEach>
