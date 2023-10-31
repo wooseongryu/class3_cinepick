@@ -307,6 +307,11 @@ public class AdminService {
 		System.out.println("AdminService - updateScreen()");
 		return mapper.updateScreen(screen);
 	}
+
+	// 관리자 리뷰 삭제
+	public int myReviewDelete(int review_num) {
+		return mapper.deleteMyReview(review_num);
+	}
 	
 	
 }

@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>
+	function logout() {
+		let result = confirm("로그아웃하시겠습니까?");
+		
+		if(result) {
+			location.href = "Logout";
+		}
+	}
+</script>    
     
 <style>
 a {
@@ -11,26 +20,31 @@ a {
  
  <header class="header">
  	<div class="container">
- 	
         <div class="header_right">
-			<a href="login" class="search-switch">
-				<span class="icon_search">로그인</span>
-			</a>
-			<a href="join">
-				<span class="icon_profile">회원가입</span>
-			</a>
-			
-			<!-- 임시 코드 -->
-			<a href="admin">
-				<span class="icon_profile">관리자임시버튼</span>
-			</a>
-			<a href="user">
-				<span class="icon_profile">유저임시버튼</span>
-			</a>
-			<a href="basket">
-				<span class="icon_profile">장바구니임시버튼</span>
-			</a>
-			<!-- 임시 코드 끝 -->
+			<c:choose>
+				<c:when test="${empty sessionScope.sId }">
+					<a href="login" class="search-switch">
+						<span class="icon_search">로그인</span>
+					</a>
+					<a href="join">
+						<span class="icon_profile">회원가입</span>
+					</a>
+				</c:when>
+				
+				<c:otherwise>
+					<a href="user?id=${sessionScope.sId }">${sessionScope.sId } 님</a>
+					<a href="javascript:logout()">로그아웃</a>
+					<a href="basket?id=${sessionScope.sId }">
+						<span class="icon_profile">장바구니임시버튼</span> 
+					</a>
+					 
+					<c:if test="${sessionScope.sId eq 'admin' }">
+						<a href="admin">
+							<span class="icon_profile">관리자페이지</span>
+						</a>
+					</c:if>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		
 		<div class="col-lg">

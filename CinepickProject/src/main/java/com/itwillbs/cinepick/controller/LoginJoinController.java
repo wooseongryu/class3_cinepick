@@ -146,7 +146,14 @@ public class LoginJoinController {
 		return "redirect:/";
 	}
 	
-	
+	//"Logout" 요청에 대한 로그아웃 비즈니스 로직
+	@GetMapping("Logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		// 메인페이지로 리다이렉트
+		return "redirect:/";
+	}
 
 	
 	

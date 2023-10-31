@@ -12,10 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itwillbs.cinepick.service.ReviewService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
+import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 @Controller
@@ -23,6 +26,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService service;
+
+	
+	
 	
 	
 	/*====================================================================
@@ -220,9 +226,47 @@ public class UserController {
 	
 	// 내가 쓴 리뷰 목록
 	@GetMapping("userMyReviewList")
-	public String userMyReviewList() {
+	public String userMyReviewList(HttpSession session, Model model) {
 		System.out.println("UserController - userMyReviewList");
+		
+		String sId = (String)session.getAttribute("sId");
+		 
+		if(sId == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("user_id", sId);
+		
+		List<ReviewVO> reviewList = service.getReviewList(param);
+		
+		model.addAttribute("reviewList", reviewList);
+		
 		return "mypage/user/user_myReview";
+	}
+	
+	
+	// 내가 쓴 리뷰 삭제
+	@GetMapping("myReviewDelete")
+	public String myReviewDelete(HttpSession session, Model model, int review_num) {
+		
+		String sId = (String)session.getAttribute("sId");
+		
+		if(sId == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		int deleteCount = service.myReviewDelete(review_num);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/userMyReviewList";
+		
 	}
 	
 	/*====================================================================
@@ -252,45 +296,6 @@ public class UserController {
 		return "mypage/user/user_mqList";
 	}
 	
-//	// 1:1 문의 등록 폼
-//	@GetMapping("userMyQuestioInsert")
-//	public String userMyQuestioInsert(HttpSession session, Model model) {
-//		String sId = (String)session.getAttribute("sId");
-//		
-//		if(sId == null || sId.equals("")) {
-//			model.addAttribute("msg", "로그인 후 이용 가능합니다!");
-//			model.addAttribute("targetURL", "login");
-//			
-//			return "forward";
-//		}
-//
-//		return "mypage/user/insert_myQuestion";
-//	}
-	
-	
-//	// 1:1 문의 등록
-//	@PostMapping("userMyQuestioInsertPro")
-//	public String userMyQuestioInsertPro(MyQuestionVO myQuestion, HttpSession session, Model model) {
-//		System.out.println("UserController - userMyQuestioInsertPro()");
-//		
-//		// 세션 아이디가 없을 경우 "잘못된 접근입니다!" fail_back 페이지로 포워딩 처리
-//		if(session.getAttribute("sId") == null) {
-//			model.addAttribute("msg", "잘못된 접근입니다!");
-//			return "fail_back";
-//		}
-//		
-////		System.out.println(myQuestion);
-//		
-//		int insertCount = service.insertMyQuestion(myQuestion);
-//		
-//		if(insertCount > 0) { // 성공
-//			return "redirect:/userMyQuestionList";
-//		} else { // 실패
-//			model.addAttribute("msg", "1:1 문의 등록 실패");
-//			return "fail_back";
-//		}
-//	}	
-//	
 	
 	
 	/*====================================================================

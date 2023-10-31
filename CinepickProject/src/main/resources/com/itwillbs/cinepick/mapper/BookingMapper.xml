@@ -4,15 +4,16 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.itwillbs.cinepick.mapper.BookingMapper">
+	<!-- step1 -->
 	<select id="selectValidCity" resultType="Theater">
 		SELECT
-			CONCAT(c.city_name, "(", count(s.sche_idx) , ")") AS city_name
+			CONCAT(c.city_name, "(", count(DISTINCT t.theater_idx) , ")") AS city_name
 			, c.city_idx
 		FROM
 			schedule s JOIN theater t 
 			ON s.sche_theater_idx = t.theater_idx
 			JOIN city c 
-			ON t.city_idx = c.city_idx 
+			ON t.city_idx = c.city_idx
 		WHERE
 			s.sche_movie_code = #{movie_code}
 		GROUP BY 
@@ -69,4 +70,5 @@
 		FROM movie
 		WHERE movie_code = ${movie_code}
 	</select>
+	<!-- step1 끝 -->
 </mapper>

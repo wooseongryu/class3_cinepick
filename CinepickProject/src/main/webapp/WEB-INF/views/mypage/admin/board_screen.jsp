@@ -28,6 +28,17 @@
 // })
 
 </script>
+
+<script>
+	function confirmDelete(screen_idx) {
+		let result = confirm(screen_idx  + "번 상영관을 삭제하시겠습니까?");
+		
+		if(result) {
+			location.href = "adminScreenDelete?screenIdx=" + screen_idx;
+			
+		}
+	}
+</script>
 	
 
 </head>
@@ -159,7 +170,8 @@
 	                                            <td>${screen.screen_theater_idx }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="location.href='adminScreenUpdate?screenIdx=${screen.screen_idx }'">수정</button>
-													<button type="button" class="btn btn-primary" onclick="location.href='adminScreenDelete?screenIdx=${screen.screen_idx }'">삭제</button>
+													<button type="button" class="btn btn-primary" onclick="confirmDelete('${screen.screen_idx }')">삭제</button>
+<%-- 													<button type="button" class="btn btn-primary" onclick="location.href='adminScreenDelete?screenIdx=${screen.screen_idx }'">삭제</button> --%>
 												</td>
 	                                        </tr>
                                         </c:forEach>

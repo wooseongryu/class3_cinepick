@@ -150,8 +150,7 @@
 	                                            <td>${review.movie_code }</td>
 	                                            <td>${review.user_id }</td>
 												<td>
-													<button type="button" class="btn btn-primary" onclick="location.href='adminQNAUpdate?qnaIdx=${qna.qnaIdx}'">수정</button>
-													<button type="button" class="btn btn-primary" onclick="location.href='adminQNADelete?qnaIdx=${qna.qnaIdx}'">삭제</button>
+													<button type="button" class="btn btn-primary" onclick="location.href='adminMyReviewDelete?review_num=${review.review_num}'">삭제</button>
 												</td>
 	                                        </tr>
                                         </c:forEach>

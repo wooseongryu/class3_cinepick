@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.itwillbs.cinepick.vo.AuthInfoVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
+import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
 // MyBatis 연동 시 DAO 클래스 대신 활용할 Mapper 인터페이스 정의
@@ -72,6 +73,12 @@ public interface UserMapper {
 
 	// 회원 1:1 문의 글 작성
 	int insertMyQuestion(MyQuestionVO myQuestion);
+
+	// 내가 쓴 리뷰 조회
+	List<ReviewVO> selectReviewList(Map<String, String> param);
+
+	// 내가 쓴 리뷰 삭제
+	int deleteMyReview(int review_num);
 
 	
 	
