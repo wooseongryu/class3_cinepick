@@ -137,8 +137,6 @@
 	ORDER BY review_date DESC
     </select>
 
-
-
 	
 	<!-- update -->
 	<!-- 기존 인증정보 갱신 - UPDATE -->
@@ -181,6 +179,13 @@
 		DELETE FROM user
 		WHERE user_id = #{user_id}
 	</delete>
+	
+	<!-- 내가 쓴 리뷰 삭제 -->
+	<delete id="deleteMyReview">
+		DELETE FROM review
+		WHERE review_num = #{review_num}
+	</delete>
+	
 </mapper>
 
 

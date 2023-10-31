@@ -77,6 +77,9 @@ public interface UserMapper {
 	// 내가 쓴 리뷰 조회
 	List<ReviewVO> selectReviewList(Map<String, String> param);
 
+	// 내가 쓴 리뷰 삭제
+	int deleteMyReview(int review_num);
+
 	
 	
 }

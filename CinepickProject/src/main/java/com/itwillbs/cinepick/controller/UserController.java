@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itwillbs.cinepick.service.ReviewService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
@@ -24,6 +26,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService service;
+
+	
+	
 	
 	
 	/*====================================================================
@@ -239,6 +244,29 @@ public class UserController {
 		model.addAttribute("reviewList", reviewList);
 		
 		return "mypage/user/user_myReview";
+	}
+	
+	
+	// 내가 쓴 리뷰 삭제
+	@GetMapping("myReviewDelete")
+	public String myReviewDelete(HttpSession session, Model model, int review_num) {
+		
+		String sId = (String)session.getAttribute("sId");
+		
+		if(sId == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		int deleteCount = service.myReviewDelete(review_num);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/userMyReviewList";
+		
 	}
 	
 	/*====================================================================

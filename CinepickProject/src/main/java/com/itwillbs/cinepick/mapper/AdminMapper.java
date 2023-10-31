@@ -159,5 +159,8 @@ public interface AdminMapper {
 	
 	// 전체 리뷰 조회
 	List<QnaVO> selectReviewList(String string);
+	
+	// 관리자 리뷰 삭제
+	int deleteMyReview(int review_num);
 
 }

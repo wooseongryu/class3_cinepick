@@ -137,12 +137,19 @@ public class UserService {
 	}
 
 	
-	// 내가 쓴 리뷰
+	// 내가 쓴 리뷰 조회
 	public List<ReviewVO> getReviewList(Map<String, String> param) {
 		return mapper.selectReviewList(param);
 	}
 
+	// 내가 쓴 리뷰 삭제
+	public int myReviewDelete(int review_num) {
+		// TODO Auto-generated method stub
+		return mapper.deleteMyReview(review_num);
+	}
 
+	
+	
 
 	
 }

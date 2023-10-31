@@ -1500,7 +1500,7 @@ public class AdminController {
 	 * ===================================================================
 	 * */
 	
-	// 내가 쓴 리뷰 목록
+	// 관리자 - 내가 쓴 리뷰 목록
 	@GetMapping("adminMyReviewList")
 	public String adminMyReviewList(ReviewVO review, Model model, HttpSession session) {
 		System.out.println("UserController - adminMyReviewList");
@@ -1518,6 +1518,29 @@ public class AdminController {
 		
 		
 		return "mypage/admin/board_review";
+	}
+	
+	// 관리자 - 내가 쓴 리뷰 삭제
+	@GetMapping("adminMyReviewDelete")
+	public String adminMyReviewDelete(int review_num, Model model, HttpSession session) {
+		System.out.println("AdminController - adminTheaterDelete()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		int deleteCount = adminService.myReviewDelete(review_num);
+		
+		if (deleteCount == 0) {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+		
+		return "redirect:/adminMyReviewList";
 	}
 	
 	
