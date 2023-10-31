@@ -10,7 +10,7 @@
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anime | Template</title>
+    <title>로그인</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -30,6 +30,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
 </head>
 
+<style>
+	h4 {
+	color: black;
+	font-weight: bolder;
+	}
+</style>
+
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -44,6 +51,7 @@
     <!-- Login Section Begin -->
     <section class="login spad">
         <div class="container">
+        
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login__form">
@@ -60,18 +68,28 @@
                            <input type="checkbox" name="rememberId"
 							<c:if test="${not empty cookie.cookieId.value }">checked</c:if>
 						><span>&nbsp; 아이디 저장</span><br>
-                            <button type="submit" class="site-btn">&nbsp;&nbsp;&nbsp;로그인&nbsp;&nbsp;&nbsp;</button>
-                        </form>
-<!--                         <a href="#" class="forget_pass">비밀번호 찾기</a> -->
+                            <button type="submit" class="site-btn">&nbsp;로그인&nbsp;</button>
+                        </form>    
                     </div>
                 </div>
+                
                 <div class="col-lg-6">
                     <div class="login__register">
                         <h3>아직 회원이 아니신가요?</h3>
-                        <a href="join" class="primary-btn">회원가입 하기</a>
+                        <a href="join" class="primary-btn">회원가입하기</a>
                     </div>
+                    <br>
+                    <br>
+                 	<div class="login__register">
+                        <h4>아이디/비밀번호를 잊으셨나요?</h4>
+                        <br>
+                        <a href="idSearch" class="primary-btn">&nbsp;&nbsp;아이디찾기&nbsp;</a>
+                        <a href="passwdSearch" class="primary-btn">&nbsp;&nbsp;비밀번호찾기&nbsp;</a>
+                    </div>
+                    
                 </div>
             </div>
+            
             <div class="login__social">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-6">
