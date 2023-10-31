@@ -143,7 +143,6 @@
 									</div>
                                 </div>
 								<br>
-								
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
