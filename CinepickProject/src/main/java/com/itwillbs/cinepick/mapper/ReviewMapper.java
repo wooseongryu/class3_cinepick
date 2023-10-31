@@ -13,4 +13,6 @@ public interface ReviewMapper {
 
 	List<ReviewVO> selectReviewList(int movie_code);
 
+	int countReviewList(int movie_code);
+
 }

@@ -25,5 +25,13 @@
 		WHERE movie_code = #{movie_code}
 	</select>
 	
+	<select id="countReviewList" resultType="int">
+		SELECT COUNT(review_rating)
+		FROM movie m LEFT OUTER JOIN review r
+		ON m.movie_code = r.movie_code
+		WHERE m.movie_code = #{movie_code}
+		GROUP BY m.movie_code
+	</select>
+	
 
 </mapper>

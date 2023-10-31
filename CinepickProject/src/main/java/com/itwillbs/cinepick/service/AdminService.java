@@ -248,5 +248,33 @@ public class AdminService {
 		System.out.println("AdminService - deleteEventCategory()");
 		return mapper.deleteEventCategory(eventCate_Idx);
 	}
+	
+	//---------------------------------------------------------
+	
+	 //극장 조회
+	public List<TheaterVO> getTheater(String string) {
+		System.out.println("AdminService - getTheater()");
+		return mapper.selectAdminTheater(string);
+	}
+	
+	//극장 등록
+	public int insertTheater(TheaterVO theater) {
+		System.out.println("AdminService - insertTheater()");
+		return mapper.insertTheater(theater);
+	}
+	
+	//극장 삭제
+	public int deleteTheater(int theaterIdx) {
+		System.out.println("AdminService - deleteTheater()");
+		return mapper.deleteTheater(theaterIdx);
+	}
+	
+	//극장 수정
+	public int updateTheater(TheaterVO theater) {
+		System.out.println("AdminService - updateTheater()");
+		return mapper.updateTheater(theater);
+	}
+	
+	//---------------------------------------------------------
 
 }

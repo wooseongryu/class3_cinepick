@@ -60,6 +60,7 @@ public class MovieVO {
 	private List<String> movie_stills;
 	//----- 누적관람객, 티저 추가-----
 	private String movie_vod;
+	private double movie_avg; //평점
 	
 	
 	//-------join용-------

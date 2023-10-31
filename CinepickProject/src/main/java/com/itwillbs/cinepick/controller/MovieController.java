@@ -82,6 +82,22 @@ public class MovieController {
  		
  		List<ReviewVO> review = reviewService.selectReviewList(movie_code); 
  		
+ 		double rvRate = 0;
+ 		for(ReviewVO rv : review) {
+ 			rvRate += rv.getReview_rating();
+ 		}
+ 		
+ 		Integer rvCount = reviewService.countReviewList(movie_code);
+ 		if(rvCount == null) { 
+ 			rvCount = 0;
+ 		}
+ 		
+ 		
+ 		double rvAvg = rvRate / rvCount;
+// 		System.out.println(rvAvg);
+ 		movie.setMovie_avg(Math.round(rvAvg * 10)  / 10.0);
+ 		
+ 		
  		model.addAttribute("review", review);
 		model.addAttribute("movie", movie);
 		
