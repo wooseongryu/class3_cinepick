@@ -136,4 +136,15 @@ public interface AdminMapper {
 
 	int updateTheater(TheaterVO theater);
 
+	
+	
+	
+	/*==============================================================
+	 * 리뷰 
+	 * =============================================================
+	 * */
+	
+	// 전체 리뷰 조회
+	List<QnaVO> selectReviewList(String string);
+
 }

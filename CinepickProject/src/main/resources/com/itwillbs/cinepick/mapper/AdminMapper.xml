@@ -370,6 +370,27 @@
     </update>
     <!-- 극장 끝 -->
 
+
+	<!-- 리뷰 시작 -->
+	
+	<select id="selectReviewList" resultType="Review">
+       SELECT
+		review_num
+		, review_rating
+		, review_content
+		, review_date
+		, movie_code
+		, user_id
+	FROM review
+	<if test="review_num != null and !review_num.equals('')">
+	WHERE review_num = #{review_num }
+	</if>
+	ORDER BY review_date DESC
+    </select>
+	
+	
+	<!-- 리뷰 끝 -->
+
     
     
 </mapper>
