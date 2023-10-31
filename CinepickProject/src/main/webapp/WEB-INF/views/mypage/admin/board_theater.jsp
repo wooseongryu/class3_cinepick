@@ -28,6 +28,17 @@
 // })
 
 </script>
+
+<script>
+	function confirmDelete(theater_idx) {
+		let result = confirm(theater_idx  + "번 영화관을 삭제하시겠습니까?");
+		
+		if(result) {
+			location.href = "adminTheaterDelete?theaterIdx=" + theater_idx;
+			
+		}
+	}
+</script>
 	
 
 </head>
@@ -161,7 +172,9 @@
 	                                            <td>${theater.theater_address }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="location.href='adminTheaterUpdate?theaterIdx=${theater.theater_idx }'">수정</button>
-													<button type="button" class="btn btn-primary" onclick="location.href='adminTheaterDelete?theaterIdx=${theater.theater_idx }'">삭제</button>
+													<button type="button" class="btn btn-primary" onclick="confirmDelete('${theater.theater_idx }')">삭제</button>
+<%-- 												<button type="button" class="btn btn-primary" onclick="location.href='adminTheaterDelete?theaterIdx=${theater.theater_idx }'">삭제</button></a> --%>
+											
 												</td>
 	                                        </tr>
                                         </c:forEach>
