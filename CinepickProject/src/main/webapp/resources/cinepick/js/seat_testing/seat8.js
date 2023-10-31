@@ -165,7 +165,7 @@ $(function() {
 		calcLeft();
 
 		
-		if($(this).hasClass("finish")) return;
+		if($(this).hasClass("finish") || $(this).hasClass("impossible")) return;
 		if(left == 0) return;
 		$(this).addClass("on");
 
@@ -180,7 +180,7 @@ $(function() {
 		
 		let seat = $(this);
 
-		if(seat.hasClass("finish")) return;
+		if(seat.hasClass("finish") || $(this).hasClass("impossible")) return;
 
 		if(left == 0 && !seat.hasClass("choice")) {
 			alert("좌석 선택이 완료되었습니다.");
