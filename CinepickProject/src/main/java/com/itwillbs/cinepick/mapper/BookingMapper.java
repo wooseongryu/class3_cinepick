@@ -23,4 +23,6 @@ public interface BookingMapper {
 
 	MovieVO selectMovie(int movie_code);
 
+	List<MovieVO> selectMovies();
+
 }

@@ -55,7 +55,8 @@ public class BookingController {
 	@PostMapping("getMovieList")
 	public String getMovieList(Gson gson) {
 		System.out.println("BookingController - getMovieList()");
-		List<MovieVO> movieList = adminService.selectMovie();
+//		List<MovieVO> movieList = adminService.selectMovie();
+		List<MovieVO> movieList = bookingService.selectMovies();
 		
 		return gson.toJson(movieList);
 	}

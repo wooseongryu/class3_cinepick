@@ -16,6 +16,10 @@
 			ON t.city_idx = c.city_idx
 		WHERE
 			s.sche_movie_code = #{movie_code}
+			AND CONCAT(s.sche_date, " ", s.sche_end_time) > now()
+			<![CDATA[
+			AND CONCAT(s.sche_date, " ", s.sche_end_time) <= date_add(now(),INTERVAL 1 MONTH)
+			]]>
 		GROUP BY 
 			c.city_name
 			, c.city_idx
@@ -33,6 +37,10 @@
 		WHERE
 			s.sche_movie_code = #{movie_code}
 			AND c.city_idx = #{city_idx}
+			AND CONCAT(s.sche_date, " ", s.sche_end_time) > now()
+			<![CDATA[
+			AND CONCAT(s.sche_date, " ", s.sche_end_time) <= date_add(now(),INTERVAL 1 MONTH)
+			]]>
 		GROUP BY
 			t.theater_name
 			, t.theater_idx
@@ -44,6 +52,10 @@
 		WHERE 
 			sche_movie_code = #{movie_code}
 			AND sche_theater_idx = #{theater_idx}
+			AND CONCAT(sche_date, " ", sche_end_time) > now()
+			<![CDATA[
+			AND CONCAT(sche_date, " ", sche_end_time) <= date_add(now(),INTERVAL 1 MONTH)
+			]]>
 		ORDER BY sche_date
 		LIMIT 15
 	</select>
@@ -58,6 +70,10 @@
 		WHERE s.sche_movie_code = #{movie_code}
 				AND s.sche_theater_idx = #{theater_idx}
 				AND s.sche_date = #{date}
+				AND CONCAT(s.sche_date, " ", s.sche_end_time) > now()
+				<![CDATA[
+				AND CONCAT(s.sche_date, " ", s.sche_end_time) <= date_add(now(),INTERVAL 1 MONTH)
+				]]>
 		ORDER BY 
 			s.sche_screen_idx
 			, s.sche_start_time
@@ -69,6 +85,20 @@
 			, movie_poster
 		FROM movie
 		WHERE movie_code = ${movie_code}
+	</select>
+	
+	<select id="selectMovies" resultType="Movie">
+		SELECT DISTINCT movie_nameK
+				, movie_code
+				, movie_rated
+		FROM movie m JOIN schedule s 
+		ON s.sche_movie_code = m.movie_code
+		WHERE 
+			CONCAT(s.sche_date, " ", s.sche_end_time) >= now()
+			<![CDATA[
+			AND CONCAT(s.sche_date, " ", s.sche_end_time) <= date_add(now(),INTERVAL 1 MONTH)
+			]]>
+		ORDER BY movie_nameK
 	</select>
 	<!-- step1 끝 -->
 </mapper>

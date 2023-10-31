@@ -41,5 +41,10 @@ public class BookingService {
 		System.out.println("BookingService - selectMovie()");
 		return mapper.selectMovie(movie_code);
 	}
+
+	public List<MovieVO> selectMovies() {
+		System.out.println("BookingService - selectMovies()");
+		return mapper.selectMovies();
+	}
 	
 }

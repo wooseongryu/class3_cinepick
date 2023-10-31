@@ -70,6 +70,7 @@
 //     		alert(data.getAttribute("data-screenName"));
 //     		alert(data.getAttribute("data-hour"));
     		
+    		
     		$("#result_screen").children().remove();
     		$("#result_screen").append("<h6>상영관&emsp;" + data.getAttribute("data-screenName") + "</h6>");
 
@@ -77,6 +78,9 @@
 	    		$("#step1_screen > .row").find("h6").css("color", "white");
 				$("#step1_screen > .row[name='" + data.getAttribute("data-screenName") + "']").find("h6[data-hour='" + data.getAttribute("data-hour") + "']").css("color", "yellow");
     		});
+    		
+    		$("#result").children().remove();
+    		$("#result").append("<input type='button' value='좌석선택' class='res_btn' onclick='location.href=''" + "bookingStepTwo" + "'>");
     		
     	}
     
@@ -132,6 +136,9 @@
     				
     				$("#result_screen").children().remove();
     	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
+    	    		
+    	    		$("#result").children().remove();
+    	    		$("#result").append("<input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn' onclick='location.href=''" + "bookingStepTwo" + "'>");
     			},
     			error: function() {
     				alert("에러");
@@ -195,6 +202,9 @@
     				
     				$("#result_screen").children().remove();
     	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
+    	    		
+    	    		$("#result").children().remove();
+    	    		$("#result").append("<input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn' onclick='location.href=''" + "bookingStepTwo" + "'>");
     			},
     			error: function() {
     				alert("에러");
@@ -239,6 +249,9 @@
     				
     				$("#result_screen").children().remove();
     	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
+    	    		
+    	    		$("#result").children().remove();
+    	    		$("#result").append("<input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn' onclick='location.href=''" + "bookingStepTwo" + "'>");
     			},
     			error: function() {
     				alert("에러");
@@ -286,6 +299,9 @@
     				
     				$("#result_screen").children().remove();
     	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
+    	    		
+    	    		$("#result").children().remove();
+    	    		$("#result").append("<input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn' onclick='location.href=''" + "bookingStepTwo" + "'>");
     			},
     			error: function() {
     				alert("에러");
@@ -411,16 +427,12 @@
 										<div id="result_screen">
 											<h6>상영관&emsp;상영관선택</h6>
 										</div>
-										<div>
-											<h6>인원&emsp;&emsp;</h6>
-										</div>
 									</div>
 									<div class="res_result">
-										<h6>좌석번호&emsp;</h6>
 									</div>
 									<div class="res_result" id="result">
-										<input type="button" value="좌석선택" class="res_btn" onclick="location.href='bookingStepTwo'">
-<!-- 										<input type="button" value="좌석선택" class="res_btn" disabled="disabled" style="background: silver;"> -->
+<!-- 										<input type="button" value="좌석선택" class="res_btn" onclick="location.href='bookingStepTwo'"> -->
+										<input type="button" value="좌석선택" class="res_btn" disabled="disabled" style="background: silver;">
 									</div>
 		                        </div>
 							</div>
