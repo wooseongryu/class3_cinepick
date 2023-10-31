@@ -38,6 +38,7 @@ import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
+import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.ScheduleVO;
 import com.itwillbs.cinepick.vo.ScreenVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
@@ -68,6 +69,7 @@ public class AdminController {
 	 * 11. 이벤트 카테고리
 	 * 12. 극장(영화관) 관리
 	 * 13. 상영관 관리
+	 * 14. 리뷰 관리
 	 * ===================================================================
 	 * */
 	
@@ -1491,5 +1493,32 @@ public class AdminController {
 		
 		return "redirect:/adminScreenList";
 	}
+	
+	
+	/*====================================================================
+	 * 14. 리뷰 관리
+	 * ===================================================================
+	 * */
+	
+	// 내가 쓴 리뷰 목록
+	@GetMapping("adminMyReviewList")
+	public String adminMyReviewList(ReviewVO review, Model model, HttpSession session) {
+		System.out.println("UserController - adminMyReviewList");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		List<QnaVO> reviewList = adminService.getReviewList("");
+		model.addAttribute("reviewList", reviewList);
+		
+		
+		return "mypage/admin/board_review";
+	}
+	
 	
 }
