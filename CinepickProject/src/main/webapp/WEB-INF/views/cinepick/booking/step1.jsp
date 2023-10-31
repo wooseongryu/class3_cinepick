@@ -54,6 +54,13 @@
 			margin-left: 30px;
 			cursor: pointer;
     	}
+    	#step1_city h6,
+    	#step1_theater h6,
+    	#step1_screen h6,
+    	#step1_date h6 {
+    		cursor: pointer;
+    	}
+    	
     </style>
     <script type="text/javascript">
     	function final(data) {
@@ -68,7 +75,7 @@
 
     		$(function() {
 	    		$("#step1_screen > .row").find("h6").css("color", "white");
-				$("#step1_screen > .row").find("h6[data-hour='06:00']").css("color", "yellow");
+				$("#step1_screen > .row[name='" + data.getAttribute("data-screenName") + "']").find("h6[data-hour='" + data.getAttribute("data-hour") + "']").css("color", "yellow");
     		});
     		
     	}
@@ -92,7 +99,7 @@
 						$("#result_date").append("<h6>날짜&emsp;&emsp;" + data.getAttribute("data-date") + "</h6>");
 						
 						$("#step1_screen").append("<h6 style='color: yellow'>" + screen + "</h6>");
-						$("#step1_screen").append("<div class='row' id='step1_time''>");
+						$("#step1_screen").append("<div name='" + screen + "' class='row' id='step1_time''>");
 						$.each(resp.timeList, function(index, time) {
 							let hour = time.sche_start_time.hour;
 	 						if (hour < 10) {
@@ -122,6 +129,9 @@
 					
 					$("#step1_date").children("h6").css("color", "white");
     				$("#step1_date").children("h6[data-date=" + data.getAttribute("data-date") +"]").css("color", "yellow");
+    				
+    				$("#result_screen").children().remove();
+    	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
     			},
     			error: function() {
     				alert("에러");
@@ -182,6 +192,9 @@
     				
     				$("#result_date").children().remove();
     				$("#result_date").append("<h6>날짜&emsp;&emsp;날짜선택</h6>");
+    				
+    				$("#result_screen").children().remove();
+    	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
     			},
     			error: function() {
     				alert("에러");
@@ -223,6 +236,9 @@
     				
     				$("#result_date").children().remove();
     				$("#result_date").append("<h6>날짜&emsp;&emsp;날짜선택</h6>");
+    				
+    				$("#result_screen").children().remove();
+    	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
     			},
     			error: function() {
     				alert("에러");
@@ -267,6 +283,9 @@
     				
     				$("#result_date").children().remove();
     				$("#result_date").append("<h6>날짜&emsp;&emsp;날짜선택</h6>");
+    				
+    				$("#result_screen").children().remove();
+    	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
     			},
     			error: function() {
     				alert("에러");
