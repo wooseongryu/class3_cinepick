@@ -151,7 +151,7 @@
 	                                        	<c:if test="${0 ne movie.movie_audi }"><li>누적 관람객 ${movie.movie_audi }명</li></c:if>
 	                                            <li>개봉일 ${movie.movie_openDt }</li>
 	                                        </ul>
-	                                        <h5><a href="movieDetail">${movie.movie_nameK }</a></h5>
+	                                        <h5><a href="movieDetail?movie_code=${movie.movie_code }">${movie.movie_nameK }</a></h5>
 	                                    </div>
 	                                </div>
 	                            </div>

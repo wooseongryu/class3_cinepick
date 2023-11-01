@@ -1,12 +1,16 @@
 package com.itwillbs.cinepick.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.cinepick.service.ReviewService;
 import com.itwillbs.cinepick.vo.ReviewVO;
@@ -28,6 +32,17 @@ public class ReviewController {
 			return "forward";
 		}
 		review.setUser_id(sId);
+		
+		//별점이나 내용 작성 안했을 때
+		if(review.getReview_rating() == 0) {
+			model.addAttribute("msg", "별점등록을 해주세요.");
+			return "fail_back";
+		}
+		if(review.getReview_content() == null || review.getReview_content().equals("") ) { //왜 안됨...?
+			model.addAttribute("msg", "리뷰내용을 작성 해주세요.");
+			return "fail_back";
+		}
+		
 		
 		int insertCount =  service.reviewInsert(review);
 		int movie_code = review.getMovie_code();
@@ -72,5 +87,24 @@ public class ReviewController {
 	}
 	
 	
-
+	@ResponseBody
+	@PostMapping("reviewModifyPro")
+	public String reviewModifyPro(@RequestParam Map<String, String> map, HttpSession session, Model model) {
+		String sId = (String)session.getAttribute("sId");
+		if(sId == null|| !map.get("user_id").equals(sId)) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		System.out.println(map);
+		int updateRvCount = service.reviewUpdate(map);
+		if(updateRvCount > 0) {
+			return "true";
+		} else {
+			return "false";
+		}
+	
+//		return "";
+	}
+	
+	
 }

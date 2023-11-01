@@ -102,6 +102,7 @@ public class MovieController {
 		model.addAttribute("movie", movie);
 		
 //		return "";
+//		return "cinepick/movie/movie_detail3";
 		return "cinepick/movie/movie_detail";
 	}
 	

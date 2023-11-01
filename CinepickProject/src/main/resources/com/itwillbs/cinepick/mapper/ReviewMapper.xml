@@ -43,5 +43,15 @@
 			AND review_num = #{review_num}
 	</delete>
 	
+	<update id="reviewUpdate" parameterType="map">
+		UPDATE review
+		SET review_rating = #{review_rating1}
+			, review_content = #{review_content}
+			, review_date = now()
+		WHERE review_num = #{review_num}
+			AND user_id = #{user_id}
+			AND movie_code = #{movie_code}
+	</update>
+	
 
 </mapper>

@@ -29,32 +29,61 @@
     
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
 	<style>
-		#reviewForm fieldset{
+		/*리뷰등록별점*/
+		.reviewForm fieldset{
 		    display: inline-block;
 		    direction: rtl;
 		    border:0;
 		}
-		#reviewForm fieldset legend{
+		.reviewForm fieldset legend{
 		    text-align: right;
 		}
-		#reviewForm input[type=radio]{
+		.reviewForm input[type=radio]{
 		    display: none;
 		}
-		#reviewForm label{
-		    font-size: 3em;
+		.reviewForm label{
+		    font-size: 2em;
 		    color: transparent;
 		    text-shadow: 0 0 0 #f0f0f0;
 		}
-		#reviewForm label:hover{
+		.reviewForm label:hover{
 		    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 		}
-		#reviewForm label:hover ~ label{
+		.reviewForm label:hover ~ label{
 		    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 		}
-		#reviewForm input[type=radio]:checked ~ label{
+		.reviewForm input[type=radio]:checked ~ label{
 		    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 		}
 		
+		/* 수정별점 */
+		.reviewMForm fieldset{
+		    display: inline-block;
+		    direction: rtl;
+		    border:0;
+		}
+		.reviewMForm fieldset legend{
+		    text-align: right;
+		}
+		.reviewMForm input[type=radio]{
+		    display: none;
+		}
+		.reviewMForm label{
+		    font-size: 1em;
+		    color: transparent;
+		    text-shadow: 0 0 0 #f0f0f0;
+		}
+		.reviewMForm label:hover{
+		    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+		}
+		.reviewMForm label:hover ~ label{
+		    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+		}
+		.reviewMForm input[type=radio]:checked ~ label{
+		    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+		}
+		
+		/*개인별점*/
 		.reviewStarMin {
 		   position: relative;
 		    display: inline-block;
@@ -73,6 +102,7 @@
 		    background-image: url("${pageContext.request.contextPath }/resources/cinepick/img/review_star/bg_star_min_on.png");
 		}
 		
+		/*영화별점*/
 		.reviewStarMax {
 		   position: relative;
 		    display: inline-block;
@@ -98,7 +128,113 @@
 		   background-image: url("${pageContext.request.contextPath }/resources/cinepick/img/review_star/bg_star_max_on.png");
 		}
 		
+		.reviewBtn {
+			width: auto;
+			height: 25px;
+			font-size: small;
+			border: #b7b7b7 0.5px solid;
+			border-radius: 5px;
+			color: #b7b7b7;
+			background: #fff;
+		}
+		
+		.reviewBtn:hover {
+			background: #e53637;
+			color: #fff;
+			border: red;
+		}
+		
+		
+		
 	</style>
+	<script src= "${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
+	
+	<script>
+		function reviewDelete(user_id, movie_code, review_num) {
+			console.log(user_id);
+			
+			 let result = confirm("리뷰를 삭제하시겠습니까?");
+			 if(result) {
+				 location.href="ReviewDelete?movie_code=" + movie_code + "&user_id=" + user_id + "&review_num=" + review_num;
+			 }
+		}	
+		
+		function reviewModifyForm(movie_code, review_num, user_id, review_content, review_rating) {
+			alert(review_num+","+ movie_code+","+ user_id+","+ review_content+","+ review_rating);
+			
+			$("#review"+review_num).empty();
+			
+			$("#review"+review_num).append(
+					'<form action="reviewModifyPro" class="reviewMForm">'
+					+	'<input type="hidden" value="' + movie_code + '" name="movie_code">'
+					+	'<input type="hidden" value="' + user_id + '" name="user_id">'
+					+	'<input type="hidden" value="' + review_num + '" name="review_num">'
+					+	'<h6>'
+					+		'<span>' + user_id + '</span>&nbsp;&nbsp;'			
+					+		'<span><input type="button" value="등록" class="reviewBtn" onclick="reviewModPro()"></span>&nbsp;&nbsp;'						
+					+		'<span><input type="button" value="취소" class="reviewBtn" onclick="history.back()"></span>'						
+					+	'</h6>'
+// 					+	'<div class="reviewStarMin">'
+					+		'<div>'
+					+			'<fieldset>'
+					+				'<input type="radio" name="review_rating1" value="5" id="ratem1">'
+					+				'<label for="ratem1">★</label>'
+					+				'<input type="radio" name="review_rating1" value="4" id="ratem2">'
+					+				'<label for="ratem2">★</label>'
+					+				'<input type="radio" name="review_rating1" value="3" id="ratem3">'
+					+				'<label for="ratem3">★</label>'
+					+				'<input type="radio" name="review_rating1" value="2" id="ratem4">'
+					+				'<label for="ratem4">★</label>'
+					+				'<input type="radio" name="review_rating1" value="1" id="ratem5">'
+					+				'<label for="ratem5">★</label>'
+					+			'</fieldset>'
+					+		'</div>'
+// 					+	'</div>'
+					+	'<textarea id="modiTextarea" name="review_content" style="border: none; width: 100%; color: #B8B8B8;">' + review_content + '</textarea>' 
+					+'</form>'
+			
+			);
+			$("#modiTextarea").focus();
+			$(".reviewMForm input[type=radio][value='" + review_rating + "']").attr('checked', true);
+			
+		}
+		
+		function reviewModPro() {
+			
+			if($(".modiTextarea").val == "") {
+				alert("내용 입력 필수!");
+				$(".modiTextarea").focus();
+			}
+			
+			$.ajax({
+				type: "POST",
+				url: "reviewModifyPro",
+				data: $(".reviewMForm").serialize(),
+				dataType: "text",
+				success: function(result) {
+					if(result == "true") {
+// 						alert("된고니????????");
+						$("#checkModify").text("수정됨"); //왜 안될까?
+						location.reload();
+					} else {
+						alert("수정된 내용이 없습니다.");
+					}
+				},
+				error: function() {
+					alert("리뷰수정을 실패하였습니다.");
+				}
+			});
+			
+			
+			
+			
+			
+		}
+		
+	
+	
+	</script>
+	
 
 </head>
 
@@ -159,7 +295,9 @@
                                 </div>
 	                            <div class="anime__details__btn">
 	<!--                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> 찜하기</a> -->
-	                                <a href="getCityList?movie_code=${movie.movie_code }" class="follow-btn"><span>예매하기</span></a>
+									<c:if test="${movie.movie_status eq '개봉' }">
+										<a href="getCityList?movie_code=${movie.movie_code }" class="follow-btn"><span>예매하기</span></a>
+									</c:if>
 	                            </div>
                             </div>
                         </div>
@@ -189,7 +327,7 @@
             <div class="section-title">
                 <h5>스틸컷</h5>
             </div>
-            <div class="row">
+            <div class="row" style="margin-bottom: 25px;">
             	<c:forEach var="movie_still" items="${movie.movie_stills }" begin="0" end="5">
 		            <div class="col-lg-4 col-md-6 col-sm-6">
 		                <div class="product__item">
@@ -198,76 +336,106 @@
 		                </div>
 		            </div>
             	</c:forEach>
-            </div>    
-            <div class="row">
-                <div class="col-lg-12 col-md-8">
-                    <div class="anime__details__review" style="align-items: center;">
-                        <div class="section-title">
-                            <h5>관람평</h5>
-                        </div>
-                        <div class="test" id="order_comment">
-                            <h5>
-                                <a style="color: red;">최신순</a>
-                                 &nbsp;&nbsp;
-<!--                                 <a href="movieDetail2">공감순</a> -->
-                            </h5>
-                        </div>
-						<c:forEach var="review" items="${review }">
-	                        <div class="anime__review__item">
-	                            <div class="anime__review__item__text" style="margin: auto;">
-	                                <h6>
-	                                	<span>${review.user_id }</span>
-<%-- 	                                	<c:if test=""> --%>
-		                                	<span><input type="button" value="수정" id="rvModify" onclick="rvModify('${review.user_id }', ${review.movie_code })"></span>
-		                                	<span><input type="button" value="삭제" id="rvDelete" onclick="rvDelete('${review.user_id }', ${review.movie_code },${review.review_num })"></span>
-<%-- 	                                	</c:if> --%>
-	                                </h6>
-	                            	<div class="reviewStarMin">
-									   <div class="bg_star" style="width: ${review.review_rating * 20 }%;"></div>
-									</div>
-	                                <h6>
-	                                    <span>${review.review_date }</span> &nbsp;&nbsp;&nbsp;
-	                                    <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i></a> 12
-	                                </h6>
-	                                <p>${review.review_content }</p>
-	                            </div>
-	                        </div>
-						</c:forEach>
-<!--                         <div class="product__pagination"> -->
-<!--                             <a href="#"><i class="fa fa-angle-double-left"></i></a> -->
-<!--                             <a href="#" class="current-page">1</a> -->
-<!--                             <a href="#">2</a> -->
-<!--                             <a href="#">3</a> -->
-<!--                             <a href="#">4</a> -->
-<!--                             <a href="#">5</a> -->
-<!--                             <a href="#"><i class="fa fa-angle-double-right"></i></a> -->
-<!--                         </div> -->
-                    </div>
-                    <div class="anime__details__form">
-                        <div class="section-title">
-                            <h5>관람평 작성</h5>
-                        </div>
-                        <form action="reviewWritePro" id="reviewForm">
-                       		<fieldset>
-<!-- 								<span class="text-bold">별점을 선택해주세요</span> -->
-								<input type="radio" name="review_rating" value="5" id="rate1">
-								<label for="rate1">★</label>
-								<input type="radio" name="review_rating" value="4" id="rate2">
-								<label for="rate2">★</label>
-								<input type="radio" name="review_rating" value="3" id="rate3">
-								<label for="rate3">★</label>
-								<input type="radio" name="review_rating" value="2" id="rate4">
-								<label for="rate4">★</label>
-								<input type="radio" name="review_rating" value="1" id="rate5">
-								<label for="rate5">★</label>
-							</fieldset>
-                        	<input type="hidden" value="${movie.movie_code }" name="movie_code">
-                            <textarea placeholder="리뷰를 작성해 주세요." name="review_content"></textarea>
-                            <button type="submit"><i class="fa fa-location-arrow"></i> 등록</button>
-                        </form>
-                    </div>
-                </div>
             </div>
+            <c:if test="${movie.movie_status eq '개봉' }">    
+	            <div class="row">
+	                <div class="col-lg-12 col-md-8">
+	                	<div class="anime__details__form" style="margin-bottom: 30px;">
+	                        <div class="section-title">
+	                            <h5>관람평 작성</h5>
+	                        </div>
+	                        <form action="reviewWritePro" class="reviewForm">
+	                       		<fieldset>
+	<!-- 								<span class="text-bold">별점을 선택해주세요</span> -->
+									<input type="radio" name="review_rating" value="5" id="rate1">
+									<label for="rate1">★</label>
+									<input type="radio" name="review_rating" value="4" id="rate2">
+									<label for="rate2">★</label>
+									<input type="radio" name="review_rating" value="3" id="rate3">
+									<label for="rate3">★</label>
+									<input type="radio" name="review_rating" value="2" id="rate4">
+									<label for="rate4">★</label>
+									<input type="radio" name="review_rating" value="1" id="rate5">
+									<label for="rate5">★</label>
+								</fieldset>
+	                        	<input type="hidden" value="${movie.movie_code }" name="movie_code">
+	                            <textarea placeholder="리뷰를 작성해 주세요." name="review_content" style="border: 1px solid #B7B7B7;"></textarea>
+	                            <button type="submit"><i class="fa fa-location-arrow"></i> 등록</button>
+	                        </form>
+	                    </div>
+	                    <div class="anime__details__review" style="align-items: center;">
+	                        <div class="section-title">
+	                            <h5>관람평</h5>
+	                        </div>
+<!-- 	                        <div class="test" id="order_comment"> -->
+<!-- 	                            <h5> -->
+<!-- 	                                <a style="color: red;">최신순</a> -->
+<!-- 	                                 &nbsp;&nbsp; -->
+	<!--                                 <a href="movieDetail2">공감순</a> -->
+<!-- 	                            </h5> -->
+<!-- 	                        </div> -->
+							<c:if test="${empty review }">
+								<h6  style="color: #1c1c1c;">등록된 관람평이 없습니다.</h6>
+							</c:if>
+							<c:forEach var="review" items="${review }">
+		                        <div class="anime__review__item">
+		                            <div class="anime__review__item__text" style="margin: auto;" id="review${review.review_num }">
+		                                <h6>
+		                                	<span>${review.user_id }</span>
+		                                	<c:if test="${review.user_id eq sessionScope.sId }">
+			                                	<span><input type="button" value="수정" class="reviewBtn" 
+			                                				onclick="reviewModifyForm(${review.movie_code}, ${review.review_num},'${review.user_id}','${review.review_content}', ${review.review_rating })"></span>
+			                                	<span><input type="button" value="삭제" class="reviewBtn" onclick="reviewDelete('${review.user_id }', ${review.movie_code },${review.review_num })"></span>
+		                                	</c:if>
+		                                </h6>
+		                            	<div class="reviewStarMin">
+										   <div class="bg_star" style="width: ${review.review_rating * 20 }%;"></div>
+										</div>
+		                                <h6>
+		                                    <span>${review.review_date }</span> &nbsp;&nbsp;&nbsp;
+		                                    <span id="checkModify"></span>
+<!-- 		                                    <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i></a> 12 -->
+		                                </h6>
+		                                <p id="review_contect${review.review_num }">${review.review_content }</p>
+		                            </div>
+		                        </div>
+							</c:forEach>
+	<!--                         <div class="product__pagination"> -->
+	<!--                             <a href="#"><i class="fa fa-angle-double-left"></i></a> -->
+	<!--                             <a href="#" class="current-page">1</a> -->
+	<!--                             <a href="#">2</a> -->
+	<!--                             <a href="#">3</a> -->
+	<!--                             <a href="#">4</a> -->
+	<!--                             <a href="#">5</a> -->
+	<!--                             <a href="#"><i class="fa fa-angle-double-right"></i></a> -->
+	<!--                         </div> -->
+	                    </div>
+<!-- 	                    <div class="anime__details__form"> -->
+<!-- 	                        <div class="section-title"> -->
+<!-- 	                            <h5>관람평 작성</h5> -->
+<!-- 	                        </div> -->
+<!-- 	                        <form action="reviewWritePro" id="reviewForm"> -->
+<!-- 	                       		<fieldset> -->
+	<!-- 								<span class="text-bold">별점을 선택해주세요</span> -->
+<!-- 									<input type="radio" name="review_rating" value="5" id="rate1"> -->
+<!-- 									<label for="rate1">★</label> -->
+<!-- 									<input type="radio" name="review_rating" value="4" id="rate2"> -->
+<!-- 									<label for="rate2">★</label> -->
+<!-- 									<input type="radio" name="review_rating" value="3" id="rate3"> -->
+<!-- 									<label for="rate3">★</label> -->
+<!-- 									<input type="radio" name="review_rating" value="2" id="rate4"> -->
+<!-- 									<label for="rate4">★</label> -->
+<!-- 									<input type="radio" name="review_rating" value="1" id="rate5"> -->
+<!-- 									<label for="rate5">★</label> -->
+<!-- 								</fieldset> -->
+<%-- 	                        	<input type="hidden" value="${movie.movie_code }" name="movie_code"> --%>
+<!-- 	                            <textarea placeholder="리뷰를 작성해 주세요." name="review_content"></textarea> -->
+<!-- 	                            <button type="submit"><i class="fa fa-location-arrow"></i> 등록</button> -->
+<!-- 	                        </form> -->
+<!-- 	                    </div> -->
+	                </div>
+	            </div>
+            </c:if>
         </div>
     </section>
     <!-- Anime Section End -->
@@ -279,7 +447,7 @@
 	<!-- Footer Section End -->
 
 	<!-- Js Plugins -->
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script> --%>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/player.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.nice-select.min.js"></script>
@@ -287,25 +455,7 @@
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
-	<script src= "${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
 	
-	<script>
-		function rvModify(user_id, movie_code) {
-			
-		}	
-		function rvDelete(user_id, movie_code, review_num) {
-			console.log(user_id);
-			
-			 let result = confirm("리뷰를 삭제하시겠습니까?");
-			 if(result) {
-				 location.href="ReviewDelete?movie_code=" + movie_code + "&user_id=" + user_id + "&review_num=" + review_num;
-			 }
-			 
-			 
-		}	
-	
-	</script>
-
 </body>
 
 </html>

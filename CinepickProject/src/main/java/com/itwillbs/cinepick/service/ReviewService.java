@@ -1,6 +1,7 @@
 package com.itwillbs.cinepick.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,10 @@ public class ReviewService {
 
 	public int reviewDelete(String user_id, int movie_code, int review_num) {
 		return mapper.reviewDelete(user_id, movie_code, review_num);
+	}
+
+	public int reviewUpdate(Map<String, String> map) {
+		return mapper.reviewUpdate(map);
 	}
 
 }
