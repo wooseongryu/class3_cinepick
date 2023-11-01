@@ -150,7 +150,7 @@
                                             <th>번호</th>
                                             <th>극장번호</th>
                                             <th>극장명</th>
-                                            <th>극장설명</th>
+<!--                                             <th>극장설명</th> -->
                                             <th>극장 주소</th>
                                             <th>수정 및 삭제</th>
                                         </tr>
@@ -168,7 +168,7 @@
 	                                            <td>${theater.theater_idx }</td>
 	                                            <td>${theater.brchNo }</td>
 	                                            <td>${theater.theater_name }</td>
-	                                            <td>${theater.theater_title }</td>
+<%-- 	                                            <td>${theater.theater_title }</td> --%>
 	                                            <td>${theater.theater_address }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="location.href='adminTheaterUpdate?theaterIdx=${theater.theater_idx }'">수정</button>
