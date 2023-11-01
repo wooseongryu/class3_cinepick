@@ -15,17 +15,17 @@
 // slider
    $(function() {
         $(".slider").bxSlider({
-        	nextText: '<i class="bi bi-chevron-compact-right" style="color: #a6abaa;"></i>',
+        	nextText:'<i class="fas fa-chevron-right"></i>',
 //         	nextText:'<i class="fa-light fa-chevron-right" style="color: #a6abaa;"></i>',
-        	prevText: '<i class="bi bi-chevron-compact-left" style="color: #a6abaa;"></i>',
+        	prevText:'<i class="fas fa-chevron-left"></i>',
 //         	prevText:'<i class="fa-light fa-chevron-left" style="color: #a6abaa;"></i>'
 			autohover: true,
 			auto: true,
 			autoControls: true,
 			stopAutoOnClick: true,
 			pager: true,
-			startText: '<i></i>',
-			stopText: '<i></i>'
+			startText: '<i class="fa-solid fa-play"></i>',
+			stopText: '<i class="fa-solid fa-pause"></i>'
         	
         });
 	});
@@ -38,13 +38,13 @@
 			slideWidth:200,
 			slideMargin: 20,
 			pager:false,
-			controls: true,
+			controls: false,
 			auto: true,
 			autohover: true,
-			moveSlides:1,
+			moveSlides:1
 // 			speed:200
-			nextText:'<i class="bi bi-chevron-compact-right" style="color: #a6abaa;"></i>',
-        	prevText:'<i class="bi bi-chevron-compact-left" style="color: #a6abaa;"></i>'
+// 			nextText:'<i class="fas fa-chevron-right"></i>',
+//         	prevText:'<i class="fas fa-chevron-left"></i>'
 			
 		});
 		
