@@ -45,8 +45,25 @@ public class BookingController {
 	
 	// 영화, 극장, 시간 선택 페이지
 	@GetMapping("bookingStepOne")
-	public String bookingStepOne() {
+	public String bookingStepOne(@RequestParam(defaultValue = "-1") int movie_code, Model model) {
 		System.out.println("BookingController - bookingStepOne()");
+		
+		// 영화 상세보기에서 예매 클릭 시 아래와 같은 형식으로 파라미터 전달.
+		// http://localhost:8080/cinepick/bookingStepOne?movie_code=20197122
+		
+		model.addAttribute("movie_code", movie_code);
+		
+		// 메인의 예매로 바로 들어왔을 때.
+		if (movie_code == -1) {
+			return "cinepick/booking/step1";
+		}
+		
+		// 영화상세보기에서 들어왔을 때.
+		int countValidMovie = bookingService.checkValidCode(movie_code);
+		if (countValidMovie < 1) {
+			model.addAttribute("msg", "예매 불가능한 영화입니다.");
+			return "fail_back";
+		}
 		
 		return "cinepick/booking/step1";
 	}

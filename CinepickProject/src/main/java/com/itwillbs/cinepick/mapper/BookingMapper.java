@@ -27,4 +27,6 @@ public interface BookingMapper {
 
 	int selectSchedule(ScheduleVO schedule);
 
+	int checkValidCode(int movie_code);
+
 }

@@ -51,5 +51,10 @@ public class BookingService {
 		System.out.println("BookingService - selectSchedule()");
 		return mapper.selectSchedule(schedule);
 	}
+
+	public int checkValidCode(int movie_code) {
+		System.out.println("BookingService- checkValidCode()");
+		return mapper.checkValidCode(movie_code);
+	}
 	
 }

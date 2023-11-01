@@ -287,14 +287,14 @@
     			}
     		});
     	}
-    
+    	
     	function chooseCity(movie) {
     		$.ajax({
     			type: 'post',
     			url: 'getCityList',
     			dataType: 'json',
     			data: {
-    				movie_code : movie.getAttribute("data-movieCode")
+    				movie_code : movie
     			},
     			success: function(resp) {
     				$("#step1_city").children().remove();
@@ -321,7 +321,7 @@
     				$("#result_movieName").append("<h6>" + resp.movieInfo.movie_nameK + "</h6>");
 
     				$("#step1_movie").find("h6").css("color", "white");
-    				$("#step1_movie").find("h6[data-movieCode=" + movie.getAttribute('data-movieCode') +"]").css("color", "yellow");
+    				$("#step1_movie").find("h6[data-movieCode=" + movie +"]").css("color", "yellow");
     				
     				$("#result_date").children().remove();
     				$("#result_date").append("<h6>날짜&emsp;&emsp;날짜선택</h6>");
@@ -356,10 +356,16 @@
 								+ "<div class='age'>"
 								+ "<img src='${pageContext.request.contextPath }/resources/cinepick/img/age/" + age + ".png' style='height: 20px'>"
 								+ "</div>"
-								+ "<h6 data-movieCode='" + el.movie_code + "' onclick='chooseCity(this)'>" + movie + "</h6>"
+								+ "<h6 data-movieCode='" + el.movie_code + "' onclick=\"chooseCity(" + el.movie_code + ")\">" + movie + "</h6>"
 								+ "</div>";
-					
+						
 						$("#step1_movie").append(movieInfo);
+			    		
+						// 영화상세보기에서 들어왔을 때.
+						let movie_code = ${movie_code};
+						if (movie_code != -1) {
+							chooseCity(movie_code);
+						}
 					});
     			},
     			error: function() {

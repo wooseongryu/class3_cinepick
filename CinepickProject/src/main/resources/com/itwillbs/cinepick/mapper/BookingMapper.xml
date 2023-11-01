@@ -112,5 +112,17 @@
 			AND sche_start_time = #{sche_start_time}
 			AND sche_screen_idx = #{sche_screen_idx}
 	</select>
+	
+	<select id="checkValidCode" resultType="int">
+		SELECT COUNT(DISTINCT movie_code)
+		FROM movie m JOIN schedule s 
+		ON s.sche_movie_code = m.movie_code
+		WHERE 
+			m.movie_code = #{movie_code}
+			AND CONCAT(s.sche_date, " ", s.sche_end_time) >= now()
+			<![CDATA[
+			AND CONCAT(s.sche_date, " ", s.sche_end_time) <= date_add(now(),INTERVAL 1 MONTH)
+			]]>
+	</select>
 	<!-- step1 끝 -->
 </mapper>
