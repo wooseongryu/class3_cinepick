@@ -80,7 +80,9 @@
     		});
     		
     		$("#result").children().remove();
-    		$("#result").append("<input type='button' value='좌석선택' class='res_btn' onclick='location.href=''" + "bookingStepTwo" + "'>");
+    		$("#result").append(
+    				"<input type='button' value='좌석선택' class='res_btn' onclick=\"location.href='bookingStepTwo'\">"
+    				);
     		
     	}
     
