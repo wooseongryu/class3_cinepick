@@ -96,7 +96,12 @@ public class TicketController {
 	
 	@GetMapping("headTest")
 	public String headTest() {
-		return "cinepick/booking/test";
+		return "cinepick/booking/headerTest";
+	}
+	
+	@GetMapping("payTest")
+	public String payTest() {
+		return "cinepick/booking/payTest";
 	}
 	
 	

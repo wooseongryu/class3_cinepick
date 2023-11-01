@@ -11,9 +11,11 @@
 </head>
 <body>
 
-    <header>
-		<jsp:include page="../include/main_top.jsp"></jsp:include>
-	</header>
+<!--     <header> -->
+<%-- 		<jsp:include page="../include/main_top.jsp"></jsp:include> --%>
+<!-- 	</header> -->
+
+	<jsp:include page="../include/headerTest.jsp"></jsp:include>
 	
 	<div class="theater-detail-page">
 	<!-- theater-detail-page 안에 bg-img, bg-pattern, bg-mask, theater-all -->
@@ -367,9 +369,10 @@
 	<br>
 	<br>
 
-	<footer>
-		<jsp:include page="../include/main_footer.jsp"></jsp:include>
-	</footer>
+<!-- 	<footer> -->
+<%-- 		<jsp:include page="../include/main_footer.jsp"></jsp:include> --%>
+<!-- 	</footer> -->
+	<jsp:include page="../include/footerTest.jsp"></jsp:include>
 	
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	<script>

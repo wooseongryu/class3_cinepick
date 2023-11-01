@@ -15,9 +15,8 @@
 </head>
 <body>
 	
-    <header>
-		<jsp:include page="../include/main_top.jsp"></jsp:include>
-	</header>
+    <jsp:include page="../include/headerTest.jsp"></jsp:include>
+	
 	
 <!-- 모달은 position: fixed를 사용합니다. 가능한 다른 요소와의 간섭을 피하기 위해, 모달 HTML을 최상단의 위치에 넣어 주세요. by Bootstrap -->
 	<div class="modal here modal-layer" tabindex="-1">
@@ -504,9 +503,7 @@
 	
 	
 	
-	<footer>
-		<jsp:include page="../include/main_footer.jsp"></jsp:include>
-	</footer>
+	<jsp:include page="../include/footerTest.jsp"></jsp:include>
     
     
     <script>

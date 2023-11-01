@@ -14,7 +14,7 @@
     <!-- payComplete css -->
     <link href="${pageContext.request.contextPath }/resources/cinepick/css/payComplete.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer_sy.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/styles.css" type="text/css">
     
     <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
@@ -56,8 +56,8 @@
 </head>
 <body>
 	
-	<jsp:include page="../include/main_top.jsp"></jsp:include>
-
+<%-- 	<jsp:include page="../include/main_top.jsp"></jsp:include> --%>
+	<jsp:include page="../include/headerTest.jsp"></jsp:include>
 
 	<button class="btn">예매 좌석</button>
 	<div id="result">
@@ -173,8 +173,8 @@
 	<br>
 </div>
 	
-	<jsp:include page="../include/main_footer.jsp"></jsp:include>
-	
+<%-- 	<jsp:include page="../include/main_footer.jsp"></jsp:include> --%>
+	<jsp:include page="../include/footerTest.jsp"></jsp:include>
 
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat.js"></script> --%>
 

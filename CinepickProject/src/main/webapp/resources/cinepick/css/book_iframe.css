@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
     	
 body {
+	/* 	header footer 충돌 수정 11-01 */
+/*     font-family: 'IBM Plex Sans KR'; */
+}
+
+.inner-wrap {
     font-family: 'IBM Plex Sans KR';
 }
 

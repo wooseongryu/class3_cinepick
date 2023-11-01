@@ -36,9 +36,11 @@
         <div class="loader"></div>
     </div>
 
-	<header>
-		<jsp:include page="../include/main_top.jsp"></jsp:include>
-	</header>
+<!-- 개인 header 1101 -->
+<!-- 	<header> -->
+<%-- 		<jsp:include page="../include/main_top.jsp"></jsp:include> --%>
+<!-- 	</header> -->
+	<jsp:include page="../include/headerTest.jsp"></jsp:include>
 	
 	<input type="hidden" id="playSchdlNo" name="playSchdlNo" value="2310112202029">
 	<input type="hidden" id="brchNo" name="brchNo" value="2202">
@@ -675,9 +677,11 @@
 		<iframe style="display: none;"></iframe>
 	</div>
 	
-   	<footer>
-		<jsp:include page="../include/main_footer.jsp"></jsp:include>
-	</footer>
+	<!-- 개인 footer 1101 -->
+<!--    	<footer> -->
+<%-- 		<jsp:include page="../include/main_footer.jsp"></jsp:include> --%>
+<!-- 	</footer> -->
+	<jsp:include page="../include/footerTest.jsp"></jsp:include>
 	
     <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>

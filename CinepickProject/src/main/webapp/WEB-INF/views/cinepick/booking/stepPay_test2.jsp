@@ -10,7 +10,7 @@
     <!-- payComplete css -->
     <link href="${pageContext.request.contextPath }/resources/cinepick/css/payComplete.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer_sy.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/styles.css" type="text/css">
     
     <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
@@ -40,7 +40,8 @@
 </head>
 <body class="body-iframe">
 
-	<jsp:include page="../include/main_top.jsp"></jsp:include>
+<%-- 	<jsp:include page="../include/main_top.jsp"></jsp:include> --%>
+	<jsp:include page="../include/headerTest.jsp"></jsp:include>
 	
 	<br>
 	<br>
@@ -973,7 +974,8 @@ function fn_validateDateYn(param) {
 <br>
 <br>
 	
-	<jsp:include page="../include/main_footer.jsp"></jsp:include>
+<%-- 	<jsp:include page="../include/main_footer.jsp"></jsp:include> --%>
+	<jsp:include page="../include/footerTest.jsp"></jsp:include>
 	
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/kakao.js"></script>
 	
