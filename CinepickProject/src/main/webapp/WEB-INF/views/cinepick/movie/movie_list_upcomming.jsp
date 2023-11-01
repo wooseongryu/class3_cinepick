@@ -91,7 +91,7 @@
 							<div class="row">
                                 <div class="col-lg-8 col-md-8 col-sm-6">
                                     <div class="section-title">
-                                        <h5>
+                                        <h4>
                                         	<a href="movieList">
                                                 현재 상영작
                                             </a> 
@@ -99,14 +99,14 @@
                                             <a style="color: red;">
                                                 개봉 예정작
                                             </a>
-                                        </h5>
+                                        </h4>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="product__page__filter">
                                     	<form action="">
                                     		<input type="radio"  name="MvListType"  value="openDt" style="display: none;" id="open"> 
-	                                    	<label for="open" style="color: #1c1c1c">개봉일순</label>
+	                                    	<label for="open" style="color: white">개봉일순</label>
 <!--                                     	<label></label> -->
 <!--                                     	<input type="radio"> -->
                                    
