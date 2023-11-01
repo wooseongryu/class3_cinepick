@@ -144,6 +144,20 @@
 
 </style>
 
+<script>
+	//휴대폰번호 입력 가능한 수 maxlength(11자리) 설정
+	function maxLengthCheck(object){
+	    if (object.value.length > object.maxLength){
+	        object.value = object.value.slice(0, object.maxLength);
+	    }
+	}
+	
+	//휴대폰번호 입력칸에 오로지 숫자만 입력 되도록 설정
+	function onlynumberic(event) {
+	    event.target.value = event.target.value.replace(/[^0-9]/g, "");
+	}
+	</script>
+
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -193,17 +207,18 @@
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" name="user_phone" id="user_phone" placeholder="휴대폰 번호('-'을 제외)">
+                                <input type="number" name="user_phone" id="user_phone" placeholder="휴대폰 번호('-'을 제외)" maxlength="11" oninput="maxLengthCheck(this)" onkeyup="onlynumberic(event)">
                                 <span class="icon_phone"></span>
                             </div>
-                            <div class="input__item">
-                                <input type="text" name="user_birth" id="user_birth" placeholder="생년월일(6자리입력)">
-                                <span class="icon_calendar"></span>
-                            </div>
-                            <div class="input__item">
-                                <input type="text" name="user_gender" id="user_gender" placeholder="성별(남자 : M 또는 여자 : F 입력)">
-                                <span class="icon_profile"></span>
-                            </div>
+                             
+<!--                             <div class="input__item"> -->
+<!--                                 <input type="text" name="user_birth" id="user_birth" placeholder="생년월일(6자리입력)"> -->
+<!--                                 <span class="icon_calendar"></span> -->
+<!--                             </div> -->
+<!--                             <div class="input__item"> -->
+<!--                                 <input type="text" name="user_gender" id="user_gender" placeholder="성별(남자 : M 또는 여자 : F 입력)"> -->
+<!--                                 <span class="icon_profile"></span> -->
+<!--                             </div> -->
                             <button type="submit" class="site-btn">회원가입</button>
                         </form>
                         <h5>이미 회원이신가요? <a href="login">로그인하기</a></h5>
