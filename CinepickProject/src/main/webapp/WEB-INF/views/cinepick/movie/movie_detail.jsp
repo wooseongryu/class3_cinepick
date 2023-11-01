@@ -213,7 +213,7 @@
 				dataType: "text",
 				success: function(result) {
 					if(result == "true") {
-// 						alert("된고니????????");
+						alert("리뷰가 수정되었습니다.");
 						$("#checkModify").text("수정됨"); //왜 안될까?
 						location.reload();
 					} else {
