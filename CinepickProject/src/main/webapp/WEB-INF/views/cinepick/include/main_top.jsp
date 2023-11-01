@@ -17,6 +17,25 @@ a {
 }
 
 </style>    
+<!--     Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/main.css" type="text/css">  
+
+<!--     Css Styles -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/plyr.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/style.css" type="text/css">
+    
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
+
  
  <header class="header">
  	<div class="container">
@@ -90,8 +109,8 @@ a {
 							</a>
 							 <ul class="dropdown">
 	                             <li><a href="eventList?eventCate_Idx=1">영화</a></li>
-	                             <li><a href="eventList?eventCate_Idx=2">시사회/무대인사</a></li>
-	                             <li><a href="eventList?eventCate_Idx=3">극장별</a></li>
+	                             <li><a href="eventList?eventCate_Idx=4">시사회/무대인사</a></li>
+	                             <li><a href="eventList?eventCate_Idx=5">극장별</a></li>
 							</ul>
 						</li>	
                         <li>

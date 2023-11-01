@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
+<!--     Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+<!--     Css Styles -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/plyr.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/style.css" type="text/css">
+    
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
+
+
     
 <footer id="footer">
 		<div class="section group footer-service">
@@ -15,20 +34,6 @@
 				<li><a href="customer_center/cc_home.jsp">고객센터</a></li>
 				<li><a href="" class="read3">배정/편성기준</a></li>
 				<li><a href="">사이트맵</a></li>
-			</ul>
-		</div>
-		<div class="section group footer-contact">
-			<ul>
-				<li>사업자명: 0000</li>
-				<li>사업자등록번호 00000</li>
-				<li>통신판매업신고번호000007</li>
-				<li>대표이사 00000</li>
-			</ul>
-			<br>
-			<ul>
-				<li>00000000000</li>
-				<li>개인정보책임자 00000</li>
-				<li>고객센터 000000</li>
 			</ul>
 		</div>
 		<div class="section group footer-copyright">

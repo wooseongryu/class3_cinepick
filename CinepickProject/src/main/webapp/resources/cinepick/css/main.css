@@ -92,9 +92,9 @@
 	
 	}
 	
-	.bx-wrapper .bx-controls-auto .bx-stop {
- 		left: calc(100% -20px); 
-	}
+/* 	.bx-wrapper .bx-controls-auto .bx-stop { */
+/*  		left: calc(100% - px);  */
+/* 	} */
 	
 
 /*********************
@@ -180,15 +180,15 @@
 
  	.boardWrap .bx-prev, .boardWrap .bx-next{ 
  		position: absolute; 
- 		top: 50%; 
+ 		top: 30%; 
  		transform: translateY(-50%);
- 		font-size: 1em;
+ 		font-size: 3em;
  	} 
 	
   	.boardWrap .bx-prev {  
-  		left: 20%;  
+  		left: 15%; 
   	}  
 	
   	.boardWrap .bx-next {  
-  		right: 20%;  
+  		right: 15%;  
   	}  
