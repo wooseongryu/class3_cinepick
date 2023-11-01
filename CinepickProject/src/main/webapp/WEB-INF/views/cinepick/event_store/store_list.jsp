@@ -63,7 +63,7 @@
 				<div class="lst_wrap">	
 					<div class="section-title">
 						<p>
-							<font face="맑은 고딕" color="#000000">
+							<font face="맑은 고딕" color="#ffffff">
 								<c:choose>
                                 	<c:when test="${category eq 'package' }">
                                 		<h3>패키지</h3>
@@ -84,19 +84,20 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-6">
 								<div class="product__item">
-									<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-1.jpg">
-										<div class="ep">마감 임박</div>
-									</div>
-									
+									<a href="storeDetail">
+										<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-1.jpg">
+											<div class="ep">마감 임박</div>
+										</div>
+									</a>
 									<div class="product__item__text">
 										<ul>
 											<li>2D일반관람권1매+오리지널팝콘M1매</li>
 										</ul>
 										<h5>
-											<a href="#">fall movie 패키지</a>
+											<a href="storeDetail">fall movie 패키지</a>
 										</h5>
 										<h5>
-											<a href="#"><strong>14,500원</strong>
+											<strong>14,500원</strong>
 										</h5>
 									</div>
 									
@@ -108,7 +109,8 @@
 						<h3 class="tit"></h3>
                             <div class="col-lg-4 col-md-6 col-sm-6">
 								<div class="product__item">
-									<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-2.jpg">
+									<div class="product__item__pic set-bg"
+										data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-2.jpg">
 										<div class="ep">마감 임박</div>
 									</div>
 									<div class="product__item__text">
