@@ -34,9 +34,9 @@ a {
 				<c:otherwise>
 					<a href="user?id=${sessionScope.sId }">${sessionScope.sId } 님</a>
 					<a href="javascript:logout()">로그아웃</a>
-					<a href="basket?id=${sessionScope.sId }">
-						<span class="icon_profile">장바구니임시버튼</span> 
-					</a>
+<%-- 					<a href="basket?id=${sessionScope.sId }"> --%>
+<!-- 						<span class="icon_profile">장바구니임시버튼</span>  -->
+<!-- 					</a> -->
 					 
 					<c:if test="${sessionScope.sId eq 'admin' }">
 						<a href="admin">
