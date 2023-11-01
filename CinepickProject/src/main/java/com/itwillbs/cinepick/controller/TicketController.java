@@ -106,7 +106,7 @@ public class TicketController {
 	
 	@PostMapping("bookPay")
 	public String bookPay(@RequestParam String allTickets, @RequestParam String seats, 
-			@RequestParam int total, 
+			@RequestParam int total, @RequestParam int sche_idx,
 			Model model) {
 		
 		System.out.println("bookPay 매핑 - post");
@@ -114,12 +114,13 @@ public class TicketController {
 		System.out.println(allTickets);
 		System.out.println(seats);
 		System.out.println(total);
+		System.out.println("스케줄 번호: " + sche_idx);
 		
-//		model.addAttribute("allTickets", allTickets);
-//		model.addAttribute("seats", seats);
+		model.addAttribute("allTickets", allTickets);
+		model.addAttribute("seats", seats);
 		
-		int insertCount = service.registTicket(allTickets, seats, total);
-//		
+		int insertCount = service.registTicket(allTickets, seats, total, sche_idx);
+////		
 		if(insertCount > 0) {
 			System.out.println("bookPay1101 티켓 들어감");
 		}

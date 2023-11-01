@@ -668,6 +668,12 @@
 		<input type="submit" id="send" value="이걸 누르면">
 		<a id="nextStep">DB test</a>
 	</form>
+	
+<!-- 	<form action="bookPay" method="post" id="nextStep"> -->
+<!-- 		<input type="submit" value="1102 다음 페이지로"> -->
+<!-- 	</form> -->
+		<input type="hidden" id="sche_idx" name="shce_idx" value="${param.sche_idx }">
+	
 <!-- 	<from action="" method="post"> -->
 <%-- 		<input type="hidden" name="seats" value=<%=seats %>> --%>
 <!-- 	</from> -->
@@ -678,7 +684,6 @@
 		<div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-r7f75ecn82du" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LdAbVknAAAAAB3N3xMIgbKOYdEJv6E4isZ2x0Mq&amp;co=aHR0cHM6Ly93d3cubWVnYWJveC5jby5rcjo0NDM.&amp;hl=ko&amp;v=lLirU0na9roYU3wDDisGJEVT&amp;size=invisible&amp;cb=9nsd8bt01kjd"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div>
 		<iframe style="display: none;"></iframe>
 	</div>
-	
 	<!-- 개인 footer 1101 -->
 <!--    	<footer> -->
 <%-- 		<jsp:include page="../include/main_footer.jsp"></jsp:include> --%>
@@ -709,13 +714,17 @@
 	let ticketCount;
 	let ticket = "";
 	let allTickets = "";
+	let sche_idx = 0;
 	
 	$(function() {
 		
 	$("#nextStep").click(function() {
+// 	$("#nextStep").mouseover(function() {
 			
 			seats = "";
 			allTickets = "";
+			sche_idx = ${sche_idx};
+			console.log("일단 찍어보자 스케줄: " + sche_idx);
 				
 	        $(".seat-condition[selected='selected']").each(function() {
 	            let seatAlpha = $(this).attr("rownm");
@@ -740,6 +749,7 @@
 	            
 	         calcLeft();  	
 	         console.log("토탈: " + total);
+	         console.log("스케줄 번호 : " + ${sche_idx});
 	         
 	        // 이거 됨  
 // 			var dataToSend = "데이터"; // 이 데이터는 JavaScript에서 생성한 데이터로 대체
@@ -750,13 +760,17 @@
 // 			    data: { dataToSend : "데이터" },
 			    data: { allTickets : allTickets,
 				    	seats : seats,
-				    	total : total
+				    	total : total,
+				    	sche_idx: sche_idx
 				    	},
 			    dataType: "text",
 			    success: function(response) {
 			        // 서버에서 반환된 응답을 처리
 // 			        console.log(response);
+			        $("#output").html(allTickets);
 			        $("#output").html(seats);
+			        $("#output").html(total);
+			        $("#output").html(sche_idx);
 			    },
 			    error: function() {
 					alert("실패!");

@@ -32,6 +32,7 @@
 			    , #{allTickets}
 				, #{seats}
 				, #{total}
+				, #{sche_idx}
 			);	
 			
 	</insert>
