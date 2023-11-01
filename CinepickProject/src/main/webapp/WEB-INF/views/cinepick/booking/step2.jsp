@@ -636,6 +636,7 @@
 <!--                         <button id="reserve" onclick="location.href='payment-successcomplete'">예매내역test</button> -->
 <!--                         <button id="reserve">예매내역test</button> -->
                         <a id="reserve">예매 test</a>
+                        
 <!--                         <button id="reserve" onclick="location.href='payment-successcomplete'">예매내역test</button> -->
                         
                         
@@ -665,6 +666,7 @@
 		<input type="hidden" id="allTickets" name="allTickets">
 		<input type="hidden" id="seats" name="seats">
 		<input type="submit" id="send" value="이걸 누르면">
+		<a id="nextStep">DB test</a>
 	</form>
 <!-- 	<from action="" method="post"> -->
 <%-- 		<input type="hidden" name="seats" value=<%=seats %>> --%>
@@ -710,6 +712,65 @@
 	
 	$(function() {
 		
+	$("#nextStep").click(function() {
+			
+			seats = "";
+			allTickets = "";
+				
+	        $(".seat-condition[selected='selected']").each(function() {
+	            let seatAlpha = $(this).attr("rownm");
+	            let seatNumber = $(this).attr("seatno");
+	            seats += seatAlpha + seatNumber + "/";
+	        });
+	            console.log(seats);
+		       	$("#seats").val(seats);
+		       	console.log("히든:" + $("#seats").val());
+	            
+	        $(".now").each(function() {
+	        	
+	    		ticketCount = parseInt($(this).text());
+	    		
+	    		if(ticketCount > 0) {
+	    			ticket = $(this).closest(".cell").find(".txt").text();
+		    		allTickets += ticket + ticketCount + "/";
+	    		}
+	        	
+	        });
+	            console.log(allTickets);
+	            
+	         calcLeft();  	
+	         console.log("토탈: " + total);
+	         
+	        // 이거 됨  
+// 			var dataToSend = "데이터"; // 이 데이터는 JavaScript에서 생성한 데이터로 대체
+			$.ajax({
+			    type: "POST",
+// 			    type: "GET", // 이것도 됨
+			    url: "bookPay",
+// 			    data: { dataToSend : "데이터" },
+			    data: { allTickets : allTickets,
+				    	seats : seats,
+				    	total : total
+				    	},
+			    dataType: "text",
+			    success: function(response) {
+			        // 서버에서 반환된 응답을 처리
+// 			        console.log(response);
+			        $("#output").html(seats);
+			    },
+			    error: function() {
+					alert("실패!");
+				}
+			});
+			
+		});
+		
+		
+		
+		
+		
+		
+		
 		$("#reserve").click(function() {
 			
 			seats = "";
@@ -744,6 +805,7 @@
 // 			var dataToSend = "데이터"; // 이 데이터는 JavaScript에서 생성한 데이터로 대체
 			$.ajax({
 			    type: "POST",
+// 			    type: "GET", // 이것도 됨
 			    url: "reserve",
 // 			    data: { dataToSend : "데이터" },
 			    data: { allTickets : allTickets,
@@ -775,6 +837,10 @@
 			});
 			
 		});
+		
+		
+		
+		
 	});
 	
 	

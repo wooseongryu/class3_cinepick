@@ -14,5 +14,26 @@
 				, #{seats}
 			)
 	</insert>
+	
+	<insert id="insertTickets" parameterType="map">
+<!-- 		INSERT -->
+<!-- 			INTO book_temp -->
+<!-- 			VALUES ( -->
+<!-- 				null -->
+<!-- 				, #{allTickets} -->
+<!-- 				, #{seats} -->
+<!-- 				, #{total} -->
+<!-- 			) -->
+			
+		INSERT 
+			INTO book_temp
+			VALUES (
+			    (SELECT CONCAT('R', LPAD(COALESCE(MAX(SUBSTRING(book_code, 2) + 1), 1), 5, '0')) FROM book_temp b)
+			    , #{allTickets}
+				, #{seats}
+				, #{total}
+			);	
+			
+	</insert>
 
 </mapper>

@@ -31,7 +31,7 @@ public class TicketController {
 	public String reserveFinish2(@RequestParam String allTickets, @RequestParam String seats, 
 			Model model) {
 		
-		System.out.println("reserve 매핑");
+		System.out.println("reserve 매핑 - post");
 		
 		System.out.println(allTickets);
 		System.out.println(seats);
@@ -53,7 +53,7 @@ public class TicketController {
 	public String reserveFinish3(@RequestParam String allTickets, @RequestParam String seats, 
 			Model model) {
 		
-		System.out.println("reserve 매핑");
+		System.out.println("reserve 매핑 - get");
 		
 		System.out.println(allTickets);
 		System.out.println(seats);
@@ -103,6 +103,29 @@ public class TicketController {
 	public String payTest() {
 		return "cinepick/booking/payTest";
 	}
+	
+	@PostMapping("bookPay")
+	public String bookPay(@RequestParam String allTickets, @RequestParam String seats, 
+			@RequestParam int total, 
+			Model model) {
+		
+		System.out.println("bookPay 매핑 - post");
+		
+		System.out.println(allTickets);
+		System.out.println(seats);
+		System.out.println(total);
+		
+//		model.addAttribute("allTickets", allTickets);
+//		model.addAttribute("seats", seats);
+		
+		int insertCount = service.registTicket(allTickets, seats, total);
+//		
+		if(insertCount > 0) {
+			System.out.println("bookPay1101 티켓 들어감");
+		}
+		
+		return "cinepick/booking/stepPay_test2";
+	};
 	
 	
 }

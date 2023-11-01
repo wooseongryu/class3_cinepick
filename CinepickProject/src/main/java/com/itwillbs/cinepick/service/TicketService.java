@@ -15,4 +15,9 @@ public class TicketService {
 		return mapper.insertTicket(allTickets, seats);
 	}
 
+	public int registTicket(String allTickets, String seats, int total) {
+		// TODO Auto-generated method stub
+		return mapper.insertTickets(allTickets, seats, total);
+	}
+
 }
