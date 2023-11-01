@@ -57,7 +57,8 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="section-title">
-                                        <h4>스토어</h4>
+                                        <h4>스토어 (매점에서 구매 가능한 상품)</h4>
+                                        	
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +69,7 @@
 				<div class="lst_wrap">	
 				
 					<p>
-						<font face="맑은 고딕" color="#ffffff">
+						<font face="맑은 고딕" color="#000000">
 							<h3>패키지</h3>
 						</font>
 						<div class="plus">		
@@ -85,20 +86,20 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-6">
 								<div class="product__item">
-									<a href="storeDetail">
+									
 										<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-1.jpg">
 											<div class="ep">마감 임박</div>
 										</div>
-									</a>
+									
 									<div class="product__item__text">
 										<ul>
 											<li>2D일반관람권1매+오리지널팝콘M1매</li>
 										</ul>
 										<h5>
-											<a href="${pageContext.request.contextPath }/resources/cinepick/store/store_detail_package1.jsp">fall movie 패키지</a>
+											<a href="#">fall movie 패키지</a>
 										</h5>
 										<h5>
-											<strong>14,500원</strong>
+											<a href="#"><strong>14,500원</strong>
 										</h5>
 									</div>
 									
@@ -109,20 +110,20 @@
                             
 							<div class="col-lg-4 col-md-6 col-sm-6">
 								<div class="product__item">
-									<a href="storeDetail">
-										<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-1.jpg">
-											<div class="ep">마감 임박</div>
-										</div>
-									</a>
+									
+									<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-2.jpg">
+										<div class="ep">마감 임박</div>
+									</div>
+								
 									<div class="product__item__text">
 										<ul>
-											<li>2D일반관람권1매+오리지널팝콘M1매</li>
+											<li>2D영화관람권2매+스위트콤보1매</li>
 										</ul>
 										<h5>
-											<a href="${pageContext.request.contextPath }/resources/cinepick/store/store_detail_package1.jsp">fall movie 패키지</a>
+											<a href="#">forever movie 패키지</a>
 										</h5>
 										<h5>
-											<strong>14,500원</strong>
+											<a href="#"><strong>28,000원</strong>
 										</h5>
 									</div>
 									
@@ -133,20 +134,20 @@
 							
 							<div class="col-lg-4 col-md-6 col-sm-6">
 								<div class="product__item">
-									<a href="storeDetail">
-										<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-1.jpg">
-											<div class="ep">마감 임박</div>
-										</div>
-									</a>
+									
+									<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-3.jpg">
+										<div class="ep">마감 임박</div>
+									</div>
+									
 									<div class="product__item__text">
 										<ul>
-											<li>2D일반관람권1매+오리지널팝콘M1매</li>
+											<li>아시아 로맨스 기획전X3 2D영화관람권 각 1매씩 총 3매</li>
 										</ul>
 										<h5>
-											<a href="${pageContext.request.contextPath }/resources/cinepick/store/store_detail_package1.jsp">fall movie 패키지</a>
+											<a href="#">2023 아시아 로맨스 기획전 관람권 패키지</a>
 										</h5>
 										<h5>
-											<strong>14,500원</strong>
+											<a href="#"><strong>21,000원</strong>
 										</h5>
 									</div>
 								</div>
@@ -160,7 +161,7 @@
                 
                 <div class="lst_wrap">	    
                		<p>
-						<font face="맑은 고딕" color="#ffffff">
+						<font face="맑은 고딕" color="#000000">
 							<h3>스낵</h3>
 						</font>
 						<div class="plus">		
@@ -176,15 +177,15 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6">
 							<div class="product__item">
-								<a href="storeDetail">
-									<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/snack-1.jpg"></div>
-								</a>
+								
+								<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/snack-1.jpg"></div>
+								
 								<div class="product__item__text">
 									<ul>
 										<li>콜라 M</li>
 									</ul>
 									<h5>
-										<a href="storeDetail">콜라 M</a>
+										<a href="#">콜라 M</a>
 									</h5>
 									<h5>
 										<a href="#"><strong>3,000원</strong></a>
@@ -206,10 +207,10 @@
 										<li>오리지널팝콘L+탄산음료M2</li>
 									</ul>
 									<h5>
-										<a href="#######################">스위트 콤보</a>
+										<a href="#">스위트 콤보</a>
 									</h5>
 									<h5>
-										<a href="######################"><strong>10,000원</strong></a>
+										<a href="#"><strong>10,000원</strong></a>
 									</h5>
 								</div>
 							</div>
@@ -228,7 +229,7 @@
 										<li>오리지널팝콘M2+탄산음료M2</li>
 									</ul>
 									<h5>
-										<a href="########################">더블 콤보</a>
+										<a href="#">더블 콤보</a>
 									</h5>
 									<h5>
 										<a href="#"><strong>14,000원</strong></a>
@@ -245,7 +246,7 @@
                 
                 <div class="lst_wrap">	
                 	<p>
-						<font face="맑은 고딕" color="#ffffff">
+						<font face="맑은 고딕" color="#000000" >
 							<h3>관람권/포토카드</h3>
 						</font>
 						<div class="plus">		
@@ -261,16 +262,16 @@
 					<div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6">
 							<div class="product__item">
-								<a href="${pageContext.request.contextPath }/cinepick/store/store_detail_ticket1.jsp">
-									<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/ticket-1.jpg">
-									</div>
-								</a>
+								
+								<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/ticket-1.jpg">
+								</div>
+								
 								<div class="product__item__text">
 									<ul>
 										<li>일반관람권1매</li>
 									</ul>
 									<h5>
-										<a href="${pageContext.request.contextPath }/resources/cinepick/store/store_detail_package1.jsp">일반 관람권</a>
+										<a href="#">일반 관람권</a>
 									</h5>
 									<h5>
 										<a href="#"><strong>13,000원</strong></a>
@@ -291,7 +292,7 @@
 										<li>앞면은 공식포스터/뒷면은 원하는 문구 입력 가능</li>
 									</ul>
 									<h5>
-										<a href="${pageContext.request.contextPath }/resources/cinepick/store/store_detail_package1.jsp">BIFF 2023 공식 포토카드</a>
+										<a href="#">BIFF 2023 공식 포토카드</a>
 									</h5>
 									<h5>
 										<a href="#"><strong>2,000원</strong></a>
@@ -314,7 +315,7 @@
 											<!--                                            <li>Movie</li>-->
 										</ul>
 										<h5>
-											<a href="${pageContext.request.contextPath }/resources/cinepick/store/store_detail_package1.jsp">BIFF 2023 프레임 포토카드</a>
+											<a href="#">BIFF 2023 프레임 포토카드</a>
 										</h5>
 										<h5>
 											<a href="#"><strong>2,000원</strong></a>
