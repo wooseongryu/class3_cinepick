@@ -9,4 +9,6 @@ public interface TicketMapper {
 //	int insertTicket(String allTickets, String seats);
 	int insertTicket(@Param("allTickets") String allTickets, @Param("seats") String seats);
 
+	int insertTickets(@Param("allTickets") String allTickets, @Param("seats") String seats, @Param("total") int total);
+
 }
