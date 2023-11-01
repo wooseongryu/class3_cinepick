@@ -121,7 +121,14 @@ public class BookingController {
 		
 		
 		return gson.toJson(map);
-//		return gson.toJson(timeList);
+	}
+	
+	@ResponseBody
+	@PostMapping("getSchedule")
+	public String getSchedule(ScheduleVO schedule, Gson gson) {
+		System.out.println("BookingController - getSchedule()");
+		
+		return String.valueOf(bookingService.selectSchedule(schedule));
 	}
 	
 	/*====================================================================
@@ -130,10 +137,12 @@ public class BookingController {
 	 * */
 	
 	// 좌석 선택 페이지
-	@GetMapping("bookingStepTwo")
-	public String bookingStepTwo() {
+	@PostMapping("bookingStepTwo")
+	public String bookingStepTwo(int sche_idx) {
 		System.out.println("BookingController - bookingStepTwo()");
 
+		System.out.println(")))))))))))))))))))))스케줄 번호(schedule테이블 - sche_idx) : " + sche_idx);
+		
 		return "cinepick/booking/step2";
 	}
 	

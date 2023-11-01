@@ -69,20 +69,42 @@
 //     		alert(data.getAttribute("data-date"));
 //     		alert(data.getAttribute("data-screenName"));
 //     		alert(data.getAttribute("data-hour"));
-    		
-    		
-    		$("#result_screen").children().remove();
-    		$("#result_screen").append("<h6>상영관&emsp;" + data.getAttribute("data-screenName") + "</h6>");
+// 			alert(data.getAttribute("data-screen_idx"));
 
-    		$(function() {
-	    		$("#step1_screen > .row").find("h6").css("color", "white");
-				$("#step1_screen > .row[name='" + data.getAttribute("data-screenName") + "']").find("h6[data-hour='" + data.getAttribute("data-hour") + "']").css("color", "yellow");
-    		});
+			$.ajax({
+				type: 'post',
+				url: 'getSchedule',
+				dataType: 'text',
+				data: {
+					sche_movie_code : data.getAttribute("data-movieCode"),
+					sche_theater_idx : data.getAttribute("data-theaterIdx"),
+					sche_date : data.getAttribute("data-date"),
+					sche_start_time : data.getAttribute("data-hour") + ":00",
+					sche_screen_idx : data.getAttribute("data-screen_idx")
+				},
+				success: function(sche_idx) {
+					let action = "<form action='bookingStepTwo' method='post'>"
+						+ "<input type='hidden' name='sche_idx' value='" + sche_idx + "'>"
+						+ "<input type='submit' value='좌석선택' class='res_btn'>"
+						+ "</form>"
+					$("#result").children().remove();
+					$("#result").append(action);
+					
+					$("#step1_screen > .row").find("h6").css("color", "white");
+					$("#step1_screen > .row[name='" + data.getAttribute("data-screenName") + "']").find("h6[data-hour='" + data.getAttribute("data-hour") + "']").css("color", "yellow");
+					
+					$("#result_screen").children().remove();
+		    		$("#result_screen").append("<h6>상영관&emsp;" + data.getAttribute("data-screenName") + "</h6>");
+				},
+				error: function() {
+					alert("에러");
+				}
+			});
     		
-    		$("#result").children().remove();
-    		$("#result").append(
-    				"<input type='button' value='좌석선택' class='res_btn' onclick=\"location.href='bookingStepTwo'\">"
-    				);
+//     		<form action="bookingStepTwo" method="post">
+// 				<input type="hidden" name="sche_idx" value="">
+// 				<input type="submit" value="좌석선택" class="res_btn" disabled="disabled" style="background: silver;">
+// 			</form>
     		
     	}
     
@@ -115,17 +137,19 @@
 	 						if (screen == time.screen_name) {
 // 	 							console.log(screen + ": " + time.screen_name);
 		 						$("#step1_screen").children(".row").last().append(
-		 									"<div class='col-4'><h6 data-hour='" 
-		 										+ hour 
-		 										+ "' data-movieCode='" 
-		 										+ data.getAttribute("data-movieCode") 
-		 										+ "' data-theaterIdx='" 
-		 										+ data.getAttribute("data-theaterIdx") 
-		 										+ "' data-date='" 
-		 										+ data.getAttribute("data-date") 
-		 										+ "' data-screenName='" 
-		 										+ time.screen_name 
-		 										+ "' onclick='final(this)'>" + hour + " | " + "27석" + "</h6></div>"
+			 								"<div class='col-4'><h6 data-hour='" 
+	 										+ hour 
+	 										+ "' data-movieCode='" 
+	 										+ data.getAttribute("data-movieCode") 
+	 										+ "' data-theaterIdx='" 
+	 										+ data.getAttribute("data-theaterIdx") 
+	 										+ "' data-date='" 
+	 										+ data.getAttribute("data-date")
+	 										+ "' data-screenName='" 
+	 										+ time.screen_name 
+	 										+ "' data-screen_idx='" 
+	 										+ time.sche_screen_idx
+	 										+ "' onclick='final(this)'>" + hour + " | " + "27석" + "</h6></div>"
 		 								);
 	 						}
 						});
@@ -140,8 +164,7 @@
     	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
     	    		
     	    		$("#result").children().remove();
-    	    		$("#result").append("<input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn' onclick='location.href=''" + "bookingStepTwo" + "'>");
-    			},
+    	    		$("#result").append("<div><input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn'></div>");    			},
     			error: function() {
     				alert("에러");
     			}
@@ -181,9 +204,15 @@
     					}
     					
     					let day = el.sche_date.day;
+    					
     					let date = new Date(year + "-" + month + "-" + day);
     					
-    					let sche_date = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+    					let date2 = date.getDate();
+    					if (date2 < 10) {
+    						date2 = "0" + date2;
+    					}
+    					
+    					let sche_date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date2;
     					
     					$("#step1_date").append("<h6 data-theaterIdx='" 
     											+ data.getAttribute("data-theaterIdx") 
@@ -206,8 +235,7 @@
     	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
     	    		
     	    		$("#result").children().remove();
-    	    		$("#result").append("<input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn' onclick='location.href=''" + "bookingStepTwo" + "'>");
-    			},
+    	    		$("#result").append("<div><input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn'></div>");    			},
     			error: function() {
     				alert("에러");
     			}
@@ -253,8 +281,7 @@
     	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
     	    		
     	    		$("#result").children().remove();
-    	    		$("#result").append("<input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn' onclick='location.href=''" + "bookingStepTwo" + "'>");
-    			},
+    	    		$("#result").append("<div><input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn'></div>");    			},
     			error: function() {
     				alert("에러");
     			}
@@ -303,7 +330,7 @@
     	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
     	    		
     	    		$("#result").children().remove();
-    	    		$("#result").append("<input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn' onclick='location.href=''" + "bookingStepTwo" + "'>");
+    	    		$("#result").append("<div><input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn'></div>");
     			},
     			error: function() {
     				alert("에러");
@@ -434,7 +461,9 @@
 									</div>
 									<div class="res_result" id="result">
 <!-- 										<input type="button" value="좌석선택" class="res_btn" onclick="location.href='bookingStepTwo'"> -->
-										<input type="button" value="좌석선택" class="res_btn" disabled="disabled" style="background: silver;">
+										<div>
+											<input type="button" value="좌석선택" class="res_btn" disabled="disabled" style="background: silver;">
+										</div>
 									</div>
 		                        </div>
 							</div>

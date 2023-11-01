@@ -64,7 +64,8 @@
 		SELECT 
 			s.sche_idx 
 			, s.sche_start_time
-			, sc.screen_name 
+			, sc.screen_name
+			, s.sche_screen_idx
 		FROM schedule s JOIN screen sc
 			ON s.sche_screen_idx = sc.screen_idx
 		WHERE s.sche_movie_code = #{movie_code}
@@ -99,6 +100,17 @@
 			AND CONCAT(s.sche_date, " ", s.sche_end_time) <= date_add(now(),INTERVAL 1 MONTH)
 			]]>
 		ORDER BY movie_nameK
+	</select>
+	
+	<select id="selectSchedule" resultType="int">
+		SELECT sche_idx
+		FROM schedule
+		WHERE
+			sche_movie_code = #{sche_movie_code}
+			AND sche_theater_idx = #{sche_theater_idx}
+			AND sche_date = #{sche_date}
+			AND sche_start_time = #{sche_start_time}
+			AND sche_screen_idx = #{sche_screen_idx}
 	</select>
 	<!-- step1 끝 -->
 </mapper>

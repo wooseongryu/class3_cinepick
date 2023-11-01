@@ -25,4 +25,6 @@ public interface BookingMapper {
 
 	List<MovieVO> selectMovies();
 
+	int selectSchedule(ScheduleVO schedule);
+
 }
