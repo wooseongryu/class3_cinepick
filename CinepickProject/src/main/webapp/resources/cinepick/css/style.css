@@ -46,7 +46,7 @@ h4,
 h5,
 h6 {
 	margin: 0;
-	color: rgb(255, 255, 128);
+	color: #1c1c1c;
 	font-weight: 400;
 	font-family: "Mulish", sans-serif;
 }
@@ -963,7 +963,7 @@ ol {
 .product__pagination a {
 	display: inline-block;
 	font-size: 15px;
-	color: #b7b7b7;
+	color: #1c1c1c;
 	font-weight: 600;
 	height: 50px;
 	width: 50px;
@@ -981,11 +981,11 @@ ol {
 }
 
 .product__pagination a.current-page {
-	border: 1px solid #ffffff;
+	border: 1px solid; color: #1c1c1c;
 }
 
 .product__pagination a i {
-	color: #b7b7b7;
+	color: #1c1c1c;
 	font-size: 15px;
 }
 
@@ -1793,18 +1793,18 @@ ol {
 
 .login__form {
 	position: relative;
-	padding-left: 145px;
+	padding-left: 95px;
 }
 
-.login__form:after {
-	position: absolute;
-	right: -14px;
-	top: -40px;
-	height: 330px;
-	width: 1px;
-	background: #1c1c1c;
-	content: "";
-}
+/* .login__form:after { */
+/* 	position: absolute; */
+/* 	right: -14px; */
+/* 	top: -40px; */
+/* 	height: 330px; */
+/* 	width: 1px; */
+/* 	background: #1c1c1c; */
+/* 	content: ""; */
+/* } */
 
 .login__form h3 {
 	color: #1c1c1c;
@@ -1836,7 +1836,7 @@ ol {
 	color: #1c1c1c;
 	background: #ffffff;
 	border-color: black;
-	padding-left: 76px;
+	padding-left: 65px;
 	border: 1;
 }
 
@@ -1973,7 +1973,7 @@ ol {
 .signup .login__form h5 {
 	font-size: 15px;
 	color: #1c1c1c;
-	margin-top: 36px;
+	margin-top: 10px;
 }
 
 .signup .login__form h5 a {

@@ -84,7 +84,9 @@
 	<div class="inner-wrap">
 	
 		<div class="titt">
-		<h2 class="tit mt40" style="margin: 0 auto">전체극장</h2>
+		 <div class="section-title">
+      		 <h5>전체극장</h5>
+         </div>
 		</div>
 	    <div class="theater-place">
 	    	<div class="buttonDiv">

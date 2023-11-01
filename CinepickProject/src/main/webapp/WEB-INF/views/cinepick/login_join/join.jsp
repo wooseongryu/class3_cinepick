@@ -19,7 +19,7 @@
     rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/bootstrap.min.css" type="text/css">
+<%--     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/bootstrap.min.css" type="text/css"> --%>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/plyr.css" type="text/css">
@@ -133,16 +133,6 @@
 		
 	}); // document.ready 이벤트 끝
 </script>
-<style>
-	.row {
-		margin-left: 16% 
-	}
-
-	.signup .login__form:after {
-		height: 0px;
-	}
-
-</style>
 
 <script>
 	//휴대폰번호 입력 가능한 수 maxlength(11자리) 설정
@@ -171,7 +161,7 @@
     <!-- Signup Section Begin -->
     <section class="signup spad">
         <div class="container">
-            <div class="row">
+            <div class="row" style="justify-content: center;">
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>회원가입</h3>
@@ -221,7 +211,8 @@
 <!--                             </div> -->
                             <button type="submit" class="site-btn">회원가입</button>
                         </form>
-                        <h5>이미 회원이신가요? <a href="login">로그인하기</a></h5>
+                        <h5>이미 회원이신가요?</h5>
+                        <h5><a href="login">로그인하기</a></h5>
                     </div>
                 </div>
 <!--                 <div class="col-lg-6"> -->

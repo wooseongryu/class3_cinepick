@@ -81,8 +81,7 @@
                     <br>
                     <br>
                  	<div class="login__register">
-                        <h4>아이디/비밀번호를 잊으셨나요?</h4>
-                        <br>
+                        <h3>아이디/비밀번호를 잊으셨나요?</h3>
                         <a href="idSearch" class="primary-btn">&nbsp;&nbsp;아이디찾기&nbsp;</a>
                         <a href="passwdSearch" class="primary-btn">&nbsp;&nbsp;비밀번호찾기&nbsp;</a>
                     </div>

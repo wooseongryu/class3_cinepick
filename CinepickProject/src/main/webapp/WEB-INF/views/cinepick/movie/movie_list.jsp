@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-11" style="float: none; margin: 0 auto;">
                     <div class="product__page__content">
-                        <div class="product__page__title">
+<!--                         <div class="product__page__title"> -->
                             <div class="row">
                                 <div class="col-lg-8 col-md-8 col-sm-6">
                                     <div class="section-title">
@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+<!--                         </div> -->
                         <div class="row" id="movieListDiv">
                         	<c:forEach var="movie" items="${movieList }">
 	                            <div class="col-lg-3 col-md-6 col-sm-6">
