@@ -156,7 +156,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<td colspan="6">
+											<td colspan="5">
 												<button type="button" class="btn btn-primary" onclick="location.href='adminScreenInsert'">등록</button>&nbsp;&nbsp;
 											</td>
                                         </tr>

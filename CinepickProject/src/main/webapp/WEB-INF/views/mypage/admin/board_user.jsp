@@ -125,7 +125,6 @@
                                             <th>가입일</th>
                                             <th>관리자유무</th>
                                             <th>관리자권한관리</th>
-                                            <th>삭제</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -147,9 +146,6 @@
 															</c:otherwise>
 														</c:choose>
 													</button>
-												</td>
-												<td>
-													<button type="button" class="btn btn-primary">삭제</button>
 												</td>
 											</tr>
 										</c:forEach>

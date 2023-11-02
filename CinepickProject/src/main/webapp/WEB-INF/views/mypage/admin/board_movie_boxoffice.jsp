@@ -150,7 +150,7 @@
                                    	</tbody>
                                     <tfoot>
                                         <tr>
-											<td colspan="7" style="text-align: center">
+											<td colspan="4" style="text-align: center">
 			                                	&nbsp;&nbsp;<input type="button" value="조회하기" id="btnBoxoffice" class="btn btn-primary" onclick="boxofficeList()">
 												&nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="deletBoxoffice()">삭제</button>
 											</td>
