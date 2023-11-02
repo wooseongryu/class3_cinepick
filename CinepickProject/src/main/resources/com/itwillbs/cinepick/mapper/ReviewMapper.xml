@@ -24,6 +24,9 @@
 		SELECT *
 		FROM review
 		WHERE movie_code = #{movie_code}
+		ORDER BY review_num DESC
+		LIMIT #{startRow}
+			, #{listLimit}
 	</select>
 	
 	<!-- 리뷰 count -->

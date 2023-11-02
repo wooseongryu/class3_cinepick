@@ -132,7 +132,7 @@
 			width: auto;
 			height: 25px;
 			font-size: small;
-			border: #b7b7b7 0.5px solid;
+			border: #c7c7c7 0.5px solid;
 			border-radius: 5px;
 			color: #b7b7b7;
 			background: #fff;
@@ -143,6 +143,17 @@
 			color: #fff;
 			border: red;
 		}
+		
+		.reviewBtn:disabled {
+			width: auto;
+			height: 25px;
+			border: none;
+			font-size: small;
+			color: #b7b7b7;
+			background: #fff;
+		
+		}
+	
 		
 		
 		
@@ -214,8 +225,9 @@
 				success: function(result) {
 					if(result == "true") {
 						alert("리뷰가 수정되었습니다.");
-						$("#checkModify").text("수정됨"); //왜 안될까?
+						
 						location.reload();
+						$("#checkModify").text("수정됨"); //왜 안될까?
 					} else {
 						alert("수정된 내용이 없습니다.");
 					}
@@ -224,13 +236,87 @@
 					alert("리뷰수정을 실패하였습니다.");
 				}
 			});
-			
-			
-			
-			
-			
 		}
 		
+		function reviewPage(pageNum, movie_code) {
+// 			alert(pageNum +", "+ movie_code);
+			$.ajax({
+				type: "GET",
+				url: "reviewListAjax",
+				data: {
+					"pageNum" : pageNum,
+					"movie_code" : movie_code 
+				},
+				dataType: "json",
+				success: function(data) {
+					
+					let reviewList = data.review;
+					
+					
+					$(".anime__details__review").empty();
+					//for문 돌면서 append
+					for(review of reviewList) {
+						$(".anime__details__review").append(
+							'<div class="anime__review__item">'
+							+ 	'<div class="anime__review__item__text" style="margin: auto;" id="review' + review.review_num +'">'
+							+ 		'<h6>'
+							+ 			'<span>' + review.user_id + '</span>'
+							+ 			'<c:if test="${' + review.user_id + ' eq sessionScope.sId }">'
+							+ 				'<span><input type="button" value="수정" class="reviewBtn"  onclick="reviewModifyForm('+ review.movie_code + ', '+ review.review_num + ',\''+ review.user_id + '\',\''+ review.review_content + '\', ' + review.review_rating + ')"></span>'
+							+ 				'<span><input type="button" value="삭제" class="reviewBtn" onclick="reviewDelete(\''+ review.user_id + '\', ' + review.movie_code + ',' + review.review_num + ')"></span>'
+							+ 			'</c:if>'
+							+ 		'</h6>'
+							+ 		'<div class="reviewStarMin">'
+							+ 		   '<div class="bg_star" style="width:' + review.review_rating + '* 20 %;"></div>'
+							+ 		'</div>'
+							+ 		'<h6>'
+							+ 			'<span>' + review.review_date + '</span> &nbsp;&nbsp;&nbsp;'
+							+ 			'<span id="checkModify"></span>'
+							+ 		'</h6>'
+							+ 		'<p id="review_contect' + review.review_num + '">'+ review.review_content + '</p>'
+							+ 	'</div>'
+							+'</div>'
+						);
+					}
+					
+					console.log("data.pageInfo.pageNum : " + pageNum);
+					console.log("data.pageInfo.maxPage : " + data.pageInfo.maxPage);
+					if(data.pageNum <= 1) {
+						$("#btnReviewPrev").prop("disabled", true);
+						$("#btnReviewNext").prop("disabled", false);
+						$("#btnReviewNext").attr("onclick", onclick="reviewPage(" + (pageNum + 1) + ", "+ movie_code + ")");
+						
+// 						$("#btnReviewPrev").attr("disabled", "disabled");
+// 						$("#btnReviewNext").removeAttr("disabled");
+					} else if(data.pageNum > 1 && data.pageNum < data.pageInfo.maxPage) {
+						$("#btnReviewPrev").prop("disabled", false);
+						$("#btnReviewNext").prop("disabled", false);
+						$("#btnReviewPrev").attr("onclick", onclick="reviewPage(" + (pageNum - 1) + ", "+ movie_code + ")");
+						$("#btnReviewNext").attr("onclick", onclick="reviewPage(" + (pageNum + 1) + ", "+ movie_code + ")");
+// 						$("#btnReviewPrev").removeAttr("disabled");
+// 						$("#btnReviewNext").removeAttr("disabled");
+					} else if(data.pageNum >= data.pageInfo.maxPage) {
+						$("#btnReviewPrev").prop("disabled", false);
+						$("#btnReviewNext").prop("disabled", true);
+						$("#btnReviewPrev").attr("onclick", onclick="reviewPage(" + (pageNum - 1) + ", "+ movie_code + ")");
+						$("#btnReviewNext").attr("onclick", onclick="reviewPage(" + (pageNum + 1) + ", "+ movie_code + ")");
+// 						$("#btnReviewPrev").removeAttr("disabled");
+// 						$("#btnReviewNext").attr("disabled", "disabled");
+						
+					}
+					console.log($("#btnReviewPrev").prop("disabled"));
+					console.log($("#btnReviewNext").prop("disabled"));
+					
+					
+					
+				}
+				
+					
+				
+			});
+
+
+		}
 	
 	
 	</script>
@@ -296,7 +382,7 @@
 	                            <div class="anime__details__btn">
 	<!--                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> 찜하기</a> -->
 									<c:if test="${movie.movie_status eq '개봉' }">
-										<a href="getCityList?movie_code=${movie.movie_code }" class="follow-btn"><span>예매하기</span></a>
+										<a href="bookingStepOne?movie_code=${movie.movie_code }" class="follow-btn"><span>예매하기</span></a>
 									</c:if>
 	                            </div>
                             </div>
@@ -410,6 +496,44 @@
 	<!--                             <a href="#"><i class="fa fa-angle-double-right"></i></a> -->
 	<!--                         </div> -->
 	                    </div>
+	                    <div id="reviewPager" style="display: flex; justify-content: center;">
+<!-- 	                    페이징처리 -->
+							<c:set var="pageNum" value="1" />
+							<c:if test="${not empty param.pageNum }">
+								<c:set var="pageNum" value="${param.pageNum }" />
+							</c:if>
+							<section id="reviewList">
+<%-- 								<c:choose> --%>
+<%-- 									<c:when test="${pageNum > 1 }"> 현재 페이지가 1보다 클 경우(버튼 동작) --%>
+<%-- 										<input type="button" id="btnReviewPrev" value="이전" onclick="reviewPage(${pageNum - 1 }, ${movie.movie_code})"> --%>
+<%-- 									</c:when> --%>
+<%-- 									<c:otherwise> 현재 페이지 1 페이지보다 크지 않을 경우(버튼 비활성화) --%>
+<%-- 										<input type="button" id="btnReviewPrev"  value="이전" disabled onclick="reviewPage(${pageNum - 1 }, ${movie.movie_code})"> --%>
+<%-- 									</c:otherwise> --%>
+<%-- 								</c:choose> --%>
+								<input type="button" id="btnReviewPrev"  class="reviewBtn" value="이전" onclick="reviewPage(${pageNum - 1 }, ${movie.movie_code})" <c:if test="${pageNum <= 1 }">disabled</c:if>>
+<%-- 								<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }"> --%>
+<%-- 									<c:choose> --%>
+<%-- 										<c:when test="${pageNum eq i }"> 현재 페이지일 경우(하이퍼링크 미표시 및 굵게) --%>
+<%-- 											<b>${i }</b> --%>
+<%-- 										</c:when> --%>
+<%-- 										<c:otherwise> 현재 페이지가 아닐 경우(하이퍼링크 표시) --%>
+<%-- 											<a href="movieDetail?pageNum=${i }&movie_code=${movie.movie_code}">${i }</a>  --%>
+<%-- 										</c:otherwise> --%>
+<%-- 									</c:choose> --%>
+<%-- 								</c:forEach> --%>
+								<input type="button" id="btnReviewNext" class="reviewBtn" value="다음" onclick="reviewPage(${pageNum + 1 }, ${movie.movie_code})" <c:if test="${pageNum >= pageInfo.maxPage }">disabled</c:if>>
+<%-- 								<c:choose> --%>
+<%-- 									<c:when test="${pageNum < pageInfo.maxPage }"> 현재 페이지가 1보다 클 경우(버튼 동작) --%>
+<%-- <%-- 										<input type="button" value="다음" onclick="location.href='movieDetail?pageNum=${pageNum + 1 }&movie_code=${movie.movie_code}'"> --%>
+<%-- 										<input type="button" id="btnReviewNext" value="다음" onclick="reviewPage(${pageNum + 1 }, ${movie.movie_code})"> --%>
+<%-- 									</c:when> --%>
+<%-- 									<c:otherwise> 현재 페이지 1 페이지보다 크지 않을 경우(버튼 비활성화) --%>
+<%-- 										<input type="button" id="btnReviewNext" value="다음" disabled onclick="reviewPage(${pageNum + 1 }, ${movie.movie_code})"> --%>
+<%-- 									</c:otherwise> --%>
+<%-- 								</c:choose> --%>
+							</section>
+						</div>
 <!-- 	                    <div class="anime__details__form"> -->
 <!-- 	                        <div class="section-title"> -->
 <!-- 	                            <h5>관람평 작성</h5> -->

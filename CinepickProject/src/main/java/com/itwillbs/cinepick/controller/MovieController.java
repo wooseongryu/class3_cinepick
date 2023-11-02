@@ -2,9 +2,12 @@ package com.itwillbs.cinepick.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,7 @@ import com.itwillbs.cinepick.service.MovieService;
 import com.itwillbs.cinepick.service.ReviewService;
 import com.itwillbs.cinepick.vo.BoxOfficeVO;
 import com.itwillbs.cinepick.vo.MovieVO;
+import com.itwillbs.cinepick.vo.PageInfoVO;
 import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 
@@ -69,9 +73,17 @@ public class MovieController {
 	
 	// 영화정보 상세보기 - 관람평 최신순
 	@GetMapping("movieDetail")
-	public String movieDetail(@RequestParam ("movie_code") int movie_code, Model model) { 
+	public String movieDetail(@RequestParam ("movie_code") int movie_code, 
+							  @RequestParam(defaultValue = "1") int pageNum, Model model) { 
  		System.out.println("MovieController - movieDetail");
 //		System.out.println(movie_code);
+ 		
+ 		//-----댓글페이징처리-----
+ 		
+ 		int listLimit = 5;
+ 		int startRow = (pageNum - 1) * listLimit;
+ 		
+ 		//-----
  		MovieVO movie = movieService.movieDetail(movie_code);
  		String[] stills = movie.getMovie_still().split("\\|");
 // 		for(int i = 0; i < stills.length; i++) {
@@ -80,8 +92,9 @@ public class MovieController {
  		List<String> movie_stills = Arrays.asList(stills);
  		movie.setMovie_stills(movie_stills);
  		
- 		List<ReviewVO> review = reviewService.selectReviewList(movie_code); 
+ 		List<ReviewVO> review = reviewService.selectReviewList(movie_code,startRow, listLimit); 
  		
+ 		//-----평점계산-------
  		double rvRate = 0;
  		for(ReviewVO rv : review) {
  			rvRate += rv.getReview_rating();
@@ -91,13 +104,25 @@ public class MovieController {
 // 		if(rvCount == null) { 
 // 			rvCount = 0;
 // 		}
- 		
- 		
  		double rvAvg = rvRate / rvCount;
 // 		System.out.println(rvAvg);
  		movie.setMovie_avg(Math.round(rvAvg * 10)  / 10.0);
  		
  		
+ 		//-----페이징-----
+ 		
+ 		int listCount = rvCount; //위에서 이미 계산해서 오니까
+ 		System.out.println("listCount: " + listCount);
+ 		int pageListLimit = 5;
+ 		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+ 		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+ 		int endPage = startPage + pageListLimit - 1;
+ 		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+ 		PageInfoVO pageInfo = new PageInfoVO(listCount, pageListLimit, maxPage, startPage, endPage);	
+ 		
+ 		model.addAttribute("pageInfo", pageInfo);
  		model.addAttribute("review", review);
 		model.addAttribute("movie", movie);
 		
@@ -106,11 +131,41 @@ public class MovieController {
 		return "cinepick/movie/movie_detail";
 	}
 	
-	// 영화정보 상세보기 - 관람평 공감순
-	@GetMapping("movieDetail2")
-	public String movieDetail2() {
-		System.out.println("MovieController - movieDetail2");
-//		return "cinepick/movie/movie_detail2";
-		return"";
+	@ResponseBody
+	@GetMapping("reviewListAjax")
+	public String reviewListPage(@RequestParam ("movie_code") int movie_code, 
+			  					 @RequestParam(defaultValue = "1") int pageNum) {
+		
+		int listLimit = 5;
+ 		int startRow = (pageNum - 1) * listLimit;
+ 		List<ReviewVO> review = reviewService.selectReviewList(movie_code,startRow, listLimit);
+		
+ 		int listCount = reviewService.countReviewList(movie_code);
+ 		int pageListLimit = 5;
+ 		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+ 		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+ 		int endPage = startPage + pageListLimit - 1;
+ 		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+ 		PageInfoVO pageInfo = new PageInfoVO(listCount, pageListLimit, maxPage, startPage, endPage);	
+ 		Map<String, Object> map = new HashMap<String, Object>();
+ 		map.put("pageInfo", pageInfo);
+ 		map.put("pageNum", pageNum);
+ 		map.put("review", review);
+ 		
+ 		JSONObject jsonO = new JSONObject(map);
+ 		System.out.println(jsonO.toString());
+ 		
+ 		
+		return jsonO.toString();
 	}
+	
+//	// 영화정보 상세보기 - 관람평 공감순
+//	@GetMapping("movieDetail2")
+//	public String movieDetail2() {
+//		System.out.println("MovieController - movieDetail2");
+////		return "cinepick/movie/movie_detail2";
+//		return"";
+//	}
 }

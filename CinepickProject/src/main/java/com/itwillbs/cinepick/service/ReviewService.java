@@ -18,8 +18,8 @@ public class ReviewService {
 		return mapper.reviewInsert(review);
 	}
 
-	public List<ReviewVO> selectReviewList(int movie_code) {
-		return mapper.selectReviewList(movie_code);
+	public List<ReviewVO> selectReviewList(int movie_code, int startRow, int listLimit) {
+		return mapper.selectReviewList(movie_code, startRow, listLimit);
 	}
 
 	public int countReviewList(int movie_code) {
