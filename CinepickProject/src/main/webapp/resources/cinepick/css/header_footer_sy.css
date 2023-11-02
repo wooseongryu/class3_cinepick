@@ -98,7 +98,8 @@ body {
 }
 
 .header_menu ul li:hover a {
-	background: #C49C6E;
+/* 	background: #503396; */
+	background: #503396;
 	color: #ffffff;
 }
 
