@@ -1,4 +1,10 @@
 @charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+* {
+   font-family: 'IBM Plex Sans KR';
+}
+
 * {
 	margin: 0;
 	box-sizing: border-box;
@@ -64,7 +70,9 @@ img {
 }
 
 .header_menu ul li:hover a {
-	background: #C49C6E;
+/* 	background: #C49C6E; */
+/* 1103 수정 */
+	background: #503396;
 	color: #ffffff;
 }
 

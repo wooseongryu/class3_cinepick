@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+
 button .kind, .condition, .rank {
 	display: none;
 }
@@ -19,7 +21,9 @@ button {
     cursor: pointer;
     letter-spacing: -.5px;
     font-weight: 400;
-    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+/*     1103 엄성윤 수정 */
+/*     font-family: NanumBarunGothic,Dotum,'돋움',sans-serif; */
+	 font-family: 'IBM Plex Sans KR';
 }
 button, select {
     text-transform: none;
@@ -89,4 +93,11 @@ button.seat-condition {
     background-color: #328619;
     background-position: center 0;
     background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-disabled.png);
+}
+
+ 
+/* 1103 엄성윤 수정 */
+* {
+/* 	header footer 충돌 수정 11-01 */
+    font-family: 'IBM Plex Sans KR';
 }

@@ -15,7 +15,7 @@
     <!-- 좌석 바깥 부분 css -->
     <link href="${pageContext.request.contextPath }/resources/cinepick/css/book_iframe.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
+<%--     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer_sy.css" type="text/css"> --%>
     
 
 </head>

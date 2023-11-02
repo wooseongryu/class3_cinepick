@@ -10,6 +10,15 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+ 
+/* 1103 엄성윤 수정 */
+* {
+/* 	header footer 충돌 수정 11-01 */
+    font-family: 'IBM Plex Sans KR';
+}
+
+ 
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
