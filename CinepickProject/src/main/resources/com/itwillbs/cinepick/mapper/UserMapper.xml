@@ -20,10 +20,10 @@
 			, #{user_name}
 			, #{user_id}
 			, #{user_passwd}
-			, #{user_birth} 
+<!-- 			, #{user_birth}  -->
 			, #{user_email} 
 			, #{user_phone} 
-			, #{user_gender} 
+<!-- 			, #{user_gender}  -->
 			, now()
 			, 'N'
 			, 'N'

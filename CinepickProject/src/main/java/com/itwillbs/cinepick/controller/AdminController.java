@@ -34,6 +34,7 @@ import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.EventCateVO;
 import com.itwillbs.cinepick.vo.EventVO;
+import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.QnaCateVO;
@@ -90,6 +91,14 @@ public class AdminController {
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "fail_back";
 		}
+		
+		int userCount = adminService.countUser();
+		List<MovieVO> movieList = adminService.selectRecentRegistMovie();
+		int todayScreen = adminService.selectTodayScreen();
+
+		model.addAttribute("userCount", userCount);
+		model.addAttribute("movieList", movieList);
+		model.addAttribute("todayScreen", todayScreen);
 		
 		return "mypage/admin/admin_mypage";
 	}

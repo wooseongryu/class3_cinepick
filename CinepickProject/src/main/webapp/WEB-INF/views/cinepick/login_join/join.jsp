@@ -117,18 +117,18 @@
 		});
 
 		// 5. 생년월일 6자리 입력 
-		$("#user_birth").keyup(function() {
-			if($("#user_birth").val().length == 6) {
-				$("#user_gender").focus();
-			}
-		});
+// 		$("#user_birth").keyup(function() {
+// 			if($("#user_birth").val().length == 6) {
+// 				$("#user_gender").focus();
+// 			}
+// 		});
 
 		// 6. 성별 1자리 입력후 블러처리
-		$("#user_gender").keyup(function() {
-			if($("#user_gender").val().length == 1) {
-				$("#user_gender").blur();
-			}
-		});
+// 		$("#user_gender").keyup(function() {
+// 			if($("#user_gender").val().length == 1) {
+// 				$("#user_gender").blur();
+// 			}
+// 		});
 		
 		
 	}); // document.ready 이벤트 끝
@@ -145,8 +145,28 @@
 </style>
 
 <script>
+	
+	//이름 입력 가능한 수 maxlength(8자리) 설정
+	function maxLengthCheckName(object){
+	    if (object.value.length > object.maxLength){
+	        object.value = object.value.slice(0, object.maxLength);
+	    }
+	}
+	//아이디 입력 가능한 수 maxlength(8자리) 설정
+	function maxLengthCheckId(object){
+	    if (object.value.length > object.maxLength){
+	        object.value = object.value.slice(0, object.maxLength);
+	    }
+	}
+	//비밀번호 입력 가능한 수 maxlength(12자리) 설정
+	function maxLengthCheckPasswd(object){
+	    if (object.value.length > object.maxLength){
+	        object.value = object.value.slice(0, object.maxLength);
+	    }
+	}
+
 	//휴대폰번호 입력 가능한 수 maxlength(11자리) 설정
-	function maxLengthCheck(object){
+	function maxLengthCheckNum(object){
 	    if (object.value.length > object.maxLength){
 	        object.value = object.value.slice(0, object.maxLength);
 	    }
@@ -177,21 +197,21 @@
                         <h3>회원가입</h3>
                         <form action="joinPro" method="post">
                         	<div class="input__item">
-                                <input type="text" name="user_name" id="user_name" required="required" size="20" placeholder="이름을 입력하세요">
+                                <input type="text" name="user_name" id="user_name" required="required" size="20" placeholder="이름을 입력하세요" maxlength="8" oninput="maxLengthCheckName(this)">
                                 <span class="icon_profile"></span>
                             </div>
                             <div>
                             	<span id="checkIdResult"></span>
                             </div>
                         	<div class="input__item">
-                               <input type="text" name="user_id" id="user_id" placeholder="아이디 4 ~ 8글자 사이 입력" required="required" size="20">
+                               <input type="text" name="user_id" id="user_id" placeholder="아이디 4 ~ 8글자 사이 입력" required="required" size="20" maxlength="8" oninput="maxLengthCheckId(this)">
                                 <span class="icon_id"></span>
                             </div>
                             <div>
                             	<span id="checkPasswdResult"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" name="user_passwd" id="user_passwd" placeholder="비밀번호 4 ~ 16글자 사이 입력" required="required" size="20">
+                                <input type="password" name="user_passwd" id="user_passwd" placeholder="비밀번호 4 ~ 12글자 사이 입력" required="required" size="20" maxlength="12" oninput="maxLengthCheckPasswd(this)">
                                 <span id = "checkIdResult"></span>
                                 <span class="icon_lock"></span>
                             </div>
@@ -199,7 +219,7 @@
                             	<span id="checkPasswdResult2"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" name="user_passwd2" id="user_passwd2" placeholder="비밀번호 확인">
+                                <input type="password" name="user_passwd2" id="user_passwd2" placeholder="비밀번호 확인" maxlength="12" oninput="maxLengthCheckPasswd(this)">
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
@@ -207,7 +227,7 @@
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="number" name="user_phone" id="user_phone" placeholder="휴대폰 번호('-'을 제외)" maxlength="11" oninput="maxLengthCheck(this)" onkeyup="onlynumberic(event)">
+                                <input type="number" name="user_phone" id="user_phone" placeholder="휴대폰 번호('-'을 제외)" maxlength="11" oninput="maxLengthCheckNum(this)" onkeyup="onlynumberic(event)">
                                 <span class="icon_phone"></span>
                             </div>
                              
