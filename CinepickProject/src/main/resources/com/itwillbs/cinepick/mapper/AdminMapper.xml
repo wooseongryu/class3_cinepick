@@ -26,6 +26,12 @@
 			, movie_code
 		LIMIT 6
 	</select>
+	
+	<select id="selectTodayScreen" resultType="int">
+		SELECT COUNT(DISTINCT sche_movie_code)
+		FROM schedule
+		WHERE sche_date = date_format(now(), '%Y-%m-%d')
+	</select>
 	<!-- 관리자 메인 끝-->
 
 	<!-- 회원 정보 관리 -->

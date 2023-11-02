@@ -29,6 +29,8 @@ public interface AdminMapper {
 	int countUser();
 	
 	List<MovieVO> selectRecentRegistMovie();
+
+	int selectTodayScreen();
 	
 	/*====================================================================
 	 * 관리자 회원 정보 관리 페이지

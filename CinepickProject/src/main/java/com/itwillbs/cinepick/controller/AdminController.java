@@ -94,12 +94,11 @@ public class AdminController {
 		
 		int userCount = adminService.countUser();
 		List<MovieVO> movieList = adminService.selectRecentRegistMovie();
+		int todayScreen = adminService.selectTodayScreen();
 
-		System.out.println(")))))))))))))))))))))))))");
-		System.out.println(movieList);
-		
 		model.addAttribute("userCount", userCount);
 		model.addAttribute("movieList", movieList);
+		model.addAttribute("todayScreen", todayScreen);
 		
 		return "mypage/admin/admin_mypage";
 	}

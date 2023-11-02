@@ -120,7 +120,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                금일 예매 현황</div>
+                                                금일 예매 현황
+											</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">10건///수정필요</div>
                                         </div>
                                     </div>
@@ -135,8 +136,9 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                금일 상영 영화</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">12건///수정필요</div>
+                                                금일 상영 영화
+											</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${todayScreen }건</div>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +152,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                총 회원 수</div>
+                                                총 회원 수
+											</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${userCount }명</div>
                                         </div>
                                     </div>
