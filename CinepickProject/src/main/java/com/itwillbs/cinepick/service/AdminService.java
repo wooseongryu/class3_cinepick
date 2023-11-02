@@ -27,6 +27,23 @@ public class AdminService {
 	private AdminMapper mapper;
 	
 	/*====================================================================
+	 * 관리자 메인
+	 * ===================================================================
+	 * */
+	
+	// 관리자 회원 수 조회
+	public int countUser() {
+		System.out.println("AdminService - countUser()");
+		return mapper.countUser();
+	}
+	
+	// 관리자 최근 등록 영화 조회
+	public List<MovieVO> selectRecentRegistMovie() {
+		System.out.println("AdminService - selectRecentRegistMovie()");
+		return mapper.selectRecentRegistMovie();
+	}
+	
+	/*====================================================================
 	 * 관리자 회원 정보 관리 페이지
 	 * ===================================================================
 	 * */
@@ -312,6 +329,5 @@ public class AdminService {
 	public int myReviewDelete(int review_num) {
 		return mapper.deleteMyReview(review_num);
 	}
-	
 	
 }
