@@ -84,35 +84,36 @@ public class MovieController {
  		int startRow = (pageNum - 1) * listLimit;
  		
  		//-----
- 		MovieVO movie = movieService.movieDetail(movie_code);
+ 		MovieVO movie = movieService.selectMovieDetail(movie_code);
  		String[] stills = movie.getMovie_still().split("\\|");
 // 		for(int i = 0; i < stills.length; i++) {
 // 			System.out.println(stills[i]);
 // 		}
  		List<String> movie_stills = Arrays.asList(stills);
  		movie.setMovie_stills(movie_stills);
+ 		System.out.println("평점: " + movie.getMovie_avg());
  		
  		List<ReviewVO> review = reviewService.selectReviewList(movie_code,startRow, listLimit); 
  		
  		//-----평점계산-------
- 		double rvRate = 0;
- 		for(ReviewVO rv : review) {
- 			rvRate += rv.getReview_rating();
- 		}
- 		
- 		Integer rvCount = reviewService.countReviewList(movie_code);
-// 		if(rvCount == null) { 
-// 			rvCount = 0;
+// 		double rvRate = 0;
+// 		for(ReviewVO rv : review) {
+// 			rvRate += rv.getReview_rating();
 // 		}
- 		double rvAvg = rvRate / rvCount;
-// 		System.out.println(rvAvg);
- 		movie.setMovie_avg(Math.round(rvAvg * 10)  / 10.0);
+// 		
+// 		Integer rvCount = reviewService.countReviewList(movie_code);
+//// 		if(rvCount == null) { 
+//// 			rvCount = 0;
+//// 		}
+// 		double rvAvg = rvRate / rvCount;
+//// 		System.out.println(rvAvg);
+// 		movie.setMovie_avg(Math.round(rvAvg * 10)  / 10.0);
  		
  		
  		//-----페이징-----
  		
- 		int listCount = rvCount; //위에서 이미 계산해서 오니까
- 		System.out.println("listCount: " + listCount);
+ 		int listCount = reviewService.countReviewList(movie_code); //위에서 이미 계산해서 오니까
+// 		System.out.println("listCount: " + listCount);
  		int pageListLimit = 5;
  		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
  		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;

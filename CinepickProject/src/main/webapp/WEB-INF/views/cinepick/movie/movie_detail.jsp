@@ -267,7 +267,7 @@
 							+ 			'</c:if>'
 							+ 		'</h6>'
 							+ 		'<div class="reviewStarMin">'
-							+ 		   '<div class="bg_star" style="width:' + review.review_rating + '* 20 %;"></div>'
+							+ 		   '<div class="bg_star" style="width:' + (review.review_rating  * 20) + '%;"></div>'
 							+ 		'</div>'
 							+ 		'<h6>'
 							+ 			'<span>' + review.review_date + '</span> &nbsp;&nbsp;&nbsp;'
