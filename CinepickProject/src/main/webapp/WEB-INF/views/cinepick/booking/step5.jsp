@@ -61,7 +61,7 @@
 
 	<button class="btn">예매 좌석</button>
 	<div id="result">
-	
+
 	
 	</div>
 

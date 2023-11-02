@@ -44,6 +44,14 @@
 	
 		<div class="quick-reserve">
 		<h2 class="tit">빠른예매<!-- 빠른예매 --></h2>
+		
+		<!-- 	1102 추가 -->
+	여기서 보이나? ${param.sche_idx }
+	파람 스케줄 ${param.sche_idx }
+	파람 권종 ${param.allTickets }
+	파람 좌석 ${param.seats }
+	파람 넘버 ${param.total }
+		
 		<script type="text/javascript">
 			var requestPayAt = "Y";
 	
@@ -959,6 +967,14 @@
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
+	
+	<script>
+	
+	$(function() {
+		$(".h-auto").css("display", "none");
+	});
+	
+	</script>
 	
 
 </body>

@@ -128,5 +128,24 @@ public class TicketController {
 		return "cinepick/booking/stepPay_test2";
 	};
 	
+	@PostMapping("stepPay")
+	public String bookPayment() {
+		
+		return "cinepick/booking/stepPay";
+		
+	}
+	
+	@PostMapping("hiddenTest")
+	public String hiddenTest() {
+		System.out.println("히든 테스트2 - POST");
+		return "cinepick/booking/hiddenTest";
+	}
+	@GetMapping("hiddenTest")
+	public String hiddenTest2() {
+		System.out.println("히든 테스트2 - Get");
+		return "cinepick/booking/hiddenTest";
+	}
+	
+	
 	
 }

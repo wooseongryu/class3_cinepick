@@ -17,6 +17,17 @@
     
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
     
+<%--     <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/bootstrap.min.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/player.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.nice-select.min.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/mixitup.min.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/seat.js"></script> --%>
+    
 
 </head>
 <body class="body-iframe">
@@ -24,11 +35,6 @@
 	<div id="preloder">
         <div class="loader"></div>
     </div>
-    
-    <!-- 연습 -->
-    파람 ${param.sche_idx }
-<%--     # ${#sche_idx } --%>
-    
 
 <!-- 개인 header 1101 -->
 <!-- 	<header> -->
@@ -624,13 +630,7 @@
                         
                         <div class="btn-group">
                             <a href="javaScript:void(0)" class="button" id="pagePrevious" title="이전" onclick="location.href='bookingStepOne'">이전</a>
-<!--                             <a href="javaScript:void(0)" class="button disabled" id="pageNext" title="다음" onclick="location.href='bookingStepThree'">다음</a> -->
-<!--                             <form id="seatForm" action="bookPay" method="POST"> -->
-<%-- 							    <input type="hidden" id="sche_idx" value="${#sche_idx}" /> --%>
-<!-- 							</form> -->
-							<div id="formHere"></div>
-                            <a href="javaScript:void(0)" class="button disabled" id="pageNext" title="다음">다음</a>
-                      
+                            <a href="javaScript:void(0)" class="button disabled" id="pageNext" title="다음" onclick="location.href='bookingStepThree'">다음</a>
                         </div>
                         <!-- btn-group 끝 -->
 <!--                         <button id="reserve" onclick="location.href='payment-successcomplete'">예매내역test</button> -->
@@ -638,44 +638,40 @@
                         <a id="reserve">예매 test</a>
                         
 <!--                         <button id="reserve" onclick="location.href='payment-successcomplete'">예매내역test</button> -->
+                        
+                        
                     </div>
                     <!-- wrap 끝 -->
+                    
                 </div>
                 <!-- seat-result 끝 -->
+                
 			</div>
 			<!-- seat-select-section 끝 -->
+			
 		</div>
 		<!-- quick-reserve 끝 -->
+		
 	</div>
 	<!-- inner-wrap 끝 -->
 	
 	<!-- Test 추가 -->
 	<div id="output"></div>
 	<div id="output2">하하하</div>
-	<div>
-		<input type="button" value="headerfooterㅅㄷㄴㅅ" class="test" id="payTest" onclick="location.href='headTest'">
-		<input type="button" value="결제페이지로" class="test" id="payTest" onclick="location.href='stepPay'">
-		<input type="button" value="예매완료페이지로" class="test" id="complete" onclick="location.href='paySuccess'">
-	</div>
-	
-	
-	
-	<input type="button" value="hidden" id="hidden">
-	
-	
-	
-<!-- 	<form action="bookingStepThree" method="post"> -->
-<%-- 		<input type="text" placeholder="${allTickets }"> --%>
-<!-- 		<input type="hidden" id="allTickets" name="allTickets"> -->
-<!-- 		<input type="hidden" id="seats" name="seats"> -->
-<!-- 		<input type="submit" id="send" value="이걸 누르면"> -->
-<!-- 		<a id="nextStep">DB test</a> -->
-<!-- 	</form> -->
+	<input type="button" value="headerfooterㅅㄷㄴㅅ" class="test" id="payTest" onclick="location.href='headTest'">
+	<input type="button" value="결제페이지로" class="test" id="payTest" onclick="location.href='stepPay'">
+	<input type="button" value="예매완료페이지로" class="test" id="complete" onclick="location.href='paySuccess'">
+	<form action="bookingStepThree" method="post">
+		<input type="text" placeholder="${allTickets }">
+		<input type="hidden" id="allTickets" name="allTickets">
+		<input type="hidden" id="seats" name="seats">
+		<input type="submit" id="send" value="이걸 누르면">
+		<a id="nextStep">DB test</a>
+	</form>
 	
 <!-- 	<form action="bookPay" method="post" id="nextStep"> -->
 <!-- 		<input type="submit" value="1102 다음 페이지로"> -->
 <!-- 	</form> -->
-<!-- 		이거 주석 치니까 또 안 되는데? -->
 		<input type="hidden" id="sche_idx" name="shce_idx" value="${param.sche_idx }">
 	
 <!-- 	<from action="" method="post"> -->
@@ -722,53 +718,143 @@
 	
 	$(function() {
 		
-		$("#pageNext").click(function() {
+	$("#nextStep").click(function() {
+// 	$("#nextStep").mouseover(function() {
+			
+			seats = "";
+			allTickets = "";
+			sche_idx = ${param.sche_idx};
+			console.log("일단 찍어보자 스케줄: " + sche_idx);
 				
-				seats = "";
-				allTickets = "";
-				sche_idx = $("#sche_idx").val();
-				console.log("일단 찍어보자 스케줄: " + sche_idx);
-					
-		        $(".seat-condition[selected='selected']").each(function() {
-		            let seatAlpha = $(this).attr("rownm");
-		            let seatNumber = $(this).attr("seatno");
-		            seats += seatAlpha + seatNumber + "/";
-		        });
-		            
-		        $(".now").each(function() {
-		        	
-		    		ticketCount = parseInt($(this).text());
-		    		
-		    		if(ticketCount > 0) {
-		    			ticket = $(this).closest(".cell").find(".txt").text();
-			    		allTickets += ticket + ticketCount + "/";
-		    		}
-		        });
-		        
-		         calcLeft();  	
-		         console.log("권종: " + allTickets);
-		         console.log("좌석: " + seats);
-		         console.log("토탈: " + total);
-		         console.log("스케줄 번호 : " + sche_idx);
-		         
-		         let newForm = 
-		        	 '<form id="seatForm" action="stepPay" method="POST">'
-// 		        	 '<form id="seatForm" action="hiddenTest" method="GET">'
-// 		        	 '<form id="seatForm" method="POST">'
-// 		        	 '<form id="seatForm" method="GET">'
-						+ '<input type="hidden" id="sche_idx" name="sche_idx" value="' + sche_idx + '">'
-						+ '<input type="hidden" id="allTickets" name="allTickets" value="' + allTickets + '">'
-						+ '<input type="hidden" id="seats" name="seats" value="' + seats + '">'
-						+ '<input type="hidden" id="total" name="total" value="' + total + '">'
-						+ '<input type="submit">'
-					+'</form>';
-					
-				$("#formHere").children().remove();
-				$("#formHere").append(newForm);
-				
-		        $("#seatForm").submit();
+	        $(".seat-condition[selected='selected']").each(function() {
+	            let seatAlpha = $(this).attr("rownm");
+	            let seatNumber = $(this).attr("seatno");
+	            seats += seatAlpha + seatNumber + "/";
+	        });
+	            console.log(seats);
+		       	$("#seats").val(seats);
+		       	console.log("히든:" + $("#seats").val());
+	            
+	        $(".now").each(function() {
+	        	
+	    		ticketCount = parseInt($(this).text());
+	    		
+	    		if(ticketCount > 0) {
+	    			ticket = $(this).closest(".cell").find(".txt").text();
+		    		allTickets += ticket + ticketCount + "/";
+	    		}
+	        	
+	        });
+	            console.log(allTickets);
+	            
+	         calcLeft();  	
+	         console.log("토탈: " + total);
+	         console.log("스케줄 번호 : " + sche_idx);
+	         
+	        // 이거 됨  
+// 			var dataToSend = "데이터"; // 이 데이터는 JavaScript에서 생성한 데이터로 대체
+			$.ajax({
+			    type: "POST",
+// 			    type: "GET", // 이것도 됨
+			    url: "bookPay",
+// 			    data: { dataToSend : "데이터" },
+			    data: { allTickets : allTickets,
+				    	seats : seats,
+				    	total : total,
+				    	sche_idx: sche_idx
+				    	},
+			    dataType: "text",
+			    success: function(response) {
+			        // 서버에서 반환된 응답을 처리
+// 			        console.log(response);
+			        $("#output").html(allTickets);
+			        $("#output").html(seats);
+			        $("#output").html(total);
+			        $("#output").html(sche_idx);
+			    },
+			    error: function() {
+					alert("실패!");
+				}
+			});
 			
 		});
+		
+		
+		
+		
+		
+		
+		
+		$("#reserve").click(function() {
+			
+			seats = "";
+			allTickets = "";
+				
+	        $(".seat-condition[selected='selected']").each(function() {
+	            let seatAlpha = $(this).attr("rownm");
+	            let seatNumber = $(this).attr("seatno");
+	            seats += seatAlpha + seatNumber + "/";
+	        });
+	            console.log(seats);
+		       	$("#seats").val(seats);
+		       	console.log("히든:" + $("#seats").val());
+	            
+	        $(".now").each(function() {
+	        	
+	    		ticketCount = parseInt($(this).text());
+	    		
+	    		if(ticketCount > 0) {
+	    			ticket = $(this).closest(".cell").find(".txt").text();
+		    		allTickets += ticket + ticketCount + "/";
+	    		}
+	        	
+	        });
+	            console.log(allTickets);
+	            
+	           
+	       	$("#allTickets").val(allTickets);
+	           	
+	         
+	        // 이거 됨  
+// 			var dataToSend = "데이터"; // 이 데이터는 JavaScript에서 생성한 데이터로 대체
+			$.ajax({
+			    type: "POST",
+// 			    type: "GET", // 이것도 됨
+			    url: "reserve",
+// 			    data: { dataToSend : "데이터" },
+			    data: { allTickets : allTickets,
+				    	seats : seats },
+			    dataType: "text",
+			    success: function(response) {
+			        // 서버에서 반환된 응답을 처리
+// 			        console.log(response);
+			        $("#output").html(seats);
+			    },
+			    error: function() {
+					alert("실패!");
+				}
+			});
+			
+			$.ajax({
+			    type: "GET",
+			    url: "bookingStepThree",
+			    data: { allTickets : allTickets,
+				    	seats : seats },
+			    dataType: "text",
+			    success: function(response) {
+			        $("#output2").html(seats);
+// 			        location.href="bookingStepThree";
+			    },
+			    error: function() {
+					alert("실패!2");
+				}
+			});
+			
+		});
+		
+		
+		
+		
 	});
 	
 	

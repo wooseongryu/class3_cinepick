@@ -214,6 +214,10 @@ $(function() {
 				
 				$(".money em").text(moneySum);
 				
+				$("#pageNext").removeClass("disabled");
+				$("#pageNext").addClass("active");
+				
+
 			}
 			
 		}
@@ -244,6 +248,18 @@ $(function() {
 	
 	
 	// 다음 버튼
+	
+	
+	$("#pageNext").click(function() {
+		
+		calcLeft();
+		
+		if($(this).hasClass("active")) {
+//			location.href="bookingStepThree";
+		}
+		
+	})
+	
 	
 	$("#reserve").click(function() {
 		

@@ -5,17 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link href="${pageContext.request.contextPath }/resources/cinepick/css/sb-admin-2.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath }/resources/cinepick/css/styles.css" rel="stylesheet">
-    
-<!--     개인 css 엄성윤 -->
-    <link href="${pageContext.request.contextPath }/resources/cinepick/css/seat.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath }/resources/cinepick/css/book.css" rel="stylesheet">
-    
-    <!-- 좌석 바깥 부분 css -->
+    <!-- 예매 완료 css -->
     <link href="${pageContext.request.contextPath }/resources/cinepick/css/step5.css" rel="stylesheet">
+    <!-- payComplete css -->
+    <link href="${pageContext.request.contextPath }/resources/cinepick/css/payComplete.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer_sy.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/styles.css" type="text/css">
+    
+    <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/player.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.nice-select.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/mixitup.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+    
     
 <%--     <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script> --%>
 <%-- 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script> --%>
@@ -30,246 +38,251 @@
     
 
 </head>
-<body>
+<body class="body-iframe">
 
+<%-- 	<jsp:include page="../include/main_top.jsp"></jsp:include> --%>
+	<jsp:include page="../include/headerTest.jsp"></jsp:include>
+	
+	<br>
+	<br>
+	
 	<div id="preloder">
         <div class="loader"></div>
     </div>
 
-	<header>
-		<jsp:include page="../include/main_top.jsp"></jsp:include>
-	</header>
-	
 	<div class="inner-wrap" style="padding-top:40px; padding-bottom:100px;">
-	
-		<div class="quick-reserve">
+	<!-- quick-reserve -->
+	<div class="quick-reserve">
+
 		<h2 class="tit">빠른예매<!-- 빠른예매 --></h2>
 		
-		<!-- 	1102 추가 -->
+			
+<!-- 	1102 추가 -->
 	여기서 보이나? ${param.sche_idx }
 	파람 스케줄 ${param.sche_idx }
 	파람 권종 ${param.allTickets }
 	파람 좌석 ${param.seats }
 	파람 넘버 ${param.total }
-		
-		<script type="text/javascript">
-			var requestPayAt = "Y";
-	
-			$(function(){
-				//RIA의 경우
-				if(parent.sellChnlCd != ""){
-					$('.inner-wrap')
-						.css('padding-bottom','')
-						.css('padding-top','');	//하단 상단 공백 제거
-		//         $('#btnLangChg').hide();    //언어전환 버튼숨김
-	
-					//로그인 되었으면
-					if(parent.riaLoginAt == "Y"){
-						$('.cti-area input[name=riaName]').attr('value',parent.riaParamName);	//고객명
-						$('.cti-area input[name=riaMobileNo]').attr('value',parent.riaParamMobileNo);	//고객전화번호
-						$('.cti-area input[name=riaBirthday]').attr('value',parent.riaParamBirthday);	//고객생년월일
-						$('.cti-area input[name=riaMemberYn]').attr('value',parent.riaMemberYn == "Y" ? "회원" : "비회원");	//회원여부
-	
-						$('.cti-area input[name=riaName]').attr("readonly",true);		//고객명
-						$('.cti-area input[name=riaMobileNo]').attr("readonly",true);	//고객전화번호
-						$('.cti-area input[name=riaBirthday]').attr("readonly",true);	//고객생년월일
-	
-						$('.cti-area input[name=riaMemberYn]').attr("readonly",true);	//회원여부
-	
-						$('.cti-area button').attr('login-at',"Y");
-	
-						//결제화면이 아니면
-						if("N" == requestPayAt){
-							$('.cti-area button').html('재인증');
-						}
-					}
-					
-					//로그인 되지 않았으면
-					else {
-						$('.cti-area input[name=riaName]').attr('value',parent.riaParamName);	//고객명
-						$('.cti-area input[name=riaMobileNo]').attr('value',parent.riaParamMobileNo);	//고객전화번호
-						$('.cti-area input[name=riaBirthday]').attr('value',parent.riaParamBirthday);	//고객생년월일
-						$('.cti-area input[name=riaMemberYn]').attr('value','');	//회원여부
-	
-						$('.cti-area input[name=riaName]').attr("readonly",false);		//고객명
-						$('.cti-area input[name=riaMobileNo]').attr("readonly",false);	//고객전화번호
-						$('.cti-area input[name=riaBirthday]').attr("readonly",false);	//고객생년월일
-	
-						$('.cti-area input[name=riaMemberYn]').attr("readonly",true);	//회원여부
-	
-						$('.cti-area button').attr('login-at',"N");	//회원여부
-						//결제화면이 아니면
-						if("N" == requestPayAt){
-							$('.cti-area button').html('인증요청');
-						}
-					}
-	
-					//드림센터의 경우
-					if(parent.sellChnlCd == "TELLER"){
-						$('.cti-area').show();	//cti 로그인창 표시
-					}
-					else {
-						$('.cti-area').hide();	//cti 로그인창 표시
-					}
+
+<script type="text/javascript">
+var requestPayAt = "Y";
+
+$(function(){
 	
 	
-					//회원정보 확인을 위한 초기 파라메타 셋팅
 	
-					//파라메타 셋팅후
-					//회원여부확인				부모창
-					//나머지 화면 disable 처리	부모창
-	
-				}
-				
-				else {
-					$('.quick-reserve-ad-area').show();	//광고영역 표시
-			//         $('#btnLangChg').show();	//언어전환 버튼표시 사용안함 20200106 김민영
-				}
-	
-				/* RIA 재인증 버튼 클릭 */
-				$('.cti-area button').on("click", function(){
-	
-					//입력값 검증
-					if($('.cti-area button').attr('login-at') == "N"){
-	
-			// 			if($(".cti-area input[name=riaName]").val().length == 0){
-			// 				gfn_alertMsgBoxSize('이름은  필수 입력 항목 입니다.',400,250);	//{0} 필수 입력 항목 입니다.
-			// 				return;
-			// 			}
-	
-						if(!fn_validateDateYn($(".cti-area input[name=riaBirthday]").val())){
-							gfn_alertMsgBoxSize('생년월일을 정확히 입력해주세요.',400,250);	//생년월일을 정확히 입력해주세요.
-							return;
-						}
-	
-						if($(".cti-area input[name=riaMobileNo]").val().length < 10){
-							gfn_alertMsgBoxSize('휴대폰번호를 정확히 입력해주세요.',400,250);	//휴대폰번호를 정확히 입력해주세요.
-							return;
-						}
-	
-						if($(".cti-area input[name=riaMobileNo]").val().substr(0,2) != "01"){
-							gfn_alertMsgBoxSize('휴대폰번호를 정확히 입력해주세요.',400,250);	//휴대폰번호를 정확히 입력해주세요.
-							return;
-						}
-					}
-					parent.fn_setRiaLoginToggle( [$('.cti-area button').attr('login-at')
-												 ,$(".cti-area input[name=riaName]").val()
-												 ,$(".cti-area input[name=riaBirthday]").val()
-												 ,$(".cti-area input[name=riaMobileNo]").val()]
-												);
-				});
-	
-	
-				/* 이름 숫자를 제외한 입력 여부판단 */
-				$(".cti-area input[name=riaName]").on("keyup", function(e){
-					var partton = /[^ㄱ-힣a-zA-Z]/g;
-					if(partton.test($(this).val())) {
-						var value = $(this).val().replace(/[^ㄱ-힣a-zA-Z]/g,"");
-						$(this).val(value);
-					}
-				});
-				
-				$(".cti-area input[name=riaName]").focusout(function(){
-					var partton = /[^ㄱ-힣a-zA-Z]/g;
-					if(partton.test($(this).val())) {
-						var value = $(this).val().replace(/[^ㄱ-힣a-zA-Z]/g,"");
-						$(this).val(value);
-					}
-				});
-	
-				/* 생년월일 숫자만 입력 여부판단 */
-				$(".cti-area input[name=riaBirthday]").on("keyup", function(e){
-					$(this).val($(this).val().replace(/[^0-9]/g,""));
-				});
-				
-				$(".cti-area input[name=riaBirthday]").focusout(function(){
-					$(this).val($(this).val().replace(/[^0-9]/g,""));
-				});
-	
-				/* 휴대폰번호 숫자만 입력 여부판단 */
-				$(".cti-area input[name=riaMobileNo]").on("keyup", function(e){
-					$(this).val($(this).val().replace(/[^0-9]/g,""));
-				});
-				
-				$(".cti-area input[name=riaMobileNo]").focusout(function(){
-					$(this).val($(this).val().replace(/[^0-9]/g,""));
-				});
-			});
-	
-	
-			/*날짜 형태 확인*/
-			function fn_validateDateYn(param) {
-				try
-				{
-					var yearFront = "";
-					var year = "";
-					var month = "";
-					var day = "";
-	
-					param = param.replace(/-/g,'');
-	
-					// 자리수가 맞지않을때
-					if( isNaN(param) || param.length < 6 || param.length == 7) {
-						return false;
-					}
-	
-					if(param.length == 6){
-						year = Number(param.substring(0, 2));
-						month = Number(param.substring(2, 4));
-						day = Number(param.substring(4, 6));
-					}
-					else if (param.length == 8){
-						var date = new Date();
-						yearFront = Number(param.substring(0, 4));
-						year = Number(param.substring(2, 4));
-						month = Number(param.substring(4, 6));
-						day = Number(param.substring(6, 8));
-	
-						if(yearFront > date.getFullYear()){
-							return false;
-						}
-					}
-					var dd = day / 0;
-	
-					if( month<1 || month>12 ) {
-						return false;
-					}
-	
-					var maxDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-					var maxDay = maxDaysInMonth[month-1];
-	
-					// 윤년 체크
-					if( month==2 && ( year%4==0 && year%100!=0 || year%400==0 ) ) {
-						maxDay = 29;
-					}
-	
-					if( day<=0 || day>maxDay ) {
-						return false;
-					}
-					return true;
-	
-				} catch (err) {
-					return false;
-				}
+	//RIA의 경우
+    if(parent.sellChnlCd != ""){
+        $('.inner-wrap')
+        	.css('padding-bottom','')
+        	.css('padding-top','');	//하단 상단 공백 제거
+//         $('#btnLangChg').hide();    //언어전환 버튼숨김
+
+        //로그인 되었으면
+        if(parent.riaLoginAt == "Y"){
+        	$('.cti-area input[name=riaName]').attr('value',parent.riaParamName);	//고객명
+            $('.cti-area input[name=riaMobileNo]').attr('value',parent.riaParamMobileNo);	//고객전화번호
+            $('.cti-area input[name=riaBirthday]').attr('value',parent.riaParamBirthday);	//고객생년월일
+        	$('.cti-area input[name=riaMemberYn]').attr('value',parent.riaMemberYn == "Y" ? "회원" : "비회원");	//회원여부
+
+        	$('.cti-area input[name=riaName]').attr("readonly",true);		//고객명
+            $('.cti-area input[name=riaMobileNo]').attr("readonly",true);	//고객전화번호
+            $('.cti-area input[name=riaBirthday]').attr("readonly",true);	//고객생년월일
+
+            $('.cti-area input[name=riaMemberYn]').attr("readonly",true);	//회원여부
+
+        	$('.cti-area button').attr('login-at',"Y");
+
+            //결제화면이 아니면
+            if("N" == requestPayAt){
+            	$('.cti-area button').html('재인증');
+            }
+        }
+        //로그인 되지 않았으면
+        else {
+        	$('.cti-area input[name=riaName]').attr('value',parent.riaParamName);	//고객명
+            $('.cti-area input[name=riaMobileNo]').attr('value',parent.riaParamMobileNo);	//고객전화번호
+            $('.cti-area input[name=riaBirthday]').attr('value',parent.riaParamBirthday);	//고객생년월일
+            $('.cti-area input[name=riaMemberYn]').attr('value','');	//회원여부
+
+        	$('.cti-area input[name=riaName]').attr("readonly",false);		//고객명
+            $('.cti-area input[name=riaMobileNo]').attr("readonly",false);	//고객전화번호
+            $('.cti-area input[name=riaBirthday]').attr("readonly",false);	//고객생년월일
+
+            $('.cti-area input[name=riaMemberYn]').attr("readonly",true);	//회원여부
+
+            $('.cti-area button').attr('login-at',"N");	//회원여부
+          	//결제화면이 아니면
+            if("N" == requestPayAt){
+        		$('.cti-area button').html('인증요청');
+            }
+        }
+
+        //드림센터의 경우
+		if(parent.sellChnlCd == "TELLER"){
+			$('.cti-area').show();	//cti 로그인창 표시
+		}
+		else {
+			$('.cti-area').hide();	//cti 로그인창 표시
+		}
+
+
+		//회원정보 확인을 위한 초기 파라메타 셋팅
+
+		//파라메타 셋팅후
+		//회원여부확인				부모창
+		//나머지 화면 disable 처리	부모창
+
+	}
+    else {
+        $('.quick-reserve-ad-area').show();	//광고영역 표시
+//         $('#btnLangChg').show();	//언어전환 버튼표시 사용안함 20200106 김민영
+    }
+
+    /* RIA 재인증 버튼 클릭 */
+    $('.cti-area button').on("click", function(){
+
+		//입력값 검증
+		if($('.cti-area button').attr('login-at') == "N"){
+
+// 			if($(".cti-area input[name=riaName]").val().length == 0){
+// 				gfn_alertMsgBoxSize('이름은  필수 입력 항목 입니다.',400,250);	//{0} 필수 입력 항목 입니다.
+// 				return;
+// 			}
+
+			if(!fn_validateDateYn($(".cti-area input[name=riaBirthday]").val())){
+				gfn_alertMsgBoxSize('생년월일을 정확히 입력해주세요.',400,250);	//생년월일을 정확히 입력해주세요.
+				return;
 			}
+
+			if($(".cti-area input[name=riaMobileNo]").val().length < 10){
+				gfn_alertMsgBoxSize('휴대폰번호를 정확히 입력해주세요.',400,250);	//휴대폰번호를 정확히 입력해주세요.
+				return;
+			}
+
+			if($(".cti-area input[name=riaMobileNo]").val().substr(0,2) != "01"){
+				gfn_alertMsgBoxSize('휴대폰번호를 정확히 입력해주세요.',400,250);	//휴대폰번호를 정확히 입력해주세요.
+				return;
+			}
+		}
+		parent.fn_setRiaLoginToggle( [$('.cti-area button').attr('login-at')
+    								 ,$(".cti-area input[name=riaName]").val()
+    								 ,$(".cti-area input[name=riaBirthday]").val()
+    								 ,$(".cti-area input[name=riaMobileNo]").val()]
+    								);
+    });
+
+
+    /* 이름 숫자를 제외한 입력 여부판단 */
+	$(".cti-area input[name=riaName]").on("keyup", function(e){
+		var partton = /[^ㄱ-힣a-zA-Z]/g;
+		if(partton.test($(this).val())) {
+			var value = $(this).val().replace(/[^ㄱ-힣a-zA-Z]/g,"");
+			$(this).val(value);
+		}
+ 	});
+	$(".cti-area input[name=riaName]").focusout(function(){
+		var partton = /[^ㄱ-힣a-zA-Z]/g;
+		if(partton.test($(this).val())) {
+			var value = $(this).val().replace(/[^ㄱ-힣a-zA-Z]/g,"");
+			$(this).val(value);
+		}
+	});
+
+    /* 생년월일 숫자만 입력 여부판단 */
+	$(".cti-area input[name=riaBirthday]").on("keyup", function(e){
+		$(this).val($(this).val().replace(/[^0-9]/g,""));
+	});
+	$(".cti-area input[name=riaBirthday]").focusout(function(){
+		$(this).val($(this).val().replace(/[^0-9]/g,""));
+	});
+
+    /* 휴대폰번호 숫자만 입력 여부판단 */
+	$(".cti-area input[name=riaMobileNo]").on("keyup", function(e){
+		$(this).val($(this).val().replace(/[^0-9]/g,""));
+    });
+	$(".cti-area input[name=riaMobileNo]").focusout(function(){
+		$(this).val($(this).val().replace(/[^0-9]/g,""));
+	});
+});
+
+
+/*날짜 형태 확인*/
+function fn_validateDateYn(param) {
+	try
+	{
+		var yearFront = "";
+		var year = "";
+		var month = "";
+		var day = "";
+
+		param = param.replace(/-/g,'');
+
+		// 자리수가 맞지않을때
+		if( isNaN(param) || param.length < 6 || param.length == 7) {
+			return false;
+		}
+
+		if(param.length == 6){
+			year = Number(param.substring(0, 2));
+			month = Number(param.substring(2, 4));
+			day = Number(param.substring(4, 6));
+		}
+		else if (param.length == 8){
+			var date = new Date();
+			yearFront = Number(param.substring(0, 4));
+			year = Number(param.substring(2, 4));
+			month = Number(param.substring(4, 6));
+			day = Number(param.substring(6, 8));
+
+			if(yearFront > date.getFullYear()){
+				return false;
+			}
+		}
+		var dd = day / 0;
+
+		if( month<1 || month>12 ) {
+			return false;
+		}
+
+		var maxDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+		var maxDay = maxDaysInMonth[month-1];
+
+		// 윤년 체크
+		if( month==2 && ( year%4==0 && year%100!=0 || year%400==0 ) ) {
+			maxDay = 29;
+		}
+
+		if( day<=0 || day>maxDay ) {
+			return false;
+		}
+		return true;
+
+	} catch (err) {
+		return false;
+	}
+}
+
+</script>
+<!-- cti 일때만 출력 -->
+<div class="cti-area" style="display:none">
+    <p>이름</p>
+    <input maxlength="20" name="riaName" type="text" title="이름 출력" class="input-text a-c w120px" placeholder="이름" value="">
+
+    <p>생년월일</p>
+    <input maxlength="8" name="riaBirthday" type="text" title="생년월일 출력" class="input-text a-c w150px" placeholder="6자리 또는 8자리" value="">
+
+    <p>휴대폰번호</p>
+    <input maxlength="11" name="riaMobileNo" type="text" title="휴대폰번호 출력" class="input-text a-c w150px" placeholder="- 없이 입력" value="">
+
+    <p>회원</p>
+    <input name="riaMemberYn" type="text" title="회원여부 출력" class="input-text a-c w100px" value="" readyonly="readyonly">
+
 	
-			</script>
-		<!-- cti 일때만 출력 -->
-		<div class="cti-area" style="display:none">
-			<p>이름</p>
-			<input maxlength="20" name="riaName" type="text" title="이름 출력" class="input-text a-c w120px" placeholder="이름" value="">
+		
 	
-			<p>생년월일</p>
-			<input maxlength="8" name="riaBirthday" type="text" title="생년월일 출력" class="input-text a-c w150px" placeholder="6자리 또는 8자리" value="">
-	
-			<p>휴대폰번호</p>
-			<input maxlength="11" name="riaMobileNo" type="text" title="휴대폰번호 출력" class="input-text a-c w150px" placeholder="- 없이 입력" value="">
-	
-			<p>회원</p>
-			<input name="riaMemberYn" type="text" title="회원여부 출력" class="input-text a-c w100px" value="" readyonly="readyonly">
-	
-		</div>
-	
+</div>
+
 		<!-- seat-select-section -->
 		<div class="seat-select-section">
 			<!-- seat-section -->
@@ -557,61 +570,65 @@
 				
 				
 				<!--// discout-setting -->
-				
+
 				<div class="tit-util mt40">
 					<h3 class="tit small">결제수단선택 <!-- 결제수단선택 --></h3>
-	
+
+					<div class="right">
+						<button type="button" class="button gray-line small" id="btn_booking_init"><i class="iconset ico-reset-small"></i>초기화<!-- 초기화 --></button>
+					</div>
+				</div>
+
 					<div class="right">
 						<input type="checkbox" id="same_use_payment">
 						<label for="same_use_payment" id="label_use_payment">다음에도 이 결제수단 사용 <!-- 다음에도 이 결제수단 사용 --></label>
 					</div>
 				</div>
-	
+
 				<!-- seat-section -->
 				
-				<div class="rollbanner">
-					<div class="inrolb swiper-container swiper-container-initialized swiper-container-vertical">
-						<div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, -80px, 0px);"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="1" style="height: 40px;">
-											<div class="text" style="background:url('https://img.megabox.co.kr/SharedImg/flagBanner/2023/04/21/gwehxwSczxpyPt48whc3EZr3Fgx9ASVh.png') 0 50% no-repeat; background-size:80px 30px;">토스페이 메가박스 첫 결제 시 최대 1천원 즉시할인</div>
-										</div>
-							
-								
+					<div class="rollbanner">
+						<div class="inrolb swiper-container swiper-container-initialized swiper-container-vertical">
+				            <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, -120px, 0px);"><div class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="1" style="height: 40px;">
+												<div class="text" style="background:url('https://img.megabox.co.kr/SharedImg/flagBanner/2023/04/21/gwehxwSczxpyPt48whc3EZr3Fgx9ASVh.png') 0 50% no-repeat; background-size:80px 30px;">토스페이 메가박스 첫 결제 시 최대 1천원 즉시할인</div>
+											</div>
+				            	
+					                
+										
+										
+											<div class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="height: 40px;">
+												<div class="text" style="background:url('https://img.megabox.co.kr/SharedImg/flagBanner/2023/10/10/znMs1PqIBr3kJMRX2JzgEXcJ1UBiFE3O.png') 0 50% no-repeat; background-size:80px 30px;">결제 시 최대 1만원 혜택!</div>
+											</div>
+										
 									
+					            
+					                
+										
+										
+											<div class="swiper-slide swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="1" style="height: 40px;">
+												<div class="text" style="background:url('https://img.megabox.co.kr/SharedImg/flagBanner/2023/04/21/gwehxwSczxpyPt48whc3EZr3Fgx9ASVh.png') 0 50% no-repeat; background-size:80px 30px;">토스페이 메가박스 첫 결제 시 최대 1천원 즉시할인</div>
+											</div>
+										
 									
-										<div class="swiper-slide swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="0" style="height: 40px;">
-											<div class="text" style="background:url('https://img.megabox.co.kr/SharedImg/flagBanner/2023/10/10/znMs1PqIBr3kJMRX2JzgEXcJ1UBiFE3O.png') 0 50% no-repeat; background-size:80px 30px;">결제 시 최대 1만원 혜택!</div>
-										</div>
-									
-								
-							
-								
-									
-									
-										<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="height: 40px;">
-											<div class="text" style="background:url('https://img.megabox.co.kr/SharedImg/flagBanner/2023/04/21/gwehxwSczxpyPt48whc3EZr3Fgx9ASVh.png') 0 50% no-repeat; background-size:80px 30px;">토스페이 메가박스 첫 결제 시 최대 1천원 즉시할인</div>
-										</div>
-									
-								
-							
-						<div class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="0" style="height: 40px;">
-											<div class="text" style="background:url('https://img.megabox.co.kr/SharedImg/flagBanner/2023/10/10/znMs1PqIBr3kJMRX2JzgEXcJ1UBiFE3O.png') 0 50% no-repeat; background-size:80px 30px;">결제 시 최대 1만원 혜택!</div>
-										</div></div>
-						<div class="pgbx swiper-pagination-fraction"><span class="swiper-pagination-current">2</span> / <span class="swiper-pagination-total">2</span></div>
-					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-				</div>
+					            
+				            <div class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" style="height: 40px;">
+												<div class="text" style="background:url('https://img.megabox.co.kr/SharedImg/flagBanner/2023/10/10/znMs1PqIBr3kJMRX2JzgEXcJ1UBiFE3O.png') 0 50% no-repeat; background-size:80px 30px;">결제 시 최대 1만원 혜택!</div>
+											</div></div>
+				            <div class="pgbx swiper-pagination-fraction"><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">2</span></div>
+				        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+					</div>
 				
 				<!--// seat-section -->
-	
+
 				<!--
 					체크 표시 on 클래스 추가
-	
-				<button type="button">
-	
-				<button type="button" class="on">
+
+					<button type="button">
+
+					<button type="button" class="on">
 				-->
-				
 				<div class="select-payment ty2">
-	
+
 					<div class="radio-group">
 						<span class="bg-chk small">
 							<input type="radio" name="radio_payment" id="rdo_pay_credit" value="credit"> <label for="rdo_pay_credit">신용/체크카드</label>
@@ -628,8 +645,8 @@
 							</span>
 						
 					</div>
-	
-	
+
+
 					<div class="select-payment-card">
 						<label for="card_select">카드사 선택 <!-- 카드사 선택 --></label>
 						<div class="dropdown bootstrap-select v1 small bs3 dropup"><select id="card_select" title="카드사 선택" class="selectpicker v1 small" tabindex="-98"><option class="bs-title-option" value=""></option>
@@ -652,44 +669,44 @@
 							<option value="90">카카오뱅크</option><!-- 카카오뱅크 -->
 							<option value="91">케이뱅크</option><!-- 케이뱅크   -->
 							
-							<option value="B0">우체국카드</option><!-- 우체국 카드   -->
-							<option value="B1">토스  카드</option><!-- 토스  카드  -->
-							<option value="B2">SC제일은행 비씨카드</option><!-- SC제일은행 비씨카드   -->
-							<option value="S0">SC제일은행 삼성카드</option><!-- SC제일은행 삼성카드   -->
-							<option value="B3">IBK기업은행 카드</option><!-- IBK기업은행 카드  -->
+                            <option value="B0">우체국카드</option><!-- 우체국 카드   -->
+                            <option value="B1">토스  카드</option><!-- 토스  카드  -->
+                            <option value="B2">SC제일은행 비씨카드</option><!-- SC제일은행 비씨카드   -->
+                            <option value="S0">SC제일은행 삼성카드</option><!-- SC제일은행 삼성카드   -->
+                            <option value="B3">IBK기업은행 카드</option><!-- IBK기업은행 카드  -->
 						</select><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" data-id="card_select" title="비씨카드"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">비씨카드</div></div> </div><span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" role="combobox" style="max-height: 302px; overflow: hidden; min-width: 166px;"><div class="inner open" role="listbox" aria-expanded="false" tabindex="-1" style="max-height: 300px; overflow-y: auto;"><ul class="dropdown-menu inner "><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">카드선택</span></a></li><li class="selected active"><a role="option" aria-disabled="false" tabindex="0" class="selected active" aria-selected="true"><span class="text">비씨카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">국민카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">신한카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">삼성카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">롯데카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">농협카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">하나카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">현대카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">씨티카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">제주카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">우리카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">수협카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">전북카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">광주카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">신협카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">카카오뱅크</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">케이뱅크</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">우체국카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">토스  카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">SC제일은행 비씨카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">SC제일은행 삼성카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">IBK기업은행 카드</span></a></li></ul></div></div></div>
-	
+
 						<input type="radio" name="rdo_card_select" id="app_card" class="ml20" checked="" value="01">
 						<label for="app_card" id="lab_app_card">ISP</label>
-	
+
 						<input type="radio" name="rdo_card_select" id="general_card" class="ml20" value="00">
 						<label for="general_card" id="lab_general_card">일반결제 <!-- 일반결제 --></label>
-	
+
 						<input type="radio" name="rdo_card_select" id="sepecial_card" value="02" style="">
 						<label for="sepecial_card" id="lab_sepecial_card" style="">즉시할인</label>
 					</div>
-	
+
 					<div class="select-payment-easypay" style="display:none;">
 						<input type="radio" name="radio_payment" id="rdo_pay_tosspay" value="tosspay">
 						<label for="rdo_pay_tosspay">토스페이</label>
-	
+
 						
 							<input type="radio" name="radio_payment" id="rdo_pay_naverpay" value="naverpay">
 							<label for="rdo_pay_naverpay">네이버페이</label>
 						
-	
+
 						<input type="radio" name="radio_payment" id="rdo_pay_kakaopay" value="kakaopay">
 						<label for="rdo_pay_kakaopay">카카오페이</label>
-	
+
 						<input type="radio" name="radio_payment" id="rdo_pay_payco" value="payco">
 						<label for="rdo_pay_payco">페이코</label>
-	
+
 						<input type="radio" name="radio_payment" id="rdo_pay_kbpay" value="kbpay">
 						<label for="rdo_pay_kbpay">KB PAY</label>
 						
-	
+
 					</div>
-	
+
 					<!-- 2020.02.07 수단별 알림 문구 추가 -->
 					<div class="select-mobile-info" style="display:none">
 						<ul class="dash-list">
@@ -698,27 +715,27 @@
 							<li>휴대폰 결제와 관련된 추가 안내는 FAQ를 참조해주세요.</li>
 						</ul>
 					</div>
-	
+
 					<div class="select-toss-info" style="display:none">
 						<ul class="dash-list">
 							<li>토스에 등록된 계좌와 신용/체크카드로 쉽고 편리하게 결제하세요.</li>
 							<li>토스페이 결제 시 토스에서 제공하는 카드사 별 무이자, 청구할인, 결제 이벤트만 제공됩니다.</li>
 						</ul>
 					</div>
-	
+
 					<div class="select-kakao-info" style="display:none">
 						<ul class="dash-list">
 							<li>즉시할인 신용카드 적용이 불가합니다.</li>
 						</ul>
 					</div>
-	
+
 					<div class="select-payco-info" style="display:none">
 						<ul class="dash-list">
 							<li>즉시할인 신용카드 적용이 불가합니다.</li>
 							<li>페이코 포인트 결제 시 결제금액의 1% 추가적립 됩니다.</li>
 						</ul>
 					</div>
-	
+
 					<div class="select-naverpay-info" style="display:none">
 						<ul class="dash-list">
 							<li>네이버페이 결제 시, 카드사 할인 및 포인트 사용이 불가할 수 있습니다.</li>
@@ -728,7 +745,7 @@
 							</li>
 						</ul>
 					</div>
-	
+
 					<div class="select-chai-info" style="display:none">
 						<ul class="dash-list">
 							<li>CHAI는 은행 계좌만 등록하면 차이 비밀번호로 안전하게 결제할 수 있는 간편결제 서비스입니다.<br>(은행 점검시간인 23:30 ~ 00:30에는 이용이 어려울 수 있습니다.)</li>
@@ -737,21 +754,21 @@
 							<li>이벤트를 통해 혜택을 적용 받은 주문의 경우, 즉시 할인 기준 금액에 따라 부분환불이 불가능할 수도 있습니다.</li>
 						</ul>
 					</div>
-	
+
 					<div class="select-settlebank-info" style="display:none">
 						<ul class="dash-list">
 							<li>내통장결제는 본인명의의 계좌를 최초 1회 등록 후 비밀번호 입력만으로 간편하게 이용할 수 있는 현금결제 서비스 입니다.</li>
 							<li>은행 점검시간의 경우 내통장결제서비스 이용이 불가합니다.</li>
 						</ul>
 					</div>
-	
+
 					<div class="select-kj-info" style="display:none;">
 						<ul class="dash-list">
 							<li>메가박스 신용/체크카드(광주카드) 선할인은 즉시할인 버튼 선택 시에만 적용 가능합니다.</li>
 						</ul>
 					</div>
 				</div>
-	
+
 				<dl class="term-list" id="terms" style="display: none;">
 					<dt>
 						<span class="bg-chk small">
@@ -773,11 +790,11 @@
 				</dl>
 			</div>
 			<!--// seat-section -->
-	
+
 			<!-- seat-result -->
 			<div class="seat-result">
 				<div class="wrap">
-	
+
 					<div class="tit-area type2">
 						<!--
 							관람 등급 표시
@@ -788,20 +805,20 @@
 							<span class="movie-grade small age-no">미정</span>
 						-->
 						<span class="movie-grade small age-all" id="admisClassNm">전체관람가</span>
-	
+
 						<p class="tit" id="movieNm">(자막) 그대들은 어떻게 살 것인가</p>
 						<p class="cate" id="playKindNm">2D(자막)</p>
-						<p class="theater" id="brchNm">속초/5관</p>
-						<p class="date"><span id="playDe">2023.10.30</span><em id="dowNm">(월)</em> <span class="time" id="playTime"><i class="iconset ico-clock-white"></i>13:00~15:13</span></p>
+						<p class="theater" id="brchNm">원주센트럴/컴포트3관_리클라이너</p>
+						<p class="date"><span id="playDe">2023.10.30</span><em id="dowNm">(월)</em> <span class="time" id="playTime"><i class="iconset ico-clock-white"></i>17:10~19:23</span></p>
 					</div>
 					<div class="price-process">
-						<div class="box"><div class="data"><span class="tit">청소년 <em>1</em></span><span class="price">10,000</span></div>
+						<div class="box"><div class="data"><span class="tit">청소년 <em>1</em></span><span class="price">11,000</span></div>
 							<!--
 							<div class="data">
 								<span class="tit">일반 <em>1</em></span>
 								<span class="price">20,000</span>
 							</div>
-	
+
 							<div class="data">
 								<span class="tit">어린이 <em>2</em></span>
 								<span class="price">6,000</span>
@@ -809,30 +826,30 @@
 							-->
 							<div class="all">
 								<span class="tit">금액 <!-- 금액 --></span>
-								<span class="price"><em>10,000</em> <span>원 <!-- 원 --></span></span>
+								<span class="price"><em>11,000</em> <span>원 <!-- 원 --></span></span>
 							</div>
 						</div>
-	
+
 						<div class="box discout-box">
-	
+
 							<div class="all">
 								<span class="tit">할인적용 <!-- 할인적용 --></span>
 								<span class="price"><em>0</em> 원 <!-- 원 --></span>
 							</div>
 						</div>
 					</div>
-	
+
 					<div class="pay-area">
 						<div class="add-thing">
 							<p class="tit">추가차액 <!-- 추가금액 --></p>
-	
+
 							<div class="money">0</div>
 						</div>
 						<div class="pay">
 							<p class="tit">최종결제금액 <!-- 최종결제금액 --></p>
-	
+
 							<div class="money">
-								<em>10,000</em>
+								<em>11,000</em>
 								<span>원 <!-- 원 --></span>
 							</div>
 						</div>
@@ -841,18 +858,14 @@
 							<span class="thing">신용/체크카드</span>
 						</div>
 					</div>
-	
+
 					<div class="btn-group">
+						<a href="#" class="button" id="testBtn" title="이전">테스트 <!-- 이전 --></a>
 						<a href="#" class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 --></a>
-						
-							
-							
 							
 								<a href="#" w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay" onclick="startPay()" title="결제">결제</a>
+								<button id="kakao">카카오 결제</button>
 								
-								
-							
-						
 					</div>
 				</div>
 			</div>
@@ -861,118 +874,226 @@
 			
 				
 					
-			<div class="adbox">
-				<div class="swiper-container payBannerSwiper swiper-container-initialized swiper-container-horizontal">
-					<div class="swiper-wrapper" style="transform: translate3d(-620px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="width: 310px;">
+					<div class="adbox">
+						<div class="swiper-container payBannerSwiper swiper-container-initialized swiper-container-horizontal">
+							<div class="swiper-wrapper" style="transform: translate3d(-1860px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="4" style="width: 310px;">
+										
+											
+												<a href="https://event.thessencard.co.kr/megabox" target="_blank" title="할인혜택 확인하기" classname="eventBtn">
+													<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/10/13/rzyo2JqBMmVulA5blXaXEJkXt3tWmlEH.png" alt=" ">
+												</a>
+											
+											
+										
+									</div>
 								
-									
-										<a href="https://event.thessencard.co.kr/megabox" target="_blank" title="할인혜택 확인하기" classname="eventBtn">
-											<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/10/13/rzyo2JqBMmVulA5blXaXEJkXt3tWmlEH.png" alt=" ">
-										</a>
-									
-									
+									<div class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 310px;">
+										
+											
+												<a href="https://megabox.co.kr/event/detail?eventNo=14234" target="_blank" title="" classname="eventBtn">
+													<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/10/10/PzI6j8DM87lZ4z6O7Z5d2kaeXptwLNjM.png" alt=" ">
+												</a>
+											
+											
+										
+									</div>
 								
-							</div>
-						
-							<div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" style="width: 310px;">
+									<div class="swiper-slide" data-swiper-slide-index="1" style="width: 310px;">
+										
+											
+												<a href="https://megabox.co.kr/event/detail?eventNo=14164" target="_blank" title="" classname="eventBtn">
+													<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/09/26/3V1MA6zKA8G8V78QXLafxQTmUIvSemDQ.jpg" alt=" ">
+												</a>
+											
+											
+										
+									</div>
 								
-									
-										<a href="https://megabox.co.kr/event/detail?eventNo=14234" target="_blank" title="" classname="eventBtn">
-											<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/10/10/PzI6j8DM87lZ4z6O7Z5d2kaeXptwLNjM.png" alt=" ">
-										</a>
-									
-									
+									<div class="swiper-slide" data-swiper-slide-index="2" style="width: 310px;">
+										
+											
+											
+												<a href="https://www.megabox.co.kr/event/detail?eventNo=11263" target="_top" title="할인쿠폰 받기" classname="eventBtn">
+													<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/05/12/UBtabkSOoEm1tXZCblLLGAeLKX9Qnkei.jpg" alt=" ">
+												</a>
+											
+										
+									</div>
 								
-							</div>
-						
-							<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 310px;">
+									<div class="swiper-slide" data-swiper-slide-index="3" style="width: 310px;">
+										
+											
+											
+												<a href="https://www.megabox.co.kr/event/detail?eventNo=13381" target="_top" title="보험료 확인하기" classname="eventBtn">
+													<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/05/30/c43LWLcvVKWG3WZTVUsL3n82n0BXISmE.jpg" alt=" ">
+												</a>
+											
+										
+									</div>
 								
-									
-										<a href="https://megabox.co.kr/event/detail?eventNo=14164" target="_blank" title="" classname="eventBtn">
-											<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/09/26/3V1MA6zKA8G8V78QXLafxQTmUIvSemDQ.jpg" alt=" ">
-										</a>
-									
-									
+									<div class="swiper-slide swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="4" style="width: 310px;">
+										
+											
+												<a href="https://event.thessencard.co.kr/megabox" target="_blank" title="할인혜택 확인하기" classname="eventBtn">
+													<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/10/13/rzyo2JqBMmVulA5blXaXEJkXt3tWmlEH.png" alt=" ">
+												</a>
+											
+											
+										
+									</div>
 								
-							</div>
-						
-							<div class="swiper-slide swiper-slide-next" data-swiper-slide-index="2" style="width: 310px;">
-								
-									
-									
-										<a href="https://www.megabox.co.kr/event/detail?eventNo=11263" target="_top" title="할인쿠폰 받기" classname="eventBtn">
-											<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/05/12/UBtabkSOoEm1tXZCblLLGAeLKX9Qnkei.jpg" alt=" ">
-										</a>
-									
-								
-							</div>
-						
-							<div class="swiper-slide" data-swiper-slide-index="3" style="width: 310px;">
-								
-									
-									
-										<a href="https://www.megabox.co.kr/event/detail?eventNo=13381" target="_top" title="보험료 확인하기" classname="eventBtn">
-											<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/05/30/c43LWLcvVKWG3WZTVUsL3n82n0BXISmE.jpg" alt=" ">
-										</a>
-									
-								
-							</div>
-						
-							<div class="swiper-slide" data-swiper-slide-index="4" style="width: 310px;">
-								
-									
-										<a href="https://event.thessencard.co.kr/megabox" target="_blank" title="할인혜택 확인하기" classname="eventBtn">
-											<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/10/13/rzyo2JqBMmVulA5blXaXEJkXt3tWmlEH.png" alt=" ">
-										</a>
-									
-									
-								
-							</div>
-						
-					<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0" style="width: 310px;">
-								
-									
-										<a href="https://megabox.co.kr/event/detail?eventNo=14234" target="_blank" title="" classname="eventBtn">
-											<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/10/10/PzI6j8DM87lZ4z6O7Z5d2kaeXptwLNjM.png" alt=" ">
-										</a>
-									
-									
-								
-							</div></div>
-				<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-				<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span></div>
-			</div>
+							<div class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" style="width: 310px;">
+										
+											
+												<a href="https://megabox.co.kr/event/detail?eventNo=14234" target="_blank" title="" classname="eventBtn">
+													<img style="width:310px;" src="https://img.megabox.co.kr/SharedImg/cpBanner/2023/10/10/PzI6j8DM87lZ4z6O7Z5d2kaeXptwLNjM.png" alt=" ">
+												</a>
+											
+											
+										
+									</div></div>
+						<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+						<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span></div>
+					</div>
 					
 					
 				
 			
-	
+
 		</div>
 		<!--// seat-select-section -->
-	
+
 	</div>
-	</div>
+	<!--// quick-reserve -->
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	
+<%-- 	<jsp:include page="../include/main_footer.jsp"></jsp:include> --%>
+	<jsp:include page="../include/footerTest.jsp"></jsp:include>
 	
-   	<footer>
-		<jsp:include page="../include/main_footer.jsp"></jsp:include>
-	</footer>
-	
-    <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/player.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.nice-select.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/mixitup.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/kakao.js"></script>
 	
 	<script>
 	
+	let seats = "";
+	let allTickets = "";
+	let sche_idx = "";
+	let total = "";
 	
+	$('#kakao').click(function () {
+        // getter
+        var IMP = window.IMP;
+        IMP.init('imp14320736');
+        var money = $('input[name="cp_item"]:checked').val();
+        console.log(money);
+
+        IMP.request_pay({
+            pg: 'kakao',
+            merchant_uid: 'merchant_' + new Date().getTime(),
+
+            name: '주문명 : 주문명 설정',
+            amount: money,
+            buyer_email: 'iamport@siot.do',
+            buyer_name: '구매자이름',
+            buyer_tel: '010-1234-5678',
+            buyer_addr: '인천광역시 부평구',
+            buyer_postcode: '123-456'
+        }, function (rsp) {
+            console.log(rsp);
+            if (rsp.success) {
+                var msg = '결제가 완료되었습니다.';
+                msg += '고유ID : ' + rsp.imp_uid;
+                msg += '상점 거래ID : ' + rsp.merchant_uid;
+                msg += '결제 금액 : ' + rsp.paid_amount;
+                msg += '카드 승인번호 : ' + rsp.apply_num;
+                $.ajax({
+                    type: "GET", 
+                    url: "/user/mypage/charge/point", //충전 금액값을 보낼 url 설정
+                    data: {
+                        "amount" : money
+                    },
+                });
+            } else {
+                var msg = '결제에 실패하였습니다.';
+                msg += '에러내용 : ' + rsp.error_msg;
+            }
+            alert(msg);
+            document.location.href="/user/mypage/home"; //alert창 확인 후 이동할 url 설정
+        });
+    });
+		
+	 $(function() {
+		 
+		 $('#kakao').click(function () {
+		        // getter
+		        var IMP = window.IMP;
+		        IMP.init('imp14320736');
+		        var money = $('input[name="cp_item"]:checked').val();
+		        console.log(money);
+
+		        IMP.request_pay({
+		            pg: 'kakao',
+		            merchant_uid: 'merchant_' + new Date().getTime(),
+
+		            name: '주문명 : 주문명 설정',
+		            amount: money,
+		            buyer_email: 'iamport@siot.do',
+		            buyer_name: '구매자이름',
+		            buyer_tel: '010-1234-5678',
+		            buyer_addr: '인천광역시 부평구',
+		            buyer_postcode: '123-456'
+		        }, function (rsp) {
+		            console.log(rsp);
+		            if (rsp.success) {
+		                var msg = '결제가 완료되었습니다.';
+		                msg += '고유ID : ' + rsp.imp_uid;
+		                msg += '상점 거래ID : ' + rsp.merchant_uid;
+		                msg += '결제 금액 : ' + rsp.paid_amount;
+		                msg += '카드 승인번호 : ' + rsp.apply_num;
+		                $.ajax({
+		                    type: "GET", 
+		                    url: "/user/mypage/charge/point", //충전 금액값을 보낼 url 설정
+		                    data: {
+		                        "amount" : money
+		                    },
+		                });
+		            } else {
+		                var msg = '결제에 실패하였습니다.';
+		                msg += '에러내용 : ' + rsp.error_msg;
+		            }
+		            alert(msg);
+		            document.location.href="/user/mypage/home"; //alert창 확인 후 이동할 url 설정
+		        });
+		    });
+		 
+		 console.log($("#seats").val());
+		 
+	 });
+	 
+	 $(function() {
+		 
+		 $("#testBtn").click(function() {
+			 
+		    sche_idx = $("#sche_idx").val();
+		   	allTickets = $("#allTickets").val();
+		    seats = $("#seats").val();
+		    total = $("#total").val();
+			
+		    console.log("seats" + seats);
+		 });
+		 
+	    
+	 });
+	 
 	</script>
-	
 
 </body>
 </html>

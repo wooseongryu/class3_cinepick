@@ -83,8 +83,9 @@
 					sche_screen_idx : data.getAttribute("data-screen_idx")
 				},
 				success: function(sche_idx) {
+// 					let action = "<form action='bookingStepTwo' method='get'>"
 					let action = "<form action='bookingStepTwo' method='post'>"
-						+ "<input type='hidden' name='sche_idx' value='" + sche_idx + "'>"
+						+ "<input type='hidden' name='sche_idx' id='sche_idx' value='" + sche_idx + "'>"
 						+ "<input type='submit' value='좌석선택' class='res_btn'>"
 						+ "</form>"
 					$("#result").children().remove();

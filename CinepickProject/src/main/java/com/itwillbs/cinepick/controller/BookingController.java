@@ -155,11 +155,14 @@ public class BookingController {
 	
 	// 좌석 선택 페이지
 	@PostMapping("bookingStepTwo")
-	public String bookingStepTwo(int sche_idx, Model model) {
+//	public String bookingStepTwo(int sche_idx, Model model) {
+	public String bookingStepTwo() {
 		System.out.println("BookingController - bookingStepTwo()");
 		
-		model.addAttribute("sche_idx", sche_idx);
-		System.out.println(")))))))))))))))))))))스케줄 번호(schedule테이블 - sche_idx) : " + sche_idx);
+		//엄성윤 추가
+//		model.addAttribute("sche_idx", sche_idx);
+		
+//		System.out.println(")))))))))))))))))))))스케줄 번호(schedule테이블 - sche_idx) : " + sche_idx);
 		
 		return "cinepick/booking/step2";
 	}
