@@ -2,7 +2,7 @@
     	
 body {
 	/* 	header footer 충돌 수정 11-01 */
-/*     font-family: 'IBM Plex Sans KR'; */
+    font-family: 'IBM Plex Sans KR';
 }
 
 .inner-wrap {
@@ -1054,7 +1054,9 @@ li {
     line-height: 35px;
     font-size: 1.6em;
     color: #59bec9;
-    font-family: Roboto,Dotum,'돋움',sans-serif;
+/* 엄성윤 css 수정 */
+/*     font-family: Roboto,Dotum,'돋움',sans-serif; */
+    font-family: 'IBM Plex Sans KR';
     font-weight: 400;
 }
 em {
@@ -1192,4 +1194,17 @@ p {
 
 .money {
 	float: right;
+}
+
+/* 1103 수정 */
+.seat-select-section .seat-result .wrap .pay-area .pay .money em {
+    display: block;
+    float: left;
+    line-height: 35px;
+    font-size: 1.6em;
+    color: #59bec9;
+/* 엄성윤 css 수정 */
+/*     font-family: Roboto,Dotum,'돋움',sans-serif; */
+    font-family: 'IBM Plex Sans KR';
+    font-weight: 400;
 }

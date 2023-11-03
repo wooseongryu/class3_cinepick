@@ -862,7 +862,7 @@ function fn_validateDateYn(param) {
 					</div>
 
 					<div class="btn-group">
-						<a href="#" class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 --></a>
+						<a href="bookingStepTwo" class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 --></a>
 							
 <!-- 								<a href="#" w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay" onclick="startPay()" title="결제">결제</a> -->
 								<a href="#" w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay" onclick="requestPay()" title="결제">결제</a>

@@ -622,13 +622,13 @@
                         </div>
                         <!-- pay-area 끝 -->
                         
+						<div id="formHere"></div>
                         <div class="btn-group">
                             <a href="javaScript:void(0)" class="button" id="pagePrevious" title="이전" onclick="location.href='bookingStepOne'">이전</a>
 <!--                             <a href="javaScript:void(0)" class="button disabled" id="pageNext" title="다음" onclick="location.href='bookingStepThree'">다음</a> -->
 <!--                             <form id="seatForm" action="bookPay" method="POST"> -->
 <%-- 							    <input type="hidden" id="sche_idx" value="${#sche_idx}" /> --%>
 <!-- 							</form> -->
-							<div id="formHere"></div>
                             <a href="javaScript:void(0)" class="button disabled" id="pageNext" title="다음">다음</a>
                       
                         </div>
@@ -760,7 +760,7 @@
 						+ '<input type="hidden" id="allTickets" name="allTickets" value="' + allTickets + '">'
 						+ '<input type="hidden" id="seats" name="seats" value="' + seats + '">'
 						+ '<input type="hidden" id="total" name="total" value="' + total + '">'
-						+ '<input type="submit">'
+// 						+ '<input type="submit">'
 					+'</form>';
 					
 				$("#formHere").children().remove();
