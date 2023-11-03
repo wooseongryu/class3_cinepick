@@ -45,6 +45,16 @@ public class MovieService {
 		return movieMapper.deleteMovie(movie_code);
 	}
 	
+	//영화 상영상태 변경
+	
+	public int updateMovieStatus() {
+		return movieMapper.updateMovieStatus();
+	}
+	
+	public int updateMovieStatusFin(int movie_code) {
+		return movieMapper.updateMovieStatusFin(movie_code);
+	}
+	
 	
 	
 	//관리자박스오피스 등록
@@ -62,8 +72,6 @@ public class MovieService {
 	}
 	
 	
-	
-	
 	//-----------영화차트페이지---------------
 
 	public List<MovieVO> showMvList(boolean isOpen, String mvListType) {
@@ -71,16 +79,14 @@ public class MovieService {
 		return movieMapper.showMvList(isOpen, mvListType);
 	}
 
-	public int updateMovieStatus() {
-		return movieMapper.updateMovieStatus();
-	}
-	
 	
 	//-----------영화 상세 페이지---------------
 
 	public MovieVO selectMovieDetail(int movie_code) {
 		return movieMapper.selectMovieDetail(movie_code);
 	}
+
+
 
 
 	

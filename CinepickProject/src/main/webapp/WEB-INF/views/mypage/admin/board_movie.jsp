@@ -31,6 +31,13 @@
 			location.href="MovieStatusUpdate"
 		}
 	}
+	function MovieStatusModify(movie_code, movie_name) {
+		let ismovieFin = confirm(movie_name + " 상영을 종료하시겠습니까?");
+		if(ismovieFin) {
+			location.href= "MovieStatusFin?movie_code=" + movie_code
+		}
+	}
+	
 	
 </script>
 	
@@ -166,6 +173,7 @@
 	                                            <td>${movie.movie_runtime }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="detailMovie(${movie.movie_code})">상세보기</button>
+													&emsp;<button type="button" class="btn btn-primary" onclick="MovieStatusModify(${movie.movie_code},'${movie.movie_nameK }')">상영종료</button>
 												</td>
 	                                        </tr>
                                     	</c:forEach>

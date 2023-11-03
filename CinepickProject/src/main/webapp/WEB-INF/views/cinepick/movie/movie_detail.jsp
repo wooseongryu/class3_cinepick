@@ -132,14 +132,14 @@
 			width: auto;
 			height: 25px;
 			font-size: small;
-			border: #c7c7c7 0.5px solid;
+			border: #1c1c1c 0.5px solid;
 			border-radius: 5px;
-			color: #b7b7b7;
+			color: #1c1c1c;
 			background: #fff;
 		}
 		
 		.reviewBtn:hover {
-			background: #e53637;
+			background: #503396;
 			color: #fff;
 			border: red;
 		}

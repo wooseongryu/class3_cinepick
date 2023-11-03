@@ -111,20 +111,33 @@
 						let movieInfoResult = detail.movieInfoResult;
 						let movieInfo = movieInfoResult.movieInfo;
 						
+						let genreNm = "";
+						let director = "";
+						
 						let movieNm = movieInfo.movieNm; //영화명
 						let movieNmEn = movieInfo.movieNmEn; //영화명(영어)
 						let openDt = movieInfo.openDt; //개봉일
 						let prdtStatNm = movieInfo.prdtStatNm; //제작상태(개봉,개봉예정)
 						let showTm = movieInfo.showTm + "분"; //런닝타임
-						let genreNm = movieInfo.genres[0].genreNm;
-						let director = movieInfo.directors[0].peopleNm; //감독
+						
+						if(!movieInfo.genres[0] == null) {
+							genreNm = movieInfo.genres[0].genreNm;
+							
+						}
+						
+						if(!movieInfo.directors[0] == null) {
+							director = movieInfo.directors[0].peopleNm; //감독
+						}
 						let GradeNm = movieInfo.audits[0].watchGradeNm; //심의등급
-						let actors = movieInfo.actors; //배우
 						let actor = "";
-						for(let a = 0; a < 6; a++) {
-							console.log(actors[0].peopleNm);
-							actor += actors[a].peopleNm + " ";
-							console.log(actor);
+						if(!movieInfo.actors == null) {
+							let actors = movieInfo.actors; //배우
+							for(let a = 0; a < 6; a++) {
+								console.log(actors[0].peopleNm);
+								actor += actors[a].peopleNm + " ";
+								console.log(actor);
+								
+							}
 							
 						}
 						
@@ -271,12 +284,6 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for=""movie_vod"">트레일러</label>
-									  <textarea rows="3" class="form-control form-control-textarea" id="printVod" name="movie_vod"></textarea>
-									</div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_poster">포스터url</label>
 									  <textarea rows="3" class="form-control form-control-textarea" id="printPoster" name="movie_poster"></textarea>
 									</div>
@@ -289,7 +296,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="movie_stil">티저url</label>
+									  <label for="movie_vod">티저url</label>
 									  <textarea rows="3" class="form-control form-control-textarea" id="printVod" name="movie_vod"></textarea>
 									</div>
                                 </div>

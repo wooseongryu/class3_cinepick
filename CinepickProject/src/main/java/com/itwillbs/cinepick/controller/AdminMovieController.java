@@ -150,7 +150,6 @@ public class AdminMovieController {
 	//======= 영화개봉상태 업데이트 =======		
 	@GetMapping("MovieStatusUpdate")
 	public String MovieStatusUpdate(Model model, HttpSession session) {
-		int StatusUpdateCount = movieService.updateMovieStatus();
 		
 		String sId = (String)session.getAttribute("sId");
 		String isAdmin = (String)session.getAttribute("isAdmin");
@@ -160,6 +159,7 @@ public class AdminMovieController {
 			return "fail_back";
 		}
 		
+		int StatusUpdateCount = movieService.updateMovieStatus();
 		if(StatusUpdateCount > 0) {
 			model.addAttribute("msg", "개봉상태가 업데이트되었습니다.");
 			model.addAttribute("targetURL", "adminMovieList");
@@ -170,6 +170,29 @@ public class AdminMovieController {
 		}
 		
 	}
+	//======영화 상영종료=====
+	@GetMapping("MovieStatusFin")
+	public String movieStatusFin(int movie_code, Model model, HttpSession session) {
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		int updateCount = movieService.updateMovieStatusFin(movie_code);
+		
+		if(updateCount > 0) {
+			model.addAttribute("msg", "상영영화를 내렸습니다.");
+			model.addAttribute("targetURL", "adminMovieList");
+			return "forward";
+		} else {
+			model.addAttribute("msg", "개봉상태 업데이트를 실패하였습니다.\n 변경할 내역이 없습니다.");
+			return "fail_back";
+		}
+		
+	}
+	
 	
 
 	//======= 영화정보 삭제 =======	

@@ -25,6 +25,8 @@ public interface MovieMapper {
 	
 	int updateMovieStatus();
 	
+	int updateMovieStatusFin(int movie_code);
+	
 	int deleteMovie(int movie_code);
 	
 	
@@ -45,6 +47,8 @@ public interface MovieMapper {
 //=========== 영화 상세 페이지================
 	
 	MovieVO selectMovieDetail(@Param("movie_code") int movie_code);
+
+
 
 	
 
