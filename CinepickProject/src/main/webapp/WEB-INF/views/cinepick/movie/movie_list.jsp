@@ -124,6 +124,7 @@
 	                                <div class="product__item">
 	                                	<a href="movieDetail?movie_code=${movie.movie_code }" >
 		                                    <div class="product__item__pic set-bg" data-setbg="${movie.movie_poster }">
+<%-- 		                                    <div class="product__item__pic set-bg" style="background-image: url('${movie.movie_poster }')"> --%>
 		                                        <div class="comment">
 		                                        	<!-- 
 			                                        <c:choose>

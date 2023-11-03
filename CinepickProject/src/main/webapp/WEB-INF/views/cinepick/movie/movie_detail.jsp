@@ -227,7 +227,7 @@
 						alert("리뷰가 수정되었습니다.");
 						
 						location.reload();
-						$("#checkModify").text("수정됨"); //왜 안될까?
+						$("#checkModify").html("수정됨"); //왜 안될까?
 					} else {
 						alert("수정된 내용이 없습니다.");
 					}

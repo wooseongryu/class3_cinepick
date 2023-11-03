@@ -160,12 +160,6 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-									  <label for="movie_vod">트레일러</label>
-									  <textarea rows="3" class="form-control form-control-textarea" name="movie_vod">${movie.movie_vod }</textarea>
-									</div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_poster">포스터url</label>
 									  <textarea rows="3" class="form-control form-control-textarea" name="movie_poster">${movie.movie_poster }</textarea>
 									</div>
@@ -174,6 +168,12 @@
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="movie_stil">스틸컷url</label>
 									  <textarea rows="6" class="form-control form-control-textarea" name="movie_still">${movie.movie_still }</textarea>
+									</div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-6 mb-sm-0">
+									  <label for="movie_vod">티저url</label>
+									  <textarea rows="3" class="form-control form-control-textarea" name="movie_vod">${movie.movie_vod }</textarea>
 									</div>
                                 </div>
                                 <div class="form-group row">

@@ -21,6 +21,13 @@
 	// 	function updateQuestion() {
 	// 		window.open('adminQNAUpdate','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	// 	}
+	function deletMyReview(review_num) {
+		let result = confirm("리뷰를 삭제하시겠습니까?");
+		 if(result) {
+			 location.href="myReviewDelete?review_num=" + review_num;
+		 }
+	}
+	
 	</script>
 
 </head>
@@ -135,7 +142,7 @@
                                             <th>작성일</th>
                                             <th>영화코드</th>
                                             <th>작성자</th>
-                                            <th>수정 및 삭제</th>
+                                            <th>삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -150,7 +157,7 @@
 	                                            <td>${review.movie_code }</td>
 	                                            <td>${review.user_id }</td>
 												<td>
-													<button type="button" class="btn btn-primary" onclick="location.href='myReviewDelete?review_num=${review.review_num }'">삭제</button>
+													<button type="button" class="btn btn-primary" onclick="deletMyReview(${review.review_num })">삭제</button>
 												</td>
 	                                        </tr>
                                         </c:forEach>

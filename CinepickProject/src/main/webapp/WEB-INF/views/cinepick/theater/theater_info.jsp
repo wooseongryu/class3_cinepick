@@ -6,8 +6,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
-    <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/theater_css/info.css"/>
+    <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
 </head>
 <body>
 
@@ -181,9 +181,11 @@
 				</ul>
 				<div class="location-map-btn mt15"></div>
 				<div class="btn-group left">
-					<a href="https://m.map.naver.com/map.naver?lng=127.0264086&lat=37.498214&level=2"
-					class="button purple" target="_blank" title="새창열림">실시간 길찾기</a>
-					<br>#추후 수정#
+					<div id="map" style="width:500px;height:400px;"></div>
+					<!-- 성윤아 약도랑 도로명주소 글자 위치 바꿔줘잉  -->
+<!-- 					<a href="https://m.map.naver.com/map.naver?lng=127.0264086&lat=37.498214&level=2" -->
+<!-- 					class="button purple" target="_blank" title="새창열림">실시간 길찾기</a> -->
+<!-- 					<br>#추후 수정# -->
 				</div>
 				<!-- btn-group 끝 -->
 				<h2 class="tit small mt70">시설안내</h2>
@@ -374,10 +376,38 @@
 <!-- 	</footer> -->
 	<jsp:include page="../include/footerTest.jsp"></jsp:include>
 	
+<!-- 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b5e75c34a60018b456cd69645e79131e"></script> -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b5e75c34a60018b456cd69645e79131e&libraries=services"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	<script>
-	$(function() {
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+	
+		var map = new kakao.maps.Map(container, options);
+	
+		var geocoder = new kakao.maps.services.Geocoder();
 		
+		geocoder.addressSearch('${theater.theater_address}', function(result, status) {
+
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new kakao.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+		        map.setCenter(coords);
+		     } 
+		});
+	
+		        
+	$(function() {
 		$("p").each(function () {
 	        // 시설을 포함하는 p 태그를 찾음
 	        if ($(this).text().trim() === "MX") {
