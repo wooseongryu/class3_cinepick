@@ -870,7 +870,9 @@ function fn_validateDateYn(param) {
 						<a href="bookingStepTwo" class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 --></a>
 							
 <!-- 								<a href="#" w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay" onclick="startPay()" title="결제">결제</a> -->
-								<a href="#" w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay" onclick="requestPay()" title="결제">결제</a>
+<!-- 								<a href="#" w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay" onclick="requestPay()" title="결제">결제</a> -->
+<!-- 								<a href="javscript:requestPay()" w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay" title="결제">결제</a> -->
+								<button w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay" onclick="requestPay()" title="결제">결제</button>
 <!-- 								<button id="kakao">카카오 결제</button> -->
 								
 					</div>
@@ -990,22 +992,33 @@ function fn_validateDateYn(param) {
 	
 	<script>
 	
+		let sche_idx = 0;
 		let moneySum = 0;
+		let allTickets = "";
+		let seats = "";
+		let msg = "";
+		
 		$(function(){
 			
-			$("#btn_booking_pay").click(function() {
-				moneySum = "${param.moneySum}";
-				console.log(moneySum);
+			$("#btn_booking_pay").mouseover(function() {
+				sche_idx = "${param.sche_idx}";
+// 				moneySum = "${param.moneySum}";
+				moneySum = 1;
+				allTickets = "${param.allTickets}";
+				seats = "${param.seats}";
+				
+				console.log(moneySum, sche_idx, moneySum, allTickets);
 			});
 			
 		});
 	
 	
 		function requestPay() {
+			alert("requestPay");
 			IMP.init('imp14320736'); // 객체 초기화. 가맹점 식별코드 전달
 			
 			IMP.request_pay({
-		    	pg: "kcp.AO09C",
+		    	pg: "kakaopay.TC0ONETIME",
 		    	pay_method: "card",
 		    	merchant_uid: "ORD" + getDateTimeString(),   // 주문번호
 		    	name: "오펜하이머",
@@ -1017,30 +1030,86 @@ function fn_validateDateYn(param) {
 // 		    	buyer_postcode: "01181"
 		    }, function (rsp) { // callback
 		      //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
-	// 	      	console.log("결과: " + rsp);
+// 		      	console.log("결과: " + rsp);
+		      	console.log("결제 결과: " + rsp);
 		    	if(rsp.success) {
 // 		    		let msg = "결제가 완료되었습니다.";
+		    		msg = "결제가 완료되었습니다.";
 		    		
 					console.log("rsp.imp_uid : " + rsp.imp_uid);	    		
 					console.log("rsp.merchant_uid : " + rsp.merchant_uid);	    
+					
+					$.ajax({
+						type: "GET",
+						url: "bookingPay",
+						data: {
+							imp_uid: rsp.imp_uid,
+							merchant_uid: rsp.merchant_uid,
+							paid_at : rsp.paid_at,
+							sche_idx : sche_idx,
+							moneySum : moneySum,
+							allTickets : allTickets,
+							seats : seats,
+							user_id : "${sessionScope.sId}"
+						},
+						success: function(result) {
+							location.href = "bookComplete";
+						}
+					});
+					
+					// 추가
+		    	} else {
+		    		msg = "결제에 실패하였습니다.";
+		    		msg += "에러 내용 : " + rsp.error_msg;
+		    	}
+		    	alert(msg);
+		    });
+		}
+// 		function requestPay() {
+// 			IMP.init('imp14320736'); // 객체 초기화. 가맹점 식별코드 전달
+			
+// 			IMP.request_pay({
+// 		    	pg: "kcp.AO09C",
+// 		    	pay_method: "card",
+// 		    	merchant_uid: "ORD" + getDateTimeString(),   // 주문번호
+// 		    	name: "오펜하이머",
+// 		    	amount: moneySum,                         // 숫자 타입
+// 		    	buyer_email: "gildong@gmail.com",
+// 		    	buyer_name: "홍길동",
+// 		    	buyer_tel: "010-4242-4242",
+// 		    	buyer_addr: "서울특별시 강남구 신사동",
+// // 		    	buyer_postcode: "01181"
+// 		    }, function (rsp) { // callback
+// 		      //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
+// // 		      	console.log("결과: " + rsp);
+// 		      	console.log("결제 결과: " + rsp);
+// 		    	if(rsp.success) {
+// // 		    		let msg = "결제가 완료되었습니다.";
+// 		    		msg = "결제가 완료되었습니다.";
+		    		
+// 					console.log("rsp.imp_uid : " + rsp.imp_uid);	    		
+// 					console.log("rsp.merchant_uid : " + rsp.merchant_uid);	    
 					
 // 					$.ajax({
 // 						type: "GET",
 // 						url: "bookingPay",
 // 						data: {
-// 							amount: 1,
+// 							amount: moneySum,
 // 							imp_uid: rsp.imp_uid,
 // 							merchant_uid: rsp.merchant_uid,
-							
+// 							sche_idx : sche_idx,
+// 							moneySum : moneySum,
+// 							allTickets : allTickets,
+// 							seats : seats
 // 						}
 // 					});
-		    	} else {
-// 		    		let msg = "결제에 실패하였습니다.";
+// 		    	} else {
+// 		    		msg = "결제에 실패하였습니다.";
 // 		    		msg += "에러 내용 : " + rsp.error_msg;
-		    	}
+// 		    	}
 // 		    	alert(msg);
-		    });
-		}
+// 		    });
+// 		}
 		
 		// 현재 날짜 정보를 "yyyyMMdd" 형식의 문자열로 리턴하는 함수 정의
 		function getDateTimeString() {

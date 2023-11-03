@@ -1,5 +1,9 @@
 package com.itwillbs.cinepick.controller;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.cinepick.service.TicketService;
 
@@ -15,6 +20,7 @@ public class TicketController {
 	
 	@Autowired
 	private TicketService service;
+	
 	
 	
 	// 좌석 -> 예매내역 출력
@@ -145,6 +151,44 @@ public class TicketController {
 		System.out.println("히든 테스트2 - Get");
 		return "cinepick/booking/hiddenTest";
 	}
+	
+	@GetMapping("bookingPay")
+//	@ResponseBody
+//	public String bookPay(int amount, String imp_uid, String merchant_uid) throws Exception{
+	public String bookPay(@RequestParam Map<String, Object> map) throws Exception{
+		
+		System.out.println("결제 성공");
+		
+		System.out.println(map);
+		
+		Date date = new Date(Long.parseLong(map.get("paid_at").toString()) * 1000);
+		
+//		System.out.println(date);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		map.put("pay_date", sdf.format(date));
+		
+		int insertCount = service.registBookAndPay(map);
+
+		
+		
+////		System.out.println("결제 금액 : " + amount);
+//		System.out.println("imp_uid : " + imp_uid);
+//		System.out.println("merchant_uid : " + merchant_uid);
+//
+//		model.addAttribute("imp_uid", imp_uid);
+		
+		
+		
+		return "";
+	}
+	
+//	@GetMapping("bookComplete")
+//	public String bookComplete() {
+//		
+//		return "cinepick/booking/step5";
+//		
+//	}
 	
 	
 	

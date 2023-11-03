@@ -36,5 +36,16 @@
 			);	
 			
 	</insert>
+	
+	<insert id="insertPay" parameterType="map">
+		INSERT
+			INTO pay
+			VALUES (
+				#{merchant_uid}
+				, #{moneySum}
+				, #{pay_date}
+			)
+	</insert>
+	
 
 </mapper>
