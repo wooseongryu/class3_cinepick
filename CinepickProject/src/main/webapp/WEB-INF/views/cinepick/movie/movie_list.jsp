@@ -94,7 +94,7 @@
                                 <div class="col-lg-8 col-md-8 col-sm-6">
                                     <div class="section-title">
                                         <h5>
-                                            <a style="color: red;">현재 상영작</a> 
+                                            <a style="color: #503396;">현재 상영작</a> 
                                             &nbsp;&nbsp;&nbsp;
                                             <a href="movieListUpComming">개봉 예정작 </a>
                                         </h5>

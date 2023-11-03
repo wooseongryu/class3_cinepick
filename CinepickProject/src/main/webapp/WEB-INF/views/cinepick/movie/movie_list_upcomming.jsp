@@ -96,7 +96,7 @@
                                                 현재 상영작
                                             </a> 
                                             &nbsp;&nbsp;&nbsp;
-                                            <a style="color: red;">
+                                            <a style="color: #503396;">
                                                 개봉 예정작
                                             </a>
                                         </h4>
