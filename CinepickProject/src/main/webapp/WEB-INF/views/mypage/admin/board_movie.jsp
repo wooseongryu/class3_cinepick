@@ -173,7 +173,8 @@
 	                                            <td>${movie.movie_runtime }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="detailMovie(${movie.movie_code})">상세보기</button>
-													&emsp;<button type="button" class="btn btn-primary" onclick="MovieStatusModify(${movie.movie_code},'${movie.movie_nameK }')">상영종료</button>
+													&emsp;<button type="button" class="btn btn-primary" onclick="MovieStatusModify(${movie.movie_code},'${movie.movie_nameK }')"
+															<c:if test="${movie.movie_status eq '상영종료' }">disabled style="background: gray; border: none;"</c:if>>상영종료</button>
 												</td>
 	                                        </tr>
                                     	</c:forEach>
