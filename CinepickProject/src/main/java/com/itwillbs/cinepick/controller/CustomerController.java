@@ -97,8 +97,8 @@ public class CustomerController {
 		
 		QnaVO qna = adminService.getQna(qnaIdx).get(0);
 		
-		model.addAttribute("qna", qna);	
-		
+		model.addAttribute("qna", qna);
+		model.addAttribute("replaceChar", "\n");
 		
 		return "cinepick/customer/qna_detail";
 	}
@@ -154,6 +154,7 @@ public class CustomerController {
 		NoticeVO notice = adminService.getNotice(noticeIdx).get(0);
 		
 		model.addAttribute("notice", notice);
+		model.addAttribute("replaceChar", "\n");
 		
 		return "cinepick/customer/notice_detail";
 	}
