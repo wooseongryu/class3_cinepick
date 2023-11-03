@@ -137,8 +137,8 @@ public class AdminMovieController {
 		
 		if(updateMovieCount > 0) {
 			model.addAttribute("msg", "영화를 수정하였습니다.");
-			model.addAttribute("targetURL", "adminMovieDetail");
-			model.addAttribute("movie_code", movie.getMovie_code());
+			model.addAttribute("targetURL", "adminMovieDetail?movie_code="+ movie.getMovie_code());
+//			model.addAttribute("movie_code", movie.getMovie_code());
 			return "forward";
 		} else {
 			model.addAttribute("msg", "영화수정을 실패하였습니다.");

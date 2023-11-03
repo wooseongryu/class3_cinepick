@@ -93,7 +93,7 @@
 	}
 	
 	.bx-wrapper .bx-controls-auto .bx-stop {
- 		left: calc(100% -20px); 
+ 		left: calc(96.5%); 
 	}
 	
 
@@ -178,8 +178,9 @@
     top: 4px;
 }
 
- 	.boardWrap .bx-prev, .boardWrap .bx-next{ 
+ 	.boardWrap .bx-controls .bx-prev, .boardWrap .bx-controls .bx-next{ 
  		position: absolute; 
+ 		left: 18%;
  		top: 50%; 
  		transform: translateY(-50%);
  		font-size: 1em;
