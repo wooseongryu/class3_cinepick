@@ -33,10 +33,15 @@
 /* Template default CSS
 /*----------------------------------------*/
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+
+
+
 html,
 body {
 	height: 100%;
-	font-family: "Mulish", sans-serif;
+/* 	font-family: "Mulish", sans-serif; */
+	font-family: 'IBM Plex Sans KR';
 	-webkit-font-smoothing: antialiased;
 	background: white;
 }
@@ -50,7 +55,8 @@ h6 {
 	margin: 0;
 	color: rgb(255, 255, 128);
 	font-weight: 400;
-	font-family: "Mulish", sans-serif;
+/* 	font-family: "Mulish", sans-serif; */
+	font-family: 'IBM Plex Sans KR';
 }
 
 h1 {
@@ -79,7 +85,8 @@ h6 {
 
 p {
 	font-size: 15px;
-	font-family: "Mulish", sans-serif;
+/* 	font-family: "Mulish", sans-serif; */
+	font-family: 'IBM Plex Sans KR';
 	color: #3d3d3d;
 	font-weight: 400;
 	line-height: 25px;
@@ -165,7 +172,7 @@ ol {
 	text-transform: uppercase;
 	padding-left: 20px;
 	position: relative;
-	font-family: "Oswald", sans-serif;
+/* 	font-family: "Oswald", sans-serif; */
 }
 
 .section-title a {
@@ -179,7 +186,7 @@ ol {
 	top: -6px;
 	height: 32px;
 	width: 4px;
-	background: #e53637;
+	background: #503396;
 	content: "";
 }
 
@@ -2507,7 +2514,8 @@ ol {
 
 .step1_head {
 	overflow: hidden;
-	background: rgb(128, 128, 128);
+/* 	background: rgb(128, 128, 128); */
+	border: 2px solid #1c1c1c;
 	padding: 15px 25px 5px 25px;
 	border-radius: 10px;
 	position: relative;
@@ -2515,7 +2523,7 @@ ol {
 }
 
 .step1_head h6 {
-	color: #ffffff;
+	color: #1c1c1c;
 	font-weight: 700;
 	margin-bottom: 10px;
 	text-align: center;
@@ -2523,7 +2531,8 @@ ol {
 
 .step1_body {
 	overflow: auto;
-	background: rgb(128, 128, 128);
+/* 	background: rgb(128, 128, 128); */
+	border: 2px solid #1c1c1c;
 	padding: 15px 25px 5px 25px;
 	border-radius: 10px;
 	position: relative;
@@ -2532,14 +2541,14 @@ ol {
 }
 
 .step1_body h2 {
-	color: yellow;
+	color: #1c1c1c;
 	font-weight: 700;
 	margin-bottom: 10px;
 	text-align: center;
 }
 
 .step1_body h6 {
-	color: #ffffff;
+	color: #1c1c1c;
 	font-weight: 700;
 	margin-bottom: 10px;
 	text-align: center;
@@ -2574,7 +2583,8 @@ ol {
 
 .step1_time_body {
 	overflow: auto;
-	background: rgb(128, 128, 128);
+/* 	background: rgb(128, 128, 128); */
+	border: 2px solid #1c1c1c;
 	padding: 15px 25px 5px 25px;
 	border-radius: 10px;
 	position: relative;
@@ -2583,13 +2593,13 @@ ol {
 }
 
 .step1_time_body hr {
-	background:yellow;
+	background: #1c1c1c;
     height:1px;
     border:0;
 }
 
 .step1_time_body h6 {
-	color: #ffffff;
+	color: #1c1c1c;
 	font-weight: 700;
 	margin-bottom: 10px;
 /* 	text-align: center; */
