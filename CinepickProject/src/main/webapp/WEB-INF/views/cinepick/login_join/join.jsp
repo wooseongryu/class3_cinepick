@@ -87,7 +87,7 @@
 				msg = "비밀번호 입력 필수!";
 				color = "red";
 			} else if(!lengthRegex.exec(passwd)) { // 비밀번호 길이 체크 위반
-				msg = "비밀번호 길이 4 ~ 16글자 필수!";
+				msg = "비밀번호 길이 8 ~ 16글자 필수!";
 				color = "red";
 			} else {
 				// 2) 비밀번호(패스워드) 복잡도 검사(영문자 대&소문자, 숫자, 특수문자 중 최소 2가지 조합)
@@ -118,7 +118,7 @@
 						break;
 					case 3 : 
 						msg = "보통";
-						color = "yellow";
+						color = "blue";
 						break;
 					case 2 : 
 						msg = "위험";
@@ -207,18 +207,20 @@
 	        object.value = object.value.slice(0, object.maxLength);
 	    }
 	}
-// 	//아이디 입력 가능한 수 maxlength(8자리) 설정
-// 	function maxLengthCheckId(object){
-// 	    if (object.value.length > object.maxLength){
-// 	        object.value = object.value.slice(0, object.maxLength);
-// 	    }
-// 	}
-// 	//비밀번호 입력 가능한 수 maxlength(12자리) 설정
-// 	function maxLengthCheckPasswd(object){
-// 	    if (object.value.length > object.maxLength){
-// 	        object.value = object.value.slice(0, object.maxLength);
-// 	    }
-// 	}
+	//아이디 입력 가능한 수 maxlength(16자리) 설정
+	function maxLengthCheckId(object){
+// 	    	alert(object.maxLength);
+	    if (object.value.length > object.maxLength){
+	    	
+	        object.value = object.value.slice(0, object.maxLength);
+	    }
+	}
+	//비밀번호 입력 가능한 수 maxlength(16자리) 설정
+	function maxLengthCheckPasswd(object){
+	    if (object.value.length > object.maxLength){
+	        object.value = object.value.slice(0, object.maxLength);
+	    }
+	}
 
 	//휴대폰번호 입력 가능한 수 maxlength(11자리) 설정
 	function maxLengthCheckNum(object){
@@ -259,7 +261,7 @@
                             	<span id="checkIdResult"></span>
                             </div>
                         	<div class="input__item">
-                               <input type="text" name="user_id" id="user_id" placeholder="아이디를 입력하세요" required="required" size="20" oninput="maxLengthCheckId(this)" pattern="^[A-Za-z0-9][\w]{3,15}$" title="4 ~ 16글자 영문자, 숫자, 특수문자(_) 조합">
+                               <input type="text" name="user_id" id="user_id" placeholder="아이디를 입력하세요" required="required" size="20" maxlength="16" oninput="maxLengthCheckId(this)" pattern="^[A-Za-z0-9][\w]{3,15}$" title="4 ~ 16글자 영문자, 숫자, 특수문자(_) 조합">
                                 <span id = "checkIdResult"></span>
                                 <span class="icon_id"></span>
                             </div>
