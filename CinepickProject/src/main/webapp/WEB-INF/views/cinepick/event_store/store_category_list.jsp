@@ -28,12 +28,33 @@
     
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
     
-     <style type="text/css">
-		.plus {
-			text-align: right;
-		}
-	</style>
+
 </head>
+
+<style type="text/css">
+
+	.plus {
+		text-align: right;
+	}
+	
+	.product__page__title {
+		border-bottom: none;
+	}
+	
+/* 	.lst_wrap { */
+/* 		font-color: #1C1C1C; */
+/* 		font-size: 18px; */
+/* 	} */
+	
+	.section-title h5:after {
+   
+    background: #503396;
+    content: "";
+}
+	
+	
+	
+</style>
 
 <body>
     <!-- Page Preloder -->
@@ -57,7 +78,7 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="section-title">
-                                        <h4>스토어 (매점에서 구매 가능한 상품)</h4>
+                                        <h5>스토어 (매점에서 구매 가능한 상품)</h5>
                                         	
                                     </div>
                                 </div>
@@ -66,20 +87,19 @@
                         
 				<!-- 패키지 -->
 				
-				<div class="lst_wrap">	
-				
-					<p>
-						<font face="맑은 고딕" color="#000000">
-							<h3>패키지</h3>
+				<div class="lst_wrap">
+                	<div class="section-title">
+						<p>	
+						<font color="#1C1C1C">
+							<h5>패키지</h5>
 						</font>
+					
 						<div class="plus">		
 							<a href="packageStoreList"> 더보기 &nbsp; </a>
-						</div>	
-					</p>
-						
-				
-					<div class="section-title">
-					</div>
+						</div>
+						</p>
+					</div>			
+					
 					
 						<!-- 패키지 1 -->
 						
@@ -159,19 +179,17 @@
                          
                 <!-- 스낵 -->
                 
-                <div class="lst_wrap">	    
-               		<p>
-						<font face="맑은 고딕" color="#000000">
-							<h3>스낵</h3>
-						</font>
-						<div class="plus">		
-							<a href="snackStoreList"> 더보기 &nbsp; </a>
-						</div>	
-					</p>
-					
-                    <div class="section-title">
+                <div class="lst_wrap">
+               		<div class="section-title">	    
+	               		<p>
+							<font color="#1C1C1C">
+							<h5>스낵</h5>
+							</font>
+							<div class="plus">		
+								<a href="snackStoreList"> 더보기 &nbsp; </a>
+							</div>	
+						</p>
 					</div>
-					
 					<!-- 스낵 1 -->
 					
                     <div class="row">
@@ -244,18 +262,17 @@
                       
                 <!-- 관람권/포토카드 -->
                 
-                <div class="lst_wrap">	
-                	<p>
-						<font face="맑은 고딕" color="#000000" >
-							<h3>관람권/포토카드</h3>
-						</font>
-						<div class="plus">		
-							<a href="ticketStoreList"> 더보기 &nbsp; </a>
-						</div>	
-					</p>
-					
-					<div class="section-title">
-					</div>
+                <div class="lst_wrap">
+                	<div class="section-title">	 	
+	                	<p>
+							<font color="#1C1C1C" >
+								<h5>관람권/포토카드</h5>
+							</font>
+							<div class="plus">		
+								<a href="ticketStoreList"> 더보기 &nbsp; </a>
+							</div>	
+						</p>
+					</div>	
 					
 					<!-- 관람권/포토카드 1 -->
 					

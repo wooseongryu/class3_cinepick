@@ -30,6 +30,14 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
 </head>
 
+<style>
+
+	.product__page__title {
+		border-bottom: none;
+	}
+
+</style>
+
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -52,7 +60,7 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="section-title">
-                                        <h4>스토어</h4>
+                                        <h5>스토어</h5>
                                     </div>
                                 </div>
                             </div>
@@ -63,16 +71,16 @@
 				<div class="lst_wrap">	
 					<div class="section-title">
 						<p>
-							<font face="맑은 고딕" color="#000000">
+							<font color="#1C1C1C">
 								<c:choose>
                                 	<c:when test="${category eq 'package' }">
-                                		<h3>패키지</h3>
+                                		<h5>패키지</h5>
                                 	</c:when>
                                 	<c:when test="${category eq 'snack' }">
-                                		<h3>스낵</h3>
+                                		<h5>스낵</h5>
                                 	</c:when>
 									<c:otherwise>
-										<h3>관람권/포토카드</h3>
+										<h5>관람권/포토카드</h5>
 									</c:otherwise>
                                 </c:choose>
 							</font>
