@@ -760,6 +760,7 @@
 						+ '<input type="hidden" id="allTickets" name="allTickets" value="' + allTickets + '">'
 						+ '<input type="hidden" id="seats" name="seats" value="' + seats + '">'
 						+ '<input type="hidden" id="total" name="total" value="' + total + '">'
+						+ '<input type="hidden" id="moneySum" name="moneySum" value="' + moneySum + '">'
 // 						+ '<input type="submit">'
 					+'</form>';
 					

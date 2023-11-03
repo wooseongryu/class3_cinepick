@@ -51,7 +51,11 @@
         <div class="loader"></div>
     </div>
     
-    ${param.sche_idx }
+    스케줄 번호 : ${param.sche_idx }
+    권종 : ${param.allTickets }
+    좌석 : ${param.seats }
+    매수 : ${param.total }
+    총액 : ${param.moneySum }
 
 	<div class="inner-wrap" style="padding-top:40px; padding-bottom:100px;">
 	<!-- quick-reserve -->
@@ -814,7 +818,8 @@ function fn_validateDateYn(param) {
 						<p class="date"><span id="playDe">2023.10.30</span><em id="dowNm">(월)</em> <span class="time" id="playTime"><i class="iconset ico-clock-white"></i>17:10~19:23</span></p>
 					</div>
 					<div class="price-process">
-						<div class="box"><div class="data"><span class="tit">청소년 <em>1</em></span><span class="price">11,000</span></div>
+<!-- 						<div class="box"><div class="data"><span class="tit">청소년 <em>1</em></span><span class="price">11,000</span></div> -->
+						<div class="box"><div class="data"><span class="tit">${param.allTickets } </div>
 							<!--
 							<div class="data">
 								<span class="tit">일반 <em>1</em></span>
@@ -828,7 +833,7 @@ function fn_validateDateYn(param) {
 							-->
 							<div class="all">
 								<span class="tit">금액 <!-- 금액 --></span>
-								<span class="price"><em>11,000</em> <span>원 <!-- 원 --></span></span>
+								<span class="price"><em>${param.moneySum }</em> <span>원 <!-- 원 --></span></span>
 							</div>
 						</div>
 
@@ -851,7 +856,7 @@ function fn_validateDateYn(param) {
 							<p class="tit">최종결제금액 <!-- 최종결제금액 --></p>
 
 							<div class="money">
-								<em>11,000</em>
+								<em>${param.moneySum }</em>
 								<span>원 <!-- 원 --></span>
 							</div>
 						</div>
@@ -985,6 +990,17 @@ function fn_validateDateYn(param) {
 	
 	<script>
 	
+		let moneySum = 0;
+		$(function(){
+			
+			$("#btn_booking_pay").click(function() {
+				moneySum = "${param.moneySum}";
+				console.log(moneySum);
+			});
+			
+		});
+	
+	
 		function requestPay() {
 			IMP.init('imp14320736'); // 객체 초기화. 가맹점 식별코드 전달
 			
@@ -992,20 +1008,37 @@ function fn_validateDateYn(param) {
 		    	pg: "kcp.AO09C",
 		    	pay_method: "card",
 		    	merchant_uid: "ORD" + getDateTimeString(),   // 주문번호
-		    	name: "노르웨이 회전 의자",
-		    	amount: 64900,                         // 숫자 타입
+		    	name: "오펜하이머",
+		    	amount: moneySum,                         // 숫자 타입
 		    	buyer_email: "gildong@gmail.com",
 		    	buyer_name: "홍길동",
 		    	buyer_tel: "010-4242-4242",
 		    	buyer_addr: "서울특별시 강남구 신사동",
-		    	buyer_postcode: "01181"
+// 		    	buyer_postcode: "01181"
 		    }, function (rsp) { // callback
 		      //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
 	// 	      	console.log("결과: " + rsp);
 		    	if(rsp.success) {
+// 		    		let msg = "결제가 완료되었습니다.";
+		    		
 					console.log("rsp.imp_uid : " + rsp.imp_uid);	    		
-					console.log("rsp.merchant_uid : " + rsp.merchant_uid);	    		
+					console.log("rsp.merchant_uid : " + rsp.merchant_uid);	    
+					
+// 					$.ajax({
+// 						type: "GET",
+// 						url: "bookingPay",
+// 						data: {
+// 							amount: 1,
+// 							imp_uid: rsp.imp_uid,
+// 							merchant_uid: rsp.merchant_uid,
+							
+// 						}
+// 					});
+		    	} else {
+// 		    		let msg = "결제에 실패하였습니다.";
+// 		    		msg += "에러 내용 : " + rsp.error_msg;
 		    	}
+// 		    	alert(msg);
 		    });
 		}
 		
