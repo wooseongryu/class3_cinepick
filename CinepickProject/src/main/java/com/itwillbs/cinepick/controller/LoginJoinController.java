@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.cinepick.service.SendMailService;
 import com.itwillbs.cinepick.service.UserService;
@@ -96,6 +97,22 @@ public class LoginJoinController {
 		}
 	}
 	
+	@ResponseBody
+	@GetMapping("UserCheckDupId")
+	public String checkDupId(UserVO user) {
+		System.out.println("UserCheckDupId-----------------");
+		
+		UserVO returnUser = service.getUser(user);
+		System.out.println("))))))))))))))))))))))))))))");
+		System.out.println(user);
+		
+		if(returnUser != null) { // 아이디 중복
+			return "true"; // 리턴타입 String 일 때 응답 데이터로 String 타입 "true" 문자열 리턴
+		} else { // 아이디 사용 가능
+			return "false"; // 리턴타입 String 일 때 응답 데이터로 String 타입 "false" 문자열 리턴
+		}
+		
+	}
 	
 	
 	// 로그인 폼으로 이동
