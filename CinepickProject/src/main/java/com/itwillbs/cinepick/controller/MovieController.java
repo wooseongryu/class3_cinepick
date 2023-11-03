@@ -85,6 +85,8 @@ public class MovieController {
  		
  		//-----
  		MovieVO movie = movieService.selectMovieDetail(movie_code);
+ 		System.out.println("!@#!@#");
+ 		System.out.println(movie);
  		String[] stills = movie.getMovie_still().split("\\|");
 // 		for(int i = 0; i < stills.length; i++) {
 // 			System.out.println(stills[i]);

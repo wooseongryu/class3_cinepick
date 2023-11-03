@@ -60,9 +60,11 @@
 						<div class="row">
 						<c:forEach var="eventCate" items="${eventCateList }">
 							<div class="col" style="margin: auto">
-								<div class="customer_category"  name="${eventCate.eventCate_Subject}" <c:if test="${eventCate.eventCate_Idx eq param.eventCate_Idx}">style="background: red" </c:if>
+								<div class="customer_category"  name="${eventCate.eventCate_Subject}" 
+								<c:if test="${eventCate.eventCate_Idx eq param.eventCate_Idx}">style="background: #503396" </c:if>
 								 onclick="location.href='eventList?eventCate_Idx=${eventCate.eventCate_Idx}'" >
-									<h6>${eventCate.eventCate_Subject }</h6>
+								 
+									<h6 <c:if test="${eventCate.eventCate_Idx eq param.eventCate_Idx}">style="color: #ffffff" </c:if>> ${eventCate.eventCate_Subject }</h6>
 								</div>
 							</div>
 						</c:forEach>

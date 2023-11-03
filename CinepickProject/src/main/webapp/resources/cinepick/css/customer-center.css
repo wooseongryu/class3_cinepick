@@ -32,10 +32,15 @@
 /* Template default CSS
 /*----------------------------------------*/
 
+/* 폰트 추가 */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap'); 
+
+
 html,
 body {
 	height: 100%;
-	font-family: "Mulish", sans-serif;
+	font-family: 'IBM Plex Sans KR';
+/* 	font-family: "Mulish", sans-serif; */
 	-webkit-font-smoothing: antialiased;
 	background: white;
 }
@@ -47,9 +52,10 @@ h4,
 h5,
 h6 {
 	margin: 0;
-	color: rgb(255, 255, 128);
+/* 	color: rgb(255, 255, 128); */
+	color: #1c1c1c;
 	font-weight: 400;
-	font-family: "Mulish", sans-serif;
+	font-family: 'IBM Plex Sans KR';
 }
 
 h1 {
@@ -164,7 +170,8 @@ ol {
 	text-transform: uppercase;
 	padding-left: 20px;
 	position: relative;
-	font-family: "Oswald", sans-serif;
+/* 	font-family: "Oswald", sans-serif; */
+font-family: 'IBM Plex Sans KR';
 }
 
 .section-title a {
@@ -178,7 +185,7 @@ ol {
 	top: -6px;
 	height: 32px;
 	width: 4px;
-	background: #e53637;
+	background: #503396;
 	content: "";
 }
 
@@ -2415,15 +2422,16 @@ ol {
 
 .customer_category {
 	overflow: hidden;
-	background: #1c1c1c;
+/* 	background: #1c1c1c; */
 	padding: 15px 25px 5px 25px;
+	border: 2px solid #1c1c1c;
 	border-radius: 10px;
 	position: relative;
 	margin-bottom: 30px;
 }
 
 .customer_category h6 {
-	color: #ffffff;
+	color: #1c1c1c;
 	font-weight: 700;
 	margin-bottom: 10px;
 	text-align: center;
@@ -2431,7 +2439,8 @@ ol {
 
 .qna_table_head {
 	overflow: hidden;
-	background: rgb(255, 0, 0);
+	background: #503396;
+	border: 2px solid #1c1c1c;
 	padding: 15px 25px 5px 25px;
 	border-radius: 10px;
 	position: relative;
@@ -2447,7 +2456,8 @@ ol {
 
 .qna_table_body {
 	overflow: hidden;
-	background: #343a40;
+	border: 2px solid #1c1c1c;
+/* 	background: #343a40; */
 	padding: 15px 25px 5px 25px;
 	border-radius: 10px;
 	position: relative;
@@ -2455,7 +2465,7 @@ ol {
 }
 
 .qna_table_body h6 {
-	color: #ffffff;
+	color: #1c1c1c;
 	font-weight: 700;
 	margin-bottom: 10px;
 	text-align: center;
@@ -2463,7 +2473,7 @@ ol {
 
 .qna_form {
 	overflow: hidden;
-	background: rgb(128, 128, 128);
+	background: #1c1c1c;
 	padding: 15px 25px 5px 25px;
 	border-radius: 10px;
 	position: relative;
@@ -2487,7 +2497,7 @@ ol {
 .qna_submit_btn {
 	font-size: 15px;
 	color: #ffffff;
-	background: #e53637;
+	background: #503396;
 	font-weight: 700;
 	border: none;
 	border-radius: 10px;

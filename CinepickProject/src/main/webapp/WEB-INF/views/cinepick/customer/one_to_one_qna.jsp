@@ -45,7 +45,7 @@
 	            <div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
 	                <div class="anime__details__review">
 	                    <div class="section-title">
-	                        <h5>고객센터</h5>
+	                        <h5>1:1문의</h5>
 	                    </div>
 	                    <div class="test" id="order_comment">
 	                        <h5>
@@ -53,7 +53,7 @@
 	                             &nbsp;&nbsp;
 	                            <a href="notice">공지사항</a>
 	                             &nbsp;&nbsp;
-	                            <a href="oneToOneQna"style="color: red;">1:1문의</a>
+	                            <a href="oneToOneQna" style="color: #503396;">1:1문의</a>
 	                        </h5>
 	                    </div>
 	

@@ -15,17 +15,17 @@
 // slider
    $(function() {
         $(".slider").bxSlider({
-        	nextText:'<i class="fas fa-chevron-right"></i>',
+        	nextText:'<i class="bi bi-chevron-compact-right"></i></i>',
 //         	nextText:'<i class="fa-light fa-chevron-right" style="color: #a6abaa;"></i>',
-        	prevText:'<i class="fas fa-chevron-left"></i>',
+        	prevText:'<i class="bi bi-chevron-compact-left"></i></i>',
 //         	prevText:'<i class="fa-light fa-chevron-left" style="color: #a6abaa;"></i>'
 			autohover: true,
 			auto: true,
 			autoControls: true,
 			stopAutoOnClick: true,
 			pager: true,
-			startText: '<i class="fa-solid fa-play"></i>',
-			stopText: '<i class="fa-solid fa-pause"></i>'
+			startText: '<i class="bi bi-play-fill"></i>',
+			stopText: '<i class="bi bi-pause-fill"></i>'
         	
         });
 	});
@@ -38,13 +38,13 @@
 			slideWidth:200,
 			slideMargin: 20,
 			pager:false,
-			controls: false,
+			controls: true,
 			auto: true,
 			autohover: true,
-			moveSlides:1
-// 			speed:200
-// 			nextText:'<i class="fas fa-chevron-right"></i>',
-//         	prevText:'<i class="fas fa-chevron-left"></i>'
+			moveSlides:1,
+			speed:200,
+			nextText:'<i class="bi bi-chevron-right"></i>',
+        	prevText:'<i class="bi bi-chevron-left"></i>'
 			
 		});
 		
@@ -64,8 +64,7 @@
 			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/mv1.jpg"></li>
 			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/mv2.jpg"></li>
 			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/mv3.jpg"></li>
-			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/
-			img/main_slider/mv4.jpg"></li>
+			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/mv4.jpg"></li>
 		</ul>
 	</div>
 	
