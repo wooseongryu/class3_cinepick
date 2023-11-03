@@ -91,8 +91,8 @@
 					$("#result").children().remove();
 					$("#result").append(action);
 					
-					$("#step1_screen > .row").find("h6").css("color", "white");
-					$("#step1_screen > .row[name='" + data.getAttribute("data-screenName") + "']").find("h6[data-hour='" + data.getAttribute("data-hour") + "']").css("color", "yellow");
+					$("#step1_screen > .row").find("h6").css("color", "#1c1c1c");
+					$("#step1_screen > .row[name='" + data.getAttribute("data-screenName") + "']").find("h6[data-hour='" + data.getAttribute("data-hour") + "']").css("color", "#503396");
 					
 					$("#result_screen").children().remove();
 		    		$("#result_screen").append("<h6>상영관&emsp;" + data.getAttribute("data-screenName") + "</h6>");
@@ -127,7 +127,7 @@
 						$("#result_date").children().remove();
 						$("#result_date").append("<h6>날짜&emsp;&emsp;" + data.getAttribute("data-date") + "</h6>");
 						
-						$("#step1_screen").append("<h6 style='color: yellow'>" + screen + "</h6>");
+						$("#step1_screen").append("<h6 style='color: #1c1c1c'>" + screen + "</h6>");
 						$("#step1_screen").append("<div name='" + screen + "' class='row' id='step1_time''>");
 						$.each(resp.timeList, function(index, time) {
 							let hour = time.sche_start_time.hour;
@@ -158,8 +158,8 @@
 						$("#step1_screen").append("<hr>");
 					});
 					
-					$("#step1_date").children("h6").css("color", "white");
-    				$("#step1_date").children("h6[data-date=" + data.getAttribute("data-date") +"]").css("color", "yellow");
+					$("#step1_date").children("h6").css("color", "#1c1c1c");
+    				$("#step1_date").children("h6[data-date=" + data.getAttribute("data-date") +"]").css("color", "#503396");
     				
     				$("#result_screen").children().remove();
     	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
@@ -198,7 +198,7 @@
     					
     					if (el.sche_date.month != month) {
     						month = el.sche_date.month;
-	    					$("#step1_date").append("<div><h6 style='margin-bottom: 0px; color: yellow'>" 
+	    					$("#step1_date").append("<div><h6 style='margin-bottom: 0px; color: #1c1c1c'>" 
 							    					+ year
 							    					+ "</h6></div>");
 	    					$("#step1_date").append("<h2>" + month + "</h2>");
@@ -226,8 +226,8 @@
     											+ "</h6>");
     				});
     				
-    				$("#step1_theater").children("h6").css("color", "white");
-    				$("#step1_theater").children("h6[data-theaterIdx=" + data.getAttribute("data-theaterIdx") +"]").css("color", "yellow");
+    				$("#step1_theater").children("h6").css("color", "#1c1c1c");
+    				$("#step1_theater").children("h6[data-theaterIdx=" + data.getAttribute("data-theaterIdx") +"]").css("color", "#503396");
     				
     				$("#result_date").children().remove();
     				$("#result_date").append("<h6>날짜&emsp;&emsp;날짜선택</h6>");
@@ -272,8 +272,8 @@
 					$("#result_theaterName").children().remove();
     				$("#result_theaterName").append("<h6>극장&emsp;&emsp;극장선택</h6>");
 					
-					$("#step1_city").find("h6").css("color", "white");
-    				$("#step1_city").find("h6[data-cityIdx=" + city.getAttribute('data-cityIdx') +"]").css("color", "yellow");
+					$("#step1_city").find("h6").css("color", "#1c1c1c");
+    				$("#step1_city").find("h6[data-cityIdx=" + city.getAttribute('data-cityIdx') +"]").css("color", "#503396");
     				
     				$("#result_date").children().remove();
     				$("#result_date").append("<h6>날짜&emsp;&emsp;날짜선택</h6>");
@@ -321,8 +321,8 @@
     				$("#result_movieName").children().remove();
     				$("#result_movieName").append("<h6>" + resp.movieInfo.movie_nameK + "</h6>");
 
-    				$("#step1_movie").find("h6").css("color", "white");
-    				$("#step1_movie").find("h6[data-movieCode=" + movie +"]").css("color", "yellow");
+    				$("#step1_movie").find("h6").css("color", "#1c1c1c");
+    				$("#step1_movie").find("h6[data-movieCode=" + movie +"]").css("color", "#503396");
     				
     				$("#result_date").children().remove();
     				$("#result_date").append("<h6>날짜&emsp;&emsp;날짜선택</h6>");

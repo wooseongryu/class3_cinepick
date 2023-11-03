@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+
 /*
  step3
 */
@@ -18,7 +21,8 @@
     	
     	.step3_head {
 			overflow: hidden;
-			background: rgb(128, 128, 128);
+/* 			background: rgb(128, 128, 128); */
+			font-family: 'IBM Plex Sans KR';
 			padding: 15px 25px 5px 25px;
 			border-radius: 10px;
 			position: relative;
@@ -26,7 +30,7 @@
 		}
 		
 		.step3_head h6 {
-			color: #ffffff;
+			color: #1c1c1c;
 			font-weight: 700;
 			margin-bottom: 10px;
 			text-align: center;
@@ -91,7 +95,8 @@
 		
 		.step3_result {
 			overflow: hidden;
-			background: rgb(128, 128, 128);
+/* 			background: rgb(128, 128, 128); */
+			border: 2px solid #1c1c1c;
 			padding: 15px 15px 15px 15px;
 			border-radius: 10px;
 			position: relative;
@@ -103,7 +108,7 @@
 		}
 		
 		.step3_result h6 {
-			color: #ffffff;
+			color: #1c1c1c;
 			font-weight: 500;
 			margin-top: 10px;
 /* 			margin-bottom: 10px; */
@@ -143,12 +148,12 @@
 		.res_btn {
 			width: 150px;
 			height: 120px;
-			background: darkred;
+			background:#503396;
 			border-radius: 10px;
 			margin: auto;
 			color: #ffffff;
 			font-weight: 500;
-			border: 0.5px red;
+			border: 0.5px #503396;
 		}
 		
 		.res_img {
