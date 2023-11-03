@@ -49,15 +49,15 @@
 				<div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
 					<div class="anime__details__review">
 						<div class="section-title">
-							<h5>고객센터</h5>
+							<h5>이벤트</h5>
 						</div>
 						<div class="test" id="order_comment">
 	                        <h5>
-	                            <a href="movieEventList">영화</a>
+	                            <a href="eventList?eventCate_Idx=1">영화</a>
 	                             &nbsp;&nbsp;
-	                            <a href="previewEventList">시사회/무대인사</a>
+	                            <a href="eventList?eventCate_Idx=4">시사회/무대인사</a>
 	                             &nbsp;&nbsp;
-	                            <a href="theaterEventList">극장별</a>
+	                            <a href="eventList?eventCate_Idx=5">극장별</a>
 	                        </h5>
 	                    </div>
 					</div>

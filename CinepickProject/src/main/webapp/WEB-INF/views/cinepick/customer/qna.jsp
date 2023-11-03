@@ -57,11 +57,11 @@
 	            <div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
 	                <div class="anime__details__review">
 	                    <div class="section-title">
-	                        <h5>고객센터</h5>
+	                        <h5>자주묻는질문</h5>
 	                    </div>
 	                    <div class="test" id="order_comment">
 	                        <h5>
-	                            <a href="qna" style="color: red;">자주묻는질문</a>
+	                            <a href="qna" style="color: #503396;">자주묻는질문</a>
 	                             &nbsp;&nbsp;
 	                            <a href="notice">공지사항</a>
 	                             &nbsp;&nbsp;
@@ -71,8 +71,10 @@
 						<div class="row">
 						<c:forEach var="qnaCate" items="${qnaCateList }">
 							<div class="col">
-								<div class="customer_category" name="${qnaCate.qnaCateSubject}" <c:if test="${qnaCate.qnaCateIdx eq param.qnaCateIdx}">style="background: red" </c:if> onclick="location.href='qna?qnaCateIdx=${qnaCate.qnaCateIdx}'" >
-									<h6>${qnaCate.qnaCateSubject }</h6>
+								<div class="customer_category" name="${qnaCate.qnaCateSubject}" 
+								<c:if test="${qnaCate.qnaCateIdx eq param.qnaCateIdx}">style="background: #503396" 
+								</c:if> onclick="location.href='qna?qnaCateIdx=${qnaCate.qnaCateIdx}'" >
+									<h6 <c:if test="${qnaCate.qnaCateIdx eq param.qnaCateIdx}"> style="color: #ffffff" </c:if>>${qnaCate.qnaCateSubject }</h6>
 								</div>
 							</div>
 						</c:forEach>
