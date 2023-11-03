@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>CINEPICK</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">  
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/main.css" type="text/css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <script src= "${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script> 
@@ -83,8 +83,8 @@
 						<li>
 							<div class="slider-over">
 								<img alt="" src="${movie.movie_poster }">
-								<span class="over-over">
-									<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span>
+								<span class="over-over"><br>
+<!-- 									<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span> -->
 									<span class="over-rsv"><a href="bookingStepOne">예매하기</a></span>
 									<span class="over-info"><a href="movieDetail?movie_code= ${movie.movie_code }">상세보기</a></span>
 								</span>

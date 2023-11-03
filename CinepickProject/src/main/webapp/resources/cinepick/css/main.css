@@ -122,6 +122,7 @@
 	
 	.boardWrap .bx-wrapper,
 	.boardWrap .bx-viewport {
+		margin-left: 9px;
     	height:400px !important;
 	} 
 	
@@ -180,10 +181,10 @@
 
  	.boardWrap .bx-controls .bx-prev, .boardWrap .bx-controls .bx-next{ 
  		position: absolute; 
- 		left: 18%;
- 		top: 50%; 
+/*  		left: 20%; */
+ 		top: 30%; 
  		transform: translateY(-50%);
- 		font-size: 1em;
+ 		font-size: 2em;
  	} 
 	
   	.boardWrap .bx-prev {  
