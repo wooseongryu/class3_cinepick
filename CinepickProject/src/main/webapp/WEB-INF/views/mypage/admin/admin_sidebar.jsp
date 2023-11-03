@@ -129,7 +129,7 @@
 			<!-- Nav Item - 스토어관리메뉴 -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStores"
-                    aria-expanded="true" aria-controls="collapseTheaters">
+                    aria-expanded="true" aria-controls="#collapseStores">
                     <i class="fas fa-fw fa-store"></i>
                     <span>스토어관리</span>
                 </a>
