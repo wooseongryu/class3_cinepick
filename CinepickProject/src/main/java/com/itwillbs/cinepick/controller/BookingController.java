@@ -145,7 +145,13 @@ public class BookingController {
 	public String getSchedule(ScheduleVO schedule, Gson gson) {
 		System.out.println("BookingController - getSchedule()");
 		
-		return String.valueOf(bookingService.selectSchedule(schedule));
+		Map<String, String> map = bookingService.selectSchedule(schedule);
+		
+		System.out.println("))))))))))))))))))))))))))");
+		System.out.println(map);
+		
+//		return String.valueOf(bookingService.selectSchedule(schedule));
+		return gson.toJson(map);
 	}
 	
 	/*====================================================================

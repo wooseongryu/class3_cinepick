@@ -102,9 +102,23 @@
 		ORDER BY movie_nameK
 	</select>
 	
-	<select id="selectSchedule" resultType="int">
-		SELECT sche_idx
-		FROM schedule
+	<select id="selectSchedule" resultType="map">
+		SELECT
+			s.sche_idx
+			, s.sche_date 
+			, s.sche_start_time 	
+			, s.sche_end_time 
+			, m.movie_nameK 
+			, m.movie_rated 
+			, m.movie_poster 
+			, t.theater_name 
+			, sc.screen_name 
+		FROM schedule s JOIN movie m 
+		ON s.sche_movie_code = m.movie_code 
+		JOIN theater t
+		ON s.sche_theater_idx  = t.theater_idx 
+		JOIN screen sc
+		ON s.sche_screen_idx = sc.screen_idx 
 		WHERE
 			sche_movie_code = #{sche_movie_code}
 			AND sche_theater_idx = #{sche_theater_idx}

@@ -47,7 +47,7 @@ public class BookingService {
 		return mapper.selectMovies();
 	}
 
-	public int selectSchedule(ScheduleVO schedule) {
+	public Map<String, String> selectSchedule(ScheduleVO schedule) {
 		System.out.println("BookingService - selectSchedule()");
 		return mapper.selectSchedule(schedule);
 	}

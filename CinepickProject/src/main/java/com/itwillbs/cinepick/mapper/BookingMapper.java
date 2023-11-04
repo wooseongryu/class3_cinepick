@@ -25,7 +25,7 @@ public interface BookingMapper {
 
 	List<MovieVO> selectMovies();
 
-	int selectSchedule(ScheduleVO schedule);
+	Map<String, String> selectSchedule(ScheduleVO schedule);
 
 	int checkValidCode(int movie_code);
 

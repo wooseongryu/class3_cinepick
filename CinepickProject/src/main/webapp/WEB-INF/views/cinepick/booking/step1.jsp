@@ -63,9 +63,6 @@
     	
     </style>
     <script type="text/javascript">
-    	let movieName = "";
-    
-    		
 	    	function final(data) {
 	//     		alert(data.getAttribute("data-movieCode"));
 	//     		alert(data.getAttribute("data-theaterIdx"));
@@ -77,7 +74,7 @@
 				$.ajax({
 					type: 'post',
 					url: 'getSchedule',
-					dataType: 'text',
+					dataType: 'json',
 					data: {
 						sche_movie_code : data.getAttribute("data-movieCode"),
 						sche_theater_idx : data.getAttribute("data-theaterIdx"),
@@ -85,11 +82,27 @@
 						sche_start_time : data.getAttribute("data-hour") + ":00",
 						sche_screen_idx : data.getAttribute("data-screen_idx")
 					},
-					success: function(sche_idx) {
-	// 					let action = "<form action='bookingStepTwo' method='get'>"
+					success: function(resp) {
+// 						alert(resp);
+// 						console.log(resp.sche_idx)
+// 						console.log(resp.movie_nameK);
+// 						console.log(resp.sche_date);
+// 						console.log(resp.sche_start_time);
+// 						console.log(resp.sche_end_time);
+// 						console.log(resp.theater_name);
+// 						console.log(resp.screen_name);
+// 						console.log(resp.movie_poster);
+// 						console.log(resp.movie_rated);
 						let action = "<form action='bookingStepTwo' method='post'>"
-							+ "<input type='hidden' name='sche_idx' id='sche_idx' value='" + sche_idx + "'>"
-							+ "<input type='hidden' name='movieName' id='movieName' value='" + movieName + "'>"
+							+ "<input type='hidden' name='sche_idx' id='sche_idx' value='" + resp.sche_idx + "'>"
+							+ "<input type='hidden' name='movie_nameK' id='movie_nameK' value='" + resp.movie_nameK + "'>"
+							+ "<input type='hidden' name='sche_date' id='sche_date' value='" + resp.sche_date + "'>"
+							+ "<input type='hidden' name='sche_start_time' id='sche_start_time' value='" + resp.sche_start_time + "'>"
+							+ "<input type='hidden' name='sche_end_time' id='sche_end_time' value='" + resp.sche_end_time + "'>"
+							+ "<input type='hidden' name='theater_name' id='theater_name' value='" + resp.theater_name + "'>"
+							+ "<input type='hidden' name='screen_name' id='screen_name' value='" + resp.screen_name + "'>"
+							+ "<input type='hidden' name='movie_poster' id='movie_poster' value='" + resp.movie_poster + "'>"
+							+ "<input type='hidden' name='movie_rated' id='movie_rated' value='" + resp.movie_rated + "'>"
 							+ "<input type='submit' value='좌석선택' class='res_btn'>"
 							+ "</form>"
 						$("#result").children().remove();
@@ -105,12 +118,6 @@
 						alert("에러");
 					}
 				});
-	    		
-	//     		<form action="bookingStepTwo" method="post">
-	// 				<input type="hidden" name="sche_idx" value="">
-	// 				<input type="submit" value="좌석선택" class="res_btn" disabled="disabled" style="background: silver;">
-	// 			</form>
-	    		
 	    	}
 	    
 	    	function chooseTime(data) {
@@ -382,8 +389,6 @@
 	    		});
 	    		
 	    	});
-    
-    
     </script>
 </head>
 
