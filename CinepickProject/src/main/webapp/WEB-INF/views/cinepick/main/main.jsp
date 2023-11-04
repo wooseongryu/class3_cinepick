@@ -48,8 +48,25 @@
 			
 		});
 		
+		$(".bx-viewport").on("mouseenter", " ul > li > span.over > a", function() {
+			$(this).parent().addClass("on");
+			if ($(this).hasClass("info")) {
+				$(this).parent().removeClass("down");
+				$(this).parent().addClass("up");
+			}
+			if ($(this).hasClass("rsv")) {
+				$(this).parent().removeClass("up");
+				$(this).parent().addClass("down");
+			}
+		});
+	
+		$(".bx-viewport").on("mouseleave", " ul > li > span.over", function() {
+			$(this).removeClass("on");
+		});
+		
 		
 	});
+	
 
 </script>
 </head>
@@ -80,15 +97,15 @@
 			<div class="boardWrap">
 				<ul class="slider-bo">
 					<c:forEach var="movie" items="${movieList }">
-						<li>
-							<div class="slider-over">
-								<img alt="" src="${movie.movie_poster }">
-								<span class="over-over"><br>
-<!-- 									<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span> -->
-									<span class="over-rsv"><a href="bookingStepOne">예매하기</a></span>
-									<span class="over-info"><a href="movieDetail?movie_code= ${movie.movie_code }">상세보기</a></span>
+						<li data-movie_code="${movie.movie_code }">
+<!-- 							<div class="slider-over"> -->
+								<span class="over">
+<!-- 								<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span> -->
+									<a href="bookingStepOne" class="rsv"><span class="over-rsv">예매하기</span></a>
+									<a href="movieDetail?movie_code= ${movie.movie_code }&pageNum=1" class="info"><span class="over-info">상세보기</span></a>
 								</span>
-							</div>
+								<img alt="" src="${movie.movie_poster }">
+<!-- 							</div> -->
 							<div class="mv-desc">
 								<c:choose>
  									<c:when test="${movie.movie_rated eq '전체관람가'}">
@@ -105,7 +122,7 @@
                                		</c:when>
                                </c:choose>
 <!-- 								<span class="rate-12">12세관람가</span> -->
-								${movie.movie_nameK }
+								<span title="${movie.movie_nameK }">${movie.movie_nameK }</span>
 							</div>
 						</li>
 					</c:forEach>

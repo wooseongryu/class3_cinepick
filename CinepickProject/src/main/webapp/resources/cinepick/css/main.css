@@ -142,8 +142,13 @@
 		
 	}
 	
-	.mvdesc {
+	.mv-desc {
 		item-align: center;
+		overflow: hidden; 
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		font-size: 15px;
+		font-weight: 600;
 	}
 	
 	.mv-desc .rate-all {
@@ -194,3 +199,52 @@
   	.boardWrap .bx-next {  
   		right: 20%;  
   	}  
+  	
+  	.mainList .boardWrap ul li .over {
+		opacity: 0;
+		display: block;
+		background-color: rgba(0, 0, 0, 0.5);
+		width: 170px;
+		height: 250px;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	
+	.mainList .boardWrap ul li .over.on {
+		display: block;
+		opacity: 1;
+	}
+	
+	.mainList .boardWrap ul li .over a.rsv {
+		display: block;
+		width: 170px;
+		height: 125px;
+		line-height: 137px;
+		font-size: 16px;
+		color: #f3f3f3;
+		font-weight: normal;
+/* 		padding-left: 55px; */
+		background-color: transparent;
+		text-align: center;
+	}
+	
+	.mainList .boardWrap ul li .over a.info {
+		display: block;
+		width: 170px;
+		height: 125px;
+		line-height: 137px;
+		font-size: 16px;
+		color: #f3f3f3;
+		font-weight: normal;
+/* 		padding-left: 55px; */
+		background-color: transparent;
+		text-align: center;
+	}
+	
+	.mainList .boardWrap ul li .over a:hover {
+		color: #d8d9f7;
+		font-size: 18px;
+		font-weight: bold;
+	}  	
+  	
