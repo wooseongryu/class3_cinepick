@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CINEPICK</title>
 <%--     <link href="${pageContext.request.contextPath }/resources/cinepick/css/sb-admin-2.css" rel="stylesheet"> --%>
 <%--     <link href="${pageContext.request.contextPath }/resources/cinepick/css/styles.css" rel="stylesheet"> --%>
     

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CINEPICK</title>
 <script type="text/javascript">
 	// 요청 작업 실패 시 전달받은 오류 메세지(msg 속성값) 출력 후 이전페이지로 돌아가기
 	alert("${msg}");

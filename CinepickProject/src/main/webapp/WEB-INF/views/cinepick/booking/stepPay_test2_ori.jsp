@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CINEPICK</title>
     <!-- 예매 완료 css -->
     <link href="${pageContext.request.contextPath }/resources/cinepick/css/step5.css" rel="stylesheet">
     <!-- payComplete css -->
