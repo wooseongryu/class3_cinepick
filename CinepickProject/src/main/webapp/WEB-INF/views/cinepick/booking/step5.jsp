@@ -91,7 +91,7 @@
 								<p class="tit">
 									<strong>예매가 완료되었습니다 <!-- 예매가 완료되었습니다 --><i>!</i></strong>
 									
-										<span class="righten"> <i class="iconset ico-circle-point"></i> 고객님의 상영익일 적립예정 포인트는 <!-- 고객님의 상영익일 적립예정 포인트는 --> <em>550P</em>입니다. <!-- 입니다. --></span>
+<!-- 										<span class="righten"> <i class="iconset ico-circle-point"></i> 고객님의 상영익일 적립예정 포인트는 고객님의 상영익일 적립예정 포인트는 <em>550P</em>입니다. 입니다.</span> -->
 									
 								</p>
 							</div>
@@ -137,8 +137,9 @@
 				<!--// reserve-finish -->
 	
 				<div class="btn-group pt30">
-					<a href="#" class="button large" w-data="600" h-data="600" id="btn_ticket_print" title="교환권출력">교환권출력 <!-- 교환권출력 --></a>
-					<a href="#" class="button large" id="btn_bill_print" title="영수증출력">영수증출력 <!-- 영수증출력 --></a>
+<!-- 					<a href="#" class="button large" w-data="600" h-data="600" id="btn_ticket_print" title="교환권출력">교환권출력 교환권출력</a> -->
+<!-- 					<a href="#" class="button large" id="btn_bill_print" title="영수증출력">영수증출력 영수증출력</a> -->
+<!-- 					<a href="/mypage/bookinglist?tab=01" class="button purple large" title="예매내역 페이지로 이동">예매내역 예매내역</a> -->
 					<a href="/mypage/bookinglist?tab=01" class="button purple large" title="예매내역 페이지로 이동">예매내역 <!-- 예매내역 --></a>
 				</div>
 	
@@ -154,13 +155,13 @@
 						</li>
 								
 	
-						<li class="mt20">
-							주차안내 <!-- 주차안내 -->
-								<ul class="dash-list">
-									<li>장전 지구대 옆 라퓨타 타워 주차장 이용시 당일 관람 고객에 한해 3시간 무료적용 (매표소에서 주차 확인 도장 받으세요)</li>
-									<li>주차장 운영시간은 23시까지로 21시 이후 주차불가(수입차,비스토,아토스,레이,승합차량 및 RV,SUV-등 대형차량 및 소형SUV  주차불가) </li>
-								</ul>
-									</li>		
+<!-- 						<li class="mt20"> -->
+<!-- 							주차안내 주차안내 -->
+<!-- 								<ul class="dash-list"> -->
+<!-- 									<li>장전 지구대 옆 라퓨타 타워 주차장 이용시 당일 관람 고객에 한해 3시간 무료적용 (매표소에서 주차 확인 도장 받으세요)</li> -->
+<!-- 									<li>주차장 운영시간은 23시까지로 21시 이후 주차불가(수입차,비스토,아토스,레이,승합차량 및 RV,SUV-등 대형차량 및 소형SUV  주차불가) </li> -->
+<!-- 								</ul> -->
+<!-- 						</li>		 -->
 					</ul>
 				</div>
 				

@@ -153,7 +153,7 @@ public class TicketController {
 	}
 	
 	@GetMapping("bookingPay")
-//	@ResponseBody
+	@ResponseBody
 //	public String bookPay(int amount, String imp_uid, String merchant_uid) throws Exception{
 	public String bookPay(@RequestParam Map<String, Object> map) throws Exception{
 		
@@ -167,9 +167,11 @@ public class TicketController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		map.put("pay_date", sdf.format(date));
-		
-		int insertCount = service.registBookAndPay(map);
 
+//		12:50 주석
+//		int insertCount = service.registBookAndPay(map);
+		int insertPayCount = service.registPay(map);
+		int insertBookCount = service.registBook(map);
 		
 		
 ////		System.out.println("결제 금액 : " + amount);
@@ -183,12 +185,12 @@ public class TicketController {
 		return "";
 	}
 	
-//	@GetMapping("bookComplete")
-//	public String bookComplete() {
-//		
-//		return "cinepick/booking/step5";
-//		
-//	}
+	@GetMapping("bookComplete")
+	public String bookComplete() {
+		
+		return "cinepick/booking/step5";
+		
+	}
 	
 	
 	
