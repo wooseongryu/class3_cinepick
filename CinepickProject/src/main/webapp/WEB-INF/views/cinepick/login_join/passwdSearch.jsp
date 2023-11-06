@@ -58,7 +58,7 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>비밀번호 재발급</h3>
-                        <form action="loginPro" method="post">
+                        <form action="passwdSearchPro" method="post">
                             <div class="input__item">
                                 <input type="text" name="user_id" id="user_id" placeholder="아이디를 입력하세요">
                                 <span class="icon_id"></span>
@@ -67,7 +67,7 @@
                                 <input type="email" name="user_email" id ="user_email" placeholder="이메일을 입력하세요">
                                 <span class="icon_mail"></span>
                             </div>
-							<button type="button" class="site-btn" id ="send_passwd">임시비밀번호 발급</button>
+							<button type="submit" class="site-btn" id ="send_passwd">임시비밀번호 발급</button>
                         </form>    
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -210,6 +211,38 @@ public class LoginJoinController {
 		System.out.println("passwdSearch");
 		
 		return "cinepick/login_join/passwdSearch";
+	}
+	
+	// 비밀번호 찾기 처리
+	@PostMapping("passwdSearchPro")
+	public String passwdSearchPro(UserVO user, Model model) {
+		System.out.println("LoginJoinController - passwdSearchPro()");
+		
+		int passwdSearchCount = service.userPasswdSearch(user);
+		
+		if (passwdSearchCount < 1) {
+			model.addAttribute("msg", "일치하는 정보가 없습니다.");
+			return "fail_back";
+		}
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String newPasswd = RandomStringUtils.randomAlphabetic(10);
+//		System.out.println("새로운 비밀번호))))))))))))" + newPasswd);
+		String securePasswd = passwordEncoder.encode(newPasswd);
+		user.setUser_passwd(securePasswd);
+		
+		int updateCount = service.userPasswdChange(user);
+		
+		if (updateCount < 0) {
+			model.addAttribute("msg", "비밀번호 변경 실패.");
+			return "fail_back";
+		}
+		
+		mailService.sendPasswd(user.getUser_id(), user.getUser_email(), newPasswd);
+		
+		model.addAttribute("msg", "임시 비밀번호가 발송 되었습니다.");
+		model.addAttribute("targetURL", "login");
+		return "forward";
 	}
 	
 }

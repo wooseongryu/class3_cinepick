@@ -40,6 +40,20 @@ public class SendMailService {
 		return authCode;
 	}
 	
+	public void sendPasswd(String id, String email, String newPasswd) {
+		String subject = "[아이티윌] 비밀번호 변경 메일입니다.";
+		
+		String content = "임시 비밀번호는 " + newPasswd + " 입니다.";
+		
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				SendMailClient mailClient = new SendMailClient();
+				mailClient.sendMail(email, subject, content);
+			}
+		}).start();
+	}
 }
 
 

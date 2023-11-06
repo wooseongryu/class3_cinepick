@@ -90,6 +90,12 @@ public interface UserMapper {
 	// 유저 예매내역
 	List<BookVO> selectBookList(Map<String, String> param);
 
+	// 비밀번호 찾기
+	int selectPasswdSearch(UserVO user);
+
+	// 임시 비밀번호 변경
+	int updatePasswdChange(UserVO user);
+
 	
 	
 }

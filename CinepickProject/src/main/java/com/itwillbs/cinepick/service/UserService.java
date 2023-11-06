@@ -157,6 +157,17 @@ public class UserService {
 	public List<BookVO> getBookList(Map<String, String> param) {
 		return mapper.selectBookList(param);
 	}
+
+	// 비밀번호 찾기
+	public int userPasswdSearch(UserVO user) {
+		System.out.println("UserService - userPasswdSearch()");
+		return mapper.selectPasswdSearch(user);
+	}
+
+	public int userPasswdChange(UserVO user) {
+		System.out.println("UserService - userPasswdChange()");
+		return mapper.updatePasswdChange(user);
+	}
 	
 	
 }
