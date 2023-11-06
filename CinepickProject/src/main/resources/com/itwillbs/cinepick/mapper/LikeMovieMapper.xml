@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.itwillbs.cinepick.mapper.LikeMovieMapper">
+	
+	<insert id="insertLikeBtn">
+		INSERT INTO like_movie
+		VALUES (
+			NULL
+			, #{movie_code}
+			, #{user_id}
+		)
+		
+	</insert>
+	
+	<delete id="deleteLikeBtn">
+		DELETE FROM like_movie
+		WHERE user_id = #{user_id} AND movie_code = #{movie_code}
+	</delete>
+
+
+
+
+
+</mapper>

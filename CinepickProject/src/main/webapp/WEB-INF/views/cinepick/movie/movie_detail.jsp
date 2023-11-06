@@ -153,8 +153,28 @@
 			background: #fff;
 		
 		}
-	
 		
+		.likeBtn {
+			font-size: 13px;
+		    color: #503396;
+		    background: #ffffff;
+		    display: inline-block;
+		    font-weight: 700;
+		    padding: 14px 20px;
+		    border-radius: 4px;
+		    margin-right: 11px;
+		    border: 1px solid #503396;
+		}
+		
+		.likeBtn:hover {
+			background: #503396;
+			color: #ffffff;
+		}
+		
+		.likeBtn.full {
+			background: #503396;
+			color: #ffffff;
+		}
 		
 		
 	</style>
@@ -211,7 +231,7 @@
 		}
 		
 		function reviewModPro() {
-			debugger;
+			
 			if($("#modiTextarea").val() == "" || $("#modiTextarea").val() == null ) {
 				alert("내용 입력 필수!");
 				$("#modiTextarea").focus();
@@ -318,7 +338,57 @@
 
 
 		}
-	
+		
+		$(function() {
+			//찜하기
+			$("button[name='likeMovieBtn']").click(function() {
+// 				debugger;
+				let user_id = "${sessionScope.sId}";
+				let movie_code = $(this).closest("div").data("movie_code")+"";
+				let isLike = $("#clickCheck").prop("disabled");
+				console.log(isLike); 
+				console.log(movie_code);
+				console.log(user_id);
+				
+				$.ajax({
+					url: "likeBtn",
+					type: "POST",
+					data: {
+						"user_id": user_id,
+						"movie_code": movie_code,
+						"isLike": isLike
+					},
+					dataType: "text",
+					success: function(result) {
+						console.log("성공?");
+						console.log(isLike);
+						
+						if(isLike) {	// 찜 상태가 false면
+// 							$("#likeBtn").removeClass(".full");
+							$("#likeBtn").addClass("full");
+// 							$("#likeMovie").text("♡찜하기");
+							
+							// 찜 상태 전환(false로)
+							$("#clickCheck").attr("disabled", false);
+							
+						} else {	// 찜 상태가 true이면
+							$("#likeBtn").removeClass("full");
+// 							$("#likeMovie").addClass("btn-danger");
+// 							$("#likeMovie").text("♡찜");
+							
+							// 찜 상태 전환(true로)
+							$("#clickCheck").attr("disabled", true);
+						}
+						
+						
+					},
+					error:  function(xhr, status, error) {
+					    		console.log('에러 발생: ' + error);
+							}	
+				});
+
+			});
+		});
 	
 	</script>
 	
@@ -380,11 +450,16 @@
                                         </ul>
                                     </div>
                                 </div>
-	                            <div class="anime__details__btn">
+	                            <div class="anime__details__btn" data-movie_code="${movie.movie_code }">
 	<!--                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> 찜하기</a> -->
 									<c:if test="${movie.movie_status eq '개봉' }">
 										<a href="bookingStepOne?movie_code=${movie.movie_code }" class="follow-btn"><span>예매하기</span></a>
 									</c:if>
+<!-- 									<div class="like-btn" > -->
+										<input type="hidden" id="clickCheck">
+										<button class="likeBtn" id="likeMovie${movie.movie_code }" name="likeMovieBtn">♡</button>
+<!-- 									<a href="javascript:" class="icon-heart">♡</a> -->
+<!-- 									</div> -->
 	                            </div>
                             </div>
                         </div>

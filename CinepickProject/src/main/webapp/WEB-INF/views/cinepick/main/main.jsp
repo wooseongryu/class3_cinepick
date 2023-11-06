@@ -39,10 +39,10 @@
 			slideMargin: 20,
 			pager:false,
 			controls: true,
-			auto: true,
+			auto: false,
 			autohover: true,
-			moveSlides:1,
-			speed:200,
+			moveSlides:5,
+			speed:500,
 			nextText:'<i class="bi bi-chevron-right" style="color: #1c1c1c"></i>',
         	prevText:'<i class="bi bi-chevron-left" style="color: #1c1c1c"></i>'
 			
@@ -64,8 +64,9 @@
 			$(this).removeClass("on");
 		});
 		
-		
 	});
+	
+	
 	
 
 </script>
@@ -101,7 +102,7 @@
 <!-- 							<div class="slider-over"> -->
 								<span class="over">
 <!-- 								<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span> -->
-									<a href="bookingStepOne" class="rsv"><span class="over-rsv">예매하기</span></a>
+									<a href="bookingStepOne?movie_code=${movie.movie_code }" class="rsv"><span class="over-rsv">예매하기</span></a>
 									<a href="movieDetail?movie_code= ${movie.movie_code }&pageNum=1" class="info"><span class="over-info">상세보기</span></a>
 								</span>
 								<img alt="" src="${movie.movie_poster }">
@@ -123,6 +124,7 @@
                                </c:choose>
 <!-- 								<span class="rate-12">12세관람가</span> -->
 								<span title="${movie.movie_nameK }">${movie.movie_nameK }</span>
+
 							</div>
 						</li>
 					</c:forEach>
