@@ -148,12 +148,15 @@
 		.res_btn {
 			width: 150px;
 			height: 120px;
-			background:#503396;
+/* 			엄성윤 수정.. 예매 활성화 버튼 맞추기로 했었으니까.. */
+/* 			background:#503396; */
+			background:#329eb1;
 			border-radius: 10px;
 			margin: auto;
 			color: #ffffff;
 			font-weight: 500;
-			border: 0.5px #503396;
+/* 			border: 0.5px #503396; */
+			border: 0.5px #329eb1;
 		}
 		
 		.res_img {

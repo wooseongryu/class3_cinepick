@@ -18,9 +18,17 @@ public interface TicketMapper {
 	int insertPay(Map<String, Object> map);
 
 	int insertBook(Map<String, Object> map);
+	
+	String selectBookId(Map<String, Object> map);
 
 	BookVO selectBook(String bookId);
 
-	String selectBookId(Map<String, Object> map);
+	int updateSeatList(Map<String, Object> map);
+
+	int selectScheIdx(Map<String, Object> map);
+
+	int insertSeat(Map<String, Object> map);
+
+	int updateSeat(Map<String, Object> map);
 
 }

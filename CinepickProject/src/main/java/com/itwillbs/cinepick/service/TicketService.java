@@ -30,13 +30,31 @@ public class TicketService {
 		return mapper.insertBook(map);
 	}
 
+	public String getBookId(Map<String, Object> map) {
+		return mapper.selectBookId(map);
+	}
+	
 	public BookVO getBook(String bookId) {
 		return mapper.selectBook(bookId);
 	}
 
-	public String getBookId(Map<String, Object> map) {
-		return mapper.selectBookId(map);
+	public int modifySeatList(Map<String, Object> map) {
+		return mapper.updateSeatList(map);
 	}
+
+	public int getScheIdx(Map<String, Object> map) {
+		return mapper.selectScheIdx(map);
+	}
+
+	public int registSeat(Map<String, Object> map) {
+		return mapper.insertSeat(map);
+		
+	}
+
+	public int modifySeat(Map<String, Object> map) {
+		return mapper.updateSeat(map);
+	}
+
 	
 	
 //	public int registBookAndPay(Map<String, Object> map) {

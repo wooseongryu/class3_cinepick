@@ -178,6 +178,16 @@ public class TicketController {
 		String book_id = service.getBookId(map);
 		System.out.println("예매 번호는 이거 : " + book_id);
 		
+		int scheExists = service.getScheIdx(map);
+		
+		if(scheExists > 0) {
+			int insertCount = service.registSeat(map);
+		} else {
+			int updateCount = service.modifySeat(map);
+		}
+		
+//		int seatCount = service.modifySeatList(map);
+		
 //		model.addAttribute("bookNow", map.get(sdf));
 		
 		
