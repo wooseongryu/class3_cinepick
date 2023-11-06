@@ -128,12 +128,18 @@
 			
 			<!-- Nav Item - 스토어관리메뉴 -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="adminStoreList" data-toggle="collapse" data-target="#collapseStores"
-                    aria-expanded="true" aria-controls="#collapseStores">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStores"
+                    aria-expanded="true" aria-controls="collapseStores">
                     <i class="fas fa-fw fa-store"></i>
                     <span>스토어관리</span>
                 </a>
-            </li>	
+                <div id="collapseStores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="adminStoreList">스토어</a>
+                        <div class="collapse-divider"></div>
+                    </div>
+                </div>
+            </li>
 			
             <!-- Nav Item - 게시판관리메뉴 -->
             <li class="nav-item">
