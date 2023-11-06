@@ -35,10 +35,10 @@ public class MovieController {
 	
 	// 현재 상영작 목록 보기
 	@GetMapping("movieList")
-	public String movieList(Model model, @RequestParam(defaultValue = "true") boolean isOpen, @RequestParam(defaultValue = "")String MvListType) {
+	public String movieList(Model model, @RequestParam(defaultValue = "")String MvListType) {
 		System.out.println("MovieController - movieList");
 //		isOpen = true;
-		List<MovieVO> movieList = movieService.showMvList(isOpen, MvListType);
+		List<MovieVO> movieList = movieService.showMvList(MvListType);
 //		String movie_poster = movie
 		
 		model.addAttribute("movieList", movieList);
@@ -50,8 +50,8 @@ public class MovieController {
 	//현재 상영작 ajax
 	@GetMapping("movieListJson")
 	@ResponseBody
-	public String movieLlistJson(@RequestParam String MvListType, @RequestParam(defaultValue = "true") boolean isOpen, Model model) {
-		List<MovieVO> movieList = movieService.showMvList(isOpen, MvListType);
+	public String movieLlistJson(@RequestParam String MvListType, Model model) {
+		List<MovieVO> movieList = movieService.showMvList(MvListType);
 //		System.out.println(movieList);
 		
 		JSONArray ja = new JSONArray(movieList);
@@ -64,9 +64,9 @@ public class MovieController {
 	
 	// 개봉 예정작 목록 보기
 	@GetMapping("movieListUpComming")
-	public String movieListUpComming(Model model, @RequestParam(defaultValue = "false") boolean isOpen,@RequestParam(defaultValue = "") String MvListType) {
+	public String movieListUpComming(Model model) {
 		System.out.println("MovieController - movieListUpComming");
-		List<MovieVO> movieList = movieService.showMvList(isOpen, MvListType);
+		List<MovieVO> movieList = movieService.showMvCommingList();
 		model.addAttribute("movieList", movieList);
 		return "cinepick/movie/movie_list_upcomming";
 	}

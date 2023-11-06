@@ -74,17 +74,21 @@ public class MovieService {
 	
 	//-----------영화차트페이지---------------
 
-	public List<MovieVO> showMvList(boolean isOpen, String mvListType) {
-		System.out.println(isOpen);
-		return movieMapper.showMvList(isOpen, mvListType);
+	public List<MovieVO> showMvList(String mvListType) {
+		return movieMapper.showMvList(mvListType);
 	}
 
+	
+	public List<MovieVO> showMvCommingList() {
+		return movieMapper.showMVCommingList();
+	}
 	
 	//-----------영화 상세 페이지---------------
 
 	public MovieVO selectMovieDetail(int movie_code) {
 		return movieMapper.selectMovieDetail(movie_code);
 	}
+
 
 
 

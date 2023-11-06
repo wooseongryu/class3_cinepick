@@ -124,9 +124,6 @@
 <!-- =================영화차트 페이지===============  -->		
 	<!-- 영화목록 select -->
 	<select id="showMvList" resultType="Movie">
-	
-		
-	
 		SELECT m.movie_code 
 				, m.movie_nameK 
 				, m.movie_openDt 
@@ -135,29 +132,43 @@
 				, SUBSTRING_INDEX(movie_poster,'|',1) movie_poster
 				, IFNULL(movie_rank,11) movie_rank
 				, IFNULL(movie_audi,0) movie_audi
+				, (SELECT IFNULL(ROUND(AVG(review_rating),1),0)  
+				  FROM review 
+				  WHERE movie_code = m.movie_code)AS movie_avg
 		FROM movie m LEFT JOIN movie_boxoffice mb 
 		ON m.movie_code = mb.movie_code
+		WHERE movie_status = '개봉'
 		<choose>
-			<when test="isOpen">
-				WHERE movie_status = '개봉'
-				<choose>
-					<when test="mvListType.equals('audi')">
-						ORDER BY mb.movie_audi DESC
-					</when>
-					<when test="mvListType.equals('open')">
-						ORDER BY m.movie_openDt DESC
-					</when>
-					<otherwise>
-						ORDER BY movie_rank
-					</otherwise>
-				</choose>
+			<when test="mvListType.equals('audi')">
+				ORDER BY mb.movie_audi DESC
+			</when>
+			<when test="mvListType.equals('open')">
+				ORDER BY m.movie_openDt DESC
+			</when>
+			<when test="mvListType.equals('rating')">
+				ORDER BY movie_avg DESC
 			</when>
 			<otherwise>
-				WHERE movie_status = '개봉예정'
-				ORDER BY movie_openDt 
+				ORDER BY movie_rank
 			</otherwise>
 		</choose>
+	
 	</select>
+	
+	<select id="showMVCommingList" resultType="Movie">
+		SELECT m.movie_code 
+				, m.movie_nameK 
+				, m.movie_openDt 
+				, CASE WHEN substr(m.movie_rated, 1, 2) = '전체' THEN 'rate-all'
+															     ELSE concat('rate-', substr(m.movie_rated, 1, 2)) END AS movie_rated 
+				, SUBSTRING_INDEX(movie_poster,'|',1) movie_poster
+		FROM movie m
+		WHERE movie_status = '개봉예정'
+		ORDER BY movie_openDt 		
+	</select>
+	
+	
+	
 	
 	<!-- 영화 상세페이지 -->
 	<select id="selectMovieDetail" resultType="Movie">
