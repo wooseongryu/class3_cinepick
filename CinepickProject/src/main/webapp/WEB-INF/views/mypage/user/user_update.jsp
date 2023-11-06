@@ -177,24 +177,24 @@
 						                        </div>
 											</td>
 										</tr>
-	                                    <tr>
-											<th>생년월일</th>
-											<td>
-												<div class="form-group">
-						                            <input type="text" class="form-control form-control-user" name="user_birth" id="user_birth"
-						                                value="${user.user_birth }" readonly>
-						                        </div>
-											</td>
-										</tr>
-	                                    <tr>
-											<th>성별</th>
-											<td>
-												<div class="form-group">
-						                            <input type="text" class="form-control form-control-user" name="user_gender"
-						                                value="${user.user_gender }" readonly>
-						                        </div>
-											</td>
-										</tr>
+<!-- 	                                    <tr> -->
+<!-- 											<th>생년월일</th> -->
+<!-- 											<td> -->
+<!-- 												<div class="form-group"> -->
+<!-- 						                            <input type="text" class="form-control form-control-user" name="user_birth" id="user_birth" -->
+<%-- 						                                value="${user.user_birth }" readonly> --%>
+<!-- 						                        </div> -->
+<!-- 											</td> -->
+<!-- 										</tr> -->
+<!-- 	                                    <tr> -->
+<!-- 											<th>성별</th> -->
+<!-- 											<td> -->
+<!-- 												<div class="form-group"> -->
+<!-- 						                            <input type="text" class="form-control form-control-user" name="user_gender" -->
+<%-- 						                                value="${user.user_gender }" readonly> --%>
+<!-- 						                        </div> -->
+<!-- 											</td> -->
+<!-- 										</tr> -->
 	                                </table>
 									<div class="btn-group" role="group" aria-label="Basic example">
 									  <button type="submit" class="btn btn-dark">정보변경</button>
