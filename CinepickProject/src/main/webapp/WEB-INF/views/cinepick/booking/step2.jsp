@@ -746,7 +746,6 @@
 		
 		
 		$("#pageNext").mouseover(function() {
-			debugger;
 			
 			console.log("스케줄 넘버는? " + sche_idx);
 		});
