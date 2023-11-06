@@ -539,5 +539,16 @@
     <!-- 스토어 카테고리 끝 -->
     
     
+	<!-- 예매 시작  -->
+	
+	<select id="selectBookList" resultType="Book">
+		SELECT *
+		FROM book
+	<if test="book_id != null and !book_id.equals('')">
+		WHERE book_id = #{book_id }
+	</if>
+	</select>
+	
+	<!-- 예매 끝  -->
     
 </mapper>

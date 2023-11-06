@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.itwillbs.cinepick.vo.BookVO;
 import com.itwillbs.cinepick.vo.EventCateVO;
 import com.itwillbs.cinepick.vo.EventVO;
 import com.itwillbs.cinepick.vo.MovieVO;
@@ -205,5 +206,13 @@ public interface AdminMapper {
 
 	
 	
+
+	/*==============================================================
+	 * 예매내역 
+	 * =============================================================
+	 * */
+	
+	// 예매내역 조회
+	List<BookVO> selectBookList(String string);
 
 }

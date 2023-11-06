@@ -16,22 +16,22 @@
 
 <body id="page-top">
 
-	<header>
+    <header>
 		<jsp:include page="../../cinepick/include/main_top.jsp"></jsp:include>
 	</header>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <jsp:include page="user_sidebar.jsp"></jsp:include>
+		<!-- Sidebar -->
+		<jsp:include page="admin_sidebar.jsp"></jsp:include>
         <!-- End of Sidebar -->
-        
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-           <div id="content">
+            <div id="content">
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -81,7 +81,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="userUpdate?id=${sessionScope.sId }">
+                                <a class="dropdown-item" href="adminUpdate?id=${sessionScope.sId }">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -106,13 +106,13 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                   <h1 class="h3 mb-2 text-gray-800">예매 내역 페이지</h1>
+                    <h1 class="h3 mb-2 text-gray-800">예매내역 조회 페이지</h1>
                     <p class="mb-4">
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">예매 내역 조회</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">예매내역 조회</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -120,6 +120,7 @@
                                     <thead class="table-dark">
                                         <tr>
                                             <th>예매번호</th>
+                                            <th>예매자</th>
                                             <th>예매좌석</th>
                                             <th>예매인원</th>
                                             <th>예매일</th>
@@ -135,6 +136,7 @@
                                     	<c:forEach var="book" items="${bookList }">
 	                                        <tr>
 	                                            <td>${book.book_id }</td>
+	                                            <td>${book.user_id }</td>
 	                                            <td>${book.seat_list }</td>
 	                                            <td>${book.ticket_type }</td>
 	                                            <td>${book.book_date }</td>
@@ -149,99 +151,10 @@
                 </div>
                 <!-- /.container-fluid -->
 
-       		</div>
+            </div>
             <!-- End of Main Content -->
-            
-			<!-- 예매 관련 정책 -->
-<!-- 			<div class="sect-box-descri"> -->
-<!-- 				<h4>&nbsp;&nbsp;&nbsp;CinePick 예매 관련 정책 안내</h4> -->
-<!-- 				<div class="box-polaroid"> -->
-<!-- 				    <div class="box-inner"> -->
-<!-- 				        <ul> -->
-<!-- 				            <li> -->
-<!-- 				            	<dl> -->
-<!-- 				            		<dt>이용안내</dt> -->
-<!-- 				            		<dd> -->
-<!-- 				            			<ul> -->
-<!-- 				            				<li>예매 변경은 불가능하며, 취소 후 재 예매를 하셔야만 합니다.</li> -->
-<!-- 				    	            		<li>상영 시간 이후 관람하신 영화의 영수증 출력을 원하실 경우, CinePick 고객센터 1234-5678로 문의 주시기 바랍니다.</li> -->
-<!-- 				            				<li>취소하신 내역이 나타나지 않거나 궁금하신 사항이 있으시면, 고객센터로 문의해 주시기 바랍니다.</li> -->
-<!-- 				            			</ul> -->
-<!-- 				            		</dd> -->
-<!-- 				            	</dl> -->
-<!-- 				            </li> -->
-				            
-<!-- 				            <li> -->
-<!-- 				            	<dl> -->
-<!-- 				            		<dt>티켓 교환방법</dt> -->
-<!-- 				            		<dd> -->
-<!-- 				            			<ul> -->
-<!-- 				            				<li> -->
-<!-- 				            					<p><strong>티켓판매기(ATM)에서 발권하실 경우</strong><br>예매번호 또는 고객인증번호 (법정생년월일 6자리 + 휴대폰번호 뒷 7~8자리)를 입력하시면 티켓을 편하게 발권하실 수 있습니다.</p> -->
-<!-- 				            				</li> -->
-<!-- 				            				<li> -->
-<!-- 				            					<p><strong>매표소에서 발권하실 경우</strong><br>티켓교환권을 출력하여 매표소에 방문하시면 티켓으로 교환하실 수 있습니다.<br> -->
-<!-- 					            				(티켓교환권 출력이 어려운 경우, 예매번호와 신분증을 지참하시면 매표소에서 티켓을 수령하실 수 있습니다.)</p> -->
-<!-- 				            				</li> -->
-<!-- 				            			</ul> -->
-<!-- 				            		</dd> -->
-<!-- 				            	</dl> -->
-<!-- 				            </li> -->
-				            
-<!-- 				            <li> -->
-<!-- 				            	<dl> -->
-<!-- 				            		<dt>예매 취소 안내</dt> -->
-<!-- 				            		<dd> -->
-<!-- 				            			<ul> -->
-<!-- 			                                <li> -->
-<!-- 			                                    <p><strong>신용카드</strong><br> 결제 후 3일 이내 취소 시 승인 취소 가능, 3일 이후 매입 취소시 영업일 기준 3~5일 소요</p> -->
-<!-- 			                                </li> -->
-<!-- 			                                <li> -->
-<!-- 			                                    <p><strong>체크카드</strong><br>결제 후 3일 이내 취소 시 당일 카드사에서 환불처리. 3일 이후 매입 취소 시 카드사에 따라 3~10일 이내 카드사에서 환불</p> -->
-<!-- 			                                </li> -->
-<!-- 			                                <li>                             -->
-<!-- 			                                    <p><strong>카카오페이</strong><br> -->
-<!-- 			                                        카카오페이머니나 카카오포인트를 사용하신 경우 각각의 잔액으로 원복되며, 카드 결제를 하신 경우는 카드사 정책에 따라 승인취소가 진행되며 3일 이후 매입 취소시 영업일 기준 3~10일 소요됩니다.</p> -->
-<!-- 			                                </li> -->
-<!-- 			                                <li>                         -->
-<!-- 			                                    <p><strong>NAVER Pay</strong><br> -->
-<!-- 			                                        NAVER Pay 포인트를 사용하신 경우 NAVER Pay 포인트로 원복되며, 카드사 결제를 하신 경우는 카드사 정책에 따라 승인취소가 진행되며 3일 이후 매입 취소시 영업일 기준 3~10일 소요됩니다.</p> -->
-<!-- 			                                </li> -->
-<!-- 			                            </ul> -->
-<!-- 				            		</dd> -->
-<!-- 				            	</dl> -->
-<!-- 				            </li> -->
-			
-<!-- 				            <li> -->
-<!-- 				            	<dl> -->
-<!-- 				            		<dt>환불 규정 안내</dt> -->
-<!-- 				            		<dd> -->
-<!-- 				            			<ul> -->
-<!-- 				            				<li> -->
-<!-- 				            					<p><strong>현장 취소를 하는 경우</strong><br>상영시간 이전까지만 가능하며, 상영시간 이후 취소나 환불은 되지 않습니다.</p> -->
-<!-- 				            				</li> -->
-<!-- 				            				<li> -->
-<!-- 				            					<p><strong>홈페이지에서 예매 취소할 경우</strong><br> -->
-<!-- 			                                        부분 취소는 불가능합니다. (예시. 4장을 인터넷으로 예매한 경우 4장 모두 취소만 가능)<br> -->
-<!-- 			                                        홈페이지 예매 취소는 상영시간 20분전까지 가능합니다.<br> -->
-<!-- 			                                        상영시간 이후 취소나 환불은 되지 않습니다</p>	            					 -->
-<!-- 				            				</li> -->
-<!-- 			                                <li> -->
-<!-- 			                                    <p><strong>단, 일부 행사의 경우 행사 당일 취소, 변경 불가 합니다.</strong></p> -->
-<!-- 			                                </li> -->
-<!-- 				            			</ul> -->
-<!-- 				            		</dd> -->
-<!-- 				            	</dl> -->
-<!-- 				            </li> -->
-				            
-<!-- 				        </ul> -->
-<!-- 				    </div> -->
-<!-- 			    </div> -->
-<!-- 			</div> -->
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
     
@@ -254,6 +167,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+ 
 </body>
 
 </html>

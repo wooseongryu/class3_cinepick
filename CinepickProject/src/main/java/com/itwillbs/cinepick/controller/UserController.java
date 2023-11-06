@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.cinepick.service.ReviewService;
 import com.itwillbs.cinepick.service.UserService;
+import com.itwillbs.cinepick.vo.BookVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.ReviewVO;
@@ -201,8 +202,24 @@ public class UserController {
 	
 	// 예매 내역 목록
 	@GetMapping("userMoviePurchaseList")
-	public String userMoviePurchaseList() {
+	public String userMoviePurchaseList(HttpSession session, Model model) {
+		
 		System.out.println("UserController - userMoviePurchaseList");
+		
+		String sId = (String)session.getAttribute("sId");
+		 
+		if(sId == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("user_id", sId);
+		
+		List<BookVO> bookList = service.getBookList(param);
+		
+		model.addAttribute("bookList", bookList);
+		
 		return "mypage/user/user_movie_purchase_list";
 	}
 	
@@ -231,13 +248,14 @@ public class UserController {
 		
 		String sId = (String)session.getAttribute("sId");
 		 
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("user_id", sId);
+
 		if(sId == null) {
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "fail_back";
 		}
 		
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("user_id", sId);
 		
 		List<ReviewVO> reviewList = service.getReviewList(param);
 		

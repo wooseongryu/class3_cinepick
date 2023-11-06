@@ -32,6 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.gson.Gson;
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.UserService;
+import com.itwillbs.cinepick.vo.BookVO;
 import com.itwillbs.cinepick.vo.EventCateVO;
 import com.itwillbs.cinepick.vo.EventVO;
 import com.itwillbs.cinepick.vo.MovieVO;
@@ -73,6 +74,7 @@ public class AdminController {
 	 * 12. 극장(영화관) 관리
 	 * 13. 상영관 관리
 	 * 14. 리뷰 관리
+	 * 15. 예매 관리
 	 * ===================================================================
 	 * */
 	
@@ -1659,6 +1661,28 @@ public class AdminController {
 		}
 		
 		
+	
+	
+	
+	@GetMapping("adminBookList")
+	public String adminBookList(Model model, HttpSession session) {
+		System.out.println("AdminController - adminUserList()");
+		
+		String sId = (String)session.getAttribute("sId");
+		String isAdmin = (String)session.getAttribute("isAdmin");
+		
+		if(sId == null || isAdmin.equals("N")) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		List<BookVO> bookList = adminService.getBookList("");
+		// Model 객체에 List 객체 저장
+		model.addAttribute("bookList", bookList);
+		
+		return "mypage/admin/board_book";
+	}
+	
 	
 		
 		// 관리자 스토어 수정 폼

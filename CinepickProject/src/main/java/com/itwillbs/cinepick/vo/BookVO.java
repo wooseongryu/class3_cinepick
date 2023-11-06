@@ -1,6 +1,9 @@
 package com.itwillbs.cinepick.vo;
 
+import java.time.LocalDate;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -18,6 +21,9 @@ public class BookVO {
 	private int total_cost;
 	// 추가
 	private String movie_poster;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate book_date;
+	private String user_id;
 }
 //@Data
 //public class BookVO {

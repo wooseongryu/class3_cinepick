@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.AdminMapper;
+import com.itwillbs.cinepick.vo.BookVO;
 import com.itwillbs.cinepick.vo.EventCateVO;
 import com.itwillbs.cinepick.vo.EventVO;
 import com.itwillbs.cinepick.vo.MovieVO;
@@ -341,6 +342,12 @@ public class AdminService {
 	
 //---------------------------------------------------------
 	
+
+	// 예매내역 조회
+	public List<BookVO> getBookList(String string) {
+		System.out.println("AdminService - getBookList()");
+		return mapper.selectBookList(string);
+	}
 
 	// 스토어 조회
 	// store_idx를 널스트링으로 전달 시 전체 질문 조회
