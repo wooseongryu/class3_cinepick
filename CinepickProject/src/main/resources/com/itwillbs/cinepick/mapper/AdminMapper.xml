@@ -329,7 +329,7 @@
     </delete>
     
     
-    <!-- 자주 묻는 질문 카테고리 -->
+    <!-- 이벤트 카테고리 -->
     <insert id="insertEventCategory">
 		INSERT INTO eventCate
 		VALUES (
@@ -349,7 +349,7 @@
     	DELETE FROM eventCate
     	WHERE eventCate_Idx = #{eventCate_Idx}
     </delete>
-    <!-- 자주 묻는 질문 카테고리 끝 -->
+    <!-- 이벤트 카테고리 끝 -->
     
     
     <!-- 극장(영화관)  -->
@@ -466,7 +466,78 @@
 	</delete>
 	
 	<!-- 리뷰 끝 -->
+	
+	
+	<!-- 스토어 -->
+    <insert id="insertStore">
+    	INSERT INTO store
+    	VALUES (
+    		null
+			, #{store_short}
+			, #{store_title}
+			, #{store_price}
+			, #{store_thumbnail}
+			, #{store_category}
+    	)
+    </insert>
+    
+    <select id="selectStore" resultType="Store">
+    	SELECT
+    		s.store_idx
+			, s.store_short
+			, s.store_title
+			, s.store_price
+			, s.store_thumbnail
+			, s.store_category
+<!-- 			, sc.storeCate_Subject -->
+    	FROM
+    		store s
+<!--     		JOIN storeCate sc -->
+<!-- 			ON s.store_category = sc.storeCate_Idx -->
+    	<if test="store_idx != null and !store_idx.equals('')">
+		WHERE store_idx = #{store_idx}
+		</if>
+    </select>
+    
+    <update id="updateStore">
+    	UPDATE store
+    	SET
+			store_short = #{store_short}
+			, store_title = #{store_title}
+			, store_price = #{store_price}
+			, store_thumbnail = #{store_thumbnail}
+			, store_category = #{store_category}
+		WHERE store_idx = #{store_idx}
+    </update>
+    
+    
+    <delete id="deleteStore">
+    	DELETE FROM store
+    	WHERE store_idx = #{store_idx};
+    </delete>
+    
+     <!-- 스토어 카테고리 -->
+    <insert id="insertStoreCategory">
+		INSERT INTO storeCate
+		VALUES (
+			null
+			, #{storeCate_Subject}
+		)
+	</insert>
 
+	<select id="selectStoreCategory" resultType="StoreCate">
+          SELECT 
+          	storeCate_Idx 
+          	, storeCate_Subject
+          FROM storeCate
+    </select>
+    
+<!--     <delete id="deleteStoreCategory"> -->
+<!--     	DELETE FROM storeCate -->
+<!--     	WHERE storeCate_Idx = #{storeCate_Idx} -->
+<!--     </delete> -->
+    <!-- 스토어 카테고리 끝 -->
+    
     
     
 </mapper>

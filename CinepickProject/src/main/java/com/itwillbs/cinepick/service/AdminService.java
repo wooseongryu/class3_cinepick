@@ -17,6 +17,8 @@ import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
 import com.itwillbs.cinepick.vo.ScheduleVO;
 import com.itwillbs.cinepick.vo.ScreenVO;
+import com.itwillbs.cinepick.vo.StoreCateVO;
+import com.itwillbs.cinepick.vo.StoreVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
@@ -335,5 +337,63 @@ public class AdminService {
 	public int myReviewDelete(int review_num) {
 		return mapper.deleteMyReview(review_num);
 	}
+	
+	
+//---------------------------------------------------------
+	
 
+	// 스토어 조회
+	// store_idx를 널스트링으로 전달 시 전체 질문 조회
+	public List<StoreVO> getStore(String store_idx) {
+		System.out.println("AdminService - selectStore()");
+		return mapper.selectStore(store_idx);
+	}
+
+	public int insertStore(StoreVO store) {
+		System.out.println("AdminService - insertStore()");
+		return mapper.insertStore(store);
+	}
+
+	public int deleteStore(String storeIdx) {
+		System.out.println("AdminService - deleteStore()");
+		return mapper.deleteStore(storeIdx);
+	}
+	
+	public int updateStore(StoreVO store) {
+		System.out.println("AdminService - updateStore()");
+		return mapper.updateStore(store);
+	}
+	
+
+
+	
+	//---------------------------------------------------------
+	
+
+	public List<StoreCateVO> getStoreCategory() {
+		System.out.println("AdminService - getStoreCategory()");
+		return mapper.selectStoreCategory();
+	}
+
+
+
+	public int insertStoreCategory(String storeCate_Subject) {
+		System.out.println("AdminService - insertStoreCategory()");
+		return mapper.insertStoreCategory(storeCate_Subject);
+	}
+
+
+
+//	public int deleteStoreCategory(int storeCate_idx) {
+//		System.out.println("AdminService - deleteStoreCategory()");
+//		return mapper.deleteStoreCategory(storeCate_idx);
+//	}
+
+
+
+
+	
+	//---------------------------------------------------------
+	
+	
 }
