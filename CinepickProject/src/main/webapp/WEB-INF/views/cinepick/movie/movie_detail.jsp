@@ -340,10 +340,39 @@
 		}
 		
 		$(function() {
+			//찜정보 불러오기
+			let user_id = "${sessionScope.sId}";
+			if(user_id != null || user_id != "") {
+				$.ajax({
+					type: "get",
+					url: "SelectLikeMovie",
+					data: {
+						"user_id": user_id,
+						"movie_code": ${movie.movie_code}
+					},
+					dataType: "json",
+					success: function(data) {
+						if(data.like_count > 0) {
+							$(".likeBtn").addClass("full");
+							$("#clickCheck").attr("disabled", true);
+						}
+					},
+					error: function() {
+						console.log("에러");
+					}
+				});
+			}
+			
+			
+			
 			//찜하기
 			$("button[name='likeMovieBtn']").click(function() {
 // 				debugger;
 				let user_id = "${sessionScope.sId}";
+				if(user_id == null || user_id == "") {
+					alert("로그인시 이용가능한 기능입니다.");
+					return;
+				}
 				let movie_code = $(this).closest("div").data("movie_code")+"";
 				let isLike = $("#clickCheck").prop("disabled");
 				console.log(isLike); 
@@ -364,16 +393,14 @@
 						console.log(isLike);
 						
 						if(isLike) {	// 찜 상태가 false면
-// 							$("#likeBtn").removeClass(".full");
-							$("#likeBtn").addClass("full");
+							$(".likeBtn").removeClass("full");
 // 							$("#likeMovie").text("♡찜하기");
 							
 							// 찜 상태 전환(false로)
 							$("#clickCheck").attr("disabled", false);
 							
 						} else {	// 찜 상태가 true이면
-							$("#likeBtn").removeClass("full");
-// 							$("#likeMovie").addClass("btn-danger");
+							$(".likeBtn").addClass("full");
 // 							$("#likeMovie").text("♡찜");
 							
 							// 찜 상태 전환(true로)
@@ -389,6 +416,7 @@
 
 			});
 		});
+		
 	
 	</script>
 	

@@ -19,7 +19,15 @@
 		DELETE FROM like_movie
 		WHERE user_id = #{user_id} AND movie_code = #{movie_code}
 	</delete>
-
+	
+	<select id="selectLikeMovie" resultType="Like">
+		SELECT COUNT(IFNULL(like_num,0)) AS like_count
+		FROM user u LEFT JOIN (SELECT user_id, like_num, movie_code
+								FROM like_movie
+								WHERE movie_code = #{movie_code}) l
+		ON u.user_id = l.user_id
+		WHERE u.user_id = #{user_id} AND l.movie_code = #{movie_code}
+	</select>
 
 
 

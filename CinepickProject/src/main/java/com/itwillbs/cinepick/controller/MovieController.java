@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwillbs.cinepick.service.LikeMovieService;
 import com.itwillbs.cinepick.service.MovieService;
 import com.itwillbs.cinepick.service.ReviewService;
 import com.itwillbs.cinepick.vo.BoxOfficeVO;
+import com.itwillbs.cinepick.vo.LikeMovieVO;
 import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.PageInfoVO;
 import com.itwillbs.cinepick.vo.ReviewVO;
@@ -31,6 +35,9 @@ public class MovieController {
 	
 	@Autowired
 	private ReviewService reviewService;
+	
+	@Autowired
+	private LikeMovieService likeService;
 	
 	
 	// 현재 상영작 목록 보기
@@ -71,12 +78,11 @@ public class MovieController {
 		return "cinepick/movie/movie_list_upcomming";
 	}
 	
-	// 영화정보 상세보기 - 관람평 최신순
+	// 영화정보 상세보기
 	@GetMapping("movieDetail")
 	public String movieDetail(@RequestParam ("movie_code") int movie_code, 
 							  @RequestParam(defaultValue = "1") int pageNum, Model model) { 
  		System.out.println("MovieController - movieDetail");
-//		System.out.println(movie_code);
  		
  		//-----댓글페이징처리-----
  		
@@ -85,7 +91,6 @@ public class MovieController {
  		
  		//-----
  		MovieVO movie = movieService.selectMovieDetail(movie_code);
- 		System.out.println("!@#!@#");
  		System.out.println(movie);
  		String[] stills = movie.getMovie_still().split("\\|");
 // 		for(int i = 0; i < stills.length; i++) {
