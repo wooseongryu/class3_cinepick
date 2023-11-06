@@ -208,12 +208,12 @@
 										</button>
 										  <button type="button" class="btn-seat-row" title="B 행" style="position:absolute; left:226px; top:72px;">B</button>
 <!-- 									<button type="button" title="B1 (스탠다드/일반)" class="jq-tooltip seat-condition standard common finish" style="position:absolute; left:271px; top:70px; width:20px;" seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE" seatuniqno="00200101" rownm="B" seatno="1" seatchoidircval="1" seatchoigrpno="2" seatchoigrpnm="B2" seatchoirowcnt="11" seatchoigrpseq="1" seattocnt="1" nextord="N">	<span class="num">1</span> -->
-										<button type="button" title="B1 (스탠다드/일반)" class="jq-tooltip seat-condition standard finish" style="position:absolute; left:271px; top:70px; width:20px;" seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE" seatuniqno="00200101" rownm="B" seatno="1" seatchoidircval="1" seatchoigrpno="2" seatchoigrpnm="B2" seatchoirowcnt="11" seatchoigrpseq="1" seattocnt="1" nextord="N">	<span class="num">1</span>
+										<button type="button" title="B1 (스탠다드/일반)" class="jq-tooltip seat-condition standard common" style="position:absolute; left:271px; top:70px; width:20px;" seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE" seatuniqno="00200101" rownm="B" seatno="1" seatchoidircval="1" seatchoigrpno="2" seatchoigrpnm="B2" seatchoirowcnt="11" seatchoigrpseq="1" seattocnt="1" nextord="N">	<span class="num">1</span>
 											<span class="kind">스탠다드</span>
 											<span class="condition">판매가능</span>
 											<span class="rank">일반</span>
 										</button>
-										<button type="button" title="B2 (스탠다드/일반)" class="jq-tooltip seat-condition standard view finish" style="position:absolute; left:291px; top:70px; width:20px;" seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE" seatuniqno="00200201" rownm="B" seatno="2" seatchoidircval="1" seatchoigrpno="2" seatchoigrpnm="B2" seatchoirowcnt="11" seatchoigrpseq="2" seattocnt="1" nextord="P">	<span class="num">2</span>
+										<button type="button" title="B2 (스탠다드/일반)" class="jq-tooltip seat-condition standard common view" style="position:absolute; left:291px; top:70px; width:20px;" seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE" seatuniqno="00200201" rownm="B" seatno="2" seatchoidircval="1" seatchoigrpno="2" seatchoigrpnm="B2" seatchoirowcnt="11" seatchoigrpseq="2" seattocnt="1" nextord="P">	<span class="num">2</span>
 											<span class="kind">스탠다드</span>
 											<span class="condition">판매가능</span>
 											<span class="rank">일반</span>
@@ -725,16 +725,24 @@
 	let ticket = "";
 	let allTickets = "";
 	let sche_idx = ${param.sche_idx};
-	let seat_list = "A1/A2/";
+	let seat_list = "B1/B10/B11/F7/A3/A4/";
 	
 	$(function() {
 		
 		$(".seat-layout .seat-condition").each(function() {
 // 			let seatList = seatList.split('/');
 // 			console.log("선택완료된 좌석: " + seatList);
+
+			let seatAlpha = $(this).attr("rownm");
+            let seatNumber = $(this).attr("seatno");
+            let eachSeat = seatAlpha + seatNumber + "/";
 			
-// 			if(seat_list.indexof())
+			if(seat_list.indexOf(eachSeat) == -1) return;
+
+			$(this).addClass("finish");
 		});
+
+		
 		
 		
 		$("#pageNext").mouseover(function() {
