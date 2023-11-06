@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -55,20 +56,17 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login__form">
-                        <h3>로그인</h3>
-                        <form action="loginPro" method="post">
+                        <h3>아이디 찾기</h3>
+                        <form action="idSearchPro" method="post">
                             <div class="input__item">
-                                <input name="user_id" type="text" value="${cookie.cookieId.value }" placeholder="아이디를 입력하세요">
-                                <span class="icon_id"></span>
+                                <input type="text" name="user_name" id="user_name" required="required" size="20" placeholder="이름을 입력하세요" maxlength="8">
+                                <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input name="user_passwd" type="password" placeholder="비밀번호를 입력하세요">
-                                <span class="icon_lock"></span>
+                                <input type="email" name="user_email" id ="user_email" placeholder="이메일 주소를 입력하세요">
+                                <span class="icon_mail"></span>
                             </div>
-                           <input type="checkbox" name="rememberId"
-							<c:if test="${not empty cookie.cookieId.value }">checked</c:if>
-						><span>&nbsp; 아이디 저장</span><br>
-                            <button type="submit" class="site-btn">&nbsp;로그인&nbsp;</button>
+                            <button type="submit" class="site-btn">&nbsp;아이디 찾기&nbsp;</button>
                         </form>    
                     </div>
                 </div>
@@ -82,9 +80,8 @@
                     <br>
                     <br>
                  	<div class="login__register">
-                        <h4>아이디/비밀번호를 잊으셨나요?</h4>
+                        <h4>비밀번호를 잊으셨나요?</h4>
                         <br>
-                        <a href="idSearch" class="primary-btn">&nbsp;&nbsp;아이디찾기&nbsp;</a>
                         <a href="passwdSearch" class="primary-btn" >&nbsp;&nbsp;비밀번호재발급&nbsp;</a>
                     </div>
                     
@@ -95,14 +92,6 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-6">
                         <div class="login__social__links">
-<!--                             <span>or</span> -->
-<!--                             <ul> -->
-<!--                                 <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With -->
-<!--                                 Facebook</a></li> -->
-<!--                                 <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li> -->
-<!--                                 <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a> -->
-<!--                                 </li> -->
-<!--                             </ul> -->
                         </div>
                     </div>
                 </div>

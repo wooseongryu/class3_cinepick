@@ -58,11 +58,6 @@
 		)
 	</insert>
 	
-
-
-	
-	
-	
 	<!-- select -->
 	<select id="selectUser" resultType="User">
 		SELECT * FROM user WHERE user_id = #{user_id}
@@ -95,6 +90,15 @@
 		FROM user
 		WHERE user_id = #{user_id}
 	</select>
+
+	<!-- 아이디 찾기 -->
+	<select id="selectIdSearch" resultType="User">
+		SELECT user_id
+		FROM user
+		WHERE user_name = #{user_name} 
+		AND user_email = #{user_email}
+	</select>
+
 	
 	
 	<!-- 1:1 문의 목록 조회 -->

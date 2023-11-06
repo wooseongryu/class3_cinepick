@@ -80,6 +80,12 @@ public interface UserMapper {
 	// 내가 쓴 리뷰 삭제
 	int deleteMyReview(int review_num);
 
+	// 아이디 찾기
+	UserVO selectIdSearch(UserVO user);
+	
+	// 비밀번호 재발급용 아이디 확인
+	UserVO selectCheckPasswd(UserVO user);
+
 	
 	
 }

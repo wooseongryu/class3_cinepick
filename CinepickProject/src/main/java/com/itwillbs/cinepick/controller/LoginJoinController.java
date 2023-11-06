@@ -1,6 +1,8 @@
 package com.itwillbs.cinepick.controller;
 
 
+import java.util.UUID;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -172,6 +174,42 @@ public class LoginJoinController {
 		return "redirect:/";
 	}
 
+	// 아이디 찾기 폼으로 이동
+	@GetMapping("idSearch")
+	public String idSearch() {
+		System.out.println("idSearch");
+		
+		return "cinepick/login_join/idSearch";
+	}
+
 	
+	// 아이디 찾기 처리
+	@PostMapping("idSearchPro")
+	public String idSearchPro(
+						UserVO user,
+						@RequestParam String user_name, 
+						@RequestParam String user_email, 
+						Model model) {
+		
+		
+		user.setUser_name(user_name);
+		user.setUser_email(user_email);
+		UserVO idSearch = service.userIdSearch(user);
+		
+		model.addAttribute("user", idSearch);
+		
+		
+		
+		return "cinepick/login_join/idSearchResult";
+	}
+	
+	// 비밀번호 찾기 폼으로 이동
+	@GetMapping("passwdSearch")
+	public String passwdSearch() {
+						
+		System.out.println("passwdSearch");
+		
+		return "cinepick/login_join/passwdSearch";
+	}
 	
 }

@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/style.css" type="text/css">
     
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
+
+
 </head>
 
 <style>
@@ -55,20 +57,17 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login__form">
-                        <h3>로그인</h3>
+                        <h3>비밀번호 재발급</h3>
                         <form action="loginPro" method="post">
                             <div class="input__item">
-                                <input name="user_id" type="text" value="${cookie.cookieId.value }" placeholder="아이디를 입력하세요">
+                                <input type="text" name="user_id" id="user_id" placeholder="아이디를 입력하세요">
                                 <span class="icon_id"></span>
                             </div>
                             <div class="input__item">
-                                <input name="user_passwd" type="password" placeholder="비밀번호를 입력하세요">
-                                <span class="icon_lock"></span>
+                                <input type="email" name="user_email" id ="user_email" placeholder="이메일을 입력하세요">
+                                <span class="icon_mail"></span>
                             </div>
-                           <input type="checkbox" name="rememberId"
-							<c:if test="${not empty cookie.cookieId.value }">checked</c:if>
-						><span>&nbsp; 아이디 저장</span><br>
-                            <button type="submit" class="site-btn">&nbsp;로그인&nbsp;</button>
+							<button type="button" class="site-btn" id ="send_passwd">임시비밀번호 발급</button>
                         </form>    
                     </div>
                 </div>
@@ -82,10 +81,9 @@
                     <br>
                     <br>
                  	<div class="login__register">
-                        <h4>아이디/비밀번호를 잊으셨나요?</h4>
+                        <h4>아이디를 잊으셨나요?</h4>
                         <br>
-                        <a href="idSearch" class="primary-btn">&nbsp;&nbsp;아이디찾기&nbsp;</a>
-                        <a href="passwdSearch" class="primary-btn" >&nbsp;&nbsp;비밀번호재발급&nbsp;</a>
+                        <a href="idSearch" class="primary-btn" >&nbsp;&nbsp;아이디찾기&nbsp;</a>
                     </div>
                     
                 </div>
@@ -95,14 +93,6 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-6">
                         <div class="login__social__links">
-<!--                             <span>or</span> -->
-<!--                             <ul> -->
-<!--                                 <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With -->
-<!--                                 Facebook</a></li> -->
-<!--                                 <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li> -->
-<!--                                 <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a> -->
-<!--                                 </li> -->
-<!--                             </ul> -->
                         </div>
                     </div>
                 </div>
