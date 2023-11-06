@@ -102,7 +102,6 @@
 	</select>
 	
 	
-	
 	<insert id="insertSeat" parameterType="map">
 		INSERT INTO seat
 			VALUES (
@@ -111,30 +110,10 @@
 			);
 	</insert>
 	
-	<update id="updateSeatList" parameterType="map">
+	<update id="updateSeat" parameterType="map">
 		UPDATE seat
 			SET seat_list = CONCAT(seat_list, #{seats})
 			WHERE sche_idx = #{sche_idx};
 	</update>
-	
-	
-	
-	
-	<insert id="updateSeatList" parameterType="map">
-		<choose>
-			<!-- sche_idx 값이 이미 있는 경우 (UPDATE) -->
-			<when test="sche_idx == #{sche_idx}">
-				UPDATE seat
-				SET seat_list = CONCAT(seat_list, #{seats})
-				WHERE sche_idx = #{sche_idx}
-			</when>
-			<!-- sche_idx 값이 없는 경우 (INSERT) -->
-			<otherwise>
-				INSERT INTO seat (sche_idx, seat_list)
-				VALUES (#{sche_idx}, #{seats})
-			</otherwise>
-		</choose>
-	</insert>
-	
 
 </mapper>
