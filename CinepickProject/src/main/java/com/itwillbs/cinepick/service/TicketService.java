@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.TicketMapper;
+import com.itwillbs.cinepick.vo.BookVO;
 
 @Service
 public class TicketService {
@@ -27,6 +28,14 @@ public class TicketService {
 	
 	public int registBook(Map<String, Object> map) {
 		return mapper.insertBook(map);
+	}
+
+	public BookVO getBook(String bookId) {
+		return mapper.selectBook(bookId);
+	}
+
+	public String getBookId(Map<String, Object> map) {
+		return mapper.selectBookId(map);
 	}
 	
 	

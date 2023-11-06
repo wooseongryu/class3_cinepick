@@ -729,6 +729,7 @@
 	$(function() {
 		
 		$("#pageNext").click(function() {
+			
 				
 				seats = "";
 				allTickets = "";

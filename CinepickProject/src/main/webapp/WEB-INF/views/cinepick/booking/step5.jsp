@@ -80,9 +80,11 @@
 						<div class="movie-poster-area">
 							<p>
 								티켓 예매번호 <!-- 티켓 예매번호 -->
-								<span class="roboto">9132-389-47509</span>
+<!-- 								<span class="roboto">9132-389-47509</span> -->
+								<span class="roboto">${book.book_id}</span>
 							</p>
-							<img src="https://img.megabox.co.kr/SharedImg/2023/10/25/FXFCIlhJ6JEcTfk8BpVkSWvmf84sSpe9_316.jpg" alt="(자막) 그대들은 어떻게 살 것인가" onerror="noImg(this)">
+							<img src="${book.movie_poster }" alt="${book.movie_nameK}" onerror="noImg(this)">
+<!-- 							<img src="https://img.megabox.co.kr/SharedImg/2023/10/25/FXFCIlhJ6JEcTfk8BpVkSWvmf84sSpe9_316.jpg" alt="(자막) 그대들은 어떻게 살 것인가" onerror="noImg(this)"> -->
 						</div>
 	
 						<!-- movie-infomation-area -->
@@ -98,19 +100,20 @@
 	
 							<div class="movie-info-middle">
 								<ul class="dot-list gray">
-									<li><span>예매영화 <!-- 예매영화 --></span> (자막) 그대들은 어떻게 살 것인가 / 2D(자막)</li>
-									<li><span>관람극장/상영관 <!-- 관람극장/상영관 --></span> 부산대 / 1관</li>
-									<li><span>관람일시 <!-- 관람일시 --></span> &nbsp;2023.11.07 (화) 20:05</li>
-									<li><span>관람인원 <!-- 관람인원 --></span> &nbsp;청소년 1명</li>
-									<li><span>좌석번호 <!-- 좌석번호 --></span> &nbsp;G열 7</li>
-									<li><span>전화번호 <!-- 전화번호 --></span> &nbsp;010-5912-9507</li>
+									<li><span>예매영화 <!-- 예매영화 --></span> ${book.movie_nameK}</li>
+									<li><span>관람극장/상영관 <!-- 관람극장/상영관 --></span> ${book.theater_name} / ${book.screen_name}</li>
+									<li><span>관람일시 <!-- 관람일시 --></span> &nbsp;${book.sche_date} ${book.sche_start_time }</li>
+									<li><span>관람인원 <!-- 관람인원 --></span> &nbsp;${book.ticket_type}</li>
+									<li><span>좌석번호 <!-- 좌석번호 --></span> &nbsp;${book.seat_list}</li>
+<!-- 									<li><span>전화번호 전화번호</span> &nbsp;010-5912-9507</li> -->
 									<li>
 										<span>결제정보 <!-- 결제정보 --></span>
-										<strong class="roboto">11,000</strong> 원 <!-- 원 --><br>
+										<strong class="roboto">${book.total_cost}</strong> 원 <!-- 원 --><br>
 										<em></em>
 									</li>
 								</ul>
 							</div>
+
 	
 							<!-- movie-info-bottom -->
 <!-- 							<div class="movie-info-bottom"> -->

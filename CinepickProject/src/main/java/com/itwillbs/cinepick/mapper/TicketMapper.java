@@ -5,6 +5,8 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.itwillbs.cinepick.vo.BookVO;
+
 @Mapper
 public interface TicketMapper {
 
@@ -16,5 +18,9 @@ public interface TicketMapper {
 	int insertPay(Map<String, Object> map);
 
 	int insertBook(Map<String, Object> map);
+
+	BookVO selectBook(String bookId);
+
+	String selectBookId(Map<String, Object> map);
 
 }
