@@ -64,10 +64,90 @@
 	    top: 4px;
 	}
 	
+	.reviewStarMin {
+		   position: relative;
+		    display: inline-block;
+		   width: 90px;
+		    height: 15px;
+		    background-position: 0;
+		    background-repeat: no-repeat;
+		    background-image: url("${pageContext.request.contextPath }/resources/cinepick/img/review_star/bg_star_min.png");
+		}
+		
+		.reviewStarMin .bg_star {
+		   width: 90px;
+		    height: 15px;
+		    background-position: 0;
+		    background-repeat: no-repeat;
+		    background-image: url("${pageContext.request.contextPath }/resources/cinepick/img/review_star/bg_star_min_on.png");
+		}
 
 
 </style>
 
+
+<script src= "${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
+
+<script>
+	$(function() {
+		
+// 		$("select[name = 'MvListType']").change(function() {
+		$("#MvListType").change(function() {
+			debugger;
+			let MvListType = $(this).val();
+			console.log(MvListType);
+
+			$.ajax({
+				type: "GET",
+				url: "movieListJson",
+				data: {"MvListType": MvListType},
+				dataType: "json",
+				success: function(data) {
+					
+					$('#movieListDiv').empty();
+					
+					var str = "";
+					for(let movie of data) {
+						
+						str +='<div class="col-lg-3 col-md-6 col-sm-6">'
+						str +=	'<div class="product__item">'
+						str +=		'<a href="movieDetail?movie_code= ' + movie.movie_code + '">'
+						str +=			'<div class="product__item__pic set-bg" data-setbg="' + movie.movie_poster + '" style="background-image: url(&quot;' + movie.movie_poster + '&quot;);">'
+						str +=				'<div class="comment">'
+						str +=					'<span class="' + movie.movie_rated + '"></span>'
+						str +=				'</div>'
+						str +=			'</div>'
+						str +=		'</a>'
+						str +=		'<div class="product__item__text">'
+						str +=			'<ul>'
+						str +=				'<li>누적 관람객 ' + movie.movie_audi + '명</li>'
+						str +=				'<li>개봉일 ' + movie.movie_openDt + '</li>'
+						str +=			'</ul>'
+						str +=			'<div class="reviewStarMin">'
+						str +=				'<div class="bg_star" style="width:' + (movie.movie_avg * 20)  + '%;"></div>'
+						str +=				'<div>'+ movie.movie_avg + '</div>'
+						str +=			'</div>'
+						str +=			'<h5><a href="movieDetail">' + movie.movie_nameK + '</a></h5>'
+						str +=		'</div>'
+						str +=	'</div>'
+						str +='</div>'
+					}
+					
+					$('#movieListDiv').append(str);
+				},
+				error: function() {
+					console.log("실패");
+				}
+			
+			});
+
+			
+		});
+		
+	});
+	
+	
+</script>
 
 </head>
 
@@ -103,12 +183,20 @@
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="product__page__filter">
 	                                    <form action="movieList" id="selectListType" style="color: #1c1c1c">
-	                                    	<input type="radio"  name="MvListType"  value="boxoffice" id="box" checked > 
-	                                    	<label for="box">박스오피스순</label>
-	                                    	 &emsp;<input type="radio"  name="MvListType" value="audi" id="audi" <c:if test="${param.MvListType eq 'audi' }">checked</c:if>>
-	                                    	<label for="audi">관람객순</label>
-	                                    	 &emsp;<input type="radio"  name="MvListType" value="open" id="open" <c:if test="${param.MvListType eq 'open' }">checked</c:if>>
-	                                    	<label for="open">개봉일순</label>
+	                                    	<select name="MvListType" id="MvListType">
+	                                    		<option id="boxoffice" value="boxoffice" selected>박스오피스순</option>
+	                                    		<option id="audi" value="audi" <c:if test="${param.MvListType eq 'audi' }">selected</c:if>>관람객순</option>
+	                                    		<option id="open" value="open" <c:if test="${param.MvListType eq 'open' }">selected</c:if>>개봉일순</option>
+	                                    		<option id="rating" value="rating" <c:if test="${param.MvListType eq 'rating' }">selected</c:if>>평점순</option>
+	                                    	</select>
+<!-- 	                                    	<input type="radio"  name="MvListType"  value="boxoffice" id="box" checked >  -->
+<!-- 	                                    	<label for="box">박스오피스순</label> -->
+<%-- 	                                    	 &emsp;<input type="radio"  name="MvListType" value="audi" id="audi" <c:if test="${param.MvListType eq 'audi' }">checked</c:if>> --%>
+<!-- 	                                    	<label for="audi">관람객순</label> -->
+<%-- 	                                    	 &emsp;<input type="radio"  name="MvListType" value="open" id="open" <c:if test="${param.MvListType eq 'open' }">checked</c:if>> --%>
+<!-- 	                                    	<label for="open">개봉일순</label> -->
+<%-- 	                                    	 &emsp;<input type="radio"  name="MvListType" value="rating" id="open" <c:if test="${param.MvListType eq 'rating' }">checked</c:if>> --%>
+<!-- 	                                    	<label for="rating">평점순</label> -->
 <!-- 	                                            <option value="boxoffice">박스오피스순</option> -->
 <%-- 	                                            <option value="audi" <c:if test="${param.MvListType eq 'audi' }">selected</c:if>>관람객순</option> --%>
 <!-- 	                                        </select> -->
@@ -152,6 +240,10 @@
 	                                        	<c:if test="${0 ne movie.movie_audi }"><li>누적 관람객 ${movie.movie_audi }명</li></c:if>
 	                                            <li>개봉일 ${movie.movie_openDt }</li>
 	                                        </ul>
+	                                        <div class="reviewStarMin">
+											   <div class="bg_star" style="width: ${movie.movie_avg * 20 }%;"></div>
+											   <div>${movie.movie_avg }</div>
+											</div>
 	                                        <h5><a href="movieDetail?movie_code=${movie.movie_code }">${movie.movie_nameK }</a></h5>
 	                                    </div>
 	                                </div>
@@ -177,7 +269,6 @@
 		<jsp:include page="../include/main_footer.jsp"></jsp:include>
 	</footer>
 
-
 <!-- Js Plugins -->
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/bootstrap.min.js"></script>
@@ -187,65 +278,6 @@
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
-<script src= "${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
-
-<script>
-	$(function() {
-		
-		$("input[name = 'MvListType']").click(function() {
-			let MvListType = $(this).val();
-			console.log(MvListType);
-
-			$.ajax({
-				type: "GET",
-				url: "movieListJson",
-				data: {"MvListType": MvListType},
-				dataType: "json",
-				success: function(data) {
-					
-					$('#movieListDiv').empty();
-					
-					var str = "";
-					for(let movie of data) {
-						
-						str +='<div class="col-lg-3 col-md-6 col-sm-6">'
-						str +=	'<div class="product__item">'
-						str +=		'<a href="movieDetail?movie_code= ' + movie.movie_code + '">'
-						str +=			'<div class="product__item__pic set-bg" data-setbg="' + movie.movie_poster + '" style="background-image: url(&quot;' + movie.movie_poster + '&quot;);">'
-						str +=				'<div class="comment">'
-						str +=					'<span class="' + movie.movie_rated + '"></span>'
-						str +=				'</div>'
-						str +=			'</div>'
-						str +=		'</a>'
-						str +=		'<div class="product__item__text">'
-						str +=			'<ul>'
-						str +=				'<li>누적 관람객 ' + movie.movie_audi + '명</li>'
-						str +=				'<li>개봉일 ' + movie.movie_openDt + '</li>'
-						str +=			'</ul>'
-						str +=			'<h5><a href="movieDetail">' + movie.movie_nameK + '</a></h5>'
-						str +=		'</div>'
-						str +=	'</div>'
-						str +='</div>'
-					}
-					
-					$('#movieListDiv').append(str);
-				},
-				error: function() {
-					console.log("실패");
-				}
-			
-			});
-
-			
-		});
-		
-		
-		
-		
-	});
-	
-	
-</script>
 
 
 </body>

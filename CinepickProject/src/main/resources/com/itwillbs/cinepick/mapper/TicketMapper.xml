@@ -47,5 +47,22 @@
 			)
 	</insert>
 	
+	<insert id="insertBook" parameterType="map">
+		INSERT
+			INTO book
+			VALUES (
+				CASE WHEN (SELECT MAX(idx) FROM book b) IS NULL THEN 1
+			    ELSE ((SELECT MAX(idx) FROM book b) + 1) END
+				, (SELECT CONCAT('R', LPAD(COALESCE(MAX(SUBSTRING(book_id, 2) + 1), 1), 5, '0')) FROM book b)
+				, #{sche_idx}
+				, #{seats}
+				, #{allTickets}
+				, #{user_id}
+				, #{moneySum}
+				, #{merchant_uid}
+				, now()
+			)
+	</insert>
+	
 
 </mapper>

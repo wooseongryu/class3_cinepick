@@ -21,10 +21,25 @@ public class TicketService {
 		return mapper.insertTickets(allTickets, seats, total, sche_idx);
 	}
 
-	public int registBookAndPay(Map<String, Object> map) {
-//		mapper.insertPay(map);
-//		return mapper.insertBook(map);
+	public int registPay(Map<String, Object> map) {
 		return mapper.insertPay(map);
 	}
+	
+	public int registBook(Map<String, Object> map) {
+		return mapper.insertBook(map);
+	}
+	
+	
+//	public int registBookAndPay(Map<String, Object> map) {
+//		mapper.insertPay(map);
+////		return mapper.insertBook(map);
+//		return mapper.insertBook(map);
+//	}
+	
+//	public int registBookAndPay(Map<String, Object> map) {
+////		mapper.insertPay(map);
+////		return mapper.insertBook(map);
+//		return mapper.insertPay(map);
+//	}
 
 }

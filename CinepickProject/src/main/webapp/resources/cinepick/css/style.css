@@ -1522,6 +1522,7 @@ ol {
 	font-weight: 700;
 	line-height: 60px;
 	margin-bottom: 38px;
+	word-break: break-all;
 }
 
 .blog__details__title .blog__details__social a {

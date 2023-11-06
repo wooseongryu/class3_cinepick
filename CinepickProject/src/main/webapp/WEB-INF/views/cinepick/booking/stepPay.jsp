@@ -56,6 +56,8 @@
     좌석 : ${param.seats }
     매수 : ${param.total }
     총액 : ${param.moneySum }
+   	영화명 : ${param.movie_nameK }
+    관람가 : ${param.movie_rated }
 
 	<div class="inner-wrap" style="padding-top:40px; padding-bottom:100px;">
 	<!-- quick-reserve -->
@@ -810,12 +812,22 @@ function fn_validateDateYn(param) {
 							<span class="movie-grade small age-19">청소년 관람 불가</span>
 							<span class="movie-grade small age-no">미정</span>
 						-->
-						<span class="movie-grade small age-all" id="admisClassNm">전체관람가</span>
+						<span class="movie-grade small age-all" id="admisClassNm">${param.movie_rated }</span>
 
-						<p class="tit" id="movieNm">(자막) 그대들은 어떻게 살 것인가</p>
-						<p class="cate" id="playKindNm">2D(자막)</p>
-						<p class="theater" id="brchNm">원주센트럴/컴포트3관_리클라이너</p>
-						<p class="date"><span id="playDe">2023.10.30</span><em id="dowNm">(월)</em> <span class="time" id="playTime"><i class="iconset ico-clock-white"></i>17:10~19:23</span></p>
+						<p class="tit" id="movieNm">${param.movie_nameK }</p>
+<!-- 						<p class="cate" id="playKindNm">2D(자막)</p> -->
+						<p class="theater" id="brchNm">${param.theater_name }/${param.screen_name }</p>
+						<p class="date">
+							<span id="playDe">${param.sche_date }</span>
+<!-- 							<em id="dowNm">(월)</em>  -->
+							<span class="time" id="playTime"><i class="iconset ico-clock-white"></i>${param.sche_start_time }~${param.sche_end_time }</span>
+						</p>
+<!-- 						<span class="movie-grade small age-all" id="admisClassNm">전체관람가</span> -->
+
+<!-- 						<p class="tit" id="movieNm">(자막) 그대들은 어떻게 살 것인가</p> -->
+<!-- 						<p class="cate" id="playKindNm">2D(자막)</p> -->
+<!-- 						<p class="theater" id="brchNm">원주센트럴/컴포트3관_리클라이너</p> -->
+<!-- 						<p class="date"><span id="playDe">2023.10.30</span><em id="dowNm">(월)</em> <span class="time" id="playTime"><i class="iconset ico-clock-white"></i>17:10~19:23</span></p> -->
 					</div>
 					<div class="price-process">
 <!-- 						<div class="box"><div class="data"><span class="tit">청소년 <em>1</em></span><span class="price">11,000</span></div> -->
@@ -1002,8 +1014,8 @@ function fn_validateDateYn(param) {
 			
 			$("#btn_booking_pay").mouseover(function() {
 				sche_idx = "${param.sche_idx}";
-// 				moneySum = "${param.moneySum}";
-				moneySum = 1;
+				moneySum = "${param.moneySum}";
+// 				moneySum = 1;
 				allTickets = "${param.allTickets}";
 				seats = "${param.seats}";
 				
@@ -1014,14 +1026,14 @@ function fn_validateDateYn(param) {
 	
 	
 		function requestPay() {
-			alert("requestPay");
+// 			alert("requestPay");
 			IMP.init('imp14320736'); // 객체 초기화. 가맹점 식별코드 전달
 			
 			IMP.request_pay({
 		    	pg: "kakaopay.TC0ONETIME",
 		    	pay_method: "card",
 		    	merchant_uid: "ORD" + getDateTimeString(),   // 주문번호
-		    	name: "오펜하이머",
+		    	name: "${param.movie_nameK}",
 		    	amount: moneySum,                         // 숫자 타입
 		    	buyer_email: "gildong@gmail.com",
 		    	buyer_name: "홍길동",

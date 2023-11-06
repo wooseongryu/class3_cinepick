@@ -27,6 +27,7 @@
     
     <!-- 연습 -->
     파람 ${param.sche_idx }
+    관람가 ${param.movie_rated}
 <%--     # ${#sche_idx } --%>
     
 
@@ -562,17 +563,19 @@
                     
                         <div class="tit-area">
                             <span class="movie-grade small age-all age-12">12세이상관람가</span>
-                            <p class="tit">천박사 퇴마 연구소: 설경의 비밀</p>
-                            <p class="cate">2D</p>
+                            <p class="tit">${param.movie_nameK }</p>
+<!--                             <p class="cate">2D</p> -->
                         </div>
                         <!-- tit-area 끝 -->
                         
                         <div class="info-area">
-                            <p class="theater">원주센트럴</p>
-                            <p class="special">컴포트7관_리클라이너</p>
-                            <p class="date"><span>2023.10.11</span><em>(수)</em></p>
+                            <p class="theater">${param.theater_name }</p>
+                            <p class="special">${param.screen_name }</p>
+<!--                             <p class="date"><span>2023.10.11</span><em>(수)</em></p> -->
+                            <p class="date"><span>${param.sche_date }</span><em></em></p>
                             <div class="other-time">
-                                <button type="button" class="nows">12:35~14:23<i class="arr"></i></button>
+<!--                                 <button type="button" class="nows">12:35~14:23<i class="arr"></i></button> -->
+                                <button type="button" class="nows">${param.sche_start_time }~${param.sche_end_time }<i class="arr"></i></button>
                                 <ul class="other">
                                 	<li><button type="button" choicnt="71" playschdlno="2310112202028" class="btn ">10:30~12:18</button></li>
                                 	<li><button type="button" choicnt="76" playschdlno="2310112202029" class="btn ons ">12:35~14:23</button></li>
@@ -586,7 +589,8 @@
                            		<!-- 일단 없애봄 .on -> ons -->
                             </div>
                             <p class="poster">
-                                <img src="https://www.megabox.co.kr/SharedImg/2023/09/27/7ML6Wyigjy8Nz7bM8yr0zWW2AEfpAM8Y_150.jpg" onerror="noImg(this);" alt="천박사 퇴마 연구소: 설경의 비밀">
+<!--                                 <img src="https://www.megabox.co.kr/SharedImg/2023/09/27/7ML6Wyigjy8Nz7bM8yr0zWW2AEfpAM8Y_150.jpg" onerror="noImg(this);" alt="천박사 퇴마 연구소: 설경의 비밀"> -->
+                                <img src="${param.movie_poster }" onerror="noImg(this);" alt="${param.movie_nameK }">
                             </p>
                         </div>
                         <!-- info-area 끝 -->
@@ -630,6 +634,8 @@
 <%-- 							    <input type="hidden" id="sche_idx" value="${#sche_idx}" /> --%>
 <!-- 							</form> -->
                             <a href="javaScript:void(0)" class="button disabled" id="pageNext" title="다음">다음</a>
+<!--                             <a href="javaScript:void(0)" class="button disabled" id="pageNext" title="다음">다음</a> -->
+<!--                             <button class="button disabled" id="pageNext" title="다음">다음</button> -->
                       
                         </div>
                         <!-- btn-group 끝 -->
@@ -756,12 +762,20 @@
 // 		        	 '<form id="seatForm" action="hiddenTest" method="GET">'
 // 		        	 '<form id="seatForm" method="POST">'
 // 		        	 '<form id="seatForm" method="GET">'
-						+ '<input type="hidden" id="sche_idx" name="sche_idx" value="' + sche_idx + '">'
-						+ '<input type="hidden" id="allTickets" name="allTickets" value="' + allTickets + '">'
-						+ '<input type="hidden" id="seats" name="seats" value="' + seats + '">'
-						+ '<input type="hidden" id="total" name="total" value="' + total + '">'
-						+ '<input type="hidden" id="moneySum" name="moneySum" value="' + moneySum + '">'
-// 						+ '<input type="submit">'
+						+ '<input type="hidden" name="allTickets" value="' + allTickets + '">'
+						+ '<input type="hidden" name="seats" value="' + seats + '">'
+						+ '<input type="hidden" name="total" value="' + total + '">'
+						+ '<input type="hidden" name="moneySum" value="' + moneySum + '">'
+						// 이전 step1 데이터
+						+ '<input type="hidden" name="sche_idx" value="' + sche_idx + '">'
+						+ '<input type="hidden" name="movie_nameK" value="' + "${param.movie_nameK}" + '">'
+						+ '<input type="hidden" name="sche_date" value="' + "${param.sche_date}" + '">'
+						+ '<input type="hidden" name="sche_start_time" value="' + "${param.sche_start_time}" + '">'
+						+ '<input type="hidden" name="sche_end_time" value="' + "${param.sche_end_time}" + '">'
+						+ '<input type="hidden" name="theater_name" value="' + "${param.theater_name}" + '">'
+						+ '<input type="hidden" name="screen_name" value="' + "${param.screen_name}" + '">'
+						+ '<input type="hidden" name="movie_poster" value="' + "${param.movie_poster}" + '">'
+						+ '<input type="hidden" name="movie_rated" value="' + "${param.movie_rated}" + '">'
 					+'</form>';
 					
 				$("#formHere").children().remove();

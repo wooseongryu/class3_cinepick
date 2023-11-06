@@ -44,8 +44,7 @@
 		/* 못생긴 기존 input 숨기기 */
 		#inputGroupFile04 {
 		  /* display: none; */
-		}
-		
+		}		
 	</style>
 	
 </head>
@@ -66,14 +65,14 @@
                                 <div class="form-group row">
 									<div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">제목</label>
-										<input type="text" name="noticeTitle" placeholder="제목입력">
+										<input type="text" name="noticeTitle" placeholder="제목입력" maxlength="50">
 								  	</div>
                                 </div>
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="floatingTextarea">공지내용</label>
 									  <textarea rows="10" name="noticeContent" class="form-control form-control-textarea" 
-									  	placeholder="공지내용작성" id="floatingTextarea"></textarea>
+									  	placeholder="공지내용작성" id="floatingTextarea" maxlength="3000"></textarea>
 									</div>
                                 </div>
 								<br>

@@ -171,7 +171,7 @@
 		}	
 		
 		function reviewModifyForm(movie_code, review_num, user_id, review_content, review_rating) {
-			alert(review_num+","+ movie_code+","+ user_id+","+ review_content+","+ review_rating);
+// 			alert(review_num+","+ movie_code+","+ user_id+","+ review_content+","+ review_rating);
 			
 			$("#review"+review_num).empty();
 			
@@ -211,10 +211,11 @@
 		}
 		
 		function reviewModPro() {
-			
-			if($(".modiTextarea").val == "") {
+			debugger;
+			if($("#modiTextarea").val() == "" || $("#modiTextarea").val() == null ) {
 				alert("내용 입력 필수!");
-				$(".modiTextarea").focus();
+				$("#modiTextarea").focus();
+				return;
 			}
 			
 			$.ajax({
