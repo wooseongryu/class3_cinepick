@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.UserMapper;
 import com.itwillbs.cinepick.vo.AuthInfoVO;
+import com.itwillbs.cinepick.vo.BookVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.UserVO;
@@ -150,6 +151,11 @@ public class UserService {
 	// 아이디 찾기 
 	public UserVO userIdSearch(UserVO user) {
 		return mapper.selectIdSearch(user);
+	}
+
+	// 유저 예매내역 조회
+	public List<BookVO> getBookList(Map<String, String> param) {
+		return mapper.selectBookList(param);
 	}
 	
 	

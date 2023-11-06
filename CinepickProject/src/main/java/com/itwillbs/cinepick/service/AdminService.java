@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.cinepick.mapper.AdminMapper;
+import com.itwillbs.cinepick.vo.BookVO;
 import com.itwillbs.cinepick.vo.EventCateVO;
 import com.itwillbs.cinepick.vo.EventVO;
 import com.itwillbs.cinepick.vo.MovieVO;
@@ -334,6 +335,12 @@ public class AdminService {
 	// 관리자 리뷰 삭제
 	public int myReviewDelete(int review_num) {
 		return mapper.deleteMyReview(review_num);
+	}
+
+	// 예매내역 조회
+	public List<BookVO> getBookList(String string) {
+		System.out.println("AdminService - getBookList()");
+		return mapper.selectBookList(string);
 	}
 
 }

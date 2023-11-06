@@ -142,6 +142,19 @@
     </select>
 
 	
+	<select id="selectBookList" resultType="Book">
+		SELECT *
+		FROM book
+	<if test="book_id != null and !book_id.equals('')">
+		WHERE book_id = #{book_id }
+	</if>
+	<if test="user_id != null and !user_id.equals('')">
+		WHERE user_id = #{user_id }
+	</if>
+	</select>
+	
+	
+	
 	<!-- update -->
 	<!-- 기존 인증정보 갱신 - UPDATE -->
 	<!-- 아이디에 해당하는 레코드의 인증코드를 수정 -->

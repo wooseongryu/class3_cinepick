@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.itwillbs.cinepick.vo.AuthInfoVO;
+import com.itwillbs.cinepick.vo.BookVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.UserVO;
@@ -85,6 +86,9 @@ public interface UserMapper {
 	
 	// 비밀번호 재발급용 아이디 확인
 	UserVO selectCheckPasswd(UserVO user);
+
+	// 유저 예매내역
+	List<BookVO> selectBookList(Map<String, String> param);
 
 	
 	
