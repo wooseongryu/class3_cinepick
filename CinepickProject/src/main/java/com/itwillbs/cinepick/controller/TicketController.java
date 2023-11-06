@@ -181,9 +181,9 @@ public class TicketController {
 		int scheExists = service.getScheIdx(map);
 		
 		if(scheExists > 0) {
-			int insertCount = service.registSeat(map);
-		} else {
 			int updateCount = service.modifySeat(map);
+		} else {
+			int insertCount = service.registSeat(map);
 		}
 		
 //		int seatCount = service.modifySeatList(map);

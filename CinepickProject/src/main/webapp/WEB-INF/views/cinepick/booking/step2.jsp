@@ -37,8 +37,8 @@
 <!-- 	</header> -->
 	<jsp:include page="../include/headerTest.jsp"></jsp:include>
 	
-	<input type="hidden" id="playSchdlNo" name="playSchdlNo" value="2310112202029">
-	<input type="hidden" id="brchNo" name="brchNo" value="2202">
+<!-- 	<input type="hidden" id="playSchdlNo" name="playSchdlNo" value="2310112202029"> -->
+<!-- 	<input type="hidden" id="brchNo" name="brchNo" value="2202"> -->
 	<!-- TODO 추후 brchNO 수정 -->
 	
 <!-- 	<section id="layer_age_alert" class="modal-layer" style="z-index: 900"><a href="" class="focus">레이어로 포커스 이동 됨</a> -->
@@ -724,16 +724,31 @@
 	let ticketCount;
 	let ticket = "";
 	let allTickets = "";
-	let sche_idx = 0;
+	let sche_idx = ${param.sche_idx};
+	let seat_list = "A1/A2/";
 	
 	$(function() {
+		
+		$(".seat-layout .seat-condition").each(function() {
+// 			let seatList = seatList.split('/');
+// 			console.log("선택완료된 좌석: " + seatList);
+			
+// 			if(seat_list.indexof())
+		});
+		
+		
+		$("#pageNext").mouseover(function() {
+			debugger;
+			
+			console.log("스케줄 넘버는? " + sche_idx);
+		});
 		
 		$("#pageNext").click(function() {
 			
 				
 				seats = "";
 				allTickets = "";
-				sche_idx = $("#sche_idx").val();
+// 				sche_idx = $("#sche_idx").val();
 				console.log("일단 찍어보자 스케줄: " + sche_idx);
 					
 		        $(".seat-condition[selected='selected']").each(function() {
