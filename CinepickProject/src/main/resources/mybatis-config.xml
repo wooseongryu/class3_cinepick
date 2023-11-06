@@ -22,6 +22,8 @@
 		<typeAlias type="com.itwillbs.cinepick.vo.TicketVO" alias="Ticket"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.ReviewVO" alias="Review"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.BookVO" alias="Book"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.StoreVO" alias="Store"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.StoreCateVO" alias="StoreCate"/>
 	</typeAliases>
 </configuration>
   
