@@ -16,6 +16,8 @@ import com.itwillbs.cinepick.vo.QnaCateVO;
 import com.itwillbs.cinepick.vo.QnaVO;
 import com.itwillbs.cinepick.vo.ScheduleVO;
 import com.itwillbs.cinepick.vo.ScreenVO;
+import com.itwillbs.cinepick.vo.StoreCateVO;
+import com.itwillbs.cinepick.vo.StoreVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
@@ -174,6 +176,36 @@ public interface AdminMapper {
 	
 	// 관리자 리뷰 삭제
 	int deleteMyReview(int review_num);
+	
+	/*==============================================================
+	 * 스토어 
+	 * =============================================================
+	 * */
+	
+	
+	List<StoreVO> selectStore(String store_idx);
+
+	int insertStore(StoreVO store);
+
+	int deleteStore(String storeIdx);
+
+	int updateStore(StoreVO store);
+
+	
+	/*==============================================================
+	 * 스토어 카테고리
+	 * =============================================================
+	 * */
+	
+	
+	List<StoreCateVO> selectStoreCategory();
+
+	int insertStoreCategory(String storeCate_Subject);
+//
+//	int deleteStoreCategory(int storeCate_idx);
+
+	
+	
 
 	/*==============================================================
 	 * 예매내역 

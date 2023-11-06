@@ -13,9 +13,8 @@ public class StoreVO {
 	private String store_thumbnail;
 	private int store_category;
 	
-//	private MultipartFile event_poster_multi;
-//	private MultipartFile event_thumbnail_multi;
-//	private String event_status;
-//
-//	private String eventCate_Subject;
+//	private MultipartFile store_thumbnail_multi;
+	
+
+//	private String storeCate_Subject;
 }
