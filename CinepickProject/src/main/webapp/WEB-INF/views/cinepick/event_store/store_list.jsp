@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>패키지 스토어 페이지</title>
+    <title>CINEPICK</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,18 +26,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/customer-center.css" type="text/css">
     
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer.css" type="text/css">
 </head>
 
-<style>
 
-	.product__page__title {
-		border-bottom: none;
-	}
-
-</style>
 
 <body>
     <!-- Page Preloder -->
@@ -44,212 +39,93 @@
         <div class="loader"></div>
     </div>
 
+	<c:set var="pageNum" value="1" />
+	<c:if test="${not empty param.pageNum }">
+		<c:set var="pageNum" value="${param.pageNum }" />
+	</c:if>
+
+
 	<header>
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
 
-
-
-    <!-- Product Section Begin -->
     <section class="product-page spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="product__page__content">
-                        <div class="product__page__title">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="section-title">
-                                        <h5>스토어</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-				<!-- 패키지 -->
-				
-				<div class="lst_wrap">	
-					<div class="section-title">
-						<p>
-							<font color="#1C1C1C">
-								<c:choose>
-                                	<c:when test="${category eq 'package' }">
-                                		<h5>패키지</h5>
-                                	</c:when>
-                                	<c:when test="${category eq 'snack' }">
-                                		<h5>스낵</h5>
-                                	</c:when>
-									<c:otherwise>
-										<h5>관람권/포토카드</h5>
-									</c:otherwise>
-                                </c:choose>
-							</font>
-						</p>
-					</div>
-					
-						<!-- 패키지 1 -->
+		<div class="container">
+			<div class="row">
+	            <div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
+	                <div class="anime__details__review">
+	                    <div class="section-title">
+	                        <h5>스토어 상세 목록</h5>
+	                    </div>
+						<div class="row">
+						<c:forEach var="storeCate" items="${storeCateList }">
+							<div class="col" style="margin: auto">
+								<div class="customer_category"  name="${storeCate.storeCate_Subject}" 
+								<c:if test="${storeCate.storeCate_Idx eq param.storeCate_Idx}">style="background: #503396" </c:if>
+								 onclick="location.href='storeList?storeCate_Idx=${storeCate.storeCate_Idx}'" >
+								 
+									<h6 <c:if test="${storeCate.storeCate_Idx eq param.storeCate_Idx}">style="color: #ffffff" </c:if>> ${storeCate.storeCate_Subject }</h6>
+								</div>
+							</div>
+						</c:forEach>
+						</div>
 						
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-1.jpg">
-										<div class="ep">마감 임박</div>
-									</div>
-									
-									<div class="product__item__text">
-										<ul>
-											<li>2D일반관람권1매+오리지널팝콘M1매</li>
-										</ul>
-										<h5>
-											<a href="#">fall movie 패키지</a>
-										</h5>
-										<h5>
-											<a href="#"><strong>14,500원</strong></a>
-										</h5>
-									</div>
-									
+						<div class="row">
+						    <div class="col-lg-12">
+								<div class="row" style="justify-content: center">
+									<c:forEach var="storeDetail" items="${storeDetailList }">
+										<section>
+<%-- 									    	<a href="storeDetail?store_idx=${storeDetail.store_idx} "> --%>
+												<img src ="${pageContext.request.contextPath }/resources/upload/${storeDetail.store_thumbnail }"width="240" height="240" style="margin: 10px 10px 10px 10px;"> 
+<!-- 											</a> -->
+											<h5 align="center" style="color: #1C1C1C; margin: 10px 10px 10px 10px">${storeDetail.store_title }</h5>
+											<h6 align="center" style="color: #1C1C1C; margin: 10px 10px 10px 10px">${storeDetail.store_short }</h6>
+											<h6 align="center" style="color: #1C1C1C; margin: 10px 10px 10px 10px">${storeDetail.store_price }</h6>
+<%-- 											<h6 align="center" style="color: #1c1c1c; margin: 10px 10px 10px 10px">${eventDetail.event_startDt } ~ ${eventDetail.event_endDt }</h6> --%>
+												
+										</section>
+									</c:forEach>
 								</div>
 							</div>
-                            
-                        <!-- 패키지 2 -->
-                            
-						<h3 class="tit"></h3>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-2.jpg">
-										<div class="ep">마감 임박</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>2D영화관람권2매+스위트콤보1매</li>
-											<!--                                            <li>Movie</li>-->
-										</ul>
-										<h5>
-											<a href="#">forever movie 패키지</a>
-										</h5>
-										<h5>
-											<a href="#"><strong>28,000원</strong></a>
-										</h5>
-									</div>
-								</div>
-							</div>
-                            
-                        <!-- 패키지 3 -->
-                             
-						<h3 class="tit"></h3>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-3.jpg">
-										<div class="ep">마감 임박</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>아시아 로맨스 기획전X3 2D영화관람권 각 1매씩 총 3매</li>
-										</ul>
-										<h5>
-											<a href="#">2023 아시아 로맨스 기획전 관람권 패키지</a>
-										</h5>
-										<h5>
-											<a href="#"><strong>21,000원</strong></a>
-										</h5>
-									</div>
-								</div>
-							</div>
-						</div> <!-- 패키지 1 끝-->
-                      
-                         
-               		 	<!-- 패키지 4 -->
-					
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-4.jpg">
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>[1947보스톤]전용 2D영화관람권 1매</li>
-										</ul>
-										<h5>
-											<a href="#">[1947보스톤]전용 1인 패키지</a>
-										</h5>
-										<h5>
-											<a href="#"><strong>8,000원</strong></a>
-										</h5>
-									</div>
-								</div>
-							</div>
-                            
-                        <!-- 패키지 5 -->
-                            
-						<h3 class="tit"></h3>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-5.jpg">
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>[미스터리가면]전용 2D영화관람권 2매</li>
-										</ul>
-										<h5>
-											<a href="#">[미스터리가면]전용 2인 패키지</a>
-										</h5>
-										<h5>
-											<a href="#"><strong>22,000원</strong></a>
-										</h5>
-									</div>
-								</div>
-							</div>
-                            
-                        <!-- 패키지 6 -->
-                             
-						<h3 class="tit"></h3>
-                           <div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="${pageContext.request.contextPath }/resources/cinepick/img/store/package-6.jpg">
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>[미스터리가면]전용 2D영화관람권 2매+2D영화관람권2매+스위트콤보1매</li>
-											<!--                                            <li>Movie</li>-->
-										</ul>
-										<h5>
-											<a href="#">[미스터리가면]전용 2인 콤보 패키지</a>
-										</h5>
-										<h5>
-											<a href="#"><strong>30,000원</strong></a>
-										</h5>
-									</div>
-								</div>
-							</div>
-                        </div> <!-- 패키지 4 끝-->  
-                   	</div>	<!-- 패키지 끝-->  
-                     
-                </div>
+						</div>
+						
+	<!-- 					페이징 처리 -->
+						<div class="product__pagination" id="pageList">
+							<c:if test="${pageNum > 1 }">
+								<a href="storeList?storeCate_Idx=${param.storeCate_Idx }&pageNum=${pageNum - 1 }"><i class="fa fa-angle-double-left"></i></a>					
+							</c:if>
+							<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+								<c:choose>
+									<c:when test="${pageNum eq i }">
+										<a class="current-page" href="storeList?storeCate_Idx=${param.storeCate_Idx }&pageNum=${i }">${i }</a>
+									</c:when>
+									<c:otherwise>
+										<a href="storeList?storeCate_Idx=${param.storeCate_Idx }&pageNum=${i }">${i }</a> 
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${pageNum < pageInfo.maxPage }">
+								<a href="storeList?storeCate_Idx=${param.storeCate_Idx }&pageNum=${pageNum + 1 }"><i class="fa fa-angle-double-right"></i></a>					
+							</c:if>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
-<!-- Product Section End -->
-
-	<footer>
+	</section>
+   	<footer>
 		<jsp:include page="../include/main_footer.jsp"></jsp:include>
 	</footer>
 
-
-
-<!-- Js Plugins -->
-<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/cinepick/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/cinepick/js/player.js"></script>
-<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.nice-select.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/cinepick/js/mixitup.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
-<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
+	<!-- Js Plugins -->
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.3.1.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/player.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.nice-select.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/mixitup.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
 
 </body>
 

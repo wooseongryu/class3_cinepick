@@ -25,10 +25,18 @@ public interface StoreMapper {
 	List<StoreVO> selectStore(String store_idx);
 	
 	// 패키지 스토어 상세 조회
-	List<StoreVO> selectStoreDetailList(@Param("storeCate_Idx") int storeCate_Idx);
+	List<StoreVO> selectStoreDetailList(@Param("startRow") int startRow, @Param("listLimit") int listLimit, @Param("storeCate_Idx") int storeCate_Idx);
 
 	// 패키지 스토어 목록 수
-	int selectPackageStoreListCount(@Param("storeCate_Idx") int storeCate_Idx);
+	int selectStoreListCount(@Param("storeCate_Idx") int storeCate_Idx);
+
+
+
+
+
+
+
+
 
 
 
