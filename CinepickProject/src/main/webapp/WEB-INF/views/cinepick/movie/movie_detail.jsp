@@ -188,8 +188,9 @@
 			 if(result) {
 				 location.href="ReviewDelete?movie_code=" + movie_code + "&user_id=" + user_id + "&review_num=" + review_num;
 			 }
-		}	
+		}
 		
+		//리뷰수정
 		function reviewModifyForm(movie_code, review_num, user_id, review_content, review_rating) {
 // 			alert(review_num+","+ movie_code+","+ user_id+","+ review_content+","+ review_rating);
 			
@@ -237,6 +238,7 @@
 				$("#modiTextarea").focus();
 				return;
 			}
+// 			let review_content = $("#modiTextarea").replace("\r\n","<br>")
 			
 			$.ajax({
 				type: "POST",

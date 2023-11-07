@@ -96,7 +96,9 @@ public class AdminMovieController {
 			model.addAttribute("msg", "이미 등록된 영화입니다.");
 			return "fail_back";
 		}
-	
+		
+		movie.setMovie_poster(movie.getMovie_poster().trim());
+		
 		int insertMovieCount = movieService.insertMovie(movie);
 		
 		if(insertMovieCount > 0) {
@@ -133,7 +135,10 @@ public class AdminMovieController {
 	//======= 영화정보 수정Pro =======	
 	@PostMapping("movieDetailModifyPro")
 	public String movieDetailModifyPro(MovieVO movie, Model model) {
+		movie.setMovie_poster(movie.getMovie_poster().trim());
+		
 		int updateMovieCount = movieService.modifyMovie(movie);
+		
 		
 		if(updateMovieCount > 0) {
 			model.addAttribute("msg", "영화를 수정하였습니다.");

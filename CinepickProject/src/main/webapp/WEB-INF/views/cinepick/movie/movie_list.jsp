@@ -112,7 +112,7 @@
 						str +='<div class="col-lg-3 col-md-6 col-sm-6">'
 						str +=	'<div class="product__item">'
 						str +=		'<a href="movieDetail?movie_code= ' + movie.movie_code + '">'
-						str +=			'<div class="product__item__pic set-bg" data-setbg="' + movie.movie_poster + '" style="background-image: url(&quot;' + movie.movie_poster + '&quot;);">'
+						str +=			'<div class="product__item__pic set-bg" data-setbg="' + movie.movie_poster + '" style="background-image: url(\'' + movie.movie_poster + '\');">'
 						str +=				'<div class="comment">'
 						str +=					'<span class="' + movie.movie_rated + '"></span>'
 						str +=				'</div>'

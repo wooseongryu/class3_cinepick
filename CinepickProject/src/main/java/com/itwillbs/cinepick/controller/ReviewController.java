@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.itwillbs.cinepick.service.ReviewService;
 import com.itwillbs.cinepick.vo.ReviewVO;
 
@@ -42,8 +43,7 @@ public class ReviewController {
 			model.addAttribute("msg", "리뷰내용을 작성 해주세요.");
 			return "fail_back";
 		}
-		
-		
+		review.setReview_content(review.getReview_content().replace("\r\n","<br>"));
 		int insertCount =  service.reviewInsert(review);
 		int movie_code = review.getMovie_code();
 		
@@ -95,7 +95,15 @@ public class ReviewController {
 			model.addAttribute("msg", "잘못된 접근입니다!");
 			return "fail_back";
 		}
-		System.out.println(map);
+		System.out.println("넘어온거:" + map);
+		System.out.println("리뷰내용: " + map.get("review_content"));
+//		map.set("review_content", map.get("review_content").replace("\r\n","<br>"));
+//		map.review_content = map.review_content.trim();
+		
+		map.replace("review_content",map.get("review_content").replace("\r\n","<br>") );
+		
+		
+//		gson.fromJson(map, review);
 		int updateRvCount = service.reviewUpdate(map);
 		if(updateRvCount > 0) {
 			return "true";

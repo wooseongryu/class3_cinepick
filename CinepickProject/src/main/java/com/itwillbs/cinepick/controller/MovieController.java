@@ -62,7 +62,7 @@ public class MovieController {
 //		System.out.println(movieList);
 		
 		JSONArray ja = new JSONArray(movieList);
-//		System.out.println(ja.toString());
+//		System.out.println("======================" + ja.toString());
 		
 		return ja.toString();
 	}

@@ -79,6 +79,7 @@
 			width: 100px;
 			text-align: center;
 			color: #503396;
+			padding: 5px;
 			
 		}
 		
@@ -93,10 +94,16 @@
 			text-decoration: none;
 		}
 		
-		bookBtnFalse:hover {
+		.bookBtnFalse:hover {
 			color: #c7c7c7;
 			text-decoration: none;
 			cursor: pointer;
+		}
+		
+		.noticeZone {
+			display: block;
+			height: 400px;
+			text-align: center;
 		}
 		
 		
@@ -248,12 +255,16 @@
                     <p class="mb-4">찜한 영화 한눈에 보기</p>
 
                     <!-- DataTales Example -->
+					<c:if test="${empty likeList }">
+						<div class="noticeZone">
+							<h5> 찜한 영화가 없습니다.</h5>
+							<br>
+							<a href="movieList" class="bookBtn">찜하러 가기</a>
+						</div>
+					</c:if>
                     <div class="card shadow mb-4">
                     	<div class="likeMovieListAll"> 
 							<ul class="likeMovieList">
-								<c:if test="${empty likeList }">
-									<h3> 찜한 영화가 없습니다.</h3>
-								</c:if>
 								<c:forEach var="like" items="${likeList }">
 									<li class="likeMovieListLi">
 										<div class="likeMovie" data-movie_code="${like.movie_code }" data-movie_name="${like.movie_nameK }">
