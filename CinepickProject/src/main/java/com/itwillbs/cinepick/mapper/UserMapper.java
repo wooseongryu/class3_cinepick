@@ -96,7 +96,8 @@ public interface UserMapper {
 	// 임시 비밀번호 변경
 	int updatePasswdChange(UserVO user);
 
-	
+	// 카카오 등록된 회원 찾기
+	UserVO getMemberKakaoLogin(String kakao_id);
 	
 }
 

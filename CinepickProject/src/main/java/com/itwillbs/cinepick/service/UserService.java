@@ -168,6 +168,12 @@ public class UserService {
 		System.out.println("UserService - userPasswdChange()");
 		return mapper.updatePasswdChange(user);
 	}
+
+	// 카카오 등록된 회원 찾기
+	public UserVO getMemberKakaoLogin(String kakao_id) {
+		System.out.println("UserService - getMemberKakaoLogin()");
+		return mapper.getMemberKakaoLogin(kakao_id);
+	}
 	
 	
 }

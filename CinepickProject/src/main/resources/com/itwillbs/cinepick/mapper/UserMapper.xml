@@ -217,6 +217,14 @@
 		WHERE review_num = #{review_num}
 	</delete>
 	
+	<select id="getMemberKakaoLogin" resultType="User">	
+		SELECT
+			user_id
+			, user_is_admin
+		FROM user
+		WHERE kakao_id = #{kakao_id}
+	</select>
+	
 </mapper>
 
 

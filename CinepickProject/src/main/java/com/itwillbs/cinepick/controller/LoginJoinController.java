@@ -251,7 +251,9 @@ public class LoginJoinController {
 	private MemberService ms;
 
 	@RequestMapping("kakao/callback")
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code
+								,Model model
+								, HttpSession session) throws Exception {
 		System.out.println("#########" + code);
 		String access_Token = ms.getAccessToken(code);
 		
@@ -259,8 +261,43 @@ public class LoginJoinController {
 		System.out.println("###access_Token#### : " + access_Token);
 		System.out.println("###nickname#### : " + userInfo.get("nickname"));
 		System.out.println("###email#### : " + userInfo.get("email"));
+		System.out.println("###id#### : " + userInfo.get("id"));
 		
-		return "";
+		if (userInfo.get("id") == null) {
+			model.addAttribute("msg", "다시 시도해주세요");
+			return "fail_back";
+		}
+		
+		String kakao_id = (String)userInfo.get("id");
+		
+    	UserVO dbMember = service.getMemberKakaoLogin(kakao_id);
+    	
+    	System.out.println(dbMember);
+    	if(dbMember != null) {
+    		session.setAttribute("kakao_id", kakao_id);
+            session.setAttribute("access_Token", access_Token);
+            session.setAttribute("sId", dbMember.getUser_id());
+            session.setAttribute("isAdmin", dbMember.getUser_is_admin());
+            
+			return "redirect:/";
+    	}
+    	
+		session.setAttribute("kakao_id", (String)userInfo.get("id"));
+        session.setAttribute("access_Token", access_Token);
+        
+        model.addAttribute("msg", "입력된 정보가 없습니다. 회원가입 페이지로 이동합니다.");
+		model.addAttribute("targetURL", "/cinepick/join");
+		
+		return "forward";
+	}
+	
+	
+	@GetMapping("kakao/Logout")
+	public String kakaoLogout(HttpSession session) {
+		session.invalidate();
+		
+		// 메인페이지로 리다이렉트
+		return "redirect:/";
 	}
 	
 }

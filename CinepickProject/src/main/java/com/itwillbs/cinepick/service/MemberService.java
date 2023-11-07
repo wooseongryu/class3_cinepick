@@ -108,12 +108,15 @@ public class MemberService {
 
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+			
+			String id = element.getAsJsonObject().get("id").getAsString();
 
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
+			userInfo.put("id", id);
 
 		} catch (IOException e) {
 			e.printStackTrace();
