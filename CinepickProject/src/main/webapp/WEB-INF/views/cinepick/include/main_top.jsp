@@ -90,8 +90,8 @@ a {
 							</a>
 							 <ul class="dropdown">
 	                             <li><a href="eventList?eventCate_Idx=1">영화</a></li>
-	                             <li><a href="eventList?eventCate_Idx=2">시사회/무대인사</a></li>
-	                             <li><a href="eventList?eventCate_Idx=3">극장별</a></li>
+	                             <li><a href="eventList?eventCate_Idx=4">시사회/무대인사</a></li>
+	                             <li><a href="eventList?eventCate_Idx=5">극장별</a></li>
 							</ul>
 						</li>	
                         <li>

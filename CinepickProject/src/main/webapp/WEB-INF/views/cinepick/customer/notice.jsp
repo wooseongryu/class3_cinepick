@@ -124,7 +124,7 @@
 				</div>
 			</div>
 		</div>
-	<section>
+	</section>
    	<footer>
 		<jsp:include page="../include/main_footer.jsp"></jsp:include>
 	</footer>
