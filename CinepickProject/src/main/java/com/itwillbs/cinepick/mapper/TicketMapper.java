@@ -31,4 +31,8 @@ public interface TicketMapper {
 
 	int updateSeat(Map<String, Object> map);
 
+	String selectSeatList(int sche_idx);
+
+	int insertUpdateSeat(Map<String, Object> map);
+
 }

@@ -96,6 +96,24 @@
 		ON sc.sche_movie_code = m.movie_code
 		WHERE b.book_id = #{book_id};
 	</select>
+
+	<!-- 결제 성공시 TABLE seat에 sche_idx가 있으면 좌석 insert, 없으면 update -->
+	<insert id="insertUpdateSeat" parameterType="map">
+		INSERT INTO seat
+			VALUES (#{sche_idx}, #{seats})
+			ON duplicate KEY
+		UPDATE seat_list = concat(seat_list, #{seats})
+	</insert>
+	
+	<!-- step2에서 스케줄 번호로 예매완료된 좌석 가져오기 -->
+	<select id="selectSeatList" parameterType="int">
+		SELECT seat_list
+			FROM seat
+			WHERE sche_idx = #{sche_idx};
+	</select>
+	
+	
+	<!-- 아래 구문들이 필요 없어진 것 같습니다.. -->
 	
 	<select id="selectScheIdx" parameterType="map" resultType="int">
 		SELECT COUNT(*) FROM seat WHERE sche_idx = #{sche_idx}
@@ -115,5 +133,7 @@
 			SET seat_list = CONCAT(seat_list, #{seats})
 			WHERE sche_idx = #{sche_idx};
 	</update>
+	
+	
 
 </mapper>
