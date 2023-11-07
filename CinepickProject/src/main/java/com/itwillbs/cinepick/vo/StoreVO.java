@@ -16,5 +16,5 @@ public class StoreVO {
 //	private MultipartFile store_thumbnail_multi;
 	
 
-//	private String storeCate_Subject;
+	private String storeCate_Subject;
 }

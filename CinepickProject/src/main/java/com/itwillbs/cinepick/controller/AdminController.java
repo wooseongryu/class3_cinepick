@@ -1595,7 +1595,7 @@ public class AdminController {
 				return "fail_back";
 			}
 			
-			List<StoreCateVO> storeCategoryList = adminService.getStoreCategory();
+			List<StoreCateVO> storeCategoryList = adminService.getstoreCategory();
 			
 			model.addAttribute("storeCategoryList", storeCategoryList);
 			
@@ -1698,7 +1698,7 @@ public class AdminController {
 			return "fail_back";
 			}
 			
-			List<StoreCateVO> storeCategoryList = adminService.getStoreCategory();
+			List<StoreCateVO> storeCategoryList = adminService.getstoreCategory();
 			
 			
 			StoreVO store = adminService.getStore(store_idx).get(0);
@@ -1796,7 +1796,7 @@ public class AdminController {
 			StoreVO tmpStore = adminService.getStore(store_idx).get(0);
 			
 			int deleteCount = adminService.deleteStore(store_idx);
-			
+		
 			if (deleteCount == 0) {
 				model.addAttribute("msg", "삭제 실패!");
 				return "fail_back";
@@ -1822,31 +1822,31 @@ public class AdminController {
 //		 * */
 		
 		// 관리자 스토어 카테고리 관리 페이지 및 폼
-//		@GetMapping("adminStoreCategoryUpdate")
-//		public String adminStoreCategoryUpdate(Model model, HttpSession session) {
-//			System.out.println("AdminController - adminCategoryUpdate()");
-//			
-//			String sId = (String)session.getAttribute("sId");
-//			String isAdmin = (String)session.getAttribute("isAdmin");
-//			
-//			if(sId == null || isAdmin.equals("N")) {
-//				model.addAttribute("msg", "잘못된 접근입니다!");
-//				return "fail_back";
-//			}
-//			
-//			List<StoreCateVO> storeCategoryList = adminService.getstoreCategory();
-//			
-//			model.addAttribute("storeCategoryList", storeCategoryList);
-//			
-//			return "mypage/admin/update_storeCategory";
-//		}
+		@GetMapping("adminStoreCategoryUpdate")
+		public String adminStoreCategoryUpdate(Model model, HttpSession session) {
+			System.out.println("AdminController - adminCategoryUpdate()");
+			
+			String sId = (String)session.getAttribute("sId");
+			String isAdmin = (String)session.getAttribute("isAdmin");
+			
+			if(sId == null || isAdmin.equals("N")) {
+				model.addAttribute("msg", "잘못된 접근입니다!");
+				return "fail_back";
+			}
+			
+			List<StoreCateVO> storeCategoryList = adminService.getstoreCategory();
+			
+			model.addAttribute("storeCategoryList", storeCategoryList);
+			
+			return "mypage/admin/update_storeCategory";
+		}
 		
 		// 관리자 스토어 카테고리 등록
 		@PostMapping("adminStoreCategoryUpdatePro")
 		public String adminStoreCategoryUpdatePro(String storeCate_Subject, Model model) {
 			System.out.println("AdminController - adminCategoryUpdatePro()");
 			
-			List<StoreCateVO> storeCategoryList = adminService.getStoreCategory();
+			List<StoreCateVO> storeCategoryList = adminService.getstoreCategory();
 			for (StoreCateVO storeCate : storeCategoryList) {
 				if (storeCategoryList.equals(storeCate.getStoreCate_Subject())) {
 					model.addAttribute("msg", "중복된 카테고리입니다!");
@@ -1865,26 +1865,29 @@ public class AdminController {
 		}
 		
 		 //관리자 스토어 카테고리 삭제
-//		@GetMapping("adminStoreCategoryDelete")
-//		public String adminStoreCategoryDelete(int storeCate_Idx, HttpSession session, Model model) {
-//			System.out.println("AdminController - adminCategoryDelete()");
-//			
-//			String sId = (String)session.getAttribute("sId");
-//			String isAdmin = (String)session.getAttribute("isAdmin");
-//			
-//			if(sId == null || isAdmin.equals("N")) {
-//				model.addAttribute("msg", "잘못된 접근입니다!");
-//				return "fail_back";
-//			}
-//			
-//			int deleteCount = adminService.deleteStoreCategory(storeCate_Idx);
-//			
-//			if (deleteCount == 0) {
-//				model.addAttribute("msg", "삭제 실패!");
-//				return "fail_back";
-//			}
-//			
-//			return "redirect:/adminStoreCategoryUpdate";
-//		}
+		@GetMapping("adminStoreCategoryDelete")
+		public String adminStoreCategoryDelete(int storeCate_Idx, HttpSession session, Model model) {
+			System.out.println("AdminController - adminCategoryDelete()");
+			
+			String sId = (String)session.getAttribute("sId");
+			String isAdmin = (String)session.getAttribute("isAdmin");
+			
+			if(sId == null || isAdmin.equals("N")) {
+				model.addAttribute("msg", "잘못된 접근입니다!");
+				return "fail_back";
+			}
+			
+			int deleteCount = adminService.deleteStoreCategory(storeCate_Idx);
+			
+			if (deleteCount == 0) {
+				model.addAttribute("msg", "삭제 실패!");
+				return "fail_back";
+			}
+			
+			return "redirect:/adminStoreCategoryUpdate";
+		}
+		
+		
+		
 		
 }
