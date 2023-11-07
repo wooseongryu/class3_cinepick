@@ -542,11 +542,32 @@
 	<!-- 예매 시작  -->
 	
 	<select id="selectBookList" resultType="Book">
-		SELECT *
-		FROM book
+		SELECT 
+			b.book_id
+			, user_id
+			, m.movie_nameK
+			, t.theater_name
+			, sc.screen_name 
+			, b.seat_list
+			, b.ticket_type
+			, s.sche_start_time 
+			, s.sche_end_time 
+			, m.movie_runtime
+			, b.book_date
+			, b.total_cost
+		FROM book b 
+			JOIN schedule s 
+			  ON b.sche_idx = s.sche_idx
+			JOIN movie m  
+			  ON s.sche_movie_code = m.movie_code
+			JOIN theater t 
+			  ON s.sche_theater_idx = t.theater_idx
+			JOIN screen sc 
+			  ON t.theater_idx = sc.screen_theater_idx
 	<if test="book_id != null and !book_id.equals('')">
 		WHERE book_id = #{book_id }
 	</if>
+	ORDER BY book_id;
 	</select>
 	
 	<!-- 예매 끝  -->
