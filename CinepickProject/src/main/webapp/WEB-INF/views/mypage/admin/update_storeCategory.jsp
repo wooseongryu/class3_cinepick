@@ -67,6 +67,18 @@
 // 		}
 	</script>
 	
+<script>
+	function confirmDelete(storeCate_Idx) {
+		let result = confirm(storeCate_Idx  + "번 카테고리를 삭제하시겠습니까?");
+		
+		if(result) {
+			location.href = "adminStoreCategoryDelete?storeCate_Idx=" + storeCate_Idx;
+			
+			
+		}
+	}
+</script>
+	
 	
 </head>
 
@@ -101,7 +113,8 @@
 			                                        <tr>
 			                                            <td>${storeCategory.storeCate_Subject }</td>
 														<td>
-															<button type="button" class="btn btn-primary" onclick="location.href='adminStoreCategoryDelete?storeCate_Idx=${storeCategory.storeCate_Idx }'">삭제</button>
+														<button type="button" class="btn btn-primary" onclick="confirmDelete('${storeCategory.storeCate_Idx }')">삭제</button>
+<%-- 														<button type="button" class="btn btn-primary" onclick="location.href='adminStoreCategoryDelete?storeCate_Idx=${storeCategory.storeCate_Idx }'">삭제</button> --%>
 														</td>
 			                                        </tr>
 		                                        </c:forEach>
@@ -116,9 +129,9 @@
                             <form class="user" action="adminStoreCategoryUpdatePro" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-										<label for="">이벤트 카테고리 추가</label>
+										<label for="">스토어 카테고리 추가</label>
                                         <input type="text" name="storeCate_Subject" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="이벤트 카테코리 입력">
+                                            placeholder="스토어 카테코리 입력">
                                     </div>
                                 </div>
 								<br>

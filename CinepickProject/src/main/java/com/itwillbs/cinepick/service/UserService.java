@@ -179,6 +179,10 @@ public class UserService {
 		System.out.println("UserService - updateKakao");
 		return mapper.updateKakaoId(user);
 	}
+		
+	public List<BookVO> selectUserBookList(Map<String, String> param) {
+		return mapper.selectUserBookList(param);
+	}
 	
 	
 }

@@ -132,11 +132,11 @@
                                     <thead class="table-dark">
                                         <tr>
                                             <th>번호</th>
+                                            <th>카테고리</th>
                                             <th>부연설명</th>
                                             <th>상품명</th>
                                             <th>가격</th>
-                                            <th>이미지</th>
-                                            <th>카테고리</th>
+<!--                                             <th>이미지</th> -->
                                             <th>수정 및 삭제</th>
                                         </tr>
                                     </thead>
@@ -152,11 +152,11 @@
                                     	<c:forEach var="store" items="${storeList }">
 	                                        <tr>
 	                                            <td>${store.store_idx }</td>
+	                                            <td>${store.storeCate_Subject }</td>
 	                                            <td>${store.store_short }</td>
 	                                            <td>${store.store_title }</td>
 	                                            <td>${store.store_price }</td>
-	                                            <td>${store.store_thumbnail }</td>
-	                                            <td>${store.store_category }</td>
+<%-- 	                                            <td>${store.store_thumbnail }</td> --%>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="location.href='adminStoreUpdate?store_idx=${store.store_idx}'">수정</button>
 													<button type="button" class="btn btn-primary" onclick="confirmDelete('${store.store_idx }')">삭제</button>

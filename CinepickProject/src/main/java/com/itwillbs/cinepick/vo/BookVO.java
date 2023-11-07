@@ -16,6 +16,7 @@ public class BookVO {
 	private String screen_name;
 	private String sche_date;
 	private String sche_start_time;
+	private String sche_end_time;
 	private String ticket_type;
 	private String seat_list;
 	private int total_cost;
@@ -24,6 +25,7 @@ public class BookVO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate book_date;
 	private String user_id;
+	private String movie_runtime;
 }
 //@Data
 //public class BookVO {

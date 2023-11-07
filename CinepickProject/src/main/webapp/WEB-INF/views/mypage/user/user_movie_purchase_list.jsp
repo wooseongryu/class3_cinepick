@@ -118,10 +118,16 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead class="table-dark">
-                                        <tr>
+                                         <tr>
                                             <th>예매번호</th>
+                                            <th>예매영화</th>
+                                            <th>극장</th>
+                                            <th>상영관</th>
                                             <th>예매좌석</th>
                                             <th>예매인원</th>
+                                            <th>시작시간</th>
+                                            <th>종료시간</th>
+                                            <th>러닝타임</th>
                                             <th>예매일</th>
                                             <th>예매금액</th>
                                         </tr>
@@ -133,10 +139,16 @@
                                     </tfoot>
                                     <tbody>
                                     	<c:forEach var="book" items="${bookList }">
-	                                        <tr>
+	                                       <tr>
 	                                            <td>${book.book_id }</td>
+	                                            <td>${book.movie_nameK }</td>
+	                                            <td>${book.theater_name }</td>
+	                                            <td>${book.screen_name }</td>
 	                                            <td>${book.seat_list }</td>
 	                                            <td>${book.ticket_type }</td>
+                                        	  	<td>${book.sche_start_time }</td>
+	                                            <td>${book.sche_end_time }</td>
+	                                            <td>${book.movie_runtime }</td>
 	                                            <td>${book.book_date }</td>
 	                                            <td>${book.total_cost }원</td>
 	                                        </tr>

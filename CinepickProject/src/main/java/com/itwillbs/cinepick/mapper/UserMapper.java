@@ -100,6 +100,8 @@ public interface UserMapper {
 	UserVO getMemberKakaoLogin(String kakao_id);
 
 	int updateKakaoId(UserVO user);
+	// 유저 마이페이지 최신순 예매내역
+	List<BookVO> selectUserBookList(Map<String, String> param);
 	
 }
 

@@ -201,8 +201,8 @@ public interface AdminMapper {
 	List<StoreCateVO> selectStoreCategory();
 
 	int insertStoreCategory(String storeCate_Subject);
-//
-//	int deleteStoreCategory(int storeCate_idx);
+
+	int deleteStoreCategory(int storeCate_Idx);
 
 	
 	
@@ -215,4 +215,5 @@ public interface AdminMapper {
 	// 예매내역 조회
 	List<BookVO> selectBookList(String string);
 
+	
 }

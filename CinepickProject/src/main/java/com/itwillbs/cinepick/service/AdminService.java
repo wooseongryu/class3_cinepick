@@ -348,7 +348,9 @@ public class AdminService {
 		System.out.println("AdminService - getBookList()");
 		return mapper.selectBookList(string);
 	}
-
+	
+//---------------------------------------------------------
+	
 	// 스토어 조회
 	// store_idx를 널스트링으로 전달 시 전체 질문 조회
 	public List<StoreVO> getStore(String store_idx) {
@@ -372,32 +374,23 @@ public class AdminService {
 	}
 	
 
-
-	
 	//---------------------------------------------------------
 	
-
-	public List<StoreCateVO> getStoreCategory() {
-		System.out.println("AdminService - getStoreCategory()");
-		return mapper.selectStoreCategory();
-	}
-
-
-
+	// 스토어 카테고리 조회
 	public int insertStoreCategory(String storeCate_Subject) {
 		System.out.println("AdminService - insertStoreCategory()");
 		return mapper.insertStoreCategory(storeCate_Subject);
 	}
 
+	public List<StoreCateVO> getstoreCategory() {
+		System.out.println("AdminService - getStoreCategory()");
+		return mapper.selectStoreCategory();
+	}
 
-
-//	public int deleteStoreCategory(int storeCate_idx) {
-//		System.out.println("AdminService - deleteStoreCategory()");
-//		return mapper.deleteStoreCategory(storeCate_idx);
-//	}
-
-
-
+	public int deleteStoreCategory(int storeCate_idx) {
+		System.out.println("AdminService - deleteStoreCategory()");
+		return mapper.deleteStoreCategory(storeCate_idx);
+	}
 
 	
 	//---------------------------------------------------------

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <!DOCTYPE html>
 <html lang="en">
 
@@ -194,55 +195,24 @@
                                 <!-- 최근 관람한 영화 들어가야할 자리 -->
                                 <div class="card-body">
                                     <div class="card shadow mb-3">
-										<div class="row row-cols-1 row-cols-md-3 g-4">
-										  <div class="col">
-										    <div class="card h-90">
-										      <div class="card-header">
-										        <small class="text-body-secondary">영화제목</small>
-										      </div>
-										      <img src="#" class="card-img-top" alt="#">
-										      <div class="card-body">
-										        <h5 class="card-title">최근영화1</h5>
-										        <p class="card-text"></p>
-										      </div>
-										      <div class="card-footer">
-										        <small class="text-body-secondary">3일전</small>
-										      </div>
-										    </div>
-										  </div>
-										  <div class="col">
-										    <div class="card h-90">
-										      <div class="card-header">
-										        <small class="text-body-secondary">영화제목</small>
-										      </div>
-										      <img src="#" class="card-img-top" alt="#">
-										      <div class="card-body">
-										        <h5 class="card-title">최근영화2</h5>
-										        <p class="card-text"></p>
-										      </div>
-										      <div class="card-footer">
-										        <small class="text-body-secondary">2주일전</small>
-										      </div>
-										    </div>
-										  </div>
-										  <div class="col">
-										    <div class="card h-90">
-										      <div class="card-header">
-										        <small class="text-body-secondary">영화제목</small>
-										      </div>
-										      <img src="#" class="card-img-top" alt="#">
-										      <div class="card-body">
-										        <h5 class="card-title">최근영화</h5>
-										        <p class="card-text"></p>
-										      </div>
-										      <div class="card-footer">
-										        <small class="text-body-secondary">2달전</small>
-										      </div>
-										    </div>
-										  </div>
+										<div class="row row-cols-1 row-cols-md-12 g-4">
+											<c:forEach var="book" items="${bookList }">
+												<div class="col-3">
+													<div class="card h-90">
+														<div class="card-header">
+															<small class="text-body-secondary">${book.movie_nameK }</small>
+														</div>
+														<img src="${book.movie_poster }" class="card-img-top">
+														<div class="card-footer">
+															<small class="text-body-secondary">${book.book_date }</small>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
 										</div>
                                     </div>
-                                </div>
+                        		</div>
+                                
                             </div>
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
