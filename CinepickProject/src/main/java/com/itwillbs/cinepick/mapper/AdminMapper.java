@@ -202,7 +202,7 @@ public interface AdminMapper {
 
 	int insertStoreCategory(String storeCate_Subject);
 
-	int deleteStoreCategory(int storeCate_idx);
+	int deleteStoreCategory(int storeCate_Idx);
 
 	
 	

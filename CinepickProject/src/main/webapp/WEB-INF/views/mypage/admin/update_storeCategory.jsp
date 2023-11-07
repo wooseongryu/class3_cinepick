@@ -68,14 +68,15 @@
 	</script>
 	
 <script>
-// 	function confirmDelete(storeCate_Idx) {
-// 		let result = confirm(storeCate_Idx  + "번 카테고리를 삭제하시겠습니까?");
+	function confirmDelete(storeCate_Idx) {
+		let result = confirm(storeCate_Idx  + "번 카테고리를 삭제하시겠습니까?");
 		
-// 		if(result) {
-// 			location.href = "adminstoreCateDelete?storeCate_Idx=" + storeCate_Idx;
+		if(result) {
+			location.href = "adminStoreCategoryDelete?storeCate_Idx=" + storeCate_Idx;
 			
-// 		}
-// 	}
+			
+		}
+	}
 </script>
 	
 	
@@ -112,8 +113,8 @@
 			                                        <tr>
 			                                            <td>${storeCategory.storeCate_Subject }</td>
 														<td>
-<%-- 														<button type="button" class="btn btn-primary" onclick="confirmDelete('${storeCategory.storeCate_Idx }')">삭제</button> --%>
-														<button type="button" class="btn btn-primary" onclick="location.href='adminStoreCategoryDelete?storeCate_Idx=${storeCategory.storeCate_Idx }'">삭제</button>
+														<button type="button" class="btn btn-primary" onclick="confirmDelete('${storeCategory.storeCate_Idx }')">삭제</button>
+<%-- 														<button type="button" class="btn btn-primary" onclick="location.href='adminStoreCategoryDelete?storeCate_Idx=${storeCategory.storeCate_Idx }'">삭제</button> --%>
 														</td>
 			                                        </tr>
 		                                        </c:forEach>

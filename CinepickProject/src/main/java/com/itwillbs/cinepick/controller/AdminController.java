@@ -1609,34 +1609,34 @@ public class AdminController {
 		public String adminStoreInsertPro(StoreVO store, HttpSession session, Model model) {
 			System.out.println("AdminController - adminStoreInsertPro()");
 			
-//			String uploadDir = "/resources/upload"; // 가상의 경로
-//			String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로
-//			String subDir = ""; // 서브디렉토리명을 저장할 변수 선언(날짜로 구분)
-//			
-//			System.out.println(saveDir);
+			String uploadDir = "/resources/upload"; // 가상의 경로
+			String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로
+			String subDir = ""; // 서브디렉토리명을 저장할 변수 선언(날짜로 구분)
+			
+			System.out.println(saveDir);
 		
+			//파일명에 기간 출력
+			try {
+				LocalDate now = LocalDate.now();
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+				subDir = now.format(dtf);
+				saveDir += "/" + subDir;
+				Path path = Paths.get(saveDir);
+				Files.createDirectories(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
-//			try {
-//				LocalDate now = LocalDate.now();
-//				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-//				subDir = now.format(dtf);
-//				saveDir += "/" + subDir;
-//				Path path = Paths.get(saveDir);
-//				Files.createDirectories(path);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			MultipartFile mFile_thumb = store.getStore_thumbnail_multi();
 			
-//			MultipartFile mFile_thumb = store.getStore_thumbnail_multi();
-//			
-//			String uuid = UUID.randomUUID().toString();
-//			store.setStore_thumbnail("");
-//			String fileName_thumb = uuid.substring(0, 8) + "_" + mFile_thumb.getOriginalFilename();
-//			
-//			
-//			if(!mFile_thumb.getOriginalFilename().equals("")) {
-//				store.setStore_thumbnail(subDir + "/" + fileName_thumb);
-//			}
+			String uuid = UUID.randomUUID().toString();
+			store.setStore_thumbnail("");
+			String fileName_thumb = uuid.substring(0, 8) + "_" + mFile_thumb.getOriginalFilename();
+			
+			
+			if(!mFile_thumb.getOriginalFilename().equals("")) {
+				store.setStore_thumbnail(subDir + "/" + fileName_thumb);
+			}
 			
 			int insertCount = adminService.insertStore(store);
 			
@@ -1646,16 +1646,16 @@ public class AdminController {
 			}
 			
 			// 실제폴더에 저장.
-//			try {
-//			
-//				if(!mFile_thumb.getOriginalFilename().equals("")) {
-//					mFile_thumb.transferTo(new File(saveDir, fileName_thumb));
-//				}
-//			} catch (IllegalStateException e) {
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			try {
+			
+				if(!mFile_thumb.getOriginalFilename().equals("")) {
+					mFile_thumb.transferTo(new File(saveDir, fileName_thumb));
+				}
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			return "redirect:/adminStoreList";
 		}
@@ -1718,35 +1718,35 @@ public class AdminController {
 		public String adminStoreUpdatePro(StoreVO store, HttpSession session, Model model) {
 			System.out.println("AdminController - adminStoreUpdatePro()");
 			
-//			String uploadDir = "/resources/upload"; // 가상의 경로
-//			String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로
-//			String subDir = ""; // 서브디렉토리명을 저장할 변수 선언(날짜로 구분)
+			String uploadDir = "/resources/upload"; // 가상의 경로
+			String saveDir = session.getServletContext().getRealPath(uploadDir); // 실제 업로드 경로
+			String subDir = ""; // 서브디렉토리명을 저장할 변수 선언(날짜로 구분)
+		
+			try {
+				LocalDate now = LocalDate.now();
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+				subDir = now.format(dtf);
+				saveDir += "/" + subDir;
+				Path path = Paths.get(saveDir);
+				Files.createDirectories(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
-//			try {
-//				LocalDate now = LocalDate.now();
-//				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-//				subDir = now.format(dtf);
-//				saveDir += "/" + subDir;
-//				Path path = Paths.get(saveDir);
-//				Files.createDirectories(path);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			MultipartFile mFile_thumb = store.getStore_thumbnail_multi();
 			
-//			MultipartFile mFile_thumb = store.getStore_thumbnail_multi();
-			
-//			String uuid = UUID.randomUUID().toString();
-//			store.setStore_thumbnail("");
-//			String fileName_thumb = uuid.substring(0, 8) + "_" + mFile_thumb.getOriginalFilename();
+			String uuid = UUID.randomUUID().toString();
+			store.setStore_thumbnail("");
+			String fileName_thumb = uuid.substring(0, 8) + "_" + mFile_thumb.getOriginalFilename();
 			
 	
 	
-//			if(!mFile_thumb.getOriginalFilename().equals("")) {
-//				store.setStore_thumbnail(subDir + "/" + fileName_thumb);
-//			}
+			if(!mFile_thumb.getOriginalFilename().equals("")) {
+				store.setStore_thumbnail(subDir + "/" + fileName_thumb);
+			}
 			
 			// 수정전 기존의 파일경로 가지고 있어야됨.
-//			StoreVO tmpStore = adminService.getStore(String.valueOf(store.getStore_idx())).get(0);
+			StoreVO tmpStore = adminService.getStore(String.valueOf(store.getStore_idx())).get(0);
 			
 			int updateCount = adminService.updateStore(store);
 			
@@ -1756,25 +1756,25 @@ public class AdminController {
 			}
 			
 			// 실제폴더에 저장.
-//			try {
-//				if(!mFile_thumb.getOriginalFilename().equals("")) {
-//					mFile_thumb.transferTo(new File(saveDir, fileName_thumb));
-//				}
-//			} catch (IllegalStateException e) {
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			try {
+				if(!mFile_thumb.getOriginalFilename().equals("")) {
+					mFile_thumb.transferTo(new File(saveDir, fileName_thumb));
+				}
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			// 수정시 기존의 파일 삭제.
-//			String uploadPath = "resources/upload";
-//			try {
-//				String realPath = session.getServletContext().getRealPath(uploadPath);
-//				Path path = Paths.get(realPath + "/" + tmpStore.getStore_thumbnail());
-//				Files.deleteIfExists(path);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			String uploadPath = "resources/upload";
+			try {
+				String realPath = session.getServletContext().getRealPath(uploadPath);
+				Path path = Paths.get(realPath + "/" + tmpStore.getStore_thumbnail());
+				Files.deleteIfExists(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			return "redirect:/adminStoreList";
 		}
@@ -1803,14 +1803,14 @@ public class AdminController {
 			}
 			
 			// 삭제시 파일 도 함께 삭제.
-//			String uploadPath = "resources/upload";
-//			try {
-//				String realPath = session.getServletContext().getRealPath(uploadPath);
-//				Path path = Paths.get(realPath + "/" + tmpStore.getStore_thumbnail());
-//				Files.deleteIfExists(path);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			String uploadPath = "resources/upload";
+			try {
+				String realPath = session.getServletContext().getRealPath(uploadPath);
+				Path path = Paths.get(realPath + "/" + tmpStore.getStore_thumbnail());
+				Files.deleteIfExists(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			return "redirect:/adminStoreList";
 		}
