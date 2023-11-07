@@ -75,7 +75,7 @@
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="floatingTextarea">좌석수</label>
-									  <textarea rows="10" name="screen_total_seat" class="form-control form-control-textarea" 
+									  <textarea rows="1" name="screen_total_seat" class="form-control form-control-textarea" 
 									  	placeholder="좌석수작성" id="floatingTextarea">${screen.screen_total_seat }</textarea>
 									</div>
                                 </div>
@@ -83,7 +83,7 @@
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="floatingTextarea">(극장)지역번호</label>
-									  <textarea rows="10" name="screen_theater_idx" class="form-control form-control-textarea" 
+									  <textarea rows="1" name="screen_theater_idx" class="form-control form-control-textarea" 
 									  	placeholder="(극장)지역번호작성" id="floatingTextarea">${screen.screen_theater_idx }</textarea>
 									</div>
                                 </div>
