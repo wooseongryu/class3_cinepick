@@ -17,6 +17,9 @@
 	 <!-- 회원 탈퇴 css -->
     <link href="${pageContext.request.contextPath }/resources/mypage/css/member_out.css" rel="stylesheet">
 	<style>
+		a:hover {
+			text-decoration: none;
+		}
 		
 		.categoryMenu a {
 		    margin: 20px;
@@ -68,6 +71,7 @@
 			background: #ffffff;
 			color: #503396;
 			text-align: center;
+			font-size: 20px;
 		}
 		
 		.bookBtn {
@@ -75,6 +79,7 @@
 			width: 100px;
 			text-align: center;
 			color: #503396;
+			
 		}
 		
 		.bookBtnFalse {
@@ -118,11 +123,17 @@
 					},
 					dataType: "json",
 					success: function (result) {
-						alert("< " + movie_code + " > 찜이 해제되었습니다.");
-						location.reload();
+						alert(result);
+						if(result > 0) {
+							alert("< " + movie_code + " > 찜이 해제되었습니다.");
+							location.reload();
+							
+						} else{
+							alert("이미 해제한 영화입니다.");
+						}
 					},
 					error: function() {
-						alert("찜해제를 실패하였습니다.");
+						alert("찜해제가 오류남");
 					}
 					
 					
