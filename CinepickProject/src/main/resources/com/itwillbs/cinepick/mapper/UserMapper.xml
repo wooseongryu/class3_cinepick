@@ -257,6 +257,16 @@
 		WHERE review_num = #{review_num}
 	</delete>
 	
+	<!-- 찜목록 불러오기-->
+	<select id="selectLikeMovieList" resultType="Like">
+		SELECT lm.movie_code, movie_poster, movie_nameK, movie_status 
+  		FROM like_movie lm
+  		INNER JOIN movie m 
+     	ON lm.movie_code = m.movie_code 
+ 		WHERE user_id = #{sId}
+	</select>
+	
+	
 </mapper>
 
 

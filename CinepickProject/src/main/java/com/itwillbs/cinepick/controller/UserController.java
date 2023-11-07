@@ -12,10 +12,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwillbs.cinepick.service.LikeMovieService;
+import com.itwillbs.cinepick.service.ReviewService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.BookVO;
+import com.itwillbs.cinepick.vo.LikeMovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
+import com.itwillbs.cinepick.vo.NoticeVO;
 import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.UserVO;
 
@@ -24,6 +30,8 @@ public class UserController {
 	
 	@Autowired
 	private UserService service;
+	@Autowired
+	private LikeMovieService likeService;
 
 	
 	
@@ -39,6 +47,7 @@ public class UserController {
 	 * 6. 1:1문의 목록
 	 * 7. 예매 취소 내역 목록
 	 * 8. 스토어 취소 내역 목록
+	 * 9. 찜한 영화 내역 목록
 	 * ===================================================================
 	 * */
 	
@@ -51,25 +60,8 @@ public class UserController {
 	
 	// 유저 마이페이지 메인
 	@GetMapping("user")
-	public String user(HttpSession session, Model model) {
+	public String user() {
 		System.out.println("UserController - user");
-		
-		
-		String sId = (String)session.getAttribute("sId");
-		 
-		if(sId == null) {
-			model.addAttribute("msg", "잘못된 접근입니다!");
-			return "fail_back";
-		}
-		
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("user_id", sId);
-		
-		List<BookVO> bookList = service.selectUserBookList(param);
-		
-		model.addAttribute("bookList", bookList);
-		
-		
 		return "mypage/user/user_mypage";
 	}
 	
@@ -279,6 +271,8 @@ public class UserController {
 	}
 	
 	
+	
+	
 	// 내가 쓴 리뷰 삭제
 	@GetMapping("myReviewDelete")
 	public String myReviewDelete(HttpSession session, Model model, int review_num) {
@@ -353,4 +347,32 @@ public class UserController {
 		System.out.println("UserController - userStoreCancelList");
 		return "mypage/user/user_store_cancel_list";
 	}
+	
+	
+	@GetMapping("userLikeMovieList")
+	public String userLikeMovieList(HttpSession session, Model model) {
+		String sId = (String)session.getAttribute("sId");
+		
+		if(sId == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		List<LikeMovieVO> likeList = service.selectLikeMovieList(sId);
+		
+		model.addAttribute("likeList", likeList);
+		
+		return "mypage/user/user_movieLike_list";
+	}
+	
+	@ResponseBody
+	@GetMapping("userLikeMovieDelete")
+	public int userLikeMovieDelete(@RequestParam("user_id") String user_id, @RequestParam("movie_code") int movie_code) {
+		
+		int deleteCount = likeService.deleteLikeBtn(user_id, movie_code);
+		
+		return deleteCount;
+	}
+	
+	
 }

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.itwillbs.cinepick.vo.AuthInfoVO;
 import com.itwillbs.cinepick.vo.BookVO;
+import com.itwillbs.cinepick.vo.LikeMovieVO;
 import com.itwillbs.cinepick.vo.MyQuestionVO;
 import com.itwillbs.cinepick.vo.ReviewVO;
 import com.itwillbs.cinepick.vo.UserVO;
@@ -98,6 +99,10 @@ public interface UserMapper {
 
 	// 유저 마이페이지 최신순 예매내역
 	List<BookVO> selectUserBookList(Map<String, String> param);
+	
+	
+	//유저페이지 찜목록
+	List<LikeMovieVO> selectLikeMovieList(String sId);
 
 	
 	

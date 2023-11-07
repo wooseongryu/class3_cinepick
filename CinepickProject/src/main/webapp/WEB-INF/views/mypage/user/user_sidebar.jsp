@@ -86,7 +86,7 @@
                     aria-expanded="true" aria-controls="collapseUtilities">
 <!--                    <i class="fas fa-fw fa-wrench"></i>-->
                     <i class="fa-solid fa-ticket"></i>
-                    <span>결제 내역</span>
+                    <span>예매 내역</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -96,17 +96,18 @@
                     </div>
                 </div>
             </li>
-
+            
             <!-- Nav Item - 내가 쓴 글 메뉴 -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMovies"
                     aria-expanded="true" aria-controls="collapseMovies">
 <!--                    <i class="fas fa-fw fa-folder"></i>-->
                     <i class="fa-solid fa-pencil"></i>
-                    <span>내가 쓴 글</span>
+                    <span>무비로그<span>
                 </a>
                 <div id="collapseMovies" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                    	<a class="collapse-item" href="userLikeMovieList">내가 찜한 영화</a>
                         <a class="collapse-item" href="userMyReviewList">내가 쓴 리뷰</a>
                         <a class="collapse-item" href="userMyQuestionList">1:1 문의</a>
                     </div>
