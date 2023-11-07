@@ -174,6 +174,11 @@ public class UserService {
 		System.out.println("UserService - getMemberKakaoLogin()");
 		return mapper.getMemberKakaoLogin(kakao_id);
 	}
+
+	public int updateKakaoId(UserVO user) {
+		System.out.println("UserService - updateKakao");
+		return mapper.updateKakaoId(user);
+	}
 	
 	
 }

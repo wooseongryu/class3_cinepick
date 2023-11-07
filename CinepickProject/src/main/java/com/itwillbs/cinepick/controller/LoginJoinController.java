@@ -59,18 +59,36 @@ public class LoginJoinController {
 		
 		int insertCount = service.joinUser(user);
 		
-		if(insertCount > 0) { // 성공
-			
-			String authCode = mailService.sendAuthMail(user.getUser_id(), user.getUser_email());
-			
-			model.addAttribute("msg", "회원가입 성공!");
-			service.registAuthInfo(user.getUser_id(), authCode);
-			
-			return "cinepick/login_join/success";
-		} else { // 실패
+		if (insertCount < 1) {
 			model.addAttribute("msg", "회원가입 실패!");
 			return "fail_back";
 		}
+		
+		int updateCount = service.updateKakaoId(user);
+		if (updateCount < 1) {
+			model.addAttribute("msg", "카카오 연동 실패");
+			return "fail_back";
+		}
+		
+		String authCode = mailService.sendAuthMail(user.getUser_id(), user.getUser_email());
+		
+		model.addAttribute("msg", "회원가입 성공!");
+		service.registAuthInfo(user.getUser_id(), authCode);
+		
+		return "cinepick/login_join/success";
+		
+//		if(insertCount > 0) { // 성공
+//			
+//			String authCode = mailService.sendAuthMail(user.getUser_id(), user.getUser_email());
+//			
+//			model.addAttribute("msg", "회원가입 성공!");
+//			service.registAuthInfo(user.getUser_id(), authCode);
+//			
+//			return "cinepick/login_join/success";
+//		} else { // 실패
+//			model.addAttribute("msg", "회원가입 실패!");
+//			return "fail_back";
+//		}
 	}	
 	// "/UserJoinSuccess" 요청에 대해 "member/member_join_success.jsp" 페이지 포워딩
 	@GetMapping("/UserJoinSuccess")
@@ -250,7 +268,7 @@ public class LoginJoinController {
 	@Autowired
 	private MemberService ms;
 
-	@RequestMapping("kakao/callback")
+	@GetMapping("kakao/callback")
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code
 								,Model model
 								, HttpSession session) throws Exception {
@@ -296,7 +314,6 @@ public class LoginJoinController {
 	public String kakaoLogout(HttpSession session) {
 		session.invalidate();
 		
-		// 메인페이지로 리다이렉트
 		return "redirect:/";
 	}
 	

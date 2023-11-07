@@ -20,13 +20,12 @@
 			, #{user_name}
 			, #{user_id}
 			, #{user_passwd}
-<!-- 			, #{user_birth}  -->
 			, #{user_email} 
 			, #{user_phone} 
-<!-- 			, #{user_gender}  -->
 			, now()
 			, 'N'
 			, 'N'
+			, null
 		)
 	</insert>
 	
@@ -225,6 +224,11 @@
 		WHERE kakao_id = #{kakao_id}
 	</select>
 	
+	<update id="updateKakaoId">
+		UPDATE user
+		SET kakao_id = #{kakao_id}
+		WHERE user_id = #{user_id}
+	</update>
 </mapper>
 
 

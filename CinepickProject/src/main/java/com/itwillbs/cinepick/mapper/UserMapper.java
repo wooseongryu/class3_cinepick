@@ -98,6 +98,8 @@ public interface UserMapper {
 
 	// 카카오 등록된 회원 찾기
 	UserVO getMemberKakaoLogin(String kakao_id);
+
+	int updateKakaoId(UserVO user);
 	
 }
 

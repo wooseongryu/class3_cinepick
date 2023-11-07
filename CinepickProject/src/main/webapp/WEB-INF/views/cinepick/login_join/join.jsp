@@ -253,6 +253,7 @@
                     <div class="login__form">
                         <h3>회원가입</h3>
                         <form action="joinPro" method="post">
+                        	<input type="hidden" name="kakao_id" value="${sessionScope.kakao_id }">
                         	<div class="input__item">
                                 <input type="text" name="user_name" id="user_name" required="required" size="20" placeholder="이름을 입력하세요" maxlength="8" oninput="maxLengthCheckName(this)">
                                 <span class="icon_profile"></span>
