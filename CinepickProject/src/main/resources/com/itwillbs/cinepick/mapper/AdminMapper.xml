@@ -489,11 +489,11 @@
 			, s.store_price
 			, s.store_thumbnail
 			, s.store_category
-<!-- 			, sc.storeCate_Subject -->
+			, sc.storeCate_Subject
     	FROM
     		store s
-<!--     		JOIN storeCate sc -->
-<!-- 			ON s.store_category = sc.storeCate_Idx -->
+    		JOIN storeCate sc
+			ON s.store_category = sc.storeCate_Idx
     	<if test="store_idx != null and !store_idx.equals('')">
 		WHERE store_idx = #{store_idx}
 		</if>
