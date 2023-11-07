@@ -116,12 +116,12 @@
                                     </div>
                                 </div>
 								<br>
-<!-- 								<div class="form-group row"> -->
-<!-- 									<div class="col-sm-5 mb-1 mb-sm-0"> -->
-<!-- 									    <label for="">이미지</label> -->
-<!-- 										<input type="file" name="store_thumbnail_multi" required="required"/> -->
-<!-- 								    </div> -->
-<!-- 								</div> -->
+								<div class="form-group row">
+									<div class="col-sm-5 mb-1 mb-sm-0">
+									    <label for="">이미지</label>
+										<input type="file" name="store_thumbnail_multi" required="required"/>
+								    </div>
+								</div>
 
                                 
                                 <div class="form-group row" align="center">

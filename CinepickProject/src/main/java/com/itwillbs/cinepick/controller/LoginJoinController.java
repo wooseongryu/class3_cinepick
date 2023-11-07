@@ -1,7 +1,7 @@
 package com.itwillbs.cinepick.controller;
 
 
-import java.util.UUID;
+import java.util.HashMap;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwillbs.cinepick.service.MemberService;
 import com.itwillbs.cinepick.service.SendMailService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.AuthInfoVO;
@@ -57,18 +59,36 @@ public class LoginJoinController {
 		
 		int insertCount = service.joinUser(user);
 		
-		if(insertCount > 0) { // 성공
-			
-			String authCode = mailService.sendAuthMail(user.getUser_id(), user.getUser_email());
-			
-			model.addAttribute("msg", "회원가입 성공!");
-			service.registAuthInfo(user.getUser_id(), authCode);
-			
-			return "cinepick/login_join/success";
-		} else { // 실패
+		if (insertCount < 1) {
 			model.addAttribute("msg", "회원가입 실패!");
 			return "fail_back";
 		}
+		
+		int updateCount = service.updateKakaoId(user);
+		if (updateCount < 1) {
+			model.addAttribute("msg", "카카오 연동 실패");
+			return "fail_back";
+		}
+		
+		String authCode = mailService.sendAuthMail(user.getUser_id(), user.getUser_email());
+		
+		model.addAttribute("msg", "회원가입 성공!");
+		service.registAuthInfo(user.getUser_id(), authCode);
+		
+		return "cinepick/login_join/success";
+		
+//		if(insertCount > 0) { // 성공
+//			
+//			String authCode = mailService.sendAuthMail(user.getUser_id(), user.getUser_email());
+//			
+//			model.addAttribute("msg", "회원가입 성공!");
+//			service.registAuthInfo(user.getUser_id(), authCode);
+//			
+//			return "cinepick/login_join/success";
+//		} else { // 실패
+//			model.addAttribute("msg", "회원가입 실패!");
+//			return "fail_back";
+//		}
 	}	
 	// "/UserJoinSuccess" 요청에 대해 "member/member_join_success.jsp" 페이지 포워딩
 	@GetMapping("/UserJoinSuccess")
@@ -243,6 +263,58 @@ public class LoginJoinController {
 		model.addAttribute("msg", "임시 비밀번호가 발송 되었습니다.");
 		model.addAttribute("targetURL", "login");
 		return "forward";
+	}
+	
+	@Autowired
+	private MemberService ms;
+
+	@GetMapping("kakao/callback")
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code
+								,Model model
+								, HttpSession session) throws Exception {
+		System.out.println("#########" + code);
+		String access_Token = ms.getAccessToken(code);
+		
+		HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
+		System.out.println("###access_Token#### : " + access_Token);
+		System.out.println("###nickname#### : " + userInfo.get("nickname"));
+		System.out.println("###email#### : " + userInfo.get("email"));
+		System.out.println("###id#### : " + userInfo.get("id"));
+		
+		if (userInfo.get("id") == null) {
+			model.addAttribute("msg", "다시 시도해주세요");
+			return "fail_back";
+		}
+		
+		String kakao_id = (String)userInfo.get("id");
+		
+    	UserVO dbMember = service.getMemberKakaoLogin(kakao_id);
+    	
+    	System.out.println(dbMember);
+    	if(dbMember != null) {
+    		session.setAttribute("kakao_id", kakao_id);
+            session.setAttribute("access_Token", access_Token);
+            session.setAttribute("sId", dbMember.getUser_id());
+            session.setAttribute("isAdmin", dbMember.getUser_is_admin());
+            
+			return "redirect:/";
+    	}
+    	
+		session.setAttribute("kakao_id", (String)userInfo.get("id"));
+        session.setAttribute("access_Token", access_Token);
+        
+        model.addAttribute("msg", "입력된 정보가 없습니다. 회원가입 페이지로 이동합니다.");
+		model.addAttribute("targetURL", "/cinepick/join");
+		
+		return "forward";
+	}
+	
+	
+	@GetMapping("kakao/Logout")
+	public String kakaoLogout(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:/";
 	}
 	
 }

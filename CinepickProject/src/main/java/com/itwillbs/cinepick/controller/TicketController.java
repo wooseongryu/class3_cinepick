@@ -178,13 +178,16 @@ public class TicketController {
 		String book_id = service.getBookId(map);
 		System.out.println("예매 번호는 이거 : " + book_id);
 		
-		int scheExists = service.getScheIdx(map);
+		// 1107 10:43 주석
+//		int scheExists = service.getScheIdx(map);
+//		map.put("scheExists", scheExists);
+//		if(scheExists > 0) {
+//			int updateCount = service.modifySeat(map);
+//		} else {
+//			int insertCount = service.registSeat(map);
+//		}
 		
-		if(scheExists > 0) {
-			int updateCount = service.modifySeat(map);
-		} else {
-			int insertCount = service.registSeat(map);
-		}
+		service.insertUpdateSeat(map);
 		
 //		int seatCount = service.modifySeatList(map);
 		

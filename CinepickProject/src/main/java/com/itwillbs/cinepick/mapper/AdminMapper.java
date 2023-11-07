@@ -201,8 +201,8 @@ public interface AdminMapper {
 	List<StoreCateVO> selectStoreCategory();
 
 	int insertStoreCategory(String storeCate_Subject);
-//
-//	int deleteStoreCategory(int storeCate_idx);
+
+	int deleteStoreCategory(int storeCate_Idx);
 
 	
 	

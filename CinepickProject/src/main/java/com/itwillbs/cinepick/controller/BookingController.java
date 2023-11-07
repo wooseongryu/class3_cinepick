@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.itwillbs.cinepick.service.AdminService;
 import com.itwillbs.cinepick.service.BookingService;
+import com.itwillbs.cinepick.service.TicketService;
 import com.itwillbs.cinepick.vo.MovieVO;
 import com.itwillbs.cinepick.vo.ScheduleVO;
+import com.itwillbs.cinepick.vo.SeatVO;
 import com.itwillbs.cinepick.vo.TheaterVO;
 
 @Controller
@@ -28,6 +30,9 @@ public class BookingController {
 	
 	@Autowired
 	private BookingService bookingService;
+	
+	@Autowired
+	private TicketService ticketService;
 	
 	/*====================================================================
 	 * - 목차 -
@@ -161,14 +166,20 @@ public class BookingController {
 	
 	// 좌석 선택 페이지
 	@PostMapping("bookingStepTwo")
-//	public String bookingStepTwo(int sche_idx, Model model) {
-	public String bookingStepTwo() {
+	public String bookingStepTwo(int sche_idx, Model model) {
+//	public String bookingStepTwo() {
 		System.out.println("BookingController - bookingStepTwo()");
 		
 		//엄성윤 추가
-//		model.addAttribute("sche_idx", sche_idx);
+		model.addAttribute("sche_idx", sche_idx);
 		
-//		System.out.println(")))))))))))))))))))))스케줄 번호(schedule테이블 - sche_idx) : " + sche_idx);
+		System.out.println(")))))))))))))))))))))스케줄 번호(schedule테이블 - sche_idx) : " + sche_idx);
+		
+		String seatList = ticketService.selectSeatList(sche_idx);
+		
+		model.addAttribute("seatList", seatList);
+		System.out.println("스케줄 넘버" + sche_idx + "의 좌석 현황은 " + seatList);
+		
 		
 		return "cinepick/booking/step2";
 	}

@@ -13,8 +13,10 @@ public class StoreVO {
 	private String store_thumbnail;
 	private int store_category;
 	
-//	private MultipartFile store_thumbnail_multi;
+	private MultipartFile store_thumbnail_multi;
 	
 
-//	private String storeCate_Subject;
+	private String storeCate_Subject;
+
+
 }

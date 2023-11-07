@@ -126,12 +126,12 @@
                                     </div>
                                 </div>
 								<br>
-<!-- 								<div class="form-group row"> -->
-<!-- 									<div class="col-sm-5 mb-1 mb-sm-0"> -->
-<!-- 									    <label for="">이미지</label> -->
-<!-- 										<input type="file" name="store_thumbnail_multi" required="required"/> -->
-<!-- 								    </div> -->
-<!-- 								</div> -->
+ 								<div class="form-group row"> 
+ 									<div class="col-sm-5 mb-1 mb-sm-0"> 
+ 									    <label for="">이미지</label> 
+ 										<input type="file" name="store_thumbnail_multi" required="required"/> 
+ 								    </div> 
+ 								</div> 
 
                                 
                                 <div class="form-group row" align="center">
@@ -171,25 +171,25 @@
     <script src="${pageContext.request.contextPath }/resources/mypage/js/sb-admin-2.min.js"></script>
 
 	<script>
-	$("#fromDatepicker").datepicker({
-			format: 'yyyy-mm-dd',
-			autoclose: true,
-		}).on('changeDate', function (selected) {
-			var startDate = new Date(selected.date.valueOf());
-			$('#toDatepicker').datepicker('setStartDate', startDate);
-		}).on('clearDate', function (selected) {
-			$('#toDatepicker').datepicker('setStartDate', null);
-		});
+// 	$("#fromDatepicker").datepicker({
+// 			format: 'yyyy-mm-dd',
+// 			autoclose: true,
+// 		}).on('changeDate', function (selected) {
+// 			var startDate = new Date(selected.date.valueOf());
+// 			$('#toDatepicker').datepicker('setStartDate', startDate);
+// 		}).on('clearDate', function (selected) {
+// 			$('#toDatepicker').datepicker('setStartDate', null);
+// 		});
 		
-	$("#toDatepicker").datepicker({
-		format: 'yyyy-mm-dd',
-		autoclose: true,
-	}).on('changeDate', function (selected) {
-		var endDate = new Date(selected.date.valueOf());
-		$('#fromDatepicker').datepicker('setEndDate', endDate);
-	}).on('clearDate', function (selected) {
-		$('#fromDatepicker').datepicker('setEndDate', null);
-	});
+// 	$("#toDatepicker").datepicker({
+// 		format: 'yyyy-mm-dd',
+// 		autoclose: true,
+// 	}).on('changeDate', function (selected) {
+// 		var endDate = new Date(selected.date.valueOf());
+// 		$('#fromDatepicker').datepicker('setEndDate', endDate);
+// 	}).on('clearDate', function (selected) {
+// 		$('#fromDatepicker').datepicker('setEndDate', null);
+// 	});
 	</script>
 
 </body>
