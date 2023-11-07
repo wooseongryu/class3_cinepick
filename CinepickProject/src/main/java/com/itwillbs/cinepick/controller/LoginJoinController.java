@@ -76,20 +76,8 @@ public class LoginJoinController {
 		service.registAuthInfo(user.getUser_id(), authCode);
 		
 		return "cinepick/login_join/success";
-		
-//		if(insertCount > 0) { // 성공
-//			
-//			String authCode = mailService.sendAuthMail(user.getUser_id(), user.getUser_email());
-//			
-//			model.addAttribute("msg", "회원가입 성공!");
-//			service.registAuthInfo(user.getUser_id(), authCode);
-//			
-//			return "cinepick/login_join/success";
-//		} else { // 실패
-//			model.addAttribute("msg", "회원가입 실패!");
-//			return "fail_back";
-//		}
 	}	
+	
 	// "/UserJoinSuccess" 요청에 대해 "member/member_join_success.jsp" 페이지 포워딩
 	@GetMapping("/UserJoinSuccess")
 	public String JoinSuccess() {
@@ -271,15 +259,13 @@ public class LoginJoinController {
 	@GetMapping("kakao/callback")
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code
 								,Model model
-								, HttpSession session) throws Exception {
-		System.out.println("#########" + code);
+								, HttpSession session
+								, UserVO user) throws Exception {
+		System.out.println("LoginJoinController - kakao/callback()");
+		
 		String access_Token = ms.getAccessToken(code);
 		
 		HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
-		System.out.println("###access_Token#### : " + access_Token);
-		System.out.println("###nickname#### : " + userInfo.get("nickname"));
-		System.out.println("###email#### : " + userInfo.get("email"));
-		System.out.println("###id#### : " + userInfo.get("id"));
 		
 		if (userInfo.get("id") == null) {
 			model.addAttribute("msg", "다시 시도해주세요");
@@ -290,8 +276,29 @@ public class LoginJoinController {
 		
     	UserVO dbMember = service.getMemberKakaoLogin(kakao_id);
     	
-    	System.out.println(dbMember);
-    	if(dbMember != null) {
+    	String user_id = (String)session.getAttribute("sId");
+    	if (user_id != null) {  // 로그인이 된 상태에서 유저 정보에서 변경
+    		if(dbMember != null) {  // 중복 가입 방어.
+    			model.addAttribute("msg", "이미 연동된 카카오계정입니다.");
+    			return "fail_back";
+    		}
+    		
+    		user.setUser_id(user_id);
+    		user.setKakao_id(kakao_id);
+    		int updateCount = service.updateKakaoId(user);
+    		
+    		if (updateCount < 1) {
+    			model.addAttribute("msg", "카카오 연동 실패");
+    			return "fail_back";
+    		}
+    		
+    		model.addAttribute("msg", "카카오 연동이 완료 되었습니다.");
+    		model.addAttribute("targetURL", "/cinepick/userUpdate");
+    		
+    		return "forward";
+    	}
+    	
+    	if(dbMember != null) {  // 카카오 가입 되어있음. 로그인.
     		session.setAttribute("kakao_id", kakao_id);
             session.setAttribute("access_Token", access_Token);
             session.setAttribute("sId", dbMember.getUser_id());
@@ -299,7 +306,8 @@ public class LoginJoinController {
             
 			return "redirect:/";
     	}
-    	
+		
+    	// 카카오정보 없음. 새로 가입.
 		session.setAttribute("kakao_id", (String)userInfo.get("id"));
         session.setAttribute("access_Token", access_Token);
         
@@ -308,7 +316,6 @@ public class LoginJoinController {
 		
 		return "forward";
 	}
-	
 	
 	@GetMapping("kakao/Logout")
 	public String kakaoLogout(HttpSession session) {
