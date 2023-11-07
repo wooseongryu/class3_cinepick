@@ -38,7 +38,7 @@ public class MemberService {
             
 			sb.append("&client_id=82f0e433368d62e7e10aafef708b21f4"); //본인이 발급받은 key
 //			sb.append("&redirect_uri=http://localhost:8081/cinepick/kakao/callback"); // 본인이 설정한 주소
-			sb.append("&redirect_uri=http://c3d2306t1.itwillbs.com/cinepick/kakao/callback"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://c3d2306t1.itwillbs.com/CinepickProject/kakao/callback"); // 본인이 설정한 주소
             
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());

@@ -201,7 +201,7 @@
 									  <button type="submit" class="btn btn-dark">정보변경</button>
 									  <button type="button" class="btn btn-light" onclick="history.back()">돌아가기</button>
 									  <c:if test="${user.kakao_id eq '미연동' }">
-									  	<button type="button" class="btn btn-light" onclick="location.href='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=82f0e433368d62e7e10aafef708b21f4&redirect_uri=http://c3d2306t1.itwillbs.com/cinepick/kakao/callback'">카카오 연동</button>
+									  	<button type="button" class="btn btn-light" onclick="location.href='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=82f0e433368d62e7e10aafef708b21f4&redirect_uri=http://c3d2306t1.itwillbs.com/CinepickProject/kakao/callback'">카카오 연동</button>
 									  </c:if>
 									</div>
 	                            </form>
