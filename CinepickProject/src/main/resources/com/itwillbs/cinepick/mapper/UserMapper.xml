@@ -59,7 +59,22 @@
 	
 	<!-- select -->
 	<select id="selectUser" resultType="User">
-		SELECT * FROM user WHERE user_id = #{user_id}
+		SELECT
+			user_idx
+			, user_name
+			, user_id
+			, user_passwd
+			, user_email
+			, user_phone
+			, hire_date
+			, user_is_admin
+			, mail_auth_status
+			, CASE
+				WHEN kakao_id IS NULL THEN '미연동'
+				ELSE '연동됨'
+			  END AS kakao_id
+		FROM user 
+		WHERE user_id = #{user_id}
 	</select>
 
 	<select id="selectUserList" resultType="User">
@@ -155,7 +170,7 @@
     </select>
 
 	
-	
+	<!-- 유저 예매내역 조회 -->
 	<select id="selectBookList" resultType="Book">
 		SELECT 
 			b.book_id
@@ -187,6 +202,7 @@
 	ORDER BY book_id;
 	</select>
 	
+	<!-- 유저마이페이지 예매내역 조회 -->
 	<select id="selectUserBookList" resultType="Book">
 		SELECT 
 			b.book_date, 
@@ -204,7 +220,7 @@
 		WHERE user_id = #{user_id }
 	</if>
 		ORDER BY book_date DESC
-		LIMIT 3;
+		LIMIT 4
 	</select>
 	
 	
@@ -270,6 +286,7 @@
 		SELECT
 			user_id
 			, user_is_admin
+			, kakao_id
 		FROM user
 		WHERE kakao_id = #{kakao_id}
 	</select>

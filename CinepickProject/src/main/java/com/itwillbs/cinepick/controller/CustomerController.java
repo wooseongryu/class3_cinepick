@@ -55,7 +55,7 @@ public class CustomerController {
 			@RequestParam(defaultValue = "-1") int qnaCateIdx) {
 		System.out.println("CustomerController - qna");
 		
-		int listLimit = 5; // 한 페이지에서 표시할 글 목록 갯수
+		int listLimit = 10; // 한 페이지에서 표시할 글 목록 갯수
 		
 		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행(레코드) 번호
 		
@@ -114,7 +114,7 @@ public class CustomerController {
 		System.out.println("CustomerController - notice");
 		
 		
-		int listLimit = 5; // 한 페이지에서 표시할 글 목록 갯수
+		int listLimit = 10; // 한 페이지에서 표시할 글 목록 갯수
 		
 		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행(레코드) 번호
 		

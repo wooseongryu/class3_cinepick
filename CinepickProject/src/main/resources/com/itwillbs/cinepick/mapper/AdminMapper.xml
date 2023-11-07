@@ -532,10 +532,10 @@
           FROM storeCate
     </select>
     
-    <delete id="deleteStoreCategory">
-    	DELETE FROM storeCate
-    	WHERE storeCate_Idx = #{storeCate_Idx}
-    </delete>
+<!--     <delete id="deleteStoreCategory"> -->
+<!--     	DELETE FROM storeCate -->
+<!--     	WHERE storeCate_Idx = #{storeCate_Idx} -->
+<!--     </delete> -->
     <!-- 스토어 카테고리 끝 -->
     
     
@@ -563,7 +563,7 @@
 			JOIN theater t 
 			  ON s.sche_theater_idx = t.theater_idx
 			JOIN screen sc 
-			  ON t.theater_idx = sc.screen_theater_idx
+ 			  ON s.sche_screen_idx = sc.screen_idx
 	<if test="book_id != null and !book_id.equals('')">
 		WHERE book_id = #{book_id }
 	</if>

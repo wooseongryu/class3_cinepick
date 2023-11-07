@@ -177,15 +177,15 @@
 						                        </div>
 											</td>
 										</tr>
-<!-- 	                                    <tr> -->
-<!-- 											<th>생년월일</th> -->
-<!-- 											<td> -->
-<!-- 												<div class="form-group"> -->
-<!-- 						                            <input type="text" class="form-control form-control-user" name="user_birth" id="user_birth" -->
-<%-- 						                                value="${user.user_birth }" readonly> --%>
-<!-- 						                        </div> -->
-<!-- 											</td> -->
-<!-- 										</tr> -->
+	                                    <tr>
+											<th>카카오 연동 유무</th>
+											<td>
+												<div class="form-group">
+						                            <input type="text" class="form-control form-control-user" name="user_kakao"
+						                                value="${user.kakao_id }" readonly>
+						                        </div>
+											</td>
+										</tr>
 <!-- 	                                    <tr> -->
 <!-- 											<th>성별</th> -->
 <!-- 											<td> -->
@@ -196,9 +196,13 @@
 <!-- 											</td> -->
 <!-- 										</tr> -->
 	                                </table>
+	                                
 									<div class="btn-group" role="group" aria-label="Basic example">
 									  <button type="submit" class="btn btn-dark">정보변경</button>
 									  <button type="button" class="btn btn-light" onclick="history.back()">돌아가기</button>
+									  <c:if test="${user.kakao_id eq '미연동' }">
+									  	<button type="button" class="btn btn-light" onclick="location.href='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=82f0e433368d62e7e10aafef708b21f4&redirect_uri=http://localhost:8081/cinepick/kakao/callback'">카카오 연동</button>
+									  </c:if>
 									</div>
 	                            </form>
                             </div>
