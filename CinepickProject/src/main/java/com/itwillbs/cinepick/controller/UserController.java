@@ -60,8 +60,23 @@ public class UserController {
 	
 	// 유저 마이페이지 메인
 	@GetMapping("user")
-	public String user() {
+	public String user(HttpSession session, Model model) {
 		System.out.println("UserController - user");
+		String sId = (String)session.getAttribute("sId");
+
+		if(sId == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("user_id", sId);
+
+		List<BookVO> bookList = service.selectUserBookList(param);
+
+		model.addAttribute("bookList", bookList);
+		
+		
 		return "mypage/user/user_mypage";
 	}
 	

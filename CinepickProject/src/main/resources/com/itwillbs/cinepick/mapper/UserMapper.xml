@@ -155,7 +155,7 @@
     </select>
 
 	
-	
+	<!-- 유저 예매내역 조회 -->
 	<select id="selectBookList" resultType="Book">
 		SELECT 
 			b.book_id
@@ -187,6 +187,7 @@
 	ORDER BY book_id;
 	</select>
 	
+	<!-- 유저마이페이지 예매내역 조회 -->
 	<select id="selectUserBookList" resultType="Book">
 		SELECT 
 			b.book_date, 
@@ -204,7 +205,7 @@
 		WHERE user_id = #{user_id }
 	</if>
 		ORDER BY book_date DESC
-		LIMIT 3;
+		LIMIT 4
 	</select>
 	
 	
