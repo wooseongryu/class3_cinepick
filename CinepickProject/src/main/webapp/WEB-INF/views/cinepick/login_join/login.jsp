@@ -70,7 +70,7 @@
 						><span>&nbsp; 아이디 저장</span><br>
                             <button type="submit" class="site-btn">&nbsp;로그인&nbsp;</button>
                             <!-- 카카오 로그인 -->
-							<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=82f0e433368d62e7e10aafef708b21f4&redirect_uri=http://localhost:8081/cinepick/kakao/callback">
+							<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=82f0e433368d62e7e10aafef708b21f4&redirect_uri=http://c3d2306t1.itwillbs.com/cinepick/kakao/callback">
 								<img src="${pageContext.request.contextPath }/resources/cinepick/img/kakao_login_large.png" style="height:60px">
 							</a>
                         </form>    
