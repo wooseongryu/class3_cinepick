@@ -156,13 +156,6 @@
     </select>
 
 	
-<!-- 	<select id="selectBookList" resultType="Book"> -->
-<!-- 		SELECT * -->
-<!-- 		FROM book -->
-<!-- 	<if test="book_id != null and !book_id.equals('')"> -->
-<!-- 		WHERE book_id = #{book_id } -->
-<!-- 	</if> -->
-<!-- 	</select> -->
 	
 	<select id="selectBookList" resultType="Book">
 		SELECT 
@@ -194,6 +187,27 @@
 	</if>
 	ORDER BY book_id;
 	</select>
+	
+	<select id="selectUserBookList" resultType="Book">
+		SELECT 
+			b.book_date, 
+			m.movie_nameK, 
+			m.movie_poster
+		FROM book b 
+			JOIN schedule s 
+			ON b.sche_idx = s.sche_idx
+			JOIN movie m 
+			ON s.sche_movie_code = m.movie_code
+	<if test="book_id != null and !book_id.equals('')">
+		WHERE book_id = #{book_id }
+	</if>
+	<if test="user_id != null and !user_id.equals('')">
+		WHERE user_id = #{user_id }
+	</if>
+		ORDER BY book_date DESC
+		LIMIT 3;
+	</select>
+	
 	
 	<!-- update -->
 	<!-- 기존 인증정보 갱신 - UPDATE -->

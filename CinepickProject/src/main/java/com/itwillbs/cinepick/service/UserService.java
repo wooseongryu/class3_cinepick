@@ -168,6 +168,10 @@ public class UserService {
 		System.out.println("UserService - userPasswdChange()");
 		return mapper.updatePasswdChange(user);
 	}
+
+	public List<BookVO> selectUserBookList(Map<String, String> param) {
+		return mapper.selectUserBookList(param);
+	}
 	
 	
 }

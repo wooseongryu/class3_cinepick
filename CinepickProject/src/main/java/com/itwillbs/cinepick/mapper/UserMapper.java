@@ -96,6 +96,9 @@ public interface UserMapper {
 	// 임시 비밀번호 변경
 	int updatePasswdChange(UserVO user);
 
+	// 유저 마이페이지 최신순 예매내역
+	List<BookVO> selectUserBookList(Map<String, String> param);
+
 	
 	
 }
