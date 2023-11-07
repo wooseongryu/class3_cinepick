@@ -563,7 +563,9 @@
                     <!-- wrap 안에 tit-area, info-area, choice-seat-area, pay-area, btn-group -->
                     
                         <div class="tit-area">
-                            <span class="movie-grade small age-all age-12">12세이상관람가</span>
+							<!-- TODO엄성윤 -->
+                            <span class="movie-grade small age-all">${param.movie_rated }</span>
+<!--                             <span class="movie-grade small age-all age-12">12세이상관람가</span> -->
                             <p class="tit">${param.movie_nameK }</p>
 <!--                             <p class="cate">2D</p> -->
                         </div>
@@ -728,8 +730,25 @@
 	let sche_idx = ${param.sche_idx};
 	let seat_list = "${seatList}";
 // 	let seat_list = "B1/B10/B11/F7/A3/A4/";
+	let movie_rated = "${param.movie_rated}";
+	let age = "";
 	
 	$(function() {
+		
+		
+		console.log("맨 처음 스케줄 넘버는?" + sche_idx);
+		
+		let age = movie_rated.substring(0, 2);
+		if (age == '전체') {
+			age = 'all';
+		}
+		console.log("age: " + age);
+		
+		$(".movie-grade").addClass("age-" + age);
+		
+		if (age == 12 || age == 15) {
+// 			alert(movie_rated);
+		}
 		
 		$(".seat-layout .seat-condition").each(function() {
 // 			let seatList = seatList.split('/');
@@ -751,12 +770,11 @@
 		});
 
 		
-		
-		
-		$("#pageNext").mouseover(function() {
-			
-			console.log("스케줄 넘버는? " + sche_idx);
-		});
+// 		$("#pageNext").mouseover(function() {
+// 			debugger;
+// 			console.log("관람가: " + age);
+// 			console.log("스케줄 넘버는? " + sche_idx);
+// 		});
 		
 		$("#pageNext").click(function() {
 			

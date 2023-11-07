@@ -18,6 +18,7 @@ public interface TicketMapper {
 	int insertPay(Map<String, Object> map);
 
 	int insertBook(Map<String, Object> map);
+//	void insertBook(Map<String, Object> map);
 	
 	String selectBookId(Map<String, Object> map);
 

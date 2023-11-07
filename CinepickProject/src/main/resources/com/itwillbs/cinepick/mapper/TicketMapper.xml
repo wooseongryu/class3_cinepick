@@ -48,6 +48,13 @@
 	</insert>
 	
 	<insert id="insertBook" parameterType="map">
+		<selectKey keyProperty="book_id" resultType="String" order="AFTER">
+			SELECT book_id
+			FROM book
+			WHERE user_id = #{user_id}
+			ORDER BY book_id DESC
+			LIMIT 1
+		</selectKey>
 		INSERT
 			INTO book
 			VALUES (
@@ -64,13 +71,7 @@
 			)
 	</insert>
 	
-	<select id="selectBookId" resultType="String">
-		SELECT book_id
-		FROM book
-		WHERE user_id = #{user_id}
-		ORDER BY book_id DESC
-		LIMIT 1;
-	</select>
+
 	
 	
 	<select id="selectBook" resultType="Book">
@@ -114,6 +115,15 @@
 	
 	
 	<!-- 아래 구문들이 필요 없어진 것 같습니다.. -->
+	
+	<select id="selectBookId" resultType="String">
+		SELECT book_id
+		FROM book
+		WHERE user_id = #{user_id}
+		ORDER BY book_id DESC
+		LIMIT 1;
+	</select>
+	
 	
 	<select id="selectScheIdx" parameterType="map" resultType="int">
 		SELECT COUNT(*) FROM seat WHERE sche_idx = #{sche_idx}

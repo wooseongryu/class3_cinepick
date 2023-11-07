@@ -172,13 +172,13 @@
 					</p>
 				</div>
 				<h2 class="tit small mt70">교통안내</h2>
-				<h3 class="tit small">약도</h3>
 				<ul class="dot-list">
 					<li>
 						<span class="font-gblue">도로명주소 : </span>
 						${theater.theater_address}
 					</li>
 				</ul>
+				<h3 class="tit small" style="margin-top:20px;">약도</h3>
 				<div class="location-map-btn mt15"></div>
 				<div class="btn-group left">
 					<div id="map" style="width:500px;height:400px;"></div>

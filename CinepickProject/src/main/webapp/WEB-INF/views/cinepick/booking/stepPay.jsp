@@ -639,81 +639,87 @@ function fn_validateDateYn(param) {
 
 					<div class="radio-group">
 						<span class="bg-chk small">
-							<input type="radio" name="radio_payment" id="rdo_pay_credit" value="credit"> <label for="rdo_pay_credit">신용/체크카드</label>
+							<input type="radio" name="radio_payment" id="rdo_pay_credit" value="credit" checked="checked"> <label for="rdo_pay_credit">신용/체크카드</label>
 						</span>
 						<span class="bg-chk small">
-							<input type="radio" name="radio_payment" id="rdo_pay_mobile" value="mobile"> <label for="rdo_pay_mobile">휴대폰 결제</label>
+							<input type="radio" name="radio_payment" id="rdo_pay_easypay" value="easypay"> <label for="rdo_pay_easypay">간편결제</label>
 						</span>
-						<span class="bg-chk small">
-							<input type="radio" name="radio_payment_easypay" id="rdo_pay_easypay" value="easypay"> <label for="rdo_pay_easypay">간편결제</label>
-						</span>
+<!-- 						<span class="bg-chk small"> -->
+<!-- 							<input type="radio" name="radio_payment_easypay" id="rdo_pay_easypay" value="easypay"> <label for="rdo_pay_easypay">간편결제</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="bg-chk small"> -->
+<!-- 							<input type="radio" name="radio_payment" id="rdo_pay_mobile" value="mobile"> <label for="rdo_pay_mobile">휴대폰 결제</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="bg-chk small"> -->
+<!-- 							<input type="radio" name="radio_payment_easypay" id="rdo_pay_easypay" value="easypay"> <label for="rdo_pay_easypay">간편결제</label> -->
+<!-- 						</span> -->
 						
-							<span class="bg-chk small">
-								<input type="radio" name="radio_payment" id="rdo_pay_settlebank" value="settlebank"> <label for="rdo_pay_settlebank">내통장결제</label>
-							</span>
+<!-- 						<span class="bg-chk small"> -->
+<!-- 							<input type="radio" name="radio_payment" id="rdo_pay_settlebank" value="settlebank"> <label for="rdo_pay_settlebank">내통장결제</label> -->
+<!-- 						</span> -->
 						
 					</div>
 
 
-					<div class="select-payment-card">
-						<label for="card_select">카드사 선택 <!-- 카드사 선택 --></label>
-						<div class="dropdown bootstrap-select v1 small bs3 dropup"><select id="card_select" title="카드사 선택" class="selectpicker v1 small" tabindex="-98"><option class="bs-title-option" value=""></option>
-							<option value="00" selected="">카드선택</option><!-- 전체카드   -->
-							<option value="01">비씨카드</option><!-- 비씨카드   -->
-							<option value="07">국민카드</option><!-- 국민카드   -->
-							<option value="02">신한카드</option><!-- 신한카드   -->
-							<option value="03">삼성카드</option><!-- 삼성카드   -->
-							<option value="05">롯데카드</option><!-- 롯데카드   -->
-							<option value="12">농협카드</option><!-- 농협카드   -->
-							<option value="27">하나카드</option><!-- 하나카드   -->
-							<option value="04">현대카드</option><!-- 현대카드   -->
-							<option value="13">씨티카드</option><!-- 씨티카드   -->
-							<option value="22">제주카드</option><!-- 제주카드   -->
-							<option value="14">우리카드</option><!-- 우리카드   -->
-							<option value="11">수협카드</option><!-- 수협카드   -->
-							<option value="24">전북카드</option><!-- 전북카드   -->
-							<option value="23">광주카드</option><!-- 광주카드   -->
-							<option value="17">신협카드</option><!-- 신협카드   -->
-							<option value="90">카카오뱅크</option><!-- 카카오뱅크 -->
-							<option value="91">케이뱅크</option><!-- 케이뱅크   -->
+<!-- 					<div class="select-payment-card"> -->
+<!-- 						<label for="card_select">카드사 선택 카드사 선택</label> -->
+<!-- 						<div class="dropdown bootstrap-select v1 small bs3 dropup"><select id="card_select" title="카드사 선택" class="selectpicker v1 small" tabindex="-98"><option class="bs-title-option" value=""></option> -->
+<!-- 							<option value="00" selected="">카드선택</option>전체카드   -->
+<!-- 							<option value="01">비씨카드</option>비씨카드   -->
+<!-- 							<option value="07">국민카드</option>국민카드   -->
+<!-- 							<option value="02">신한카드</option>신한카드   -->
+<!-- 							<option value="03">삼성카드</option>삼성카드   -->
+<!-- 							<option value="05">롯데카드</option>롯데카드   -->
+<!-- 							<option value="12">농협카드</option>농협카드   -->
+<!-- 							<option value="27">하나카드</option>하나카드   -->
+<!-- 							<option value="04">현대카드</option>현대카드   -->
+<!-- 							<option value="13">씨티카드</option>씨티카드   -->
+<!-- 							<option value="22">제주카드</option>제주카드   -->
+<!-- 							<option value="14">우리카드</option>우리카드   -->
+<!-- 							<option value="11">수협카드</option>수협카드   -->
+<!-- 							<option value="24">전북카드</option>전북카드   -->
+<!-- 							<option value="23">광주카드</option>광주카드   -->
+<!-- 							<option value="17">신협카드</option>신협카드   -->
+<!-- 							<option value="90">카카오뱅크</option>카카오뱅크 -->
+<!-- 							<option value="91">케이뱅크</option>케이뱅크   -->
 							
-                            <option value="B0">우체국카드</option><!-- 우체국 카드   -->
-                            <option value="B1">토스  카드</option><!-- 토스  카드  -->
-                            <option value="B2">SC제일은행 비씨카드</option><!-- SC제일은행 비씨카드   -->
-                            <option value="S0">SC제일은행 삼성카드</option><!-- SC제일은행 삼성카드   -->
-                            <option value="B3">IBK기업은행 카드</option><!-- IBK기업은행 카드  -->
-						</select><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" data-id="card_select" title="비씨카드"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">비씨카드</div></div> </div><span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" role="combobox" style="max-height: 302px; overflow: hidden; min-width: 166px;"><div class="inner open" role="listbox" aria-expanded="false" tabindex="-1" style="max-height: 300px; overflow-y: auto;"><ul class="dropdown-menu inner "><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">카드선택</span></a></li><li class="selected active"><a role="option" aria-disabled="false" tabindex="0" class="selected active" aria-selected="true"><span class="text">비씨카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">국민카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">신한카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">삼성카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">롯데카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">농협카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">하나카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">현대카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">씨티카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">제주카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">우리카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">수협카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">전북카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">광주카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">신협카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">카카오뱅크</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">케이뱅크</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">우체국카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">토스  카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">SC제일은행 비씨카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">SC제일은행 삼성카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">IBK기업은행 카드</span></a></li></ul></div></div></div>
+<!--                             <option value="B0">우체국카드</option>우체국 카드   -->
+<!--                             <option value="B1">토스  카드</option>토스  카드  -->
+<!--                             <option value="B2">SC제일은행 비씨카드</option>SC제일은행 비씨카드   -->
+<!--                             <option value="S0">SC제일은행 삼성카드</option>SC제일은행 삼성카드   -->
+<!--                             <option value="B3">IBK기업은행 카드</option>IBK기업은행 카드  -->
+<!-- 						</select><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" data-id="card_select" title="비씨카드"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">비씨카드</div></div> </div><span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" role="combobox" style="max-height: 302px; overflow: hidden; min-width: 166px;"><div class="inner open" role="listbox" aria-expanded="false" tabindex="-1" style="max-height: 300px; overflow-y: auto;"><ul class="dropdown-menu inner "><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">카드선택</span></a></li><li class="selected active"><a role="option" aria-disabled="false" tabindex="0" class="selected active" aria-selected="true"><span class="text">비씨카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">국민카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">신한카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">삼성카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">롯데카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">농협카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">하나카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">현대카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">씨티카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">제주카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">우리카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">수협카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">전북카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">광주카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">신협카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">카카오뱅크</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">케이뱅크</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">우체국카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">토스  카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">SC제일은행 비씨카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">SC제일은행 삼성카드</span></a></li><li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span class="text">IBK기업은행 카드</span></a></li></ul></div></div></div> -->
 
-						<input type="radio" name="rdo_card_select" id="app_card" class="ml20" checked="" value="01">
-						<label for="app_card" id="lab_app_card">ISP</label>
+<!-- 						<input type="radio" name="rdo_card_select" id="app_card" class="ml20" checked="" value="01"> -->
+<!-- 						<label for="app_card" id="lab_app_card">ISP</label> -->
 
-						<input type="radio" name="rdo_card_select" id="general_card" class="ml20" value="00">
-						<label for="general_card" id="lab_general_card">일반결제 <!-- 일반결제 --></label>
+<!-- 						<input type="radio" name="rdo_card_select" id="general_card" class="ml20" value="00"> -->
+<!-- 						<label for="general_card" id="lab_general_card">일반결제 일반결제</label> -->
 
-						<input type="radio" name="rdo_card_select" id="sepecial_card" value="02" style="">
-						<label for="sepecial_card" id="lab_sepecial_card" style="">즉시할인</label>
-					</div>
+<!-- 						<input type="radio" name="rdo_card_select" id="sepecial_card" value="02" style=""> -->
+<!-- 						<label for="sepecial_card" id="lab_sepecial_card" style="">즉시할인</label> -->
+<!-- 					</div> -->
 
-					<div class="select-payment-easypay" style="display:none;">
-						<input type="radio" name="radio_payment" id="rdo_pay_tosspay" value="tosspay">
-						<label for="rdo_pay_tosspay">토스페이</label>
+<!-- 					<div class="select-payment-easypay" style="display:none;"> -->
+<!-- 						<input type="radio" name="radio_payment" id="rdo_pay_tosspay" value="tosspay"> -->
+<!-- 						<label for="rdo_pay_tosspay">토스페이</label> -->
 
 						
-							<input type="radio" name="radio_payment" id="rdo_pay_naverpay" value="naverpay">
-							<label for="rdo_pay_naverpay">네이버페이</label>
+<!-- 							<input type="radio" name="radio_payment" id="rdo_pay_naverpay" value="naverpay"> -->
+<!-- 							<label for="rdo_pay_naverpay">네이버페이</label> -->
 						
 
-						<input type="radio" name="radio_payment" id="rdo_pay_kakaopay" value="kakaopay">
-						<label for="rdo_pay_kakaopay">카카오페이</label>
+<!-- 						<input type="radio" name="radio_payment" id="rdo_pay_kakaopay" value="kakaopay"> -->
+<!-- 						<label for="rdo_pay_kakaopay">카카오페이</label> -->
 
-						<input type="radio" name="radio_payment" id="rdo_pay_payco" value="payco">
-						<label for="rdo_pay_payco">페이코</label>
+<!-- 						<input type="radio" name="radio_payment" id="rdo_pay_payco" value="payco"> -->
+<!-- 						<label for="rdo_pay_payco">페이코</label> -->
 
-						<input type="radio" name="radio_payment" id="rdo_pay_kbpay" value="kbpay">
-						<label for="rdo_pay_kbpay">KB PAY</label>
+<!-- 						<input type="radio" name="radio_payment" id="rdo_pay_kbpay" value="kbpay"> -->
+<!-- 						<label for="rdo_pay_kbpay">KB PAY</label> -->
 						
 
-					</div>
+<!-- 					</div> -->
 
 					<!-- 2020.02.07 수단별 알림 문구 추가 -->
 					<div class="select-mobile-info" style="display:none">
@@ -1009,6 +1015,9 @@ function fn_validateDateYn(param) {
 		let allTickets = "";
 		let seats = "";
 		let msg = "";
+		let pg = "danal_tpay.9810030929";
+		let pay_method = "card";
+// 		let pg = "kakaopay.TC0ONETIME";
 		
 		$(function(){
 			
@@ -1021,20 +1030,28 @@ function fn_validateDateYn(param) {
 				
 				console.log(moneySum, sche_idx, moneySum, allTickets);
 			});
-			
 		});
-	
 	
 		function requestPay() {
 // 			alert("requestPay");
+
+			if($("#rdo_pay_easypay").is(':checked')) {
+				pg = "kakaopay.TC0ONETIME";
+				pay_method = "kakaopay";
+			};
+
+
 			IMP.init('imp14320736'); // 객체 초기화. 가맹점 식별코드 전달
 			
 			IMP.request_pay({
-		    	pg: "kakaopay.TC0ONETIME",
+// 		    	pg: "kakaopay.TC0ONETIME",
+// 		    	pg: "kcp.AO09C",
+		    	pg: pg,
 		    	pay_method: "card",
 		    	merchant_uid: "ORD" + getDateTimeString(),   // 주문번호
 		    	name: "${param.movie_nameK}",
-		    	amount: moneySum,                         // 숫자 타입
+// 		    	amount: moneySum,                         // 숫자 타입
+		    	amount: 1000,                         // 숫자 타입
 		    	buyer_email: "gildong@gmail.com",
 		    	buyer_name: "홍길동",
 		    	buyer_tel: "010-4242-4242",
@@ -1064,8 +1081,10 @@ function fn_validateDateYn(param) {
 							seats : seats,
 							user_id : "${sessionScope.sId}"
 						},
-						success: function(result) {
-							location.href = "bookComplete";
+						success: function(bookId) {
+// 							alert(bookId);
+							location.href = "bookComplete?bookId="+bookId;
+// 							bookId + hidden 쓸 수 있나?
 						}
 					});
 					

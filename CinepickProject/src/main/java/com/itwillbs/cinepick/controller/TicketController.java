@@ -173,10 +173,21 @@ public class TicketController {
 
 //		12:50 주석
 //		int insertCount = service.registBookAndPay(map);
-		int insertPayCount = service.registPay(map);
-		int insertBookCount = service.registBook(map);
-		String book_id = service.getBookId(map);
-		System.out.println("예매 번호는 이거 : " + book_id);
+		service.registPay(map);
+		service.registBook(map);
+//		int insertBookCount = service.registBook(map);
+		
+		// 객체를 메서드 파라미터로 전달하는 것은 참조형이니까 주소
+		
+		// map에 담아준다.
+		
+		// 1107 3:19 주석
+//		String book_id = service.getBookId(map);
+		
+		String book_id = (String) map.get("book_id");
+		String bookId = (String) map.get("book_id");
+		
+		System.out.println("예매 번호는 이거 selectKey 사용: " + book_id);
 		
 		// 1107 10:43 주석
 //		int scheExists = service.getScheIdx(map);
@@ -201,18 +212,24 @@ public class TicketController {
 //		model.addAttribute("imp_uid", imp_uid);
 		
 //		model.addAttribute("book_id", book_id);
-		session.setAttribute("book_id", book_id);
+		
+		
+		//1107 3시 주석
+//		session.setAttribute("book_id", book_id);
+		// 그래서 파라미터로 줘야 함. session에 저장되는 속성이 같으니까. 파라미터로 처리하면 request객체가 달라서.
 		
 		// 같은 아이디로 했을 때 오류 나는 것 수정해야 되나
 		
 		
-		return "";
+		return bookId;
 	}
 	
 	@GetMapping("bookComplete")
-	public String bookComplete(HttpSession session, Model model) {
+	public String bookComplete(HttpSession session, Model model, @RequestParam("bookId") String bookId) {
 		
-		String bookId = (String) session.getAttribute("book_id");
+//		String bookId = (String) session.getAttribute("book_id");
+		System.out.println("북 아이디 나옴?" +  bookId);
+//		String bookId = (String) session.getAttribute("book_id");
 		if(bookId != null) {
 			System.out.println("예매번호 전해지면" + bookId);
 			
