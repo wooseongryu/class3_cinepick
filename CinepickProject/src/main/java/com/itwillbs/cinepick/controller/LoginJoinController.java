@@ -1,7 +1,7 @@
 package com.itwillbs.cinepick.controller;
 
 
-import java.util.UUID;
+import java.util.HashMap;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwillbs.cinepick.service.MemberService;
 import com.itwillbs.cinepick.service.SendMailService;
 import com.itwillbs.cinepick.service.UserService;
 import com.itwillbs.cinepick.vo.AuthInfoVO;
@@ -243,6 +245,22 @@ public class LoginJoinController {
 		model.addAttribute("msg", "임시 비밀번호가 발송 되었습니다.");
 		model.addAttribute("targetURL", "login");
 		return "forward";
+	}
+	
+	@Autowired
+	private MemberService ms;
+
+	@RequestMapping("kakao/callback")
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+		System.out.println("#########" + code);
+		String access_Token = ms.getAccessToken(code);
+		
+		HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
+		System.out.println("###access_Token#### : " + access_Token);
+		System.out.println("###nickname#### : " + userInfo.get("nickname"));
+		System.out.println("###email#### : " + userInfo.get("email"));
+		
+		return "";
 	}
 	
 }

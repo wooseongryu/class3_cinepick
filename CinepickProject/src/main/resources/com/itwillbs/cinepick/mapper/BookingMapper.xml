@@ -9,11 +9,11 @@
 		SELECT
 			CONCAT(c.city_name, "(", count(DISTINCT t.theater_idx) , ")") AS city_name
 			, c.city_idx
-		FROM
-			schedule s JOIN theater t 
-			ON s.sche_theater_idx = t.theater_idx
-			JOIN city c 
-			ON t.city_idx = c.city_idx
+		FROM schedule s 
+		JOIN theater t 
+		  ON s.sche_theater_idx = t.theater_idx
+		JOIN city c 
+		  ON t.city_idx = c.city_idx
 		WHERE
 			s.sche_movie_code = #{movie_code}
 			AND CONCAT(s.sche_date, " ", s.sche_end_time) > now()
