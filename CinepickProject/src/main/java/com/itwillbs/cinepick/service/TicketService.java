@@ -55,6 +55,15 @@ public class TicketService {
 		return mapper.updateSeat(map);
 	}
 
+	public String selectSeatList(int sche_idx) {
+		return mapper.selectSeatList(sche_idx);
+	}
+
+
+	public int insertUpdateSeat(Map<String, Object> map) {
+		return mapper.insertUpdateSeat(map);
+	}
+
 	
 	
 //	public int registBookAndPay(Map<String, Object> map) {

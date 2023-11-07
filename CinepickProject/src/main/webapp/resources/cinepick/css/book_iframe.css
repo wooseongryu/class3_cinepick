@@ -1103,7 +1103,6 @@ a.button.disabled {
     background-color: #e0e0e0!important;
     border-color: #e0e0e0!important;
 }
-
 .seat-select-section .seat-result .wrap .choice-seat-area .legend .list .seat-condition.finish {
     background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-finish-s.png)!important;
 }
@@ -1208,3 +1207,4 @@ p {
     font-family: 'IBM Plex Sans KR';
     font-weight: 400;
 }
+

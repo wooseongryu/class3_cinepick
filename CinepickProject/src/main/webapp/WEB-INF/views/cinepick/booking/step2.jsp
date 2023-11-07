@@ -9,7 +9,7 @@
     <link href="${pageContext.request.contextPath }/resources/cinepick/css/styles.css" rel="stylesheet">
     
 <!--     개인 css 엄성윤 -->
-    <link href="${pageContext.request.contextPath }/resources/cinepick/css/seat.css" rel="stylesheet">
+<%--     <link href="${pageContext.request.contextPath }/resources/cinepick/css/seat.css" rel="stylesheet"> --%>
     <link href="${pageContext.request.contextPath }/resources/cinepick/css/book.css" rel="stylesheet">
     
     <!-- 좌석 바깥 부분 css -->
@@ -151,7 +151,8 @@
 									<div class="row">
 
 										<button type="button" class="btn-seat-row" title="A 행" style="position:absolute; left:226px; top:52px;">A</button>
-										<button type="button" title="A1 (스탠다드/일반)" class="jq-tooltip seat-condition standard common" style="position:absolute; left:271px; top:50px; width:20px;" seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE" seatuniqno="00100101" rownm="A" seatno="1" seatchoidircval="1" seatchoigrpno="1" seatchoigrpnm="A1" seatchoirowcnt="11" seatchoigrpseq="1" seattocnt="1" nextord="N">	<span class="num">1</span>
+										<button type="button" title="A1 (스탠다드/일반)" class="jq-tooltip seat-condition standard common" style="position:absolute; left:271px; top:50px; width:20px;" seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE" seatuniqno="00100101" rownm="A" seatno="1" seatchoidircval="1" seatchoigrpno="1" seatchoigrpnm="A1" seatchoirowcnt="11" seatchoigrpseq="1" seattocnt="1" nextord="N">
+											<span class="num">1</span>
 											<span class="kind">스탠다드</span>
 											<span class="condition">판매가능</span>
 											<span class="rank">일반</span>
@@ -725,13 +726,14 @@
 	let ticket = "";
 	let allTickets = "";
 	let sche_idx = ${param.sche_idx};
-	let seat_list = "B1/B10/B11/F7/A3/A4/";
+	let seat_list = "${seatList}";
+// 	let seat_list = "B1/B10/B11/F7/A3/A4/";
 	
 	$(function() {
 		
 		$(".seat-layout .seat-condition").each(function() {
 // 			let seatList = seatList.split('/');
-// 			console.log("선택완료된 좌석: " + seatList);
+			console.log("선택완료된 좌석: " + seat_list);
 
 			let seatAlpha = $(this).attr("rownm");
             let seatNumber = $(this).attr("seatno");
@@ -739,7 +741,13 @@
 			
 			if(seat_list.indexOf(eachSeat) == -1) return;
 
+			$(this).removeClass("common");
+			// 아래 판별 안 해주고 냅다 remove 해도 되는지?
+			$(this).removeClass("view");
+			$(this).removeClass("impossible");
 			$(this).addClass("finish");
+			
+			$(".seat-condition.finish .num").css("display", "none");
 		});
 
 		
