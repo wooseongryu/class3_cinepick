@@ -11,7 +11,8 @@
 				, SUBSTRING_INDEX(movie_poster,'|',1) movie_poster
 				, IFNULL(movie_rank,11) movie_rank
 		FROM movie m LEFT JOIN movie_boxoffice mb 
-		ON m.movie_code = mb.movie_code 
+		ON m.movie_code = mb.movie_code
+		WHERE movie_status = '개봉'
 		ORDER BY movie_rank
 	</select>
 	

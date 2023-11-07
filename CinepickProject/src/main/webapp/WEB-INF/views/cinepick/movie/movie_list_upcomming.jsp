@@ -196,7 +196,7 @@
 			let now = new Date();
 			console.log(now);
 			let distance = dday - now;
-			let d = Math.floor(distance / (1000 * 60 * 60 * 24));
+			let d = Math.floor(distance / (1000 * 60 * 60 * 24)) + 1;
 			$(this).html('D-' + d);
 			
 		});

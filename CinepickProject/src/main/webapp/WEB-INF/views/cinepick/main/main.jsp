@@ -79,10 +79,11 @@
 
 	<div class="slideWrap" id="slider">
 		<ul class="slider" id="slide">
-			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/mv1.jpg"></li>
-			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/mv2.jpg"></li>
-			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/mv3.jpg"></li>
-			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/mv4.jpg"></li>
+			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/main_slider1.jpg"></li>
+			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/main_slider4.jpg"></li>
+			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/main_slider5.jpg"></li>
+			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/main_slider6.jpg"></li>
+			<li><img alt="" src="${pageContext.request.contextPath }/resources/cinepick/img/main_slider/main_slider7.jpg"></li>
 		</ul>
 	</div>
 	

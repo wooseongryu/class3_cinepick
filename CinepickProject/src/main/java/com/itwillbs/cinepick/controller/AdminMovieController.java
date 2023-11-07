@@ -150,6 +150,7 @@ public class AdminMovieController {
 	//======= 영화개봉상태 업데이트 =======		
 	@GetMapping("MovieStatusUpdate")
 	public String MovieStatusUpdate(Model model, HttpSession session) {
+		System.out.println("MovieStatusUpdate - 개봉상태 업데이트");
 		
 		String sId = (String)session.getAttribute("sId");
 		String isAdmin = (String)session.getAttribute("isAdmin");
@@ -165,7 +166,7 @@ public class AdminMovieController {
 			model.addAttribute("targetURL", "adminMovieList");
 			return "forward";
 		} else {
-			model.addAttribute("msg", "개봉상태 업데이트를 실패하였습니다.\n 변경할 내역이 없습니다.");
+			model.addAttribute("msg", "개봉상태 변경할 내역이 없습니다.");
 			return "fail_back";
 		}
 		

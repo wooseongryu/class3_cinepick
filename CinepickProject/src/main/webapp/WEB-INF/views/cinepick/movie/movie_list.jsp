@@ -93,7 +93,7 @@
 		
 // 		$("select[name = 'MvListType']").change(function() {
 		$("#MvListType").change(function() {
-			debugger;
+// 			debugger;
 			let MvListType = $(this).val();
 			console.log(MvListType);
 

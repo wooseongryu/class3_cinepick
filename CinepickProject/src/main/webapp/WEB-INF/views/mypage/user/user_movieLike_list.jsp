@@ -111,6 +111,7 @@
 					return;
 				} 
 				let movie_code = $(this).closest("div").data("movie_code")+"";
+				let movie_name = $(this).closest("div").data("movie_name")+"";
 				console.log(movie_code);
 				console.log(user_id);
 				
@@ -123,9 +124,9 @@
 					},
 					dataType: "json",
 					success: function (result) {
-						alert(result);
+// 						alert(result);
 						if(result > 0) {
-							alert("< " + movie_code + " > 찜이 해제되었습니다.");
+							alert("< " + movie_name + " > 찜이 해제되었습니다.");
 							location.reload();
 							
 						} else{
@@ -250,9 +251,12 @@
                     <div class="card shadow mb-4">
                     	<div class="likeMovieListAll"> 
 							<ul class="likeMovieList">
+								<c:if test="${empty likeList }">
+									<h3> 찜한 영화가 없습니다.</h3>
+								</c:if>
 								<c:forEach var="like" items="${likeList }">
 									<li class="likeMovieListLi">
-										<div class="likeMovie" data-movie_code="${like.movie_code }">
+										<div class="likeMovie" data-movie_code="${like.movie_code }" data-movie_name="${like.movie_nameK }">
 											<a class="movieClick" href="movieDetail?movie_code=${like.movie_code }">
 												<img src="${like.movie_poster }"><br>
 												<strong>${like.movie_nameK }</strong><br>
