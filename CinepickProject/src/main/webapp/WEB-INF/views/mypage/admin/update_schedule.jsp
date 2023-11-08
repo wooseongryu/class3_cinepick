@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>씨네픽 - webpage</title>
+    <title>CINEPICK</title>
 
 	<!-- 부트 스트랩 datepicker용 최신 jquery 링크 -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -187,7 +187,7 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">상영스케쥴 수정</h1>
+                                <h1 class="h4 text-gray-900 mb-4">상영스케줄 수정</h1>
                             </div>
                             <form id="test" action="adminScheduleUpdatePro" class="user" method="post" enctype="multipart/form-data">
                             	<input type="hidden" name="sche_idx" id="sche_idx" value="${schedule.sche_idx }">

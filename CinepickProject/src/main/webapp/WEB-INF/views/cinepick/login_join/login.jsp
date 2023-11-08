@@ -70,8 +70,9 @@
 						><span>&nbsp; 아이디 저장</span><br>
                             <button type="submit" class="site-btn">&nbsp;로그인&nbsp;</button>
                             <!-- 카카오 로그인 -->
-							<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=82f0e433368d62e7e10aafef708b21f4&redirect_uri=http://c3d2306t1.itwillbs.com/cinepick/kakao/callback">
-								<img src="${pageContext.request.contextPath }/resources/cinepick/img/kakao_login_large.png" style="height:60px">
+                            &nbsp;&nbsp;
+							<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=82f0e433368d62e7e10aafef708b21f4&redirect_uri=http://c3d2306t1.itwillbs.com/cinepick/kakao/callback" style="margin-top:50px">
+								<img src="${pageContext.request.contextPath }/resources/cinepick/img/kakao_login_large.png" style="height:48px">
 							</a>
                         </form>    
                     </div>
@@ -81,15 +82,16 @@
                     <div class="login__register">
                         <h4>아직 회원이 아니신가요?</h4>
                         <br>
-                        <a href="join" class="primary-btn">회원가입하기</a>
+                        <a href="join" class="primary-btn">회원가입</a>
                     </div>
                     <br>
                     <br>
                  	<div class="login__register">
                         <h4>아이디/비밀번호를 잊으셨나요?</h4>
                         <br>
-                        <a href="idSearch" class="primary-btn">&nbsp;&nbsp;아이디찾기&nbsp;</a>
-                        <a href="passwdSearch" class="primary-btn" >&nbsp;&nbsp;비밀번호재발급&nbsp;</a>
+                        <a href="idSearch" class="primary-btn">&nbsp;&nbsp;아이디 찾기&nbsp;</a>
+                        &nbsp;&nbsp;
+                        <a href="passwdSearch" class="primary-btn" >&nbsp;&nbsp;비밀번호 재발급&nbsp;</a>
                     </div>
                     
                 </div>

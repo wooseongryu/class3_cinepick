@@ -150,4 +150,85 @@
 			]]>
 	</select>
 	<!-- step1 끝 -->
+	
+	<!-- step2 시작 -->
+	
+	<insert id="insertPay" parameterType="map">
+		INSERT
+			INTO pay
+			VALUES (
+				#{merchant_uid}
+				, #{moneySum}
+				, #{pay_date}
+			)
+	</insert>
+	
+	<insert id="insertBook" parameterType="map">
+		<selectKey keyProperty="book_id" resultType="String" order="AFTER">
+			SELECT book_id
+			FROM book
+			WHERE user_id = #{user_id}
+			ORDER BY book_id DESC
+			LIMIT 1
+		</selectKey>
+		INSERT
+			INTO book
+			VALUES (
+				CASE WHEN (SELECT MAX(idx) FROM book b) IS NULL THEN 1
+			    ELSE ((SELECT MAX(idx) FROM book b) + 1) END
+<!-- 				, (SELECT CONCAT('R', LPAD(COALESCE(MAX(SUBSTRING(book_id, 2) + 1), 1), 5, '0')) FROM book b) -->
+				, concat((SELECT CONCAT('R', LPAD(COALESCE(MAX(SUBSTRING(book_id, 2, 5) + 1), 1), 5, '0')) FROM book b), '-', FLOOR(10000 + RAND() * 90000))
+				, #{sche_idx}
+				, #{seats}
+				, #{allTickets}
+				, #{user_id}
+				, #{moneySum}
+				, #{merchant_uid}
+				, now()
+			)
+	</insert>
+	
+<!-- 예매 완료 페이지에서 티켓 보여주기 -->
+	<select id="selectBook" resultType="Book">
+		SELECT
+			b.book_id
+			, m.movie_nameK
+			, t.theater_name
+			, s.screen_name
+			, sc.sche_date
+			, TIME_FORMAT(sc.sche_start_time, '%H:%i') AS sche_start_time
+<!-- 			, b.ticket_type -->
+<!-- 			, b.seat_list -->
+			, replace(b.ticket_type, '/', ' ') as ticket_type
+			, replace(b.seat_list, '/', ' ') as seat_list
+			, b.total_cost
+			, m.movie_poster
+		FROM book b
+		JOIN schedule sc
+		ON b.sche_idx = sc.sche_idx
+		JOIN theater t
+		ON sc.sche_theater_idx = t.theater_idx
+		JOIN screen s
+		ON s.screen_idx = sc.sche_screen_idx
+		JOIN movie m
+		ON sc.sche_movie_code = m.movie_code
+		WHERE b.book_id = #{book_id};
+	</select>
+
+	<!-- 결제 성공시 TABLE seat에 sche_idx가 있으면 좌석 insert, 없으면 update -->
+	<insert id="insertUpdateSeat" parameterType="map">
+		INSERT INTO seat
+			VALUES (#{sche_idx}, #{seats})
+			ON duplicate KEY
+		UPDATE seat_list = concat(seat_list, #{seats})
+	</insert>
+	
+	<!-- step2에서 스케줄 번호로 예매완료된 좌석 가져오기 -->
+	<select id="selectSeatList" parameterType="int">
+		SELECT seat_list
+			FROM seat
+			WHERE sche_idx = #{sche_idx};
+	</select>
+	
+	
 </mapper>

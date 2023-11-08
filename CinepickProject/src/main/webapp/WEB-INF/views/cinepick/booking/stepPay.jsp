@@ -826,7 +826,11 @@ function fn_validateDateYn(param) {
 						<p class="date">
 							<span id="playDe">${param.sche_date }</span>
 <!-- 							<em id="dowNm">(월)</em>  -->
-							<span class="time" id="playTime" style="color: #c4c4c4"><i class="iconset ico-clock-white"></i>${param.sche_start_time }~${param.sche_end_time }</span>
+							<br>
+							<span class="time" id="playTime" style="color: #c4c4c4">
+<!-- 								<i class="iconset ico-clock-white"></i> -->
+								${param.sche_start_time } ~ ${param.sche_end_time }
+							</span>
 						</p>
 <!-- 						<span class="movie-grade small age-all" id="admisClassNm">전체관람가</span> -->
 
@@ -837,7 +841,11 @@ function fn_validateDateYn(param) {
 					</div>
 					<div class="price-process">
 <!-- 						<div class="box"><div class="data"><span class="tit">청소년 <em>1</em></span><span class="price">11,000</span></div> -->
-						<div class="box"><div class="data"><span class="tit">${param.allTickets } </div>
+						<div class="box">
+							<div class="data">
+								<span class="tit"></span>
+<%-- 								<span class="tit">${param.allTickets }</span> --%>
+							</div>
 							<!--
 							<div class="data">
 								<span class="tit">일반 <em>1</em></span>
@@ -1019,8 +1027,15 @@ function fn_validateDateYn(param) {
 		let pg = "danal_tpay.9810030929";
 		let pay_method = "card";
 // 		let pg = "kakaopay.TC0ONETIME";
+		let age = "${param.age}";
+		let ticketType = "${param.allTickets}";
 		
 		$(function(){
+			
+			ticketType = ticketType.slice(0, -1);
+			$(".price-process .data .tit").append(ticketType);
+			
+			$(".movie-grade").addClass("age-" + age);
 			
 			$("#btn_booking_pay").mouseover(function() {
 				sche_idx = "${param.sche_idx}";

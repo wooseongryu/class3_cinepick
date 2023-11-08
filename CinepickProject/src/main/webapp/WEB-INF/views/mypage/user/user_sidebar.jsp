@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>씨네픽 - webpage</title>
+    <title>CINEPICK</title>
 	
 	<!-- 아이콘 불러오기-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">

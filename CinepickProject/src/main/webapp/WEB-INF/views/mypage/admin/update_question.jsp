@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>씨네픽 - webpage</title>
+    <title>CINEPICK</title>
 
 	<!-- 부트 스트랩 datepicker용 최신 jquery 링크 -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

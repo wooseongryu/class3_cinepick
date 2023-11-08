@@ -29,8 +29,8 @@
     </div>
     
     <!-- 연습 -->
-    파람 ${param.sche_idx }
-    관람가 ${param.movie_rated}
+<%--     파람 ${param.sche_idx } --%>
+<%--     관람가 ${param.movie_rated} --%>
 <%--     # ${#sche_idx } --%>
     
 
@@ -670,7 +670,7 @@
                         <!-- btn-group 끝 -->
 <!--                         <button id="reserve" onclick="location.href='payment-successcomplete'">예매내역test</button> -->
 <!--                         <button id="reserve">예매내역test</button> -->
-                        <a id="reserve">예매 test</a>
+<!--                         <a id="reserve">예매 test</a> -->
                         
 <!--                         <button id="reserve" onclick="location.href='payment-successcomplete'">예매내역test</button> -->
                     </div>
@@ -685,19 +685,15 @@
 	<!-- inner-wrap 끝 -->
 	
 	<!-- Test 추가 -->
-	<div id="output"></div>
-	<div id="output2">하하하</div>
-	<div>
-		<input type="button" value="headerfooterㅅㄷㄴㅅ" class="test" id="payTest" onclick="location.href='headTest'">
-		<input type="button" value="결제페이지로" class="test" id="payTest" onclick="location.href='stepPay'">
-		<input type="button" value="예매완료페이지로" class="test" id="complete" onclick="location.href='paySuccess'">
-		<input type="button" value="결제취소" class="test" id="complete" onclick="location.href='payCancle'">
-	</div>
-	
-	
-	
-	<input type="button" value="hidden" id="hidden">
-	
+<!-- 	<div id="output"></div> -->
+<!-- 	<div id="output2">하하하</div> -->
+<!-- 	<div> -->
+<!-- 		<input type="button" value="headerfooterㅅㄷㄴㅅ" class="test" id="payTest" onclick="location.href='headTest'"> -->
+<!-- 		<input type="button" value="결제페이지로" class="test" id="payTest" onclick="location.href='stepPay'"> -->
+<!-- 		<input type="button" value="예매완료페이지로" class="test" id="complete" onclick="location.href='paySuccess'"> -->
+<!-- 		<input type="button" value="결제취소" class="test" id="complete" onclick="location.href='payCancle'"> -->
+<!-- 	</div> -->
+<!-- 	<input type="button" value="hidden" id="hidden"> -->
 	
 	
 <!-- 	<form action="bookingStepThree" method="post"> -->
@@ -777,7 +773,7 @@
 		
 		console.log("맨 처음 스케줄 넘버는?" + sche_idx);
 		
-		let age = movie_rated.substring(0, 2);
+		age = movie_rated.substring(0, 2);
 		if (age == '전체') {
 			age = 'all';
 		}
@@ -894,6 +890,7 @@
 						+ '<input type="hidden" name="screen_name" value="' + "${param.screen_name}" + '">'
 						+ '<input type="hidden" name="movie_poster" value="' + "${param.movie_poster}" + '">'
 						+ '<input type="hidden" name="movie_rated" value="' + "${param.movie_rated}" + '">'
+						+ '<input type="hidden" name="age" value="' + age + '">'
 					+'</form>';
 					
 				$("#formHere").children().remove();
