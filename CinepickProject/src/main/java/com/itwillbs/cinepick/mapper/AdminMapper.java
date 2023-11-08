@@ -34,6 +34,8 @@ public interface AdminMapper {
 	List<MovieVO> selectRecentRegistMovie();
 
 	int selectTodayScreen();
+
+	int selectTodayBookCount();
 	
 	/*====================================================================
 	 * 관리자 회원 정보 관리 페이지
@@ -214,6 +216,5 @@ public interface AdminMapper {
 	
 	// 예매내역 조회
 	List<BookVO> selectBookList(String string);
-
 	
 }

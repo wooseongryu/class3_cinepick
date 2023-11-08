@@ -9,7 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/theater_css/menu.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/theater_css/fav.css"/>
-    
+    <title>CINEPICK</title>
 <%--     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer_sy.css" type="text/css"> --%>
     <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
 </head>

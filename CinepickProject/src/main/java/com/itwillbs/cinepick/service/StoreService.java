@@ -36,19 +36,18 @@ public class StoreService {
 	}
 
 	// 패키지 스토어 상세 목록 
-	public List<StoreVO> getStoreDetailList(int storeCate_Idx) {
-		return mapper.selectStoreDetailList(storeCate_Idx);
+	public List<StoreVO> getStoreDetailList(int startRow, int listLimit, int storeCate_Idx) {
+		return mapper.selectStoreDetailList(startRow, listLimit, storeCate_Idx);
 	}
 
+
 	//	패키지 스토어 목록 수 조회
-//	public int getPackageStoreListCount(int storeCate_Idx) {
-//		return mapper.selectPackageStoreListCount(storeCate_Idx);
-//	}
+	public int getStoreListCount(int storeCate_Idx) {
+		return mapper.selectStoreListCount(storeCate_Idx);
+	}
+
+
 	
-	// 영화 이벤트 목록 수 조회
-//	public int getMovieEventListCount(int eventCate_Idx) {
-//		return mapper.selectMovieEventListCount(eventCate_Idx);
-//	}
 	
 
 }

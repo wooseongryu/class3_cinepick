@@ -161,7 +161,7 @@
 		 										+ time.screen_name 
 		 										+ "' data-screen_idx='" 
 		 										+ time.sche_screen_idx
-		 										+ "' onclick='final(this)'>" + hour + " | " + "27석" + "</h6></div>"
+		 										+ "' onclick='final(this)'>" + hour + " | " + time.remainSeatCount + "석" + "</h6></div>"
 			 								);
 		 						}
 							});

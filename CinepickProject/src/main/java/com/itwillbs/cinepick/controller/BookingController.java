@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -166,9 +168,17 @@ public class BookingController {
 	
 	// 좌석 선택 페이지
 	@PostMapping("bookingStepTwo")
-	public String bookingStepTwo(int sche_idx, Model model) {
+	public String bookingStepTwo(int sche_idx, Model model, HttpSession session) {
 //	public String bookingStepTwo() {
 		System.out.println("BookingController - bookingStepTwo()");
+		
+		String sId = (String)session.getAttribute("sId");
+		
+		if(sId == null) {
+			model.addAttribute("msg", "로그인 후 예매하실 수 있습니다.");
+			model.addAttribute("targetURL", "login");
+			return "forward";
+		}
 		
 		//엄성윤 추가
 		model.addAttribute("sche_idx", sche_idx);

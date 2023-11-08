@@ -10,10 +10,10 @@
 			CONCAT(c.city_name, "(", count(DISTINCT t.theater_idx) , ")") AS city_name
 			, c.city_idx
 		FROM schedule s 
-		JOIN theater t 
-		  ON s.sche_theater_idx = t.theater_idx
-		JOIN city c 
-		  ON t.city_idx = c.city_idx
+			JOIN theater t 
+			  ON s.sche_theater_idx = t.theater_idx
+			JOIN city c 
+			  ON t.city_idx = c.city_idx
 		WHERE
 			s.sche_movie_code = #{movie_code}
 			AND CONCAT(s.sche_date, " ", s.sche_end_time) > now()
@@ -29,11 +29,11 @@
 		SELECT
 			t.theater_name
 			, t.theater_idx
-		FROM
-			schedule s JOIN theater t 
-			ON s.sche_theater_idx = t.theater_idx
+		FROM schedule s 
+			JOIN theater t 
+			  ON s.sche_theater_idx = t.theater_idx
 			JOIN city c 
-			ON t.city_idx = c.city_idx 
+			  ON t.city_idx = c.city_idx 
 		WHERE
 			s.sche_movie_code = #{movie_code}
 			AND c.city_idx = #{city_idx}
@@ -62,22 +62,30 @@
 	
 	<select id="selectValidTime" resultType="ScheduleVO">
 		SELECT 
-			s.sche_idx 
-			, s.sche_start_time
+			s1.sche_idx 
+			, s1.sche_start_time
 			, sc.screen_name
-			, s.sche_screen_idx
-		FROM schedule s JOIN screen sc
-			ON s.sche_screen_idx = sc.screen_idx
-		WHERE s.sche_movie_code = #{movie_code}
-				AND s.sche_theater_idx = #{theater_idx}
-				AND s.sche_date = #{date}
-				AND CONCAT(s.sche_date, " ", s.sche_end_time) > now()
-				<![CDATA[
-				AND CONCAT(s.sche_date, " ", s.sche_end_time) <= date_add(now(),INTERVAL 1 MONTH)
-				]]>
+			, s1.sche_screen_idx
+			, IFNULL((SELECT sc.screen_total_seat - sum(CHAR_LENGTH(seat_list) - CHAR_LENGTH(REPLACE(seat_list, '/', ''))) 
+					FROM book b 
+						JOIN schedule s2
+						  ON b.sche_idx = s2.sche_idx
+						JOIN screen sc
+						  ON s2.sche_screen_idx = sc.screen_idx
+					WHERE b.sche_idx = s1.sche_idx), sc.screen_total_seat) AS remainSeatCount
+		FROM schedule s1 
+			JOIN screen sc
+			  ON s1.sche_screen_idx = sc.screen_idx
+		WHERE s1.sche_movie_code = #{movie_code}
+			AND s1.sche_theater_idx = #{theater_idx}
+			AND s1.sche_date = #{date}
+			AND CONCAT(s1.sche_date, " ", s1.sche_end_time) > now()
+			<![CDATA[
+			AND CONCAT(s1.sche_date, " ", s1.sche_end_time) <= date_add(now(),INTERVAL 1 MONTH)
+			]]>
 		ORDER BY 
-			s.sche_screen_idx
-			, s.sche_start_time
+			s1.sche_screen_idx
+			, s1.sche_start_time;
 	</select>
 	
 	<select id="selectMovie" resultType="Movie">
@@ -92,8 +100,9 @@
 		SELECT DISTINCT movie_nameK
 				, movie_code
 				, movie_rated
-		FROM movie m JOIN schedule s 
-		ON s.sche_movie_code = m.movie_code
+		FROM movie m 
+			JOIN schedule s 
+			  ON s.sche_movie_code = m.movie_code
 		WHERE 
 			CONCAT(s.sche_date, " ", s.sche_end_time) >= now()
 			<![CDATA[
@@ -113,12 +122,13 @@
 			, m.movie_poster 
 			, t.theater_name 
 			, sc.screen_name 
-		FROM schedule s JOIN movie m 
-		ON s.sche_movie_code = m.movie_code 
-		JOIN theater t
-		ON s.sche_theater_idx  = t.theater_idx 
-		JOIN screen sc
-		ON s.sche_screen_idx = sc.screen_idx 
+		FROM schedule s 
+			JOIN movie m 
+			  ON s.sche_movie_code = m.movie_code 
+			JOIN theater t
+			  ON s.sche_theater_idx  = t.theater_idx 
+			JOIN screen sc
+			  ON s.sche_screen_idx = sc.screen_idx 
 		WHERE
 			sche_movie_code = #{sche_movie_code}
 			AND sche_theater_idx = #{sche_theater_idx}
@@ -129,8 +139,9 @@
 	
 	<select id="checkValidCode" resultType="int">
 		SELECT COUNT(DISTINCT movie_code)
-		FROM movie m JOIN schedule s 
-		ON s.sche_movie_code = m.movie_code
+		FROM movie m 
+			JOIN schedule s 
+			  ON s.sche_movie_code = m.movie_code
 		WHERE 
 			m.movie_code = #{movie_code}
 			AND CONCAT(s.sche_date, " ", s.sche_end_time) >= now()

@@ -99,9 +99,9 @@ a {
 	                        	스토어 <span class="arrow_carrot-down"></span>
 	                        </a>
 							 <ul class="dropdown">
-	                             <li><a href="packageStoreList">패키지</a></li>
-	                             <li><a href="snackStoreList">스낵</a></li>
-	                             <li><a href="ticketStoreList">관람권/포토카드</a></li>
+	                             <li><a href="storeList?storeCate_Idx=1">패키지</a></li>
+	                             <li><a href="storeList?storeCate_Idx=2">스낵</a></li>
+	                             <li><a href="storeList?storeCate_Idx=3">관람권/포토카드</a></li>
 							</ul>
 						</li>	
                         <li>

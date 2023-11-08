@@ -52,6 +52,12 @@ public class AdminService {
 		return mapper.selectTodayScreen();
 	}
 	
+	// 관리자 금일 예매 현황 조회
+	public int selectTodayBookCount() {
+		System.out.println("AdminService - selectTodayBookCount()");
+		return mapper.selectTodayBookCount();
+	}
+	
 	/*====================================================================
 	 * 관리자 회원 정보 관리 페이지
 	 * ===================================================================
@@ -391,7 +397,6 @@ public class AdminService {
 		System.out.println("AdminService - deleteStoreCategory()");
 		return mapper.deleteStoreCategory(storeCate_idx);
 	}
-
 	
 	//---------------------------------------------------------
 	
