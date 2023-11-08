@@ -87,7 +87,7 @@
 										<input type="text" class="form-control form-control-user" value="${movie.movie_openDt }" readonly name="movie_openDt">
 	                                </div>
                                     <div class="col-sm-3 mb-2 mb-sm-0">
-										<label for="movie_status">제작상태</label>
+										<label for="movie_status">개봉상태</label>
                                         <input type="text" class="form-control form-control-user" value="${movie.movie_status }" readonly name="movie_status">
                                     </div>
 	                            </div>    
