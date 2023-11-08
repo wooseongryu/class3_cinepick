@@ -83,8 +83,10 @@
 			, s.screen_name
 			, sc.sche_date
 			, TIME_FORMAT(sc.sche_start_time, '%H:%i') AS sche_start_time
-			, b.ticket_type
-			, b.seat_list
+<!-- 			, b.ticket_type -->
+<!-- 			, b.seat_list -->
+			, replace(b.ticket_type, '/', ' ') as ticket_type
+			, replace(b.seat_list, '/', ' ') as seat_list
 			, b.total_cost
 			, m.movie_poster
 		FROM book b
