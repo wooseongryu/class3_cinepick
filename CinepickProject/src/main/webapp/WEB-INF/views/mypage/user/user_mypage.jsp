@@ -113,70 +113,68 @@
                     </div>
 
                     <!-- Content Row -->
-                    <div class="row">
+<!--                     <div class="row"> -->
 
-                        <!-- 나의포인트 -->
-                        <div class="col-xl-3 col-md-6 mb-2">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                회원님의 포인트가 </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">40,000 남으셨습니다</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!--                         나의포인트 -->
+<!--                         <div class="col-xl-3 col-md-6 mb-2"> -->
+<!--                             <div class="card border-left-primary shadow h-100 py-2"> -->
+<!--                                 <div class="card-body"> -->
+<!--                                     <div class="row no-gutters align-items-center"> -->
+<!--                                         <div class="col mr-2"> -->
+<!--                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> -->
+<!--                                                 회원님의 포인트가 </div> -->
+<!--                                             <div class="h5 mb-0 font-weight-bold text-gray-800">40,000 남으셨습니다</div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
 
-                        <!-- 이번 달 사용 금액 -->
-                        <div class="col-xl-3 col-md-6 mb-2">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                이번 달 사용 금액은</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">￦200,000 입니다</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!--                         이번 달 사용 금액 -->
+<!--                         <div class="col-xl-3 col-md-6 mb-2"> -->
+<!--                             <div class="card border-left-success shadow h-100 py-2"> -->
+<!--                                 <div class="card-body"> -->
+<!--                                     <div class="row no-gutters align-items-center"> -->
+<!--                                         <div class="col mr-2"> -->
+<!--                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> -->
+<!--                                                 이번 달 사용 금액은</div> -->
+<!--                                             <div class="h5 mb-0 font-weight-bold text-gray-800">￦200,000 입니다</div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
 
 
-                        <!-- 나의 무비스토리 -->
-                        <div class="col-xl-3 col-md-6 mb-2">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                나의 무비스토리</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 선호관람정보 -->
-                        <div class="col-xl-3 col-md-6 mb-2">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                선호관람정보</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!--                         나의 무비스토리 -->
+<!--                         <div class="col-xl-3 col-md-6 mb-2"> -->
+<!--                             <div class="card border-left-info shadow h-100 py-2"> -->
+<!--                                 <div class="card-body"> -->
+<!--                                     <div class="row no-gutters align-items-center"> -->
+<!--                                         <div class="col mr-2"> -->
+<!--                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> -->
+<!--                                                 나의 무비스토리</div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                         선호관람정보 -->
+<!--                         <div class="col-xl-3 col-md-6 mb-2"> -->
+<!--                             <div class="card border-left-warning shadow h-100 py-2"> -->
+<!--                                 <div class="card-body"> -->
+<!--                                     <div class="row no-gutters align-items-center"> -->
+<!--                                         <div class="col mr-2"> -->
+<!--                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> -->
+<!--                                                 선호관람정보</div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </div> -->
 
                     <!-- Content Row -->
-					<br>
-					<br>
                     <div class="row">
 
                         <!-- 나의 예매내역 -->
@@ -212,72 +210,71 @@
 										</div>
                                     </div>
                         		</div>
-                                
                             </div>
-                            <div class="card shadow mb-4">
+<!--                             <div class="card shadow mb-4"> -->
                                 <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">스토어 구매내역</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        </a>
-                                    </div>
-                                </div>
+<!--                                 <div -->
+<!--                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between"> -->
+<!--                                     <h6 class="m-0 font-weight-bold text-primary">스토어 구매내역</h6> -->
+<!--                                     <div class="dropdown no-arrow"> -->
+<!--                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" -->
+<!--                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+<!--                                         </a> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
                                 <!-- 스토어 구매상품 들어가야할 자리 -->
-                                <div class="card-body">
-                                    <div class="card shadow mb-3">
-										<div class="row row-cols-1 row-cols-md-3 g-4">
-										  <div class="col">
-										    <div class="card h-90">
-										      <div class="card-header">
-										        <small class="text-body-secondary">구매상품</small>
-										      </div>
-										      <img src="#" class="card-img-top" alt="#">
-										      <div class="card-body">
-										        <h5 class="card-title">상품사진</h5>
-										        <p class="card-text"></p>
-										      </div>
-										      <div class="card-footer">
-										        <small class="text-body-secondary">3일전</small>
-										      </div>
-										    </div>
-										  </div>
-										  <div class="col">
-										    <div class="card h-90">
-										      <div class="card-header">
-										        <small class="text-body-secondary">구매상품</small>
-										      </div>
-										      <img src="#" class="card-img-top" alt="#">
-										      <div class="card-body">
-										        <h5 class="card-title">상품사진</h5>
-										        <p class="card-text"></p>
-										      </div>
-										      <div class="card-footer">
-										        <small class="text-body-secondary">2주일전</small>
-										      </div>
-										    </div>
-										  </div>
-										  <div class="col">
-										    <div class="card h-90">
-										      <div class="card-header">
-										        <small class="text-body-secondary">구매상품</small>
-										      </div>
-										      <img src="#" class="card-img-top" alt="#">
-										      <div class="card-body">
-										        <h5 class="card-title">최근영화</h5>
-										        <p class="card-text"></p>
-										      </div>
-										      <div class="card-footer">
-										        <small class="text-body-secondary">2달전</small>
-										      </div>
-										    </div>
-										  </div>
-										</div>
-                                    </div>
-                        		</div>
-                    		</div>
+<!--                                 <div class="card-body"> -->
+<!--                                     <div class="card shadow mb-3"> -->
+<!-- 										<div class="row row-cols-1 row-cols-md-3 g-4"> -->
+<!-- 										  <div class="col"> -->
+<!-- 										    <div class="card h-90"> -->
+<!-- 										      <div class="card-header"> -->
+<!-- 										        <small class="text-body-secondary">구매상품</small> -->
+<!-- 										      </div> -->
+<!-- 										      <img src="#" class="card-img-top" alt="#"> -->
+<!-- 										      <div class="card-body"> -->
+<!-- 										        <h5 class="card-title">상품사진</h5> -->
+<!-- 										        <p class="card-text"></p> -->
+<!-- 										      </div> -->
+<!-- 										      <div class="card-footer"> -->
+<!-- 										        <small class="text-body-secondary">3일전</small> -->
+<!-- 										      </div> -->
+<!-- 										    </div> -->
+<!-- 										  </div> -->
+<!-- 										  <div class="col"> -->
+<!-- 										    <div class="card h-90"> -->
+<!-- 										      <div class="card-header"> -->
+<!-- 										        <small class="text-body-secondary">구매상품</small> -->
+<!-- 										      </div> -->
+<!-- 										      <img src="#" class="card-img-top" alt="#"> -->
+<!-- 										      <div class="card-body"> -->
+<!-- 										        <h5 class="card-title">상품사진</h5> -->
+<!-- 										        <p class="card-text"></p> -->
+<!-- 										      </div> -->
+<!-- 										      <div class="card-footer"> -->
+<!-- 										        <small class="text-body-secondary">2주일전</small> -->
+<!-- 										      </div> -->
+<!-- 										    </div> -->
+<!-- 										  </div> -->
+<!-- 										  <div class="col"> -->
+<!-- 										    <div class="card h-90"> -->
+<!-- 										      <div class="card-header"> -->
+<!-- 										        <small class="text-body-secondary">구매상품</small> -->
+<!-- 										      </div> -->
+<!-- 										      <img src="#" class="card-img-top" alt="#"> -->
+<!-- 										      <div class="card-body"> -->
+<!-- 										        <h5 class="card-title">최근영화</h5> -->
+<!-- 										        <p class="card-text"></p> -->
+<!-- 										      </div> -->
+<!-- 										      <div class="card-footer"> -->
+<!-- 										        <small class="text-body-secondary">2달전</small> -->
+<!-- 										      </div> -->
+<!-- 										    </div> -->
+<!-- 										  </div> -->
+<!-- 										</div> -->
+<!--                                     </div> -->
+<!--                         		</div> -->
+<!--                     		</div> -->
                 		</div>
                 <!-- /.container-fluid -->
 
