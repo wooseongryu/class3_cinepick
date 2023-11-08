@@ -27,4 +27,5 @@ public class ScheduleVO {
 	private String screen_name;
 	
 	private int screenCount;
+	private int remainSeatCount;
 }

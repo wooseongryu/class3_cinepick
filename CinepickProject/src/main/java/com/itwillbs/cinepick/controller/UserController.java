@@ -383,6 +383,10 @@ public class UserController {
 		return "mypage/user/user_store_cancel_list";
 	}
 	
+	/*====================================================================
+	 * 9.영화 찜 목록
+	 * ===================================================================
+	 * */
 	
 	@GetMapping("userLikeMovieList")
 	public String userLikeMovieList(HttpSession session, Model model) {
@@ -394,7 +398,6 @@ public class UserController {
 		}
 		
 		List<LikeMovieVO> likeList = service.selectLikeMovieList(sId);
-		
 		model.addAttribute("likeList", likeList);
 		
 		return "mypage/user/user_movieLike_list";

@@ -13,5 +13,6 @@ public class LikeMovieVO {
 	private String movie_poster;
 	private String movie_nameK;
 	private String movie_status;
+	private String book_id;
 	
 }

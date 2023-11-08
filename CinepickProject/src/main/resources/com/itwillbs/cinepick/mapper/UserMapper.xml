@@ -292,13 +292,35 @@
 	</delete>
 	
 	<!-- 찜목록 불러오기-->
+<!-- 	<select id="selectLikeMovieList" resultType="Like"> -->
+<!-- 		SELECT lm.movie_code, movie_poster, movie_nameK, movie_status  -->
+<!--   		FROM like_movie lm -->
+<!--   		INNER JOIN movie m  -->
+<!--      	ON lm.movie_code = m.movie_code  -->
+<!--  		WHERE user_id = #{sId} -->
+<!-- 	</select> -->
+	
 	<select id="selectLikeMovieList" resultType="Like">
-		SELECT lm.movie_code, movie_poster, movie_nameK, movie_status 
+		SELECT lm.movie_code
+				, movie_poster
+				, movie_nameK
+				, movie_status
+				, COUNT(bs.book_id) AS book_id
+				,lm.user_id 
   		FROM like_movie lm
   		INNER JOIN movie m 
-     	ON lm.movie_code = m.movie_code 
- 		WHERE user_id = #{sId}
+     	ON lm.movie_code = m.movie_code
+     	LEFT JOIN (SELECT sche_movie_code , b.book_id, b.user_id
+					FROM book b JOIN schedule s 
+					ON b.sche_idx = s.sche_idx
+					WHERE user_id = #{sId}) bs
+		ON lm.movie_code = bs.sche_movie_code
+		WHERE lm.user_id = #{sId}
+		GROUP BY lm.movie_code
 	</select>
+	
+	
+	
 	
 	
 	<select id="getMemberKakaoLogin" resultType="User">	
