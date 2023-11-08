@@ -203,13 +203,13 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">영화관명</label>
 										<br>
-	                                    <select id="theater-select" name="sche_theater_idx" class="form-select" aria-label="Default select example" >
+	                                    <select id="theater-select" name="sche_theater_idx" class="form-select" aria-label="Default select example" required="required">
 										</select>
 								  	</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영관</label>
 										<br>
-	                                    <select id="screen-select" name="sche_screen_idx" class="form-select" aria-label="Default select example" >
+	                                    <select id="screen-select" name="sche_screen_idx" class="form-select" aria-label="Default select example" required="required">
 										</select>
 								  	</div>
                                 </div>
@@ -217,14 +217,14 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">영화선택</label>
 										<br>
-	                                    <select id="movie-select" name="sche_movie_code" class="form-select" aria-label="Default select example" >
+	                                    <select id="movie-select" name="sche_movie_code" class="form-select" aria-label="Default select example" required="required">
 										</select>
 								  	</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영시작시간</label>
 										<input type="button" id="search-time" value="검색">
 										<br>
-	                                    <select id="time-select" name="sche_start_time" class="form-select" aria-label="Default select example" >
+	                                    <select id="time-select" name="sche_start_time" class="form-select" aria-label="Default select example" required="required">
 										</select>
 								  	</div>
                                 </div>
