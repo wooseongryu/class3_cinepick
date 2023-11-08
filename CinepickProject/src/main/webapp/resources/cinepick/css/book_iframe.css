@@ -888,6 +888,7 @@ p {
     background-color: transparent;
     font-family: Roboto;
     font-weight: 300;
+    color: #c4c4c4;
 }
 
 .seat-select-section .seat-result .wrap .info-area .other-time .now .arr {
@@ -1216,3 +1217,309 @@ p {
     font-weight: 400;
 }
 
+/* 1108 수정 */
+.alert-age-layer .age-box.age-19 .circle {
+    boder: 0;
+    background: url(https://img.megabox.co.kr/static/mb/images/common/ico/18_56x56.png) no-repeat 50%
+}
+
+.movie-grade.age-19 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_46x46.png);
+    background-size: 23px 23px
+}
+
+.movie-grade.small.age-19 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_40x40.png);
+    background-size: 20px 20px
+}
+.alert-age-layer .age-box.age-18 .circle {
+    boder: 0;
+    background: url(https://img.megabox.co.kr/static/mb/images/common/ico/18_56x56.png) no-repeat 50%
+}
+
+.movie-grade.age-18 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_46x46.png);
+    background-size: 23px 23px
+}
+
+.movie-grade.small.age-18 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_40x40.png);
+    background-size: 20px 20px
+}
+
+/* step5에서 */
+
+.alert-age-layer {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ebebeb;
+    border-radius: 10px
+}
+
+.alert-age-layer p {
+    margin: 0;
+    padding: 0
+}
+
+.alert-age-layer .age-box {
+    display: none;
+    overflow: hidden;
+    background-color: #f2f4f5
+}
+
+.alert-age-layer .age-box .left {
+    float: left;
+    width: 100px;
+    padding-top: 29px
+}
+
+.alert-age-layer .age-box .left .circle {
+    display: block;
+    width: 68px;
+    height: 68px;
+    margin: 0 auto;
+    font-size: 2.8em;
+    text-align: center;
+    line-height: 64px;
+    font-family: Roboto;
+    font-weight: 300
+}
+
+.alert-age-layer .age-box .right {
+    float: left;
+    width: calc(100% - 100px);
+    padding: 30px;
+    background-color: #fff
+}
+
+.alert-age-layer .age-box .right .tit {
+    padding: 0 0 10px 0;
+    font-size: 1.2em
+}
+
+.alert-age-layer .age-box .right .txt strong {
+    font-weight: 400
+}
+
+.alert-age-layer .age-box.age-all .circle {
+    boder: 0;
+    background: url(https://img.megabox.co.kr/static/mb/images/common/ico/ALL_56x56.png) no-repeat 50%
+}
+
+.alert-age-layer .age-box.age-12 .circle {
+    boder: 0;
+    background: url(https://img.megabox.co.kr/static/mb/images/common/ico/12_56x56.png) no-repeat 50%
+}
+
+.alert-age-layer .age-box.age-15 .circle {
+    boder: 0;
+    background: url(https://img.megabox.co.kr/static/mb/images/common/ico/15_56x56.png) no-repeat 50%
+}
+
+.alert-age-layer .age-box.age-19 .circle {
+    boder: 0;
+    background: url(https://img.megabox.co.kr/static/mb/images/common/ico/18_56x56.png) no-repeat 50%
+}
+
+.alert-age-layer.age12 .age-box.age-12 {
+    display: block
+}
+
+.alert-age-layer.age15 .age-box.age-15 {
+    display: block
+}
+
+.alert-age-layer.age19 .age-box.age-19 {
+    display: block
+}
+
+.alert-age-layer.ageall .age-box.age-all {
+    display: block
+}
+
+.body-iframe.alert-popup {
+    max-height: 400px
+}
+
+.modal-layer {
+    overflow-y: scroll;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 501;
+    background-color: rgba(0,0,0,0)
+}
+
+.modal-layer .focus {
+    display: block;
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    z-index: 502
+}
+
+.modal-layer .wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    min-height: 250px;
+    margin: 0;
+    padding: 45px 0 0 0;
+    box-shadow: 2px 2px 6px 2px rgba(0,0,0,.1);
+    background: #fff
+}
+
+.modal-layer .wrap .layer-header {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background: #503396
+}
+
+.modal-layer .wrap .layer-header h3.tit {
+    color: #fff;
+    padding: 15px 20px 0 20px!important;
+    font-size: 1.2em;
+    line-height: 1.1
+}
+
+.modal-layer .wrap .layer-con {
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 20px 20px 0 20px
+}
+
+.modal-layer .wrap .layer-con .board-form thead th {
+    padding: 7px 14px
+}
+
+.modal-layer .wrap .layer-con .board-form tbody td,.modal-layer .wrap .layer-con .board-form tbody th {
+    height: 40px;
+    padding: 5px 14px
+}
+
+.modal-layer .wrap .layer-con .board-list>thead>tr>th {
+    height: 40px;
+    font-size: .9333em;
+    font-weight: 400
+}
+
+.modal-layer .wrap .layer-con .board-list>tbody>tr>td,.modal-layer .wrap .layer-con .board-list>tbody>tr>th {
+    height: 40px;
+    padding: 5px 10px;
+    font-size: .9333em
+}
+
+.modal-layer .wrap .layer-con .txt-common {
+    margin: 0;
+    padding: 0 0 30px 0
+}
+
+.modal-layer .wrap .btn-group-fixed {
+    height: 67px;
+    padding: 15px 0 0 0;
+    text-align: center;
+    background-color: #fff
+}
+
+.modal-layer .wrap .btn-group-fixed.pt00 {
+    height: 70px
+}
+
+.modal-layer .wrap .btn-group-fixed .button+.button {
+    margin-left: 6px
+}
+
+.modal-layer .wrap .btn-modal-close {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 16px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-indent: -9999px;
+    background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-layer-close.png) no-repeat center
+}
+
+.modal-layer.on {
+    display: block
+}
+
+.modal-layer.dim .wrap:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0,0,0,.7)
+}
+
+body.body-iframe .modal-layer {
+    overflow: hidden;
+    overflow-y: hidden
+}
+
+.bg-modal {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 500;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    opacity: 0;
+    pointer-events: none
+}
+
+.bg-modal2 {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 500;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    opacity: 0;
+    cursor: pointer
+}
+
+.wrap .layer-header {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background: #503396
+}
+
+.wrap .layer-header h3.tit {
+    color: #fff;
+    padding: 15px 20px 0 20px;
+    font-size: 1.2em;
+    line-height: 1.1
+}
+
+.wrap .layer-con {
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 20px 20px 0 20px
+}

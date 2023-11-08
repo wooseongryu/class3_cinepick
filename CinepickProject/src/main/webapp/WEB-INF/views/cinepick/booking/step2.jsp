@@ -12,11 +12,14 @@
 <%--     <link href="${pageContext.request.contextPath }/resources/cinepick/css/seat.css" rel="stylesheet"> --%>
     <link href="${pageContext.request.contextPath }/resources/cinepick/css/book.css" rel="stylesheet">
     
+	<!-- 1108 추가 -->
+    <link href="${pageContext.request.contextPath }/resources/cinepick/css/step5.css" rel="stylesheet">
     <!-- 좌석 바깥 부분 css -->
     <link href="${pageContext.request.contextPath }/resources/cinepick/css/book_iframe.css" rel="stylesheet">
     
 <%--     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer_sy.css" type="text/css"> --%>
-    
+
+
 
 </head>
 <body class="body-iframe">
@@ -41,16 +44,37 @@
 <!-- 	<input type="hidden" id="brchNo" name="brchNo" value="2202"> -->
 	<!-- TODO 추후 brchNO 수정 -->
 	
-<!-- 	<section id="layer_age_alert" class="modal-layer" style="z-index: 900"><a href="" class="focus">레이어로 포커스 이동 됨</a> -->
-<!--         <div class="wrap" style="width: 750px; height: 350px; margin-left: -375px; margin-top: 0px; top: 140px;"> -->
-<!--             <header class="layer-header"> <h3 class="tit">알림</h3> </header> -->
-<!--             <div class="layer-con"> <div class="alert-age-layer age12"> <div class="age-box age-12"> <div class="left"> <p class="circle"></p> </div> <div class="right"> <p class="tit">12세이상관람가</p> <p class="txt"><p>만 12 세 미만의 고객님은(영,유아 포함)<br>반드시 성인 보호자의 동반하에 관람이 가능합니다.<br>(확인불가 시 입장제한)<br></p></p> </div> </div> </div></div> -->
-<!--             <div class="btn-group-fixed"> -->
-<!--                 <button type="button" class="button purple close-layer">확인</button> -->
-<!--             </div> -->
-<!--             <button type="button" class="btn-modal-close">레이어 닫기</button> -->
-<!--         </div> -->
-<!--     </section> -->
+	<section id="layer_age_alert" class="modal-layer" style="z-index: 900"><a href="" class="focus">레이어로 포커스 이동 됨</a>
+        <div class="wrap" style="width: 750px; height: 350px; margin-left: -375px; margin-top: 0px; top: 140px;">
+            <header class="layer-header">
+            	<h3 class="tit">알림</h3>
+            </header>
+            <div class="layer-con">
+<!-- 	            <div class="alert-age-layer age12"> -->
+<!-- 		            <div class="age-box age-12"> -->
+	            <div class="alert-age-layer">
+		            <div class="age-box">
+		            <div class="left">
+		           		<p class="circle"></p>
+		        	</div>
+		        	<div class="right">
+		            	<p class="tit">${param.movie_rated}</p>
+		            	<p class="txt">
+<!-- 		            		<p>만 12 세 미만의 고객님은(영,유아 포함)<br> -->
+<!-- 		            			반드시 성인 보호자의 동반하에 관람이 가능합니다.<br> -->
+<!-- 		            			(확인불가 시 입장제한)<br> -->
+<!-- 		            		</p> -->
+		            	</p>
+		       		</div>
+		    	</div>
+		    </div>
+		</div>
+        <div class="btn-group-fixed">
+            <button type="button" class="button purple close-layer">확인</button>
+        </div>
+        <button type="button" class="btn-modal-close">레이어 닫기</button>
+    </div>
+    </section>
     
     <div class="inner-wrap" style="padding-top:40px; padding-bottom:100px;">
 	    <div class="quick-reserve">
@@ -605,8 +629,10 @@
                             <div class="seat-num">
                                 <p class="tit">선택좌석</p>
                                 <div class="my-seat">
-                                    <div class="seat possible" title="선택할 수 있는 좌석">-</div>
-                                    <div class="seat possible" title="선택할 수 있는 좌석">-</div>
+<!--                                     <div class="seat possible" title="선택할 수 있는 좌석">-</div> -->
+<!--                                     <div class="seat possible" title="선택할 수 있는 좌석">-</div> -->
+                                    <div class="seat all" title="구매가능 좌석">-</div>
+                                    <div class="seat all" title="구매가능 좌석">-</div>
                                     <div class="seat all" title="구매가능 좌석">-</div>
                                     <div class="seat all" title="구매가능 좌석">-</div>
                                     <div class="seat all" title="구매가능 좌석">-</div>
@@ -665,6 +691,7 @@
 		<input type="button" value="headerfooterㅅㄷㄴㅅ" class="test" id="payTest" onclick="location.href='headTest'">
 		<input type="button" value="결제페이지로" class="test" id="payTest" onclick="location.href='stepPay'">
 		<input type="button" value="예매완료페이지로" class="test" id="complete" onclick="location.href='paySuccess'">
+		<input type="button" value="결제취소" class="test" id="complete" onclick="location.href='payCancle'">
 	</div>
 	
 	
@@ -735,6 +762,18 @@
 	
 	$(function() {
 		
+		// 아래 1108 모달하면서 추가
+		
+		calcLeft();
+		
+	    // 관람인원을 선택하십시요
+	    if(total > 0) {
+		    $(".seat-count-before").css("display", "none");
+		} else {
+			$(".seat-count-before").css("display", "block");
+		}
+	    
+	    // 위에 1108 모달하면서 추가
 		
 		console.log("맨 처음 스케줄 넘버는?" + sche_idx);
 		
@@ -745,10 +784,40 @@
 		console.log("age: " + age);
 		
 		$(".movie-grade").addClass("age-" + age);
+		$(".alert-age-layer").addClass("age" + age);
+		$(".age-box").addClass("age-" + age);
 		
-		if (age == 12 || age == 15) {
-// 			alert(movie_rated);
+		if(age == 12 || age == 15) {
+// 			alert("age:" + age);
+			$("#layer_age_alert").css("display", "block");
+			$("#layer_age_alert .txt").append(
+				"<p>만 " + age + "세 미만의 고객님은(영,유아 포함)<br>"
+				+ "반드시 성인 보호자의 동반하에 관람이 가능합니다.<br>"
+				+ "(확인불가 시 입장제한)<br></p>"
+			);
+			
+// 			alert(movie_rated + "\n만 " + age + "세 미만의 고객님은(영, 유아 포함)\n반드시 성인 보호자의 동반하에 관람이 가능합니다.\n확인불가 시 입장제한");
 		}
+		
+		if(age == 18) {
+			$(".alert-age-layer").addClass("age" + 19);
+			$(".age-box").addClass("age-" + 19);
+			$("#layer_age_alert").css("display", "block");
+			$("#layer_age_alert .txt").append(
+				"<p><b>입장 시, 신분증을 반드시 지참해주세요!</b><br>"
+				+ "만 18세 미만의 고객님은(영,유아포함) 보호자를 동반하여도<br>"
+				+ "관람이 불가하며, 만 18세 이상이라도<br>"
+				+ "고등학교 재학중인 고객님은 관람이 불가합니다<br></p>"	
+			);
+		}
+		
+		$(".btn-modal-close,.close-layer").click(function() {
+			$("#layer_age_alert").css("display", "none");
+		});
+		
+// 		if (age == 18 || age == 18) {
+// 			alert("청소년관람불가" + "\n입장 시, 신분증을 반드시 지참해주세요!" + "\n만 " + age + "세 미만의 고객님은(영, 유아 포함) 보호자를 동반하여도\n관람이 불가하며, 만 18세 이상이라도\n고등학교 재학중인 고객님은 관람이 불가합니다");
+// 		}
 		
 		$(".seat-layout .seat-condition").each(function() {
 // 			let seatList = seatList.split('/');
@@ -833,8 +902,9 @@
 		        $("#seatForm").submit();
 			
 		});
+		
 	});
-	
+	// $(function) 끝	
 	
 	</script>
 	

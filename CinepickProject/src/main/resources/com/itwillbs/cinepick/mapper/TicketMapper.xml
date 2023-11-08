@@ -60,7 +60,8 @@
 			VALUES (
 				CASE WHEN (SELECT MAX(idx) FROM book b) IS NULL THEN 1
 			    ELSE ((SELECT MAX(idx) FROM book b) + 1) END
-				, (SELECT CONCAT('R', LPAD(COALESCE(MAX(SUBSTRING(book_id, 2) + 1), 1), 5, '0')) FROM book b)
+<!-- 				, (SELECT CONCAT('R', LPAD(COALESCE(MAX(SUBSTRING(book_id, 2) + 1), 1), 5, '0')) FROM book b) -->
+				, concat((SELECT CONCAT('R', LPAD(COALESCE(MAX(SUBSTRING(book_id, 2, 5) + 1), 1), 5, '0')) FROM book b), '-', FLOOR(10000 + RAND() * 90000))
 				, #{sche_idx}
 				, #{seats}
 				, #{allTickets}

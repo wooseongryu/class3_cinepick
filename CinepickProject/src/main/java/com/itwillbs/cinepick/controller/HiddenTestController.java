@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HiddenTestController {
@@ -31,6 +32,23 @@ public class HiddenTestController {
 	@PostMapping("hiddenTest3")
 	public String hiddenTest3() {
 		return "cinepick/hiddenTest/hiddenTest3";
+	}
+	
+	// 아래는 결제 취소 연습
+	
+	@GetMapping("payCancle")
+	public String paySuccess() {
+		
+		return "cinepick/booking/payCancle";
+	}
+	
+	@ResponseBody
+	@PostMapping("bookingCancle")
+	public String booikingCancle() {
+		System.out.println("결제취소!");
+		
+		
+		return "";
 	}
 	
 	

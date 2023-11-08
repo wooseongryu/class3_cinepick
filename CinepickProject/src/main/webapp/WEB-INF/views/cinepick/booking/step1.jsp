@@ -63,6 +63,10 @@
     	
     </style>
     <script type="text/javascript">
+    
+//     let startTime = "";
+//     let endTime = "";
+    
 	    	function final(data) {
 	//     		alert(data.getAttribute("data-movieCode"));
 	//     		alert(data.getAttribute("data-theaterIdx"));
@@ -93,6 +97,15 @@
 // 						console.log(resp.screen_name);
 // 						console.log(resp.movie_poster);
 // 						console.log(resp.movie_rated);
+
+						// 엄성윤 추가
+// 						startTime = resp.sche_start_time;
+// 						startTime = startTime.substr(0, 5);
+// 						endTime = resp.sche_end_time;
+// 						endTime = endTime.substr(0, 5);
+// 						console.log(startTime + "~" + endTime);
+
+
 						let action = "<form action='bookingStepTwo' method='post'>"
 							+ "<input type='hidden' name='sche_idx' id='sche_idx' value='" + resp.sche_idx + "'>"
 							+ "<input type='hidden' name='movie_nameK' id='movie_nameK' value='" + resp.movie_nameK + "'>"
@@ -387,6 +400,7 @@
 	    				alert("에러");
 	    			}
 	    		});
+	    		
 	    		
 	    	});
     </script>

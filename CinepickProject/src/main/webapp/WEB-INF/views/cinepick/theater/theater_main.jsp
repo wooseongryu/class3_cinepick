@@ -132,7 +132,7 @@
 	    	<div>
 	    		<i class="iconset ico-favo-theater"></i>
 	    		<i class="fa-solid fa-bookmark iconset ico-favo-theater" style="margin-left: 10px"></i>
-	    		<span class="purple">엄성윤</span>님의 선호영화관
+	    		<span class="purple">${sessionScope.sId }</span>님의 선호영화관
 	    		<ul class="theater-circle">
 	    			<li>
 	    				<a href="#">순천</a>

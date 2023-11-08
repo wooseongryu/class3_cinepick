@@ -168,6 +168,7 @@ public class BookingController {
 	
 	// 좌석 선택 페이지
 	@PostMapping("bookingStepTwo")
+//	@GetMapping("bookingStepTwo")
 	public String bookingStepTwo(int sche_idx, Model model, HttpSession session) {
 //	public String bookingStepTwo() {
 		System.out.println("BookingController - bookingStepTwo()");

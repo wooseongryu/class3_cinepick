@@ -25,7 +25,6 @@ public class TicketController {
 	private TicketService service;
 	
 	
-	
 	// 좌석 -> 예매내역 출력
 	@GetMapping("payment-successcomplete")
 	public String reserveFinish() {

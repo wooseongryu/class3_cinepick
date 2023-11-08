@@ -826,7 +826,7 @@ function fn_validateDateYn(param) {
 						<p class="date">
 							<span id="playDe">${param.sche_date }</span>
 <!-- 							<em id="dowNm">(월)</em>  -->
-							<span class="time" id="playTime"><i class="iconset ico-clock-white"></i>${param.sche_start_time }~${param.sche_end_time }</span>
+							<span class="time" id="playTime" style="color: #c4c4c4"><i class="iconset ico-clock-white"></i>${param.sche_start_time }~${param.sche_end_time }</span>
 						</p>
 <!-- 						<span class="movie-grade small age-all" id="admisClassNm">전체관람가</span> -->
 
@@ -885,7 +885,8 @@ function fn_validateDateYn(param) {
 					</div>
 
 					<div class="btn-group">
-						<a href="bookingStepTwo" class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 --></a>
+						<a href="javascript:history.back()" class="button" id="btn_booking_back" title="이전">이전</a>
+<!-- 						<button class="button" id="btn_booking_back" title="이전">이전 이전</button> -->
 							
 <!-- 								<a href="#" w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay" onclick="startPay()" title="결제">결제</a> -->
 <!-- 								<a href="#" w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay" onclick="requestPay()" title="결제">결제</a> -->
@@ -1051,7 +1052,8 @@ function fn_validateDateYn(param) {
 		    	merchant_uid: "ORD" + getDateTimeString(),   // 주문번호
 		    	name: "${param.movie_nameK}",
 // 		    	amount: moneySum,                         // 숫자 타입
-		    	amount: 1000,                         // 숫자 타입
+		    	//TODO 고쳐야 함
+		    	amount: 100,                         // 숫자 타입
 		    	buyer_email: "gildong@gmail.com",
 		    	buyer_name: "홍길동",
 		    	buyer_tel: "010-4242-4242",
