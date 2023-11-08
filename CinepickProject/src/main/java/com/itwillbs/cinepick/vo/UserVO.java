@@ -33,5 +33,6 @@ public class UserVO {
 	private String user_is_admin;
 	private String mail_auth_status; // 이메일 인증 여부("Y" : 인증, "N" : 미인증)
 	private String kakao_id;
+	private String user_status; // 가입, 탈퇴
 }
 

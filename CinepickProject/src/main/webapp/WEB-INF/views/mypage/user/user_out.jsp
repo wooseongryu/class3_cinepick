@@ -134,7 +134,7 @@
 											<td>
 												<div class="form-group">
 						                            <input type="password" class="form-control form-control-user" name="user_passwd" id="user_passwd"
-						                                placeholder="비밀번호 4 ~ 16글자 사이 입력">
+						                                placeholder="비밀번호 8 ~ 16글자 사이 입력">
 						                        </div>
 											</td>
 										</tr>
