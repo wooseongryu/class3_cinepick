@@ -114,7 +114,6 @@ public class LoginJoinController {
 		System.out.println("UserCheckDupId-----------------");
 		
 		UserVO returnUser = service.getUser(user);
-		System.out.println("))))))))))))))))))))))))))))");
 		System.out.println(user);
 		
 		if(returnUser != null) { // 아이디 중복
@@ -145,7 +144,7 @@ public class LoginJoinController {
 		UserVO dbUser = service.getUser(user);
 		
 		if(dbUser == null || !passwordEncoder.matches(user.getUser_passwd(), dbUser.getUser_passwd())) { // 로그인 실패
-			model.addAttribute("msg", "인증 실패!");
+			model.addAttribute("msg", "로그인 실패!");
 			return "cinepick/login_join/fail_back";
 			
 		} else { // 로그인 성공
@@ -153,6 +152,10 @@ public class LoginJoinController {
 				model.addAttribute("msg", "이메일 인증 후 로그인이 가능합니다!");
 				return "cinepick/login_join/fail_back";
 			} else { // 이메일 인증 회원
+				if(dbUser.getUser_status().equals("탈퇴")) {
+					model.addAttribute("msg", "탈퇴한 회원입니다!");
+					return "cinepick/login_join/fail_back";
+				}
 				// 세션 객체에 로그인 성공한 아이디를 "sId" 속성명으로 저장
 				session.setAttribute("sId", user.getUser_id());
 				session.setAttribute("isAdmin", dbUser.getUser_is_admin());

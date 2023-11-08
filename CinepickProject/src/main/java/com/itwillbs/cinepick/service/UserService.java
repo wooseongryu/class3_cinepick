@@ -112,7 +112,7 @@ public class UserService {
 	}
 	
 	
-	// 탈퇴 회원 조회 요청
+	//
 	public UserVO getdeleteUser(UserVO user) {
 		return mapper.selectUser(user);
 	}
@@ -190,6 +190,16 @@ public class UserService {
 	public List<LikeMovieVO> selectLikeMovieList(String sId) {
 		return mapper.selectLikeMovieList(sId);
 	}
+
+	public int updateRandomEmail(UserVO user) {
+		return mapper.updateRandomEmail(user);
+	}
+
+	public int checkDuplicateEmail(String deleteEmail) {
+		return mapper.checkDuplicateEmail(deleteEmail);
+	}
+
+
 	
 	
 }
