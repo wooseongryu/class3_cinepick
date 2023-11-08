@@ -98,13 +98,13 @@
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">제목</label>
                                         <input type="text" name="qnaTitle" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="제목입력">
+                                            placeholder="제목입력" maxlength="100">
                                     </div>
                                 </div>
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="floatingTextarea">내용</label>
-									  <textarea rows="10" name="qnaContent" class="form-control form-control-textarea" placeholder="내용작성" id="floatingTextarea"></textarea>
+									  <textarea rows="10" name="qnaContent" class="form-control form-control-textarea" placeholder="내용작성" id="floatingTextarea" maxlength="3000"></textarea>
 									</div>
                                 </div>
 								<br>

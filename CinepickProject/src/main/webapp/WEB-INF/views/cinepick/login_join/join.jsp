@@ -171,19 +171,6 @@
 			}
 		});
 
-		// 5. 생년월일 6자리 입력 
-// 		$("#user_birth").keyup(function() {
-// 			if($("#user_birth").val().length == 6) {
-// 				$("#user_gender").focus();
-// 			}
-// 		});
-
-		// 6. 성별 1자리 입력후 블러처리
-// 		$("#user_gender").keyup(function() {
-// 			if($("#user_gender").val().length == 1) {
-// 				$("#user_gender").blur();
-// 			}
-// 		});
 		
 		
 	}); // document.ready 이벤트 끝
@@ -270,14 +257,14 @@
                                 <span id = "checkPasswdResult"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" name="user_passwd" id="user_passwd" placeholder="8 ~ 16글자 사이 입력" required="required" size="20" maxlength="16" oninput="maxLengthCheckPasswd(this)">
+                                <input type="password" name="user_passwd" id="user_passwd" placeholder="8 ~ 16글자 사이 입력" required="required" size="20" maxlength="16" oninput="maxLengthCheckPasswd(this)" pattern="^[A-Za-z0-9][\w]{7,15}$" title="8 ~ 16글자 영문자, 숫자, 특수문자(_) 조합">
                                 <span class="icon_lock"></span>
                             </div>
                             <div>
                             	<span id="checkPasswdResult2"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" name="user_passwd2" id="user_passwd2" placeholder="비밀번호 확인" maxlength="16">
+                                <input type="password" name="user_passwd2" id="user_passwd2" placeholder="비밀번호 확인"  maxlength="16">
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">

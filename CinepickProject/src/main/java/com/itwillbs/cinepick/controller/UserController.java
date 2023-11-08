@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -99,7 +100,11 @@ public class UserController {
 	
 	// 유저 정보 변경 폼으로 이동
 	@GetMapping("userUpdate")
-	public String userUpdate(UserVO user, HttpSession session, Model model) {
+	public String userUpdate(
+						UserVO user, 
+						HttpSession session, 
+						Model model
+						) {
 		String sId = (String)session.getAttribute("sId");
 		
 		// 세션 아이디가 없을 경우 "fail_back" 페이지를 통해 "잘못된 접근입니다!" 출력
@@ -127,8 +132,19 @@ public class UserController {
 	
 	// 유저 정보 변경 처리
 	@PostMapping("userUpdatePro")
-	public String UpdatePro(UserVO user, Model model) {
-	
+	public String UpdatePro(UserVO user, Model model, 						
+						@RequestParam("user_passwd") String user_passwd,
+						@RequestParam("user_passwd2") String user_passwd2
+							) {
+		
+		
+		if(!user_passwd.equals(user_passwd2)) {
+			model.addAttribute("msg", "비밀번호가 같지 않습니다");
+			return "fail_back";
+		}
+		
+		
+		
 		// 1. BcryptPasswordEncoder 클래스 인스턴스 생성
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		
@@ -172,6 +188,9 @@ public class UserController {
 			user.setUser_id(sId);
 		}
 		
+		System.out.println("user : " + user);
+		
+		
 		// UserService - getdeleteUser() 메서드를 호출하여 회원 탈퇴 정보 요청
 		// => 파라미터 : UserVO 객체   리턴타입 : UserVO(deleteDbUser)
 		UserVO deleteDbUser = service.getdeleteUser(user);
@@ -186,27 +205,28 @@ public class UserController {
 
 	// 회원탈퇴 처리
 	@PostMapping("userOutPro")
-	public String userOutPro(UserVO user, Model model) {
+	public String userOutPro(UserVO user, Model model, HttpSession session) {
 		System.out.println("UserController - userOutPro");
 		
-		// 1. BcryptPasswordEncoder 클래스 인스턴스 생성
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		int dupCount = 1;
+		String deleteEmail = "";
 		
-		// 2. BcryptPasswordEncoder 객체의 encode() 메서드를 호출하여 
-		//    원문(평문) 패스워드에 대한 해싱(= 암호화) 수행 후 결과값 저장
-		String securePasswd = passwordEncoder.encode(user.getUser_passwd());
+		while (true) {
+			deleteEmail = RandomStringUtils.randomAlphabetic(20);
+			dupCount = service.checkDuplicateEmail(deleteEmail);
+			if (dupCount == 0) {
+				break;
+			}
+		}
 		
-		// 3. 암호화 된 패스워드를 UserVO 객체에 저장
-		user.setUser_passwd(securePasswd);
 		
-		//-------------------------------------
+		user.setUser_email(deleteEmail);
 		
 		int deleteCount = service.deleteUser(user);
 		
-		System.out.println("UserController - userOutPro");
-		
 		if(deleteCount > 0) { // 회원탈퇴 성공
 			model.addAttribute("msg", "회원탈퇴가 되었습니다. 메인페이지로 이동합니다");
+			session.invalidate();
 			return "cinepick/login_join/success";
 		} else { // 회원탈퇴 성공
 			model.addAttribute("msg","회원탈퇴 실패!");
@@ -363,6 +383,10 @@ public class UserController {
 		return "mypage/user/user_store_cancel_list";
 	}
 	
+	/*====================================================================
+	 * 9.영화 찜 목록
+	 * ===================================================================
+	 * */
 	
 	@GetMapping("userLikeMovieList")
 	public String userLikeMovieList(HttpSession session, Model model) {
@@ -374,7 +398,6 @@ public class UserController {
 		}
 		
 		List<LikeMovieVO> likeList = service.selectLikeMovieList(sId);
-		
 		model.addAttribute("likeList", likeList);
 		
 		return "mypage/user/user_movieLike_list";

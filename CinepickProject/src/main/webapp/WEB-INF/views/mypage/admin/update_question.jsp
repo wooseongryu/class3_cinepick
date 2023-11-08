@@ -106,13 +106,13 @@
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 										<label for="">제목</label>
                                         <input type="text" name="qnaTitle" class="form-control form-control-user" id="exampleFirstName"
-                                            value="${qna.qnaTitle }">
+                                            value="${qna.qnaTitle }" maxlength="100">
                                     </div>
                                 </div>
 								<div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="floatingTextarea">내용</label>
-									  <textarea rows="10" name="qnaContent" class="form-control form-control-textarea" id="floatingTextarea">${qna.qnaContent }</textarea>
+									  <textarea rows="10" name="qnaContent" class="form-control form-control-textarea" id="floatingTextarea" maxlength="3000">${qna.qnaContent }</textarea>
 									</div>
                                 </div>
 								<br>

@@ -50,7 +50,7 @@
 		
 		$(".bx-viewport").on("mouseenter", " ul > li > span.over > a", function() {
 			$(this).parent().addClass("on");
-			if ($(this).hasClass("info")) {
+			if ($(this).hasClass("mvInfo")) {
 				$(this).parent().removeClass("down");
 				$(this).parent().addClass("up");
 			}
@@ -65,7 +65,9 @@
 		});
 		
 	});
-	
+// 	function click() {
+// 		alert("클릭됨");
+// 	}
 	
 	
 
@@ -103,8 +105,10 @@
 <!-- 							<div class="slider-over"> -->
 								<span class="over">
 <!-- 								<span class="over-like"><a href="#"><i class="bi bi-heart"></i></a></span> -->
-									<a href="bookingStepOne?movie_code=${movie.movie_code }" class="rsv"><span class="over-rsv">예매하기</span></a>
-									<a href="movieDetail?movie_code= ${movie.movie_code }&pageNum=1" class="info"><span class="over-info">상세보기</span></a>
+<%-- 									<a href="bookingStepOne?movie_code=${movie.movie_code }" class="rsv"><span class="over-rsv">예매하기</span></a> --%>
+									<a href="bookingStepOne?movie_code=${movie.movie_code }" class="rsv">예매하기</a>
+<%-- 									<a href="movieDetail?movie_code= ${movie.movie_code }&pageNum=1" class="mvInfo"><span class="over-info">상세보기</span></a> --%>
+									<a href="movieDetail?movie_code= ${movie.movie_code }&pageNum=1" class="mvInfo">상세보기</a>
 								</span>
 								<img alt="" src="${movie.movie_poster }">
 <!-- 							</div> -->

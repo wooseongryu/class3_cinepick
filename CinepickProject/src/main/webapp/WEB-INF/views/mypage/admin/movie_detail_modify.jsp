@@ -119,7 +119,7 @@
 <%-- 										<input type="text" class="form-control form-control-user" value="${movie.movie_openDt }"  name="movie_openDt"> --%>
 	                                </div>
                                     <div class="col-sm-3 mb-2 mb-sm-0">
-										<label for="movie_status">제작상태</label>
+										<label for="movie_status">개봉상태</label>
 										<select name="movie_status" class="select_detail">
 											<option value="개봉" <c:if test="${movie.movie_status eq '개봉' }">selected</c:if>>개봉</option>
 											<option value="개봉예정" <c:if test="${movie.movie_status eq '개봉예정' }">selected</c:if>>개봉예정</option>
