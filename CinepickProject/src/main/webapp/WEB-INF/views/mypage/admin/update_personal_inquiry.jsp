@@ -98,7 +98,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
 									  <label for="floatingTextarea">답변 작성</label>
-									  <textarea rows="10" name="myQuestion_answer" class="form-control form-control-textarea" placeholder="답변내용작성" id="floatingTextarea"></textarea>
+									  <textarea rows="10" name="myQuestion_answer" class="form-control form-control-textarea" placeholder="답변내용작성" id="floatingTextarea" maxlength="2000"></textarea>
 									</div>
                                 </div>
 								<br>
