@@ -122,7 +122,7 @@
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 금일 예매 현황
 											</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">10건///수정필요</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${todayBook }건</div>
                                         </div>
                                     </div>
                                 </div>

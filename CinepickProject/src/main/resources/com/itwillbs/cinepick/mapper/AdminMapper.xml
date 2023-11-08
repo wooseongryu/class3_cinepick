@@ -32,6 +32,12 @@
 		FROM schedule
 		WHERE sche_date = date_format(now(), '%Y-%m-%d')
 	</select>
+	
+	<select id="selectTodayBookCount" resultType="int">
+		SELECT count(*)
+		FROM book
+		WHERE date_format(book_date, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d');
+	</select>
 	<!-- 관리자 메인 끝-->
 
 	<!-- 회원 정보 관리 -->
