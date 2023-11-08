@@ -88,6 +88,7 @@
 			width: 100px;
 			text-align: center;
 			color: #c7c7c7;
+			padding: 5px;
 		}
 		
 		.bookBtn:hover {
@@ -104,6 +105,18 @@
 			display: block;
 			height: 400px;
 			text-align: center;
+		}
+		
+		#movieComplete {
+			width: 100px;
+			height: 50px;
+			position: relative;
+		    display: inline-block;
+			background-position: 0;
+		    background-repeat: no-repeat;
+			background-image: url("${pageContext.request.contextPath }/resources/cinepick/img/review_star/booking.png");
+			background-size: 100px 100px;
+			
 		}
 		
 		
@@ -270,12 +283,13 @@
 										<div class="likeMovie" data-movie_code="${like.movie_code }" data-movie_name="${like.movie_nameK }">
 											<a class="movieClick" href="movieDetail?movie_code=${like.movie_code }">
 												<img src="${like.movie_poster }"><br>
-												<strong>${like.movie_nameK }</strong><br>
+												<strong>${like.movie_nameK }</strong>
 <%-- 												<strong><span>${product.product_price }</span><span>원</span></strong> --%>
 				<%-- 								<strong>${product.product_info }</strong> --%>
 											</a>
 											<input type="hidden" id="clickCheck">
 											<button class="likeMvBtn" id="likeMovie${like.movie_code }" name="likeMovieBtnList">♥</button>
+<%-- 											<span id="movieComplete">${like.book_id }</span> --%>
 											<c:choose>
 												<c:when test="${like.movie_status eq '상영종료' }">
 													<a class="bookBtnFalse">상영종료</a>
@@ -284,6 +298,11 @@
 													<a href="bookingStepOne?movie_code=${like.movie_code }" class="bookBtn">예매하기</a>
 												</c:otherwise>
 											</c:choose>
+											<c:if test="${like.book_id > 0}"><span id="movieComplete"></span><br></c:if>	
+													
+<%-- 											<c:if test="${like.book_id > 0 }"> --%>
+<!-- 												<img id="movieComplete" alt="예매완료" src="{pageContext.request.contextPath }/resources/mypage/img/review_star/completed-text-logo.png"> -->
+<%-- 											</c:if> --%>
 										</div>
 									</li>
 								</c:forEach>
