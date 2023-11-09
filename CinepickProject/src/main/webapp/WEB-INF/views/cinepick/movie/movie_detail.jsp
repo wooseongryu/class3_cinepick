@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -189,11 +189,27 @@
 				 location.href="ReviewDelete?movie_code=" + movie_code + "&user_id=" + user_id + "&review_num=" + review_num;
 			 }
 		}
-		
+		 
+		function funPause(undo) {
+// 			alert("취소버튼");
+// 			console.log(undo);
+// 			$("#review"+review_num).empty();
+			
+			$("#review" + undo.review_num).html(undo.targetHtml);
+					
+// 			$(".anime__details__review").end();
+		}
+		//전역변수
+		let undo;
 		//리뷰수정
 		function reviewModifyForm(movie_code, review_num, user_id, review_content, review_rating) {
 // 			alert(review_num+","+ movie_code+","+ user_id+","+ review_content+","+ review_rating);
-			
+// 			let undo =  $("#review"+review_num).html();
+			undo = {
+					targetHtml : $("#review"+review_num).html(),
+					review_num : review_num
+			}
+// 			console.log(undo.targetHtml);
 			$("#review"+review_num).empty();
 			
 			$("#review"+review_num).append(
@@ -204,7 +220,7 @@
 					+	'<h6>'
 					+		'<span>' + user_id + '</span>&nbsp;&nbsp;'			
 					+		'<span><input type="button" value="등록" class="reviewBtn" onclick="reviewModPro()"></span>&nbsp;&nbsp;'						
-					+		'<span><input type="button" value="취소" class="reviewBtn" onclick="history.back()"></span>'						
+					+		'<span><input type="button" value="취소" class="reviewBtn" onclick="funPause(undo)"></span>'						
 					+	'</h6>'
 // 					+	'<div class="reviewStarMin">'
 					+		'<div>'
@@ -590,6 +606,7 @@
 		                                </h6>
 		                                <p id="review_contect${review.review_num }">${review.review_content }</p>
 		                            </div>
+		                            
 		                        </div>
 							</c:forEach>
 	<!--                         <div class="product__pagination"> -->

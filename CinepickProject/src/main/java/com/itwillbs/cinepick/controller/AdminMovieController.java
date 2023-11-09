@@ -103,6 +103,7 @@ public class AdminMovieController {
 		
 		if(insertMovieCount > 0) {
 			model.addAttribute("msg", "영화를 등록하였습니다.");
+			model.addAttribute("script","window.opener.location.reload(); window.close()");
 			model.addAttribute("targetURL", "adminMovieInsert");
 			return "forward";
 		} else {
@@ -208,7 +209,7 @@ public class AdminMovieController {
 		
 		if(deleteMovieCount > 0) {
 			model.addAttribute("msg", "영화를 삭제하였습니다.");
-			model.addAttribute("script", "window.close()");
+			model.addAttribute("script", "window.opener.location.reload(); window.close()");
 			return "forward";
 		} else {
 			model.addAttribute("msg", "영화삭제를 실패하였습니다.");

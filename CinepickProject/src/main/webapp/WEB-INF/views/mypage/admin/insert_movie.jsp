@@ -38,9 +38,20 @@
 		let movieInfo = {};
 	
 	
-		function close() {
+		function insertMovieClose() {
+// 			window.opener.location.reload();
 			window.close();
 		}
+		
+// 		function beforeInsertSubmit() {
+// 			console.log($("#printCd").val());
+// 			if($("#printCd").val() == null || $("#printCd").val() == "") {
+// 				alert("영화코드를 입력해 주세요");
+// 				$("#printCd").focus();
+// 				$("#printCd").scrollIntoView();
+// 				return false;
+// 			}
+// 		}
 		
 		
 		function moviePoster(codeNo) {
@@ -190,9 +201,7 @@
 			
 		});//End
 		
-	</script>
 	
-	<script>
 	//movie_code 입력 가능한 수 maxlength(8자리) 설정
 	function maxLengthCheck(object){
 	    if (object.value.length > object.maxLength){
@@ -204,6 +213,8 @@
 	function onlynumberic(event) {
 	    event.target.value = event.target.value.replace(/[^0-9]/g, "");
 	}
+	
+
 	</script>
 	
 	
@@ -224,12 +235,13 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">영화등록</h1>
                             </div>
+<!--                             <form class="user" method="post" action="adminMovieInsert2" onsubmit="return beforeInsertSubmit()"> -->
                             <form class="user" method="post" action="adminMovieInsert2">
 								<div class="form-group row">
 								    <div class="col-sm-2 mb-1 mb-sm-0">
 								        <label for="movie_code">영화코드</label>
 									 	<br>
-									 	<input type="text" class="form-control form-control-user" id="printCd" name="movie_code" maxlength="8" oninput="maxLengthCheck(this)" onkeyup="onlynumberic(event)">
+									 	<input type="text" class="form-control form-control-user" required id="printCd" name="movie_code" maxlength="8" oninput="maxLengthCheck(this)" onkeyup="onlynumberic(event)">
 								    </div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<a href="https://www.kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do#none" target="_blank"><label>영화코드 확인하기</label></a>
@@ -311,11 +323,11 @@
                                 
                                 <div class="form-group row" align="center">
 									<div class="col-sm-12 mb-6 mb-sm-0">
-		                                <input type="submit" class="btn btn-primary btn-user" onclick="close()" value="등록">
+		                                <input type="submit" class="btn btn-primary btn-user" value="등록">
 		                                &nbsp;
 		                                <input type="reset" class="btn btn-primary btn-user" value="초기화">
 		                                &nbsp;
-		                                <input type="button" class="btn btn-primary btn-user" onclick="close()" value="돌아가기">
+		                                <input type="button" class="btn btn-primary btn-user" onclick="insertMovieClose()" value="돌아가기">
 									</div>
 								</div>
                             </form>
