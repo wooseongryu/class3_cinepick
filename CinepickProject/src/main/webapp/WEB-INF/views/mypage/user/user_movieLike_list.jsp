@@ -98,7 +98,7 @@
 		.bookBtnFalse:hover {
 			color: #c7c7c7;
 			text-decoration: none;
-			cursor: pointer;
+			cursor: default;
 		}
 		
 		.noticeZone {
