@@ -72,6 +72,16 @@
 	
 
 </script>
+<style>
+	.header_right {
+/* 		text-align: right; */
+	/* 	padding: 20px 30px 15px 20px; */
+/* 		padding: 20px 15px 15px 20px; */
+/* 		width: 1092px; */
+		margin: 0 auto;
+	}
+</style>
+
 </head>
 <body>
 	<header>

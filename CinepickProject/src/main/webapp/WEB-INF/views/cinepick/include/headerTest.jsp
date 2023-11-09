@@ -20,18 +20,27 @@ a {
 	text-decoration: none;
 }
 
+.header_right.sy {
+    text-align: right;
+    /* padding: 20px 30px 15px 20px; */
+    padding: 20px 77px 15px 20px;
+    width: 1092px;
+}
+
 </style>    
  
  <header class="header">
  	<div class="header_container">
-        <div class="header_right">
+        <div class="header_right sy">
 			<c:choose>
 				<c:when test="${empty sessionScope.sId }">
 					<a href="login" class="search-switch">
-						<span class="icon_search">로그인</span>
+						<span>로그인</span>
+<!-- 						<span class="icon_search">로그인</span> -->
 					</a>
 					<a href="join">
-						<span class="icon_profile">회원가입</span>
+						<span>회원가입</span>
+<!-- 						<span class="icon_profile">회원가입</span> -->
 					</a>
 				</c:when>
 				

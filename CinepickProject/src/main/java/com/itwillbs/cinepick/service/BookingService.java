@@ -108,5 +108,9 @@ public class BookingService {
 	public int insertUpdateSeat(Map<String, Object> map) {
 		return mapper.insertUpdateSeat(map);
 	}
+
+	public BookVO getUserRecentBook(Map<String, String> param) {
+		return mapper.selectUserRecentBook(param);
+	}
 	
 }

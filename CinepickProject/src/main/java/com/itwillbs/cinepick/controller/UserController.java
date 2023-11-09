@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwillbs.cinepick.service.BookingService;
 import com.itwillbs.cinepick.service.LikeMovieService;
 import com.itwillbs.cinepick.service.ReviewService;
 import com.itwillbs.cinepick.service.UserService;
@@ -33,6 +34,9 @@ public class UserController {
 	private UserService service;
 	@Autowired
 	private LikeMovieService likeService;
+	
+	@Autowired
+	private BookingService bookingService;
 
 	
 	
@@ -76,6 +80,24 @@ public class UserController {
 		List<BookVO> bookList = service.selectUserBookList(param);
 
 		model.addAttribute("bookList", bookList);
+		
+		
+		
+		
+		
+		// 엄성윤 추가, 가장 최근 예매 내역 티켓으로 표현
+		
+		if(bookList != null) {
+			BookVO ticketBook = bookingService.getUserRecentBook(param);
+			model.addAttribute("ticketBook", ticketBook);
+		}
+		
+		// ======================
+		
+		
+		
+		
+		
 		
 		
 		return "mypage/user/user_mypage";
@@ -260,6 +282,18 @@ public class UserController {
 		List<BookVO> bookList = service.getBookList(param);
 		
 		model.addAttribute("bookList", bookList);
+		
+		System.out.println("아이디는 " + sId);
+		
+		
+		// 엄성윤 추가, 가장 최근 예매 내역 티켓으로 표현
+		
+//		if(bookList != null) {
+//			BookVO ticketBook = bookingService.getUserRecentBook(sId);
+//			model.addAttribute("ticketBook", ticketBook);
+//		}
+		
+		// ======================
 		
 		return "mypage/user/user_movie_purchase_list";
 	}

@@ -51,13 +51,13 @@
         <div class="loader"></div>
     </div>
     
-    스케줄 번호 : ${param.sche_idx }
-    권종 : ${param.allTickets }
-    좌석 : ${param.seats }
-    매수 : ${param.total }
-    총액 : ${param.moneySum }
-   	영화명 : ${param.movie_nameK }
-    관람가 : ${param.movie_rated }
+<%--     스케줄 번호 : ${param.sche_idx } --%>
+<%--     권종 : ${param.allTickets } --%>
+<%--     좌석 : ${param.seats } --%>
+<%--     매수 : ${param.total } --%>
+<%--     총액 : ${param.moneySum } --%>
+<%--    	영화명 : ${param.movie_nameK } --%>
+<%--     관람가 : ${param.movie_rated } --%>
 
 	<div class="inner-wrap" style="padding-top:40px; padding-bottom:100px;">
 	<!-- quick-reserve -->

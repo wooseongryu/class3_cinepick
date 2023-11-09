@@ -24,10 +24,10 @@ a {
 			<c:choose>
 				<c:when test="${empty sessionScope.sId }">
 					<a href="login" class="search-switch">
-						<span class="icon_search">로그인</span>
+						<span>로그인</span>
 					</a>
 					<a href="join">
-						<span class="icon_profile">회원가입</span>
+						<span>회원가입</span>
 					</a>
 				</c:when>
 				

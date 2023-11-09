@@ -50,6 +50,8 @@ public interface BookingMapper {
 	int updateSeatList(Map<String, Object> map);
 
 	String selectSeatList(int sche_idx);
+
+	BookVO selectUserRecentBook(Map<String, String> param);
 	
 //	int selectScheIdx(Map<String, Object> map);
 

@@ -12,6 +12,16 @@
     <title>CINEPICK</title>
 <%--     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer_sy.css" type="text/css"> --%>
     <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
+    
+    <style>
+    .header_right {
+	    text-align: right;
+	    /* padding: 20px 30px 15px 20px; */
+	    padding: 20px 80px 15px 20px;
+	    width: 1092px;
+	}
+    </style>
+    
 </head>
 <body>
 	
