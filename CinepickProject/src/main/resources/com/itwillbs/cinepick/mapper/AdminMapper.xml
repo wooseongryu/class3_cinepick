@@ -94,6 +94,7 @@
 	<select id="scheduleCheck" resultType="ScheduleVO">
 		SELECT 
 			sche_idx
+			, sche_date
 			, sche_start_time
 			, sche_end_time
 		FROM schedule

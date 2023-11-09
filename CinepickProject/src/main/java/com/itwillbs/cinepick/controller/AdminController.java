@@ -533,8 +533,9 @@ public class AdminController {
 			}
 			
 			// 시간표의 영화 종료시간이 비교하는 일정의 시작시간을 넘어가면 시간표의 해당 시간대 제거.
+			// 또는 시간표의 영화 종료시간이 자정을 넘어가면 시간표의 해당 시간대 제거.
 			LocalTime tableEndTime = tableStartTime.plusMinutes(time);
-			if (tableEndTime.isAfter(scheStartTime)) {
+			if (tableEndTime.isAfter(scheStartTime) || tableEndTime.getHour() < startScheduleTime) {
 				table.remove();
 			}
         }
