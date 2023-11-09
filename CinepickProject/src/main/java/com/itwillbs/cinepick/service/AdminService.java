@@ -118,12 +118,26 @@ public class AdminService {
 	
 	// 상영시간표 삭제
 	public int deleteSchedule(int sche_idx) {
-		System.out.println("AdminService - deleteSchedule()"); 
+		System.out.println("AdminService - deleteSchedule()");
+		
+		int existCount = mapper.checkExistBook(sche_idx);
+		
+		if (existCount > 0) {
+			return -1;
+		}
+		
 		return mapper.deleteSchedule(sche_idx);
 	}
 	
 	// 상영시간표 수정
 	public int updateSchedule(ScheduleVO schedule) {
+		System.out.println("AdminService - updateSchedule()");
+		
+		int existCount = mapper.checkExistBook(schedule.getSche_idx());
+		if (existCount > 0) {
+			return -1;
+		}
+		
 		return mapper.updateSchedule(schedule);
 	}
 

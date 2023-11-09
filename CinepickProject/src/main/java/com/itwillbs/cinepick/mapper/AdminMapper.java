@@ -67,6 +67,8 @@ public interface AdminMapper {
 
 	int updateSchedule(ScheduleVO schedule);
 	
+	int checkExistBook(int sche_idx);
+	
 	/*==============================================================
 	 * 공지 
 	 * =============================================================

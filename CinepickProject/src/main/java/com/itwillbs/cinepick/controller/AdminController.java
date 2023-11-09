@@ -439,6 +439,9 @@ public class AdminController {
 		if (updateCount == 0) {
 			model.addAttribute("msg", "수정 실패!");
 			return "fail_back";
+		} else if (updateCount == -1) {
+			model.addAttribute("msg", "이미 예매한 회원이 있습니다! 수정 불가.");
+			return "fail_back";
 		}
 		
 		return "redirect:/adminScheduleList";
@@ -559,6 +562,9 @@ public class AdminController {
 		
 		if (deleteCount == 0) {
 			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		} else if (deleteCount == -1) {
+			model.addAttribute("msg", "이미 예매한 회원이 있습니다! 삭제 불가.");
 			return "fail_back";
 		}
 		

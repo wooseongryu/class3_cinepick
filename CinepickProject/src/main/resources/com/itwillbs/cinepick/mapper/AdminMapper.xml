@@ -158,6 +158,12 @@
 			, sche_theater_idx = #{sche_theater_idx}
 		WHERE sche_idx = #{sche_idx}
 	</update>
+	
+	<select id="checkExistBook" resultType="int">
+		select COUNT(*)
+		from book
+		where sche_idx = #{sche_idx}
+	</select>
 	<!-- 상영 시간표 끝 -->
 	
 
