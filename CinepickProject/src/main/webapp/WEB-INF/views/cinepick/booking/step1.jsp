@@ -80,9 +80,6 @@
 			max-width: 23%;
 		}
 		
-		hr {
-			border: 0;
-		}
     	
     </style>
     <script type="text/javascript">
@@ -145,6 +142,8 @@
 						$("#result").append(action);
 						
 						$("#step1_screen > .row").find("h6").css("color", "#1c1c1c");
+// 						$("#step1_screen > .row[name='" + data.getAttribute("data-screenName") + "']").find("h6[data-hour='" + data.getAttribute("data-hour") + "']").css("background-color","329eb1");
+// 						$("#step1_screen > .row[name='" + data.getAttribute("data-screenName") + "']").find("h6[data-hour='" + data.getAttribute("data-hour") + "']").css({"background-color":"#329eb1", "color":"white"});
 						$("#step1_screen > .row[name='" + data.getAttribute("data-screenName") + "']").find("h6[data-hour='" + data.getAttribute("data-hour") + "']").css("color", "#503396");
 						
 						$("#result_screen").children().remove();
@@ -175,6 +174,7 @@
 							$("#result_date").append("<h6>날짜&emsp;&emsp;" + data.getAttribute("data-date") + "</h6>");
 							
 							$("#step1_screen").append("<h6 style='color: #1c1c1c'>" + screen + "</h6>");
+// 							$("#step1_screen").append("<h6 style='background-color:#329eb1; color: white'>" + screen + "</h6>");
 							$("#step1_screen").append("<div name='" + screen + "' class='row' id='step1_time''>");
 							$.each(resp.timeList, function(index, time) {
 								let hour = time.sche_start_time.hour;
@@ -202,7 +202,7 @@
 		 						}
 							});
 							$("#step1_screen").append("</div>");
-							$("#step1_screen").append("<hr>");
+							$("#step1_screen").append("<br>");
 						});
 						
 						$("#step1_date").children("h6").css("color", "#1c1c1c");

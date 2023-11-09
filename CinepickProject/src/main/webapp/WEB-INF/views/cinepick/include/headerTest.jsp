@@ -87,7 +87,7 @@ a {
 								극장 <span class="arrow_carrot-down"></span>
 							</a>
 							 <ul class="dropdown">
-	                             <li><a href="##############################">지역별 극장</a></li>
+	                             <li><a href="theater">지역별 극장</a></li>
 							</ul>
 						</li>
 						
@@ -103,8 +103,8 @@ a {
 							</a>
 							 <ul class="dropdown">
 	                             <li><a href="eventList?eventCate_Idx=1">영화</a></li>
-	                             <li><a href="eventList?eventCate_Idx=2">시사회/무대인사</a></li>
-	                             <li><a href="eventList?eventCate_Idx=3">극장별</a></li>
+	                             <li><a href="eventList?eventCate_Idx=4">시사회/무대인사</a></li>
+	                             <li><a href="eventList?eventCate_Idx=5">극장</a></li>
 							</ul>
 						</li>	
                         <li>
@@ -112,9 +112,9 @@ a {
 	                        	스토어 <span class="arrow_carrot-down"></span>
 	                        </a>
 							 <ul class="dropdown">
-	                             <li><a href="packageStoreList">패키지</a></li>
-	                             <li><a href="snackStoreList">스낵</a></li>
-	                             <li><a href="ticketStoreList">관람권/포토카드</a></li>
+	                             <li><a href="storeList?storeCate_Idx=1"">패키지</a></li>
+	                             <li><a href="storeList?storeCate_Idx=2">스낵</a></li>
+	                             <li><a href="storeList?storeCate_Idx=3">관람권/포토카드</a></li>
 							</ul>
 						</li>	
                         <li>
