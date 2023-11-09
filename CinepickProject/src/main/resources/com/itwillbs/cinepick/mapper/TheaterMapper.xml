@@ -22,5 +22,31 @@
 		SELECT city_name, city_name_e, city_idx
 		FROM city
 	</select>
+	
+	<select id="selectSchedule" resultType="TimeSchedule">
+		SELECT
+			t.city_idx
+			, t.theater_idx
+			, t.theater_name
+			, t.brchNo 
+			, s.screen_idx
+			, s.screen_name
+			, m.movie_code 
+			, m.movie_nameK 
+			, m.movie_runtime 
+			, m.movie_rated 
+			, sc.sche_date
+			, sc.sche_start_time
+			, screen_total_seat
+		FROM screen s 
+		JOIN theater t
+		ON s.screen_theater_idx = t.theater_idx
+		JOIN schedule sc
+		ON s.screen_idx = sc.sche_screen_idx
+		JOIN movie m
+		ON m.movie_code = sc.sche_movie_code
+		WHERE brchNo = #{brchNo}
+<!-- 		ORDER BY sche_date; -->
+	</select>
 
 </mapper>

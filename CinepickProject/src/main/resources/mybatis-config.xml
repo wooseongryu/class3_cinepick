@@ -26,6 +26,7 @@
 		<typeAlias type="com.itwillbs.cinepick.vo.StoreCateVO" alias="StoreCate"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.LikeMovieVO" alias="Like"/>
 		<typeAlias type="com.itwillbs.cinepick.vo.SeatVO" alias="Seat"/>
+		<typeAlias type="com.itwillbs.cinepick.vo.TimeScheduleVO" alias="TimeSchedule"/>
 	</typeAliases>
 </configuration>
   

@@ -1,0 +1,739 @@
+.time-schedule {
+    width: 100%
+}
+
+.time-schedule:after,.time-schedule:before {
+    content: '';
+    display: table
+}
+
+.time-schedule:after {
+    clear: both
+}
+
+.time-schedule .wrap {
+    height: 73px;
+    border: 1px solid #d8d9db;
+    border-right: 0;
+    border-left: 0;
+    position: relative
+}
+
+.time-schedule .year {
+    position: absolute;
+    top: 0;
+    font-size: .8667em;
+    width: 70px;
+    height: 28px;
+    line-height: 28px;
+    margin-top: -14px;
+    border: 1px solid #d8d9db;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #fff;
+    font-weight: 400
+}
+
+.time-schedule .date-area {
+    height: 73px;
+    float: left
+}
+
+.time-schedule .date-area button {
+    width: 70px;
+    height: 72px;
+    border: 0;
+    background-color: transparent;
+    float: left;
+    border-bottom: 3px solid transparent;
+    font-weight: 400
+}
+
+.time-schedule .date-area button em {
+    display: block;
+    font-size: 1.2em;
+    line-height: 1.1;
+    padding: 5px 0;
+    font-family: Roboto;
+    font-weight: 300
+}
+
+.time-schedule .date-area button.holi:hover,.time-schedule .date-area button.sat:hover,.time-schedule .date-area button:focus,.time-schedule .date-area button:hover {
+    border-bottom: 3px solid #503396
+}
+
+.time-schedule .date-area button.disabled.holi:hover,.time-schedule .date-area button.disabled.sat:hover {
+    border-bottom: 2px solid transparent!important
+}
+
+.time-schedule .date-area button.on {
+    background-color: #f7f8f9;
+    border-bottom: 3px solid #503396
+}
+
+.time-schedule .date-area button.on.imposs {
+    color: #aaa;
+    background-color: transparent;
+    border-bottom: 3px solid transparent;
+    font-weight: 400
+}
+
+.time-schedule .date-area button.sat {
+    color: #3b5fcb
+}
+
+.time-schedule .date-area button.holi {
+    color: #e81002
+}
+
+.time-schedule .date-area button.imposs {
+    color: #666;
+    background-color: transparent;
+    border-bottom: 3px solid transparent;
+    font-weight: 400
+}
+
+.time-schedule .date-area button span {
+    vertical-align: bottom;
+    line-height: 1.1
+}
+
+.time-schedule .date-area button.disabled {
+    font-weight: 400;
+    opacity: .5;
+    cursor: default
+}
+
+.time-schedule .date-area button.disabled:focus {
+    outline: 0;
+    border-bottom: 2px solid transparent
+}
+
+.time-schedule .date-area button.disabled:hover {
+    outline: 0;
+    border-bottom: 2px solid transparent
+}
+
+.time-schedule .date-area button.disabled em {
+    color: #666!important;
+    font-weight: 400
+}
+
+.time-schedule .date-area button.disabled em+span {
+    color: #666!important;
+    font-weight: 400
+}
+
+.time-schedule .btn-next,.time-schedule .btn-pre {
+    width: 30px;
+    height: 73px;
+    border: 0!important;
+    background-color: transparent!important;
+    float: left
+}
+
+.time-schedule .btn-next em,.time-schedule .btn-pre em {
+    text-indent: -10000px;
+    height: 0;
+    font-size: 0;
+    padding: 0;
+    margin: 0
+}
+
+.time-schedule .bg-line {
+    float: left;
+    position: relative;
+    margin-left: 10px
+}
+
+.time-schedule .bg-line:before {
+    content: '';
+    width: 1px;
+    height: 47px;
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 0;
+    background-color: #ebebeb
+}
+
+.time-schedule .ico-cld-pre {
+    margin-right: 1px
+}
+
+.time-schedule .ico-cld-next {
+    margin-left: 1px
+}
+
+.time-schedule .btn-calendar-large {
+    width: 50px;
+    height: 72px;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -999px;
+    border-bottom: 0!important;
+    background-color: transparent!important
+}
+
+.time-schedule .date-list {
+    width: 980px;
+    overflow: hidden;
+    float: left;
+    height: 72px
+}
+
+.ico-cld-pre {
+    width: 7px;
+    height: 12px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-cld-pre.png)
+}
+
+.ico-cld-next {
+    width: 7px;
+    height: 12px;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-cld-next.png)
+}
+
+.btn-calendar-large {
+    background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-calendar-w20.png) no-repeat center
+}
+
+.time-schedule.quick .year {
+    top: 0;
+    height: 20px;
+    line-height: 18px;
+    margin-top: -10px;
+    border-radius: 10px;
+    font-family: Roboto;
+    font-weight: 300
+}
+
+.time-schedule.quick .wrap {
+    height: 40px;
+    border-top: 1px solid #555;
+    border-left: 1px solid #d8d9db;
+    border-right: 1px solid #d8d9db
+}
+
+.time-schedule.quick .date-area {
+    height: 39px;
+    float: left
+}
+
+.time-schedule.quick .date-area button.disabled {
+    cursor: default
+}
+
+.time-schedule.quick .date-area button.disabled:focus {
+    outline: 0;
+    border-bottom: 2px solid transparent
+}
+
+.time-schedule.quick .date-area button.disabled:hover {
+    outline: 0;
+    border-bottom: 2px solid transparent
+}
+
+.time-schedule.quick .btn-next,.time-schedule.quick .btn-pre {
+    height: 39px
+}
+
+.time-schedule.quick .btn-calendar-large {
+    height: 39px
+}
+
+.time-schedule.quick .date-list {
+    height: 39px
+}
+
+.time-schedule.quick .bg-line {
+    margin-left: 8px
+}
+
+.time-schedule.quick .date-area button {
+    height: 39px;
+    font-size: .8667em;
+    border-bottom: 2px solid transparent
+}
+
+.time-schedule.quick .date-area button.holi:hover,.time-schedule.quick .date-area button.sat:hover,.time-schedule.quick .date-area button:focus,.time-schedule.quick .date-area button:hover {
+    border-bottom: 2px solid #503396
+}
+
+.time-schedule.quick .date-area button.on {
+    background-color: #f7f8f9;
+    border-bottom: 2px solid #503396
+}
+
+.time-schedule.quick .date-area button em {
+    position: relative;
+    display: inline-block;
+    line-height: 1.1;
+    padding: 0 9px 0 0;
+    vertical-align: middle;
+    font-family: Roboto
+}
+
+.time-schedule.quick .date-area button em:after {
+    content: '';
+    position: absolute;
+    right: 3px;
+    top: 6px;
+    display: block;
+    width: 3px;
+    height: 3px;
+    background-color: #888
+}
+
+.time-schedule.quick .date-area button em+span {
+    display: inline-block;
+    line-height: 1.1;
+    font-weight: 400;
+    vertical-align: bottom
+}
+
+.time-schedule.quick .bg-line:before {
+    height: calc(100% - 1px);
+    top: 0;
+    background-color: #ebebeb
+}
+
+.theater-list-box {
+    width: 100%;
+    border-top: 1px solid #000;
+    position: relative;
+    display: table
+}
+
+.theater-list-box .theater-list .theater-movie-tit {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%
+}
+
+.theater-list-box .theater-list .theater-type-box {
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 1px solid #eaeaea
+}
+
+.theater-list-box .theater-list:last-child .theater-type-box:last-child {
+    border-bottom: 0
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type {
+    text-align: left;
+    padding: 20px 0 0 20px;
+    float: left;
+    width: 208px;
+    display: table-cell;
+    vertical-align: middle
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type p {
+    padding: 0;
+    margin: 0
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type p.theater-name {
+    font-size: 1.2em;
+    color: #444;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type p.chair {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type p.type {
+    color: #444;
+    font-weight: 400;
+    line-height: 1em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time {
+    float: left;
+    width: 81%;
+    margin: 20px 0
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table {
+    border-top: 1px solid #ebebeb;
+    border-left: 1px solid #ebebeb;
+    width: 800px;
+    margin-left: -10px
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td {
+    border-right: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    text-align: center
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab {
+    width: 100px;
+    height: 69px;
+    display: table
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .txt-center {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box .iconset {
+    margin-top: -10px
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box.off {
+    display: none
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .play-time {
+    display: none
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab:hover .play-time {
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 100px;
+    height: 70px;
+    background-color: #503396;
+    z-index: 10;
+    color: #fff;
+    font-size: 1.0667em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab:hover .play-time p:nth-child(1) {
+    margin-top: 12px
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time {
+    background-color: #f7f8f9
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p {
+    padding: 0;
+    margin: 0
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p.time {
+    color: #666;
+    font-size: 1.2em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p.chair {
+    color: #666
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p {
+    padding: 0;
+    margin: 0
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p.time {
+    font-size: 1.2em;
+    color: #444;
+    font-weight: 400;
+    line-height: 1em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p.chair {
+    color: #01738b
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option {
+    height: 14px;
+    overflow: hidden
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option.off {
+    display: none
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option li {
+    display: inline-block;
+    width: 13px;
+    height: 13px
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option li .iconset {
+    margin-top: -10px
+}
+
+.reserve.theater-list-box {
+    width: 100%;
+    display: table;
+    border-top: 0
+}
+
+.reserve.theater-list-box .theater-list {
+    position: relative
+}
+
+.reserve.theater-list-box .theater-list+.theater-list {
+    margin-top: 30px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box {
+    overflow: hidden;
+    width: 100%;
+    position: relative
+}
+
+.reserve.theater-list-box .theater-list:last-child .theater-type-box:last-child {
+    border-bottom: 1px solid #eaeaea
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type {
+    text-align: left;
+    width: 170px;
+    display: table-cell;
+    vertical-align: middle;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    padding: 0!important
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type p {
+    padding: 0;
+    margin: 0
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type p.theater-name {
+    font-size: 1.2em;
+    color: #444;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1em
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type p.chair {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1em
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type p.type {
+    color: #444;
+    font-weight: 400;
+    line-height: 1em
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type-area {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100px;
+    background-color: #f2f4f5;
+    text-align: center;
+    color: #444;
+    font-weight: 700;
+    border-bottom: 0
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time-box {
+    display: table-cell;
+    width: 800px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time {
+    width: 100%;
+    margin-left: 190px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time+.theater-time {
+    margin-top: 0
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table {
+    border-top: 1px solid #ebebeb;
+    border-left: 1px solid #ebebeb;
+    width: 800px;
+    margin-left: 9px;
+    width: auto;
+    table-layout: auto
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table colgroup {
+    display: none
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td {
+    width: 99px;
+    border-right: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    text-align: center
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab {
+    width: 100%;
+    height: 69px;
+    display: table
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .txt-center {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .txt-center a {
+    display: inline-block;
+    width: 100%
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box .iconset {
+    margin-top: -10px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box.off {
+    display: none
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .play-time {
+    display: none
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab:hover .play-time {
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 100px;
+    height: 70px;
+    background-color: #503396;
+    z-index: 10;
+    color: #fff;
+    font-size: 1.0667em
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab:hover .play-time p:nth-child(1) {
+    margin-top: 12px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time {
+    padding: 10px 0;
+    background-color: #f7f8f9
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p {
+    padding: 0;
+    margin: 0
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p.time {
+    color: #666;
+    font-size: 1.2em
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p.chair {
+    color: #666
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p {
+    padding: 0;
+    margin: 0
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p.time {
+    font-size: 1.2em;
+    color: #444;
+    font-weight: 400;
+    line-height: 1em;
+    font-family: Roboto
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p.chair {
+    color: #01738b
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option {
+    height: 14px;
+    overflow: hidden
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option.off {
+    display: none
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option li {
+    display: inline-block;
+    width: 13px;
+    height: 13px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option li .iconset {
+    margin-top: -10px
+}
+
+.no-location-result {
+    display: block;
+    padding: 100px 0 0 0;
+    text-align: center;
+    background: url(https://img.megabox.co.kr/static/pc/images/reserve/bg-re-img-film.png) top center no-repeat
+}
+
+.movie-option {
+    width: 100%;
+    overflow: hidden
+}
+
+.movie-option .option {
+    float: left
+}
+
+.movie-option .rateing-lavel {
+    float: right
+}
+
+.movie-option .option ul li {
+    float: left;
+    margin-right: 15px;
+    line-height: 1em
+}
+
+.movie-option .option .iconset {
+    margin-right: 5px;
+    margin-top: -3px
+}
+
+.movie-option .rateing-lavel a {
+    position: relative;
+    padding-left: 23px;
+    line-height: 1em;
+    text-decoration: none
+}
+
+.movie-option .rateing-lavel a:before {
+    content: ' ';
+    width: 16px;
+    height: 16px;
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-exclamation.png) center no-repeat
+}

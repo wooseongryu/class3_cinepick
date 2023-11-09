@@ -27,6 +27,8 @@ public interface EventMapper {
 
 	// 영화 이벤트 목록 수
 	int selectMovieEventListCount(@Param("eventCate_Idx") int eventCate_Idx);
+
+	List<EventVO> selectTheaterEventList();
 	
 
 

@@ -20,6 +20,12 @@
 	    padding: 20px 80px 15px 20px;
 	    width: 1092px;
 	}
+	
+	.theaterEvent {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		margin: 0 auto;
+	}
     </style>
     
 </head>
@@ -482,25 +488,73 @@
 	        <a href="eventList?eventCate_Idx=5" class="more" title="극장 이벤트 더보기">더보기 <i class="fa-solid fa-angle-right"></i></a>
 		</div>
 	
-		<div class="event-box">
-			<ul>
-				<li>
-					<a href="#" class="eventBtn" data-no="14183" data-netfunnel="N" title="[코엑스] 더 부티크 스위트 평일 2만 5천원 관람 이벤트 상세보기">
-						<img src="https://img.megabox.co.kr/SharedImg/event/2023/09/27/39i2JMCOpghfRB06jui0Ow6xp17PYZvR.jpg" alt="[코엑스] 더 부티크 스위트 평일 2만 5천원 관람 이벤트" onerror="noImg(this)" />
-					</a>
-				</li>
-				<li>
-					<a href="#" class="eventBtn" data-no="14058" data-netfunnel="N" title="[대구경북지역] 대구경북 추석 감사제! 상세보기">
-						<img src="https://img.megabox.co.kr/SharedImg/event/2023/09/15/FaIa0oUkmck1Dhz0KCYSTj0BlqKVFgZL.jpg" alt="[대구경북지역] 대구경북 추석 감사제!" onerror="noImg(this)" />
-					</a>
-				</li>
+<!-- 		<div class="event-box"> -->
+<!-- 			<ul> -->
+<!-- 				<li> -->
+<!-- 					<a href="#" class="eventBtn" data-no="14183" data-netfunnel="N" title="[코엑스] 더 부티크 스위트 평일 2만 5천원 관람 이벤트 상세보기"> -->
+<!-- 						<img src="https://img.megabox.co.kr/SharedImg/event/2023/09/27/39i2JMCOpghfRB06jui0Ow6xp17PYZvR.jpg" alt="[코엑스] 더 부티크 스위트 평일 2만 5천원 관람 이벤트" onerror="noImg(this)" /> -->
+<!-- 					</a> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<a href="#" class="eventBtn" data-no="14058" data-netfunnel="N" title="[대구경북지역] 대구경북 추석 감사제! 상세보기"> -->
+<!-- 						<img src="https://img.megabox.co.kr/SharedImg/event/2023/09/15/FaIa0oUkmck1Dhz0KCYSTj0BlqKVFgZL.jpg" alt="[대구경북지역] 대구경북 추석 감사제!" onerror="noImg(this)" /> -->
+<!-- 					</a> -->
+<!-- 				</li> -->
+
+
+
+	<!-- 이 부분 원래 주석 -->
 	<!-- 			<li> -->
 	<!-- 				<a href="#" class="eventBtn" data-no="14183" data-netfunnel="N" title="[코엑스] 더 부티크 스위트 평일 2만 5천원 관람 이벤트 상세보기"> -->
 	<!-- 					<img src="https://img.megabox.co.kr/SharedImg/event/2023/09/27/39i2JMCOpghfRB06jui0Ow6xp17PYZvR.jpg" alt="[코엑스] 더 부티크 스위트 평일 2만 5천원 관람 이벤트" onerror="noImg(this)" /> -->
 	<!-- 				</a> -->
 	<!-- 			</li> -->
-			</ul>
-		</div>
+	<!-- 이 부분 원래 주석 -->
+	
+	
+	
+<!-- 			</ul> -->
+<!-- 		</div> -->
+		
+		
+		
+		
+		<!-- 1109 추가 -->
+		
+		
+		
+<!-- 		<div class="row"> -->
+<!-- 		    <div class="col-lg-12">  -->
+<%-- 			<c:forEach var="eventCate" items="${eventCateList }"> --%>
+<!--                    <div class="section-title"> -->
+<%--                        <h5 style="margin: 10px 10px 10px 10px;">${eventCate.eventCate_Subject }</h5> --%>
+<%--                        <h6 align="right" style="color: #1C1C1C;" onclick="location.href='eventList?eventCate_Idx=${eventCate.eventCate_Idx}'" >더보기</h6> --%>
+<!--                    </div> -->
+				<div class="row" style="justify-content: center">
+						<section class="theaterEvent">
+					<c:forEach var="event" items="${eventList }" >
+<%-- 							<c:if test="${event.event_category eq 5 }"> --%>
+						    	<a href="eventDetail?event_idx=${event.event_idx}">
+									<img src ="${pageContext.request.contextPath }/resources/upload/${event.event_thumbnail }" width="240" height="240" style="margin: 10px 10px 10px 10px;">
+								</a>
+<%-- 								<h6 align="center" style="color: #1C1C1C; margin: 10px 10px 10px 10px;">${event.event_startDt } ~ ${event.event_endDt }</h6> --%>
+<%-- 							</c:if> --%>
+					</c:forEach>
+						</section>
+				</div>
+<%-- 			</c:forEach> --%>
+<!-- 			</div> -->
+<!-- 		</div>	 -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	
 	

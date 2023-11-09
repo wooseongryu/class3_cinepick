@@ -41,6 +41,11 @@ public class EventService {
 	public int getMovieEventListCount(int eventCate_Idx) {
 		return mapper.selectMovieEventListCount(eventCate_Idx);
 	}
+
+	// 극장 메인 페이지에 극장 이벤트 출력
+	public List<EventVO> getEventList() {
+		return mapper.selectTheaterEventList();
+	}
 	
 	
 	
