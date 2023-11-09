@@ -20,18 +20,27 @@ a {
 	text-decoration: none;
 }
 
+.header_right.sy {
+    text-align: right;
+    /* padding: 20px 30px 15px 20px; */
+    padding: 20px 77px 15px 20px;
+    width: 1092px;
+}
+
 </style>    
  
  <header class="header">
  	<div class="header_container">
-        <div class="header_right">
+        <div class="header_right sy">
 			<c:choose>
 				<c:when test="${empty sessionScope.sId }">
 					<a href="login" class="search-switch">
-						<span class="icon_search">로그인</span>
+						<span>로그인</span>
+<!-- 						<span class="icon_search">로그인</span> -->
 					</a>
 					<a href="join">
-						<span class="icon_profile">회원가입</span>
+						<span>회원가입</span>
+<!-- 						<span class="icon_profile">회원가입</span> -->
 					</a>
 				</c:when>
 				
@@ -78,7 +87,7 @@ a {
 								극장 <span class="arrow_carrot-down"></span>
 							</a>
 							 <ul class="dropdown">
-	                             <li><a href="##############################">지역별 극장</a></li>
+	                             <li><a href="theater">지역별 극장</a></li>
 							</ul>
 						</li>
 						
@@ -94,8 +103,8 @@ a {
 							</a>
 							 <ul class="dropdown">
 	                             <li><a href="eventList?eventCate_Idx=1">영화</a></li>
-	                             <li><a href="eventList?eventCate_Idx=2">시사회/무대인사</a></li>
-	                             <li><a href="eventList?eventCate_Idx=3">극장별</a></li>
+	                             <li><a href="eventList?eventCate_Idx=4">시사회/무대인사</a></li>
+	                             <li><a href="eventList?eventCate_Idx=5">극장</a></li>
 							</ul>
 						</li>	
                         <li>
@@ -103,9 +112,9 @@ a {
 	                        	스토어 <span class="arrow_carrot-down"></span>
 	                        </a>
 							 <ul class="dropdown">
-	                             <li><a href="packageStoreList">패키지</a></li>
-	                             <li><a href="snackStoreList">스낵</a></li>
-	                             <li><a href="ticketStoreList">관람권/포토카드</a></li>
+	                             <li><a href="storeList?storeCate_Idx=1"">패키지</a></li>
+	                             <li><a href="storeList?storeCate_Idx=2">스낵</a></li>
+	                             <li><a href="storeList?storeCate_Idx=3">관람권/포토카드</a></li>
 							</ul>
 						</li>	
                         <li>

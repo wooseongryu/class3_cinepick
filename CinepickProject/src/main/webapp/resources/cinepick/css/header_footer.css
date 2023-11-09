@@ -141,12 +141,16 @@ img {
 
 .header_right {
 	text-align: right;
-	padding: 20px 30px 15px 20px;
+/* 	padding: 20px 30px 15px 20px; */
+	padding: 20px 60px 15px 20px;
+	width: 1092px;
 }
 
 .header_right a {
 	display: inline-block;
-	font-size: 18px;
+/* 엄성윤 1109 수정 */
+/* 	font-size: 18px; */
+	font-size: 14px;
 	color: #ffffff;
 	margin-right: 30px;
 }

@@ -35,8 +35,6 @@ public class BookingController {
 	@Autowired
 	private BookingService bookingService;
 	
-//	@Autowired
-//	private TicketService ticketService;
 	
 	/*====================================================================
 	 * - 목차 -

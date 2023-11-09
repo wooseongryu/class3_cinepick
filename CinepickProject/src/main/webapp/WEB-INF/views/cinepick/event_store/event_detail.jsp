@@ -12,7 +12,7 @@
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anime | Template</title>
+    <title>CINEPICK</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
 	                             &nbsp;&nbsp;
 	                            <a href="eventList?eventCate_Idx=4">시사회/무대인사</a>
 	                             &nbsp;&nbsp;
-	                            <a href="eventList?eventCate_Idx=5">극장별</a>
+	                            <a href="eventList?eventCate_Idx=5">극장</a>
 	                        </h5>
 	                    </div>
 					</div>

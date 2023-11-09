@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/userTicket.css" type="text/css">
+
 <head>
 
     <meta charset="utf-8">
@@ -11,6 +13,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    
+	<style>
+	.movie-info-bottom strong {
+	    font-size: 1.2em;
+	    color: #59bec9;
+	}
+	.movie-info-bottom strong.white {
+	    font-size: 1.2em;
+	    color: #c4c4c4;
+	}
+	
+	</style>
 
 </head>
 
@@ -174,6 +188,97 @@
 <!--                         </div> -->
 <!--                     </div> -->
 
+					
+					
+					<c:if test="${not empty ticketBook }">
+						<!-- 엄성윤 추가 -->
+						<!-- reserve-finish -->
+						<div class="reserve-finish">
+							<!-- reserve-ininfomation-box -->
+							<div class="reserve-ininfomation-box">
+								<div class="movie-poster-area">
+									<p>
+										티켓 예매번호 <!-- 티켓 예매번호 -->
+		<!-- 								<span class="roboto">9132-389-47509</span> -->
+										<span class="roboto">${ticketBook.book_id}</span>
+									</p>
+									<img src="${ticketBook.movie_poster }" alt="${ticketBook.movie_nameK}" onerror="noImg(this)">
+		<!-- 							<img src="https://img.megabox.co.kr/SharedImg/2023/10/25/FXFCIlhJ6JEcTfk8BpVkSWvmf84sSpe9_316.jpg" alt="(자막) 그대들은 어떻게 살 것인가" onerror="noImg(this)"> -->
+								</div>
+			
+								<!-- movie-infomation-area -->
+								<div class="movie-infomation-area">
+									<div class="movie-info-top">
+										<p class="tit">
+											<strong>내가 기다리는 영화 <!-- 예매가 완료되었습니다 --><i></i></strong>
+											
+		<!-- 										<span class="righten"> <i class="iconset ico-circle-point"></i> 고객님의 상영익일 적립예정 포인트는 고객님의 상영익일 적립예정 포인트는 <em>550P</em>입니다. 입니다.</span> -->
+											
+										</p>
+									</div>
+			
+									<div class="movie-info-middle">
+										<ul class="dot-list gray">
+											<li><span>예매영화 <!-- 예매영화 --></span> ${ticketBook.movie_nameK}</li>
+											<li><span>관람극장/상영관 <!-- 관람극장/상영관 --></span> ${ticketBook.theater_name} / ${ticketBook.screen_name}</li>
+											<li><span>관람일시 <!-- 관람일시 --></span> &nbsp;${ticketBook.sche_date} ${ticketBook.sche_start_time }</li>
+	<%-- 										<li class="dday" data-sche_date="${ticketBook.sche_date}"></li> --%>
+											<li><span>관람인원 <!-- 관람인원 --></span> &nbsp;${ticketBook.ticket_type}</li>
+											<li><span>좌석번호 <!-- 좌석번호 --></span> &nbsp;${ticketBook.seat_list}</li>
+		<!-- 									<li><span>전화번호 전화번호</span> &nbsp;010-5912-9507</li> -->
+											<li>
+												<span>결제정보 <!-- 결제정보 --></span>
+												<strong class="roboto">${ticketBook.total_cost}</strong> 원 <!-- 원 --><br>
+												<em></em>
+											</li>
+										</ul>
+									</div>
+		
+									<!-- movie-info-bottom -->
+									<div class="movie-info-bottom">
+										<div class="add-send">
+		<!-- 								예매정보 추가 발송 예매정보 추가 발송 -->
+		<!-- 								<p class="cinipickP">♥ 씨네픽과 함께 즐거운 관람되세요 ♥</p> -->
+	<%-- 									<p class="dday" data-sche_date="${ticketBook.sche_date}"></p> --%>
+										<p class="cinepickP" style="margin-left: 490px; margin-top: 10px;">씨네픽과 함께라면 누구나 씨네필!</p>
+										<p style="float:right;">
+											<strong class="roboto white">영화 관람까지</strong>
+											<strong class="roboto dday" data-sche_date="${ticketBook.sche_date}"></strong>
+											<strong class="roboto white">남았습니다.</strong>
+										</p>
+		<!-- 									<a href="#tooltip01_01" class="tooltip hover" title="입력하신 번호로 예매정보를 추가발송합니다."> -->
+		<!-- 										<span> -->
+		<!-- 											<i class="iconset ico-question-white">&nbsp;</i> -->
+		<!-- 										</span> -->
+		<!-- 										<div class="ir" id="tooltip01_01" data-width="220"> -->
+		<!-- 											입력하신 번호로 예매정보를 추가발송합니다. 입력하신 번호로 예매정보를 추가발송합니다. -->
+		<!-- 										</div> -->
+		<!-- 									</a> -->
+		<!-- 									<input type="text" title="연락처 입력" class="input-text w150px ml10" maxlength="11" id="inp_sms_rcv_no"> -->
+		<!-- 									<button type="button" class="button" id="btn_re_send_sms">전송 전송</button> -->
+										</div>
+									</div>
+		<!-- 							// movie-info-bottom -->
+								</div>
+								<!--// movie-infomation-area -->
+							</div>
+							<!--// reserve-ininfomation-box -->
+						</div>
+						<!--// reserve-finish -->
+					</c:if>
+					
+					
+					
+					
+					
+					<br>
+					
+					
+					
+
+
+
+
                     <!-- Content Row -->
                     <div class="row">
 
@@ -295,6 +400,28 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+    
+    <script>
+    
+		$(function() {
+			dday();
+		});
+	
+		function dday() {
+			$(".dday").each(function() {
+				let dday = new Date($(this).data("sche_date"));
+				let now = new Date();
+				console.log(now);
+				let distance = dday - now;
+				let d = Math.floor(distance / (1000 * 60 * 60 * 24)) + 1;
+// 				$(this).html('D-' + d);
+				$(this).html(d + '일');
+				
+			});
+			
+		}
+    
+    </script>
 
 </body>
 

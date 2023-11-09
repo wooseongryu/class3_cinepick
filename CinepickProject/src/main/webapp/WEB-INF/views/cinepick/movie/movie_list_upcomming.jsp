@@ -91,7 +91,8 @@
 							<div class="row">
                                 <div class="col-lg-8 col-md-8 col-sm-6">
                                     <div class="section-title">
-                                        <h4>
+                                        <h5>
+<!--                                         <h4> -->
                                         	<a href="movieList">
                                                 현재 상영작
                                             </a> 
@@ -99,7 +100,8 @@
                                             <a style="color: #503396;">
                                                 개봉 예정작
                                             </a>
-                                        </h4>
+                                        </h5>
+<!--                                         </h4> -->
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6">

@@ -26,6 +26,23 @@
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery.slicknav.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/owl.carousel.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/cinepick/js/main.js"></script>
+	
+	<style>
+	.cinepickP {
+		 margin-left: 450px;
+   		 margin-top: 10px;
+	}
+	
+	.movie-info-bottom strong {
+	    font-size: 1.2em;
+	    color: #59bec9;
+	}
+	
+	.movie-info-bottom strong.white {
+	    font-size: 1.2em;
+	    color: #c4c4c4;
+	}
+	</style>
     
     <script>
     
@@ -50,6 +67,24 @@
     	
     });
     
+	$(function() {
+		dday();
+	});
+
+	function dday() {
+		$(".dday").each(function() {
+			let dday = new Date($(this).data("sche_date"));
+			let now = new Date();
+			console.log(now);
+			let distance = dday - now;
+			let d = Math.floor(distance / (1000 * 60 * 60 * 24)) + 1;
+//				$(this).html('D-' + d);
+			$(this).html(d + '일');
+			
+		});
+		
+	}
+    
     
     </script>
 
@@ -59,7 +94,7 @@
 <%-- 	<jsp:include page="../include/main_top.jsp"></jsp:include> --%>
 	<jsp:include page="../include/headerTest.jsp"></jsp:include>
 
-	<button class="btn">예매 좌석</button>
+<!-- 	<button class="btn">예매 좌석</button> -->
 	<div id="result">
 
 	
@@ -116,9 +151,17 @@
 
 	
 							<!-- movie-info-bottom -->
-<!-- 							<div class="movie-info-bottom"> -->
-<!-- 								<div class="add-send"> -->
-<!-- 								예매정보 추가 발송 예매정보 추가 발송 -->
+									<div class="movie-info-bottom">
+										<div class="add-send">
+		<!-- 								예매정보 추가 발송 예매정보 추가 발송 -->
+		<!-- 								<p class="cinipickP">♥ 씨네픽과 함께 즐거운 관람되세요 ♥</p> -->
+	<%-- 									<p class="dday" data-sche_date="${ticketBook.sche_date}"></p> --%>
+										<p class="cinepickP" style="margin-left: 490px; margin-top: 10px;">씨네픽과 함께라면 누구나 씨네필!</p>
+										<p style="float:right;">
+											<strong class="roboto white">영화 관람까지</strong>
+											<strong class="roboto dday" data-sche_date="${book.sche_date}"></strong>
+											<strong class="roboto white">남았습니다.</strong>
+										</p>
 <!-- 									<a href="#tooltip01_01" class="tooltip hover" title="입력하신 번호로 예매정보를 추가발송합니다."> -->
 <!-- 										<span> -->
 <!-- 											<i class="iconset ico-question-white">&nbsp;</i> -->
@@ -129,8 +172,8 @@
 <!-- 									</a> -->
 <!-- 									<input type="text" title="연락처 입력" class="input-text w150px ml10" maxlength="11" id="inp_sms_rcv_no"> -->
 <!-- 									<button type="button" class="button" id="btn_re_send_sms">전송 전송</button> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
+								</div>
+							</div>
 <!-- 							// movie-info-bottom -->
 						</div>
 						<!--// movie-infomation-area -->
