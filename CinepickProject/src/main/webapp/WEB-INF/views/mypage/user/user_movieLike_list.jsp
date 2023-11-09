@@ -298,7 +298,8 @@
 													<a href="bookingStepOne?movie_code=${like.movie_code }" class="bookBtn">예매하기</a>
 												</c:otherwise>
 											</c:choose>
-											<c:if test="${like.book_id > 0}"><span id="movieComplete"></span><br></c:if>	
+<%-- 											<c:if test="${like.book_id > 0}"><span id="movieComplete"></span><br></c:if>	 --%>
+											<c:if test="${like.book_id > 0}"><a href="userMoviePurchaseList"><span id="movieComplete"></span></a><br></c:if>	
 													
 <%-- 											<c:if test="${like.book_id > 0 }"> --%>
 <!-- 												<img id="movieComplete" alt="예매완료" src="{pageContext.request.contextPath }/resources/mypage/img/review_star/completed-text-logo.png"> -->
