@@ -46,7 +46,8 @@
     		padding-right: 5px;
     	}
     	.movie_title > h6 {
-    		width: 150px;
+    		width: 90%;
+/*     		width: 150px; */
     		text-overflow: ellipsis;
 			overflow: hidden;
 			white-space: nowrap;
@@ -61,6 +62,27 @@
     		cursor: pointer;
     	}
     	
+    	h2.tit {
+		    padding: 0;
+/* 		    padding: 0 0 26px 0; */
+		    font-size: 1.8666em;
+		    font-weight: 400;
+		    letter-spacing: -1px;
+		    line-height: 1.1;
+		    color: #222;
+		}
+		
+		.col-2 {
+			max-width: 10%;
+		}		
+		
+		.col-t {
+			max-width: 23%;
+		}
+		
+		hr {
+			border: 0;
+		}
     	
     </style>
     <script type="text/javascript">
@@ -417,7 +439,7 @@
 		<jsp:include page="../include/main_top.jsp"></jsp:include>
 	</header>
 
-    <section class="product-page spad">
+    <section class="product-page spad" style="padding-top: 30px">
 		<div class="container">
 			<div class="row">
 			
@@ -425,7 +447,8 @@
 	             
 	                 <div class="anime__details__review">
 	                     <div class="section-title">
-	                         <h5>영화예매</h5>
+<!-- 	                         <h5>영화예매</h5> -->
+							<h2 class="tit">빠른예매</h2>
 	                     </div>
 	                     
 	                     <div class="row">
@@ -439,7 +462,7 @@
 		                        </div>
 						    </div>
 						    
-						    <div class="col">
+						    <div class="col col-t">
 								<div class="step1_head">
 									<h6>극장</h6>
 		                        </div>
