@@ -206,7 +206,7 @@
 	                                    <select id="theater-select" name="sche_theater_idx" class="form-select" aria-label="Default select example" required="required">
 										</select>
 								  	</div>
-									<div class="col-sm-6 mb-3 mb-sm-0">
+									<div class="col-sm-6 mb-3 mb-sm-0"> 
 										<label for="">상영관</label>
 										<br>
 	                                    <select id="screen-select" name="sche_screen_idx" class="form-select" aria-label="Default select example" required="required">
