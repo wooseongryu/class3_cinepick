@@ -170,16 +170,18 @@
 			<div class="calendar clear">
 				<div class="month">
 					<a class="m_prev" href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-08-31&amp;ppage=2023-08-31" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;" style="margin-left: 0px"><</a>
-					<span class="m_display">2023.09</span>
+					<span class="m_display">2023.11</span>
+<!-- 					<span class="m_display">2023.09</span> -->
 					<a class="m_next" href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-10-01&amp;ppage=2023-10-01" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">></a>
 				</div>
 	
 				<ul class="day">
 					
 						<li>
-							<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-01" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
+								<!-- TODO엄성윤 -->
+<!-- 							<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-01" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;"> -->
 								<span>01</span><br/>
-							</a>
+<!-- 							</a> -->
 						</li>
 						<li>
 							<h4 class="hidden">토요일</h4>

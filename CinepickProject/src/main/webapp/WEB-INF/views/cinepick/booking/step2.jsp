@@ -815,7 +815,7 @@
 // 			alert("청소년관람불가" + "\n입장 시, 신분증을 반드시 지참해주세요!" + "\n만 " + age + "세 미만의 고객님은(영, 유아 포함) 보호자를 동반하여도\n관람이 불가하며, 만 18세 이상이라도\n고등학교 재학중인 고객님은 관람이 불가합니다");
 // 		}
 		
-		$(".seat-layout .seat-condition").each(function() {
+		$(".seat-layout .row .seat-condition").each(function() {
 // 			let seatList = seatList.split('/');
 			console.log("선택완료된 좌석: " + seat_list);
 

@@ -426,11 +426,13 @@ Thu</span></button></div></div>		</div>		<button type="button" title="다음 날
 		
 		<c:forEach var="time" items="${timeSchedule }">
 		<div class="theater-list">
+			<c:forEach var="movie" items="${timeSchedule }">
 			<div class="theater-tit">
 				<p class="movie-grade age-12"></p>
-				<p><a href="/movie-detail?rpstMovieNo=23081000" title="더 마블스 상세보기">${time.movie_nameK }</a></p>
-				<p class="infomation"><span>상영중</span>/상영시간 ${time.movie_runtime }</p>
+				<p><a href="movieDetail?movie_code=${movie.movie_code }" title="${movie.movie_nameK } 상세보기">${movie.movie_nameK }</a></p>
+				<p class="infomation"><span>상영중</span>/상영시간 ${movie.movie_runtime }</p>
 			</div>
+			</c:forEach>
 			<div class="theater-type-box">
 				<div class="theater-type">
 					<p class="theater-name">${time.screen_name }</p>
@@ -669,7 +671,11 @@ Thu</span></button></div></div>		</div>		<button type="button" title="다음 날
 	
 		        
 	$(function() {
-		$("p").each(function () {
+		$(".theater-facility p").each(function () {
+			
+// 			let facility = $(this).text().trim();
+// 			$(this).prepend('<i class="iconset ico-facility-' + facility + '"></i> ');
+			
 	        // 시설을 포함하는 p 태그를 찾음
 	        if ($(this).text().trim() === "MX") {
 	            // 앞에 아이콘을 추가

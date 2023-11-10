@@ -48,7 +48,25 @@
 		
 	</style>
 	<script>
+	
+	function selectDate (e){
+ 		let selectedDate =	$('#date-select').val();
+		let opendt = $("#movie-select option:selected").data('opendt');
+		
+		console.log(selectedDate + "---" + opendt);
+		
+		
+		// 테스트 중 --------------------------------------
+// 		if (selectedDate < opendt) {
+// 			alert("개봉일 이후의 날짜를 선택하세요.");
+// 		}
+	}
+	
 	$(function() {
+		
+		$('#date-select').on('change', selectDate);
+		$('#movie-select').on('change', selectDate);
+		
 		// 초기 화면 출력 값
 		$.ajax({
 			type: 'post',
@@ -60,7 +78,7 @@
 				}
 				
 				for (let i = 0; i < resp.movie.length; i++) {
-					$("#movie-select").append("<option value='" + resp.movie[i].movie_code + "'>" + resp.movie[i].movie_nameK + "</option>");
+					$("#movie-select").append("<option value='" + resp.movie[i].movie_code + "'data-opendt='" + resp.movie[i].movie_openDt + "'>" + resp.movie[i].movie_nameK + "</option>");
 				}
 				
 				for (let i = 0; i < resp.screen.length; i++) {
@@ -107,6 +125,12 @@
 		
 		// 영화 변경 시 검색 초기화
 		$("#movie-select").on("change", function() {
+// 			$("#date-select").attr("min", resp.movie[0].movie_openDt);
+
+// 			console.log($("#movie-select").val());
+
+
+// 			$("#movie-select").
 			$("#time-select").children().remove();
 		});
 		

@@ -642,7 +642,8 @@ function fn_validateDateYn(param) {
 							<input type="radio" name="radio_payment" id="rdo_pay_credit" value="credit" checked="checked"> <label for="rdo_pay_credit">신용/체크카드</label>
 						</span>
 						<span class="bg-chk small">
-							<input type="radio" name="radio_payment" id="rdo_pay_easypay" value="easypay"> <label for="rdo_pay_easypay">간편결제</label>
+							<input type="radio" name="radio_payment" id="rdo_pay_easypay" value="easypay"> <label for="rdo_pay_easypay">카카오페이</label>
+<!-- 							<input type="radio" name="radio_payment" id="rdo_pay_easypay" value="easypay"> <label for="rdo_pay_easypay">간편결제</label> -->
 						</span>
 <!-- 						<span class="bg-chk small"> -->
 <!-- 							<input type="radio" name="radio_payment_easypay" id="rdo_pay_easypay" value="easypay"> <label for="rdo_pay_easypay">간편결제</label> -->
@@ -1019,10 +1020,10 @@ function fn_validateDateYn(param) {
 	
 	<script>
 	
-		let sche_idx = 0;
-		let moneySum = 0;
-		let allTickets = "";
-		let seats = "";
+		let sche_idx = "${param.sche_idx}";
+		let moneySum = "${param.moneySum}";
+		let allTickets = "${param.allTickets}";
+		let seats = "${param.seats}";
 		let msg = "";
 		let pg = "danal_tpay.9810030929";
 		let pay_method = "card";
@@ -1038,23 +1039,43 @@ function fn_validateDateYn(param) {
 			$(".movie-grade").addClass("age-" + age);
 			
 			$("#btn_booking_pay").mouseover(function() {
-				sche_idx = "${param.sche_idx}";
-				moneySum = "${param.moneySum}";
-// 				moneySum = 1;
-				allTickets = "${param.allTickets}";
-				seats = "${param.seats}";
+// 				sche_idx = "${param.sche_idx}";
+// 				moneySum = "${param.moneySum}";
+// // 				moneySum = 1;
+// 				allTickets = "${param.allTickets}";
+// 				seats = "${param.seats}";
 				
-				console.log(moneySum, sche_idx, moneySum, allTickets);
+				console.log("잘 나오나?" + moneySum, sche_idx, moneySum, allTickets);
 			});
+			
+			$("input[name='radio_payment']").change(function() {
+				
+				pg = $("#rdo_pay_easypay").is(':checked')? "kakaopay.TC0ONETIME" : "danal_tpay.9810030929";
+				pay_method = $("#rdo_pay_easypay").is(':checked')? "kakaopay" : "card";
+				console.log("pg는 " + pg);
+				console.log("pay_method는 " + pay_method);
+			});
+			
+// 			$("input[name='radio_payment']").change(function() {
+// 	 			if($("#rdo_pay_easypay").is(':checked')) {
+// 					pg = "kakaopay.TC0ONETIME";
+// 					pay_method = "kakaopay";
+// 				} else {
+// 					pg = "danal_tpay.9810030929";
+// 					pay_method = "card";
+// 				}
+// 					console.log("pg: " + pg);
+// 			});
+			
 		});
 	
 		function requestPay() {
 // 			alert("requestPay");
 
-			if($("#rdo_pay_easypay").is(':checked')) {
-				pg = "kakaopay.TC0ONETIME";
-				pay_method = "kakaopay";
-			};
+// 			if($("#rdo_pay_easypay").is(':checked')) {
+// 				pg = "kakaopay.TC0ONETIME";
+// 				pay_method = "kakaopay";
+// 			};
 
 
 			IMP.init('imp14320736'); // 객체 초기화. 가맹점 식별코드 전달
@@ -1066,9 +1087,9 @@ function fn_validateDateYn(param) {
 		    	pay_method: "card",
 		    	merchant_uid: "ORD" + getDateTimeString(),   // 주문번호
 		    	name: "${param.movie_nameK}",
-// 		    	amount: moneySum,                         // 숫자 타입
+		    	amount: moneySum,                         // 숫자 타입
 		    	//TODO 고쳐야 함
-		    	amount: 100,                         // 숫자 타입
+// 		    	amount: 100,                         // 숫자 타입
 		    	buyer_email: "gildong@gmail.com",
 		    	buyer_name: "홍길동",
 		    	buyer_tel: "010-4242-4242",
