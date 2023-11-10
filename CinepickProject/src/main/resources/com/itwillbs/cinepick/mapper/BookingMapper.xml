@@ -108,6 +108,7 @@
 			<![CDATA[
 			AND CONCAT(s.sche_date, " ", s.sche_end_time) <= date_add(now(),INTERVAL 1 MONTH)
 			]]>
+			AND NOT movie_status = '상영종료'
 		ORDER BY movie_nameK
 	</select>
 	
