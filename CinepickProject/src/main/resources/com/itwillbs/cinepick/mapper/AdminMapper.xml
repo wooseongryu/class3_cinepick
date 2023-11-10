@@ -81,6 +81,7 @@
 			movie_code
 			, movie_nameK
 			, movie_rated
+			, movie_openDt
 		FROM movie
 		WHERE movie_status != '상영종료';
 	</select>
