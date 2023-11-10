@@ -54,6 +54,8 @@
 			text-align: left;
 			margin-left: 30px;
 			cursor: pointer;
+/* 			엄성윤 231110 추가 */
+			margin-top: 3.3px;
     	}
     	#step1_city h6,
     	#step1_theater h6,

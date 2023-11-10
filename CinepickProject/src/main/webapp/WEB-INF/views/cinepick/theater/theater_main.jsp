@@ -25,6 +25,8 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		margin: 0 auto;
+		margin-bottom: 40px;
+	    margin-top: 30px;
 	}
     </style>
     
