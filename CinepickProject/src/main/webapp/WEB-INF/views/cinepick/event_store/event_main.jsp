@@ -54,7 +54,7 @@
 	            <div class="col-lg-10 col-md-8" style="float: none; margin: 0 auto;">
 	                <div class="anime__details__review">
 	                    <div class="section-title">
-	                        <h5>이벤트 메인페이지</h5>
+	                        <h5>이벤트</h5>
 	                    </div>
 						<div class="row">
 						<c:forEach var="eventCate" items="${eventCateList }">
