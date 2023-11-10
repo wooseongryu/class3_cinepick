@@ -159,9 +159,11 @@
 		, review_rating
 		, review_content
 		, review_date
-		, movie_code
+		, r.movie_code
 		, user_id
-	FROM review
+		, m.movie_nameK
+	FROM review r JOIN movie m 
+	ON r.movie_code = m.movie_code
 	<if test="review_num != null and !review_num.equals('')">
 	WHERE review_num = #{review_num }
 	</if>

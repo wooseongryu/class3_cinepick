@@ -140,7 +140,7 @@
                                             <th>별점</th>
                                             <th>리뷰 내용</th>
                                             <th>작성일</th>
-                                            <th>영화코드</th>
+                                            <th>영화제목</th>
                                             <th>작성자</th>
                                             <th>삭제</th>
                                         </tr>
@@ -154,7 +154,7 @@
 	                                            <td>${review.review_rating }</td>
 	                                            <td>${review.review_content }</td>
 	                                            <td>${review.review_date }</td>
-	                                            <td>${review.movie_code }</td>
+	                                            <td>${review.movie_nameK }</td>
 	                                            <td>${review.user_id }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="deletMyReview(${review.review_num })">삭제</button>
