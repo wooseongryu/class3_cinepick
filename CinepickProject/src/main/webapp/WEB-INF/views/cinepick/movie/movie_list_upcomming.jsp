@@ -150,6 +150,7 @@
 	                                        <ul>
 	                                            <li>개봉일 ${movie.movie_openDt }</li>
 	                                            <li class="dday" data-movie-opendt="${movie.movie_openDt}"></li>
+	                                            <c:if test="${movie.movie_status eq '재개봉' }"><li>${movie.movie_status }</li></c:if>
 	                                        </ul>
 	                                        <h5><a href="movieDetail?movie_code=${movie.movie_code }">${movie.movie_nameK }</a></h5>
 	                                    </div>

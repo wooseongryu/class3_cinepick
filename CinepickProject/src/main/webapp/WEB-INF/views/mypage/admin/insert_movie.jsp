@@ -77,6 +77,8 @@
 						
 						let plot = movieData.plots.plot[0].plotText;
 						let posters = movieData.posters;
+						let poster = posters.substring(0, posters.indexOf('|'));
+						console.log(poster);
 						let stills = movieData.stlls;
 						let vod = movieData.vods.vod[0].vodUrl;
 						
@@ -88,7 +90,7 @@
 
 						let addData = {
 		                    movie_plot: plot,
-		                    movie_poster: posters,
+		                    movie_poster: poster,
 		                    movie_still: stills,
 		                    movie_vod: vod
 		                };

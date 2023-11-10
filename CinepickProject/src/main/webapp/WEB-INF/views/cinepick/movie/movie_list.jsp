@@ -120,8 +120,15 @@
 						str +=		'</a>'
 						str +=		'<div class="product__item__text">'
 						str +=			'<ul>'
-						str +=				'<li>누적 관람객 ' + movie.movie_audi + '명</li>'
+						if(movie.movie_audi > 0) {
+							str +=				'<li>누적 관람객 ' + movie.movie_audi + '명</li>'
+						}
 						str +=				'<li>개봉일 ' + movie.movie_openDt + '</li>'
+						if(movie.movie_status == '재개봉') {
+							str +=				'<li>' + movie.movie_status + '</li>'
+							
+						}
+						
 						str +=			'</ul>'
 						str +=			'<div class="reviewStarMin">'
 						str +=				'<div class="bg_star" style="width:' + (movie.movie_avg * 20)  + '%;"></div>'
@@ -239,6 +246,7 @@
 	                                        <ul>
 	                                        	<c:if test="${0 ne movie.movie_audi }"><li>누적 관람객 ${movie.movie_audi }명</li></c:if>
 	                                            <li>개봉일 ${movie.movie_openDt }</li>
+	                                        	<c:if test="${movie.movie_status eq '재개봉' }"><li>${movie.movie_status }</li></c:if>
 	                                        </ul>
 	                                        <div class="reviewStarMin">
 											   <div class="bg_star" style="width: ${movie.movie_avg * 20 }%;"></div>

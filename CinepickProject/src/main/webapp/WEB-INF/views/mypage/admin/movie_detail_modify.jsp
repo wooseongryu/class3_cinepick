@@ -124,6 +124,7 @@
 											<option value="개봉" <c:if test="${movie.movie_status eq '개봉' }">selected</c:if>>개봉</option>
 											<option value="개봉예정" <c:if test="${movie.movie_status eq '개봉예정' }">selected</c:if>>개봉예정</option>
 											<option value="상영종료" <c:if test="${movie.movie_status eq '상영종료' }">selected</c:if>>상영종료</option>
+											<option value="재개봉" <c:if test="${movie.movie_status eq '재개봉' }">selected</c:if>>재개봉</option>
 										</select>
 <%--                                         <input type="text" class="form-control form-control-user" value="${movie.movie_status }"  name="movie_status"> --%>
                                     </div>

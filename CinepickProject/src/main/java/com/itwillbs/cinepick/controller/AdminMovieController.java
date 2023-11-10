@@ -98,6 +98,7 @@ public class AdminMovieController {
 		}
 		
 		movie.setMovie_poster(movie.getMovie_poster().trim());
+		movie.setMovie_vod(movie.getMovie_vod().trim());
 		
 		int insertMovieCount = movieService.insertMovie(movie);
 		
@@ -137,6 +138,7 @@ public class AdminMovieController {
 	@PostMapping("movieDetailModifyPro")
 	public String movieDetailModifyPro(MovieVO movie, Model model) {
 		movie.setMovie_poster(movie.getMovie_poster().trim());
+		movie.setMovie_vod(movie.getMovie_vod().trim());
 		
 		int updateMovieCount = movieService.modifyMovie(movie);
 		

@@ -498,7 +498,7 @@
                                 </div>
 	                            <div class="anime__details__btn" data-movie_code="${movie.movie_code }">
 	<!--                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> 찜하기</a> -->
-									<c:if test="${movie.movie_status eq '개봉' }">
+									<c:if test="${movie.movie_status ne '개봉예정' }">
 										<a href="bookingStepOne?movie_code=${movie.movie_code }" class="follow-btn"><span>예매하기</span></a>
 									</c:if>
 <!-- 									<div class="like-btn" > -->
@@ -523,10 +523,14 @@
 	                <div class="col-lg-10">
 	                    <div class="anime__video__player" style="text-align: center">
 	<%--                     	<iframe width="560" height="315" src="${movie.movie_vod }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> --%>
-	                        <video id="player" playsinline controls>
-	                            <source src="${movie.movie_vod }" type="video/mp4" />
-	<!--                             <track kind="captions" label="English captions" src="#" srclang="en" default /> -->
-	                        </video>
+<!-- 	                        <video id="player" playsinline controls> -->
+<%-- 	                            <source src="${movie.movie_vod }" type="video/mp4" /> --%>
+<!-- 	<!--                             <track kind="captions" label="English captions" src="#" srclang="en" default /> --> -->
+<!-- 	                        </video> -->
+							<video id="player">
+<%-- 								<source src="${movie.movie_vod }"> --%>
+								<source src="/trailer/play/MK039797_P02.mp4">
+							</video>
 	                    </div>
 	                </div>
 	                <div class="col-lg-1"></div>
@@ -545,7 +549,7 @@
 		            </div>
             	</c:forEach>
             </div>
-            <c:if test="${movie.movie_status eq '개봉' }">    
+            <c:if test="${movie.movie_status ne '개봉예정' }">    
 	            <div class="row">
 	                <div class="col-lg-12 col-md-8">
 	                	<div class="anime__details__form" style="margin-bottom: 30px;">
