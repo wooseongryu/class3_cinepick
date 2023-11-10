@@ -278,7 +278,7 @@ public class AdminMovieController {
 //		System.out.println(insertBOCount);
 		if(insertBOCount > 0) {
 			model.addAttribute("msg", "박스오피스 순위목록을 등록하였습니다.");
-			model.addAttribute("script", "window.close()");
+			model.addAttribute("script", "window.opener.location.reload(); window.close()");
 			return "forward";
 		} else {
 			model.addAttribute("msg", "박스오피스 순위등록을 실패하였습니다.");
@@ -304,7 +304,8 @@ public class AdminMovieController {
 		
 		if(deleteBOCount > 0) {
 			model.addAttribute("msg", "박스오피스 순위목록을 삭제하였습니다.");
-			model.addAttribute("script", "window.close()");
+//			model.addAttribute("script", "location.reload()");
+			model.addAttribute("targetURL", "adminBoxOfficeList");
 			return "forward";
 		} else {
 			model.addAttribute("msg", "박스오피스 순위목록 삭제를 실패하였습니다.");

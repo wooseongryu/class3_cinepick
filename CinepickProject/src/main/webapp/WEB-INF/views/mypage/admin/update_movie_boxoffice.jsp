@@ -58,14 +58,30 @@
     </style>
     
 	<script>
+		//돌아가기버튼
 		function updateBOClose() {
 			window.close();
 		}
 		
+		// 날짜선택제한
 		let now = new Date();
 		now.setDate(now.getDate() - 1);
 		let yesterday = String(now.toISOString().slice(0,10));
 		console.log(yesterday);
+		
+		//등록 전 체크사항
+		function insertMBChecked() {
+// 			debugger;
+// 			console.log()
+// 			if(!$("#searchBOBtn").data('clicked') === true) {
+// 				alert("조회버튼을 눌러주세요");
+// 				return false;
+// 			}
+			if($("#jsonDataInput").val() == null || $("#jsonDataInput").val() == "") {
+				alert("조회결과가 없습니다. 다시 시도해 주세요.");
+				return false;
+			}
+		}
 		
 		$(function() {
 	// 		("#SelectBoDate") 날짜선택버튼
@@ -78,6 +94,9 @@
 
 				let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
 				let key = "f5eef3421c602c6cb7ea224104795888";
+				
+				
+// 				$(this).data('clicked', true);
 				
 				//날짜값 가져오기
 				let selectedDate = $("#selectBODate").val();
@@ -153,7 +172,7 @@
                                 <h1 class="h4 text-gray-900 mb-4">박스오피스 조회</h1>
                                 <h6>★박스오피스 조회는 전날까지만 조회가 가능합니다.★</h6>
                             </div>
-                            <form class="user" method="post" action="adminUpdateBoxOffice">
+                            <form class="user" method="post" action="adminUpdateBoxOffice" onsubmit="return insertMBChecked()">
                             	<input type="hidden" name="jsonData" id="jsonDataInput">
                                 <div class="form-group row">
                                 	<div class="col-sm-3 mb-2 mb-sm-0">
@@ -168,7 +187,7 @@
 									</div>
                                 </div>
                                 <div class="form-group row" id="resultArea">
-	                                <table>
+	                                <table class="boxofficeListUpdate">
 	                                	<tr>
 											<th>박스오피스 순위</th>
 	                                        <th>영화코드</th>

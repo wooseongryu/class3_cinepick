@@ -19,10 +19,21 @@
 	var popupHeight = 800;
 	var popupX = (window.screen.width / 2) - (popupWidth / 2);
 	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+	
+	//조회하기
 	function boxofficeList() {
 		window.open('adminSearchBoxoffice','', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	}
+	
+	
 	function deletBoxoffice() {
+// 		console.log($(".resultArea").val());
+		if(${empty movieBOList }) {
+			alert("삭제할 데이터가 없습니다.");
+			return false;
+		}
+		
+		
 		let result = confirm("삭제 하시겠습니까? \n모든순위가 삭제됩니다.");
 		if(result) {
 			location.href="adminDeleteBoxoffice";
@@ -140,7 +151,7 @@
                                     </thead>
                                     <tbody class="resultArea">
                                     	<c:forEach var="boxoffice" items="${movieBOList }">
-	                                        <tr>
+	                                        <tr class="resultBoxoffice">
 	                                            <td>${boxoffice.movie_rank }</td>
 	                                            <td>${boxoffice.movie_code }</td>
 	                                            <td>${boxoffice.movie_name }</td>
