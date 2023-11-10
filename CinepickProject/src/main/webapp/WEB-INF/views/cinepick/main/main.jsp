@@ -43,6 +43,7 @@
 			autohover: true,
 			moveSlides:5,
 			speed:500,
+			touchEnabled : (navigator.maxTouchPoints > 0),
 			nextText:'<i class="bi bi-chevron-right" style="color: #1c1c1c"></i>',
         	prevText:'<i class="bi bi-chevron-left" style="color: #1c1c1c"></i>'
 			
