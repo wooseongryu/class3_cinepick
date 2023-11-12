@@ -1858,7 +1858,7 @@ public class AdminController {
 			
 			List<StoreCateVO> storeCategoryList = adminService.getstoreCategory();
 			for (StoreCateVO storeCate : storeCategoryList) {
-				if (storeCategoryList.equals(storeCate.getStoreCate_Subject())) {
+				if (storeCate_Subject.equals(storeCate.getStoreCate_Subject())) {
 					model.addAttribute("msg", "중복된 카테고리입니다!");
 					return "fail_back";
 				}
