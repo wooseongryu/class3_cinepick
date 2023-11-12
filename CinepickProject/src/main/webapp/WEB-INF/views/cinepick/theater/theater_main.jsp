@@ -375,7 +375,7 @@
 	        
 	        $(".sel-city").click(function () {
 	            // 숨겨진 모든 theater-list를 숨김
-	            $(".theater-list").hide();
+	            $(".theater-place .theater-list").hide();
 	            
 	            $(".sel-city").css("background-color", "#F7F8F9");
 	            $(this).css("background-color", "#c6c7c8");
