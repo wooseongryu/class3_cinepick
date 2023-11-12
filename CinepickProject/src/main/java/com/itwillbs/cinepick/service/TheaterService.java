@@ -28,5 +28,8 @@ public class TheaterService {
 	public List<TimeScheduleVO> getSchedule(int brchNo) {
 		return mapper.selectSchedule(brchNo);
 	}
+	public List<TimeScheduleVO> getMovie(int brchNo) {
+		return mapper.selectMovieList(brchNo);
+	}
 
 }

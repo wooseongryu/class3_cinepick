@@ -34,7 +34,7 @@
 		
 			<!-- theater-area-list -->
 			<div class="theater-area-list">
-				<ul class="area-depth1" style="width: 60%; margin: 0 auto;">
+				<ul class="area-depth1">
 		
 					<li class="">
 						<a href="" class="depth1" title="서울 선택">서울</a>
@@ -149,12 +149,19 @@
 	
 	<div class="inner-wrap pt40">
 	
-		
-		<div class="tab-list fixed mb40 tab-layer">
-			<ul>
-				<li class="on"><a href="#tab01" title="극장정보 탭으로 이동">극장정보</a></li>
-				<li><a href="#tab02" title="상영시간표 탭으로 이동">상영시간표</a></li>
-				<li><a href="#tab03" title="관람료 탭으로 이동">관람료</a></li>
+		<div class="tab-list fixed mb40 tab-layer on">
+			<ul class="nav nav-tabs">
+				<li class="nav-item on">
+					<a class="nav-link active" aria-current="page" href="#tab01" title="극장정보 탭으로 이동">
+					극장정보
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#tab02" title="상영시간표 탭으로 이동">상영시간표</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#tab03" title="관람료 탭으로 이동">관람료</a>
+				</li>
 			</ul>
 		</div>
 		<!-- tab-list 끝 -->
@@ -163,41 +170,37 @@
 		<!-- tab-cont-wrap 안에 tab-coont 3개-->
 		
 			<div id="tab01" class="tab-cont on">
-			
 				<div class="theater-info-text mt40">
 					<p class="big">
 					${theater.theater_title}
 					</p>
 				</div>
-				
 				<h2 class="tit small mt70">교통안내</h2>
-				
 				<ul class="dot-list">
 					<li>
 						<span class="font-gblue">도로명주소 : </span>
 						${theater.theater_address}
 					</li>
 				</ul>
-				
 				<h3 class="tit small" style="margin-top:20px;">약도</h3>
-				
 				<div class="location-map-btn mt15"></div>
-				
 				<div class="btn-group left">
 					<div id="map" style="width:500px;height:400px;"></div>
+					<!-- 성윤아 약도랑 도로명주소 글자 위치 바꿔줘잉  -->
+<!-- 					<a href="https://m.map.naver.com/map.naver?lng=127.0264086&lat=37.498214&level=2" -->
+<!-- 					class="button purple" target="_blank" title="새창열림">실시간 길찾기</a> -->
+<!-- 					<br>#추후 수정# -->
 				</div>
-				
 				<!-- btn-group 끝 -->
-				
 				<h2 class="tit small mt70">시설안내</h2>
-				
 				<h3 class="tit small">보유시설</h3>
-				
 				<div class="theater-facility">
 					<p>
+<!-- 						<i class="iconset ico-facility-theater"></i> -->
 						${theater.theater_facility1 }
 					</p>
 					<p>
+<!-- 						<i class="iconset ico-facility-disabled"></i> -->
 						${theater.theater_facility2 }
 					</p>
 					<p>
@@ -287,78 +290,266 @@
 <!-- 			</div> -->
 
 			<div id="tab02" class="tab-cont on">
-				<a href="" class="ir">상영시간표 탭 화면 입니다.</a>
-				<h2 class="tit small" style="display: none;">무대인사</h2>
-				<div class="movie-greeting" style="display: none;"></div>
-				<h2 class="tit small mt40">상영시간표</h2>
-				<div class="reserve theater-list-box">
-					<div class="tab-block tab-layer mb30" style="display: none;">
-						<ul></ul>	
-					</div>
-					<c:forEach var="movieGroup" items="${movieGroup}">
-					    <div class="theater-list">
-					        <div class="theater-tit">
-					            <p class="movie-grade age-${movieGroup.movie_rated }"></p>
-					            <p><a href="movieDetail?movie_code=${movieGroup.movie_code}" title="${movieGroup.movie_nameK} 상세보기">${movieGroup.movie_nameK}</a></p>
-					            <p class="infomation"><span>상영중</span>/상영시간 ${movieGroup.movie_runtime}</p>
-					        </div>
-					        
-					        <c:forEach var="screenGroup" items="${timeSchedule }">
-								<c:if test="${screenGroup.movie_nameK == movieGroup.movie_nameK }">
-									<!-- 상영관 반복 -->
-							        <div class="theater-type-box">
-							            <div class="theater-type">
-							                <p class="theater-name">${screenGroup.screen_name}</p>
-							                <p class="chair">총 76석</p>
-							            </div>
-							            <div class="theater-time">
-							                <div class="theater-time-box">
-							                    <table class="time-list-table">
-							                        <caption>상영시간을 보여주는 표 입니다.</caption>
-							                        <colgroup>
-							                            <!-- 각 column에 대한 col 태그 추가 -->
-							                        </colgroup>
-							                        <tbody>
-														<tr>
-															<c:forEach var="schedule" items="${fn:split(screenGroup.sche_start_time, ',') }">
-																<!-- 스케줄 반복 -->
-							                                    <td class="" brch-no="${param.brchNo}" play-schdl-no="2311091372015" rpst-movie-no="23081000" theab-no="02" play-de="20231109" play-seq="6" netfnl-adopt-at="N">
-																	<div class="td-ab">
-																		<div class="txt-center">
-																			<a href="" title="영화예매하기">
-																				<div class="ico-box">
-																					<i class="iconset ico-off"></i>
-																				</div>
-																				<p class="time">${schedule }</p>
-						<!-- 															<p class="chair">98석</p>								 -->
-																				<div class="play-time">
-						<%-- 																<p>${startTime }~${endTime }</p>					 --%>
-																					<p>예매</p>				
-																				</div>			
-																			</a>		
-																		</div>	
-																	</div>
-																</td>
-							                                </c:forEach>
-							                            </tr>
-							                        </tbody>
-							                    </table>
-											</div>
-								            <!-- theater-time-box 끝 -->    
-										</div>
-								        <!-- theater-time 끝 -->   
-									</div>
-									<!-- theater-type-box 끝 -->
-								</c:if>
-							</c:forEach>
-				    	</div>
-						<!-- theater-list 끝 -->
-					</c:forEach>
-								
+	<a href="" class="ir">상영시간표 탭 화면 입니다.</a>
+	<h2 class="tit small" style="display: none;">무대인사</h2>
+	<div class="movie-greeting" style="display: none;"></div>
+	<h2 class="tit small mt40">상영시간표</h2><div class="time-schedule mb30">
+	<div class="wrap">
+		<button type="button" title="이전 날짜 보기" class="btn-pre" disabled="true">
+			<i class="iconset ico-cld-pre"></i>
+			<em>이전</em>	
+		</button>
+			<div class="date-list">
+				<div class="year-area">
+					<div class="year" style="left: 30px; z-index: 1; opacity: 1;">2023.11</div>
+					<div class="year" style="left: 450px; z-index: 1; opacity: 0;"></div>
 				</div>
-				<!-- reserve 끝 -->
+			<div class="date-area">
+				<div class="wrap" style="position: relative; width: 2100px; border: none; left: -70px;">
+				<button class="disabled" type="button" date-data="2023.11.08" month="10" tabindex="-1">
+					<span class="ir">2023년 11월</span>
+					<em style="pointer-events:none;">8<span style="pointer-events:none;" class="ir">일</span></em>
+					<span class="day-kr" style="pointer-events:none;display:inline-block">수</span>
+					<span class="day-en" style="pointer-events:none;display:none">Wed</span>
+				</button>
+				<button class="on" type="button" date-data="2023.11.09" month="10">
+					<span class="ir">2023년 11월</span>
+					<em style="pointer-events:none;">9<span style="pointer-events:none;" class="ir">일</span></em>
+					<span class="day-kr" style="pointer-events:none;display:inline-block">오늘</span>
+					<span class="day-en" style="pointer-events:none;display:none">Thu</span>
+				</button>
+				<button class="" type="button" date-data="2023.11.10" month="10">
+					<span class="ir">2023년 11월</span>
+					<em style="pointer-events:none;">10<span style="pointer-events:none;" class="ir">일</span></em>
+					<span class="day-kr" style="pointer-events:none;display:inline-block">내일</span>
+					<span class="day-en" style="pointer-events:none;display:none">Fri</span>
+				</button>
+				<button class="sat" type="button" date-data="2023.11.11" month="10">
+					<span class="ir">2023년 11월</span>
+					<em style="pointer-events:none;">11<span style="pointer-events:none;" class="ir">일</span></em>
+					<span class="day-kr" style="pointer-events:none;display:inline-block">토</span>
+					<span class="day-en" style="pointer-events:none;display:none">Sat</span>
+				</button>
+				<button class="holi" type="button" date-data="2023.11.12" month="10">
+					<span class="ir">2023년 11월</span>
+					<em style="pointer-events:none;">12<span style="pointer-events:none;" class="ir">일</span></em>
+					<span class="day-kr" style="pointer-events:none;display:inline-block">일</span>
+					<span class="day-en" style="pointer-events:none;display:none">Sun</span>
+				</button>
+				<button class="" type="button" date-data="2023.11.13" month="10">
+					<span class="ir">2023년 11월</span>
+					<em style="pointer-events:none;">13<span style="pointer-events:none;" class="ir">일</span></em>
+					<span class="day-kr" style="pointer-events:none;display:inline-block">월</span>
+					<span class="day-en" style="pointer-events:none;display:none">Mon</span>
+				</button>
+				<button class="" type="button" date-data="2023.11.14" month="10">
+<span class="ir">
+2023년 11월</span><em style="pointer-events:none;">
+14<span style="pointer-events:none;" class="ir">
+일</span></em><span class="day-kr" style="pointer-events:none;display:inline-block">
+화</span><span class="day-en" style="pointer-events:none;display:none">
+Tue</span></button><button class="" type="button" date-data="2023.11.15" month="10">
+<span class="ir">
+2023년 11월</span><em style="pointer-events:none;">
+15<span style="pointer-events:none;" class="ir">
+일</span></em><span class="day-kr" style="pointer-events:none;display:inline-block">
+수</span><span class="day-en" style="pointer-events:none;display:none">
+Wed</span></button><button class="" type="button" date-data="2023.11.16" month="10">
+<span class="ir">
+2023년 11월</span><em style="pointer-events:none;">
+16<span style="pointer-events:none;" class="ir">
+일</span></em><span class="day-kr" style="pointer-events:none;display:inline-block">
+목</span><span class="day-en" style="pointer-events:none;display:none">
+Thu</span></button><button class="" type="button" date-data="2023.11.17" month="10">
+<span class="ir">
+2023년 11월</span><em style="pointer-events:none;">
+17<span style="pointer-events:none;" class="ir">
+일</span></em><span class="day-kr" style="pointer-events:none;display:inline-block">
+금</span><span class="day-en" style="pointer-events:none;display:none">
+Fri</span></button><button class="disabled sat" type="button" date-data="2023.11.18" month="10">
+<span class="ir">
+2023년 11월</span><em style="pointer-events:none;">
+18<span style="pointer-events:none;" class="ir">
+일</span></em><span class="day-kr" style="pointer-events:none;display:inline-block">
+토</span><span class="day-en" style="pointer-events:none;display:none">
+Sat</span></button><button class="disabled holi" type="button" date-data="2023.11.19" month="10">
+<span class="ir">
+2023년 11월</span><em style="pointer-events:none;">
+19<span style="pointer-events:none;" class="ir">
+일</span></em><span class="day-kr" style="pointer-events:none;display:inline-block">
+일</span><span class="day-en" style="pointer-events:none;display:none">
+Sun</span></button><button class="disabled" type="button" date-data="2023.11.20" month="10">
+<span class="ir">
+2023년 11월</span><em style="pointer-events:none;">
+20<span style="pointer-events:none;" class="ir">
+일</span></em><span class="day-kr" style="pointer-events:none;display:inline-block">
+월</span><span class="day-en" style="pointer-events:none;display:none">
+Mon</span></button><button class="disabled" type="button" date-data="2023.11.21" month="10">
+<span class="ir">
+2023년 11월</span><em style="pointer-events:none;">
+21<span style="pointer-events:none;" class="ir">
+일</span></em><span class="day-kr" style="pointer-events:none;display:inline-block">
+화</span><span class="day-en" style="pointer-events:none;display:none">
+Tue</span></button><button class="" type="button" date-data="2023.11.22" month="10">
+<span class="ir">
+2023년 11월</span><em style="pointer-events:none;">
+22<span style="pointer-events:none;" class="ir">
+일</span></em><span class="day-kr" style="pointer-events:none;display:inline-block">
+수</span><span class="day-en" style="pointer-events:none;display:none">
+Wed</span></button><button class="" type="button" date-data="2023.11.23" month="10" tabindex="-1">
+<span class="ir">
+2023년 11월</span><em style="pointer-events:none;">
+23<span style="pointer-events:none;" class="ir">
+일</span></em><span class="day-kr" style="pointer-events:none;display:inline-block">
+목</span><span class="day-en" style="pointer-events:none;display:none">
+Thu</span></button></div></div>		</div>		<button type="button" title="다음 날짜 보기" class="btn-next">
+			<i class="iconset ico-cld-next">
+</i> <em>다음</em>		</button>		<div class="bg-line">
+			<input type="hidden" name="datePicker" id="dp1699533543571" class="hasDatepicker" value="2023.11.09" style="">
+			<button type="button" class="btn-calendar-large" title="달력보기">
+ 달력보기</button>		</div>	</div></div><div class="movie-option mb20">
+	<div class="option">
+		<ul>			<li><i class="iconset ico-stage" title="무대인사">
+</i>무대인사</li>			<li><i class="iconset ico-user" title="회원시사">
+</i>회원시사</li>			<li><i class="iconset ico-open" title="오픈시사">
+</i>오픈시사</li>			<li><i class="iconset ico-goods" title="굿즈패키지">
+</i>굿즈패키지</li>			<li><i class="iconset ico-singalong" title="싱어롱">
+</i>싱어롱</li>			<li><i class="iconset ico-gv" title="GV">
+</i>GV</li>			<li><i class="iconset ico-sun" title="조조">
+</i>조조</li>			<li><i class="iconset ico-brunch" title="브런치">
+</i>브런치</li>			<li><i class="iconset ico-moon" title="심야">
+</i>심야</li>		</ul>	</div>	<div class="rateing-lavel">
+		<a href="" class="" title="관람등급안내">
+관람등급안내</a>	</div></div><div class="reserve theater-list-box">
+	<div class="tab-block tab-layer mb30" style="display: none;">
+		<ul></ul>	</div>
 		
+		
+<!-- 여기서 테스트 중 -->
+
+
+
+
+
+
+
+
+
+<%-- <c:forEach var="time" items="${timeSchedule}"> --%>
+<!--     <div class="theater-list"> -->
+<!--         <div class="theater-tit"> -->
+<!--             <p class="movie-grade age-12"></p> -->
+<%--             <p><a href="movieDetail?movie_code=${time.movie_code}" title="${time.movie_nameK} 상세보기">${time.movie_nameK}</a></p> --%>
+<%--             <p class="infomation"><span>상영중</span>/상영시간 ${time.movie_runtime}</p> --%>
+<!--         </div> -->
+<!--         <div class="theater-type-box"> -->
+<!--             <div class="theater-type"> -->
+<%--                 <p class="theater-name">${time.screen_name}</p> --%>
+<%--                 <p class="chair">총 ${time.screen_total_seat}석</p> --%>
+<!--             </div> -->
+<!--             <div class="theater-time"> -->
+<!--                 <div class="theater-time-box"> -->
+<!--                     <table class="time-list-table"> -->
+<%--                         <caption>상영시간을 보여주는 표 입니다.</caption> --%>
+<%--                         <colgroup> --%>
+<!--                             각 column에 대한 col 태그 추가 -->
+<%--                         </colgroup> --%>
+<!--                         <tbody> -->
+<!--                             <tr> -->
+<%--                                 <c:forEach var="schedule" items="${timeSchedule .schedules}"> --%>
+<%--                                     <td class="" brch-no="${schedule.brchNo}" play-schdl-no="2311091372015" rpst-movie-no="23081000" theab-no="02" play-de="20231109" play-seq="6" netfnl-adopt-at="N"> --%>
+<!--                                         상영 정보 출력 -->
+<%--                                         <p>${schedule.sche_start_time}</p> --%>
+<!--                                     </td> -->
+<%--                                 </c:forEach> --%>
+<!--                             </tr> -->
+<!--                         </tbody> -->
+<!--                     </table> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+<%-- </c:forEach> --%>
+
+
+
+
+
+<!-- 여기서 테스트 중 -->
+		
+		
+		
+		
+		
+		<c:forEach var="movieGroup" items="${movieGroup}">
+		    <div class="theater-list">
+		        <div class="theater-tit">
+		            <p class="movie-grade age-${movieGroup.movie_rated }"></p>
+		            <p><a href="movieDetail?movie_code=${movieGroup.movie_code}" title="${movieGroup.movie_nameK} 상세보기">${movieGroup.movie_nameK}</a></p>
+		            <p class="infomation"><span>상영중</span>/상영시간 ${movieGroup.movie_runtime}</p>
+		        </div>
+		        
+		        <c:forEach var="screenGroup" items="${timeSchedule }">
+				<c:if test="${screenGroup.movie_nameK == movieGroup.movie_nameK }">
+				<!-- 상영관 반복 -->
+		        <div class="theater-type-box">
+		            <div class="theater-type">
+		                <p class="theater-name">${screenGroup.screen_name}</p>
+		                <p class="chair">총 76석</p>
+		            </div>
+		            <div class="theater-time">
+		                <div class="theater-time-box">
+		                    <table class="time-list-table">
+		                        <caption>상영시간을 보여주는 표 입니다.</caption>
+		                        <colgroup>
+		                            <!-- 각 column에 대한 col 태그 추가 -->
+		                        </colgroup>
+		                        <tbody>
+								<tr>
+									<c:forEach var="schedule" items="${fn:split(screenGroup.sche_start_time, ',') }">
+										<!-- 스케줄 반복 -->
+	                                    <td class="" brch-no="${param.brchNo}" play-schdl-no="2311091372015" rpst-movie-no="23081000" theab-no="02" play-de="20231109" play-seq="6" netfnl-adopt-at="N">
+											<div class="td-ab">
+												<div class="txt-center">
+													<a href="" title="영화예매하기">
+														<div class="ico-box">
+															<i class="iconset ico-off"></i>
+														</div>
+														<p class="time">${schedule }</p>
+<!-- 															<p class="chair">98석</p>								 -->
+														<div class="play-time">
+<%-- 																<p>${startTime }~${endTime }</p>					 --%>
+															<p>6회차</p>				
+														</div>			
+													</a>		
+												</div>	
+											</div>
+										</td>
+		                                </c:forEach>
+		                                
+		                            </tr>
+		                        </tbody>
+		                    </table>
+					</div>
+		            <!-- theater-time-box 끝 -->    
+				</div>
+		        <!-- theater-time 끝 -->   
+		            
 			</div>
+			<!-- theater-type-box 끝 -->
+			</c:if>
+			</c:forEach>
+		        
+		        
+		        
+		        
+	    </div>
+		<!-- theater-list 끝 -->
+		</c:forEach>
+				
+		
+		
+		
 		
 		
 		
@@ -371,11 +562,11 @@
 
 			<div id="tab03" class="tab-cont on">
 				<a href="" class="ir">관람료 탭 화면 입니다.</a>
-				<h2 class="tit small mt40">영화관람료</h2>
+				<h2 class="tit small">영화관람료</h2>
 				<div class="fee-table-box">
 					<div class="fee-table">
 						<p class="fee-table-tit">2D</p>
-						<div class="table-wrap" style="border-top:0px">
+						<div class="table-wrap">
 							<table class="data-table a-c" summary="가격표를 요일, 상영시간, 일반, 청소년 순서로 보여줍니다.">
 								<caption>가격표를 요일, 상영시간, 일반, 청소년 순서로 보여줍니다.</caption>
 								<colgroup>
@@ -449,7 +640,6 @@
 	</div>
 	<!-- inner-wrap 끝 -->
 	
-	
 	<br>
 	<br>
 	<br>
@@ -457,9 +647,9 @@
 	<br>
 
 <!-- 	<footer> -->
-		<jsp:include page="../include/main_footer.jsp"></jsp:include>
+<%-- 		<jsp:include page="../include/main_footer.jsp"></jsp:include> --%>
 <!-- 	</footer> -->
-<%-- 	<jsp:include page="../include/footerTest.jsp"></jsp:include> --%>
+	<jsp:include page="../include/footerTest.jsp"></jsp:include>
 	
 <!-- 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b5e75c34a60018b456cd69645e79131e"></script> -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b5e75c34a60018b456cd69645e79131e&libraries=services"></script>

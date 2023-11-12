@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/theater_css/menu.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/theater_css/fav.css"/>
+    
+<!--     1112 추가 -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/time.css"/>
     <title>CINEPICK</title>
 <%--     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/cinepick/css/header_footer_sy.css" type="text/css"> --%>
     <script src="${pageContext.request.contextPath }/resources/cinepick/js/jquery-3.7.0.js"></script>
@@ -28,6 +32,22 @@
 		margin-bottom: 40px;
 	    margin-top: 30px;
 	}
+	
+	
+/* 	1112 추가 */
+	
+	.reserve.theater-list-box .theater-list {
+	    position: relative;
+		margin: 0 auto;
+	}
+	
+	
+	.button.small {
+	    margin-top: 9px;
+	    margin-right: 9px;
+	}
+	
+	
     </style>
     
 </head>
@@ -148,344 +168,108 @@
 	    <div class="user-theater">
 	    
 	    	<div>
-	    		<i class="iconset ico-favo-theater"></i>
+<!-- 	    		<i class="iconset ico-favo-theater"></i> -->
 	    		<i class="fa-solid fa-bookmark iconset ico-favo-theater" style="margin-left: 10px"></i>
 	    		<span class="purple">${sessionScope.sId }</span>님의 선호영화관
 	    		<ul class="theater-circle">
 	    			<li>
 	    				<a href="#">순천</a>
+<!-- 	    				<a href="#">순천</a> -->
 	    			</li>
 	    		</ul>
 	    		<a class="button small float-r fav-modal" title="선호영화관 관리" style="font-size:1em"> 
 	    		<i class="fa-solid fa-gear"></i> 
-	    		<i class="iconset ico-edit"></i>
+<!-- 	    		<i class="iconset ico-edit"></i> -->
 	    		선호영화관 관리</a>
 	    	</div>
 	    	
 	    </div>
-	    
-	    <!-- Calendar -->
-	    
-		<div id="day_bookList02" class="mtimetable second wrap clear">
-			<div class="calendar clear">
-				<div class="month">
-					<a class="m_prev" href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-08-31&amp;ppage=2023-08-31" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;" style="margin-left: 0px"><</a>
-					<span class="m_display">2023.11</span>
-<!-- 					<span class="m_display">2023.09</span> -->
-					<a class="m_next" href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-10-01&amp;ppage=2023-10-01" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">></a>
-				</div>
-	
-				<ul class="day">
-					
-						<li>
-								<!-- TODO엄성윤 -->
-<!-- 							<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-01" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;"> -->
-								<span>01</span><br/>
-<!-- 							</a> -->
-						</li>
-						<li>
-							<h4 class="hidden">토요일</h4>
-							<a class=" sat"  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-02" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>02</span><br/>
-							</a>
-						</li>
-						<li>
-							<h4 class="hidden">일요일</h4>
-							<a class=" sun"  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-03" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>03</span><br/>
-							</a>
-						</li>
-						<li>
-							<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-04" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>04</span><br/>
-							</a>
-						</li>
-						<li>
-							<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-05" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>05</span><br/>
-							</a>
-						</li>
-						<li>
-							<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-06" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>06</span><br/>
-							</a>
-						</li>
-						<li>
-							<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-07" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>07</span><br/>
-							</a>
-						</li>
-						<li>
-							<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-08" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>08</span><br/>
-							</a>
-						</li>
-						<li>
-							<h4 class="hidden">토요일</h4>
-							<a class=" sat"  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-09" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>09</span><br/>
-							</a>
-						</li>
-						<li>
-							<h4 class="hidden">일요일</h4>
-							<a class=" sun"  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-10" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>10</span><br/>
-							</a>
-						</li>
-						<li>
-							<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-11" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>11</span><br/>
-							</a>
-						</li>
-						<li>
-							<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-12" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-								<span>12</span><br/>
-							</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-13" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>13</span><br/>
-									</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-14" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>14</span><br/>
-									</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-15" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>15</span><br/>
-									</a>
-						</li>
-						<li>
-									<h4 class="hidden">토요일</h4>
-									<a class=" sat"  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-16" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>16</span><br/>
-									</a>
-						</li>
-						<li>
-									<h4 class="hidden">일요일</h4>
-									<a class=" sun"  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-17" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>17</span><br/>
-									</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-18" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>18</span><br/>
-									</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-19" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>19</span><br/>
-									</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-20" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>20</span><br/>
-									</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-21" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>21</span><br/>
-									</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-22" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>22</span><br/>
-									</a>
-						</li>
-						<li>
-									<h4 class="hidden">토요일</h4>
-									<a class=" sat"  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-23" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>23</span><br/>
-									</a>
-						</li>
-						<li>
-									<h4 class="hidden">일요일</h4>
-									<a class=" sun"  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-24" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>24</span><br/>
-									</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-25" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>25</span><br/>
-									</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-26" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>26</span><br/>
-									</a>
-						</li>
-						<li>
-									<h4 class="hidden">문화가 있는 날</h4>
-									<a class=" "  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-27" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span class="cult">27</span><br/>
-									</a>
-						</li>
-						<li>
-									<a class=""  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-28" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>28</span><br/>
-									</a>
-						</li>
-						<li>
-									<h4 class="hidden">오늘</h4>
-									<a class=" today"  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-29" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>29</span><br/>
-									</a>
-						</li>
-						<li>
-									<h4 class="hidden">토요일</h4>
-									<a class=" sat"  href="todayBccList.do?rbsIdx=1&amp;searchDate=2023-09-30" onclick="fn_bccSubmitForm(this.href);return false;" onkeypress="this.onclick;">
-										<span>30</span><br/>
-									</a>
-						</li>
-				</ul>
+		
+<!-- 		<div class="tit-util mt70 mb15"> -->
+<!-- 			<h3 class="tit">상영 시간표</h3> -->
+<!-- 		</div> -->
+		<br>
+		<br>
+		
+		<div class="reserve theater-list-box">
+			<div class="tab-block tab-layer mb30" style="display: none;">
+				<ul></ul>	
 			</div>
-	
-			<ul class="movies">
-				<li>
-					<h6>1관</h6>
-					<ul class="movie-list" style="padding: 0px">
-						<li>
-							<a href="#" title="오펜하이머">
-								"09:30 "
-								<h4 class="hidden">15세</h4>
-								<i class="age_15">
-								</i>
-								<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/15.png" style="width: 1rem">
-								" 오펜하이머 "
-							</a>
-						</li>
-						<li>
-							<a href="#" title="잠">
-								"12:00 "
-								<h4 class="hidden">15세</h4>
-								<i class="age_15">
-								</i>
-								<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/15.png" style="width: 1rem">
-								" 잠 "
-							</a>
-						</li>
-					</ul>
-				</li>
-				
-				<li>
-					<h6>2관</h6>
-					<ul class="movie-list" style="padding: 0px">
-						<li>
-							<a href="#" title="오펜하이머">
-								"09:30 "
-								<h4 class="hidden">15세</h4>
-								<i class="age_15">
-								</i>
-								<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/15.png" style="width: 1rem">
-								" 오펜하이머 "
-							</a>
-						</li>
-						<li>
-							<a href="#" title="잠">
-								"12:00 "
-								<h4 class="hidden">15세</h4>
-								<i class="age_15">
-								</i>
-								<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/15.png" style="width: 1rem">
-								" 잠 "
-							</a>
-						</li>
-					</ul>
-				</li>
-				
-				<li>
-					<h6>3관</h6>
-					<ul class="movie-list" style="padding: 0px">
-						<li>
-							<a href="#" title="오펜하이머">
-								"09:30 "
-								<h4 class="hidden">15세</h4>
-								<i class="age_15">
-								</i>
-								<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/15.png" style="width: 1rem">
-								" 오펜하이머 "
-							</a>
-						</li>
-						<li>
-							<a href="#" title="잠">
-								"12:00 "
-								<h4 class="hidden">15세</h4>
-								<i class="age_15">
-								</i>
-								<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/15.png" style="width: 1rem">
-								" 잠 "
-							</a>
-						</li>
-					</ul>
-				</li>
-				
-				<li>
-					<h6>4관</h6>
-					<ul class="movie-list" style="padding: 0px">
-						<li>
-							<a href="#" title="오펜하이머">
-								"09:30 "
-								<h4 class="hidden">15세</h4>
-								<i class="age_15">
-								</i>
-								<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/15.png" style="width: 1rem">
-								" 오펜하이머 "
-							</a>
-						</li>
-						<li>
-							<a href="#" title="잠">
-								"12:00 "
-								<h4 class="hidden">15세</h4>
-								<i class="age_15">
-								</i>
-								<img src="${pageContext.request.contextPath }/resources/cinepick/img/age/15.png" style="width: 1rem">
-								" 잠 "
-							</a>
-						</li>
-					</ul>
-				</li>
-				
-	<!-- 			<li> -->
-	<!-- 				<h6>하늘연극장</h6> -->
-	<!-- 					<a href="http://www.dureraum.org/bcc/board/view.do?rbsIdx=46&amp;key=%EA%B3%B5%EC%97%B0%EB%B9%84&amp;keyField=search1&amp;idx=963"> -->
-	<%-- 						<img src="${pageContext.request.contextPath }/resources/cinepick/img/theater/fee.png"/> --%>
-	<!-- 					</a> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 			</li> -->
-				
-	<!-- 			<li> -->
-	<!-- 				<h6>야외극장</h6> -->
-	<!-- 					<a href="http://www.dureraum.org/bcc/board/list.do?rbsIdx=298" target="_blank"> -->
-	<%-- 						<img src="${pageContext.request.contextPath }/resources/cinepick/img/theater/kakaotalk.jpg"/> --%>
-	<!-- 					</a> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 					<ul> -->
-	<!-- 					</ul> -->
-	<!-- 			</li> -->
-			</ul>
+			<c:forEach var="movieGroup" items="${movieGroup}">
+			    <div class="theater-list">
+			        <div class="theater-tit">
+			            <p class="movie-grade age-${movieGroup.movie_rated }"></p>
+			            <p><a href="movieDetail?movie_code=${movieGroup.movie_code}" title="${movieGroup.movie_nameK} 상세보기">${movieGroup.movie_nameK}</a></p>
+			            <p class="infomation"><span>상영중</span>/상영시간 ${movieGroup.movie_runtime}</p>
+			        </div>
+			        
+			        <c:forEach var="screenGroup" items="${timeSchedule }">
+						<c:if test="${screenGroup.movie_nameK == movieGroup.movie_nameK }">
+							<!-- 상영관 반복 -->
+					        <div class="theater-type-box">
+					            <div class="theater-type">
+					                <p class="theater-name">${screenGroup.screen_name}</p>
+					                <p class="chair">총 76석</p>
+					            </div>
+					            <div class="theater-time">
+					                <div class="theater-time-box">
+					                    <table class="time-list-table">
+					                        <caption>상영시간을 보여주는 표 입니다.</caption>
+					                        <colgroup>
+					                            <!-- 각 column에 대한 col 태그 추가 -->
+					                        </colgroup>
+					                        <tbody>
+												<tr>
+													<c:forEach var="schedule" items="${fn:split(screenGroup.sche_start_time, ',') }">
+														<!-- 스케줄 반복 -->
+					                                    <td class="" brch-no="${param.brchNo}" play-schdl-no="2311091372015" rpst-movie-no="23081000" theab-no="02" play-de="20231109" play-seq="6" netfnl-adopt-at="N">
+															<div class="td-ab">
+																<div class="txt-center">
+																	<a href="" title="영화예매하기">
+																		<div class="ico-box">
+																			<i class="iconset ico-off"></i>
+																		</div>
+																		<p class="time">${schedule }</p>
+				<!-- 															<p class="chair">98석</p>								 -->
+																		<div class="play-time">
+				<%-- 																<p>${startTime }~${endTime }</p>					 --%>
+																			<p>예매</p>				
+																		</div>			
+																	</a>		
+																</div>	
+															</div>
+														</td>
+					                                </c:forEach>
+					                            </tr>
+					                        </tbody>
+					                    </table>
+									</div>
+						            <!-- theater-time-box 끝 -->    
+								</div>
+						        <!-- theater-time 끝 -->   
+							</div>
+							<!-- theater-type-box 끝 -->
+						</c:if>
+					</c:forEach>
+		    	</div>
+				<!-- theater-list 끝 -->
+			</c:forEach>
+						
 		</div>
+		<!-- reserve 끝 -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+
 		
 		<div class="tit-util mt70 mb15">
 			<h3 class="tit">극장 이벤트</h3>
@@ -611,6 +395,8 @@
 	        $(".btn-close").click(function () {
 	        	$(".modal").hide();
 	        });
+	        
+	        $(".reserve .theater-list").show();
 	    });
 
     </script>

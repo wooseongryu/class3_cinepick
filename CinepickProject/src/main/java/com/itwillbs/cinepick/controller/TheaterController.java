@@ -40,6 +40,18 @@ public class TheaterController {
 		model.addAttribute("cityList", cityList);
 		
 		
+		
+		// 상영 시간표 추가
+		
+		int brchNo = 4002; // 순천
+		
+		List<TimeScheduleVO> movieGroup = service.getMovie(brchNo);
+		model.addAttribute("movieGroup", movieGroup);
+		
+		List<TimeScheduleVO> timeSchedule = service.getSchedule(brchNo);
+		model.addAttribute("timeSchedule", timeSchedule);
+		
+		
 		// 이벤트 추가
 		
 		List<EventVO> eventList = eventService.getEventList();
@@ -63,8 +75,12 @@ public class TheaterController {
 		
 		// 상영 스케줄
 		
+		List<TimeScheduleVO> movieGroup = service.getMovie(brchNo);
+		model.addAttribute("movieGroup", movieGroup);
+		
 		List<TimeScheduleVO> timeSchedule = service.getSchedule(brchNo);
 		model.addAttribute("timeSchedule", timeSchedule);
+		
 		
 		System.out.println(timeSchedule);
 		

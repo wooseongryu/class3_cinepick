@@ -23,30 +23,81 @@
 		FROM city
 	</select>
 	
-	<select id="selectSchedule" resultType="TimeSchedule">
+	<select id="selectMovieList" resultType="TimeSchedule">
 		SELECT
-			t.city_idx
-			, t.theater_idx
-			, t.theater_name
-			, t.brchNo 
-			, s.screen_idx
-			, s.screen_name
-			, m.movie_code 
-			, m.movie_nameK 
-			, m.movie_runtime 
-			, m.movie_rated 
-			, sc.sche_date
-			, sc.sche_start_time
-			, screen_total_seat
-		FROM screen s 
-		JOIN theater t
-		ON s.screen_theater_idx = t.theater_idx
-		JOIN schedule sc
-		ON s.screen_idx = sc.sche_screen_idx
-		JOIN movie m
-		ON m.movie_code = sc.sche_movie_code
-		WHERE brchNo = #{brchNo}
+		    DISTINCT m.movie_nameK,
+		    movie_code,
+	   		movie_runtime,
+	   		CASE (SUBSTR(movie_rated, 1, 2)) WHEN '전체' THEN 'all'
+			ELSE substr(movie_rated, 1, 2)
+			END AS movie_rated
+		FROM screen s
+		JOIN theater t ON s.screen_theater_idx = t.theater_idx
+		JOIN schedule sc ON s.screen_idx = sc.sche_screen_idx
+		JOIN movie m ON m.movie_code = sc.sche_movie_code
+		WHERE brchNo = #{brchNo} AND sche_date = CURDATE()
+<!-- 		AND sche_start_time > CURRENT_TIME() -->
+	
+	</select>
+	
+	<select id="selectSchedule" resultType="TimeSchedule">
+	
+	SELECT
+	    t.city_idx,
+	    t.theater_idx,
+	    t.theater_name,
+	    t.brchNo,
+	    m.movie_code,
+	    m.movie_nameK,
+	    m.movie_runtime,
+	    m.movie_rated,
+	    GROUP_CONCAT(DISTINCT s.screen_name) AS screen_name,
+	    GROUP_CONCAT(DISTINCT sc.sche_date) AS sche_date,
+	    GROUP_CONCAT(DISTINCT TIME_FORMAT(sc.sche_start_time, '%H:%i')) AS sche_start_time,
+	    GROUP_CONCAT(DISTINCT TIME_FORMAT(sc.sche_end_time, '%H:%i')) AS sche_end_time,
+	    GROUP_CONCAT(DISTINCT screen_total_seat) AS screen_total_seat
+	FROM screen s
+	JOIN theater t ON s.screen_theater_idx = t.theater_idx
+	JOIN schedule sc ON s.screen_idx = sc.sche_screen_idx
+	JOIN movie m ON m.movie_code = sc.sche_movie_code
+	WHERE brchNo = #{brchNo} AND sche_date = CURDATE() 
+<!-- 	AND sche_start_time > CURRENT_TIME() -->
+	GROUP BY
+	    t.city_idx,
+	    t.theater_idx,
+	    t.theater_name,
+	    t.brchNo,
+	    m.movie_code,
+	    m.movie_nameK,
+	    m.movie_runtime,
+	    m.movie_rated,
+	    s.screen_name
+	
+	
+<!-- 		SELECT -->
+<!-- 			t.city_idx -->
+<!-- 			, t.theater_idx -->
+<!-- 			, t.theater_name -->
+<!-- 			, t.brchNo  -->
+<!-- 			, s.screen_idx -->
+<!-- 			, s.screen_name -->
+<!-- 			, m.movie_code  -->
+<!-- 			, m.movie_nameK  -->
+<!-- 			, m.movie_runtime  -->
+<!-- 			, m.movie_rated  -->
+<!-- 			, sc.sche_date -->
+<!-- 			, sc.sche_start_time -->
+<!-- 			, screen_total_seat -->
+<!-- 		FROM screen s  -->
+<!-- 		JOIN theater t -->
+<!-- 		ON s.screen_theater_idx = t.theater_idx -->
+<!-- 		JOIN schedule sc -->
+<!-- 		ON s.screen_idx = sc.sche_screen_idx -->
+<!-- 		JOIN movie m -->
+<!-- 		ON m.movie_code = sc.sche_movie_code -->
+<!-- 		WHERE brchNo = #{brchNo} AND sche_date = CURDATE() -->
 <!-- 		ORDER BY sche_date; -->
+
 	</select>
 
 </mapper>

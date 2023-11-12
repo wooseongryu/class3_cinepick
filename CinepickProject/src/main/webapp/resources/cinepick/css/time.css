@@ -1,0 +1,771 @@
+.theater-list-box .theater-list .theater-movie-tit {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%
+}
+
+.theater-list-box .theater-list .theater-type-box {
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 1px solid #eaeaea
+}
+
+.theater-list-box .theater-list:last-child .theater-type-box:last-child {
+    border-bottom: 0
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type {
+    text-align: left;
+    padding: 20px 0 0 20px;
+    float: left;
+    width: 208px;
+    display: table-cell;
+    vertical-align: middle
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type p {
+    padding: 0;
+    margin: 0
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type p.theater-name {
+    font-size: 1.2em;
+    color: #444;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type p.chair {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type p.type {
+    color: #444;
+    font-weight: 400;
+    line-height: 1em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time {
+    float: left;
+    width: 81%;
+    margin: 20px 0
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table {
+    border-top: 1px solid #ebebeb;
+    border-left: 1px solid #ebebeb;
+    width: 800px;
+    margin-left: -10px
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td {
+    border-right: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    text-align: center
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab {
+    width: 100px;
+    height: 69px;
+    display: table
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .txt-center {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box .iconset {
+    margin-top: -10px
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box.off {
+    display: none
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .play-time {
+    display: none
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab:hover .play-time {
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 100px;
+    height: 70px;
+    background-color: #503396;
+    z-index: 10;
+    color: #fff;
+    font-size: 1.0667em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab:hover .play-time p:nth-child(1) {
+    margin-top: 12px
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time {
+    background-color: #f7f8f9
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p {
+    padding: 0;
+    margin: 0
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p.time {
+    color: #666;
+    font-size: 1.2em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p.chair {
+    color: #666
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p {
+    padding: 0;
+    margin: 0
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p.time {
+    font-size: 1.2em;
+    color: #444;
+    font-weight: 400;
+    line-height: 1em
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p.chair {
+    color: #01738b
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option {
+    height: 14px;
+    overflow: hidden
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option.off {
+    display: none
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option li {
+    display: inline-block;
+    width: 13px;
+    height: 13px
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option li .iconset {
+    margin-top: -10px
+}
+
+
+
+.reserve.theater-list-box .tab-block {
+    position: relative
+}
+
+.reserve.theater-list-box .tab-block:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 35px;
+    width: 100%;
+    height: 1px;
+    background-color: #d8d9db
+}
+
+.reserve.theater-list-box .tab-block ul:after,.reserve.theater-list-box .tab-block ul:before {
+    content: '';
+    display: table
+}
+
+.reserve.theater-list-box .tab-block ul:after {
+    clear: both
+}
+
+.reserve.theater-list-box .tab-block ul li {
+    position: relative;
+    float: left;
+    width: 137px;
+    border: 1px solid #d8d9db;
+    border-left: 0
+}
+
+.reserve.theater-list-box .tab-block ul li:nth-child(5)~li {
+    margin-top: 0
+}
+
+.reserve.theater-list-box .tab-block ul li:nth-child(1) {
+    border-left: 1px solid #d8d9db
+}
+
+.reserve.theater-list-box .tab-block ul li:nth-child(6),.reserve.theater-list-box .tab-block ul li:nth-child(7),.reserve.theater-list-box .tab-block ul li:nth-child(8) {
+    width: 138px
+}
+
+.reserve.theater-list-box .tab-block ul li .btn {
+    display: block;
+    width: 100%;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    line-height: 34px;
+    text-align: center;
+    background-color: transparent;
+    text-decoration: none
+}
+
+.reserve.theater-list-box .tab-block ul li.hover,.reserve.theater-list-box .tab-block ul li.on {
+    border-color: #555
+}
+
+.reserve.theater-list-box .tab-block ul li.hover .btn,.reserve.theater-list-box .tab-block ul li.on .btn {
+    color: #fff;
+    background-color: #555
+}
+
+.reserve.theater-list-box .tab-block ul li.hover+li,.reserve.theater-list-box .tab-block ul li.on+li {
+    border-left-color: #555
+}
+
+.reserve.theater-list-box .tab-block ul li.hover:first-child,.reserve.theater-list-box .tab-block ul li.on:first-child {
+    border-color: #555
+}
+
+.reserve.theater-list-box .tab-block ul li.on:last-child .reserve.theater-list-box .tab-block ul li.hover:last-child {
+    border-color: #555
+}
+
+.reserve.theater-list-box .tab-block ul:after {
+    content: ''
+}
+
+.reserve.theater-list-box .tab-block.small ul li .btn {
+    letter-spacing: -1px;
+    font-size: .9333em
+}
+
+.tab-cont-wrap .tab-cont.on {
+    display: block
+}
+
+.reserve.theater-list-box .theater-tit {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    display: block;
+    padding: 10px 20px;
+    background-color: #f7f8f9;
+    border-top: 1px solid #eaeaea!important;
+    border-bottom: 1px solid #eaeaea;
+    margin-top: -1px!important;
+    margin-bottom: 20px
+}
+
+.reserve.theater-list-box .theater-tit p {
+    float: left;
+    padding: 0;
+    margin: 0 5px 0 0;
+    font-weight: 400
+}
+
+.reserve.theater-list-box .theater-tit p.infomation {
+    float: right
+}
+
+.reserve.theater-list-box .theater-tit p.infomation span {
+    color: #01738b
+}
+
+.theater-area-click {
+    padding: 0 0 15px 0;
+    border-bottom: 1px solid #eaeaea;
+    font-weight: 700;
+    font-size: 1.2em
+}
+
+.theater-area {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    height: 56px;
+    line-height: 56px;
+    margin-bottom: -20px
+}
+
+.theater-area p {
+    font-size: 1.2em;
+    font-weight: 700
+}
+
+.theater-area a {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    height: 34px;
+    font-size: 15px;
+    color: #686868!important;
+    border: 1px solid #686868
+}
+
+.time-table-page.town-theater .movie-choice-area.has-none-img {
+    padding: 0
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section {
+    overflow: hidden;
+    height: 178px;
+    padding: 20px;
+    border: 1px solid #d8d9db;
+    border-width: 0 1px 1px 1px;
+    border-radius: 0 0 10px 10px
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .tab-timetable a {
+    height: 47px;
+    line-height: 45px;
+    border-left: 1px solid #d8d9db
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .tab-timetable a:first-child {
+    border-radius: 10px 0 0 0
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .tab-timetable a:last-child {
+    border-radius: 0 10px 0 0;
+    border-right: 1px solid #d8d9db
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .tab-timetable a span {
+    position: relative
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .tab-timetable a span.sh-dot:after {
+    content: ' ';
+    display: inline-block;
+    background-color: #329eb1;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: -8px
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section .scroll .list {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    min-height: 138px
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section .scroll .list:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 25%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #ebebeb
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section .scroll .list:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 25%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #ebebeb
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section .scroll .list li {
+    float: left;
+    width: 25%;
+    padding: 0;
+    position: relative
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section .scroll .list li .btn {
+    display: block;
+    width: 100%;
+    height: 27px;
+    margin: 0;
+    padding: 0 10px 0 40px;
+    color: #444;
+    border: 0;
+    text-align: left;
+    background-color: transparent;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section .scroll .list li .btn.on {
+    color: #01738b;
+    font-weight: 400;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/btn/bg-btn-chk-gblue.png);
+    background-position: 20px center;
+    background-repeat: no-repeat
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section .scroll .list li span.favorit-theater {
+    position: absolute;
+    left: 22px;
+    margin-top: 3px
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section .scroll .list li span.favorit-theater+button.on {
+    background: url(none)
+}
+
+.time-table-page.town-theater .movie-choice-area .poster-section {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 276px;
+    height: 100%;
+    background: url(https://img.megabox.co.kr/static/pc/images/reserve/bg-poster-view.png) no-repeat 0 0
+}
+
+.time-table-page.town-theater .movie-choice-area .poster-section .table {
+    display: table;
+    table-layout: fixed;
+    width: 100%
+}
+
+.time-table-page.town-theater .movie-choice-area .poster-section .table .td {
+    display: table-cell;
+    width: 100%;
+    height: 225px;
+    text-align: center;
+    vertical-align: middle
+}
+
+.time-table-page.town-theater .movie-choice-area .poster-section .table .td img.poster {
+    width: 120px;
+    height: 172px;
+    box-shadow: 4px 4px 10px 0 rgba(45,45,45,.5)
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section .scroll {
+    position: relative
+}
+
+.time-table-page.town-theater .movie-choice-area .wrap .list-section .scroll:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #ebebeb;
+    margin-left: 0
+}
+
+.time-table-page .movie-choice-area .wrap .tab-timetable a {
+    border-left: 1px solid #d8d9db
+}
+
+.movie-grade {
+    overflow: hidden;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    margin: 0;
+    padding: 0;
+    text-indent: -9999px;
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.movie-grade.age-all {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
+    background-size: 23px 23px
+}
+
+.movie-grade.age-12 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/12_46x46.png);
+    background-size: 23px 23px
+}
+
+.movie-grade.age-15 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/15_46x46.png);
+    background-size: 23px 23px
+}
+
+.movie-grade.age-19 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_46x46.png);
+    background-size: 23px 23px
+}
+
+.movie-grade.age-no {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/none_46x46.png);
+    background-size: 23px 23px
+}
+
+.movie-grade.small {
+    width: 20px;
+    height: 20px
+}
+
+.movie-grade.small.age-all {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_40x40.png);
+    background-size: 20px 20px
+}
+
+.movie-grade.small.age-12 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/12_40x40.png);
+    background-size: 20px 20px
+}
+
+.movie-grade.small.age-15 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/15_40x40.png);
+    background-size: 20px 20px
+}
+
+.movie-grade.small.age-19 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_40x40.png);
+    background-size: 20px 20px
+}
+
+.movie-grade.small.age-no {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/none_40x40.png);
+    background-size: 20px 20px
+}
+
+.reserve.theater-list-box {
+    width: 100%;
+    display: table;
+    border-top: 0
+}
+
+.reserve.theater-list-box .theater-list {
+    position: relative
+}
+
+.reserve.theater-list-box .theater-list+.theater-list {
+    margin-top: 30px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box {
+    overflow: hidden;
+    width: 100%;
+    position: relative
+}
+
+.reserve.theater-list-box .theater-list:last-child .theater-type-box:last-child {
+    border-bottom: 1px solid #eaeaea
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type {
+    text-align: left;
+    width: 170px;
+    display: table-cell;
+    vertical-align: middle;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    padding: 0!important
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type p {
+    padding: 0;
+    margin: 0
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type p.theater-name {
+    font-size: 1.2em;
+    color: #444;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1em
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type p.chair {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1em
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type p.type {
+    color: #444;
+    font-weight: 400;
+    line-height: 1em
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-type-area {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100px;
+    background-color: #f2f4f5;
+    text-align: center;
+    color: #444;
+    font-weight: 700;
+    border-bottom: 0
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time-box {
+    display: table-cell;
+    width: 800px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time {
+    width: 100%;
+    margin-left: 190px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time+.theater-time {
+    margin-top: 0
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table {
+    border-top: 1px solid #ebebeb;
+    border-left: 1px solid #ebebeb;
+    width: 800px;
+    margin-left: 9px;
+    width: auto;
+    table-layout: auto
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table colgroup {
+    display: none
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td {
+    width: 99px;
+    border-right: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    text-align: center
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab {
+    width: 100%;
+    height: 69px;
+    display: table
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .txt-center {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .txt-center a {
+    display: inline-block;
+    width: 100%
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box .iconset {
+    margin-top: -10px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .ico-box.off {
+    display: none
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .play-time {
+    display: none
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab:hover .play-time {
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 100px;
+    height: 70px;
+    background-color: #503396;
+    z-index: 10;
+    color: #fff;
+    font-size: 1.0667em
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab:hover .play-time p:nth-child(1) {
+    margin-top: 12px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time {
+    padding: 10px 0;
+    background-color: #f7f8f9
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p {
+    padding: 0;
+    margin: 0
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p.time {
+    color: #666;
+    font-size: 1.2em
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td.end-time p.chair {
+    color: #666
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p {
+    padding: 0;
+    margin: 0
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p.time {
+    font-size: 1.2em;
+    color: #444;
+    font-weight: 400;
+    line-height: 1em;
+    font-family: Roboto
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab p.chair {
+    color: #01738b
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option {
+    height: 14px;
+    overflow: hidden
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option.off {
+    display: none
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option li {
+    display: inline-block;
+    width: 13px;
+    height: 13px
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab ul.option li .iconset {
+    margin-top: -10px
+}
+
+table caption {
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    opacity: 0;
+}
