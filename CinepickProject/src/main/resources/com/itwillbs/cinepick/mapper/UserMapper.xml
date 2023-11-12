@@ -79,6 +79,13 @@
 		WHERE user_id = #{user_id}
 	</select>
 
+	<select id="selectUser2" resultType="User">
+		SELECT
+			user_email
+		FROM user 
+		WHERE user_email = #{user_email}
+	</select>
+
 	<select id="selectUserList" resultType="User">
 		SELECT * FROM user
 	</select>

@@ -105,6 +105,11 @@ public class UserService {
 	public UserVO getUser(UserVO user) {
 		return mapper.selectUser(user);
 	}
+
+	// 회원 상세정보 조회 요청
+	public UserVO getUser2(UserVO user) {
+		return mapper.selectUser2(user);
+	}
 	
 	// 회원 정보 변경 요청
 	public int updateUser(UserVO user) {
