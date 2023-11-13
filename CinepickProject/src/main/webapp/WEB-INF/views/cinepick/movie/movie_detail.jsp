@@ -280,7 +280,12 @@
 			});
 		}
 		
+		
+		let sId;
 		function reviewPage(pageNum, movie_code) {
+			
+			sId =  "${sessionScope.sId}";
+// 			alert(sId);
 // 			alert(pageNum +", "+ movie_code);
 			$.ajax({
 				type: "GET",
@@ -297,29 +302,33 @@
 					
 					$(".anime__details__review").empty();
 					//for문 돌면서 append
+					
+					let str = "";
 					for(review of reviewList) {
-						$(".anime__details__review").append(
-							'<div class="anime__review__item">'
-							+ 	'<div class="anime__review__item__text" style="margin: auto;" id="review' + review.review_num +'">'
-							+ 		'<h6>'
-							+ 			'<span>' + review.user_id + '</span>'
-							+ 			'<c:if test="${' + review.user_id + ' eq sessionScope.sId }">'
-							+ 				'<span><input type="button" value="수정" class="reviewBtn"  onclick="reviewModifyForm('+ review.movie_code + ', '+ review.review_num + ',\''+ review.user_id + '\',\''+ review.review_content + '\', ' + review.review_rating + ')"></span>'
-							+ 				'<span><input type="button" value="삭제" class="reviewBtn" onclick="reviewDelete(\''+ review.user_id + '\', ' + review.movie_code + ',' + review.review_num + ')"></span>'
-							+ 			'</c:if>'
-							+ 		'</h6>'
-							+ 		'<div class="reviewStarMin">'
-							+ 		   '<div class="bg_star" style="width:' + (review.review_rating  * 20) + '%;"></div>'
-							+ 		'</div>'
-							+ 		'<h6>'
-							+ 			'<span>' + review.review_date + '</span> &nbsp;&nbsp;&nbsp;'
-							+ 			'<span id="checkModify"></span>'
-							+ 		'</h6>'
-							+ 		'<p id="review_contect' + review.review_num + '">'+ review.review_content + '</p>'
-							+ 	'</div>'
-							+'</div>'
-						);
+						str +='<div class="anime__review__item">'
+						str += 	'<div class="anime__review__item__text" style="margin: auto;" id="review' + review.review_num +'">'
+						str += 		'<h6>'
+						str += 			'<span>' + review.user_id + '</span>'
+
+						if(review.user_id == sId) {
+						str += 				'<span><input type="button" value="수정" class="reviewBtn"  onclick="reviewModifyForm('+ review.movie_code + ', '+ review.review_num + ',\''+ review.user_id + '\',\''+ review.review_content + '\', ' + review.review_rating + ')"></span>'
+						str += 				'<span><input type="button" value="삭제" class="reviewBtn" onclick="reviewDelete(\''+ review.user_id + '\', ' + review.movie_code + ',' + review.review_num + ')"></span>'
+							
+						}
+						 
+						str += 		'</h6>'
+						str += 		'<div class="reviewStarMin">'
+						str += 		   '<div class="bg_star" style="width:' + (review.review_rating  * 20) + '%;"></div>'
+						str += 		'</div>'
+						str += 		'<h6>'
+						str += 			'<span>' + review.review_date + '</span> &nbsp;&nbsp;&nbsp;'
+						str += 			'<span id="checkModify"></span>'
+						str += 		'</h6>'
+						str += 		'<p id="review_contect' + review.review_num + '">'+ review.review_content + '</p>'
+						str += 	'</div>'
+						str +='</div>'
 					}
+					$('.anime__details__review').append(str);
 					
 					console.log("data.pageInfo.pageNum : " + pageNum);
 					console.log("data.pageInfo.maxPage : " + data.pageInfo.maxPage);
@@ -388,6 +397,7 @@
 			
 			
 			//찜하기
+			let isRun = false;
 			$("button[name='likeMovieBtn']").click(function() {
 // 				debugger;
 				let user_id = "${sessionScope.sId}";
@@ -401,6 +411,12 @@
 				console.log(movie_code);
 				console.log(user_id);
 				
+				if(isRun == true) {
+					alert("작업요청 중입니다");
+				        return;
+				}
+				isRun = true;
+				
 				$.ajax({
 					url: "likeBtn",
 					type: "POST",
@@ -411,6 +427,7 @@
 					},
 					dataType: "text",
 					success: function(result) {
+						isRun  = false;
 						console.log("성공?");
 						console.log(isLike);
 						
