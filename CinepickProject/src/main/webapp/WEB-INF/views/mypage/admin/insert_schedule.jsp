@@ -49,15 +49,28 @@
 	</style>
 	<script>
 	
-	function selectDate (e){
-//  		let selectedDate =	$('#date-select').val();
-		let opendt = $("#movie-select option:selected").data('opendt');
+	function getTomorrowDate() {
+		let today = new Date();
+		let year = today.getFullYear();
+		let month = ('0' + (today.getMonth() + 1)).slice(-2);
+		let day = ('0' + (today.getDate() + 1)).slice(-2);  // 당일은 일정 등록 불가.
+		let dateString = year + '-' + month  + '-' + day;
+		
+		return dateString;
+	}
+	
+	function limitRegistDate(opendt) {
+		let dateString = getTomorrowDate();
+		// 개봉일이 내일 보다 이전이면 내일 기준으로 제한.
+		if (opendt < dateString) {
+			$("#date-select").attr("min", dateString);
+			return;
+		}
+	
 		$("#date-select").attr("min", opendt);
 	}
 	
 	$(function() {
-// 		$('#date-select').on('change', selectDate);
-		$('#movie-select').on('change', selectDate);
 		
 		// 초기 화면 출력 값
 		$.ajax({
@@ -65,9 +78,7 @@
 			url: 'adminScheduleInitInfo',
 			dataType: 'json',
 			success: function(resp) {
-// 				console.log(resp.movie[0].movie_openDt);
-				
-				$("#date-select").attr("min", resp.movie[0].movie_openDt);
+				limitRegistDate(resp.movie[0].movie_openDt);
 				
 				for (let i = 0; i < resp.theater.length; i++) {
 					$("#theater-select").append("<option value='" + resp.theater[i].theater_idx + "'>" + resp.theater[i].theater_name + "</option>");
@@ -120,7 +131,9 @@
 		});
 		
 		// 영화 변경 시 검색 초기화
+		// 개봉일이 내일 보다 이전이면 내일 기준으로 제한.
 		$("#movie-select").on("change", function() {
+			limitRegistDate($("#movie-select option:selected").data('opendt'));
 			$("#time-select").children().remove();
 		});
 		
