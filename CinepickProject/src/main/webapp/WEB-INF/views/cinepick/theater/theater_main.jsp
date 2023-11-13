@@ -355,7 +355,7 @@
 	
 	
 	
-	<jsp:include page="../include/footerTest.jsp"></jsp:include>
+	<jsp:include page="../include/main_footer.jsp"></jsp:include>
     
     
     <script>
