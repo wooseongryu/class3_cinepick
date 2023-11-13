@@ -212,6 +212,10 @@
 			}
 			
 			scheduleCheck();
+			
+			if ($('#time-select option').length == 0) {
+				alert("등록 가능한 시간대가 없습니다.");
+			}
 		});
 		
 	});
