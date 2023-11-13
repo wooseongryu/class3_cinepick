@@ -223,6 +223,9 @@ $(function() {
 		if($(this).hasClass("finish") || $(this).hasClass("impossible")) return;
 		if(left == 0) return;
 		
+		$(this).addClass("on");
+		
+		
 		// 1113 연석 시도
 		if(left >= 2) {
 			let nextordValue = $(this).attr('nextord');
@@ -247,7 +250,7 @@ $(function() {
 		}
 		// ============== 연석 시도
 		
-		$(this).addClass("on");
+		
 		
 
 	});
@@ -257,12 +260,15 @@ $(function() {
 		
 		// 231113 연석 추가
 		
+		
 		if($(this).attr("seatnextuniqno") !== undefined) {
 			let nextNo = $(this).attr("seatnextuniqno");
 			console.log("얘 연석임" + nextNo);
 			$("[seatuniqno='" + nextNo +"']").removeClass("on");
+//			if($(this).hasClass("choice")) return;
 		}
 		
+		$("[seatuniqno='" + nextNo +"']").removeAttr("seatnextuniqno");
 		$(this).removeAttr("seatnextuniqno");
 		// =====================
 	});
@@ -283,8 +289,24 @@ $(function() {
 			seat.removeAttr("selected");
 			seat.find(".condition").text("판매가능");
 			
+			
 			seats = "";
 			allTickets = "";
+			
+			
+			if($(this).attr("seatnextuniqno") !== undefined) {
+				let nextNo = $(this).attr("seatnextuniqno");
+				$("[seatuniqno='" + nextNo +"']").removeClass("choice");
+				$("[seatuniqno='" + nextNo +"']").removeAttr("selected");
+				$("[seatuniqno='" + nextNo +"']").find(".condition").text("판매가능");
+				$("[seatuniqno='" + nextNo +"']").removeAttr("seatnextuniqno");
+				$(this).removeAttr("seatnextuniqno");
+			}
+			
+			
+			
+			
+			
 			
 			$(".money em").text(0);
 			
@@ -304,6 +326,13 @@ $(function() {
 			// 231113 연석 추가
 			
 			
+			if($(this).attr("seatnextuniqno") !== undefined) {
+				let nextNo = $(this).attr("seatnextuniqno");
+				console.log("얘 연석임" + nextNo);
+				$("[seatuniqno='" + nextNo +"']").addClass("choice");
+				$("[seatuniqno='" + nextNo +"']").attr("selected", "selected");
+				$("[seatuniqno='" + nextNo +"']").find(".condition").text("선택됨");
+			}
 			
 			
 			
@@ -315,8 +344,11 @@ $(function() {
 //			if(left == 1) {
 	
 // 2023113 추가
-			if(left == 1) {
-			
+
+			calcLeft();
+
+			if(left == 0) {
+				
 				let adult = parseInt($(".now[ticketgrpcd='TKA']").text())
 				let young = parseInt($(".now[ticketgrpcd='TKY']").text())
 				let special = parseInt($(".now[ticketgrpcd='TKS']").text())
@@ -493,6 +525,26 @@ $(function() {
 //    });
 
 	calcLeft();
+	
+	
+	if(left == total && left != 0) {
+			
+		let adult = parseInt($(".now[ticketgrpcd='TKA']").text())
+		let young = parseInt($(".now[ticketgrpcd='TKY']").text())
+		let special = parseInt($(".now[ticketgrpcd='TKS']").text())
+		
+		moneySum = 14000 * adult + 12000 * young + 6000 * special;
+		
+		$(".money em").text(moneySum);
+		
+		$("#pageNext").removeClass("disabled");
+		$("#pageNext").addClass("active");
+		
+
+	}
+	
+	
+	
 
 	if(choice == total == 0) {
 		// disabled
