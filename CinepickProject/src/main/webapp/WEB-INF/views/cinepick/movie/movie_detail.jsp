@@ -526,14 +526,14 @@
 	                <div class="col-lg-10">
 	                    <div class="anime__video__player" style="text-align: center">
 	<%--                     	<iframe width="560" height="315" src="${movie.movie_vod }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> --%>
-<!-- 	                        <video id="player" playsinline controls> -->
-<%-- 	                            <source src="${movie.movie_vod }" type="video/mp4" /> --%>
-<!-- 	<!--                             <track kind="captions" label="English captions" src="#" srclang="en" default /> --> -->
-<!-- 	                        </video> -->
-							<video id="player">
+	                        <video id="player" playsinline controls>
+	                            <source src="${movie.movie_vod }" type="video/mp4" />
+	<!--                             <track kind="captions" label="English captions" src="#" srclang="en" default /> -->
+	                        </video>
+<!-- 							<video id="player"> -->
 <%-- 								<source src="${movie.movie_vod }"> --%>
-								<source src="/trailer/play/MK039797_P02.mp4">
-							</video>
+<!-- 								<source src="/trailer/play/MK039797_P02.mp4"> -->
+<!-- 							</video> -->
 	                    </div>
 	                </div>
 	                <div class="col-lg-1"></div>

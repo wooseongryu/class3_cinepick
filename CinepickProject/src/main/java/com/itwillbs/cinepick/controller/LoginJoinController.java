@@ -123,6 +123,21 @@ public class LoginJoinController {
 		}
 		
 	}
+
+	@ResponseBody
+	@GetMapping("UserCheckDupEmail")
+	public String checkDupEmail(UserVO user) {
+		
+		UserVO returnUser = service.getUser2(user);
+		System.out.println(user);
+		
+		if(returnUser != null) { // 아이디 중복
+			return "true"; // 리턴타입 String 일 때 응답 데이터로 String 타입 "true" 문자열 리턴
+		} else { // 아이디 사용 가능
+			return "false"; // 리턴타입 String 일 때 응답 데이터로 String 타입 "false" 문자열 리턴
+		}
+		
+	}
 	
 	
 	// 로그인 폼으로 이동

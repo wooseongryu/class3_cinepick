@@ -547,10 +547,10 @@
           FROM storeCate
     </select>
     
-<!--     <delete id="deleteStoreCategory"> -->
-<!--     	DELETE FROM storeCate -->
-<!--     	WHERE storeCate_Idx = #{storeCate_Idx} -->
-<!--     </delete> -->
+    <delete id="deleteStoreCategory">
+    	DELETE FROM storeCate
+    	WHERE storeCate_Idx = #{storeCate_Idx}
+    </delete>
     <!-- 스토어 카테고리 끝 -->
     
     

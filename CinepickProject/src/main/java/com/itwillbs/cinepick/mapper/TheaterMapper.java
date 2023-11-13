@@ -15,5 +15,6 @@ public interface TheaterMapper {
 	List<TheaterVO> selectTheaterList(TheaterVO theater);
 	List<CityVO> selectCityList(CityVO city);
 	List<TimeScheduleVO> selectSchedule(int brchNo);
+	List<TimeScheduleVO> selectMovieList(int brchNo);
 
 }

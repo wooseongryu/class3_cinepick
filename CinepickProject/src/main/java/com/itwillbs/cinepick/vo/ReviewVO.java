@@ -27,4 +27,5 @@ public class ReviewVO {
 	
 	private int movie_code;
 	private String user_id;
+	private String movie_nameK;
 }

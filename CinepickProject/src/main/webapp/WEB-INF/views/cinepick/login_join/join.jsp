@@ -172,6 +172,39 @@
 		});
 
 		
+		$("#user_email").blur(function() {
+			let email = $("#user_email").val();
+			let msg = "";
+			let color = "";
+			if(email == "") {
+				$("#checkEmailResult").html("이메일 입력 필수!");
+				$("#checkEmailResult").css("color", "red");
+			} else {
+				$.ajax({
+					url: "UserCheckDupEmail",
+					data: {
+						user_email: email
+					},
+					success: function(result) {
+						console.log("이메일 중복 확인 결과 : " + result);
+						
+						if($.trim(result) == "true") { // 이메일 중복
+							console.log("사용 불가능한 이메일");
+							$("#checkEmailResult").html("사용 불가능한 이메일");
+							$("#checkEmailResult").css("color", "red");
+						} else {
+							console.log("사용 가능한 이메일");
+							$("#checkEmailResult").html("사용 가능한 이메일");
+							$("#checkEmailResult").css("color", "green");
+						}
+					}
+				});
+			}
+		});
+		
+		
+		
+		
 		
 	}); // document.ready 이벤트 끝
 </script>
@@ -266,6 +299,9 @@
                             <div class="input__item">
                                 <input type="password" name="user_passwd2" id="user_passwd2" placeholder="비밀번호 확인"  maxlength="16">
                                 <span class="icon_lock"></span>
+                            </div>
+                            <div>
+                            	<span id="checkEmailResult"></span>
                             </div>
                             <div class="input__item">
                                 <input type="text" name="user_email" id ="user_email" placeholder="이메일 주소">

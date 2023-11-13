@@ -43,7 +43,9 @@ public class ReviewController {
 			model.addAttribute("msg", "리뷰내용을 작성 해주세요.");
 			return "fail_back";
 		}
+		//줄바꿈 replace
 		review.setReview_content(review.getReview_content().replace("\r\n","<br>"));
+		
 		int insertCount =  service.reviewInsert(review);
 		int movie_code = review.getMovie_code();
 		
