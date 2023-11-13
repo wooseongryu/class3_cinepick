@@ -21,9 +21,9 @@
 					FROM event e 
 					JOIN eventCate ec 
 					  ON e.event_category = ec.eventCate_Idx
-				   ORDER BY ec.eventCate_Idx) A
+				   ORDER BY e.event_startDt DESC) A
 			WHERE rk <= 3
-		
+			
 		]]>
 	</select>
 
@@ -43,6 +43,7 @@
 			*
 		FROM event
 		WHERE event_idx = #{event_idx}
+		ORDER BY e.event_startDt DESC
 	</select>
     
     
@@ -64,6 +65,7 @@
 		<if test="eventCate_Idx != -1">
 		WHERE eventCate_Idx = #{eventCate_Idx}
 		</if>
+		ORDER BY e.event_startDt DESC
 		LIMIT
 			#{startRow}
 			, #{listLimit}
@@ -100,7 +102,7 @@
 					FROM event e 
 					JOIN eventCate ec 
 					  ON e.event_category = ec.eventCate_Idx
-				   ORDER BY ec.eventCate_Idx) A
+				   ORDER BY e.event_startDt DESC) A
 			WHERE rk <= 3 AND event_category = 5
 		
 		]]>
