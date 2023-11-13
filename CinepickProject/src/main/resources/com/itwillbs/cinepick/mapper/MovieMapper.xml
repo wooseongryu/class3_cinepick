@@ -37,7 +37,12 @@
 	
 	<!-- 영화목록출력 -->
 	<select id="selectMovieList" resultType="Movie">
-		SELECT *
+		SELECT movie_code
+				, movie_nameK
+				, movie_rated
+				, movie_openDt
+				, movie_status
+				, movie_runtime
 		FROM movie
 		ORDER BY movie_openDt DESC
 	</select>

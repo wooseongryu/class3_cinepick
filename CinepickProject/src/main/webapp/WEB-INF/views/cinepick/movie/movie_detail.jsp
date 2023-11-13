@@ -502,9 +502,9 @@
                                 </div>
 	                            <div class="anime__details__btn" data-movie_code="${movie.movie_code }">
 	<!--                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> 찜하기</a> -->
-									<c:if test="${movie.movie_status ne '개봉예정' }">
+<%-- 									<c:if test="${movie.movie_status ne '개봉예정' }"> --%>
 										<a href="bookingStepOne?movie_code=${movie.movie_code }" class="follow-btn"><span>예매하기</span></a>
-									</c:if>
+<%-- 									</c:if> --%>
 <!-- 									<div class="like-btn" > -->
 										<input type="hidden" id="clickCheck">
 										<button class="likeBtn" id="likeMovie${movie.movie_code }" name="likeMovieBtn">♡</button>
@@ -527,11 +527,10 @@
 	                <div class="col-lg-10">
 	                    <div class="anime__video__player" style="text-align: center">
 	<%--                     	<iframe width="560" height="315" src="${movie.movie_vod }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> --%>
-	                        <video id="player" playsinline controls>
-	                            <source src="${movie.movie_vod }" type="video/mp4" />
-	                        </video>
-<!-- 	                            <source src="https://www.kmdb.or.kr/trailer/trailerPlayPop?pFileNm=MK039797_P02.mp4"/> -->
-	<!--                             <track kind="captions" label="English captions" src="#" srclang="en" default /> -->
+<!-- 	                        <video id="player" playsinline controls> -->
+<%-- 	                            <source src="${movie.movie_vod }" type="video/mp4" /> --%>
+<!-- 	                        </video> -->
+								<embed src="${movie.movie_vod }" id="player" width="940" height="580">
 <!-- 								<video id="player" controls src="https://www.kmdb.or.kr/trailer/trailerPlayPop?pFileNm=MK039797_P02.mp4"></video> -->
 	                       
 <!-- 							<video id="player"> -->
