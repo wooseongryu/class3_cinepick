@@ -42,6 +42,12 @@ public class MovieService {
 	}
 
 	public int deleteMovie(int movie_code) {
+		int existCount = movieMapper.checkExistSch(movie_code);
+		
+		if (existCount > 0) {
+			return -1;
+		}
+		
 		return movieMapper.deleteMovie(movie_code);
 	}
 	

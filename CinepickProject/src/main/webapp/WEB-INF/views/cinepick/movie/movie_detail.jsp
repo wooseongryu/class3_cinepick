@@ -201,6 +201,7 @@
 		}
 		//전역변수
 		let undo;
+		
 		//리뷰수정
 		function reviewModifyForm(movie_code, review_num, user_id, review_content, review_rating) {
 // 			alert(review_num+","+ movie_code+","+ user_id+","+ review_content+","+ review_rating);
@@ -209,6 +210,8 @@
 					targetHtml : $("#review"+review_num).html(),
 					review_num : review_num
 			}
+			
+			
 // 			console.log(undo.targetHtml);
 			$("#review"+review_num).empty();
 			
@@ -238,7 +241,7 @@
 					+			'</fieldset>'
 					+		'</div>'
 // 					+	'</div>'
-					+	'<textarea id="modiTextarea" name="review_content" style="border: none; width: 100%; color: #B8B8B8;">' + review_content + '</textarea>' 
+					+	'<textarea id="modiTextarea" name="review_content" style="border: none; width: 100%; color: #B8B8B8;">' + review_content.replaceAll("<br>", "\r\n") + '</textarea>' 
 					+'</form>'
 			
 			);

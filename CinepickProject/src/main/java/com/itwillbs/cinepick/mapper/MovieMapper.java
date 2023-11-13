@@ -50,6 +50,8 @@ public interface MovieMapper {
 	
 	MovieVO selectMovieDetail(@Param("movie_code") int movie_code);
 
+	int checkExistSch(int movie_code);
+
 
 
 

@@ -92,6 +92,7 @@ public class MovieController {
  		//-----
  		MovieVO movie = movieService.selectMovieDetail(movie_code);
  		System.out.println(movie);
+ 		movie.setMovie_plot(movie.getMovie_plot().replaceAll("\r\n","<br>"));
  		String[] stills = movie.getMovie_still().split("\\|");
 // 		for(int i = 0; i < stills.length; i++) {
 // 			System.out.println(stills[i]);

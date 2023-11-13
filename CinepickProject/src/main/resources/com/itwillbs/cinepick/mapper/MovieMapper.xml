@@ -87,6 +87,13 @@
 	
 	
 	<!-- 영화삭제 -->	
+	<select id="checkExistSch" resultType="int">
+		select COUNT(*)
+		from schedule
+		where sche_movie_code = #{movie_code}
+	</select>
+	
+	
 	<delete id="deleteMovie">
 		DELETE FROM movie
 		WHERE movie_code = #{movie_code}

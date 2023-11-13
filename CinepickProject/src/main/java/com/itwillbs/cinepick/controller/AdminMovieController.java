@@ -61,6 +61,7 @@ public class AdminMovieController {
 		
 		MovieVO movie = movieService.movieDetail(movie_code);
 //		System.out.println(movie);
+		movie.setMovie_plot(movie.getMovie_plot().replaceAll("<br>", "\r\n"));
 		model.addAttribute("movie", movie);
 		
 		return "mypage/admin/movie_detail";
@@ -129,6 +130,8 @@ public class AdminMovieController {
 		
 		
 		movie = movieService.movieDetail(movie.getMovie_code());
+		movie.setMovie_plot(movie.getMovie_plot().replaceAll("<br>", "\r\n"));
+		
 		model.addAttribute("movie", movie);
 		
 		return "mypage/admin/movie_detail_modify";
@@ -209,14 +212,20 @@ public class AdminMovieController {
 	public String movieDelete(int movie_code, Model model) {
 		int deleteMovieCount = movieService.deleteMovie(movie_code);
 		
+		
+		
 		if(deleteMovieCount > 0) {
 			model.addAttribute("msg", "영화를 삭제하였습니다.");
 			model.addAttribute("script", "window.opener.location.reload(); window.close()");
 			return "forward";
+		} else if (deleteMovieCount == -1) {
+			model.addAttribute("msg", "이미 등록된 스케쥴이 있습니다! 삭제 불가.");
+			return "fail_back";
 		} else {
 			model.addAttribute("msg", "영화삭제를 실패하였습니다.");
 			return "fail_back";
 		}
+		
 	}
 	
 	
