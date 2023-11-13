@@ -17,13 +17,12 @@
 						, e.event_thumbnail
 						, e.event_category
 						, ec.eventCate_Subject
-						, RANK() OVER(PARTITION BY event_category ORDER BY event_startDt, event_idx DESC) as rk
+						, RANK() OVER(PARTITION BY event_category ORDER BY event_startDt DESC, event_idx) as rk
 					FROM event e 
 					JOIN eventCate ec 
 					  ON e.event_category = ec.eventCate_Idx
 				   ORDER BY e.event_startDt DESC) A
 			WHERE rk <= 3
-			
 		]]>
 	</select>
 
