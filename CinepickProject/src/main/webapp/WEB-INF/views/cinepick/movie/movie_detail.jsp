@@ -167,8 +167,8 @@
 		}
 		
 		.likeBtn:hover {
-			background: #503396;
-			color: #ffffff;
+			background: #d8d9f7;
+/* 			color: #ffffff; */
 		}
 		
 		.likeBtn.full {
@@ -361,6 +361,7 @@
 		}
 		
 		$(function() {
+			
 			//찜정보 불러오기
 			let user_id = "${sessionScope.sId}";
 			if(user_id != null || user_id != "") {
@@ -528,8 +529,11 @@
 	<%--                     	<iframe width="560" height="315" src="${movie.movie_vod }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> --%>
 	                        <video id="player" playsinline controls>
 	                            <source src="${movie.movie_vod }" type="video/mp4" />
-	<!--                             <track kind="captions" label="English captions" src="#" srclang="en" default /> -->
 	                        </video>
+<!-- 	                            <source src="https://www.kmdb.or.kr/trailer/trailerPlayPop?pFileNm=MK039797_P02.mp4"/> -->
+	<!--                             <track kind="captions" label="English captions" src="#" srclang="en" default /> -->
+<!-- 								<video id="player" controls src="https://www.kmdb.or.kr/trailer/trailerPlayPop?pFileNm=MK039797_P02.mp4"></video> -->
+	                       
 <!-- 							<video id="player"> -->
 <%-- 								<source src="${movie.movie_vod }"> --%>
 <!-- 								<source src="/trailer/play/MK039797_P02.mp4"> -->
