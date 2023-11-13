@@ -158,6 +158,23 @@ $(function() {
 				}
 				return;
 			}
+			
+			// 2023113 추가
+			if(left == 1) {
+			
+				let adult = parseInt($(".now[ticketgrpcd='TKA']").text())
+				let young = parseInt($(".now[ticketgrpcd='TKY']").text())
+				let special = parseInt($(".now[ticketgrpcd='TKS']").text())
+				
+				moneySum = 14000 * adult + 12000 * young + 6000 * special;
+				
+				$(".money em").text(moneySum);
+				
+				$("#pageNext").removeClass("disabled");
+				$("#pageNext").addClass("active");
+				
+
+			}
 		}
 		
 		// +- 버튼에 따라 매수
