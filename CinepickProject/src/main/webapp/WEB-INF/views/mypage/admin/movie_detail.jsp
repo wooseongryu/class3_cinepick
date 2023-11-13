@@ -36,6 +36,7 @@
     
 	<script>
 		function detailClose() {
+			window.opener.location.reload();
 			window.close();
 		}
 		

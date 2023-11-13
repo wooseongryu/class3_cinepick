@@ -222,7 +222,7 @@
 					+	'<input type="hidden" value="' + review_num + '" name="review_num">'
 					+	'<h6>'
 					+		'<span>' + user_id + '</span>&nbsp;&nbsp;'			
-					+		'<span><input type="button" value="등록" class="reviewBtn" onclick="reviewModPro()"></span>&nbsp;&nbsp;'						
+					+		'<span><input type="button" value="등록" class="reviewBtn" onclick="reviewModPro(' + review_num + ')"></span>&nbsp;&nbsp;'						
 					+		'<span><input type="button" value="취소" class="reviewBtn" onclick="funPause(undo)"></span>'						
 					+	'</h6>'
 // 					+	'<div class="reviewStarMin">'
@@ -241,6 +241,8 @@
 					+			'</fieldset>'
 					+		'</div>'
 // 					+	'</div>'
+// 					+	'<span>' + review.review_date + '</span> &nbsp;&nbsp;&nbsp;'
+					+	'<span id="checkModify' + review_num + '"></span>'
 					+	'<textarea id="modiTextarea" name="review_content" style="border: none; width: 100%; color: #B8B8B8;">' + review_content.replaceAll("<br>", "\r\n") + '</textarea>' 
 					+'</form>'
 			
@@ -250,7 +252,8 @@
 			
 		}
 		
-		function reviewModPro() {
+		function reviewModPro(review_num) {
+			console.log(review_num);
 			
 			if($("#modiTextarea").val() == "" || $("#modiTextarea").val() == null ) {
 				alert("내용 입력 필수!");
@@ -266,10 +269,10 @@
 				dataType: "text",
 				success: function(result) {
 					if(result == "true") {
-						alert("리뷰가 수정되었습니다.");
+						alert("리뷰가 수정되었습니다." + review_num);
 						
 						location.reload();
-						$("#checkModify").html("수정됨"); //왜 안될까?
+						$("#checkModify" + review_num).html("수정됨"); //왜 안될까?
 					} else {
 						alert("수정된 내용이 없습니다.");
 					}
@@ -282,7 +285,7 @@
 		
 		
 		let sId;
-		function reviewPage(pageNum, movie_code) {
+		function reviewPage(pageNum, movie_code) {    
 			
 			sId =  "${sessionScope.sId}";
 // 			alert(sId);
@@ -322,7 +325,7 @@
 						str += 		'</div>'
 						str += 		'<h6>'
 						str += 			'<span>' + review.review_date + '</span> &nbsp;&nbsp;&nbsp;'
-						str += 			'<span id="checkModify"></span>'
+						str += 			'<span id="checkModify' + review.review_num + '"></span>'
 						str += 		'</h6>'
 						str += 		'<p id="review_contect' + review.review_num + '">'+ review.review_content + '</p>'
 						str += 	'</div>'
@@ -519,9 +522,9 @@
                                 </div>
 	                            <div class="anime__details__btn" data-movie_code="${movie.movie_code }">
 	<!--                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> 찜하기</a> -->
-<%-- 									<c:if test="${movie.movie_status ne '개봉예정' }"> --%>
+									<c:if test="${movie.movie_status ne '상영종료' }">
 										<a href="bookingStepOne?movie_code=${movie.movie_code }" class="follow-btn"><span>예매하기</span></a>
-<%-- 									</c:if> --%>
+									</c:if>
 <!-- 									<div class="like-btn" > -->
 										<input type="hidden" id="clickCheck">
 										<button class="likeBtn" id="likeMovie${movie.movie_code }" name="likeMovieBtn">♡</button>
@@ -628,7 +631,7 @@
 										</div>
 		                                <h6>
 		                                    <span>${review.review_date }</span> &nbsp;&nbsp;&nbsp;
-		                                    <span id="checkModify"></span>
+		                                    <span id="checkModify${review.review_num}"></span>
 <!-- 		                                    <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i></a> 12 -->
 		                                </h6>
 		                                <p id="review_contect${review.review_num }">${review.review_content }</p>
