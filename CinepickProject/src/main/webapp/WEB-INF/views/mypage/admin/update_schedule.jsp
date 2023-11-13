@@ -107,7 +107,8 @@
 						hour = "0" + hour;
 					}
 					hour += ":00";
-					$("#time-select").append("<option value='" + hour + ":00'>" + hour + "</option>");
+					
+					limitRegistTime(hour);
 				}
 			},
 			error: function() {
@@ -200,7 +201,6 @@
 		// 영화 변경 시 검색 초기화
 		$("#movie-select").on("change", function() {
 			limitRegistDate($("#movie-select option:selected").data('opendt'));
-// 			console.log($("#movie-select option:selected").data('opendt'));
 			$("#time-select").children().remove();
 		});
 		
@@ -221,8 +221,6 @@
 </head>
 
 <body class="bg-gradient-primary">
-	${schedule }
-
 	<input type="hidden" id="sche_theater_idx" value="${schedule.sche_theater_idx }">
 	<input type="hidden" id="sche_screen_idx" value="${schedule.sche_screen_idx }">
 	<input type="hidden" id="sche_movie_code" value="${schedule.sche_movie_code }">
@@ -242,8 +240,6 @@
 								<div class="form-group row">
 								  	<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영일</label>
-<!-- 										<input type="text" class="form-control form-control-user" id="datepicker" value=""> -->
-<%-- 										<input type="date" name="sche_date" id="date-select" value="${schedule.sche_date }" min="${schedule.movie_openDt }"> --%>
 										<input type="date" name="sche_date" id="date-select" value="${schedule.sche_date }">
 	                                </div>
 								</div>
