@@ -126,6 +126,9 @@
 				sche_theater_idx : $("#sche_theater_idx").val()
 			},
 			success: function(resp) {
+				let movie_openDt = $("#sche_movie_openDt").val();
+				limitRegistDate(movie_openDt);
+				
 				for (let i = 0; i < resp.theater.length; i++) {
 					$("#theater-select").append("<option value='" + resp.theater[i].theater_idx + "'>" + resp.theater[i].theater_name + "</option>");
 				}
@@ -136,7 +139,7 @@
 				}
 				
 				for (let i = 0; i < resp.movie.length; i++) {
-					$("#movie-select").append("<option value='" + resp.movie[i].movie_code + "'>" + resp.movie[i].movie_nameK + "</option>");
+					$("#movie-select").append("<option value='" + resp.movie[i].movie_code + "'data-opendt='" + resp.movie[i].movie_openDt + "'>" + resp.movie[i].movie_nameK + "</option>");
 				}
 				
 				let movie_code = $("#sche_movie_code").val();
@@ -196,6 +199,8 @@
 		
 		// 영화 변경 시 검색 초기화
 		$("#movie-select").on("change", function() {
+			limitRegistDate($("#movie-select option:selected").data('opendt'));
+// 			console.log($("#movie-select option:selected").data('opendt'));
 			$("#time-select").children().remove();
 		});
 		
@@ -221,6 +226,7 @@
 	<input type="hidden" id="sche_theater_idx" value="${schedule.sche_theater_idx }">
 	<input type="hidden" id="sche_screen_idx" value="${schedule.sche_screen_idx }">
 	<input type="hidden" id="sche_movie_code" value="${schedule.sche_movie_code }">
+	<input type="hidden" id="sche_movie_openDt" value="${schedule.movie_openDt }">
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
@@ -237,7 +243,8 @@
 								  	<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영일</label>
 <!-- 										<input type="text" class="form-control form-control-user" id="datepicker" value=""> -->
-										<input type="date" name="sche_date" id="date-select" value="${schedule.sche_date }" min="${schedule.movie_openDt }">
+<%-- 										<input type="date" name="sche_date" id="date-select" value="${schedule.sche_date }" min="${schedule.movie_openDt }"> --%>
+										<input type="date" name="sche_date" id="date-select" value="${schedule.sche_date }">
 	                                </div>
 								</div>
 								<br>
