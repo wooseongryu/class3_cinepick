@@ -97,6 +97,21 @@ $(function() {
 	
 	moneySum = 0;
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 매수 선택
 	$(".seat-count button").click(function() {
 		
@@ -105,6 +120,19 @@ $(function() {
 		
 		if($(this).hasClass("up") && total < 8) {
 			nowNum = prevNum + 1;
+			
+			// 231113 추가 다음 버튼 비활성화
+			if(left == 0) {
+				$("#pageNext").removeClass("active");
+				$("#pageNext").addClass("disabled");
+					
+				if($("#pageNext").hasClass("disabled")) {
+					$("#pageNext").prop('disabled', true);
+				} else {
+					$("#pageNext").prop('disabled', false);
+				}
+			}
+			
 		} else if($(this).hasClass("up") && total == 8) {
 			alert("인원 선택은 총 8명까지 가능합니다.");
 			return; 
@@ -145,6 +173,23 @@ $(function() {
 				}
 				return;
 			}
+			
+			// 2023113 추가
+			if(left == 1) {
+			
+				let adult = parseInt($(".now[ticketgrpcd='TKA']").text())
+				let young = parseInt($(".now[ticketgrpcd='TKY']").text())
+				let special = parseInt($(".now[ticketgrpcd='TKS']").text())
+				
+				moneySum = 14000 * adult + 12000 * young + 6000 * special;
+				
+				$(".money em").text(moneySum);
+				
+				$("#pageNext").removeClass("disabled");
+				$("#pageNext").addClass("active");
+				
+
+			}
 		}
 		
 		// +- 버튼에 따라 매수
@@ -169,7 +214,7 @@ $(function() {
 		
 	});
 
-	
+	                                                             
 	
 	$(".seat-layout .seat-condition").mouseover(function() {
 		calcLeft();
@@ -177,12 +222,56 @@ $(function() {
 		
 		if($(this).hasClass("finish") || $(this).hasClass("impossible")) return;
 		if(left == 0) return;
+		
 		$(this).addClass("on");
+		
+		
+		// 1113 연석 시도
+		if(left >= 2) {
+			let nextordValue = $(this).attr('nextord');
+			let uniqNo = $(this).attr("seatuniqno");
+			if(nextordValue === 'N') {
+				let partner  = $(this).next();
+				let nextUniqNo = partner.attr("seatuniqno");
+				$(this).attr("seatnextuniqno", nextUniqNo);
+				partner.attr("seatnextuniqno", uniqNo);
+			} else {
+				let partner  = $(this).prev();
+				let nextUniqNo = partner.attr("seatuniqno");
+				$(this).attr("seatnextuniqno", nextUniqNo);
+				partner.attr("seatnextuniqno", uniqNo);
+			}
+			if($(this).attr("seatnextuniqno") !== undefined) {
+				let nextNo = $(this).attr("seatnextuniqno");
+				console.log("얘 연석임" + nextNo);
+				$("[seatuniqno='" + nextNo +"']").addClass("on");
+			}
+		}
+		
+		// ============== 연석 시도
+		
+		
+		
 
 	});
 	
 	$(".seat-layout .seat-condition").mouseout(function() {
 		$(this).removeClass("on");
+		
+		// 231113 연석 추가
+		
+		
+		if($(this).attr("seatnextuniqno") !== undefined) {
+			let nextNo = $(this).attr("seatnextuniqno");
+			console.log("얘 연석임" + nextNo);
+			$("[seatuniqno='" + nextNo +"']").removeClass("on");
+			if($(this).hasClass("choice") && $("[seatuniqno='" + nextNo +"']").hasClass("choice")) return;
+			
+			$("[seatuniqno='" + nextNo +"']").removeAttr("seatnextuniqno");
+			$(this).removeAttr("seatnextuniqno");
+		}
+		
+		// =====================
 	});
 
 	
@@ -201,8 +290,26 @@ $(function() {
 			seat.removeAttr("selected");
 			seat.find(".condition").text("판매가능");
 			
+			
 			seats = "";
 			allTickets = "";
+			
+//			debugger;
+			
+			
+			if($(this).attr("seatnextuniqno") !== undefined) {
+				let nextNo = $(this).attr("seatnextuniqno");
+				$("[seatuniqno='" + nextNo +"']").removeClass("choice");
+				$("[seatuniqno='" + nextNo +"']").removeAttr("selected");
+				$("[seatuniqno='" + nextNo +"']").find(".condition").text("판매가능");
+				$("[seatuniqno='" + nextNo +"']").removeAttr("seatnextuniqno");
+				$(this).removeAttr("seatnextuniqno");
+			}
+			
+			
+			
+			
+			
 			
 			$(".money em").text(0);
 			
@@ -218,11 +325,33 @@ $(function() {
 			seat.attr("selected", "selected");
 			seat.find(".condition").text("선택됨");
 			
+			
+			// 231113 연석 추가
+			
+			
+			if($(this).attr("seatnextuniqno") !== undefined) {
+				let nextNo = $(this).attr("seatnextuniqno");
+				console.log("얘 연석임" + nextNo);
+				$("[seatuniqno='" + nextNo +"']").addClass("choice");
+				$("[seatuniqno='" + nextNo +"']").attr("selected", "selected");
+				$("[seatuniqno='" + nextNo +"']").find(".condition").text("선택됨");
+			}
+			
+			
+			
+			
+			// =====================
+			
+			
 //			if(choice == total && choice > 0) {
 //			if(left == 1) {
+	
 // 2023113 추가
-			if(left == 1) {
-			
+
+			calcLeft();
+
+			if(left == 0) {
+				
 				let adult = parseInt($(".now[ticketgrpcd='TKA']").text())
 				let young = parseInt($(".now[ticketgrpcd='TKY']").text())
 				let special = parseInt($(".now[ticketgrpcd='TKS']").text())
@@ -399,6 +528,26 @@ $(function() {
 //    });
 
 	calcLeft();
+	
+	
+	if(left == total && left != 0) {
+			
+		let adult = parseInt($(".now[ticketgrpcd='TKA']").text())
+		let young = parseInt($(".now[ticketgrpcd='TKY']").text())
+		let special = parseInt($(".now[ticketgrpcd='TKS']").text())
+		
+		moneySum = 14000 * adult + 12000 * young + 6000 * special;
+		
+		$(".money em").text(moneySum);
+		
+		$("#pageNext").removeClass("disabled");
+		$("#pageNext").addClass("active");
+		
+
+	}
+	
+	
+	
 
 	if(choice == total == 0) {
 		// disabled
