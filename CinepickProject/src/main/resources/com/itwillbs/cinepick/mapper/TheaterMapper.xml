@@ -35,9 +35,9 @@
 		JOIN theater t ON s.screen_theater_idx = t.theater_idx
 		JOIN schedule sc ON s.screen_idx = sc.sche_screen_idx
 		JOIN movie m ON m.movie_code = sc.sche_movie_code
-		WHERE brchNo = #{brchNo} AND sche_date = CURDATE()
+		WHERE brchNo = #{brchNo}
+		AND sche_date = CURDATE()
 		AND sche_start_time > CURRENT_TIME()
-	
 	</select>
 	
 	<select id="selectSchedule" resultType="TimeSchedule">
@@ -52,7 +52,6 @@
 	    m.movie_runtime,
 	    m.movie_rated,
 	    GROUP_CONCAT(DISTINCT s.screen_name) AS screen_name,
-	    GROUP_CONCAT(DISTINCT sc.sche_date) AS sche_date,
 	    GROUP_CONCAT(DISTINCT TIME_FORMAT(sc.sche_start_time, '%H:%i')) AS sche_start_time,
 	    GROUP_CONCAT(DISTINCT TIME_FORMAT(sc.sche_end_time, '%H:%i')) AS sche_end_time,
 	    GROUP_CONCAT(DISTINCT screen_total_seat) AS screen_total_seat
@@ -60,7 +59,8 @@
 	JOIN theater t ON s.screen_theater_idx = t.theater_idx
 	JOIN schedule sc ON s.screen_idx = sc.sche_screen_idx
 	JOIN movie m ON m.movie_code = sc.sche_movie_code
-	WHERE brchNo = #{brchNo} AND sche_date = CURDATE() 
+	WHERE brchNo = #{brchNo}
+	AND sche_date = CURDATE() 
 	AND sche_start_time > CURRENT_TIME()
 	GROUP BY
 	    t.city_idx,

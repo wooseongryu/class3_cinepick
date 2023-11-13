@@ -21,6 +21,7 @@ public class TimeScheduleVO {
 	private String movie_rated;
 //	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate sche_date;
+//	private String sche_date;
 	private String sche_start_time;
 	private String sche_end_time;
 	private String screen_total_seat;

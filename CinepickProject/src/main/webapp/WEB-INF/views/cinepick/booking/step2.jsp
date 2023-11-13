@@ -662,7 +662,8 @@
 <!--                             <form id="seatForm" action="bookPay" method="POST"> -->
 <%-- 							    <input type="hidden" id="sche_idx" value="${#sche_idx}" /> --%>
 <!-- 							</form> -->
-                            <a href="javaScript:void(0)" class="button disabled" id="pageNext" title="다음">다음</a>
+<!--                             <button class="button disabled" id="pageNext" title="다음">다음</button> -->
+                            <button class="button disabled" id="pageNext" title="다음">다음</button>
 <!--                             <a href="javaScript:void(0)" class="button disabled" id="pageNext" title="다음">다음</a> -->
 <!--                             <button class="button disabled" id="pageNext" title="다음">다음</button> -->
                       

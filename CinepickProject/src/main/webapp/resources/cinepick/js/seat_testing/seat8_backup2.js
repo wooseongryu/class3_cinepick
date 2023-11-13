@@ -105,19 +105,6 @@ $(function() {
 		
 		if($(this).hasClass("up") && total < 8) {
 			nowNum = prevNum + 1;
-			
-			// 231113 추가 다음 버튼 비활성화
-			if(left == 0) {
-				$("#pageNext").removeClass("active");
-				$("#pageNext").addClass("disabled");
-					
-				if($("#pageNext").hasClass("disabled")) {
-					$("#pageNext").prop('disabled', true);
-				} else {
-					$("#pageNext").prop('disabled', false);
-				}
-			}
-			
 		} else if($(this).hasClass("up") && total == 8) {
 			alert("인원 선택은 총 8명까지 가능합니다.");
 			return; 
@@ -182,7 +169,7 @@ $(function() {
 		
 	});
 
-	                                                             
+	
 	
 	$(".seat-layout .seat-condition").mouseover(function() {
 		calcLeft();
