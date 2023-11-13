@@ -136,11 +136,11 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead class="table-dark">
                                         <tr>
-                                            <th>글번호</th>
+<!--                                             <th>글번호</th> -->
+                                            <th>영화제목</th>
                                             <th>별점</th>
                                             <th>리뷰 내용</th>
                                             <th>작성일</th>
-                                            <th>영화제목</th>
                                             <th>작성자</th>
                                             <th>삭제</th>
                                         </tr>
@@ -150,11 +150,11 @@
                                     <tbody>
                                     	<c:forEach var="review" items="${reviewList }">
 	                                        <tr>
-	                                            <td>${review.review_num }</td>
+<%-- 	                                            <td>${review.review_num }</td> --%>
+	                                            <td>${review.movie_nameK }</td>
 	                                            <td>${review.review_rating }</td>
 	                                            <td>${review.review_content }</td>
 	                                            <td>${review.review_date }</td>
-	                                            <td>${review.movie_nameK }</td>
 	                                            <td>${review.user_id }</td>
 												<td>
 													<button type="button" class="btn btn-primary" onclick="deletMyReview(${review.review_num })">삭제</button>
