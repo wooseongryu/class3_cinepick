@@ -345,6 +345,12 @@ public class AdminService {
 	//상영관 삭제
 	public int deleteScreen(int screenIdx) {
 		System.out.println("AdminService - deleteScreen()");
+		
+		int existCount = mapper.checkExistScreen(screenIdx);
+		
+		if (existCount > 0) {
+			return -1;
+		}
 		return mapper.deleteScreen(screenIdx);
 	}
 	

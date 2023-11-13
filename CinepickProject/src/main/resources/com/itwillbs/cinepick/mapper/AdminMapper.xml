@@ -448,6 +448,13 @@
     	WHERE screen_idx = #{screenIdx };
     </delete>
     
+    <!-- 상영관 삭제 -->	
+	<select id="checkExistScreen" resultType="int">
+		select COUNT(*)
+		from schedule
+		where sche_screen_idx = #{screenIdx }
+	</select>
+    
     <update id="updateScreen">
     	UPDATE screen
     	SET 
@@ -457,6 +464,7 @@
     	WHERE screen_idx = #{screen_idx };
     </update>
    <!-- 상영관 끝 -->
+   
 	<!-- 리뷰 시작 -->
 	<!-- 전체 리뷰 조회 -->
 	<select id="selectReviewList" resultType="Review">

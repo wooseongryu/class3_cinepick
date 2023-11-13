@@ -166,9 +166,9 @@ public interface AdminMapper {
 	int deleteScreen(int screenIdx);
 
 	int updateScreen(ScreenVO screen);
+	
+	int checkExistScreen(int screenIdx);
 
-	
-	
 	
 	/*==============================================================
 	 * 리뷰 
@@ -218,5 +218,9 @@ public interface AdminMapper {
 	
 	// 예매내역 조회
 	List<BookVO> selectBookList(String string);
+	
+
+
+	
 	
 }

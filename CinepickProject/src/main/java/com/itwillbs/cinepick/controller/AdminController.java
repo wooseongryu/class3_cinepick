@@ -1477,12 +1477,26 @@ public class AdminController {
 		
 		int deleteCount = adminService.deleteScreen(screenIdx);
 		
-		if (deleteCount == 0) {
-			model.addAttribute("msg", "삭제 실패!");
+		
+		if(deleteCount > 0) {
+			model.addAttribute("msg", "상영관를 삭제하였습니다.");
+			model.addAttribute("targetURL", "adminScreenList");
+			return "forward";
+		} else if (deleteCount == -1) {
+			model.addAttribute("msg", "상영관에 영화가 등록되어 있습니다! 삭제 불가.");
+			return "fail_back";
+		} else {
+			model.addAttribute("msg", "상영관 삭제를 실패하였습니다.");
 			return "fail_back";
 		}
 		
-		return "redirect:/adminScreenList";
+		
+//		if (deleteCount == 0) {
+//			model.addAttribute("msg", "삭제 실패!");
+//			return "fail_back";
+//		}
+//		
+//		return "redirect:/adminScreenList";
 	}
 	
 	// 상영관 수정 폼
