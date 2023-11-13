@@ -97,6 +97,21 @@ $(function() {
 	
 	moneySum = 0;
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 매수 선택
 	$(".seat-count button").click(function() {
 		
@@ -207,12 +222,49 @@ $(function() {
 		
 		if($(this).hasClass("finish") || $(this).hasClass("impossible")) return;
 		if(left == 0) return;
+		
+		// 1113 연석 시도
+		if(left >= 2) {
+			let nextordValue = $(this).attr('nextord');
+			let uniqNo = $(this).attr("seatuniqno");
+			if(nextordValue === 'N') {
+				let partner  = $(this).next();
+				let nextUniqNo = partner.attr("seatuniqno");
+				$(this).attr("seatnextuniqno", nextUniqNo);
+				partner.attr("seatnextuniqno", uniqNo);
+			} else {
+				let partner  = $(this).prev();
+				let nextUniqNo = partner.attr("seatuniqno");
+				$(this).attr("seatnextuniqno", nextUniqNo);
+				partner.attr("seatnextuniqno", uniqNo);
+			}
+		}
+		
+		if($(this).attr("seatnextuniqno") !== undefined) {
+			let nextNo = $(this).attr("seatnextuniqno");
+			console.log("얘 연석임" + nextNo);
+			$("[seatuniqno='" + nextNo +"']").addClass("on");
+		}
+		// ============== 연석 시도
+		
 		$(this).addClass("on");
+		
 
 	});
 	
 	$(".seat-layout .seat-condition").mouseout(function() {
 		$(this).removeClass("on");
+		
+		// 231113 연석 추가
+		
+		if($(this).attr("seatnextuniqno") !== undefined) {
+			let nextNo = $(this).attr("seatnextuniqno");
+			console.log("얘 연석임" + nextNo);
+			$("[seatuniqno='" + nextNo +"']").removeClass("on");
+		}
+		
+		$(this).removeAttr("seatnextuniqno");
+		// =====================
 	});
 
 	
@@ -248,8 +300,20 @@ $(function() {
 			seat.attr("selected", "selected");
 			seat.find(".condition").text("선택됨");
 			
+			
+			// 231113 연석 추가
+			
+			
+			
+			
+			
+			
+			// =====================
+			
+			
 //			if(choice == total && choice > 0) {
 //			if(left == 1) {
+	
 // 2023113 추가
 			if(left == 1) {
 			
