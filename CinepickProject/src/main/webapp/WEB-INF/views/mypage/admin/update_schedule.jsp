@@ -110,6 +110,10 @@
 					
 					limitRegistTime(hour);
 				}
+				
+				if ($('#time-select option').length == 0) {
+					alert("등록 가능한 시간대가 없습니다.");
+				}
 			},
 			error: function() {
 				alert("에러");
@@ -213,9 +217,9 @@
 			
 			scheduleCheck();
 			
-			if ($('#time-select option').length == 0) {
-				alert("등록 가능한 시간대가 없습니다.");
-			}
+// 			if ($('#time-select option').length == 0) {
+// 				alert("등록 가능한 시간대가 없습니다.");
+// 			}
 		});
 		
 	});
