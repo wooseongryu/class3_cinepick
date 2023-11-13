@@ -269,7 +269,7 @@
 				dataType: "text",
 				success: function(result) {
 					if(result == "true") {
-						alert("리뷰가 수정되었습니다." + review_num);
+						alert("리뷰가 수정되었습니다.");
 						
 						location.reload();
 // 						$("#checkModify" + review_num).html("수정됨"); //왜 안될까?
