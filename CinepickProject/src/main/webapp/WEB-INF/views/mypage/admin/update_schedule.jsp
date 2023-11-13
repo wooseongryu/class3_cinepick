@@ -48,6 +48,46 @@
 		
 	</style>
 	<script>
+	
+	function getNowTime() {
+		let today = new Date();   
+
+		let hours = ('0' + today.getHours()).slice(-2); 
+		let minutes = ('0' + today.getMinutes()).slice(-2);
+
+		return hours + ':' + minutes;
+	}
+	
+	function limitRegistTime(hour) {
+		let nowTime =  getNowTime()
+		
+		// 등록일이 오늘이면 현재 시간보다 다음 시간표만 등록 가능.
+		if (nowTime < hour || getTodayDate() < $("#date-select").val()) {
+			$("#time-select").append("<option value='" + hour + ":00'>" + hour + "</option>");
+		}
+	}
+	
+	function getTodayDate() {
+		let today = new Date();
+		let year = today.getFullYear();
+		let month = ('0' + (today.getMonth() + 1)).slice(-2);
+		let day = ('0' + today.getDate()).slice(-2);
+		let dateString = year + '-' + month  + '-' + day;
+		
+		return dateString;
+	}
+	
+	function limitRegistDate(opendt) {
+		let dateString = getTodayDate();
+		// 개봉일이 내일 보다 이전이면 내일 기준으로 제한.
+		if (opendt < dateString) {
+			$("#date-select").attr("min", dateString);
+			return;
+		}
+	
+		$("#date-select").attr("min", opendt);
+	}
+	
 	function scheduleCheck() {
 		$.ajax({
 			type: 'post',
@@ -176,6 +216,8 @@
 </head>
 
 <body class="bg-gradient-primary">
+	${schedule }
+
 	<input type="hidden" id="sche_theater_idx" value="${schedule.sche_theater_idx }">
 	<input type="hidden" id="sche_screen_idx" value="${schedule.sche_screen_idx }">
 	<input type="hidden" id="sche_movie_code" value="${schedule.sche_movie_code }">
@@ -195,7 +237,7 @@
 								  	<div class="col-sm-6 mb-3 mb-sm-0">
 										<label for="">상영일</label>
 <!-- 										<input type="text" class="form-control form-control-user" id="datepicker" value=""> -->
-										<input type="date" name="sche_date" id="date-select" value="${schedule.sche_date }">
+										<input type="date" name="sche_date" id="date-select" value="${schedule.sche_date }" min="${schedule.movie_openDt }">
 	                                </div>
 								</div>
 								<br>

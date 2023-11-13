@@ -28,4 +28,5 @@ public class ScheduleVO {
 	
 	private int screenCount;
 	private int remainSeatCount;
+	private String movie_openDt;
 }

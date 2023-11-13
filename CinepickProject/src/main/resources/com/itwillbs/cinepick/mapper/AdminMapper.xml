@@ -131,6 +131,7 @@
 			, movie_nameK
 			, theater_name
 			, screen_name
+			, movie_openDt
 		FROM schedule s 
 			JOIN movie m
 			ON s.sche_movie_code = m.movie_code
