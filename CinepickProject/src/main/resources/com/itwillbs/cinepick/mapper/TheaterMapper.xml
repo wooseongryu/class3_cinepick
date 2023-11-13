@@ -36,7 +36,7 @@
 		JOIN schedule sc ON s.screen_idx = sc.sche_screen_idx
 		JOIN movie m ON m.movie_code = sc.sche_movie_code
 		WHERE brchNo = #{brchNo} AND sche_date = CURDATE()
-<!-- 		AND sche_start_time > CURRENT_TIME() -->
+		AND sche_start_time > CURRENT_TIME()
 	
 	</select>
 	
@@ -61,7 +61,7 @@
 	JOIN schedule sc ON s.screen_idx = sc.sche_screen_idx
 	JOIN movie m ON m.movie_code = sc.sche_movie_code
 	WHERE brchNo = #{brchNo} AND sche_date = CURDATE() 
-<!-- 	AND sche_start_time > CURRENT_TIME() -->
+	AND sche_start_time > CURRENT_TIME()
 	GROUP BY
 	    t.city_idx,
 	    t.theater_idx,
