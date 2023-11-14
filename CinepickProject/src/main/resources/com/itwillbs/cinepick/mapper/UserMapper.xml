@@ -13,11 +13,21 @@
 -->
 <mapper namespace="com.itwillbs.cinepick.mapper.UserMapper">
 	<!-- insert  -->
-	<insert id="insertUser">
-		INSERT INTO user
-		VALUES (
-			null  
-			, #{user_name}
+	<insert id="insertUser" >
+	INSERT INTO user(
+			user_name
+			, user_id
+			, user_passwd
+			, user_email
+			, user_phone
+			, hire_date
+			, user_is_admin
+			, mail_auth_status
+			, kakao_id
+			, user_status
+	)
+  	 VALUES (
+			#{user_name}
 			, #{user_id}
 			, #{user_passwd}
 			, #{user_email} 
@@ -27,7 +37,22 @@
 			, 'N'
 			, null
 			, '가입'
-		)
+	)
+	
+<!-- 		INSERT INTO user -->
+<!-- 		VALUES ( -->
+<!-- 			null   -->
+<!-- 			, #{user_name} -->
+<!-- 			, #{user_id} -->
+<!-- 			, #{user_passwd} -->
+<!-- 			, #{user_email}  -->
+<!-- 			, #{user_phone}  -->
+<!-- 			, now() -->
+<!-- 			, 'N' -->
+<!-- 			, 'N' -->
+<!-- 			, null -->
+<!-- 			, '가입' -->
+<!-- 		) -->
 	</insert>
 	
 	<!-- 인증정보 등록 - INSERT -->
