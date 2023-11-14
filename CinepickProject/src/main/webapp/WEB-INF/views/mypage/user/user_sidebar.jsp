@@ -91,8 +91,8 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="userMoviePurchaseList">예매 내역</a>
-                        <a class="collapse-item" href="userStorePurchaseList">스토어 구매 내역</a>
+                        <a class="collapse-item" href="userMoviePurchaseList">영화 예매 내역</a>
+<!--                         <a class="collapse-item" href="userStorePurchaseList">스토어 구매 내역</a> -->
                     </div>
                 </div>
             </li>
@@ -109,7 +109,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                     	<a class="collapse-item" href="userLikeMovieList">내가 찜한 영화</a>
                         <a class="collapse-item" href="userMyReviewList">내가 쓴 리뷰</a>
-                        <a class="collapse-item" href="userMyQuestionList">1:1 문의</a>
+<!--                         <a class="collapse-item" href="userMyQuestionList">1:1 문의</a> -->
                     </div>
                 </div>
             </li>
@@ -119,15 +119,21 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWishs"
                     aria-expanded="true" aria-controls="collapseWishs">
                     <i class="fa-solid fa-burger"></i>
-                    <span>취소 내역</span>
+                    <span>문의 내역</span>
                 </a>
                 <div id="collapseWishs" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="userMovieCancelList">예매 취소 내역</a>
-                        <a class="collapse-item" href="userStoreCancelList">스토어 취소 내역</a>
+                        <a class="collapse-item" href="userMyQuestionList">1:1 문의</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
+<!--                 <div id="collapseWishs" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar"> -->
+<!--                     <div class="bg-white py-2 collapse-inner rounded"> -->
+<!--                         <a class="collapse-item" href="userMovieCancelList">예매 취소 내역</a> -->
+<!--                         <a class="collapse-item" href="userStoreCancelList">스토어 취소 내역</a> -->
+<!--                         <div class="collapse-divider"></div> -->
+<!--                     </div> -->
+<!--                 </div> -->
             </li>
 
 			<!-- Divider -->
