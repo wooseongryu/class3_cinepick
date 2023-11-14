@@ -561,10 +561,10 @@
 				<div class="tit-util mt40">
 					<h3 class="tit small">결제수단선택 <!-- 결제수단선택 --></h3>
 	
-					<div class="right">
-						<input type="checkbox" id="same_use_payment">
-						<label for="same_use_payment" id="label_use_payment">다음에도 이 결제수단 사용 <!-- 다음에도 이 결제수단 사용 --></label>
-					</div>
+<!-- 					<div class="right"> -->
+<!-- 						<input type="checkbox" id="same_use_payment"> -->
+<!-- 						<label for="same_use_payment" id="label_use_payment">다음에도 이 결제수단 사용 다음에도 이 결제수단 사용</label> -->
+<!-- 					</div> -->
 				</div>
 	
 				<!-- seat-section -->
