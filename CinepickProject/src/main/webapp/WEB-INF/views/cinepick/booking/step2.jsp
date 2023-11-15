@@ -688,12 +688,13 @@
 	<!-- Test 추가 -->
 <!-- 	<div id="output"></div> -->
 <!-- 	<div id="output2">하하하</div> -->
-<!-- 	<div> -->
+	<div>
 <!-- 		<input type="button" value="headerfooterㅅㄷㄴㅅ" class="test" id="payTest" onclick="location.href='headTest'"> -->
 <!-- 		<input type="button" value="결제페이지로" class="test" id="payTest" onclick="location.href='stepPay'"> -->
 <!-- 		<input type="button" value="예매완료페이지로" class="test" id="complete" onclick="location.href='paySuccess'"> -->
 <!-- 		<input type="button" value="결제취소" class="test" id="complete" onclick="location.href='payCancle'"> -->
-<!-- 	</div> -->
+		<input type="button" value="텀블벅" class="tumble" id="tumble" onclick="location.href='tumble'">
+	</div>
 <!-- 	<input type="button" value="hidden" id="hidden"> -->
 	
 	

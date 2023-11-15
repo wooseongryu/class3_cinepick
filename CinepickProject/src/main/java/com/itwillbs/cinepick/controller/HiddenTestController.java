@@ -51,5 +51,19 @@ public class HiddenTestController {
 		return "";
 	}
 	
+	// 아래는 텀블벅 크롤링
+	
+	@GetMapping("tumble")
+	public String tumble() {
+		
+		return "cinepick/hiddenTest/tumble";
+	}
+	
+	@GetMapping("tumbleMain")
+	public String tumbleMain() {
+		
+		return "cinepick/hiddenTest/tumbleMain";
+	}
+	
 	
 }

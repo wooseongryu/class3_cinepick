@@ -173,6 +173,8 @@ $(function() {
 	
 	$(".seat-layout .seat-condition").mouseover(function() {
 		calcLeft();
+		
+		debugger;
 
 		
 		if($(this).hasClass("finish") || $(this).hasClass("impossible")) return;
