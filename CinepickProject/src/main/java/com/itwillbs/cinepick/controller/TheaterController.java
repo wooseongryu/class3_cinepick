@@ -43,7 +43,8 @@ public class TheaterController {
 		
 		// 상영 시간표 추가
 		
-		int brchNo = 4002; // 순천
+//		int brchNo = 4002; // 순천
+		int brchNo = 1001; // 강남
 		
 		List<TimeScheduleVO> movieGroup = service.getMovie(brchNo);
 		model.addAttribute("movieGroup", movieGroup);

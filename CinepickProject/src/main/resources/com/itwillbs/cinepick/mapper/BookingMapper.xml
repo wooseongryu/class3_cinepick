@@ -255,6 +255,8 @@
 		JOIN movie m
 		ON sc.sche_movie_code = m.movie_code
 		WHERE user_id = #{user_id}
+		AND sche_date > CURDATE() 
+		AND sche_start_time > CURRENT_TIME()
 		ORDER BY sc.sche_date, sc.sche_start_time
 		LIMIT 1
 		
