@@ -22,6 +22,13 @@
       <link rel="dns-prefetch" href="https://cdn.segment.com">
       
       
+      <!-- 엄 추가 1116 -->
+
+	  <link href="${pageContext.request.contextPath }/resources/cinepick/css/tumble/app.81892d40d14a84165880.css" rel="stylesheet">
+	  <link href="${pageContext.request.contextPath }/resources/cinepick/css/tumble/header.css" rel="stylesheet">
+      
+      
+      
       <link rel="stylesheet" type="text/css" href="https://d2om2e6rfn032x.cloudfront.net/wpa/app.81892d40d14a84165880.css">
       <link href="https://tumblbug-assets.imgix.net/appicon/favicon/favicon-32x32.png" rel="icon" type="image/x-icon">
       

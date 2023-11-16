@@ -694,6 +694,9 @@
 <!-- 		<input type="button" value="예매완료페이지로" class="test" id="complete" onclick="location.href='paySuccess'"> -->
 <!-- 		<input type="button" value="결제취소" class="test" id="complete" onclick="location.href='payCancle'"> -->
 		<input type="button" value="텀블벅" class="tumble" id="tumble" onclick="location.href='tumble'">
+		<input type="button" value="info" class="tumble" id="tumble2" onclick="location.href='tumbleInfo'">
+		<input type="button" value="main" class="tumble" id="tumble3" onclick="location.href='tumbleMain'">
+		<input type="button" value="format" class="tumble" id="tumble4" onclick="location.href='tumbleFormat'">
 	</div>
 <!-- 	<input type="button" value="hidden" id="hidden"> -->
 	

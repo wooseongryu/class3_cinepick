@@ -65,5 +65,21 @@ public class HiddenTestController {
 		return "cinepick/hiddenTest/tumbleMain";
 	}
 	
+	@GetMapping("tumbleInfo")
+	public String tumbleInfo() {
+		
+		return "cinepick/hiddenTest/tumbleInfo";
+	}
+	
+	@GetMapping("tumbleFormat")
+	public String tumbleFormat() {
+		
+		return "cinepick/hiddenTest/tumbleFormat";
+	}
+	@GetMapping("tumbleInfo2")
+	public String tumbleInfo2() {
+		return "cinepick/hiddenTest/tumbleInfo2";
+	}
+	
 	
 }
