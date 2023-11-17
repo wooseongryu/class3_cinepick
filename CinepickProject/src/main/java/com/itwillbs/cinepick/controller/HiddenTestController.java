@@ -80,6 +80,24 @@ public class HiddenTestController {
 	public String tumbleInfo2() {
 		return "cinepick/hiddenTest/tumbleInfo2";
 	}
+	@GetMapping("wadiz")
+	public String wadiz() {
+		
+		System.out.println("와디즈");
+		return "cinepick/hiddenTest/wadiz";
+	}
 	
+	@GetMapping("wadizMain")
+	public String wadizMain() {
+		return "cinepick/hiddenTest/wadizMain";
+	}
+	@GetMapping("web/main")
+	public String wadizs() {
+		return "cinepick/hiddenTest/wadiz";
+	}
+	@GetMapping("wadizOpen")
+	public String wadizOpen() {
+		return "cinepick/hiddenTest/wadizOpen";
+	}
 	
 }
