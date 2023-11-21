@@ -140,7 +140,7 @@ public class LoginJoinController {
 	@GetMapping("UserCheckDupEmail")
 	public String checkDupEmail(UserVO user) {
 		
-		UserVO returnUser = service.getUser2(user);
+		UserVO returnUser = service.getUser(user);
 		System.out.println(user);
 		
 		if(returnUser != null) { // 아이디 중복
