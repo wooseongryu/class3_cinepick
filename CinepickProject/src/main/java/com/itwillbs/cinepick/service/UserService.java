@@ -117,7 +117,7 @@ public class UserService {
 	}
 	
 	
-	//
+	// 회원 탈퇴 정보 요청
 	public UserVO getdeleteUser(UserVO user) {
 		return mapper.selectUser(user);
 	}

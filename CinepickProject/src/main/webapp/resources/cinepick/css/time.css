@@ -513,6 +513,11 @@
     background-size: 23px 23px
 }
 
+.movie-grade.age-18 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_46x46.png);
+    background-size: 23px 23px
+}
+
 .movie-grade.age-no {
     background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/none_46x46.png);
     background-size: 23px 23px
@@ -539,6 +544,11 @@
 }
 
 .movie-grade.small.age-19 {
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_40x40.png);
+    background-size: 20px 20px
+}
+
+.movie-grade.small.age-18 {
     background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/18_40x40.png);
     background-size: 20px 20px
 }

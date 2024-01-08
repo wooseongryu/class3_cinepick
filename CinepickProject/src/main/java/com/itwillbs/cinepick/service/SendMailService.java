@@ -15,11 +15,11 @@ public class SendMailService {
 //		System.out.println(authCode);
 		// -----------------------------------------------------------
 		// 인증 메일에 포함시킬 제목과 본문 생성
-		String subject = "[아이티윌] 가입 인증 메일입니다.";
+		String subject = "[씨네픽] 가입 인증 메일입니다.";
 //		String content = "인증코드 : " + authCode;
 		// 사용자가 인증 메일 내의 링크 클릭 시 인증 수행을 위한 서블릿 주소를 요청하도록
 		// 인증 메일 본문에 하이퍼링크를 사용하여 인증 코드 및 사용자 구별에 사용할 아이디 포함
-		String content = "<a href='http://localhost:8081/cinepick/UserEmailAuth?auth_id=" + id + "&auth_code=" + authCode + "'>"
+		String content = "<a href='http://c3d2306t1.itwillbs.com/cinepick/UserEmailAuth?auth_id=" + id + "&auth_code=" + authCode + "'>"
 							+ "이메일 인증을 위해 이 링크를 클릭해 주세요!</a>";
 		// -----------------------------------------------------------
 		// SendMailClient 인스턴스 생성 후 sendMail() 메서드를 호출하여 인증 메일 발송 요청
@@ -41,7 +41,7 @@ public class SendMailService {
 	}
 	
 	public void sendPasswd(String id, String email, String newPasswd) {
-		String subject = "[아이티윌] 비밀번호 변경 메일입니다.";
+		String subject = "[씨네픽] 비밀번호 변경 메일입니다.";
 		
 		String content = "임시 비밀번호는 " + newPasswd + " 입니다.";
 		

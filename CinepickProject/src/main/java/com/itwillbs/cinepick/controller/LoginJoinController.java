@@ -2,6 +2,7 @@ package com.itwillbs.cinepick.controller;
 
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -9,10 +10,13 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,6 +44,11 @@ public class LoginJoinController {
 		return "cinepick/login_join/join";
 	}
 	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+	}
+	
 	// "/MemberJoinPro" 요청에 대해 비즈니스 로직 처리를 수행할 joinPro() 메서드 정의
 	@PostMapping("joinPro")
 	public String joinPro(UserVO user, Model model) {
@@ -56,6 +65,9 @@ public class LoginJoinController {
 		
 		// ---------------------------------------------------------------------
 		// UserService - registMember() 메서드 호출하여 회원가입 작업 요청
+		System.out.println("!@#!@#");
+//		user.setKakao_id(user.getKakao_id().equals("") ? null : user.getKakao_id());  
+		System.out.println(user);
 		
 		int insertCount = service.joinUser(user);
 		
@@ -128,7 +140,7 @@ public class LoginJoinController {
 	@GetMapping("UserCheckDupEmail")
 	public String checkDupEmail(UserVO user) {
 		
-		UserVO returnUser = service.getUser2(user);
+		UserVO returnUser = service.getUser(user);
 		System.out.println(user);
 		
 		if(returnUser != null) { // 아이디 중복

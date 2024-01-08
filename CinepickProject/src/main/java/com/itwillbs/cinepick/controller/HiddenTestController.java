@@ -51,5 +51,53 @@ public class HiddenTestController {
 		return "";
 	}
 	
+	// 아래는 텀블벅 크롤링
+	
+	@GetMapping("tumble")
+	public String tumble() {
+		
+		return "cinepick/hiddenTest/tumble";
+	}
+	
+	@GetMapping("tumbleMain")
+	public String tumbleMain() {
+		
+		return "cinepick/hiddenTest/tumbleMain";
+	}
+	
+	@GetMapping("tumbleInfo")
+	public String tumbleInfo() {
+		
+		return "cinepick/hiddenTest/tumbleInfo";
+	}
+	
+	@GetMapping("tumbleFormat")
+	public String tumbleFormat() {
+		
+		return "cinepick/hiddenTest/tumbleFormat";
+	}
+	@GetMapping("tumbleInfo2")
+	public String tumbleInfo2() {
+		return "cinepick/hiddenTest/tumbleInfo2";
+	}
+	@GetMapping("wadiz")
+	public String wadiz() {
+		
+		System.out.println("와디즈");
+		return "cinepick/hiddenTest/wadiz";
+	}
+	
+	@GetMapping("wadizMain")
+	public String wadizMain() {
+		return "cinepick/hiddenTest/wadizMain";
+	}
+	@GetMapping("web/main")
+	public String wadizs() {
+		return "cinepick/hiddenTest/wadiz";
+	}
+	@GetMapping("wadizOpen")
+	public String wadizOpen() {
+		return "cinepick/hiddenTest/wadizOpen";
+	}
 	
 }

@@ -59,7 +59,7 @@ public interface UserMapper {
 	// 암호화 된 패스워드 조회
 	String selectPasswd(UserVO user);
 
-	// 회원 상세정보 조회
+	// 회원 탈퇴용 상세정보 조회
 	UserVO selectUser(UserVO user);
 
 	// 회원 상세정보 조회
