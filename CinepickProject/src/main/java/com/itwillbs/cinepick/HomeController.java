@@ -35,5 +35,5 @@ public class HomeController {
 		return "cinepick/main/main";
 	}
 	
-	// 깃 테스트1
+	// 깃 테스트12
 }
