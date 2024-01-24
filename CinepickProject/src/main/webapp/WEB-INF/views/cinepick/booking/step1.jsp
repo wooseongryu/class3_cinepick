@@ -214,7 +214,8 @@
 	    	    		$("#result_screen").append("<h6>상영관&emsp;상영관선택</h6>");
 	    	    		
 	    	    		$("#result").children().remove();
-	    	    		$("#result").append("<div><input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn'></div>");    			},
+	    	    		$("#result").append("<div><input type='button' value='좌석선택' disabled='disabled' style='background: silver;' class='res_btn'></div>");    			
+	    	    	},
 	    			error: function() {
 	    				alert("에러");
 	    			}
@@ -262,7 +263,12 @@
 	    						date2 = "0" + date2;
 	    					}
 	    					
-	    					let sche_date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date2;
+	    					let dateMonth = date.getMonth() + 1;
+	    					if (dateMonth < 10) {
+	    						dateMonth = "0" + dateMonth;
+	    					}
+	    					
+	    					let sche_date = date.getFullYear() + '-' + dateMonth + '-' + date2;
 	    					
 	    					$("#step1_date").append("<h6 data-theaterIdx='" 
 	    											+ data.getAttribute("data-theaterIdx") 
