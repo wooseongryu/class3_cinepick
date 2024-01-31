@@ -693,13 +693,13 @@
 <!-- 		<input type="button" value="결제페이지로" class="test" id="payTest" onclick="location.href='stepPay'"> -->
 <!-- 		<input type="button" value="예매완료페이지로" class="test" id="complete" onclick="location.href='paySuccess'"> -->
 <!-- 		<input type="button" value="결제취소" class="test" id="complete" onclick="location.href='payCancle'"> -->
-		<input type="button" value="텀블벅" class="tumble" id="tumble" onclick="location.href='tumble'">
-		<input type="button" value="info" class="tumble" id="tumble2" onclick="location.href='tumbleInfo'">
-		<input type="button" value="main" class="tumble" id="tumble3" onclick="location.href='tumbleMain'">
-		<input type="button" value="format" class="tumble" id="tumble4" onclick="location.href='tumbleFormat'">
-		<input type="button" value="와디즈" class="tumble" id="tumble5" onclick="location.href='wadiz'">
-		<input type="button" value="와디즈메인" class="tumble" id="tumble6" onclick="location.href='wadizMain'">
-		<input type="button" value="와디즈오픈" class="tumble" id="tumble7" onclick="location.href='wadizOpen'">
+<!-- 		<input type="button" value="텀블벅" class="tumble" id="tumble" onclick="location.href='tumble'"> -->
+<!-- 		<input type="button" value="info" class="tumble" id="tumble2" onclick="location.href='tumbleInfo'"> -->
+<!-- 		<input type="button" value="main" class="tumble" id="tumble3" onclick="location.href='tumbleMain'"> -->
+<!-- 		<input type="button" value="format" class="tumble" id="tumble4" onclick="location.href='tumbleFormat'"> -->
+<!-- 		<input type="button" value="와디즈" class="tumble" id="tumble5" onclick="location.href='wadiz'"> -->
+<!-- 		<input type="button" value="와디즈메인" class="tumble" id="tumble6" onclick="location.href='wadizMain'"> -->
+<!-- 		<input type="button" value="와디즈오픈" class="tumble" id="tumble7" onclick="location.href='wadizOpen'"> -->
 	</div>
 <!-- 	<input type="button" value="hidden" id="hidden"> -->
 	

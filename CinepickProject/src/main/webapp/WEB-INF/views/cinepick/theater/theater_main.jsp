@@ -169,19 +169,25 @@
 	    
 	    	<div>
 <!-- 	    		<i class="iconset ico-favo-theater"></i> -->
-	    		<i class="fa-solid fa-bookmark iconset ico-favo-theater" style="margin-left: 10px"></i>
-	    		<span class="purple">${sessionScope.sId }</span>님의 선호영화관
-	    		<ul class="theater-circle">
-	    			<li>
-	    				<a href="#">순천</a>
-<!-- 	    				<a href="#">순천</a> -->
-	    			</li>
-	    		</ul>
+	    		<c:if test="${not empty sessionScope.sId}">
+		    		<i class="fa-solid fa-bookmark iconset ico-favo-theater" style="margin-left: 10px"></i>
+		    		<span class="purple">${sessionScope.sId }</span>님의 선호영화관
+		    	</c:if>
+    			<c:if test="${not empty sessionScope.sId}">
+		    		<ul class="theater-circle">
+		    			<li>
+	<!-- 	    			240131 수정 -->
+	<!-- 	    				<a href="#">순천</a> -->
+				                <a href="#">순천</a>
+		    			</li>
+		    		</ul>
+	            </c:if>
 	    		<a class="button small float-r fav-modal" title="선호영화관 관리" style="font-size:1em"> 
 	    		<i class="fa-solid fa-gear"></i> 
 <!-- 	    		<i class="iconset ico-edit"></i> -->
 	    		선호영화관 관리</a>
 	    	</div>
+	    	
 	    	
 	    </div>
 		
