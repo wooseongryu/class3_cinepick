@@ -299,8 +299,13 @@
 					    <div class="theater-list">
 					        <div class="theater-tit">
 					            <p class="movie-grade age-${movieGroup.movie_rated }"></p>
-					            <p><a href="movieDetail?movie_code=${movieGroup.movie_code}" title="${movieGroup.movie_nameK} 상세보기">${movieGroup.movie_nameK}</a></p>
-					            <p class="infomation"><span>상영중</span>/상영시간 ${movieGroup.movie_runtime}</p>
+					            <p>
+					            	<a href="movieDetail?movie_code=${movieGroup.movie_code}" title="${movieGroup.movie_nameK} 상세보기">
+					            		${movieGroup.movie_nameK}
+					            	</a>
+					            </p>
+					            <p class="infomation">
+					            	<span>상영중</span>/상영시간 ${movieGroup.movie_runtime}</p>
 					        </div>
 					        
 					        <c:forEach var="screenGroup" items="${timeSchedule }">
@@ -495,26 +500,37 @@
 	$(function() {
 		$(".theater-facility p").each(function () {
 			
-// 			let facility = $(this).text().trim();
-// 			$(this).prepend('<i class="iconset ico-facility-' + facility + '"></i> ');
+			let facility = $(this).text().trim();
 			
-	        // 시설을 포함하는 p 태그를 찾음
-	        if ($(this).text().trim() === "MX") {
-	            // 앞에 아이콘을 추가
-	            $(this).prepend('<i class="iconset ico-facility-mx"></i> ');
-	        }
-	        if ($(this).text().trim() === "컴포트") {
-	            // 앞에 아이콘을 추가
-	            $(this).prepend('<i class="iconset ico-facility-comfort"></i> ');
-	        }
-	        if ($(this).text().trim() === "일반상영관") {
-	            // 앞에 아이콘을 추가
-	            $(this).prepend('<i class="iconset ico-facility-theater"></i> ');
-	        }
-	        if ($(this).text().trim() === "장애인석") {
-	            // 앞에 아이콘을 추가
-	            $(this).prepend('<i class="iconset ico-facility-disabled"></i> ');
-	        }
+			if(facility === "MX") {
+				falicity = "mx";
+			} else if(facility === "컴포트") {
+				falicity = "comfort";
+			} else if(facility === "일반상영관") {
+				falicity = "theater";
+			} else if(facility === "장애인석") {
+				falicity = "disabled";
+			}
+			
+			$(this).prepend('<i class="iconset ico-facility-' + facility + '"></i> ');
+			
+// 	        // 시설을 포함하는 p 태그를 찾음
+// 	        if ($(this).text().trim() === "MX") {
+// 	            // 앞에 아이콘을 추가
+// 	            $(this).prepend('<i class="iconset ico-facility-mx"></i> ');
+// 	        }
+// 	        if ($(this).text().trim() === "컴포트") {
+// 	            // 앞에 아이콘을 추가
+// 	            $(this).prepend('<i class="iconset ico-facility-comfort"></i> ');
+// 	        }
+// 	        if ($(this).text().trim() === "일반상영관") {
+// 	            // 앞에 아이콘을 추가
+// 	            $(this).prepend('<i class="iconset ico-facility-theater"></i> ');
+// 	        }
+// 	        if ($(this).text().trim() === "장애인석") {
+// 	            // 앞에 아이콘을 추가
+// 	            $(this).prepend('<i class="iconset ico-facility-disabled"></i> ');
+// 	        }
 	    });
 		
 // 		$(".depth1").click(function() {
